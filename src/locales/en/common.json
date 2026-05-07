@@ -1,0 +1,109 @@
+{
+  "site": {
+    "name": "Dr. Bader Dental",
+    "tagline": "Excellence in Dental Care"
+  },
+  "nav": {
+    "home": "Home",
+    "cases": "Case Studies",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "home": {
+    "hero": {
+      "title": "Transform Your Smile",
+      "subtitle": "Expert dental care with personalized treatment plans tailored to your unique needs",
+      "cta": "View Our Work",
+      "contact": "Book Consultation"
+    },
+    "featured": {
+      "title": "Featured Cases",
+      "subtitle": "Discover the transformations we've achieved for our patients",
+      "viewAll": "View All Cases"
+    },
+    "about": {
+      "title": "About Our Practice",
+      "description": "With over 15 years of experience, we combine cutting-edge technology with compassionate care to deliver exceptional results. Our commitment to excellence has helped thousands of patients achieve their perfect smile.",
+      "experience": "Years Experience",
+      "patients": "Happy Patients",
+      "procedures": "Procedures Done"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive dental solutions for every need",
+      "cosmetic": {
+        "title": "Cosmetic Dentistry",
+        "description": "Veneers, whitening, and smile makeovers"
+      },
+      "restorative": {
+        "title": "Restorative Care",
+        "description": "Crowns, bridges, and implants"
+      },
+      "preventive": {
+        "title": "Preventive Care",
+        "description": "Cleanings, exams, and oral health"
+      }
+    }
+  },
+  "cases": {
+    "title": "Case Studies",
+    "subtitle": "Explore our portfolio of dental transformations",
+    "featured": "Featured",
+    "viewCase": "View Case",
+    "backToList": "Back to Cases",
+    "tags": "Tags",
+    "date": "Date",
+    "challenge": "Challenge",
+    "approach": "Approach",
+    "result": "Result",
+    "gallery": "Gallery",
+    "beforeAfter": "Before & After",
+    "noCases": "No cases found",
+    "filterAll": "All Cases"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "How can we help?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your dental needs...",
+      "attachment": "Attachments",
+      "attachmentHelp": "Upload images or documents (optional)",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you! Your message has been sent successfully.",
+      "error": "Something went wrong. Please try again."
+    },
+    "info": {
+      "title": "Get in Touch",
+      "address": "123 Dental Street, Suite 100",
+      "city": "Montreal, QC H2X 1Y6",
+      "phone": "+1 (514) 555-0123",
+      "email": "contact@drbaderdental.com",
+      "hours": "Mon-Fri: 9AM - 6PM"
+    }
+  },
+  "footer": {
+    "description": "Providing exceptional dental care with a personal touch. Your smile is our passion.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Info",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "backHome": "Back to Home"
+  }
+}

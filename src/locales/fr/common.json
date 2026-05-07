@@ -1,0 +1,109 @@
+{
+  "site": {
+    "name": "Dr. Bader Dentaire",
+    "tagline": "L'excellence en soins dentaires"
+  },
+  "nav": {
+    "home": "Accueil",
+    "cases": "Études de cas",
+    "contact": "Contact",
+    "language": "Langue"
+  },
+  "home": {
+    "hero": {
+      "title": "Transformez Votre Sourire",
+      "subtitle": "Des soins dentaires experts avec des plans de traitement personnalisés adaptés à vos besoins uniques",
+      "cta": "Voir Nos Réalisations",
+      "contact": "Prendre Rendez-vous"
+    },
+    "featured": {
+      "title": "Cas en Vedette",
+      "subtitle": "Découvrez les transformations que nous avons réalisées pour nos patients",
+      "viewAll": "Voir Tous les Cas"
+    },
+    "about": {
+      "title": "À Propos de Notre Cabinet",
+      "description": "Avec plus de 15 ans d'expérience, nous combinons une technologie de pointe avec des soins attentionnés pour offrir des résultats exceptionnels. Notre engagement envers l'excellence a aidé des milliers de patients à obtenir leur sourire parfait.",
+      "experience": "Années d'Expérience",
+      "patients": "Patients Satisfaits",
+      "procedures": "Procédures Réalisées"
+    },
+    "services": {
+      "title": "Nos Services",
+      "subtitle": "Des solutions dentaires complètes pour chaque besoin",
+      "cosmetic": {
+        "title": "Dentisterie Esthétique",
+        "description": "Facettes, blanchiment et transformations du sourire"
+      },
+      "restorative": {
+        "title": "Soins Restaurateurs",
+        "description": "Couronnes, ponts et implants"
+      },
+      "preventive": {
+        "title": "Soins Préventifs",
+        "description": "Nettoyages, examens et santé bucco-dentaire"
+      }
+    }
+  },
+  "cases": {
+    "title": "Études de Cas",
+    "subtitle": "Explorez notre portfolio de transformations dentaires",
+    "featured": "En vedette",
+    "viewCase": "Voir le Cas",
+    "backToList": "Retour aux Cas",
+    "tags": "Étiquettes",
+    "date": "Date",
+    "challenge": "Défi",
+    "approach": "Approche",
+    "result": "Résultat",
+    "gallery": "Galerie",
+    "beforeAfter": "Avant & Après",
+    "noCases": "Aucun cas trouvé",
+    "filterAll": "Tous les Cas"
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Nous serions ravis de vous entendre. Envoyez-nous un message et nous vous répondrons dans les plus brefs délais.",
+    "form": {
+      "name": "Nom Complet",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Adresse Courriel",
+      "emailPlaceholder": "jean@exemple.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Comment pouvons-nous vous aider?",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de vos besoins dentaires...",
+      "attachment": "Pièces Jointes",
+      "attachmentHelp": "Téléchargez des images ou documents (optionnel)",
+      "submit": "Envoyer le Message",
+      "sending": "Envoi en cours...",
+      "success": "Merci! Votre message a été envoyé avec succès.",
+      "error": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "info": {
+      "title": "Nous Joindre",
+      "address": "123 Rue Dentaire, Bureau 100",
+      "city": "Montréal, QC H2X 1Y6",
+      "phone": "+1 (514) 555-0123",
+      "email": "contact@drbaderdentaire.com",
+      "hours": "Lun-Ven: 9h - 18h"
+    }
+  },
+  "footer": {
+    "description": "Offrant des soins dentaires exceptionnels avec une touche personnelle. Votre sourire est notre passion.",
+    "quickLinks": "Liens Rapides",
+    "contactInfo": "Coordonnées",
+    "followUs": "Suivez-Nous",
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "readMore": "Lire la Suite",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "notFound": "Page non trouvée",
+    "backHome": "Retour à l'Accueil"
+  }
+}

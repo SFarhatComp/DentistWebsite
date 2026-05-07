@@ -1,0 +1,220 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Local development
+local_backend: true
+
+# Media files
+media_folder: public/uploads
+public_folder: /uploads
+
+# Site URL for previews
+site_url: https://your-site.netlify.app
+display_url: https://your-site.netlify.app
+
+# Logo for CMS
+logo_url: /logo.png
+
+# Publish mode
+publish_mode: editorial_workflow
+
+# Slug settings
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Collections
+collections:
+  # ================================
+  # ENGLISH CASES
+  # ================================
+  - name: "cases_en"
+    label: "Cases (English)"
+    label_singular: "Case (English)"
+    folder: "content/cases/en"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    editor:
+      preview: false
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - label: Featured
+        field: featured
+      - label: Year
+        field: date
+        pattern: \d{4}
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Must be lowercase with hyphens only"]
+        hint: "URL-friendly identifier. Must match the French version for language switching."
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: true
+
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        hint: "Show this case on the homepage"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Add relevant tags (e.g., Cosmetic, Implants, Invisalign)"
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "Brief description shown on case cards (1-2 sentences)"
+
+      - label: "Cover Image"
+        name: "coverImage"
+        widget: "image"
+        required: true
+        hint: "Main image for the case card and header"
+
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        hint: "Additional images for the case gallery"
+        fields:
+          - label: "Image"
+            name: "src"
+            widget: "image"
+            required: true
+
+          - label: "Caption"
+            name: "caption"
+            widget: "string"
+            required: true
+
+          - label: "Type"
+            name: "type"
+            widget: "select"
+            options:
+              - { label: "Before", value: "before" }
+              - { label: "After", value: "after" }
+              - { label: "Normal", value: "normal" }
+            default: "normal"
+
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: true
+        hint: "Include sections: ## Challenge, ## Approach, ## Result"
+
+  # ================================
+  # FRENCH CASES
+  # ================================
+  - name: "cases_fr"
+    label: "Cases (French / Cas en Français)"
+    label_singular: "Case (French)"
+    folder: "content/cases/fr"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    editor:
+      preview: false
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - label: En vedette
+        field: featured
+      - label: Année
+        field: date
+        pattern: \d{4}
+    fields:
+      - label: "Titre"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Doit être en minuscules avec des tirets uniquement"]
+        hint: "Identifiant URL. Doit correspondre à la version anglaise pour le changement de langue."
+
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: true
+
+      - label: "En vedette"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        hint: "Afficher ce cas sur la page d'accueil"
+
+      - label: "Étiquettes"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Ajouter des étiquettes pertinentes (ex: Esthétique, Implants, Invisalign)"
+
+      - label: "Extrait"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "Brève description affichée sur les cartes de cas (1-2 phrases)"
+
+      - label: "Image de couverture"
+        name: "coverImage"
+        widget: "image"
+        required: true
+        hint: "Image principale pour la carte et l'en-tête du cas"
+
+      - label: "Galerie"
+        name: "gallery"
+        widget: "list"
+        required: false
+        hint: "Images supplémentaires pour la galerie du cas"
+        fields:
+          - label: "Image"
+            name: "src"
+            widget: "image"
+            required: true
+
+          - label: "Légende"
+            name: "caption"
+            widget: "string"
+            required: true
+
+          - label: "Type"
+            name: "type"
+            widget: "select"
+            options:
+              - { label: "Avant", value: "before" }
+              - { label: "Après", value: "after" }
+              - { label: "Normal", value: "normal" }
+            default: "normal"
+
+      - label: "Contenu"
+        name: "body"
+        widget: "markdown"
+        required: true
+        hint: "Inclure les sections: ## Défi, ## Approche, ## Résultat"
