@@ -2,133 +2,62 @@ backend:
   name: git-gateway
   branch: main
 
-# Local development
 local_backend: true
 
-# Media files
 media_folder: public/uploads
 public_folder: /uploads
 
-# Site URL for previews
-site_url: https://your-site.netlify.app
-display_url: https://your-site.netlify.app
+site_url: https://defactodentaire.ca
+display_url: https://defactodentaire.ca
 
-# Logo for CMS
-logo_url: /logo.png
-
-# Publish mode
 publish_mode: editorial_workflow
 
-# Slug settings
 slug:
   encoding: "ascii"
   clean_accents: true
   sanitize_replacement: "-"
 
-# Collections
 collections:
+
   # ================================
-  # ENGLISH CASES
+  # SERVICES (FR) — content seeded by developer; dentist edits copy
   # ================================
-  - name: "cases_en"
-    label: "Cases (English)"
-    label_singular: "Case (English)"
-    folder: "content/cases/en"
-    create: true
+  - name: "services_fr"
+    label: "Services (FR)"
+    label_singular: "Service"
+    folder: "content/services/fr"
+    create: false
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
     editor:
       preview: false
-    sortable_fields: ["date", "title"]
-    view_groups:
-      - label: Featured
-        field: featured
-      - label: Year
-        field: date
-        pattern: \d{4}
     fields:
-      - label: "Title"
-        name: "title"
-        widget: "string"
-        required: true
-
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-        required: true
-        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Must be lowercase with hyphens only"]
-        hint: "URL-friendly identifier. Must match the French version for language switching."
-
-      - label: "Date"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-        required: true
-
-      - label: "Featured"
-        name: "featured"
-        widget: "boolean"
-        default: false
-        hint: "Show this case on the homepage"
-
-      - label: "Tags"
-        name: "tags"
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Titre", name: "title", widget: "string", required: true }
+      - { label: "Description courte", name: "shortDescription", widget: "text", required: true }
+      - { label: "Image principale", name: "heroImage", widget: "image", required: false }
+      - { label: "Quand consulter", name: "whenToConsult", widget: "list", required: false }
+      - { label: "Étapes du traitement", name: "treatmentSteps", widget: "list", required: false }
+      - { label: "Options possibles", name: "options", widget: "list", required: false }
+      - { label: "Limites et risques", name: "limits", widget: "text", required: false }
+      - { label: "Après le traitement", name: "aftercare", widget: "text", required: false }
+      - label: "FAQ"
+        name: "faq"
         widget: "list"
         required: false
-        hint: "Add relevant tags (e.g., Cosmetic, Implants, Invisalign)"
-
-      - label: "Excerpt"
-        name: "excerpt"
-        widget: "text"
-        required: true
-        hint: "Brief description shown on case cards (1-2 sentences)"
-
-      - label: "Cover Image"
-        name: "coverImage"
-        widget: "image"
-        required: true
-        hint: "Main image for the case card and header"
-
-      - label: "Gallery"
-        name: "gallery"
-        widget: "list"
-        required: false
-        hint: "Additional images for the case gallery"
         fields:
-          - label: "Image"
-            name: "src"
-            widget: "image"
-            required: true
-
-          - label: "Caption"
-            name: "caption"
-            widget: "string"
-            required: true
-
-          - label: "Type"
-            name: "type"
-            widget: "select"
-            options:
-              - { label: "Before", value: "before" }
-              - { label: "After", value: "after" }
-              - { label: "Normal", value: "normal" }
-            default: "normal"
-
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
-        required: true
-        hint: "Include sections: ## Challenge, ## Approach, ## Result"
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Réponse", name: "answer", widget: "text" }
+      - { label: "Services liés (slugs)", name: "related", widget: "list", required: false }
+      - { label: "Contenu", name: "body", widget: "markdown", required: false }
 
   # ================================
-  # FRENCH CASES
+  # CASES / RÉALISATIONS (FR)
   # ================================
   - name: "cases_fr"
-    label: "Cases (French / Cas en Français)"
-    label_singular: "Case (French)"
+    label: "Réalisations (FR)"
+    label_singular: "Réalisation"
     folder: "content/cases/fr"
     create: true
     slug: "{{slug}}"
@@ -138,72 +67,28 @@ collections:
       preview: false
     sortable_fields: ["date", "title"]
     view_groups:
-      - label: En vedette
-        field: featured
-      - label: Année
-        field: date
-        pattern: \d{4}
+      - { label: "En vedette", field: "featured" }
+      - { label: "Année", field: "date", pattern: '\d{4}' }
     fields:
-      - label: "Titre"
-        name: "title"
-        widget: "string"
-        required: true
-
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-        required: true
-        pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Doit être en minuscules avec des tirets uniquement"]
-        hint: "Identifiant URL. Doit correspondre à la version anglaise pour le changement de langue."
-
-      - label: "Date"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-        required: true
-
-      - label: "En vedette"
-        name: "featured"
-        widget: "boolean"
-        default: false
-        hint: "Afficher ce cas sur la page d'accueil"
-
-      - label: "Étiquettes"
-        name: "tags"
-        widget: "list"
-        required: false
-        hint: "Ajouter des étiquettes pertinentes (ex: Esthétique, Implants, Invisalign)"
-
-      - label: "Extrait"
-        name: "excerpt"
-        widget: "text"
-        required: true
-        hint: "Brève description affichée sur les cartes de cas (1-2 phrases)"
-
-      - label: "Image de couverture"
-        name: "coverImage"
-        widget: "image"
-        required: true
-        hint: "Image principale pour la carte et l'en-tête du cas"
-
+      - { label: "Slug", name: "slug", widget: "string", required: true,
+          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Doit être en minuscules avec des tirets uniquement"] }
+      - { label: "Titre", name: "title", widget: "string", required: true }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
+      - { label: "Étiquettes", name: "tags", widget: "list", required: false }
+      - { label: "Extrait", name: "excerpt", widget: "text", required: true }
+      - { label: "En vedette", name: "featured", widget: "boolean", default: false }
+      - { label: "Image de couverture", name: "coverImage", widget: "image", required: false }
+      - { label: "Type de traitement", name: "treatmentType", widget: "string", required: true }
+      - { label: "Problème initial", name: "initialProblem", widget: "text", required: true }
+      - { label: "Objectif", name: "objective", widget: "text", required: true }
+      - { label: "Nombre de rendez-vous", name: "appointmentCount", widget: "number", required: false }
       - label: "Galerie"
         name: "gallery"
         widget: "list"
         required: false
-        hint: "Images supplémentaires pour la galerie du cas"
         fields:
-          - label: "Image"
-            name: "src"
-            widget: "image"
-            required: true
-
-          - label: "Légende"
-            name: "caption"
-            widget: "string"
-            required: true
-
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Légende", name: "caption", widget: "string" }
           - label: "Type"
             name: "type"
             widget: "select"
@@ -212,9 +97,54 @@ collections:
               - { label: "Après", value: "after" }
               - { label: "Normal", value: "normal" }
             default: "normal"
+            required: false
+      - { label: "Mention légale", name: "legalDisclaimer", widget: "text", required: true,
+          default: "Résultat propre à ce patient. Une consultation est nécessaire pour évaluer les options adaptées à votre situation." }
+      - { label: "Contenu", name: "body", widget: "markdown", required: true,
+          hint: "Inclure les sections : ## Problème initial, ## Approche, ## Résultat" }
 
-      - label: "Contenu"
-        name: "body"
-        widget: "markdown"
-        required: true
-        hint: "Inclure les sections: ## Défi, ## Approche, ## Résultat"
+  # ================================
+  # RESSOURCES PATIENTS (FR)
+  # ================================
+  - name: "ressources_fr"
+    label: "Ressources patients (FR)"
+    label_singular: "Ressource"
+    folder: "content/ressources/fr"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Titre", name: "title", widget: "string", required: true }
+      - label: "Catégorie"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Première visite", value: "premiere-visite" }
+          - { label: "Post-opératoire", value: "post-op" }
+          - { label: "Hygiène", value: "hygiene" }
+          - { label: "Aligneurs", value: "aligneurs" }
+          - { label: "Prévention", value: "prevention" }
+      - { label: "Contenu", name: "body", widget: "markdown", required: true }
+
+  # ================================
+  # JOURNAL CLINIQUE (FR) — Phase 3
+  # ================================
+  - name: "journal_fr"
+    label: "Journal clinique (FR)"
+    label_singular: "Article"
+    folder: "content/journal/fr"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Titre", name: "title", widget: "string", required: true }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
+      - { label: "Catégorie", name: "category", widget: "string", required: true }
+      - { label: "Extrait", name: "excerpt", widget: "text", required: true }
+      - { label: "Image de couverture", name: "coverImage", widget: "image", required: false }
+      - { label: "Contenu", name: "body", widget: "markdown", required: true }

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <!-- Hidden form templates so Netlify can detect and register them at build time. -->
+
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <input name="phone" type="tel" />
+      <input name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+
+    <form name="appointment" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input name="bot-field" />
+      <input name="firstName" />
+      <input name="lastName" />
+      <input name="dob" />
+      <input name="phone" />
+      <input name="email" />
+      <input name="address" />
+      <input name="preferredLanguage" />
+      <input name="existingPatient" />
+      <input name="reasonOther" />
+      <input name="symptomDuration" />
+      <input name="availabilityNotes" />
+      <input name="hasInsurance" />
+      <input name="insuranceType" />
+      <input name="insurer" />
+      <input name="policy" />
+      <input name="certificate" />
+      <input name="primaryInsuredDob" />
+      <input name="relationToPrimary" />
+      <input name="medications" />
+      <input name="allergies" />
+      <input name="conditionDetails" />
+      <input name="accommodations" />
+      <input type="file" name="documents" />
+      <input name="consent_contact" />
+      <input name="consent_no_replace" />
+      <input name="consent_use" />
+      <input name="consent_emergency" />
+      <input name="consent_communications" />
+    </form>
+
+    <form name="emergency" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input name="bot-field" />
+      <input name="firstName" />
+      <input name="lastName" />
+      <input name="phone" />
+      <input name="email" />
+      <input name="dob" />
+      <input name="symptomDuration" />
+      <input type="file" name="photo" />
+    </form>
+  </body>
+</html>
