@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Field, TextareaField, SelectField, CheckboxField, RadioField, FileField, FormSection, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
@@ -74,7 +73,6 @@ const HEALTH_QUESTIONS = [
 ]
 
 export function AppointmentForm({ lang }: { lang: Locale }) {
-  const router = useRouter()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
 
@@ -86,7 +84,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
     try {
       const res = await fetch("/", { method: "POST", body: data })
       if (!res.ok && res.status !== 200 && res.status !== 404) throw new Error("Submit failed")
-      router.push(`/${lang}/merci`)
+      window.location.assign(`/${lang}/merci`)
     } catch {
       setError(true)
       setSubmitting(false)

@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Field, TextareaField, SelectField, HoneypotField } from "./fields"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
@@ -9,7 +8,6 @@ const SUBJECT_KEYS = ["general", "rdv", "assurance", "urgence", "professionnel",
 
 export function ContactForm({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
-  const router = useRouter()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
 
@@ -27,7 +25,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
         body: body.toString(),
       })
       if (!res.ok && res.status !== 200 && res.status !== 404) throw new Error("Submit failed")
-      router.push(`/${lang}/merci`)
+      window.location.assign(`/${lang}/merci`)
     } catch {
       setError(true)
       setSubmitting(false)

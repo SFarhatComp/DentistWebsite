@@ -16,8 +16,8 @@ const config: Config = {
         gold: "hsl(var(--gold))",
       },
       fontFamily: {
-        display: ["var(--font-cormorant)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        display: ['"Cormorant Garamond"', "Georgia", "serif"],
+        sans: ['"Inter"', "system-ui", "sans-serif"],
       },
       borderRadius: { lg: "0.5rem", md: "0.375rem", sm: "0.25rem" },
     },

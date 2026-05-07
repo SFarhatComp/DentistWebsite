@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="py-32 text-center">
         <div className="label-sm text-accent mb-4">404</div>
         <h1 className="font-display text-5xl mb-6">Page introuvable</h1>
-        <Link href="/fr" className="text-primary hover:underline">Retour à l'accueil</Link>
+        <Link href="/fr" className="text-primary hover:underline">Retour à l&apos;accueil</Link>
       </div>
     </Container>
   )

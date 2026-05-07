@@ -1,9 +1,5 @@
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Inter } from "next/font/google"
 import "./globals.css"
-
-const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-cormorant" })
-const inter = Inter({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
   title: { default: "De Facto Studio Dentaire", template: "%s — De Facto Studio Dentaire" },
@@ -16,14 +12,26 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: "De Facto Studio Dentaire",
-  address: { "@type": "PostalAddress", streetAddress: "728 rue Fleury Est", addressLocality: "Montréal", addressRegion: "QC", addressCountry: "CA" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "728 rue Fleury Est",
+    addressLocality: "Montréal",
+    addressRegion: "QC",
+    addressCountry: "CA",
+  },
   url: "https://defactodentaire.ca",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="fr">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>{children}</body>

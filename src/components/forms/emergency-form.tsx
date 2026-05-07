@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { Field, TextareaField, CheckboxField, RadioField, FileField, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
@@ -26,7 +25,6 @@ const SYMPTOMS = [
 ]
 
 export function EmergencyForm({ lang }: { lang: Locale }) {
-  const router = useRouter()
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
 
@@ -38,7 +36,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
     try {
       const res = await fetch("/", { method: "POST", body: data })
       if (!res.ok && res.status !== 200 && res.status !== 404) throw new Error("Submit failed")
-      router.push(`/${lang}/merci`)
+      window.location.assign(`/${lang}/merci`)
     } catch {
       setError(true)
       setSubmitting(false)

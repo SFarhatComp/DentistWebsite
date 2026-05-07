@@ -1,9 +1,12 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Netlify auto-detects Next.js and applies @netlify/plugin-nextjs.
+# No manual plugin config needed.
 
 # Redirect root to default locale (French-first)
 [[redirects]]
