@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Claude Code local skill cache (installed via npx uipro-cli)
 .claude/
+
+# Local Netlify folder
+.netlify
