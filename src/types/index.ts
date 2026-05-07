@@ -1,35 +1,34 @@
-export type Locale = 'en' | 'fr'
+export type Locale = "fr" | "en"
 
-export interface GalleryImage {
-  src: string
-  caption: string
-  type?: 'before' | 'after' | 'normal'
+export interface ServiceFrontmatter {
+  slug: string
+  title: string
+  shortDescription: string
+  heroImage?: string
+  whenToConsult: string[]
+  treatmentSteps: string[]
+  options: string[]
+  limits: string
+  aftercare: string
+  faq: { question: string; answer: string }[]
+  related: string[]
 }
 
 export interface CaseFrontmatter {
-  title: string
   slug: string
+  title: string
   date: string
   tags: string[]
   excerpt: string
   featured: boolean
-  coverImage: string
-  gallery: GalleryImage[]
+  coverImage?: string
+  treatmentType: string
+  initialProblem: string
+  objective: string
+  appointmentCount?: number
+  gallery: { src: string; caption: string; type?: "before" | "after" | "normal" }[]
+  legalDisclaimer: string
 }
 
-export interface Case extends CaseFrontmatter {
-  content: string
-  locale: Locale
-}
-
-export interface TranslationKeys {
-  [key: string]: string | TranslationKeys
-}
-
-export interface PageParams {
-  lang: Locale
-}
-
-export interface CasePageParams extends PageParams {
-  slug: string
-}
+export interface Case extends CaseFrontmatter { content: string }
+export interface Service extends ServiceFrontmatter { content: string }

@@ -1,10 +1,5 @@
-import type { Locale } from '@/types'
-
-export const i18nConfig = {
-  defaultLocale: 'en' as Locale,
-  locales: ['en', 'fr'] as Locale[],
-}
-
-export function generateStaticParams() {
-  return i18nConfig.locales.map((lang) => ({ lang }))
-}
+export const i18n = {
+  defaultLocale: "fr",
+  locales: ["fr", "en"] as const,
+} as const
+export type Locale = (typeof i18n.locales)[number]

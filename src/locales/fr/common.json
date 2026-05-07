@@ -1,109 +1,127 @@
 {
-  "site": {
-    "name": "Dr. Bader Dentaire",
-    "tagline": "L'excellence en soins dentaires"
-  },
+  "site": { "name": "De Facto Studio Dentaire" },
   "nav": {
-    "home": "Accueil",
-    "cases": "Études de cas",
+    "accueil": "Accueil",
+    "studio": "Le Studio",
+    "experience": "Expérience patient",
+    "services": "Services",
+    "laboratoire": "Laboratoire",
+    "realisations": "Réalisations",
     "contact": "Contact",
-    "language": "Langue"
+    "cta": "Prendre rendez-vous"
+  },
+  "common": {
+    "enSavoirPlus": "En savoir plus",
+    "lire": "Lire",
+    "voir": "Voir",
+    "retour": "Retour"
   },
   "home": {
     "hero": {
-      "title": "Transformez Votre Sourire",
-      "subtitle": "Des soins dentaires experts avec des plans de traitement personnalisés adaptés à vos besoins uniques",
-      "cta": "Voir Nos Réalisations",
-      "contact": "Prendre Rendez-vous"
+      "label": "Studio dentaire — Montréal",
+      "title1": "Dentisterie réfléchie.",
+      "title2": "Soins précis.",
+      "title3": "Expérience personnalisée.",
+      "subtitle": "De Facto Studio Dentaire réunit une approche clinique rigoureuse, une expérience patient soignée et un laboratoire intégré pour offrir des soins dentaires personnalisés à Montréal.",
+      "ctaPrimary": "Prendre rendez-vous",
+      "ctaSecondary": "Découvrir notre approche"
     },
-    "featured": {
-      "title": "Cas en Vedette",
-      "subtitle": "Découvrez les transformations que nous avons réalisées pour nos patients",
-      "viewAll": "Voir Tous les Cas"
+    "manifeste": {
+      "label": "Notre manifeste",
+      "title": "Une autre façon de penser la dentisterie",
+      "body": "Chez De Facto, chaque traitement commence par une compréhension globale du patient. Nous prenons le temps d'évaluer, de documenter, de planifier et d'expliquer. Notre objectif n'est pas seulement de traiter une dent, mais de bâtir une vision claire de votre santé buccodentaire."
     },
-    "about": {
-      "title": "À Propos de Notre Cabinet",
-      "description": "Avec plus de 15 ans d'expérience, nous combinons une technologie de pointe avec des soins attentionnés pour offrir des résultats exceptionnels. Notre engagement envers l'excellence a aidé des milliers de patients à obtenir leur sourire parfait.",
-      "experience": "Années d'Expérience",
-      "patients": "Patients Satisfaits",
-      "procedures": "Procédures Réalisées"
+    "piliers": {
+      "label": "Notre approche",
+      "title": "Quatre piliers, une vision intégrée",
+      "diagnostic": { "title": "Diagnostic complet", "body": "Une première visite structurée pour comprendre votre santé, vos besoins, vos attentes et vos priorités." },
+      "planification": { "title": "Planification personnalisée", "body": "Les traitements sont hiérarchisés, expliqués et adaptés à votre réalité clinique, financière et personnelle." },
+      "precision": { "title": "Précision clinique", "body": "Chaque étape est guidée par des protocoles, une documentation rigoureuse et une vision à long terme." },
+      "laboratoire": { "title": "Laboratoire intégré", "body": "La proximité entre la clinique et le laboratoire permet une meilleure communication, une meilleure personnalisation et un meilleur contrôle de qualité." }
     },
-    "services": {
-      "title": "Nos Services",
-      "subtitle": "Des solutions dentaires complètes pour chaque besoin",
-      "cosmetic": {
-        "title": "Dentisterie Esthétique",
-        "description": "Facettes, blanchiment et transformations du sourire"
-      },
-      "restorative": {
-        "title": "Soins Restaurateurs",
-        "description": "Couronnes, ponts et implants"
-      },
-      "preventive": {
-        "title": "Soins Préventifs",
-        "description": "Nettoyages, examens et santé bucco-dentaire"
-      }
-    }
+    "parcours": {
+      "label": "Parcours patient",
+      "title": "Une expérience structurée du premier contact au suivi",
+      "body": "Nous avons conçu l'expérience patient pour que chaque étape soit claire, documentée et compréhensible.",
+      "demande": { "title": "Demande de rendez-vous", "body": "Vous transmettez vos informations et la raison de la consultation." },
+      "examen": { "title": "Examen complet", "body": "Évaluation clinique, radiographies et photos selon indication." },
+      "plan": { "title": "Plan personnalisé", "body": "Présentation des options, priorités, séquence et estimation." },
+      "traitement": { "title": "Traitement et suivi", "body": "Réalisation, suivis post-opératoires et entretien à long terme." },
+      "cta": "Voir l'expérience patient"
+    },
+    "services": { "label": "Nos services", "title": "Des soins complets, planifiés selon vos besoins" },
+    "laboratoire": { "label": "Laboratoire intégré", "title": "La précision du laboratoire, intégrée à l'expérience clinique", "body": "La proximité entre la clinique et le laboratoire permet une meilleure communication, un meilleur contrôle des détails et une personnalisation plus fine des restaurations." },
+    "realisations": {
+      "label": "Réalisations",
+      "title": "Des traitements planifiés avec soin",
+      "case1": { "tag": "Esthétique", "title": "Restauration antérieure" },
+      "case2": { "tag": "Prothèse", "title": "Couronne en zircone" },
+      "case3": { "tag": "Orthodontie", "title": "Aligneurs — alignement léger" },
+      "cta": "Voir toutes les réalisations"
+    },
+    "cta": { "title": "Commencer par une évaluation complète", "body": "La première étape est de comprendre votre situation. Notre équipe vous accompagne dans une démarche claire, structurée et personnalisée.", "primary": "Demander un rendez-vous", "secondary": "Nous contacter" },
+    "coordonnees": { "label": "Nous trouver", "title": "Au cœur d'Ahuntsic" }
   },
-  "cases": {
-    "title": "Études de Cas",
-    "subtitle": "Explorez notre portfolio de transformations dentaires",
-    "featured": "En vedette",
-    "viewCase": "Voir le Cas",
-    "backToList": "Retour aux Cas",
-    "tags": "Étiquettes",
-    "date": "Date",
-    "challenge": "Défi",
-    "approach": "Approche",
-    "result": "Résultat",
-    "gallery": "Galerie",
-    "beforeAfter": "Avant & Après",
-    "noCases": "Aucun cas trouvé",
-    "filterAll": "Tous les Cas"
+  "studio": { "_": "Fill in: intro, philosophie (5 sub), espace, equipement (6 blocs), engagement (6 items)" },
+  "experience": { "_": "Fill in: phase1-4 + difference (6 blocs)" },
+  "services": {
+    "label": "Services",
+    "pageTitle": "Des soins dentaires complets, planifiés selon vos besoins",
+    "pageSubtitle": "Les traitements proposés au studio sont intégrés dans une vision globale.",
+    "examen-complet": { "title": "Examen complet et diagnostic", "short": "Une première visite structurée pour comprendre votre santé buccodentaire." },
+    "prevention-hygiene": { "title": "Prévention et hygiène", "short": "Nettoyage, évaluation et conseils personnalisés." },
+    "dentisterie-operatoire": { "title": "Dentisterie opératoire", "short": "Composites, restaurations et traitements conservateurs." },
+    "esthetique-dentaire": { "title": "Esthétique dentaire", "short": "Facettes, blanchiment et harmonisation du sourire." },
+    "parodontie": { "title": "Parodontie", "short": "Évaluation et traitement des gencives." },
+    "endodontie": { "title": "Endodontie", "short": "Traitement de canal et diagnostic de douleur." },
+    "couronnes-ponts": { "title": "Couronnes et ponts", "short": "Restaurations indirectes en céramique et zircone." },
+    "implantologie": { "title": "Implantologie", "short": "Couronnes, ponts et prothèses sur implants." },
+    "aligneurs": { "title": "Aligneurs orthodontiques", "short": "Alignement léger à modéré par aligneurs transparents." },
+    "urgences": { "title": "Urgences dentaires", "short": "Évaluation rapide en cas de douleur ou traumatisme." }
+  },
+  "appointment": {
+    "label": "Rendez-vous",
+    "title": "Demande de rendez-vous",
+    "subtitle": "Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier.",
+    "emergencyCta": "J'ai une urgence dentaire"
+  },
+  "emergency": {
+    "title": "Urgence dentaire",
+    "subtitle": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, contactez immédiatement les services d'urgence."
   },
   "contact": {
-    "title": "Contactez-Nous",
-    "subtitle": "Nous serions ravis de vous entendre. Envoyez-nous un message et nous vous répondrons dans les plus brefs délais.",
-    "form": {
-      "name": "Nom Complet",
-      "namePlaceholder": "Jean Dupont",
-      "email": "Adresse Courriel",
-      "emailPlaceholder": "jean@exemple.com",
-      "subject": "Sujet",
-      "subjectPlaceholder": "Comment pouvons-nous vous aider?",
-      "message": "Message",
-      "messagePlaceholder": "Parlez-nous de vos besoins dentaires...",
-      "attachment": "Pièces Jointes",
-      "attachmentHelp": "Téléchargez des images ou documents (optionnel)",
-      "submit": "Envoyer le Message",
-      "sending": "Envoi en cours...",
-      "success": "Merci! Votre message a été envoyé avec succès.",
-      "error": "Une erreur s'est produite. Veuillez réessayer."
-    },
-    "info": {
-      "title": "Nous Joindre",
-      "address": "123 Rue Dentaire, Bureau 100",
-      "city": "Montréal, QC H2X 1Y6",
-      "phone": "+1 (514) 555-0123",
-      "email": "contact@drbaderdentaire.com",
-      "hours": "Lun-Ven: 9h - 18h"
-    }
+    "label": "Contact",
+    "title": "Nous joindre",
+    "subtitle": "Notre équipe vous répond dans les meilleurs délais.",
+    "adresse": "Adresse",
+    "telephone": "Téléphone",
+    "courriel": "Courriel",
+    "heures": "Heures d'ouverture",
+    "phonePlaceholder": "+1 (514) 000-0000",
+    "emailPlaceholder": "contact@defactodentaire.ca",
+    "hoursPlaceholder": "Lundi–Vendredi : 9h–17h"
+  },
+  "contactForm": {
+    "nom": "Nom complet",
+    "courriel": "Courriel",
+    "telephone": "Téléphone",
+    "sujet": "Sujet",
+    "sujetOptions": { "general": "Question générale", "rdv": "Rendez-vous", "assurance": "Assurance", "urgence": "Urgence", "professionnel": "Demande professionnelle", "laboratoire": "Laboratoire", "autre": "Autre" },
+    "message": "Message",
+    "envoyer": "Envoyer",
+    "envoi": "Envoi…"
+  },
+  "merci": {
+    "label": "Confirmation",
+    "title": "Merci, votre demande a été reçue.",
+    "body": "Notre équipe prendra contact avec vous afin de confirmer les prochaines étapes.",
+    "backHome": "Retour à l'accueil"
   },
   "footer": {
-    "description": "Offrant des soins dentaires exceptionnels avec une touche personnelle. Votre sourire est notre passion.",
-    "quickLinks": "Liens Rapides",
-    "contactInfo": "Coordonnées",
-    "followUs": "Suivez-Nous",
-    "rights": "Tous droits réservés.",
-    "privacy": "Politique de Confidentialité",
-    "terms": "Conditions d'Utilisation"
-  },
-  "common": {
-    "learnMore": "En Savoir Plus",
-    "readMore": "Lire la Suite",
-    "loading": "Chargement...",
-    "error": "Une erreur s'est produite",
-    "notFound": "Page non trouvée",
-    "backHome": "Retour à l'Accueil"
+    "tagline": "De Facto Studio Dentaire — soins dentaires personnalisés à Montréal, au cœur d'Ahuntsic.",
+    "coordonnees": "Coordonnées",
+    "liens": "Liens rapides",
+    "confidentialite": "Politique de confidentialité",
+    "conditions": "Conditions d'utilisation"
   }
 }
