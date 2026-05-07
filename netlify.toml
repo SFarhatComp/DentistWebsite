@@ -5,17 +5,11 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Redirect root to default locale
+# Redirect root to default locale (French-first)
 [[redirects]]
   from = "/"
-  to = "/en/"
+  to = "/fr/"
   status = 302
-
-# Handle SPA-style routing for static export
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
 
 # Security headers
 [[headers]]
