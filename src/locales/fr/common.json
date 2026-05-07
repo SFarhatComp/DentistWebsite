@@ -62,8 +62,74 @@
     "cta": { "title": "Commencer par une évaluation complète", "body": "La première étape est de comprendre votre situation. Notre équipe vous accompagne dans une démarche claire, structurée et personnalisée.", "primary": "Demander un rendez-vous", "secondary": "Nous contacter" },
     "coordonnees": { "label": "Nous trouver", "title": "Au cœur d'Ahuntsic" }
   },
-  "studio": { "_": "Fill in: intro, philosophie (5 sub), espace, equipement (6 blocs), engagement (6 items)" },
-  "experience": { "_": "Fill in: phase1-4 + difference (6 blocs)" },
+  "studio": {
+    "intro": {
+      "label": "Le Studio",
+      "title": "Un studio dentaire pensé comme un lieu de soin, de précision et de confiance",
+      "body": "De Facto Studio Dentaire a été conçu pour offrir une expérience différente : plus calme, plus structurée, plus personnalisée. L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement."
+    },
+    "philosophie": {
+      "label": "Philosophie clinique",
+      "title": "Comprendre avant d'intervenir",
+      "1": { "title": "Comprendre avant d'intervenir", "body": "Chaque traitement commence par une évaluation complète de la situation, des attentes et des priorités du patient." },
+      "2": { "title": "Documenter avant de décider", "body": "Photos, radiographies et examens permettent une décision éclairée plutôt qu'une intervention précipitée." },
+      "3": { "title": "Expliquer avant de traiter", "body": "Le patient comprend les options, les bénéfices, les limites et les alternatives avant chaque étape." },
+      "4": { "title": "Prévenir avant de réparer", "body": "La prévention reste la base d'une santé buccodentaire durable." },
+      "5": { "title": "Planifier avant de restaurer", "body": "Une séquence de traitement réfléchie évite les corrections multiples et préserve la structure dentaire." }
+    },
+    "espace": {
+      "label": "L'espace",
+      "title": "Un environnement pensé pour le calme et la précision",
+      "body": "Chaque détail de l'espace a été pensé pour favoriser une expérience professionnelle, chaleureuse et discrète."
+    },
+    "equipement": {
+      "label": "Équipement et technologie",
+      "title": "La technologie au service du diagnostic",
+      "intro": "La technologie n'est pas utilisée comme une fin en soi. Elle sert à mieux diagnostiquer, mieux communiquer, mieux planifier et mieux contrôler les résultats.",
+      "1": { "title": "Radiographie numérique", "body": "Imagerie précise avec une exposition réduite." },
+      "2": { "title": "Scanner intraoral", "body": "Empreintes numériques sans pâte, plus confortables et précises." },
+      "3": { "title": "Photographie clinique", "body": "Documentation visuelle complète pour la planification." },
+      "4": { "title": "Impression 3D", "body": "Modèles, guides et temporaires fabriqués sur place." },
+      "5": { "title": "Conception numérique", "body": "Visualisation et planification des traitements esthétiques et fonctionnels." },
+      "6": { "title": "Laboratoire intégré", "body": "Coordination directe entre clinique et fabrication." }
+    },
+    "engagement": {
+      "label": "Engagement qualité",
+      "title": "Des standards rigoureux à chaque étape",
+      "1": "Protocoles cliniques documentés",
+      "2": "Stérilisation rigoureuse",
+      "3": "Documentation complète des dossiers",
+      "4": "Consentement éclairé",
+      "5": "Suivis structurés",
+      "6": "Communication claire avec le patient"
+    }
+  },
+  "experience": {
+    "label": "Expérience patient",
+    "heroTitle": "Une première visite conçue pour comprendre l'ensemble de votre situation",
+    "heroSubtitle": "Le parcours patient est conçu pour que chaque étape soit claire, documentée et compréhensible.",
+    "parcours": {
+      "label": "Le parcours en 4 phases",
+      "title": "Du premier contact au suivi",
+      "body": "Chaque phase a un objectif précis. Le patient sait où il en est, pourquoi une recommandation est faite, et quelles sont ses options."
+    },
+    "phases": {
+      "1": { "title": "Avant le rendez-vous", "body": "Vous remplissez un formulaire de demande, indiquez la raison de la consultation, transmettez vos informations de base et recevez les instructions avant la visite." },
+      "2": { "title": "Examen complet", "body": "Questionnaire médical, historique dentaire, radiographies selon indication, examen parodontal, examen des dents, photos intra-orales, scan numérique selon le cas, et discussion des préoccupations." },
+      "3": { "title": "Plan personnalisé", "body": "Présentation des besoins, priorisation des traitements, options possibles, risques du statu quo, séquence idéale, alternatives, estimation financière et coordination avec les assurances." },
+      "4": { "title": "Traitement et suivi", "body": "Réalisation selon les priorités, suivis post-opératoires, prévention, rappels personnalisés et entretien à long terme." }
+    },
+    "difference": {
+      "label": "Ce qui rend l'expérience différente",
+      "title": "Plus de temps. Plus de clarté. Plus de précision.",
+      "1": { "title": "Plus de temps pour comprendre", "body": "Chaque consultation est planifiée pour permettre une discussion réelle." },
+      "2": { "title": "Plus de clarté dans les explications", "body": "Les options sont présentées en termes accessibles, avec leurs limites." },
+      "3": { "title": "Plus de précision dans la documentation", "body": "Photos, scans et notes structurées suivent chaque étape du dossier." },
+      "4": { "title": "Plus de cohérence clinique-laboratoire", "body": "La proximité du laboratoire améliore la communication et la finition." },
+      "5": { "title": "Plus de prévention", "body": "Identifier les risques avant qu'ils deviennent des problèmes." },
+      "6": { "title": "Plus de transparence dans les options", "body": "Estimations claires, alternatives nommées, décisions partagées." }
+    }
+  },
   "services": {
     "label": "Services",
     "pageTitle": "Des soins dentaires complets, planifiés selon vos besoins",
