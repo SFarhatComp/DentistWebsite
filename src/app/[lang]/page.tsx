@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { HeroSection } from "@/components/home/hero-section"
 import { ManifestoSection } from "@/components/home/manifesto-section"
 import { DifferenceSection } from "@/components/home/difference-section"
@@ -8,6 +9,12 @@ import { LaboratoireTeaserSection } from "@/components/home/laboratoire-teaser-s
 import { CtaSection } from "@/components/home/cta-section"
 import { CoordonneesSection } from "@/components/home/coordonnees-section"
 import type { Locale } from "@/types"
+
+export const metadata: Metadata = {
+  title: { absolute: "Studio Dentaire De Facto — Dentiste Ahuntsic, Montréal" },
+  description:
+    "Studio dentaire à Ahuntsic, Montréal. Dentisterie réfléchie, examen complet, plan de traitement par phases et laboratoire intégré. Comprendre avant de décider.",
+}
 
 export default function HomePage({ params }: { params: { lang: string } }) {
   const lang = params.lang as Locale

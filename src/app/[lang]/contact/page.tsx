@@ -8,7 +8,8 @@ import type { Locale } from "@/types"
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contactez De Facto Studio Dentaire à Montréal.",
+  description:
+    "Coordonnées, adresse et accès — Studio Dentaire De Facto, 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805.",
 }
 
 export default function ContactPage({ params }: { params: { lang: string } }) {

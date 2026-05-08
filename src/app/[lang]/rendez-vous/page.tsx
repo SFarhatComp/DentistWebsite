@@ -9,8 +9,9 @@ import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
 export const metadata: Metadata = {
-  title: "Rendez-vous",
-  description: "Demande de rendez-vous au Studio Dentaire De Facto.",
+  title: "Demander un rendez-vous",
+  description:
+    "Demande de rendez-vous régulier ou parcours d'urgence — Studio Dentaire De Facto, Ahuntsic, Montréal. Téléphone : 514 863 7805.",
 }
 
 export default function AppointmentPage({ params }: { params: { lang: string } }) {

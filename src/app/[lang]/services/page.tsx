@@ -7,8 +7,9 @@ import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Soins dentaires complets, planifiés selon vos besoins.",
+  title: "Services dentaires à Ahuntsic",
+  description:
+    "Examen complet, prévention, restaurations, couronnes, endodontie, parodontie, implantologie, aligneurs, esthétique et urgences — tous les services proposés par Studio Dentaire De Facto à Ahuntsic, Montréal.",
 }
 
 export default function ServicesPage({ params }: { params: { lang: string } }) {

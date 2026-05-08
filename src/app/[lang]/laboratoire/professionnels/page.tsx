@@ -3,6 +3,7 @@ import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { NumberedSection } from "@/components/shared/numbered-section"
 import { FadeIn } from "@/components/motion/fade-in"
+import { ProfessionalForm } from "@/components/forms/professional-form"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
@@ -142,25 +143,19 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={6} label="Contact" title="Contact professionnel">
-                <div className="bg-surface/60 border border-border p-8 md:p-10">
-                  <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                    Le formulaire de prescription numérique en ligne est en cours de finalisation. Pour le moment, contactez-nous directement pour discuter d&apos;un cas, demander une prise de teinte ou transmettre une prescription.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link
-                      href={`/${lang}/contact`}
-                      className="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
-                    >
-                      Nous joindre
-                    </Link>
-                    <a
-                      href="tel:+15148637805"
-                      className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
-                    >
-                      514 863 7805
-                    </a>
-                  </div>
+              <NumberedSection number={6} label="Prescription" title="Transmettre une prescription">
+                <p className="text-base text-muted-foreground leading-relaxed mb-8">
+                  Utilisez ce formulaire pour discuter d&apos;un cas, demander une consultation, transmettre une prescription numérique ou solliciter une prise de teinte. Pour les fichiers volumineux ou les échanges récurrents, un canal de communication dédié peut être établi après le premier contact.
+                </p>
+                <ProfessionalForm lang={lang} />
+                <div className="mt-10 pt-8 border-t border-border flex flex-wrap gap-4 text-sm text-muted-foreground">
+                  <span>Vous préférez nous joindre directement ?</span>
+                  <a href="tel:+15148637805" className="text-primary hover:underline">
+                    514 863 7805
+                  </a>
+                  <Link href={`/${lang}/contact`} className="text-primary hover:underline">
+                    Page Contact
+                  </Link>
                 </div>
               </NumberedSection>
             </FadeIn>

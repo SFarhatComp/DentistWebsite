@@ -14,11 +14,19 @@ export function PlaceholderImage({ className, aspect = "video", label }: Placeho
     wide: "aspect-[16/9]",
   }[aspect]
   return (
-    <div className={cn("relative overflow-hidden bg-surface border border-border", aspectClass, className)}>
-      <div className="absolute inset-0 flex items-center justify-center">
+    <div
+      className={cn("relative overflow-hidden bg-surface border border-border", aspectClass, className)}
+      role="img"
+      aria-label={label || "Image en attente"}
+    >
+      <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
         <div className="font-display text-4xl text-primary/30 tracking-widest">DF</div>
       </div>
-      <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)", backgroundSize: "12px 12px" }} />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        aria-hidden="true"
+        style={{ backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)", backgroundSize: "12px 12px" }}
+      />
       {label && <div className="absolute bottom-3 left-3 label-sm text-muted">{label}</div>}
     </div>
   )
