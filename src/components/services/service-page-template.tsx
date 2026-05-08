@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
@@ -26,7 +27,19 @@ export function ServicePageTemplate({ service, lang }: { service: Service; lang:
               <p className="text-lg text-muted-foreground leading-relaxed">{service.shortDescription}</p>
             </FadeIn>
             <FadeIn direction="right">
-              <PlaceholderImage aspect="video" />
+              {service.heroImage ? (
+                <div className="relative aspect-video overflow-hidden border border-border bg-surface">
+                  <Image
+                    src={service.heroImage}
+                    alt={service.title}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              ) : (
+                <PlaceholderImage aspect="video" />
+              )}
             </FadeIn>
           </div>
         </Container>
