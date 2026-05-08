@@ -75,7 +75,7 @@ export function Footer({ lang }: { lang: Locale }) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/ressources-patients`} className="hover:text-primary">
+                <Link href={`/${lang}/ressources`} className="hover:text-primary">
                   {t("nav.ressources")}
                 </Link>
               </li>

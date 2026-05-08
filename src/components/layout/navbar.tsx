@@ -23,7 +23,7 @@ export function Navbar({ lang }: { lang: Locale }) {
     { href: `/${lang}/services`, label: t("nav.services") },
     { href: `/${lang}/le-studio`, label: t("nav.studio") },
     { href: `/${lang}/laboratoire`, label: t("nav.laboratoire") },
-    { href: `/${lang}/ressources-patients`, label: t("nav.ressources") },
+    { href: `/${lang}/ressources`, label: t("nav.ressources") },
     { href: `/${lang}/contact`, label: t("nav.contact") },
   ]
 
