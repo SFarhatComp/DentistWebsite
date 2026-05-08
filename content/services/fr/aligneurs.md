@@ -2,7 +2,7 @@
 slug: aligneurs
 title: Orthodontie par aligneurs
 shortDescription: Alignement léger à modéré par aligneurs transparents.
-heroImage: ""
+heroImage: /uploads/test.jpg
 whenToConsult:
   - Pour corriger un chevauchement léger ou modéré
   - Pour fermer de petits espaces
