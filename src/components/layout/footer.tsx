@@ -49,6 +49,11 @@ export function Footer({ lang }: { lang: Locale }) {
                 </Link>
               </li>
               <li>
+                <Link href={`/${lang}/nouveaux-patients`} className="hover:text-primary">
+                  Nouveaux patients
+                </Link>
+              </li>
+              <li>
                 <Link href={`/${lang}/premiere-visite`} className="hover:text-primary">
                   {t("footer.premiereVisite")}
                 </Link>
@@ -56,11 +61,6 @@ export function Footer({ lang }: { lang: Locale }) {
               <li>
                 <Link href={`/${lang}/services`} className="hover:text-primary">
                   {t("nav.services")}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${lang}/laboratoire`} className="hover:text-primary">
-                  {t("footer.laboratoire")}
                 </Link>
               </li>
             </ul>
@@ -72,6 +72,21 @@ export function Footer({ lang }: { lang: Locale }) {
               <li>
                 <Link href={`/${lang}/le-studio`} className="hover:text-primary">
                   {t("nav.studio")}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/laboratoire`} className="hover:text-primary">
+                  {t("footer.laboratoire")}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/assurances-paiements`} className="hover:text-primary">
+                  {t("footer.assurances")}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${lang}/questions-frequentes`} className="hover:text-primary">
+                  {t("footer.faq")}
                 </Link>
               </li>
               <li>

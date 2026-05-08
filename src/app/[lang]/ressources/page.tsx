@@ -35,6 +35,11 @@ export default function RessourcesPage({ params }: { params: { lang: string } })
 
   const essentielles: HubLink[] = [
     {
+      title: "Nouveaux patients",
+      body: "Parcours d'orientation pour préparer votre première rencontre avec le studio.",
+      href: `/${lang}/nouveaux-patients`,
+    },
+    {
       title: "Première visite",
       body: "Déroulement, durée, documents à apporter et ce que vous recevez après l'examen.",
       href: `/${lang}/premiere-visite`,
