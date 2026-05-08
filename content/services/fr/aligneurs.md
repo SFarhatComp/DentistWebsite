@@ -2,7 +2,7 @@
 slug: aligneurs
 title: Orthodontie par aligneurs
 shortDescription: Alignement léger à modéré par aligneurs transparents.
-heroImage: /uploads/test.jpg
+heroImage: /uploads/bigstock-test-icon-63758263-300x300.jpg
 whenToConsult:
   - Pour corriger un chevauchement léger ou modéré
   - Pour fermer de petits espaces
@@ -39,3 +39,5 @@ related:
 L'orthodontie par aligneurs offre une approche discrète et confortable pour corriger les chevauchements légers à modérés. Chaque traitement commence par un scan numérique qui permet de visualiser le plan complet et le résultat attendu.
 
 Au studio, les aligneurs s'intègrent souvent à un plan plus large — par exemple, aligner avant de restaurer pour préserver la structure dentaire et obtenir un résultat plus naturel.
+
+test
