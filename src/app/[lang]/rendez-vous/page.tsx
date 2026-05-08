@@ -2,6 +2,7 @@ import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { AppointmentForm } from "@/components/forms/appointment-form"
 import { EmergencyForm } from "@/components/forms/emergency-form"
+import { FadeIn } from "@/components/motion/fade-in"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
@@ -30,18 +31,20 @@ export default function AppointmentPage({ params }: { params: { lang: string } }
           </a>
         </div>
 
-        <div className="pb-24 max-w-3xl">
+        <FadeIn className="pb-24 max-w-3xl">
           <AppointmentForm lang={lang} />
-        </div>
+        </FadeIn>
 
-        <div id="urgence" className="border-t-4 border-accent pt-16 pb-24 max-w-3xl scroll-mt-24">
-          <div className="label-sm text-accent mb-4">Urgence</div>
-          <h2 className="font-display text-4xl md:text-5xl leading-[1.1] mb-6">Urgence dentaire</h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-            Pour une réponse rapide, remplissez ce formulaire. Notre équipe vous contactera au plus tôt.
-          </p>
-          <EmergencyForm lang={lang} />
-        </div>
+        <FadeIn>
+          <div id="urgence" className="border-t-4 border-accent pt-16 pb-24 max-w-3xl scroll-mt-24">
+            <div className="label-sm text-accent mb-4">Urgence</div>
+            <h2 className="font-display text-4xl md:text-5xl leading-[1.1] mb-6">Urgence dentaire</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-12">
+              Pour une réponse rapide, remplissez ce formulaire. Notre équipe vous contactera au plus tôt.
+            </p>
+            <EmergencyForm lang={lang} />
+          </div>
+        </FadeIn>
       </Container>
     </>
   )
