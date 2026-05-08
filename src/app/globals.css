@@ -4,17 +4,20 @@
 
 @layer base {
   :root {
-    --background: 36 38% 97%;
-    --foreground: 0 0% 10%;
-    --primary: 311 47% 19%;
-    --primary-hover: 311 53% 15%;
+    /* Refined palette per 2026-05-08 client brief */
+    --background: 39 43% 93%;          /* #F5F0E6 cream */
+    --surface: 43 49% 96%;             /* #FAF7F0 light ivory */
+    --foreground: 0 6% 10%;            /* #1A1717 deep black */
+    --primary: 305 23% 18%;            /* #3A2438 aubergine */
+    --primary-hover: 305 30% 13%;
     --primary-foreground: 0 0% 100%;
-    --accent: 19 81% 51%;
+    --secondary: 296 20% 30%;          /* #5A3D5C mauve */
+    --secondary-foreground: 0 0% 100%;
+    --accent: 25 65% 47%;              /* #C56A2A burnt orange */
     --accent-foreground: 0 0% 100%;
-    --surface: 36 22% 93%;
-    --border: 36 22% 88%;
-    --muted: 24 8% 47%;
-    --muted-foreground: 24 8% 35%;
+    --border: 38 30% 85%;
+    --muted: 30 7% 51%;                /* #8C837A warm gray */
+    --muted-foreground: 30 7% 38%;
     --gold: 38 42% 60%;
   }
   body {

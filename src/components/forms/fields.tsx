@@ -75,8 +75,10 @@ export function FormSection({ number, title, children }: { number: string; title
 
 export function HoneypotField() {
   return (
-    <p className="hidden">
-      <label>Don&apos;t fill this out: <input name="bot-field" /></label>
+    <p hidden aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 0, height: 0, overflow: "hidden" }}>
+      <label>
+        Don&apos;t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+      </label>
     </p>
   )
 }

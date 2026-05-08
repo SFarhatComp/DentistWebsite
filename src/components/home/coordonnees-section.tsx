@@ -15,8 +15,8 @@ export function CoordonneesSection({ lang }: { lang: Locale }) {
             <h2 className="font-display text-4xl md:text-5xl leading-[1.1] mb-10">{t("home.coordonnees.title")}</h2>
             <dl className="space-y-6 text-lg">
               <div><dt className="label-sm text-muted mb-1">{t("contact.adresse")}</dt><dd>728 rue Fleury Est<br />Montréal, QC</dd></div>
-              <div><dt className="label-sm text-muted mb-1">{t("contact.telephone")}</dt><dd><a href="tel:" className="hover:text-primary">{t("contact.phonePlaceholder")}</a></dd></div>
-              <div><dt className="label-sm text-muted mb-1">{t("contact.courriel")}</dt><dd><a href="mailto:" className="hover:text-primary">{t("contact.emailPlaceholder")}</a></dd></div>
+              <div><dt className="label-sm text-muted mb-1">{t("contact.telephone")}</dt><dd><a href={`tel:${t("contact.phoneTel")}`} className="hover:text-primary">{t("contact.phonePlaceholder")}</a></dd></div>
+              <div><dt className="label-sm text-muted mb-1">{t("contact.courriel")}</dt><dd><a href={`mailto:${t("contact.emailPlaceholder")}`} className="hover:text-primary">{t("contact.emailPlaceholder")}</a></dd></div>
               <div><dt className="label-sm text-muted mb-1">{t("contact.heures")}</dt><dd>{t("contact.hoursPlaceholder")}</dd></div>
             </dl>
           </FadeIn>

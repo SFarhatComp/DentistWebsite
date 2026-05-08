@@ -29,7 +29,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
                 </div>
                 <div>
                   <div className="label-sm text-muted mb-2">{t("contact.telephone")}</div>
-                  <a href="tel:" className="text-lg text-foreground hover:text-primary">{t("contact.phonePlaceholder")}</a>
+                  <a href={`tel:${t("contact.phoneTel")}`} className="text-lg text-foreground hover:text-primary">{t("contact.phonePlaceholder")}</a>
                 </div>
                 <div>
                   <div className="label-sm text-muted mb-2">{t("contact.courriel")}</div>

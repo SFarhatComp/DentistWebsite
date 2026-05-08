@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: { default: "De Facto Studio Dentaire", template: "%s — De Facto Studio Dentaire" },
-  description: "Studio dentaire à Montréal. Une approche réfléchie, précise et personnalisée des soins dentaires.",
+  title: { default: "Studio Dentaire De Facto", template: "%s | Studio Dentaire De Facto" },
+  description: "Studio dentaire à Ahuntsic, Montréal. Dentisterie réfléchie, diagnostic rigoureux et laboratoire intégré.",
   metadataBase: new URL("https://defactodentaire.ca"),
   alternates: { languages: { fr: "/fr", en: "/en" } },
 }
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
-  name: "De Facto Studio Dentaire",
+  name: "Studio Dentaire De Facto",
   address: {
     "@type": "PostalAddress",
     streetAddress: "728 rue Fleury Est",
@@ -19,6 +19,7 @@ const jsonLd = {
     addressRegion: "QC",
     addressCountry: "CA",
   },
+  telephone: "+1-514-863-7805",
   url: "https://defactodentaire.ca",
 }
 

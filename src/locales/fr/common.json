@@ -2,13 +2,16 @@
   "site": { "name": "De Facto Studio Dentaire" },
   "nav": {
     "accueil": "Accueil",
-    "studio": "Le Studio",
-    "experience": "Expérience patient",
+    "premiereVisite": "Première visite",
     "services": "Services",
+    "studio": "Le Studio",
     "laboratoire": "Laboratoire",
-    "realisations": "Réalisations",
+    "ressources": "Ressources",
     "contact": "Contact",
-    "cta": "Prendre rendez-vous"
+    "experience": "Expérience patient",
+    "realisations": "Réalisations",
+    "cta": "Prendre rendez-vous",
+    "appeler": "Appeler"
   },
   "common": {
     "enSavoirPlus": "En savoir plus",
@@ -163,7 +166,8 @@
     "telephone": "Téléphone",
     "courriel": "Courriel",
     "heures": "Heures d'ouverture",
-    "phonePlaceholder": "+1 (514) 000-0000",
+    "phonePlaceholder": "514 863 7805",
+    "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@defactodentaire.ca",
     "hoursPlaceholder": "Lundi–Vendredi : 9h–17h"
   },
@@ -184,10 +188,20 @@
     "backHome": "Retour à l'accueil"
   },
   "footer": {
-    "tagline": "De Facto Studio Dentaire — soins dentaires personnalisés à Montréal, au cœur d'Ahuntsic.",
+    "tagline": "Studio Dentaire De Facto — dentisterie réfléchie au cœur d'Ahuntsic, Montréal.",
     "coordonnees": "Coordonnées",
-    "liens": "Liens rapides",
-    "confidentialite": "Politique de confidentialité",
-    "conditions": "Conditions d'utilisation"
+    "liens": "Patients",
+    "secondaires": "Informations",
+    "confidentialite": "Confidentialité",
+    "conditions": "Conditions d'utilisation",
+    "assurances": "Assurances et paiements",
+    "faq": "Questions fréquentes",
+    "premiereVisite": "Première visite",
+    "urgence": "Urgence dentaire",
+    "laboratoire": "Laboratoire",
+    "rendezVous": "Prendre rendez-vous",
+    "horaires": "Heures d'ouverture",
+    "horairesPlaceholder": "Lundi–Vendredi : 9h–17h",
+    "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste."
   }
 }
