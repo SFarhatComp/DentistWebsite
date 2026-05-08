@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { useState } from "react"
 import { Field, TextareaField, CheckboxField, RadioField, FileField, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
@@ -105,6 +106,36 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
           accept="image/jpeg,image/png,image/heic,.heic"
           helpText="JPG, PNG ou HEIC. Maximum 10 MB."
         />
+
+        <div className="border-t border-border pt-6 space-y-4">
+          <div className="label-sm text-foreground">Consentements</div>
+          <CheckboxField
+            name="consent_emergency"
+            value="1"
+            required
+            label="Je comprends que pour une urgence médicale (difficulté à respirer, enflure importante, fièvre élevée, traumatisme sévère), je dois contacter les services d'urgence ou me présenter à l'hôpital."
+          />
+          <CheckboxField
+            name="consent_contact"
+            value="1"
+            required
+            label="J'autorise Studio Dentaire De Facto à me contacter rapidement concernant cette demande."
+          />
+          <CheckboxField
+            name="consent_privacy"
+            value="1"
+            required
+            label={
+              <>
+                J&apos;ai pris connaissance de la{" "}
+                <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
+                  politique de confidentialité
+                </Link>
+                .
+              </>
+            }
+          />
+        </div>
       </div>
 
       {error && (

@@ -1,6 +1,7 @@
 "use client"
+import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, HoneypotField } from "./fields"
+import { Field, TextareaField, SelectField, CheckboxField, HoneypotField } from "./fields"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -54,6 +55,30 @@ export function ContactForm({ lang }: { lang: Locale }) {
         options={SUBJECT_KEYS.map((k) => ({ value: k, label: t(`contactForm.sujetOptions.${k}`) }))}
       />
       <TextareaField name="message" label={t("contactForm.message")} required rows={5} />
+
+      <div className="border-t border-border pt-6 space-y-4">
+        <div className="label-sm text-foreground">Consentements</div>
+        <CheckboxField
+          name="consent_contact"
+          value="1"
+          required
+          label="J'autorise Studio Dentaire De Facto à me contacter concernant ma demande."
+        />
+        <CheckboxField
+          name="consent_privacy"
+          value="1"
+          required
+          label={
+            <>
+              J&apos;ai pris connaissance de la{" "}
+              <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
+                politique de confidentialité
+              </Link>
+              .
+            </>
+          }
+        />
+      </div>
 
       {error && (
         <p className="text-sm text-accent">Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.</p>

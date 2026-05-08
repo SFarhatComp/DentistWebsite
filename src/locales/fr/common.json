@@ -21,18 +21,55 @@
   },
   "home": {
     "hero": {
-      "label": "Studio dentaire — Montréal",
-      "title1": "Dentisterie réfléchie.",
-      "title2": "Soins précis.",
-      "title3": "Expérience personnalisée.",
-      "subtitle": "De Facto Studio Dentaire réunit une approche clinique rigoureuse, une expérience patient soignée et un laboratoire intégré pour offrir des soins dentaires personnalisés à Montréal.",
-      "ctaPrimary": "Prendre rendez-vous",
-      "ctaSecondary": "Découvrir notre approche"
+      "label": "Studio dentaire — Ahuntsic, Montréal",
+      "title": "Une clinique dentaire pour ceux qui veulent comprendre avant de décider.",
+      "subtitle": "À Studio Dentaire De Facto, chaque examen est pris au sérieux. Nous documentons, expliquons, priorisons et planifions les soins afin que chaque décision soit claire, adaptée et réfléchie.",
+      "ctaPrimary": "Commencer par une première visite",
+      "ctaSecondary": "Découvrir notre approche",
+      "ctaTertiary": "Prendre rendez-vous"
     },
     "manifeste": {
-      "label": "Notre manifeste",
-      "title": "Une autre façon de penser la dentisterie",
-      "body": "Chez De Facto, chaque traitement commence par une compréhension globale du patient. Nous prenons le temps d'évaluer, de documenter, de planifier et d'expliquer. Notre objectif n'est pas seulement de traiter une dent, mais de bâtir une vision claire de votre santé buccodentaire."
+      "label": "Manifeste",
+      "title": "Manifeste De Facto",
+      "lines": {
+        "1": "Nous croyons qu'un bon traitement commence par un bon diagnostic.",
+        "2": "Qu'un patient bien informé prend de meilleures décisions.",
+        "3": "Que la prévention mérite autant d'attention que la réparation.",
+        "4": "Que la précision n'est pas un luxe, mais une responsabilité clinique.",
+        "5": "Et que la confiance se bâtit par la clarté."
+      }
+    },
+    "objectif": {
+      "label": "Notre objectif",
+      "title": "Des soins adaptés à votre réalité",
+      "body": "Notre objectif est de proposer des soins adaptés à votre situation clinique, à vos priorités et à votre réalité. Un plan peut être séquencé dans le temps lorsque c'est approprié."
+    },
+    "difference": {
+      "label": "Approche",
+      "title": "Ce qui rend l'approche différente",
+      "items": {
+        "1": "Un examen complet avant les décisions importantes.",
+        "2": "Une documentation clinique claire.",
+        "3": "Des photos, radiographies et scans lorsque pertinents.",
+        "4": "Un plan de traitement expliqué par phases.",
+        "5": "Un laboratoire intégré pour mieux contrôler certains détails.",
+        "6": "Une approche conservatrice et réfléchie.",
+        "7": "Une coordination avec des spécialistes lorsque nécessaire."
+      }
+    },
+    "preuves": {
+      "label": "Preuves de méthode",
+      "title": "Pas seulement des mots — des outils concrets",
+      "intro": "Voici ce qui peut composer un dossier patient chez De Facto, selon la situation clinique. Les images réelles seront ajoutées à mesure que nos cas documentés s'accumulent — toujours avec consentement explicite.",
+      "items": {
+        "1": { "title": "Fiche de diagnostic", "alt": "fiche-diagnostic-de-facto.jpg" },
+        "2": { "title": "Plan par phases", "alt": "plan-phases-de-facto.jpg" },
+        "3": { "title": "Photos intraorales annotées", "alt": "photos-intraorales-annotees-de-facto.jpg" },
+        "4": { "title": "Modèle 3D", "alt": "modele-3d-de-facto.jpg" },
+        "5": { "title": "Scan intraoral", "alt": "scan-intraoral-de-facto.jpg" },
+        "6": { "title": "Étapes laboratoire", "alt": "etapes-laboratoire-de-facto.jpg" },
+        "7": { "title": "Résumé patient anonymisé", "alt": "resume-patient-anonymise-de-facto.jpg" }
+      }
     },
     "piliers": {
       "label": "Notre approche",
@@ -50,7 +87,7 @@
       "examen": { "title": "Examen complet", "body": "Évaluation clinique, radiographies et photos selon indication." },
       "plan": { "title": "Plan personnalisé", "body": "Présentation des options, priorités, séquence et estimation." },
       "traitement": { "title": "Traitement et suivi", "body": "Réalisation, suivis post-opératoires et entretien à long terme." },
-      "cta": "Voir l'expérience patient"
+      "cta": "Voir le déroulement de la première visite"
     },
     "services": { "label": "Nos services", "title": "Des soins complets, planifiés selon vos besoins" },
     "laboratoire": { "label": "Laboratoire intégré", "title": "La précision du laboratoire, intégrée à l'expérience clinique", "body": "La proximité entre la clinique et le laboratoire permet une meilleure communication, un meilleur contrôle des détails et une personnalisation plus fine des restaurations." },
@@ -69,7 +106,20 @@
     "intro": {
       "label": "Le Studio",
       "title": "Un studio dentaire pensé comme un lieu de soin, de précision et de confiance",
-      "body": "De Facto Studio Dentaire a été conçu pour offrir une expérience différente : plus calme, plus structurée, plus personnalisée. L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement."
+      "body": "Studio Dentaire De Facto a été conçu pour offrir une expérience différente : plus calme, plus structurée, plus personnalisée. L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement."
+    },
+    "pourquoi": {
+      "label": "Pourquoi De Facto existe",
+      "title": "Une conviction simple, une approche structurée",
+      "body": "Studio Dentaire De Facto est né d'une conviction simple : un patient ne devrait pas accepter un traitement qu'il ne comprend pas. Notre approche met l'accent sur l'examen, la documentation, l'explication et la planification avant l'intervention. Nous croyons qu'une dentisterie de qualité repose autant sur la clarté que sur la précision technique.",
+      "axes": {
+        "1": "Beaucoup de patients reçoivent des traitements sans toujours comprendre leur situation globale.",
+        "2": "De Facto veut remettre le diagnostic, le temps et la clarté au centre de l'expérience.",
+        "3": "Le mot « studio » exprime une approche plus précise, plus calme, plus artisanale et plus personnalisée qu'une clinique impersonnelle.",
+        "4": "Ahuntsic représente un ancrage local, humain et communautaire.",
+        "5": "Le laboratoire intégré reflète la volonté de contrôler les détails, d'améliorer la communication et de mieux relier le diagnostic à la fabrication.",
+        "6": "La prévention, la planification et l'explication sont aussi importantes que le traitement lui-même."
+      }
     },
     "philosophie": {
       "label": "Philosophie clinique",

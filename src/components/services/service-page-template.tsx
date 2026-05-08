@@ -56,6 +56,7 @@ export function ServicePageTemplate({ service, lang }: { service: Service; lang:
                 <li><a href="#deroulement" className="hover:text-primary">Déroulement</a></li>
                 <li><a href="#options" className="hover:text-primary">Options</a></li>
                 <li><a href="#limites" className="hover:text-primary">Limites</a></li>
+                <li><a href="#specialistes" className="hover:text-primary">Spécialistes</a></li>
                 <li><a href="#apres" className="hover:text-primary">Après le traitement</a></li>
                 <li><a href="#faq" className="hover:text-primary">Questions fréquentes</a></li>
               </ul>
@@ -114,6 +115,15 @@ export function ServicePageTemplate({ service, lang }: { service: Service; lang:
                 <section id="limites" className="bg-surface/50 p-8 md:p-10">
                   <SectionLabel>Limites et risques</SectionLabel>
                   <p className="text-base text-muted-foreground leading-relaxed">{service.limits}</p>
+                </section>
+              </FadeIn>
+
+              <FadeIn>
+                <section id="specialistes" className="border-l-2 border-accent/40 pl-6 md:pl-8">
+                  <SectionLabel>Collaboration avec les spécialistes</SectionLabel>
+                  <p className="text-base text-muted-foreground leading-relaxed">
+                    Lorsque la situation dépasse le champ de traitement indiqué au studio, nous coordonnons la référence vers un spécialiste approprié. Certains traitements peuvent nécessiter une expertise spécialisée ou une prise en charge interdisciplinaire — dans ces situations, nous privilégions une référence claire, documentée et coordonnée.
+                  </p>
                 </section>
               </FadeIn>
 

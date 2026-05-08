@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Field, TextareaField, SelectField, CheckboxField, RadioField, FileField, FormSection, HoneypotField } from "./fields"
+import { ConsentGroup } from "./consent-group"
 import type { Locale } from "@/types"
 
 const REASONS = [
@@ -103,6 +104,15 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
     >
       <input type="hidden" name="form-name" value="appointment" />
       <HoneypotField />
+
+      <div className="border-l-2 border-accent pl-6 space-y-3 mb-4">
+        <p className="text-base text-foreground leading-relaxed">
+          Vous n&apos;avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.
+        </p>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Une membre de l&apos;équipe vous contactera pour confirmer les prochaines étapes. Si vous avez des radiographies ou documents pertinents, vous pourrez les transmettre à la section 08.
+        </p>
+      </div>
 
       <FormSection number="01" title="Informations personnelles">
         <div className="grid gap-6 md:grid-cols-2">
@@ -214,35 +224,10 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
       </FormSection>
 
       <FormSection number="09" title="Consentements">
-        <CheckboxField
-          name="consent_contact"
-          value="1"
-          required
-          label="J'autorise la clinique à me contacter par téléphone, SMS ou courriel concernant ma demande."
-        />
-        <CheckboxField
-          name="consent_no_replace"
-          value="1"
-          required
-          label="Je comprends que ce formulaire ne remplace pas une consultation dentaire."
-        />
-        <CheckboxField
-          name="consent_use"
-          value="1"
-          required
-          label="Je comprends que les informations transmises seront utilisées pour préparer mon dossier."
-        />
-        <CheckboxField
-          name="consent_emergency"
-          value="1"
-          required
-          label="Je comprends que pour une urgence sévère (difficulté à respirer, fièvre importante, enflure rapide, traumatisme majeur), je dois contacter les services d'urgence appropriés."
-        />
-        <CheckboxField
-          name="consent_communications"
-          value="1"
-          label="J'accepte de recevoir des communications informatives de la clinique (optionnel)."
-        />
+        <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+          Chaque consentement est cochable individuellement. Les communications informatives (bloc 05) sont optionnelles et ne sont pas pré-cochées.
+        </p>
+        <ConsentGroup lang={lang} />
       </FormSection>
 
       {error && (

@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/shared/page-hero"
 import { ServicesGrid } from "@/components/services/services-grid"
+import { PatientNeedsMatrix } from "@/components/services/patient-needs-matrix"
 import { getAllServices } from "@/lib/content"
 import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
@@ -21,6 +22,7 @@ export default function ServicesPage({ params }: { params: { lang: string } }) {
         title={t("services.pageTitle")}
         subtitle={t("services.pageSubtitle")}
       />
+      <PatientNeedsMatrix lang={lang} />
       <ServicesGrid services={services} lang={lang} />
     </>
   )

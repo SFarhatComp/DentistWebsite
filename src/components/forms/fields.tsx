@@ -33,10 +33,10 @@ export function SelectField({ name, label, options, required, defaultValue, clas
   )
 }
 
-export function CheckboxField({ name, value, label, required, className }: { name: string; value?: string; label: string; required?: boolean; className?: string }) {
+export function CheckboxField({ name, value, label, required, defaultChecked, className }: { name: string; value?: string; label: React.ReactNode; required?: boolean; defaultChecked?: boolean; className?: string }) {
   return (
     <label className={cn("flex items-start gap-3 cursor-pointer text-sm leading-relaxed text-foreground", className)}>
-      <input type="checkbox" name={name} value={value} required={required} className="mt-1 h-4 w-4 border-border accent-primary" />
+      <input type="checkbox" name={name} value={value} required={required} defaultChecked={defaultChecked} className="mt-1 h-4 w-4 border-border accent-primary" />
       <span>{label}</span>
     </label>
   )

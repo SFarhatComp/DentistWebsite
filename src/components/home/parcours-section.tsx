@@ -30,7 +30,7 @@ export function ParcoursSection({ lang }: { lang: Locale }) {
           ))}
         </StaggerContainer>
         <FadeIn className="mt-12">
-          <Link href={`/${lang}/experience-patient`} className="inline-flex items-center text-primary hover:underline text-sm">
+          <Link href={`/${lang}/premiere-visite`} className="inline-flex items-center text-primary hover:underline text-sm">
             {t("home.parcours.cta")} →
           </Link>
         </FadeIn>
