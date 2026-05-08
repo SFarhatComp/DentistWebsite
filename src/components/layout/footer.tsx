@@ -91,7 +91,7 @@ export function Footer({ lang }: { lang: Locale }) {
             <div className="label-sm text-foreground mb-4">Légal</div>
             <ul className="text-sm text-muted-foreground space-y-2">
               <li>
-                <Link href={`/${lang}/politique-confidentialite`} className="hover:text-primary">
+                <Link href={`/${lang}/confidentialite`} className="hover:text-primary">
                   {t("footer.confidentialite")}
                 </Link>
               </li>

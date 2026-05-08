@@ -6,16 +6,17 @@ const BASE = "https://defactodentaire.ca"
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
-    "/le-studio",
-    "/experience-patient",
+    "/premiere-visite",
+    "/plan-traitement-visuel",
     "/services",
-    "/realisations",
+    "/le-studio",
     "/laboratoire",
+    "/laboratoire/professionnels",
     "/ressources-patients",
     "/rendez-vous",
     "/urgence",
     "/contact",
-    "/politique-confidentialite",
+    "/confidentialite",
     "/conditions-utilisation",
   ]
   const services = getAllServices("fr").map((s) => `/services/${s.slug}`)
