@@ -35,7 +35,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
     setError(false)
     const data = new FormData(e.currentTarget)
     try {
-      const res = await fetch("/", { method: "POST", body: data })
+      const res = await fetch(window.location.pathname, { method: "POST", body: data })
       if (!res.ok && res.status !== 200 && res.status !== 404) throw new Error("Submit failed")
       window.location.assign(`/${lang}/merci`)
     } catch {
