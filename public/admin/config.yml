@@ -7,8 +7,8 @@ local_backend: true
 media_folder: public/uploads
 public_folder: /uploads
 
-site_url: https://defactodentaire.ca
-display_url: https://defactodentaire.ca
+site_url: https://studiodefacto.ca
+display_url: https://studiodefacto.ca
 
 publish_mode: editorial_workflow
 

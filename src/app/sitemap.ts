@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 import { getAllServices } from "@/lib/content"
 
-const BASE = "https://defactodentaire.ca"
+const BASE = "https://studiodefacto.ca"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

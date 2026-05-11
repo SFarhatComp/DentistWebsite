@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin", "/__forms.html"],
       },
     ],
-    sitemap: "https://defactodentaire.ca/sitemap.xml",
+    sitemap: "https://studiodefacto.ca/sitemap.xml",
   }
 }

@@ -4,7 +4,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: { default: "Studio Dentaire De Facto", template: "%s | Studio Dentaire De Facto" },
   description: "Studio dentaire à Ahuntsic, Montréal. Dentisterie réfléchie, diagnostic rigoureux et laboratoire intégré.",
-  metadataBase: new URL("https://defactodentaire.ca"),
+  metadataBase: new URL("https://studiodefacto.ca"),
   alternates: { languages: { fr: "/fr", en: "/en" } },
 }
 
@@ -20,7 +20,7 @@ const jsonLd = {
     addressCountry: "CA",
   },
   telephone: "+1-514-863-7805",
-  url: "https://defactodentaire.ca",
+  url: "https://studiodefacto.ca",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
