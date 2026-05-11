@@ -20,7 +20,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
     const body = new URLSearchParams()
     data.forEach((v, k) => body.append(k, v.toString()))
     try {
-      const res = await fetch(window.location.pathname, {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
