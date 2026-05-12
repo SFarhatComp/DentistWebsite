@@ -66,6 +66,7 @@
       <input name="consent_privacy" />
     </form>
 
+    <!-- Brouillon 2: lab-professional kept for backwards compat (no new submissions expected) -->
     <form name="lab-professional" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
       <input name="dentistName" />
@@ -78,6 +79,77 @@
       <input type="file" name="stlFile" />
       <input type="file" name="photos" />
       <input name="consent_contact" />
+      <input name="consent_privacy" />
+    </form>
+
+    <!-- Brouillon 2: Partner onboarding for professional collaboration intake -->
+    <form name="partner-onboarding" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="dentistName" />
+      <input name="licenseNumber" />
+      <input name="clinicName" />
+      <input name="clinicAddress" />
+      <input name="phone" type="tel" />
+      <input name="email" type="email" />
+      <input name="preferredContactMode" />
+      <input name="service_orthodontie" />
+      <input name="service_prostho_amovible" />
+      <input name="service_prostho_fixe" />
+      <input name="service_plo" />
+      <input name="service_gouttieres" />
+      <input name="service_wax_up" />
+      <input name="service_prise_teinte" />
+      <input name="service_esthetique" />
+      <input name="service_reparations" />
+      <input name="service_autre" />
+      <input name="expectedVolume" />
+      <textarea name="comments"></textarea>
+      <input name="consent_contact" />
+      <input name="consent_privacy" />
+    </form>
+
+    <!-- Brouillon 2: Referred case form (professional refers a patient case) -->
+    <form name="referred-case" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input name="bot-field" />
+      <input name="referringProfessionalName" />
+      <input name="clinicName" />
+      <input name="phone" type="tel" />
+      <input name="email" type="email" />
+      <input name="patientName" />
+      <input name="patientDob" />
+      <textarea name="referralReason"></textarea>
+      <input name="affectedTeeth" />
+      <textarea name="relevantHistory"></textarea>
+      <input name="requestedTreatment" />
+      <input type="file" name="photos" />
+      <input type="file" name="radiographs" />
+      <input type="file" name="relevantFiles" />
+      <textarea name="comments"></textarea>
+      <input name="consent_clinical_responsibility" />
+      <input name="consent_transmission" />
+      <input name="consent_privacy" />
+    </form>
+
+    <!-- Brouillon 2: Lab prescription form (replaces lab-professional going forward) -->
+    <form name="lab-prescription" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input name="bot-field" />
+      <input name="prescribingProfessional" />
+      <input name="clinicName" />
+      <input name="phone" type="tel" />
+      <input name="email" type="email" />
+      <input name="patientName" />
+      <input name="prescriptionType" />
+      <input name="affectedTeeth" />
+      <input name="material" />
+      <input name="shade" />
+      <input name="applianceType" />
+      <input name="desiredDeadline" />
+      <input type="file" name="stlFiles" />
+      <input type="file" name="photos" />
+      <input type="file" name="radiographs" />
+      <textarea name="clinicalNotes"></textarea>
+      <textarea name="specialRequirements"></textarea>
+      <input name="consent_clarification" />
       <input name="consent_privacy" />
     </form>
   </body>
