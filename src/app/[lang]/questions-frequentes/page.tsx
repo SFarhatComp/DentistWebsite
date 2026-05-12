@@ -23,7 +23,11 @@ const faq = [
   },
   {
     q: "Combien de temps dure la première visite ?",
-    a: "La durée varie selon la situation, les informations à recueillir et les examens nécessaires. L'objectif est de prendre le temps de bien comprendre votre santé buccodentaire.",
+    a: "Pour un examen complet seul, prévoir généralement 30 à 45 minutes. Si un nettoyage est combiné au même rendez-vous, prévoir au moins 1 h 15, selon la situation clinique.",
+  },
+  {
+    q: "Est-ce que le nettoyage est inclus ?",
+    a: "Pas automatiquement. Le nettoyage peut être réalisé lors d'un rendez-vous combiné ou séparé selon le temps disponible, l'état des gencives, la quantité de dépôts et les besoins cliniques.",
   },
   {
     q: "Est-ce que vous prenez les assurances ?",
@@ -46,8 +50,8 @@ const faq = [
     a: "Oui. Lorsque la situation dépasse le champ de traitement indiqué au studio, nous coordonnons la référence vers un spécialiste approprié.",
   },
   {
-    q: "Est-ce que je recevrai un plan écrit ?",
-    a: "Selon le cas, un résumé, un plan par phases, une estimation ou des documents explicatifs peuvent être remis afin de faciliter la compréhension des prochaines étapes.",
+    q: "Est-ce que je recevrai un plan de traitement ?",
+    a: "Selon la situation, un plan peut être discuté immédiatement ou présenté lors d'un rendez-vous distinct appelé portrait buccodentaire.",
   },
   {
     q: "Est-ce que je peux envoyer mes radiographies ?",

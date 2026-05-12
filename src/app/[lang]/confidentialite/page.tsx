@@ -67,6 +67,13 @@ const sections: Section[] = [
     title: "13. Contact pour questions de confidentialité",
     body: "Pour toute question relative à la confidentialité ou à la gestion de vos renseignements personnels, vous pouvez contacter l'équipe directement par téléphone ou par courriel.",
   },
+  {
+    // TODO juridique : faire valider les références légales exactes liées à la confidentialité,
+    // aux renseignements personnels et aux communications électroniques en contexte dentaire
+    // québécois (Loi 25 / PIPEDA / Code des professions).
+    title: "14. Cadre légal applicable",
+    body: "Studio Dentaire De Facto opère dans le cadre des lois canadiennes et québécoises sur la protection des renseignements personnels et de santé. Les pratiques décrites dans cette politique visent à respecter ces obligations légales, notamment celles découlant de la Loi sur la protection des renseignements personnels dans le secteur privé (Loi 25) au Québec et de la LPRPDE au niveau fédéral. Les références précises aux articles applicables au contexte dentaire québécois seront ajoutées après validation juridique.",
+  },
 ]
 
 export default function ConfidentialitePage() {

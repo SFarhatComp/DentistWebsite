@@ -4,6 +4,16 @@ import { Field, TextareaField, SelectField, CheckboxField, RadioField, FileField
 import { ConsentGroup } from "./consent-group"
 import type { Locale } from "@/types"
 
+const TYPES_DEMANDE = [
+  { v: "premiere_visite", l: "Première visite / examen complet" },
+  { v: "nettoyage", l: "Nettoyage" },
+  { v: "urgence", l: "Urgence" },
+  { v: "consultation_specifique", l: "Consultation spécifique" },
+  { v: "laboratoire_teinte", l: "Laboratoire / prise de teinte" },
+  { v: "suivi_existant", l: "Suivi existant" },
+  { v: "autre", l: "Autre" },
+]
+
 const REASONS = [
   { v: "examen", l: "Examen complet / nouveau patient" },
   { v: "nettoyage", l: "Nettoyage / hygiène" },
@@ -110,11 +120,28 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
           Vous n&apos;avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Une membre de l&apos;équipe vous contactera pour confirmer les prochaines étapes. Si vous avez des radiographies ou documents pertinents, vous pourrez les transmettre à la section 08.
+          Une membre de l&apos;équipe vous contactera pour confirmer les prochaines étapes. Si vous avez des radiographies ou documents pertinents, vous pourrez les transmettre plus bas.
         </p>
       </div>
 
-      <FormSection number="01" title="Informations personnelles">
+      <FormSection number="01" title="Type de demande">
+        <p className="text-sm text-muted-foreground mb-2">
+          Choisissez ce qui correspond le mieux à votre situation. Pour une urgence sévère, utilisez plutôt le formulaire d&apos;urgence dédié.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {TYPES_DEMANDE.map((t) => (
+            <RadioField
+              key={t.v}
+              name="typeDemande"
+              value={t.v}
+              label={t.l}
+              required
+            />
+          ))}
+        </div>
+      </FormSection>
+
+      <FormSection number="02" title="Informations personnelles">
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="firstName" label="Prénom" required />
           <Field name="lastName" label="Nom" required />
@@ -133,7 +160,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         </div>
       </FormSection>
 
-      <FormSection number="02" title="Êtes-vous déjà patient chez nous ?">
+      <FormSection number="03" title="Êtes-vous déjà patient chez nous ?">
         <div className="flex flex-wrap gap-6">
           <RadioField name="existingPatient" value="yes" label="Oui" required />
           <RadioField name="existingPatient" value="no" label="Non" required />
@@ -141,7 +168,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         </div>
       </FormSection>
 
-      <FormSection number="03" title="Raison principale de la demande">
+      <FormSection number="04" title="Raison principale de la demande">
         <div className="grid gap-3 sm:grid-cols-2">
           {REASONS.map((r) => (
             <CheckboxField key={r.v} name={`reason_${r.v}`} value="1" label={r.l} />
@@ -150,7 +177,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         <TextareaField name="reasonOther" label="Expliquez brièvement votre demande" rows={3} />
       </FormSection>
 
-      <FormSection number="04" title="Niveau d'urgence">
+      <FormSection number="05" title="Niveau d'urgence">
         <div className="grid gap-3 sm:grid-cols-2">
           {URGENCY_LEVELS.map((u) => (
             <CheckboxField key={u.v} name={`urgency_${u.v}`} value="1" label={u.l} />
@@ -159,7 +186,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         <SelectField name="symptomDuration" label="Depuis quand le problème est-il présent ?" options={SYMPTOM_DURATIONS} />
       </FormSection>
 
-      <FormSection number="05" title="Disponibilités">
+      <FormSection number="06" title="Disponibilités">
         <div className="grid gap-3 sm:grid-cols-2">
           {AVAILABILITY.map((a) => (
             <CheckboxField key={a.v} name={`availability_${a.v}`} value="1" label={a.l} />
@@ -168,7 +195,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         <TextareaField name="availabilityNotes" label="Précisions sur vos disponibilités" rows={3} />
       </FormSection>
 
-      <FormSection number="06" title="Assurances">
+      <FormSection number="07" title="Assurances">
         <div>
           <div className="label-sm text-foreground mb-3">Avez-vous une assurance dentaire ?</div>
           <div className="flex flex-wrap gap-6">
@@ -190,7 +217,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         </p>
       </FormSection>
 
-      <FormSection number="07" title="Profil de santé simplifié">
+      <FormSection number="08" title="Profil de santé simplifié">
         <p className="text-sm text-muted-foreground">
           Ces questions ne remplacent pas le questionnaire médical complet. Elles nous aident à préparer votre visite.
         </p>
@@ -213,7 +240,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         </div>
       </FormSection>
 
-      <FormSection number="08" title="Documents à joindre (optionnel)">
+      <FormSection number="09" title="Documents à joindre (optionnel)">
         <FileField
           name="documents"
           label="Photo, radiographie, carte d'assurance, document de référence"
@@ -223,7 +250,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         />
       </FormSection>
 
-      <FormSection number="09" title="Consentements">
+      <FormSection number="10" title="Consentements">
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
           Chaque consentement est cochable individuellement. Les communications informatives (bloc 05) sont optionnelles et ne sont pas pré-cochées.
         </p>
