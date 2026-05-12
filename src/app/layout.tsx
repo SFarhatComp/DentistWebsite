@@ -21,6 +21,19 @@ const jsonLd = {
   },
   telephone: "+1-514-863-7805",
   url: "https://studiodefacto.ca",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Thursday", "Friday"],
+      description: "Sur rendez-vous",
+    },
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/shared/section-label"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-const SERVICES = ["examen-complet", "prevention-hygiene", "dentisterie-operatoire", "esthetique-dentaire", "couronnes-ponts", "implantologie", "aligneurs", "urgences"] as const
+const SERVICES = ["examen-complet", "prevention-hygiene", "dentisterie-operatoire", "parodontie", "esthetique-dentaire", "couronnes-ponts", "implantologie", "aligneurs", "urgences"] as const
 
 export function ServicesPreviewSection({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
@@ -20,7 +20,7 @@ export function ServicesPreviewSection({ lang }: { lang: Locale }) {
         <StaggerContainer className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((slug) => (
             <StaggerItem key={slug}>
-              <Link href={`/${lang}/services/${slug}`} className="block bg-background p-6 md:p-8 h-full hover:bg-surface/30 transition-colors">
+              <Link href={`/${lang}/soins/${slug}`} className="block bg-background p-6 md:p-8 h-full hover:bg-surface/30 transition-colors">
                 <h3 className="font-display text-xl mb-3">{t(`services.${slug}.title`)}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">{t(`services.${slug}.short`)}</p>
                 <span className="text-xs text-accent label-sm">{t("common.enSavoirPlus")} →</span>

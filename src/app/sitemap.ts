@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/premiere-visite",
     "/plan-traitement-visuel",
-    "/services",
+    "/soins",
     "/le-studio",
     "/laboratoire",
     "/laboratoire/professionnels",
@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/confidentialite",
     "/conditions-utilisation",
   ]
-  const services = getAllServices("fr").map((s) => `/services/${s.slug}`)
+  const services = getAllServices("fr").map((s) => `/soins/${s.slug}`)
   const now = new Date()
   return [...staticRoutes, ...services].map((p) => ({
     url: `${BASE}/fr${p}`,

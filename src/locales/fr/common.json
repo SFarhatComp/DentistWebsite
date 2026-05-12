@@ -2,9 +2,10 @@
   "site": { "name": "De Facto Studio Dentaire" },
   "nav": {
     "accueil": "Accueil",
-    "premiereVisite": "Première visite",
-    "services": "Services",
     "studio": "Le Studio",
+    "premiereVisite": "Première visite",
+    "soins": "Soins",
+    "services": "Soins",
     "laboratoire": "Laboratoire",
     "ressources": "Ressources",
     "contact": "Contact",
@@ -89,7 +90,7 @@
       "traitement": { "title": "Traitement et suivi", "body": "Réalisation, suivis post-opératoires et entretien à long terme." },
       "cta": "Voir le déroulement de la première visite"
     },
-    "services": { "label": "Nos services", "title": "Des soins complets, planifiés selon vos besoins" },
+    "services": { "label": "Nos soins", "title": "Des soins complets, planifiés selon vos besoins" },
     "laboratoire": { "label": "Laboratoire intégré", "title": "La précision du laboratoire, intégrée à l'expérience clinique", "body": "La proximité entre la clinique et le laboratoire permet une meilleure communication, un meilleur contrôle des détails et une personnalisation plus fine des restaurations." },
     "realisations": {
       "label": "Réalisations",
@@ -184,14 +185,14 @@
     }
   },
   "services": {
-    "label": "Services",
+    "label": "Soins",
     "pageTitle": "Des soins dentaires complets, planifiés selon vos besoins",
     "pageSubtitle": "Les traitements proposés au studio sont intégrés dans une vision globale.",
     "examen-complet": { "title": "Examen complet et diagnostic", "short": "Une première visite structurée pour comprendre votre santé buccodentaire." },
     "prevention-hygiene": { "title": "Prévention et hygiène", "short": "Nettoyage, évaluation et conseils personnalisés." },
     "dentisterie-operatoire": { "title": "Dentisterie opératoire", "short": "Composites, restaurations et traitements conservateurs." },
     "esthetique-dentaire": { "title": "Esthétique dentaire", "short": "Facettes, blanchiment et harmonisation du sourire." },
-    "parodontie": { "title": "Parodontie", "short": "Évaluation et traitement des gencives." },
+    "parodontie": { "title": "Parodontie", "short": "Débridements non chirurgicaux, maintien parodontal et greffes de tissus mous lorsque la situation l'indique." },
     "endodontie": { "title": "Endodontie", "short": "Traitement de canal et diagnostic de douleur." },
     "couronnes-ponts": { "title": "Couronnes et ponts", "short": "Restaurations indirectes en céramique et zircone." },
     "implantologie": { "title": "Implantologie", "short": "Couronnes, ponts et prothèses sur implants." },
@@ -219,7 +220,7 @@
     "phonePlaceholder": "514 863 7805",
     "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@studiodefacto.ca",
-    "hoursPlaceholder": "Lundi–Vendredi : 9h–17h"
+    "hoursPlaceholder": "Lun.–mer. : 9 h à 18 h · Jeu.–ven. : sur rendez-vous"
   },
   "contactForm": {
     "nom": "Nom complet",
@@ -251,7 +252,7 @@
     "laboratoire": "Laboratoire",
     "rendezVous": "Prendre rendez-vous",
     "horaires": "Heures d'ouverture",
-    "horairesPlaceholder": "Lundi–Vendredi : 9h–17h",
+    "horairesPlaceholder": "Lun.–mer. : 9 h à 18 h · Jeu.–ven. : sur rendez-vous",
     "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste."
   }
 }

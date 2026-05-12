@@ -14,6 +14,27 @@
   to = "/fr/"
   status = 302
 
+# Brouillon 2: Services → Soins URL renames
+[[redirects]]
+  from = "/fr/services"
+  to = "/fr/soins"
+  status = 301
+
+[[redirects]]
+  from = "/fr/services/*"
+  to = "/fr/soins/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/en/services"
+  to = "/en/soins"
+  status = 301
+
+[[redirects]]
+  from = "/en/services/*"
+  to = "/en/soins/:splat"
+  status = 301
+
 # Security headers
 [[headers]]
   for = "/*"

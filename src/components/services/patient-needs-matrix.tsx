@@ -42,7 +42,7 @@ export function PatientNeedsMatrix({ lang }: { lang: Locale }) {
           {NEEDS.map((need, i) => (
             <FadeIn key={need.label} className="bg-background">
               <Link
-                href={`/${lang}/services/${need.serviceSlug}`}
+                href={`/${lang}/soins/${need.serviceSlug}`}
                 className="block p-6 md:p-7 hover:bg-surface/50 transition-colors h-full group"
               >
                 <div className="flex items-start justify-between gap-4 mb-3">

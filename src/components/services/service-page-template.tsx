@@ -175,7 +175,7 @@ export function ServicePageTemplate({ service, lang }: { service: Service; lang:
             <h2 className="font-display text-3xl md:text-4xl mb-12">Vous pourriez aussi être intéressé par</h2>
             <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
               {related.map((s) => (
-                <Link key={s.slug} href={`/${lang}/services/${s.slug}`} className="block bg-background p-8 hover:bg-surface/40 transition-colors">
+                <Link key={s.slug} href={`/${lang}/soins/${s.slug}`} className="block bg-background p-8 hover:bg-surface/40 transition-colors">
                   <h3 className="font-display text-xl mb-3">{s.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{s.shortDescription}</p>
                 </Link>

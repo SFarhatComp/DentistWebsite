@@ -20,12 +20,13 @@ slug:
 collections:
 
   # ================================
-  # SERVICES (FR) — content seeded by developer; dentist edits copy
+  # SOINS (FR) — content seeded by developer; dentist edits copy
+  # (renamed from "services" in Brouillon 2; folder also renamed)
   # ================================
-  - name: "services_fr"
-    label: "Services (FR)"
-    label_singular: "Service"
-    folder: "content/services/fr"
+  - name: "soins_fr"
+    label: "Soins (FR)"
+    label_singular: "Soin"
+    folder: "content/soins/fr"
     create: false
     slug: "{{slug}}"
     extension: "md"
@@ -49,7 +50,7 @@ collections:
         fields:
           - { label: "Question", name: "question", widget: "string" }
           - { label: "Réponse", name: "answer", widget: "text" }
-      - { label: "Services liés (slugs)", name: "related", widget: "list", required: false }
+      - { label: "Soins liés (slugs)", name: "related", widget: "list", required: false }
       - { label: "Contenu", name: "body", widget: "markdown", required: false }
 
   # ================================

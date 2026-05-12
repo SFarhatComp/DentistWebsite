@@ -6,7 +6,7 @@ export function ServiceCard({ service, lang }: { service: Service; lang: Locale 
   const t = getTranslations(lang)
   return (
     <Link
-      href={`/${lang}/services/${service.slug}`}
+      href={`/${lang}/soins/${service.slug}`}
       className="group block bg-background p-8 md:p-10 h-full hover:bg-surface/40 transition-colors"
     >
       <h3 className="font-display text-2xl mb-4 group-hover:text-primary transition-colors">{service.title}</h3>

@@ -19,9 +19,9 @@ export function Navbar({ lang }: { lang: Locale }) {
 
   const links = [
     { href: `/${lang}`, label: t("nav.accueil") },
-    { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
-    { href: `/${lang}/services`, label: t("nav.services") },
     { href: `/${lang}/le-studio`, label: t("nav.studio") },
+    { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
+    { href: `/${lang}/soins`, label: t("nav.soins") },
     { href: `/${lang}/laboratoire`, label: t("nav.laboratoire") },
     { href: `/${lang}/ressources`, label: t("nav.ressources") },
     { href: `/${lang}/contact`, label: t("nav.contact") },

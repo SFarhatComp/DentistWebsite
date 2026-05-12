@@ -18,7 +18,7 @@ const REASONS = [
   { v: "aligneurs", l: "Aligneurs orthodontiques" },
   { v: "gencives", l: "Gencives / parodontie" },
   { v: "canal", l: "Traitement de canal" },
-  { v: "second", l: "Deuxième opinion" },
+  { v: "discussion_plan", l: "Discussion d'un plan de traitement existant" },
   { v: "autre", l: "Autre" },
 ]
 

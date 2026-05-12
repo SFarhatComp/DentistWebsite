@@ -11,7 +11,7 @@ function readDir(dir: string): string[] {
 }
 
 export function getAllServices(lang: Locale): Service[] {
-  const dir = path.join(ROOT, "services", lang)
+  const dir = path.join(ROOT, "soins", lang)
   return readDir(dir).map((file) => {
     const raw = fs.readFileSync(path.join(dir, file), "utf-8")
     const { data, content } = matter(raw)
@@ -20,7 +20,7 @@ export function getAllServices(lang: Locale): Service[] {
 }
 
 export function getService(lang: Locale, slug: string): Service | null {
-  const file = path.join(ROOT, "services", lang, `${slug}.md`)
+  const file = path.join(ROOT, "soins", lang, `${slug}.md`)
   if (!fs.existsSync(file)) return null
   const { data, content } = matter(fs.readFileSync(file, "utf-8"))
   return { ...(data as ServiceFrontmatter), content }
