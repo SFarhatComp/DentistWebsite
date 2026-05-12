@@ -40,10 +40,10 @@
         "5": "Et que la confiance se bâtit par la clarté."
       }
     },
-    "objectif": {
-      "label": "Notre objectif",
-      "title": "Des soins adaptés à votre réalité",
-      "body": "Notre objectif est de proposer des soins adaptés à votre situation clinique, à vos priorités et à votre réalité. Un plan peut être séquencé dans le temps lorsque c'est approprié."
+    "approche": {
+      "label": "Approche",
+      "title": "Une approche structurée, mesurée",
+      "body": "De Facto privilégie une approche structurée : comprendre la situation, identifier les priorités, expliquer les options et planifier les soins avec mesure. L'objectif n'est pas d'accumuler les traitements, mais de proposer une séquence cohérente, adaptée à la réalité clinique et personnelle du patient."
     },
     "difference": {
       "label": "Approche",
@@ -51,17 +51,16 @@
       "items": {
         "1": "Un examen complet avant les décisions importantes.",
         "2": "Une documentation clinique claire.",
-        "3": "Des photos, radiographies et scans lorsque pertinents.",
-        "4": "Un plan de traitement expliqué par phases.",
-        "5": "Un laboratoire intégré pour mieux contrôler certains détails.",
-        "6": "Une approche conservatrice et réfléchie.",
-        "7": "Une coordination avec des spécialistes lorsque nécessaire."
+        "3": "Un plan de traitement expliqué par phases.",
+        "4": "Un laboratoire intégré pour mieux contrôler certains détails.",
+        "5": "Une approche conservatrice et réfléchie.",
+        "6": "Une coordination avec des spécialistes lorsque nécessaire."
       }
     },
-    "preuves": {
-      "label": "Preuves de méthode",
-      "title": "Pas seulement des mots — des outils concrets",
-      "intro": "Voici ce qui peut composer un dossier patient chez De Facto, selon la situation clinique. Les images réelles seront ajoutées à mesure que nos cas documentés s'accumulent — toujours avec consentement explicite.",
+    "portfolio": {
+      "label": "Portfolio clinique",
+      "title": "Des cas cliniques sélectionnés",
+      "intro": "Des cas sélectionnés seront présentés avec consentement, contexte clinique et explications sobres afin d'illustrer notre manière de diagnostiquer, planifier et traiter.",
       "items": {
         "1": { "title": "Fiche de diagnostic", "alt": "fiche-diagnostic-de-facto.jpg" },
         "2": { "title": "Plan par phases", "alt": "plan-phases-de-facto.jpg" },
@@ -72,13 +71,31 @@
         "7": { "title": "Résumé patient anonymisé", "alt": "resume-patient-anonymise-de-facto.jpg" }
       }
     },
+    "triad": {
+      "label": "Lecture globale du risque",
+      "title": "Une lecture globale du risque",
+      "body": "Lors de l'examen complet, nous analysons le patient selon une logique globale : risque carieux, santé parodontale, habitudes, fonction et contexte personnel. Cette lecture permet d'établir un portrait plus juste et d'adapter la fréquence de suivi, les priorités et la prévention."
+    },
+    "deuxRdv": {
+      "label": "Examen et présentation",
+      "title": "Une expérience structurée en deux temps",
+      "body": "Dans les situations qui le justifient, l'examen et la présentation du plan sont séparés afin de permettre une analyse plus complète et une discussion plus claire.",
+      "rdv1": {
+        "title": "Rendez-vous 1 — Collecte de données",
+        "body": "Examen complet, photos, radiographies selon indication, scan, discussion initiale."
+      },
+      "rdv2": {
+        "title": "Rendez-vous 2 — Portrait buccodentaire",
+        "body": "Présentation du portrait buccodentaire et plan de traitement lorsque nécessaire."
+      }
+    },
     "piliers": {
       "label": "Notre approche",
-      "title": "Quatre piliers, une vision intégrée",
-      "diagnostic": { "title": "Diagnostic complet", "body": "Une première visite structurée pour comprendre votre santé, vos besoins, vos attentes et vos priorités." },
-      "planification": { "title": "Planification personnalisée", "body": "Les traitements sont hiérarchisés, expliqués et adaptés à votre réalité clinique, financière et personnelle." },
-      "precision": { "title": "Précision clinique", "body": "Chaque étape est guidée par des protocoles, une documentation rigoureuse et une vision à long terme." },
-      "laboratoire": { "title": "Laboratoire intégré", "body": "La proximité entre la clinique et le laboratoire permet une meilleure communication, une meilleure personnalisation et un meilleur contrôle de qualité." }
+      "title": "Quatre piliers",
+      "diagnostic": { "title": "Diagnostic", "body": "Comprendre avant de décider." },
+      "priorisation": { "title": "Priorisation", "body": "Distinguer ce qui est urgent, nécessaire, préventif ou optionnel." },
+      "prevention": { "title": "Prévention", "body": "Stabiliser avant de multiplier les traitements." },
+      "precision": { "title": "Précision", "body": "Relier la clinique, le numérique et le laboratoire." }
     },
     "parcours": {
       "label": "Parcours patient",
@@ -91,7 +108,18 @@
       "cta": "Voir le déroulement de la première visite"
     },
     "services": { "label": "Nos soins", "title": "Des soins complets, planifiés selon vos besoins" },
-    "laboratoire": { "label": "Laboratoire intégré", "title": "La précision du laboratoire, intégrée à l'expérience clinique", "body": "La proximité entre la clinique et le laboratoire permet une meilleure communication, un meilleur contrôle des détails et une personnalisation plus fine des restaurations." },
+    "laboratoire": {
+      "label": "Laboratoire intégré",
+      "title": "Un laboratoire dentaire intégré au service de la précision",
+      "body": "La présence d'un laboratoire au sein du studio permet une communication directe entre la clinique, le technicien et le dentiste responsable. Certains ajustements, réparations ou confections peuvent ainsi être réalisés plus efficacement, selon les besoins et les indications.",
+      "items": {
+        "1": "Technicien dentaire sur place",
+        "2": "Réparations rapides selon les cas",
+        "3": "Confection express selon les besoins",
+        "4": "Communication directe entre clinique et laboratoire",
+        "5": "Services aussi offerts aux dentistes et spécialistes externes"
+      }
+    },
     "realisations": {
       "label": "Réalisations",
       "title": "Des traitements planifiés avec soin",
@@ -111,30 +139,18 @@
     },
     "pourquoi": {
       "label": "Pourquoi De Facto existe",
-      "title": "Une conviction simple, une approche structurée",
-      "body": "Studio Dentaire De Facto est né d'une conviction simple : un patient ne devrait pas accepter un traitement qu'il ne comprend pas. Notre approche met l'accent sur l'examen, la documentation, l'explication et la planification avant l'intervention. Nous croyons qu'une dentisterie de qualité repose autant sur la clarté que sur la précision technique.",
-      "axes": {
-        "1": "Beaucoup de patients reçoivent des traitements sans toujours comprendre leur situation globale.",
-        "2": "De Facto veut remettre le diagnostic, le temps et la clarté au centre de l'expérience.",
-        "3": "Le mot « studio » exprime une approche plus précise, plus calme, plus artisanale et plus personnalisée qu'une clinique impersonnelle.",
-        "4": "Ahuntsic représente un ancrage local, humain et communautaire.",
-        "5": "Le laboratoire intégré reflète la volonté de contrôler les détails, d'améliorer la communication et de mieux relier le diagnostic à la fabrication.",
-        "6": "La prévention, la planification et l'explication sont aussi importantes que le traitement lui-même."
-      }
+      "title": "Une volonté simple",
+      "body": "De Facto est né d'une volonté simple : créer un lieu où le temps, l'écoute, la précision et la planification occupent une place centrale. Un studio où la technologie ne remplace pas le jugement clinique, mais le soutient."
     },
     "philosophie": {
       "label": "Philosophie clinique",
       "title": "Comprendre avant d'intervenir",
-      "1": { "title": "Comprendre avant d'intervenir", "body": "Chaque traitement commence par une évaluation complète de la situation, des attentes et des priorités du patient." },
-      "2": { "title": "Documenter avant de décider", "body": "Photos, radiographies et examens permettent une décision éclairée plutôt qu'une intervention précipitée." },
-      "3": { "title": "Expliquer avant de traiter", "body": "Le patient comprend les options, les bénéfices, les limites et les alternatives avant chaque étape." },
-      "4": { "title": "Prévenir avant de réparer", "body": "La prévention reste la base d'une santé buccodentaire durable." },
-      "5": { "title": "Planifier avant de restaurer", "body": "Une séquence de traitement réfléchie évite les corrections multiples et préserve la structure dentaire." }
+      "body": "Notre philosophie repose sur une idée simple : chaque traitement doit s'inscrire dans une compréhension globale du patient. Avant d'intervenir, nous cherchons à comprendre les risques, les priorités, les attentes et les limites propres à chaque situation."
     },
     "espace": {
       "label": "L'espace",
-      "title": "Un environnement pensé pour le calme et la précision",
-      "body": "Chaque détail de l'espace a été pensé pour favoriser une expérience professionnelle, chaleureuse et discrète."
+      "title": "Un espace pensé pour ralentir le rythme",
+      "body": "L'environnement du studio a été pensé pour créer une expérience plus calme, plus claire et plus humaine. Chaque zone — accueil, salle clinique, laboratoire et espace de discussion — soutient une même idée : prendre le temps de bien faire."
     },
     "equipement": {
       "label": "Équipement et technologie",
@@ -149,13 +165,8 @@
     },
     "engagement": {
       "label": "Engagement qualité",
-      "title": "Des standards rigoureux à chaque étape",
-      "1": "Protocoles cliniques documentés",
-      "2": "Stérilisation rigoureuse",
-      "3": "Documentation complète des dossiers",
-      "4": "Consentement éclairé",
-      "5": "Suivis structurés",
-      "6": "Communication claire avec le patient"
+      "title": "Une qualité qui se construit dans chaque décision",
+      "body": "Notre engagement repose sur la rigueur des protocoles, la traçabilité des matériaux, la qualité des communications cliniques et la révision attentive des étapes importantes. La qualité ne se limite pas au résultat final : elle se construit dans chaque décision."
     }
   },
   "experience": {

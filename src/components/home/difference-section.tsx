@@ -5,8 +5,8 @@ import { PlaceholderImage } from "@/components/shared/placeholder-image"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-const ITEMS = ["1", "2", "3", "4", "5", "6", "7"] as const
-const PROOFS = ["1", "2", "3", "4", "5", "6", "7"] as const
+const ITEMS = ["1", "2", "3", "4", "5", "6"] as const
+const PORTFOLIO = ["1", "2", "3", "4", "5", "6", "7"] as const
 
 export function DifferenceSection({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
@@ -16,12 +16,12 @@ export function DifferenceSection({ lang }: { lang: Locale }) {
         <Container>
           <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] items-start">
             <FadeIn className="lg:sticky lg:top-24">
-              <SectionLabel>{t("home.objectif.label")}</SectionLabel>
+              <SectionLabel>{t("home.approche.label")}</SectionLabel>
               <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-                {t("home.objectif.title")}
+                {t("home.approche.title")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-                {t("home.objectif.body")}
+                {t("home.approche.body")}
               </p>
               <div className="h-px w-16 bg-accent mb-8" />
               <SectionLabel>{t("home.difference.label")}</SectionLabel>
@@ -52,18 +52,18 @@ export function DifferenceSection({ lang }: { lang: Locale }) {
         <Container>
           <div className="max-w-3xl mb-16">
             <FadeIn>
-              <SectionLabel>{t("home.preuves.label")}</SectionLabel>
+              <SectionLabel>{t("home.portfolio.label")}</SectionLabel>
               <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-                {t("home.preuves.title")}
+                {t("home.portfolio.title")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {t("home.preuves.intro")}
+                {t("home.portfolio.intro")}
               </p>
             </FadeIn>
           </div>
 
           <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border">
-            {PROOFS.map((n, i) => (
+            {PORTFOLIO.map((n, i) => (
               <FadeIn key={n} className="bg-background">
                 <div className="p-6 h-full flex flex-col">
                   <div className="flex items-baseline gap-3 mb-4">
@@ -74,11 +74,11 @@ export function DifferenceSection({ lang }: { lang: Locale }) {
                   </div>
                   <PlaceholderImage
                     aspect="video"
-                    label={t(`home.preuves.items.${n}.alt`)}
+                    label={t(`home.portfolio.items.${n}.alt`)}
                     className="mb-4"
                   />
                   <h3 className="font-display text-base md:text-lg text-foreground">
-                    {t(`home.preuves.items.${n}.title`)}
+                    {t(`home.portfolio.items.${n}.title`)}
                   </h3>
                 </div>
               </FadeIn>

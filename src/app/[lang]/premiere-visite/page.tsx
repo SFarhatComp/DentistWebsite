@@ -9,56 +9,42 @@ import type { Locale } from "@/types"
 export const metadata: Metadata = {
   title: "Première visite",
   description:
-    "Découvrez comment se déroule une première visite chez Studio Dentaire De Facto : examen complet, documentation clinique, radiographies selon indication et planification claire des soins.",
+    "Une expérience structurée en deux temps : collecte de données puis présentation du portrait buccodentaire. Studio Dentaire De Facto à Ahuntsic, Montréal.",
 }
 
-const inclus = [
-  "Révision des renseignements médicaux et dentaires",
-  "Discussion de la raison de consultation",
-  "Examen des dents",
-  "Examen des gencives",
-  "Évaluation des restaurations existantes",
-  "Évaluation de l'occlusion lorsque pertinent",
-  "Dépistage des signes d'usure, serrement ou grincement",
-  "Radiographies selon indication clinique",
-  "Photos intraorales lorsque pertinent",
-  "Scan intraoral lorsque pertinent",
-  "Discussion initiale des observations",
-  "Recommandations de prochaines étapes",
+const objectifs = [
+  "Établir un lien concret et humain entre le patient et son professionnel de la santé.",
+  "Collecter les données médicales et dentaires pertinentes à une prise en charge sécuritaire et complète.",
+  "Diagnostiquer.",
+  "Identifier les priorités.",
+  "Comprendre les attentes, inconforts ou craintes du patient.",
+  "Préparer, lorsque nécessaire, une présentation distincte du portrait buccodentaire.",
 ]
 
-const nonAutomatique = [
-  "Un traitement n'est pas automatiquement réalisé lors de la première visite",
-  "Un nettoyage peut nécessiter un rendez-vous séparé",
-  "Certains plans complexes peuvent nécessiter une analyse et une présentation dédiée",
-  "Certaines situations peuvent nécessiter une référence à un spécialiste",
+const rdv1Etapes = [
+  "Accueil et présentation de l'équipe et du studio.",
+  "Révision et discussion des renseignements médicaux et dentaires.",
+  "Discussion de la raison de consultation.",
+  "Identification et discussion des attentes et des besoins du patient.",
+  "Identification des inconforts ou craintes.",
+  "Questionnaires supplémentaires lorsque pertinent (habitudes orales, hygiène, risque carieux, alimentation/diététique, DTM, apnée du sommeil, autres selon le contexte).",
+  "Photographies intraorales et extraorales.",
+  "Examen buccodentaire complet.",
+  "Radiographies si pertinent.",
+  "Scan intraoral bouche complète.",
+  "Discussion initiale des observations.",
 ]
 
-const radiographiesPourquoi = [
-  "Les radiographies ne sont pas prises sans raison",
-  "Elles servent à voir ce qui n'est pas visible cliniquement",
-  "Elles permettent d'évaluer caries, os, racines, infections, restaurations, dents incluses ou autres conditions",
-  "La décision dépend du contexte clinique",
-]
-
-const recoit = [
-  "Résumé verbal",
-  "Priorités de traitement",
-  "Estimation",
-  "Plan de traitement par phases",
-  "Documents éducatifs",
-  "Instructions",
-  "Référence spécialisée",
-  "Rendez-vous de présentation du plan dans les cas complexes",
-]
-
-const preparation = [
-  "Liste de médicaments",
-  "Assurances",
-  "Radiographies récentes si disponibles",
-  "Liste des préoccupations",
-  "Anciens plans de traitement si pertinents",
-  "Gouttières, appareils ou documents dentaires pertinents",
+const rdv2Inclus = [
+  "Photos expliquées",
+  "Radiographies pertinentes",
+  "Scan ou modèle si utile",
+  "Priorités",
+  "Plan idéal",
+  "Alternatives",
+  "Risques du statu quo",
+  "Séquence dans le temps",
+  "Estimation lorsque disponible",
 ]
 
 const apporter = [
@@ -70,13 +56,20 @@ const apporter = [
   "Appareil dentaire, gouttière ou protecteur si applicable",
 ]
 
-const apresExamen = [
-  "Analyse",
-  "Priorisation",
-  "Planification",
-  "Rendez-vous de traitement ou rendez-vous de présentation du plan",
-  "Coordination administrative",
-]
+function NumberedList({ items }: { items: string[] }) {
+  return (
+    <ol className="space-y-3">
+      {items.map((item, i) => (
+        <li key={item} className="flex gap-4 text-base text-foreground leading-relaxed">
+          <span className="font-display text-sm text-accent/70 tabular-nums shrink-0 pt-1 min-w-[2rem]">
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ol>
+  )
+}
 
 function BulletList({ items }: { items: string[] }) {
   return (
@@ -97,8 +90,8 @@ export default function PremiereVisitePage({ params }: { params: { lang: string 
     <>
       <PageHero
         label="Première visite"
-        title="Une première visite pour comprendre votre situation, pas seulement regarder une dent."
-        subtitle="La première visite chez De Facto est conçue pour établir une compréhension claire de votre santé buccodentaire. Selon votre situation, elle peut inclure un questionnaire, un examen clinique, des radiographies indiquées, des photos, un scan intraoral et une discussion sur vos priorités."
+        title="Une expérience structurée en deux temps"
+        subtitle="S'il ne s'agit pas d'une consultation ciblée ou d'une urgence spécifique, De Facto souhaite structurer l'expérience de tout nouveau patient en débutant par un rendez-vous d'examen complet."
       />
 
       <section className="py-20 md:py-24">
@@ -107,74 +100,47 @@ export default function PremiereVisitePage({ params }: { params: { lang: string 
             <aside className="md:sticky md:top-24 self-start">
               <div className="label-sm text-muted mb-4">Sur cette page</div>
               <ul className="text-sm space-y-2 text-muted-foreground">
-                <li><a href="#duree" className="hover:text-primary">Durée approximative</a></li>
-                <li><a href="#inclus" className="hover:text-primary">Ce qui est inclus</a></li>
-                <li><a href="#non-automatique" className="hover:text-primary">Ce qui n&apos;est pas automatique</a></li>
-                <li><a href="#examen" className="hover:text-primary">Pourquoi l&apos;examen complet</a></li>
-                <li><a href="#radiographies" className="hover:text-primary">Radiographies</a></li>
-                <li><a href="#apres" className="hover:text-primary">Après l&apos;examen</a></li>
-                <li><a href="#preparation" className="hover:text-primary">Comment se préparer</a></li>
+                <li><a href="#objectifs" className="hover:text-primary">Objectifs</a></li>
+                <li><a href="#duree" className="hover:text-primary">Durée</a></li>
+                <li><a href="#rdv1" className="hover:text-primary">Rendez-vous 1 — Collecte</a></li>
+                <li><a href="#rdv2" className="hover:text-primary">Rendez-vous 2 — Portrait</a></li>
                 <li><a href="#apporter" className="hover:text-primary">Quoi apporter</a></li>
               </ul>
             </aside>
 
             <div className="md:col-span-2 space-y-20">
               <FadeIn>
-                <NumberedSection number={1} id="duree" label="Durée" title="Le temps nécessaire pour bien documenter">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    La durée peut varier selon la situation clinique, la raison de consultation et les informations à recueillir. L&apos;objectif est de prendre le temps nécessaire pour documenter correctement votre situation.
+                <NumberedSection number={1} id="objectifs" label="Objectifs" title="Objectifs du rendez-vous">
+                  <NumberedList items={objectifs} />
+                </NumberedSection>
+              </FadeIn>
+
+              <FadeIn>
+                <NumberedSection number={2} id="duree" label="Durée" title="Durée approximative">
+                  <p className="text-lg text-foreground leading-relaxed">
+                    Durée approximative : <span className="font-medium">30 à 60 minutes selon votre situation.</span>
                   </p>
                 </NumberedSection>
               </FadeIn>
 
               <FadeIn>
-                <NumberedSection number={2} id="inclus" label="Contenu" title="Ce qui est inclus dans la première visite">
-                  <BulletList items={inclus} />
+                <NumberedSection number={3} id="rdv1" label="Rendez-vous 1" title="Collecte de données">
+                  <NumberedList items={rdv1Etapes} />
                 </NumberedSection>
               </FadeIn>
 
               <FadeIn>
-                <NumberedSection number={3} id="non-automatique" label="À savoir" title="Ce qui n'est pas fait automatiquement">
-                  <BulletList items={nonAutomatique} />
-                </NumberedSection>
-              </FadeIn>
-
-              <FadeIn>
-                <NumberedSection number={4} id="examen" label="Diagnostic" title="Pourquoi l'examen complet est nécessaire">
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    Un bon traitement dépend d&apos;un bon diagnostic. L&apos;examen complet permet d&apos;éviter les décisions précipitées, de comprendre les priorités, d&apos;identifier les risques et de proposer une séquence de soins adaptée à votre situation.
+                <NumberedSection number={4} id="rdv2" label="Rendez-vous 2" title="Portrait buccodentaire">
+                  <p className="text-base text-muted-foreground leading-relaxed mb-8">
+                    Lorsque la situation nécessite une analyse plus complète, un second rendez-vous peut être prévu afin de présenter le portrait buccodentaire, les priorités, les options et la séquence de traitement proposée.
                   </p>
+                  <BulletList items={rdv2Inclus} />
                 </NumberedSection>
               </FadeIn>
 
               <FadeIn>
-                <NumberedSection number={5} id="radiographies" label="Imagerie" title="Pourquoi les radiographies sont prises selon indication">
-                  <BulletList items={radiographiesPourquoi} />
-                </NumberedSection>
-              </FadeIn>
-
-              <FadeIn>
-                <NumberedSection number={6} id="apres" label="Suivi" title="Ce que le patient reçoit après">
-                  <p className="text-base text-muted-foreground leading-relaxed mb-6 italic">Selon le cas :</p>
-                  <BulletList items={recoit} />
-                </NumberedSection>
-              </FadeIn>
-
-              <FadeIn>
-                <NumberedSection number={7} id="preparation" label="Préparation" title="Comment se préparer">
-                  <BulletList items={preparation} />
-                </NumberedSection>
-              </FadeIn>
-
-              <FadeIn>
-                <NumberedSection number={8} id="apporter" label="Liste" title="Quoi apporter">
+                <NumberedSection number={5} id="apporter" label="Préparation" title="Quoi apporter">
                   <BulletList items={apporter} />
-                </NumberedSection>
-              </FadeIn>
-
-              <FadeIn>
-                <NumberedSection number={9} label="Après" title="Après l'examen">
-                  <BulletList items={apresExamen} />
                 </NumberedSection>
               </FadeIn>
             </div>

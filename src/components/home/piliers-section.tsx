@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/shared/section-label"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-const PILIER_KEYS = ["diagnostic", "planification", "precision", "laboratoire"] as const
+const PILIER_KEYS = ["diagnostic", "priorisation", "prevention", "precision"] as const
 
 export function PiliersSection({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
