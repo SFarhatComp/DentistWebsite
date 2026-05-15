@@ -39,19 +39,13 @@ export function HeroSection({ lang }: { lang: Locale }) {
           </motion.p>
           <motion.div {...fade(16, 0.4)} className="flex flex-wrap gap-4">
             <Link
-              href={`/${lang}/premiere-visite`}
+              href={`/${lang}/rendez-vous`}
               className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
             >
               {t("home.hero.ctaPrimary")}
             </Link>
             <Link
-              href={`/${lang}/rendez-vous`}
-              className="bg-primary hover:bg-primary-hover text-primary-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
-            >
-              {t("home.hero.ctaTertiary")}
-            </Link>
-            <Link
-              href={`/${lang}/le-studio`}
+              href={`/${lang}/premiere-visite`}
               className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
             >
               {t("home.hero.ctaSecondary")}

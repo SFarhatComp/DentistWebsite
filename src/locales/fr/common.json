@@ -6,6 +6,7 @@
     "premiereVisite": "Première visite",
     "soins": "Soins",
     "services": "Soins",
+    "portfolioClinique": "Portfolio clinique",
     "laboratoire": "Laboratoire",
     "ressources": "Ressources",
     "contact": "Contact",
@@ -33,11 +34,12 @@
       "label": "Manifeste",
       "title": "Manifeste De Facto",
       "lines": {
-        "1": "Nous croyons qu'un bon traitement commence par un bon diagnostic.",
+        "1": "Nous croyons qu'un bon traitement commence par une bonne compréhension.",
         "2": "Qu'un patient bien informé prend de meilleures décisions.",
         "3": "Que la prévention mérite autant d'attention que la réparation.",
-        "4": "Que la précision n'est pas un luxe, mais une responsabilité clinique.",
-        "5": "Et que la confiance se bâtit par la clarté."
+        "4": "Que la rigueur n'est pas un luxe, mais une responsabilité clinique.",
+        "5": "Et que la confiance se bâtit par la clarté.",
+        "6": "De Facto est un studio dentaire fondé sur une idée simple : prendre le temps de comprendre avant d'intervenir."
       }
     },
     "approche": {
@@ -90,12 +92,28 @@
       }
     },
     "piliers": {
-      "label": "Notre approche",
-      "title": "Quatre piliers",
-      "diagnostic": { "title": "Diagnostic", "body": "Comprendre avant de décider." },
-      "priorisation": { "title": "Priorisation", "body": "Distinguer ce qui est urgent, nécessaire, préventif ou optionnel." },
-      "prevention": { "title": "Prévention", "body": "Stabiliser avant de multiplier les traitements." },
-      "precision": { "title": "Précision", "body": "Relier la clinique, le numérique et le laboratoire." }
+      "label": "Les piliers De Facto",
+      "title": "Une approche fondée sur le temps, la clarté, la justesse et la continuité.",
+      "temps": {
+        "title": "Le temps",
+        "phrase": "Comprendre avant d'intervenir.",
+        "body": "Un bon traitement commence par une compréhension complète de la situation."
+      },
+      "clarte": {
+        "title": "La clarté",
+        "phrase": "Rendre visible ce qui compte.",
+        "body": "Les images, les modèles et les explications transforment l'examen en portrait clair."
+      },
+      "justesse": {
+        "title": "La justesse",
+        "phrase": "Planifier avec mesure.",
+        "body": "Les soins sont priorisés, expliqués et adaptés à votre réalité."
+      },
+      "continuite": {
+        "title": "La continuité",
+        "phrase": "Soigner dans une vision d'ensemble.",
+        "body": "Chaque étape relie le diagnostic, le traitement, le laboratoire et le suivi."
+      }
     },
     "parcours": {
       "label": "Parcours patient",

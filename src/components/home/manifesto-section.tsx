@@ -19,17 +19,21 @@ export function ManifestoSection({ lang }: { lang: Locale }) {
             </h2>
           </FadeIn>
           <div className="space-y-6">
-            {LINES.map((n, i) => (
+            {LINES.map((n) => (
               <FadeIn key={n}>
-                <p
-                  className="font-display text-xl md:text-2xl text-foreground leading-snug"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
+                <p className="font-display text-xl md:text-2xl text-foreground leading-snug">
                   {t(`home.manifeste.lines.${n}`)}
                 </p>
               </FadeIn>
             ))}
           </div>
+          <FadeIn>
+            <div className="mt-12 pt-12 border-t border-border">
+              <p className="font-display italic text-lg md:text-xl text-primary leading-snug">
+                {t("home.manifeste.lines.6")}
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </Container>
     </section>

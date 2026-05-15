@@ -22,6 +22,7 @@ export function Navbar({ lang }: { lang: Locale }) {
     { href: `/${lang}/le-studio`, label: t("nav.studio") },
     { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
     { href: `/${lang}/soins`, label: t("nav.soins") },
+    { href: `/${lang}/portfolio-clinique`, label: t("nav.portfolioClinique") },
     { href: `/${lang}/laboratoire`, label: t("nav.laboratoire") },
     { href: `/${lang}/ressources`, label: t("nav.ressources") },
     { href: `/${lang}/contact`, label: t("nav.contact") },
@@ -32,7 +33,7 @@ export function Navbar({ lang }: { lang: Locale }) {
       <Container>
         <nav className="flex h-20 items-center justify-between gap-6">
           <Link href={`/${lang}`} className="font-display text-xl tracking-wide text-primary shrink-0">De Facto</Link>
-          <div className="hidden lg:flex items-center gap-7 flex-1 justify-center">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7 flex-1 justify-center">
             {links.map((l) => {
               const isActive = pathname === l.href || pathname === `${l.href}/`
               return (
