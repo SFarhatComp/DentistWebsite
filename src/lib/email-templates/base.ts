@@ -88,12 +88,16 @@ export function baseLayout({ preheader, brandLabel = "Notification", accentBar =
 </html>`
 }
 
-/** Section title — H2 style */
-export function section(title: string, content: string): string {
+/** Section header — strong visual differentiation between sections */
+export function section(title: string, content: string, opts?: { number?: string; accent?: "default" | "red" }): string {
+  const accentColor = opts?.accent === "red" ? C.red : C.accent
+  const numberLabel = opts?.number ? `<span style="font-family:${FONTS.display}; font-size:14px; color:${accentColor}; letter-spacing:0.05em; margin-right:10px; vertical-align:middle;">${escapeHtml(opts.number)}</span>` : ""
   return `
-  <div style="margin:0 0 28px 0;">
-    <div style="font-family:${FONTS.body}; font-size:10px; color:${C.muted}; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:8px;">${escapeHtml(title)}</div>
-    <div style="border-top:1px solid ${C.border}; padding-top:14px;">
+  <div style="margin:0 0 36px 0;">
+    <div style="border-bottom:2px solid ${accentColor}; padding-bottom:8px; margin-bottom:16px;">
+      ${numberLabel}<span style="font-family:${FONTS.display}; font-size:20px; color:${C.primary}; letter-spacing:0.01em; font-weight:500; vertical-align:middle;">${escapeHtml(title)}</span>
+    </div>
+    <div>
       ${content}
     </div>
   </div>`
@@ -121,16 +125,83 @@ export function longText(label: string, value: string | null | undefined): strin
     </div>`
 }
 
-/** List of selected checkbox values (filters out empty) */
+/** Compact list of selected checkbox values only (filters out unchecked).
+ *  Use when you only want to show what was checked (e.g. preferences). */
 export function checkboxList(label: string, items: { key: string; label: string; selected: boolean }[]): string {
   const selected = items.filter((i) => i.selected)
-  if (selected.length === 0) return ""
+  if (selected.length === 0) {
+    return `
+      <div style="margin-bottom:14px;">
+        ${label ? `<div style="font-family:${FONTS.body}; font-size:11px; color:${C.muted}; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">${escapeHtml(label)}</div>` : ""}
+        <div style="font-family:${FONTS.body}; font-size:13px; color:${C.muted}; font-style:italic;">Aucune sélection</div>
+      </div>`
+  }
   return `
     <div style="margin-bottom:14px;">
-      <div style="font-family:${FONTS.body}; font-size:11px; color:${C.muted}; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">${escapeHtml(label)}</div>
+      ${label ? `<div style="font-family:${FONTS.body}; font-size:11px; color:${C.muted}; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">${escapeHtml(label)}</div>` : ""}
       <ul style="margin:0; padding:0 0 0 18px; list-style:disc;">
         ${selected.map((i) => `<li style="font-family:${FONTS.body}; font-size:14px; color:${C.foreground}; line-height:1.7;">${escapeHtml(i.label)}</li>`).join("")}
       </ul>
+    </div>`
+}
+
+/** Tabular view of ALL options with ✓ / — status.
+ *  Use when showing whether each option was selected (gives dentist full picture).
+ *  Highlight: selected options get accent color background. */
+export function checkboxTable(label: string, items: { key: string; label: string; selected: boolean; alert?: boolean }[]): string {
+  if (items.length === 0) return ""
+  const rows = items
+    .map((i) => {
+      const bg = i.selected && i.alert ? C.redBg : i.selected ? "#FAF5EE" : "#FFFFFF"
+      const labelColor = i.selected && i.alert ? C.red : i.selected ? C.foreground : C.muted
+      const labelWeight = i.selected ? "500" : "400"
+      const mark = i.selected
+        ? `<span style="color:${i.alert ? C.red : C.accent}; font-weight:600; font-size:15px;">✓</span>`
+        : `<span style="color:${C.muted}; font-size:14px;">—</span>`
+      return `
+        <tr>
+          <td style="padding:8px 14px; background:${bg}; border-bottom:1px solid ${C.border}; font-family:${FONTS.body}; font-size:14px; color:${labelColor}; font-weight:${labelWeight}; line-height:1.5;">${escapeHtml(i.label)}</td>
+          <td style="padding:8px 14px; background:${bg}; border-bottom:1px solid ${C.border}; width:40px; text-align:center;">${mark}</td>
+        </tr>`
+    })
+    .join("")
+  return `
+    <div style="margin-bottom:14px;">
+      ${label ? `<div style="font-family:${FONTS.body}; font-size:11px; color:${C.muted}; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">${escapeHtml(label)}</div>` : ""}
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid ${C.border}; border-collapse:collapse;">
+        ${rows}
+      </table>
+    </div>`
+}
+
+/** Symptoms / Yes-No questions in tabular format.
+ *  Shows each question with its answer (Oui / Non / —) and visual emphasis. */
+export function ynTable(label: string, items: { label: string; value: string; alertOnYes?: boolean }[]): string {
+  if (items.length === 0) return ""
+  const rows = items
+    .map((i) => {
+      const isYes = i.value === "yes" || i.value === "oui"
+      const isNo = i.value === "no" || i.value === "non"
+      const alert = isYes && i.alertOnYes
+      const bg = alert ? C.redBg : isYes ? "#FAF5EE" : "#FFFFFF"
+      const labelColor = alert ? C.red : C.foreground
+      const labelWeight = alert ? "600" : isYes ? "500" : "400"
+      const statusText = isYes ? "Oui" : isNo ? "Non" : "—"
+      const statusColor = alert ? C.red : isYes ? C.accent : isNo ? C.muted : C.muted
+      const statusWeight = alert ? "700" : isYes ? "600" : "400"
+      return `
+        <tr>
+          <td style="padding:10px 14px; background:${bg}; border-bottom:1px solid ${C.border}; font-family:${FONTS.body}; font-size:14px; color:${labelColor}; font-weight:${labelWeight}; line-height:1.5;">${escapeHtml(i.label)}${alert ? ' <span style="display:inline-block; margin-left:6px; padding:1px 6px; background:'+C.red+'; color:#FFFFFF; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; vertical-align:middle;">Alerte</span>' : ""}</td>
+          <td style="padding:10px 14px; background:${bg}; border-bottom:1px solid ${C.border}; width:60px; text-align:center; font-family:${FONTS.body}; font-size:14px; color:${statusColor}; font-weight:${statusWeight};">${statusText}</td>
+        </tr>`
+    })
+    .join("")
+  return `
+    <div style="margin-bottom:14px;">
+      ${label ? `<div style="font-family:${FONTS.body}; font-size:11px; color:${C.muted}; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">${escapeHtml(label)}</div>` : ""}
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid ${C.border}; border-collapse:collapse;">
+        ${rows}
+      </table>
     </div>`
 }
 

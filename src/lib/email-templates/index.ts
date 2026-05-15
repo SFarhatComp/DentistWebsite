@@ -10,7 +10,7 @@
  * - replyTo: patient email when relevant (for direct reply)
  */
 
-import { baseLayout, section, row, longText, checkboxList, alertBox, heading, subtitle, formatDate } from "./base"
+import { baseLayout, section, row, longText, checkboxList, checkboxTable, ynTable, alertBox, heading, subtitle, formatDate } from "./base"
 
 export interface EmailTemplate {
   html: string
@@ -43,7 +43,15 @@ function getString(data: Record<string, unknown>, key: string): string {
 
 function isChecked(data: Record<string, unknown>, key: string): boolean {
   const v = data[key]
-  return v === "1" || v === "true" || v === "on"
+  if (v === undefined || v === null || v === "" || v === false || v === 0) return false
+  // Accept all common truthy representations: "1", 1, "true", true, "on", "yes", "oui"
+  return Boolean(v)
+}
+
+function getYn(data: Record<string, unknown>, key: string): string {
+  const v = data[key]
+  if (v === undefined || v === null) return ""
+  return String(v).toLowerCase()
 }
 
 /* -------------------------------------------------------------------------- */
@@ -77,11 +85,11 @@ function renderContact(payload: NetlifyPayload): EmailTemplate {
       ${row("Nom", name)}
       ${row("Courriel", email)}
       ${row("Téléphone", phone)}
-    `)}
+    `, { number: "01" })}
 
-    ${section("Sujet", row("Catégorie", subjectLabel))}
+    ${section("Sujet", row("Catégorie", subjectLabel), { number: "02" })}
 
-    ${section("Message", longText("", message))}
+    ${section("Message", `<div style="font-family:Inter, sans-serif; font-size:14px; color:#1A1717; line-height:1.6; white-space:pre-wrap;">${(message || "").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>`, { number: "03" })}
   `
 
   return {
@@ -206,25 +214,25 @@ function renderAppointment(payload: NetlifyPayload): EmailTemplate {
       ${row("Téléphone", phone)}
       ${row("Courriel", email)}
       ${row("Langue préférée", langueLabel)}
-    `)}
+    `, { number: "01" })}
 
     ${section("Demande", `
       ${row("Type de demande", typeLabel, { highlight: isUrgent })}
       ${checkboxList("Motifs secondaires", motifsList.map((m) => ({ ...m, selected: isChecked(d, m.key) })))}
       ${longText("Message du patient", message)}
-    `)}
+    `, { number: "02", accent: isUrgent ? "red" : "default" })}
 
     ${section("Disponibilités", `
-      ${checkboxList("Journées", joursList.map((j) => ({ ...j, selected: isChecked(d, j.key) })))}
-      ${checkboxList("Moments", momentsList.map((m) => ({ ...m, selected: isChecked(d, m.key) })))}
+      ${checkboxList("Journées préférées", joursList.map((j) => ({ ...j, selected: isChecked(d, j.key) })))}
+      ${checkboxList("Moments préférés", momentsList.map((m) => ({ ...m, selected: isChecked(d, m.key) })))}
       ${checkboxList("Modes de contact préférés", contactList.map((c) => ({ ...c, selected: isChecked(d, c.key) })))}
-    `)}
+    `, { number: "03" })}
 
-    ${conditionsCount > 0 ? section(`Profil médical (${conditionsCount} condition${conditionsCount > 1 ? "s" : ""})`, `
-      ${checkboxList("Conditions déclarées", conditionsList.map((c) => ({ ...c, selected: isChecked(d, c.key) })))}
+    ${conditionsCount > 0 ? section(`Profil médical — ${conditionsCount} condition${conditionsCount > 1 ? "s" : ""} déclarée${conditionsCount > 1 ? "s" : ""}`, `
+      ${checkboxTable("", conditionsList.map((c) => ({ ...c, selected: isChecked(d, c.key) })))}
       ${longText("Détails allergies", getString(d, "allergies_details"))}
       ${longText("Autre condition", getString(d, "other_condition_details"))}
-    `) : ""}
+    `, { number: "04", accent: "red" }) : ""}
 
     <div style="background:#FAF7F0; padding:14px 18px; margin-top:24px; font-family:Inter, sans-serif; font-size:12px; color:#8C837A;">
       Pour répondre directement au patient, cliquez sur Répondre dans votre messagerie — le champ <strong>Reply-To</strong> contient ${email || "(aucun courriel fourni — utilisez le téléphone)"}.
@@ -258,40 +266,53 @@ function renderEmergency(payload: NetlifyPayload): EmailTemplate {
   const symptomDuration = getString(d, "symptomDuration")
 
   const typesList = [
-    { key: "type_douleur", label: "Douleur intense" },
-    { key: "type_enflure", label: "Enflure" },
-    { key: "type_abces", label: "Abcès" },
+    { key: "type_douleur", label: "Douleur intense", alert: true },
+    { key: "type_enflure", label: "Enflure", alert: true },
+    { key: "type_abces", label: "Abcès", alert: true },
     { key: "type_fracture", label: "Dent cassée" },
-    { key: "type_trauma", label: "Traumatisme" },
-    { key: "type_saignement", label: "Saignement" },
+    { key: "type_trauma", label: "Traumatisme", alert: true },
+    { key: "type_saignement", label: "Saignement", alert: true },
     { key: "type_couronne", label: "Perte d'une couronne" },
     { key: "type_restauration", label: "Perte d'une restauration" },
-    { key: "type_infection", label: "Infection suspectée" },
+    { key: "type_infection", label: "Infection suspectée", alert: true },
     { key: "type_autre", label: "Autre" },
   ]
 
-  const critical = [
-    { key: "sym_breathe", label: "Difficulté à respirer", value: getString(d, "sym_breathe") },
-    { key: "sym_swallow", label: "Difficulté à avaler", value: getString(d, "sym_swallow") },
-    { key: "sym_swelling", label: "Enflure importante", value: getString(d, "sym_swelling") },
-    { key: "sym_fever", label: "Fièvre", value: getString(d, "sym_fever") },
-    { key: "sym_night", label: "Douleur qui réveille la nuit", value: getString(d, "sym_night") },
+  const symptoms = [
+    { key: "sym_breathe", label: "Difficulté à respirer", alertOnYes: true },
+    { key: "sym_swallow", label: "Difficulté à avaler", alertOnYes: true },
+    { key: "sym_swelling", label: "Enflure importante", alertOnYes: true },
+    { key: "sym_fever", label: "Fièvre", alertOnYes: true },
+    { key: "sym_night", label: "Douleur qui réveille la nuit", alertOnYes: false },
   ]
-  const criticalAlerts = critical.filter((s) => s.value === "yes")
+
+  // Symptômes flagged "Oui" with alertOnYes = critique
+  const criticalSymptoms = symptoms.filter((s) => {
+    const v = getYn(d, s.key)
+    return (v === "yes" || v === "oui") && s.alertOnYes
+  })
+
+  // Type d'urgence cochés et alerte
+  const alertingTypes = typesList.filter((t) => isChecked(d, t.key) && t.alert)
+
+  const showCriticalBanner = criticalSymptoms.length > 0 || alertingTypes.length > 0
 
   const body = `
     ${alertBox("⚠ DEMANDE D'URGENCE DENTAIRE — Action rapide requise")}
     ${heading("Urgence dentaire")}
     ${subtitle(`Reçue le ${formatDate(payload.created_at || new Date().toISOString())}`)}
 
-    ${criticalAlerts.length > 0 ? `
-      <div style="background:#FEF2F2; border:2px solid #B91C1C; padding:18px; margin:0 0 24px 0;">
-        <div style="font-family:Inter; font-size:12px; color:#B91C1C; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px; font-weight:600;">Symptômes critiques signalés</div>
+    ${showCriticalBanner ? `
+      <div style="background:#FEF2F2; border:2px solid #B91C1C; padding:18px; margin:0 0 32px 0;">
+        <div style="font-family:Inter; font-size:11px; color:#B91C1C; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:10px; font-weight:700;">⚠ Signaux d'alerte</div>
         <ul style="margin:0; padding:0 0 0 20px; color:#B91C1C; font-family:Inter; font-size:14px; line-height:1.6; font-weight:500;">
-          ${criticalAlerts.map((s) => `<li>${s.label}</li>`).join("")}
+          ${[
+            ...alertingTypes.map((t) => `<li>${t.label}</li>`),
+            ...criticalSymptoms.map((s) => `<li>${s.label}</li>`),
+          ].join("")}
         </ul>
-        <div style="font-family:Inter; font-size:12px; color:#B91C1C; margin-top:10px; font-style:italic;">
-          Si signes vitaux compromis → patient redirigé vers services d'urgence (911) ou hôpital.
+        <div style="font-family:Inter; font-size:12px; color:#B91C1C; margin-top:12px; font-style:italic; line-height:1.5;">
+          Si signes vitaux compromis (difficulté respiratoire, enflure du cou) → diriger le patient vers les services d'urgence (911) ou l'hôpital.
         </div>
       </div>
     ` : ""}
@@ -301,18 +322,28 @@ function renderEmergency(payload: NetlifyPayload): EmailTemplate {
       ${row("Téléphone", phone, { highlight: true })}
       ${row("Courriel", email)}
       ${row("Date de naissance", dob)}
-    `)}
+    `, { number: "01" })}
 
-    ${section("Type d'urgence", checkboxList("", typesList.map((t) => ({ ...t, selected: isChecked(d, t.key) }))))}
+    ${section("Type d'urgence",
+      checkboxTable("", typesList.map((t) => ({ ...t, selected: isChecked(d, t.key) }))),
+      { number: "02", accent: alertingTypes.length > 0 ? "red" : "default" }
+    )}
 
-    ${section("Symptômes", `
-      ${critical.map((c) => row(c.label, c.value === "yes" ? "Oui" : c.value === "no" ? "Non" : "—", { highlight: c.value === "yes" })).join("")}
-      ${row("Depuis combien de temps", symptomDuration)}
-    `)}
+    ${section("Symptômes",
+      ynTable("",
+        symptoms.map((s) => ({
+          label: s.label,
+          value: getYn(d, s.key),
+          alertOnYes: s.alertOnYes,
+        }))
+      ) + (symptomDuration ? row("Depuis combien de temps", symptomDuration) : ""),
+      { number: "03", accent: criticalSymptoms.length > 0 ? "red" : "default" }
+    )}
 
-    <div style="background:#FEF2F2; padding:16px 20px; margin-top:24px; border-left:4px solid #B91C1C;">
-      <div style="font-family:Inter; font-size:13px; color:#1A1717; line-height:1.6;">
-        <strong>Action recommandée :</strong> Appeler le patient au <a href="tel:${phone}" style="color:#B91C1C; text-decoration:underline;">${phone || "[numéro manquant]"}</a> dès que possible.
+    <div style="background:#FEF2F2; padding:18px 22px; margin-top:32px; border-left:4px solid #B91C1C;">
+      <div style="font-family:Inter; font-size:11px; color:#B91C1C; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:6px; font-weight:700;">Action recommandée</div>
+      <div style="font-family:Inter; font-size:14px; color:#1A1717; line-height:1.6;">
+        Appeler le patient au <a href="tel:${phone}" style="color:#B91C1C; text-decoration:underline; font-weight:600;">${phone || "[numéro manquant]"}</a> dès que possible.
       </div>
     </div>
   `
@@ -402,15 +433,24 @@ function renderPartnerOnboarding(payload: NetlifyPayload): EmailTemplate {
       ${row("Adresse", address)}
       ${row("Téléphone", phone)}
       ${row("Courriel", email)}
-    `)}
+    `, { number: "01" })}
 
-    ${section("Collaboration recherchée", checkboxList("", collabList.map((c) => ({ ...c, selected: isChecked(d, c.key) }))))}
+    ${section("Collaboration recherchée",
+      checkboxTable("", collabList.map((c) => ({ ...c, selected: isChecked(d, c.key) }))),
+      { number: "02" }
+    )}
 
-    ${section("Services d'intérêt", checkboxList("", servicesList.map((s) => ({ ...s, selected: isChecked(d, s.key) }))))}
+    ${section("Services d'intérêt",
+      checkboxTable("", servicesList.map((s) => ({ ...s, selected: isChecked(d, s.key) }))),
+      { number: "03" }
+    )}
 
-    ${section("Préférence de contact", checkboxList("", contactPrefs.map((c) => ({ ...c, selected: isChecked(d, c.key) }))))}
+    ${section("Préférence de contact",
+      checkboxList("", contactPrefs.map((c) => ({ ...c, selected: isChecked(d, c.key) }))),
+      { number: "04" }
+    )}
 
-    ${message ? section("Message", longText("", message)) : ""}
+    ${message ? section("Message", `<div style="font-family:Inter, sans-serif; font-size:14px; color:#1A1717; line-height:1.6; white-space:pre-wrap;">${(message || "").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>`, { number: "05" }) : ""}
   `
 
   return {
@@ -487,19 +527,23 @@ function renderLabPrescription(payload: NetlifyPayload): EmailTemplate {
       ${row("Clinique", clinic)}
       ${row("Téléphone", phone)}
       ${row("Courriel", email)}
-    `)}
+    `, { number: "01" })}
 
-    ${section("Patient", row("Nom ou code", patient))}
+    ${section("Patient", row("Nom ou code", patient), { number: "02" })}
+
+    ${section("Type(s) de cas",
+      checkboxTable("", typesList.map((t) => ({ ...t, selected: isChecked(d, t.key) }))),
+      { number: "03" }
+    )}
 
     ${section("Détails du cas", `
-      ${checkboxList("Type(s) de cas", typesList.map((t) => ({ ...t, selected: isChecked(d, t.key) })))}
       ${row("Dent(s) concernée(s)", teeth)}
       ${row("Matériau demandé", materialLabel)}
       ${row("Teinte", shade)}
       ${row("Date souhaitée", date)}
-    `)}
+    `, { number: "04" })}
 
-    ${instructions ? section("Instructions cliniques", longText("", instructions)) : ""}
+    ${instructions ? section("Instructions cliniques", `<div style="font-family:Inter, sans-serif; font-size:14px; color:#1A1717; line-height:1.6; white-space:pre-wrap;">${(instructions || "").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>`, { number: "05" }) : ""}
   `
 
   return {
@@ -591,7 +635,7 @@ function renderReferredCase(payload: NetlifyPayload): EmailTemplate {
       ${row("Clinique", clinic)}
       ${row("Téléphone clinique", clinicPhone)}
       ${row("Courriel", refEmail)}
-    `)}
+    `, { number: "01" })}
 
     ${section("Patient référé", `
       ${row("Nom complet", patientName)}
@@ -599,7 +643,7 @@ function renderReferredCase(payload: NetlifyPayload): EmailTemplate {
       ${row("Téléphone", patientPhone, { highlight: true })}
       ${row("Courriel", patientEmail)}
       ${row("Langue préférée", langLabel)}
-    `)}
+    `, { number: "02" })}
 
     ${section("Référence", `
       ${row("Motif principal", reasonLabel, { highlight: isUrgent })}
@@ -608,7 +652,7 @@ function renderReferredCase(payload: NetlifyPayload): EmailTemplate {
       ${longText("Résumé clinique", summary)}
       ${longText("Traitements déjà réalisés", previous)}
       ${checkboxList("Documents transmis", docsList.map((doc) => ({ ...doc, selected: isChecked(d, doc.key) })))}
-    `)}
+    `, { number: "03", accent: isUrgent ? "red" : "default" })}
   `
 
   return {
@@ -647,13 +691,13 @@ function renderLabProfessional(payload: NetlifyPayload): EmailTemplate {
       ${row("Clinique", clinic)}
       ${row("Téléphone", phone)}
       ${row("Courriel", email)}
-    `)}
+    `, { number: "01" })}
 
     ${section("Cas", `
       ${row("Type", caseType)}
       ${row("Matériau", material)}
       ${longText("Commentaires", comments)}
-    `)}
+    `, { number: "02" })}
 
     <div style="background:#FAF7F0; padding:12px 16px; margin-top:20px; font-family:Inter; font-size:11px; color:#8C837A;">
       Note : ce formulaire (lab-professional) est conservé pour rétrocompatibilité. Les nouvelles demandes utilisent les formulaires séparés Partenaires / Prescription / Référence clinique.
