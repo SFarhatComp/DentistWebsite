@@ -1,19 +1,17 @@
 import type { Metadata } from "next"
 import { HeroSection } from "@/components/home/hero-section"
 import { ManifestoSection } from "@/components/home/manifesto-section"
-import { DifferenceSection } from "@/components/home/difference-section"
 import { PiliersSection } from "@/components/home/piliers-section"
-import { ParcoursSection } from "@/components/home/parcours-section"
-import { ServicesPreviewSection } from "@/components/home/services-preview-section"
-import { LaboratoireTeaserSection } from "@/components/home/laboratoire-teaser-section"
-import { CtaSection } from "@/components/home/cta-section"
+import { EvaluationCompleteSection } from "@/components/home/evaluation-complete-section"
+import { PortfolioPreviewSection } from "@/components/home/portfolio-preview-section"
+import { StudioPreviewSection } from "@/components/home/studio-preview-section"
 import { CoordonneesSection } from "@/components/home/coordonnees-section"
 import type { Locale } from "@/types"
 
 export const metadata: Metadata = {
   title: { absolute: "Studio Dentaire De Facto — Dentiste Ahuntsic, Montréal" },
   description:
-    "Studio dentaire à Ahuntsic, Montréal. Dentisterie réfléchie, examen complet, plan de traitement par phases et laboratoire intégré. Comprendre avant de décider.",
+    "Studio dentaire à Ahuntsic, Montréal. Une approche fondée sur le temps, la clarté, la justesse et la continuité. Comprendre avant d'intervenir.",
 }
 
 export default function HomePage({ params }: { params: { lang: string } }) {
@@ -22,12 +20,10 @@ export default function HomePage({ params }: { params: { lang: string } }) {
     <>
       <HeroSection lang={lang} />
       <ManifestoSection lang={lang} />
-      <DifferenceSection lang={lang} />
       <PiliersSection lang={lang} />
-      <ParcoursSection lang={lang} />
-      <ServicesPreviewSection lang={lang} />
-      <LaboratoireTeaserSection lang={lang} />
-      <CtaSection lang={lang} />
+      <EvaluationCompleteSection lang={lang} />
+      <PortfolioPreviewSection lang={lang} />
+      <StudioPreviewSection lang={lang} />
       <CoordonneesSection lang={lang} />
     </>
   )
