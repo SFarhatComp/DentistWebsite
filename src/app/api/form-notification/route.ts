@@ -21,9 +21,12 @@ import { renderTemplate, type NetlifyPayload } from "@/lib/email-templates"
 // Force this route to be dynamic (no static optimization)
 export const dynamic = "force-dynamic"
 
-// Destination email — eventually move to env var when Google Workspace is set up
-const DESTINATION_EMAIL = process.env.NOTIFICATION_EMAIL || "defacto@gmail.com"
+// Sender identity — using verified subdomain on Resend
 const FROM_EMAIL = process.env.NOTIFICATION_FROM || "Studio De Facto <notifications@studiodefacto.ca>"
+
+// Each template defines its own `to` address (e.g. contact@studiodefacto.ca,
+// rendezvous@studiodefacto.ca, urgence@studiodefacto.ca, laboratoire@studiodefacto.ca).
+// Cloudflare Email Routing then forwards these to the dentist's real Gmail.
 
 export async function POST(request: Request) {
   // Quick sanity check on env
@@ -61,7 +64,7 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey)
     const { data, error } = await resend.emails.send({
       from: FROM_EMAIL,
-      to: DESTINATION_EMAIL,
+      to: template.to,
       subject: template.subject,
       html: template.html,
       replyTo: template.replyTo,

@@ -16,6 +16,9 @@ export interface EmailTemplate {
   html: string
   subject: string
   replyTo?: string
+  /** Destination address — routed via Cloudflare Email Routing to dentist's Gmail.
+   *  Using per-form addresses enables Gmail filter rules / labels on the receiving end. */
+  to: string
 }
 
 export interface NetlifyPayload {
@@ -82,6 +85,7 @@ function renderContact(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: "contact@studiodefacto.ca",
     subject: `[Contact] ${name || "Nouvelle demande"}`,
     html: baseLayout({ preheader: `${name} — ${subjectLabel}`, brandLabel: "Demande de contact", body }),
     replyTo: email,
@@ -228,6 +232,7 @@ function renderAppointment(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: isUrgent ? "urgence@studiodefacto.ca" : "rendezvous@studiodefacto.ca",
     subject: `${isUrgent ? "⚠ " : ""}[Rendez-vous] ${firstName} ${lastName} — ${typeLabel}`,
     html: baseLayout({
       preheader: `${firstName} ${lastName} — ${typeLabel}`,
@@ -313,6 +318,7 @@ function renderEmergency(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: "urgence@studiodefacto.ca",
     subject: `⚠ URGENCE — ${firstName} ${lastName}`,
     html: baseLayout({
       preheader: `URGENCE — ${firstName} ${lastName}`,
@@ -408,6 +414,7 @@ function renderPartnerOnboarding(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: "laboratoire@studiodefacto.ca",
     subject: `[Partenariat pro] ${name || "Nouvelle demande"} — ${clinic}`,
     html: baseLayout({
       preheader: `${name} — ${clinic}`,
@@ -496,6 +503,7 @@ function renderLabPrescription(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: "laboratoire@studiodefacto.ca",
     subject: `[Prescription lab] ${patient || "Nouveau cas"} — ${clinic}`,
     html: baseLayout({
       preheader: `Prescription de ${professional}`,
@@ -604,6 +612,7 @@ function renderReferredCase(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: "laboratoire@studiodefacto.ca",
     subject: `${isUrgent ? "⚠ " : ""}[Référence] ${patientName} — ${reasonLabel}`,
     html: baseLayout({
       preheader: `Référence de ${refProf} — ${patientName}`,
@@ -652,6 +661,7 @@ function renderLabProfessional(payload: NetlifyPayload): EmailTemplate {
   `
 
   return {
+    to: "laboratoire@studiodefacto.ca",
     subject: `[Labo pro] ${name || "Demande"}`,
     html: baseLayout({
       preheader: `${name} — ${clinic}`,
