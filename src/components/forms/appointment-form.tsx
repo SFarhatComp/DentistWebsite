@@ -1,91 +1,108 @@
 "use client"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, RadioField, FileField, FormSection, HoneypotField } from "./fields"
+import { Field, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
 import { ConsentGroup } from "./consent-group"
 import type { Locale } from "@/types"
 
+// Type de demande principale (cahier §20A.3)
 const TYPES_DEMANDE = [
-  { v: "premiere_visite", l: "Première visite / examen complet" },
-  { v: "nettoyage", l: "Nettoyage" },
-  { v: "urgence", l: "Urgence" },
-  { v: "consultation_specifique", l: "Consultation spécifique" },
-  { v: "laboratoire_teinte", l: "Laboratoire / prise de teinte" },
-  { v: "suivi_existant", l: "Suivi existant" },
+  { value: "premiere_visite", label: "Première visite / examen complet" },
+  { value: "nettoyage", label: "Nettoyage et suivi" },
+  { value: "consultation_ciblee", label: "Consultation ciblée" },
+  { value: "urgence", label: "Urgence dentaire" },
+  { value: "douleur", label: "Douleur" },
+  { value: "dent_cassee", label: "Dent cassée ou restauration fracturée" },
+  { value: "esthetique", label: "Esthétique" },
+  { value: "orthodontie", label: "Orthodontie / aligneurs" },
+  { value: "implant_couronne", label: "Implant / couronne / prothèse" },
+  { value: "laboratoire", label: "Laboratoire ou demande professionnelle" },
+  { value: "autre", label: "Autre" },
+]
+
+// Motifs secondaires (cahier §20A.4)
+const MOTIFS_SECONDAIRES = [
+  { v: "douleur", l: "Douleur" },
+  { v: "sensibilite", l: "Sensibilité" },
+  { v: "saignement_gencives", l: "Saignement des gencives" },
+  { v: "mauvaise_haleine", l: "Mauvaise haleine" },
+  { v: "dent_mobile", l: "Dent mobile" },
+  { v: "fracture", l: "Fracture" },
+  { v: "usure", l: "Usure dentaire" },
+  { v: "serrement_grincement", l: "Serrement ou grincement" },
+  { v: "esthetique", l: "Préoccupation esthétique" },
+  { v: "deuxieme_avis", l: "Deuxième avis" },
+  { v: "suivi_traitement", l: "Suivi de traitement existant" },
   { v: "autre", l: "Autre" },
 ]
 
-const REASONS = [
-  { v: "examen", l: "Examen complet / nouveau patient" },
-  { v: "nettoyage", l: "Nettoyage / hygiène" },
-  { v: "douleur", l: "Douleur dentaire" },
-  { v: "urgence", l: "Urgence" },
-  { v: "fracture", l: "Dent cassée" },
-  { v: "esthetique", l: "Esthétique dentaire" },
-  { v: "blanchiment", l: "Blanchiment" },
-  { v: "composite", l: "Composite / restauration" },
-  { v: "couronne", l: "Couronne" },
-  { v: "implant", l: "Implant" },
-  { v: "aligneurs", l: "Aligneurs orthodontiques" },
-  { v: "gencives", l: "Gencives / parodontie" },
-  { v: "canal", l: "Traitement de canal" },
-  { v: "discussion_plan", l: "Discussion d'un plan de traitement existant" },
-  { v: "autre", l: "Autre" },
+// Langue préférée (cahier §20A — listes déroulantes)
+const LANGUES = [
+  { value: "francais", label: "Français" },
+  { value: "anglais", label: "Anglais" },
+  { value: "francais_anglais", label: "Français ou anglais" },
+  { value: "autre", label: "Autre" },
 ]
 
-const URGENCY_LEVELS = [
-  { v: "leger", l: "Douleur légère" },
-  { v: "modere", l: "Douleur modérée" },
-  { v: "intense", l: "Douleur intense" },
-  { v: "enflure", l: "Enflure" },
-  { v: "saignement", l: "Saignement" },
-  { v: "trauma", l: "Traumatisme" },
-  { v: "aucun", l: "Aucun symptôme urgent" },
-  { v: "planifier", l: "Je souhaite simplement planifier une visite" },
-]
-
-const SYMPTOM_DURATIONS = [
-  { value: "today", label: "Aujourd'hui" },
-  { value: "days", label: "Quelques jours" },
-  { value: "weeks", label: "Quelques semaines" },
-  { value: "months", label: "Plusieurs mois" },
-  { value: "unknown", label: "Je ne sais pas" },
-]
-
-const AVAILABILITY = [
-  { v: "lun-am", l: "Lundi matin" },
-  { v: "lun-pm", l: "Lundi après-midi" },
-  { v: "mar-am", l: "Mardi matin" },
-  { v: "mar-pm", l: "Mardi après-midi" },
-  { v: "mer", l: "Mercredi" },
-  { v: "jeu", l: "Jeudi" },
-  { v: "ven", l: "Vendredi" },
+// Disponibilités - jours
+const JOURS = [
+  { v: "lundi", l: "Lundi" },
+  { v: "mardi", l: "Mardi" },
+  { v: "mercredi", l: "Mercredi" },
+  { v: "jeudi", l: "Jeudi (sur RDV)" },
+  { v: "vendredi", l: "Vendredi (sur RDV)" },
   { v: "asap", l: "Dès que possible" },
   { v: "flexible", l: "Je suis flexible" },
 ]
 
-const INSURANCE_TYPES = [
-  { value: "ramq", label: "RAMQ" },
-  { value: "rcsd", label: "RCSD / assurance fédérale" },
-  { value: "private", label: "Assurance privée" },
-  { value: "other", label: "Autre" },
+const MOMENTS = [
+  { v: "matin", l: "Matin (9 h – 12 h)" },
+  { v: "midi", l: "Midi (12 h – 14 h)" },
+  { v: "apres_midi", l: "Après-midi (14 h – 18 h)" },
+  { v: "flexible", l: "Flexible" },
 ]
 
-const HEALTH_QUESTIONS = [
-  { name: "health_meds", label: "Prenez-vous actuellement des médicaments ?" },
-  { name: "health_allergies", label: "Avez-vous des allergies connues ?" },
-  { name: "health_cardiac", label: "Êtes-vous suivi pour une condition cardiaque ?" },
-  { name: "health_anticoag", label: "Prenez-vous des anticoagulants ?" },
-  { name: "health_diabete", label: "Avez-vous le diabète ?" },
-  { name: "health_pregnant", label: "Êtes-vous enceinte ?" },
-  { name: "health_reaction", label: "Avez-vous déjà eu une réaction importante chez le dentiste ?" },
-  { name: "health_condition", label: "Avez-vous une condition médicale importante que nous devrions connaître ?" },
-  { name: "health_mobility", label: "Avez-vous une mobilité réduite ou besoin d'accommodements ?" },
-  { name: "health_anxiety", label: "Avez-vous beaucoup d'anxiété face aux soins dentaires ?" },
+// Modes de contact
+const CONTACT_MODES = [
+  { v: "telephone", l: "Téléphone" },
+  { v: "courriel", l: "Courriel" },
+  { v: "sms", l: "SMS" },
+]
+
+// Conditions médicales (cahier §22.2) — 25 conditions cochables
+const MEDICAL_CONDITIONS = [
+  { v: "hypertension", l: "Hypertension artérielle" },
+  { v: "cardiaque", l: "Maladie cardiaque" },
+  { v: "souffle_valvulaire", l: "Souffle cardiaque ou problème valvulaire" },
+  { v: "endocardite", l: "Antécédent d'endocardite" },
+  { v: "diabete", l: "Diabète" },
+  { v: "respiratoire", l: "Asthme ou maladie respiratoire" },
+  { v: "apnee_sommeil", l: "Apnée du sommeil" },
+  { v: "foie", l: "Maladie du foie" },
+  { v: "renale", l: "Maladie rénale" },
+  { v: "coagulation", l: "Trouble de coagulation ou saignements prolongés" },
+  { v: "anticoagulants", l: "Anticoagulants ou antiplaquettaires" },
+  { v: "epilepsie", l: "Épilepsie ou convulsions" },
+  { v: "neurologique", l: "Trouble neurologique" },
+  { v: "cancer", l: "Cancer actuel ou antécédent de cancer" },
+  { v: "radiotherapie", l: "Radiothérapie à la tête ou au cou" },
+  { v: "chimiotherapie", l: "Chimiothérapie ou immunothérapie" },
+  { v: "immunosuppression", l: "Immunosuppression" },
+  { v: "osteoporose", l: "Ostéoporose" },
+  { v: "bisphosphonates", l: "Prise actuelle ou passée de bisphosphonates / anti-résorptifs" },
+  { v: "thyroide", l: "Trouble thyroïdien" },
+  { v: "reflux", l: "Reflux gastrique important" },
+  { v: "anxiete", l: "Anxiété importante liée aux soins dentaires" },
+  { v: "grossesse", l: "Grossesse ou allaitement" },
 ]
 
 export function AppointmentForm({ lang }: { lang: Locale }) {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
+  const [typeValue, setTypeValue] = useState("")
+  const [langValue, setLangValue] = useState("")
+  const [showMedicalQuestionnaire, setShowMedicalQuestionnaire] = useState(false)
+  const [hasAllergies, setHasAllergies] = useState(false)
+  const [hasOtherCondition, setHasOtherCondition] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -110,7 +127,8 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
       data-netlify-honeypot="bot-field"
       encType="multipart/form-data"
       onSubmit={handleSubmit}
-      className="space-y-16"
+      className="space-y-12"
+      aria-label="Formulaire de demande de rendez-vous"
     >
       <input type="hidden" name="form-name" value="appointment" />
       <HoneypotField />
@@ -120,137 +138,161 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
           Vous n&apos;avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Une membre de l&apos;équipe vous contactera pour confirmer les prochaines étapes. Si vous avez des radiographies ou documents pertinents, vous pourrez les transmettre plus bas.
+          Une membre de l&apos;équipe vous contactera pour confirmer les prochaines étapes. Pour une urgence sévère, utilisez plutôt le formulaire d&apos;urgence dédié.
         </p>
       </div>
 
-      <FormSection number="01" title="Type de demande">
-        <p className="text-sm text-muted-foreground mb-2">
-          Choisissez ce qui correspond le mieux à votre situation. Pour une urgence sévère, utilisez plutôt le formulaire d&apos;urgence dédié.
-        </p>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {TYPES_DEMANDE.map((t) => (
-            <RadioField
-              key={t.v}
-              name="typeDemande"
-              value={t.v}
-              label={t.l}
-              required
-            />
-          ))}
-        </div>
-      </FormSection>
-
-      <FormSection number="02" title="Informations personnelles">
+      <FormSection number="01" title="Identification">
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="firstName" label="Prénom" required />
           <Field name="lastName" label="Nom" required />
-          <Field name="dob" label="Date de naissance" type="date" required />
-          <Field name="phone" label="Téléphone" type="tel" required />
-          <Field name="email" label="Courriel" type="email" required className="md:col-span-2" />
-          <Field name="address" label="Adresse complète (optionnel)" className="md:col-span-2" />
-        </div>
-        <div>
-          <div className="label-sm text-foreground mb-3">Langue préférée *</div>
-          <div className="flex flex-wrap gap-6">
-            <RadioField name="preferredLanguage" value="fr" label="Français" required defaultChecked />
-            <RadioField name="preferredLanguage" value="en" label="Anglais" required />
-            <RadioField name="preferredLanguage" value="other" label="Autre" required />
-          </div>
         </div>
       </FormSection>
 
-      <FormSection number="03" title="Êtes-vous déjà patient chez nous ?">
-        <div className="flex flex-wrap gap-6">
-          <RadioField name="existingPatient" value="yes" label="Oui" required />
-          <RadioField name="existingPatient" value="no" label="Non" required />
-          <RadioField name="existingPatient" value="unsure" label="Je ne suis pas certain" required />
-        </div>
-      </FormSection>
-
-      <FormSection number="04" title="Raison principale de la demande">
-        <div className="grid gap-3 sm:grid-cols-2">
-          {REASONS.map((r) => (
-            <CheckboxField key={r.v} name={`reason_${r.v}`} value="1" label={r.l} />
-          ))}
-        </div>
-        <TextareaField name="reasonOther" label="Expliquez brièvement votre demande" rows={3} />
-      </FormSection>
-
-      <FormSection number="05" title="Niveau d'urgence">
-        <div className="grid gap-3 sm:grid-cols-2">
-          {URGENCY_LEVELS.map((u) => (
-            <CheckboxField key={u.v} name={`urgency_${u.v}`} value="1" label={u.l} />
-          ))}
-        </div>
-        <SelectField name="symptomDuration" label="Depuis quand le problème est-il présent ?" options={SYMPTOM_DURATIONS} />
-      </FormSection>
-
-      <FormSection number="06" title="Disponibilités">
-        <div className="grid gap-3 sm:grid-cols-2">
-          {AVAILABILITY.map((a) => (
-            <CheckboxField key={a.v} name={`availability_${a.v}`} value="1" label={a.l} />
-          ))}
-        </div>
-        <TextareaField name="availabilityNotes" label="Précisions sur vos disponibilités" rows={3} />
-      </FormSection>
-
-      <FormSection number="07" title="Assurances">
-        <div>
-          <div className="label-sm text-foreground mb-3">Avez-vous une assurance dentaire ?</div>
-          <div className="flex flex-wrap gap-6">
-            <RadioField name="hasInsurance" value="yes" label="Oui" />
-            <RadioField name="hasInsurance" value="no" label="Non" />
-            <RadioField name="hasInsurance" value="unsure" label="Je ne sais pas" />
-          </div>
-        </div>
-        <SelectField name="insuranceType" label="Type d'assurance" options={INSURANCE_TYPES} />
+      <FormSection number="02" title="Coordonnées">
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="insurer" label="Nom de l'assureur (optionnel)" />
-          <Field name="policy" label="Numéro de police (optionnel)" />
-          <Field name="certificate" label="Numéro de certificat (optionnel)" />
-          <Field name="primaryInsuredDob" label="Date de naissance de l'assuré principal (optionnel)" type="date" />
-          <Field name="relationToPrimary" label="Lien avec l'assuré principal (optionnel)" className="md:col-span-2" />
+          <Field name="phone" label="Téléphone" type="tel" required />
+          <Field name="email" label="Courriel" type="email" />
         </div>
-        <p className="text-xs text-muted-foreground leading-relaxed border-l-2 border-accent pl-4">
-          Les informations d&apos;assurance permettent de faciliter la préparation du dossier. Le patient demeure responsable de confirmer sa couverture et d&apos;acquitter tout solde non couvert.
-        </p>
+        <SelectField
+          name="preferredLanguage"
+          label="Langue préférée"
+          options={LANGUES}
+          onChange={(v) => setLangValue(v)}
+        />
+        {langValue === "autre" && (
+          <Field name="preferredLanguageOther" label="Veuillez préciser la langue" required />
+        )}
       </FormSection>
 
-      <FormSection number="08" title="Profil de santé simplifié">
-        <p className="text-sm text-muted-foreground">
-          Ces questions ne remplacent pas le questionnaire médical complet. Elles nous aident à préparer votre visite.
+      <FormSection number="03" title="Type de demande">
+        <SelectField
+          name="typeDemande"
+          label="Type de demande principale"
+          required
+          options={TYPES_DEMANDE}
+          onChange={(v) => setTypeValue(v)}
+        />
+        {typeValue === "autre" && (
+          <Field name="typeDemandeOther" label="Veuillez préciser" required />
+        )}
+        <div>
+          <div className="label-sm text-foreground mb-3">Motifs secondaires (optionnel)</div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {MOTIFS_SECONDAIRES.map((m) => (
+              <CheckboxField key={m.v} name={`motif_${m.v}`} value="1" label={m.l} />
+            ))}
+          </div>
+        </div>
+        <TextareaField name="message" label="Message ou précision (optionnel)" rows={4} />
+      </FormSection>
+
+      <FormSection number="04" title="Disponibilités">
+        <div>
+          <div className="label-sm text-foreground mb-3">Journée(s) préférée(s)</div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {JOURS.map((j) => (
+              <CheckboxField key={j.v} name={`jour_${j.v}`} value="1" label={j.l} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <div className="label-sm text-foreground mb-3">Moment(s) préféré(s)</div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {MOMENTS.map((m) => (
+              <CheckboxField key={m.v} name={`moment_${m.v}`} value="1" label={m.l} />
+            ))}
+          </div>
+        </div>
+      </FormSection>
+
+      <FormSection number="05" title="Mode de contact préféré">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {CONTACT_MODES.map((c) => (
+            <CheckboxField key={c.v} name={`contact_${c.v}`} value="1" label={c.l} />
+          ))}
+        </div>
+      </FormSection>
+
+      {/* Questionnaire médical — section optionnelle dépliable */}
+      <FormSection number="06" title="Profil médical (optionnel)">
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Ces informations sont optionnelles et peuvent être remplies au moment du rendez-vous. Si vous préférez les transmettre à l&apos;avance, cliquez pour développer cette section.
         </p>
-        <div className="space-y-4">
-          {HEALTH_QUESTIONS.map((q) => (
-            <div key={q.name} className="border-t border-border pt-4">
-              <div className="text-sm text-foreground mb-2">{q.label}</div>
-              <div className="flex gap-6">
-                <RadioField name={q.name} value="yes" label="Oui" />
-                <RadioField name={q.name} value="no" label="Non" />
+        <button
+          type="button"
+          onClick={() => setShowMedicalQuestionnaire(!showMedicalQuestionnaire)}
+          className="text-sm text-primary underline hover:no-underline"
+          aria-expanded={showMedicalQuestionnaire}
+          aria-controls="medical-questionnaire"
+        >
+          {showMedicalQuestionnaire ? "Masquer le questionnaire médical" : "Compléter le questionnaire médical maintenant"}
+        </button>
+
+        {showMedicalQuestionnaire && (
+          <div id="medical-questionnaire" className="space-y-6 pt-4 border-t border-border">
+            <div>
+              <p className="text-sm text-foreground mb-4">
+                Avez-vous déjà reçu un diagnostic ou êtes-vous suivi pour l&apos;une des conditions suivantes ? (Cochez toutes celles qui s&apos;appliquent)
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {MEDICAL_CONDITIONS.map((c) => (
+                  <CheckboxField key={c.v} name={`condition_${c.v}`} value="1" label={c.l} />
+                ))}
+                <CheckboxField
+                  name="condition_allergies"
+                  value="1"
+                  label="Allergies connues"
+                  className="col-span-full"
+                />
+                <CheckboxField
+                  name="condition_autre"
+                  value="1"
+                  label="Autre condition médicale"
+                  className="col-span-full"
+                />
+              </div>
+              {/* Champs conditionnels — simplification : on les montre toujours mais discrètement */}
+              <div className="mt-6 space-y-4">
+                <label className="flex items-start gap-3 cursor-pointer text-sm">
+                  <input
+                    type="checkbox"
+                    checked={hasAllergies}
+                    onChange={(e) => setHasAllergies(e.target.checked)}
+                    className="mt-1 h-4 w-4 border-border accent-primary"
+                  />
+                  <span>J&apos;ai des allergies à préciser</span>
+                </label>
+                {hasAllergies && (
+                  <TextareaField
+                    name="allergies_details"
+                    label="Allergies et réactions observées"
+                    rows={3}
+                  />
+                )}
+                <label className="flex items-start gap-3 cursor-pointer text-sm">
+                  <input
+                    type="checkbox"
+                    checked={hasOtherCondition}
+                    onChange={(e) => setHasOtherCondition(e.target.checked)}
+                    className="mt-1 h-4 w-4 border-border accent-primary"
+                  />
+                  <span>J&apos;ai une autre condition médicale à préciser</span>
+                </label>
+                {hasOtherCondition && (
+                  <TextareaField
+                    name="other_condition_details"
+                    label="Veuillez préciser"
+                    rows={3}
+                  />
+                )}
               </div>
             </div>
-          ))}
-        </div>
-        <div className="grid gap-6 mt-6">
-          <TextareaField name="medications" label="Médicaments (optionnel)" rows={2} />
-          <TextareaField name="allergies" label="Allergies (optionnel)" rows={2} />
-          <TextareaField name="conditionDetails" label="Condition médicale pertinente (optionnel)" rows={2} />
-          <TextareaField name="accommodations" label="Comment pouvons-nous faciliter votre visite ? (optionnel)" rows={2} />
-        </div>
+          </div>
+        )}
       </FormSection>
 
-      <FormSection number="09" title="Documents à joindre (optionnel)">
-        <FileField
-          name="documents"
-          label="Photo, radiographie, carte d'assurance, document de référence"
-          accept="image/jpeg,image/png,image/heic,application/pdf,.heic"
-          multiple
-          helpText="JPG, PNG, PDF ou HEIC. Maximum 10 MB par fichier."
-        />
-      </FormSection>
-
-      <FormSection number="10" title="Consentements">
+      <FormSection number="07" title="Consentements">
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
           Chaque consentement est cochable individuellement. Les communications informatives (bloc 05) sont optionnelles et ne sont pas pré-cochées.
         </p>
@@ -258,7 +300,9 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
       </FormSection>
 
       {error && (
-        <p className="text-sm text-accent">Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.</p>
+        <p className="text-sm text-red-600" role="alert">
+          Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.
+        </p>
       )}
 
       <button

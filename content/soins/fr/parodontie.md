@@ -1,7 +1,7 @@
 ---
 slug: parodontie
 title: Parodontie
-shortDescription: Évaluation et traitement des gencives et des tissus de soutien.
+shortDescription: Évaluation des gencives, débridements non chirurgicaux, greffes de tissus mous, greffes osseuses et mise en place chirurgicale implantaire lorsque la situation l'indique.
 heroImage: ""
 whenToConsult:
   - Si vos gencives saignent au brossage

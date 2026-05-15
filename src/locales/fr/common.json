@@ -152,13 +152,16 @@
   "studio": {
     "intro": {
       "label": "Le Studio",
-      "title": "Un studio dentaire pensé comme un lieu de soin, de précision et de confiance",
-      "body": "Studio Dentaire De Facto a été conçu pour offrir une expérience différente : plus calme, plus structurée, plus personnalisée. L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement."
+      "title": "Un studio dentaire conçu pour ralentir, comprendre et mieux planifier.",
+      "body": "Studio Dentaire De Facto a été conçu pour offrir une expérience plus calme, plus structurée et plus personnalisée. L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement."
     },
     "pourquoi": {
       "label": "Pourquoi De Facto existe",
-      "title": "Une volonté simple",
-      "body": "De Facto est né d'une volonté simple : créer un lieu où le temps, l'écoute, la précision et la planification occupent une place centrale. Un studio où la technologie ne remplace pas le jugement clinique, mais le soutient."
+      "title": "La volonté du Dr Hamdani",
+      "body": "Studio Dentaire De Facto est né de la volonté du Dr Hamdani de créer un lieu de soins différent : un environnement calme, précis et apaisant, où le patient peut être écouté, compris et accompagné avec clarté.",
+      "body2": "L'objectif n'est pas seulement de traiter une dent ou de répondre à un symptôme. L'objectif est de prendre le temps de comprendre la situation complète du patient, d'expliquer les observations, de planifier les soins avec discernement et de poser les bonnes priorités.",
+      "body3": "Chez De Facto, le temps, l'écoute, la justesse et la continuité ne sont pas des détails. Ce sont les conditions nécessaires à des soins mieux compris, mieux planifiés et plus durables.",
+      "body4": "Le studio a été conçu pour remettre la relation clinique au centre de l'expérience : un lieu où la technologie soutient le jugement du dentiste sans le remplacer, et où chaque décision est prise avec mesure."
     },
     "philosophie": {
       "label": "Philosophie clinique",
@@ -221,7 +224,7 @@
     "prevention-hygiene": { "title": "Prévention et hygiène", "short": "Nettoyage, évaluation et conseils personnalisés." },
     "dentisterie-operatoire": { "title": "Dentisterie opératoire", "short": "Composites, restaurations et traitements conservateurs." },
     "esthetique-dentaire": { "title": "Esthétique dentaire", "short": "Facettes, blanchiment et harmonisation du sourire." },
-    "parodontie": { "title": "Parodontie", "short": "Débridements non chirurgicaux, maintien parodontal et greffes de tissus mous lorsque la situation l'indique." },
+    "parodontie": { "title": "Parodontie", "short": "Évaluation des gencives, débridements non chirurgicaux, greffes de tissus mous, greffes osseuses et mise en place chirurgicale implantaire lorsque la situation l'indique." },
     "endodontie": { "title": "Endodontie", "short": "Traitement de canal et diagnostic de douleur." },
     "couronnes-ponts": { "title": "Couronnes et ponts", "short": "Restaurations indirectes en céramique et zircone." },
     "implantologie": { "title": "Implantologie", "short": "Couronnes, ponts et prothèses sur implants." },

@@ -18,32 +18,71 @@
       <input name="consent_privacy" />
     </form>
 
-    <form name="appointment" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+    <!-- Cahier final: appointment form simplifié (§20A) -->
+    <form name="appointment" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
-      <input name="typeDemande" />
       <input name="firstName" />
       <input name="lastName" />
-      <input name="dob" />
-      <input name="phone" />
-      <input name="email" />
-      <input name="address" />
+      <input name="phone" type="tel" />
+      <input name="email" type="email" />
       <input name="preferredLanguage" />
-      <input name="existingPatient" />
-      <input name="reasonOther" />
-      <input name="symptomDuration" />
-      <input name="availabilityNotes" />
-      <input name="hasInsurance" />
-      <input name="insuranceType" />
-      <input name="insurer" />
-      <input name="policy" />
-      <input name="certificate" />
-      <input name="primaryInsuredDob" />
-      <input name="relationToPrimary" />
-      <input name="medications" />
-      <input name="allergies" />
-      <input name="conditionDetails" />
-      <input name="accommodations" />
-      <input type="file" name="documents" />
+      <input name="preferredLanguageOther" />
+      <input name="typeDemande" />
+      <input name="typeDemandeOther" />
+      <input name="motif_douleur" />
+      <input name="motif_sensibilite" />
+      <input name="motif_saignement_gencives" />
+      <input name="motif_mauvaise_haleine" />
+      <input name="motif_dent_mobile" />
+      <input name="motif_fracture" />
+      <input name="motif_usure" />
+      <input name="motif_serrement_grincement" />
+      <input name="motif_esthetique" />
+      <input name="motif_deuxieme_avis" />
+      <input name="motif_suivi_traitement" />
+      <input name="motif_autre" />
+      <textarea name="message"></textarea>
+      <input name="jour_lundi" />
+      <input name="jour_mardi" />
+      <input name="jour_mercredi" />
+      <input name="jour_jeudi" />
+      <input name="jour_vendredi" />
+      <input name="jour_asap" />
+      <input name="jour_flexible" />
+      <input name="moment_matin" />
+      <input name="moment_midi" />
+      <input name="moment_apres_midi" />
+      <input name="moment_flexible" />
+      <input name="contact_telephone" />
+      <input name="contact_courriel" />
+      <input name="contact_sms" />
+      <input name="condition_hypertension" />
+      <input name="condition_cardiaque" />
+      <input name="condition_souffle_valvulaire" />
+      <input name="condition_endocardite" />
+      <input name="condition_diabete" />
+      <input name="condition_respiratoire" />
+      <input name="condition_apnee_sommeil" />
+      <input name="condition_foie" />
+      <input name="condition_renale" />
+      <input name="condition_coagulation" />
+      <input name="condition_anticoagulants" />
+      <input name="condition_epilepsie" />
+      <input name="condition_neurologique" />
+      <input name="condition_cancer" />
+      <input name="condition_radiotherapie" />
+      <input name="condition_chimiotherapie" />
+      <input name="condition_immunosuppression" />
+      <input name="condition_osteoporose" />
+      <input name="condition_bisphosphonates" />
+      <input name="condition_thyroide" />
+      <input name="condition_reflux" />
+      <input name="condition_anxiete" />
+      <input name="condition_grossesse" />
+      <input name="condition_allergies" />
+      <input name="condition_autre" />
+      <textarea name="allergies_details"></textarea>
+      <textarea name="other_condition_details"></textarea>
       <input name="consent_contact" />
       <input name="consent_no_replace" />
       <input name="consent_no_confirmation" />
