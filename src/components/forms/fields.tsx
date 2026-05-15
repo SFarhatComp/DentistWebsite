@@ -21,11 +21,18 @@ export function TextareaField({ name, label, required, placeholder, rows = 4, cl
   )
 }
 
-export function SelectField({ name, label, options, required, defaultValue, className }: { name: string; label: string; options: { value: string; label: string }[]; required?: boolean; defaultValue?: string; className?: string }) {
+export function SelectField({ name, label, options, required, defaultValue, className, onChange }: { name: string; label: string; options: { value: string; label: string }[]; required?: boolean; defaultValue?: string; className?: string; onChange?: (value: string) => void }) {
   return (
     <div className={className}>
       <label htmlFor={name} className={labelClass}>{label}{required && " *"}</label>
-      <select id={name} name={name} required={required} defaultValue={defaultValue || ""} className={inputClass}>
+      <select
+        id={name}
+        name={name}
+        required={required}
+        defaultValue={defaultValue || ""}
+        onChange={onChange ? (e) => onChange(e.target.value) : undefined}
+        className={inputClass}
+      >
         <option value="">—</option>
         {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>

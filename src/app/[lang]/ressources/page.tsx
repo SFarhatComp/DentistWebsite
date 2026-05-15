@@ -64,7 +64,7 @@ export default function RessourcesPage({ params }: { params: { lang: string } })
     {
       title: "Référence / Prescription",
       body: "Référer un cas patient ou transmettre une prescription au laboratoire.",
-      href: `/${lang}/laboratoire/reference-prescription`,
+      href: `/${lang}/laboratoire/prescription`,
     },
   ]
 

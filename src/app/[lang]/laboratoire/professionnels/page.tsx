@@ -52,7 +52,7 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
           <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 border border-border">
             <FadeIn className="bg-background">
               <Link
-                href={`/${lang}/laboratoire/partenaire-de-soin`}
+                href={`/${lang}/laboratoire/partenaires`}
                 className="block p-6 md:p-8 hover:bg-surface/40 transition-colors h-full group"
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -67,7 +67,7 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
             </FadeIn>
             <FadeIn className="bg-background">
               <Link
-                href={`/${lang}/laboratoire/reference-prescription`}
+                href={`/${lang}/laboratoire/prescription`}
                 className="block p-6 md:p-8 hover:bg-surface/40 transition-colors h-full group"
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -82,7 +82,7 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
             </FadeIn>
             <FadeIn className="bg-background">
               <Link
-                href={`/${lang}/laboratoire/reference-prescription#cas-refere`}
+                href={`/${lang}/laboratoire/reference-clinique`}
                 className="block p-6 md:p-8 hover:bg-surface/40 transition-colors h-full group"
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -122,7 +122,7 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
                   Nous appeler — 514 863 7805
                 </a>
                 <Link
-                  href={`/${lang}/laboratoire/partenaire-de-soin`}
+                  href={`/${lang}/laboratoire/partenaires`}
                   className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
                 >
                   Remplir le formulaire professionnel

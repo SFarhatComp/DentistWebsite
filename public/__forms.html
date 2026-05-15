@@ -83,55 +83,86 @@
       <input name="consent_privacy" />
     </form>
 
-    <!-- Brouillon 2: Partner onboarding for professional collaboration intake -->
+    <!-- Cahier final: Partner onboarding (volume/fréquence retirés per §18.1) -->
     <form name="partner-onboarding" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
       <input name="dentistName" />
-      <input name="licenseNumber" />
+      <input name="professionalTitle" />
+      <input name="professionalTitleOther" />
       <input name="clinicName" />
       <input name="clinicAddress" />
       <input name="phone" type="tel" />
       <input name="email" type="email" />
-      <input name="preferredContactMode" />
+      <input name="collaboration_lab_regulier" />
+      <input name="collaboration_lab_occasionnel" />
+      <input name="collaboration_cas_esthetiques" />
+      <input name="collaboration_consultation" />
+      <input name="collaboration_reference_clinique" />
+      <input name="collaboration_autre" />
       <input name="service_orthodontie" />
       <input name="service_prostho_amovible" />
       <input name="service_prostho_fixe" />
-      <input name="service_plo" />
+      <input name="service_plaques_occlusales" />
       <input name="service_gouttieres" />
       <input name="service_wax_up" />
       <input name="service_prise_teinte" />
       <input name="service_esthetique" />
       <input name="service_reparations" />
+      <input name="service_emax" />
+      <input name="service_zircone" />
+      <input name="service_impression_3d" />
       <input name="service_autre" />
-      <input name="expectedVolume" />
-      <textarea name="comments"></textarea>
+      <input name="contact_telephone" />
+      <input name="contact_courriel" />
+      <input name="contact_sms" />
+      <input name="contact_en_personne" />
+      <textarea name="message"></textarea>
       <input name="consent_contact" />
       <input name="consent_privacy" />
     </form>
 
-    <!-- Brouillon 2: Referred case form (professional refers a patient case) -->
+    <!-- Cahier final: Referred case (téléphone patient OBLIGATOIRE, langue préférée, motifs secondaires) -->
     <form name="referred-case" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
       <input name="referringProfessionalName" />
       <input name="clinicName" />
-      <input name="phone" type="tel" />
+      <input name="clinicPhone" type="tel" />
       <input name="email" type="email" />
       <input name="patientName" />
       <input name="patientDob" />
-      <textarea name="referralReason"></textarea>
-      <input name="affectedTeeth" />
-      <textarea name="relevantHistory"></textarea>
-      <input name="requestedTreatment" />
+      <input name="patientPhone" type="tel" />
+      <input name="patientEmail" type="email" />
+      <input name="patientLanguage" />
+      <input name="patientLanguageOther" />
+      <input name="referralMainReason" />
+      <input name="referralMainReasonOther" />
+      <input name="motif_secondaire_douleur" />
+      <input name="motif_secondaire_sensibilite" />
+      <input name="motif_secondaire_saignement_gencives" />
+      <input name="motif_secondaire_dent_mobile" />
+      <input name="motif_secondaire_fracture" />
+      <input name="motif_secondaire_usure" />
+      <input name="motif_secondaire_esthetique" />
+      <input name="motif_secondaire_infection" />
+      <input name="motif_secondaire_autre" />
+      <input name="urgency" />
+      <textarea name="clinicalSummary"></textarea>
+      <textarea name="previousTreatments"></textarea>
+      <input name="doc_photos" />
+      <input name="doc_radiographies" />
+      <input name="doc_stl_scan" />
+      <input name="doc_plan_traitement" />
+      <input name="doc_notes_cliniques" />
+      <input name="doc_autre" />
       <input type="file" name="photos" />
       <input type="file" name="radiographs" />
-      <input type="file" name="relevantFiles" />
-      <textarea name="comments"></textarea>
-      <input name="consent_clinical_responsibility" />
+      <input type="file" name="stlFiles" />
+      <input name="consent_patient_informed" />
       <input name="consent_transmission" />
       <input name="consent_privacy" />
     </form>
 
-    <!-- Brouillon 2: Lab prescription form (replaces lab-professional going forward) -->
+    <!-- Cahier final: Lab prescription (type cases à cocher, matériau dropdown, terminologie corrigée) -->
     <form name="lab-prescription" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
       <input name="prescribingProfessional" />
@@ -139,18 +170,35 @@
       <input name="phone" type="tel" />
       <input name="email" type="email" />
       <input name="patientName" />
-      <input name="prescriptionType" />
+      <input name="type_couronne" />
+      <input name="type_couronne_emax_presse" />
+      <input name="type_couronne_emax_usine" />
+      <input name="type_couronne_zircone" />
+      <input name="type_pont" />
+      <input name="type_facette" />
+      <input name="type_incrustation" />
+      <input name="type_prothese_complete" />
+      <input name="type_prothese_partielle" />
+      <input name="type_plaque_occlusale" />
+      <input name="type_gouttiere" />
+      <input name="type_wax_up" />
+      <input name="type_modele" />
+      <input name="type_temporaire" />
+      <input name="type_recimentation_couronne" />
+      <input name="type_recimentation_pont" />
+      <input name="type_recollage_facette" />
+      <input name="type_reparation" />
+      <input name="type_autre" />
       <input name="affectedTeeth" />
       <input name="material" />
+      <input name="materialOther" />
       <input name="shade" />
-      <input name="applianceType" />
-      <input name="desiredDeadline" />
+      <input name="desiredDate" />
+      <textarea name="clinicalInstructions"></textarea>
       <input type="file" name="stlFiles" />
       <input type="file" name="photos" />
       <input type="file" name="radiographs" />
-      <textarea name="clinicalNotes"></textarea>
-      <textarea name="specialRequirements"></textarea>
-      <input name="consent_clarification" />
+      <input name="consent_patient_transmission" />
       <input name="consent_privacy" />
     </form>
   </body>

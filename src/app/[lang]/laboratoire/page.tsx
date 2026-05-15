@@ -10,12 +10,13 @@ import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
 export const metadata: Metadata = {
-  title: "Laboratoire intégré",
+  title: "Laboratoire dentaire intégré",
   description:
-    "Le laboratoire De Facto collabore avec les dentistes et spécialistes, qu'ils exercent ou non au Studio Dentaire De Facto. Communication directe, protocoles rigoureux, technologie et supervision clinique.",
+    "Un laboratoire dentaire intégré, ouvert aux professionnels. Écosystèmes Ivoclar (IPS e.max pressé et usiné) et Formlabs Dental (impression 3D). Communication directe, traçabilité, non-sollicitation.",
 }
 
-const piliers = [
+// 4 piliers du laboratoire
+const piliersLab = [
   {
     num: "01",
     title: "Communication constante",
@@ -38,89 +39,173 @@ const piliers = [
   },
 ]
 
-const servicesOfferts: { category: string; items: string[] }[] = [
+// Services offerts — 12 catégories (cahier §13.1)
+const servicesLab: { category: string; items: string[] }[] = [
   {
     category: "Orthodontie",
     items: [
-      "Gouttière de rétention",
-      "Plaque de Hawley",
+      "Gouttières de rétention",
+      "Plaques de Hawley",
       "Twin Block",
       "HAAS",
       "Hyrax",
-      "Mainteneur d'espace",
-      "Fil lingual",
+      "Mainteneurs d'espace",
+      "Fils linguaux",
     ],
   },
   {
     category: "Prosthodontie amovible",
     items: [
-      "Prothèse complète imprimée",
-      "Prothèse complète usinée",
-      "Prothèse partielle en résine imprimée",
-      "Réparations selon les cas",
-      "Confection express selon les besoins",
+      "Prothèses complètes imprimées ou usinées",
+      "Prothèses partielles en résine imprimée",
     ],
   },
   {
     category: "Prosthodontie fixe",
     items: [
-      "Facettes",
-      "Incrustations",
-      "Couronnes",
-      "Couronnes e.max pressées",
-      "Incrustations e.max pressées",
-      "Facettes e.max pressées",
-      "Couronnes zircone usinées",
-      "Ponts zircone",
-      "Prothèses dentaires fixes sur implant",
-      "Couronnes et ponts temporaires imprimés",
+      "Restaurations unitaires (couronne, incrustation, facette, restauration partielle collée)",
+      "Restaurations plurales (pont conventionnel, pont collé)",
+      "Restaurations implantaires (couronne ou pont sur implants)",
+      "Planification prothétique (wax-up, mock-up, modèle imprimé)",
     ],
   },
   {
-    category: "PLO (prothèses linguales et orthopédiques)",
-    items: ["PLO imprimés", "PLO usinés si applicable", "Ajustements selon prescription"],
+    category: "E.max pressé",
+    items: [
+      "Facettes",
+      "Incrustations",
+      "Couronnes",
+      "Restaurations esthétiques selon indication",
+    ],
   },
   {
-    category: "Esthétique",
+    category: "E.max usiné",
+    items: ["Restaurations CAD/CAM en disilicate de lithium selon indication"],
+  },
+  {
+    category: "Zircone usinée",
+    items: ["Couronnes et ponts en zircone selon indication clinique"],
+  },
+  {
+    category: "Plaques occlusales",
     items: [
-      "Stratification céramique",
-      "Maquillage de cas esthétiques",
-      "Temporaires esthétiques",
-      "Permanents esthétiques",
+      "Plaques occlusales rigides, flexibles ou imprimées selon matériau et indication",
     ],
   },
   {
     category: "Gouttières",
     items: [
       "Gouttières de protection",
-      "Gouttières de blanchiment si applicable",
-      "Gouttières de rétention",
-      "Gouttières selon prescription",
+      "Gouttières de blanchiment",
+      "Autres indications prescrites",
     ],
   },
   {
-    category: "Planification",
+    category: "Wax-up diagnostique",
     items: [
-      "Wax-up diagnostique numérique",
-      "Modèles imprimés",
+      "Wax-up numérique pour planification esthétique, fonctionnelle ou prothétique",
+    ],
+  },
+  {
+    category: "Stratification et maquillage",
+    items: [
+      "Maquillage",
+      "Stratification céramique",
+      "Finition esthétique de cas temporaires ou permanents",
+    ],
+  },
+  {
+    category: "Documentation clinique",
+    items: [
       "Prise de teinte",
       "Photos intraorales et extraorales pour cas complexes et esthétiques",
     ],
   },
 ]
 
+// Comparaison e.max pressé vs usiné (cahier §15.3)
+const emaxComparison = [
+  {
+    aspect: "Procédé",
+    presse: "Restauration pressée à partir d'un lingotin de céramique",
+    cad: "Restauration usinée à partir d'un bloc CAD/CAM pré-cristallisé",
+  },
+  {
+    aspect: "Workflow",
+    presse: "Design numérique ou wax-up, mise en revêtement, pressée, finition",
+    cad: "Design numérique, usinage en état pré-cristallisé, cristallisation, finition",
+  },
+  {
+    aspect: "Force principale",
+    presse: "Grande latitude esthétique et personnalisation avancée",
+    cad: "Reproductibilité numérique, efficacité CAD/CAM, précision du flux",
+  },
+  {
+    aspect: "Indications fréquentes",
+    presse: "Facettes, incrustations, couronnes esthétiques, cas antérieurs exigeants",
+    cad: "Couronnes, incrustations, restaurations unitaires, flux numérique efficace",
+  },
+  {
+    aspect: "Esthétique",
+    presse: "Très grande latitude avec stratification, maquillage ou cut-back",
+    cad: "Très bonne esthétique selon le bloc, la caractérisation et la finition",
+  },
+  {
+    aspect: "Choix clinique",
+    presse: "Cas hautement esthétique ou personnalisé",
+    cad: "Cas numérique, unitaire ou standardisé selon indication",
+  },
+]
+
+// Applications Formlabs (cahier §16.3)
+const formlabsApps = [
+  { app: "Modèles imprimés", use: "Visualiser, planifier et communiquer le cas" },
+  { app: "Modèles orthodontiques", use: "Produire ou vérifier certains appareils" },
+  { app: "Plaques occlusales", use: "Fabriquer certains appareils selon matériau et indication" },
+  { app: "Gouttières", use: "Produire des dispositifs selon prescription" },
+  { app: "Guides", use: "Soutenir certaines étapes cliniques ou techniques" },
+  { app: "Porte-empreintes individuels", use: "Améliorer la précision d'une empreinte conventionnelle lorsque nécessaire" },
+  { app: "Wax-up / mock-up", use: "Aider à la planification esthétique et prothétique" },
+  { app: "Prototypes", use: "Valider une forme, une occlusion ou une séquence avant fabrication définitive" },
+]
+
+// Équipements (cahier §16A.2)
 const equipements = [
-  "Scanner intraoral",
-  "Imprimante 3D",
-  "Usineuse",
-  "Four de pressée",
-  "Four de sintérisation",
-  "Matériaux approuvés par Santé Canada lorsque requis",
-  "Résines dentaires",
-  "Zircone",
-  "Disilicate de lithium",
-  "Céramiques",
-  "Matériaux temporaires",
+  { name: "Scanner intraoral", role: "Capture numérique des arcades et communication clinique-laboratoire" },
+  { name: "Logiciel de conception numérique", role: "Planification et conception des restaurations ou appareils" },
+  { name: "Usinage CAD/CAM", role: "Fabrication de certaines restaurations, modèles ou appareils selon indication" },
+  { name: "Four de pressée", role: "Pressée de certaines restaurations en céramique selon protocole" },
+  { name: "Four de cristallisation / cuisson", role: "Cristallisation, maquillage, glaçage ou finition selon matériau" },
+  { name: "Impression 3D Formlabs Dental", role: "Modèles, guides, gouttières, plaques occlusales, prototypes selon indication" },
+  { name: "Lavage et post-polymérisation", role: "Étapes de post-traitement des pièces imprimées selon les protocoles du fabricant" },
+  { name: "Finition et polissage", role: "Ajustement, finition, caractérisation et contrôle final" },
+  { name: "Documentation photo", role: "Communication de cas, prise de teinte, suivi et contrôle de qualité" },
+]
+
+// Matériaux (cahier §16A.3)
+const materiaux = [
+  { name: "IPS e.max Press", use: "Restaurations pressées en disilicate de lithium selon indication" },
+  { name: "IPS e.max CAD", use: "Restaurations usinées en disilicate de lithium selon indication" },
+  { name: "Zircone", use: "Couronnes, ponts ou restaurations selon indication clinique" },
+  { name: "Résines dentaires imprimables", use: "Modèles, guides, gouttières ou appareils selon indication et matériau" },
+  { name: "Résines pour temporaires", use: "Provisoires ou prototypes selon indication" },
+  { name: "Matériaux pour plaques occlusales", use: "Plaques occlusales selon indication clinique et matériau validé" },
+  { name: "Matériaux de finition", use: "Maquillage, glaçage, polissage et caractérisation selon le cas" },
+]
+
+// Fiche de traçabilité (cahier §16A.4)
+const fichesTracabilite = [
+  { item: "Code du cas", desc: "Identifiant unique" },
+  { item: "Date de réception", desc: "Entrée au laboratoire" },
+  { item: "Professionnel référent", desc: "Dentiste ou clinique ayant transmis le cas" },
+  { item: "Type d'appareil ou restauration", desc: "Couronne, plaque occlusale, modèle, gouttière, etc." },
+  { item: "Matériau utilisé", desc: "Nom commercial et famille" },
+  { item: "Teinte", desc: "Si applicable" },
+  { item: "Fichier numérique", desc: "STL, scan, photo, radiographie" },
+  { item: "Étapes de production", desc: "Réception, conception, fabrication, finition, contrôle, livraison" },
+  { item: "Opérateur", desc: "Initiales du responsable de chaque étape" },
+  { item: "Contrôle qualité", desc: "Vérification finale avant livraison" },
+  { item: "Notes techniques", desc: "Particularités, limites, recommandations" },
 ]
 
 export default function LaboratoirePage({ params }: { params: { lang: string } }) {
@@ -129,9 +214,29 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
     <>
       <PageHero
         label="Laboratoire"
-        title="Laboratoire intégré"
-        subtitle="Le laboratoire De Facto collabore avec les dentistes et spécialistes, qu'ils exercent ou non au Studio Dentaire De Facto."
+        title="Un laboratoire dentaire intégré, ouvert aux professionnels."
       />
+
+      {/* Intro pour professionnels (cahier §12.4) */}
+      <section className="border-b border-border bg-surface/40">
+        <Container>
+          <div className="py-16 md:py-20 max-w-3xl">
+            <FadeIn>
+              <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  Le laboratoire De Facto accompagne les dentistes et spécialistes qui souhaitent collaborer avec une équipe attentive à la communication, à la précision et à la traçabilité.
+                </p>
+                <p>
+                  Notre objectif est de soutenir le travail clinique du professionnel, sans jamais remplacer sa relation avec son patient.
+                </p>
+                <p>
+                  Nous respectons pleinement nos collègues référents. Aucun patient adressé au laboratoire pour un service technique ne sera sollicité pour devenir patient du Studio Dentaire De Facto.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
 
       {/* 2 chemins dès le top */}
       <section className="border-b border-border">
@@ -139,7 +244,7 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
           <div className="py-12 md:py-16 grid gap-px bg-border md:grid-cols-2 border border-border">
             <FadeIn className="bg-background">
               <a
-                href="#patient"
+                href="#philosophie"
                 className="block p-8 md:p-10 hover:bg-surface/40 transition-colors h-full group"
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -156,7 +261,7 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
             </FadeIn>
             <FadeIn className="bg-primary">
               <Link
-                href={`/${lang}/laboratoire/professionnels`}
+                href={`/${lang}/laboratoire/partenaires`}
                 className="block p-8 md:p-10 hover:bg-primary-hover transition-colors h-full group text-primary-foreground"
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -167,13 +272,12 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
                   Je suis un professionnel dentaire
                 </h2>
                 <p className="text-base opacity-80 leading-relaxed mb-6">
-                  Accéder à l&apos;espace professionnels, transmettre une prescription, référer un cas.
+                  Devenir partenaire, transmettre une prescription, référer un cas.
                 </p>
                 <div className="space-y-1.5 text-sm opacity-75">
+                  <div>→ Devenir partenaire de soins</div>
                   <div>→ Transmettre une prescription</div>
-                  <div>→ Référer un cas</div>
-                  <div>→ Demander une prise de teinte</div>
-                  <div>→ Contacter le laboratoire</div>
+                  <div>→ Référer un patient</div>
                 </div>
               </Link>
             </FadeIn>
@@ -181,31 +285,8 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
         </Container>
       </section>
 
-      {/* Engagement de non-sollicitation */}
-      {/* TODO juridique : faire valider cette formulation avant publication finale (Brouillon 2 §7.2) */}
-      <section className="py-16 md:py-20 bg-surface/40 border-b border-border">
-        <Container>
-          <div className="max-w-3xl">
-            <FadeIn>
-              <SectionLabel>Engagement</SectionLabel>
-              <h2 className="font-display text-2xl md:text-3xl leading-[1.15] mb-6">
-                Engagement de non-sollicitation
-              </h2>
-              <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
-                <p>
-                  Nous respectons la relation entre chaque professionnel et sa patientèle. Lorsqu&apos;un patient est référé au laboratoire pour une prise de teinte, une photographie clinique, une réparation ou un service technique, aucune sollicitation clinique ne sera effectuée par le Studio Dentaire De Facto.
-                </p>
-                <p>
-                  Pour formaliser cet engagement, une déclaration de non-inscription au Studio Dentaire De Facto pour une période de trois ans pourra être signée par le patient référé et transmise au professionnel référent.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
-
-      {/* Philosophie */}
-      <section id="patient" className="py-20 md:py-24 scroll-mt-24">
+      {/* Philosophie — La technologie au service de la prédictibilité */}
+      <section id="philosophie" className="py-20 md:py-24 scroll-mt-24">
         <Container>
           <div className="grid gap-12 md:grid-cols-2 items-center max-w-5xl">
             <FadeIn>
@@ -224,17 +305,41 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
         </Container>
       </section>
 
-      {/* 4 piliers */}
+      {/* Engagement de non-sollicitation */}
+      {/* TODO juridique : faire valider cette formulation avant publication finale (cahier §12.5) */}
       <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
+        <Container>
+          <div className="max-w-3xl">
+            <FadeIn>
+              <SectionLabel>Engagement envers les référents</SectionLabel>
+              <h2 className="font-display text-2xl md:text-3xl leading-[1.15] mb-6">
+                Respect de la relation professionnel-patient
+              </h2>
+              <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
+                <p>
+                  Lorsqu&apos;un patient est dirigé vers De Facto pour une prise de teinte, une documentation photographique ou un service lié au laboratoire, il demeure le patient du professionnel référent.
+                </p>
+                <p>
+                  Afin d&apos;éviter toute ambiguïté, De Facto peut fournir une déclaration de non-inscription du patient au Studio Dentaire De Facto pour une période déterminée, lorsque la situation le justifie.
+                </p>
+                <p>
+                  Cette mesure vise à protéger la relation de confiance entre le professionnel référent, son patient et notre laboratoire.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </Container>
+      </section>
+
+      {/* 4 piliers du laboratoire */}
+      <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="max-w-2xl mb-12">
             <SectionLabel>Piliers du laboratoire</SectionLabel>
-            <h2 className="font-display text-3xl md:text-4xl leading-[1.1]">
-              Quatre piliers
-            </h2>
+            <h2 className="font-display text-3xl md:text-4xl leading-[1.1]">Quatre piliers</h2>
           </FadeIn>
           <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4 border border-border">
-            {piliers.map((p) => (
+            {piliersLab.map((p) => (
               <FadeIn key={p.num} className="bg-background">
                 <div className="p-8 md:p-10 h-full">
                   <div className="font-display text-3xl text-accent/40 mb-6">{p.num}</div>
@@ -247,8 +352,8 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
         </Container>
       </section>
 
-      {/* Services offerts */}
-      <section className="py-20 md:py-24">
+      {/* Services offerts — 12 catégories */}
+      <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
         <Container>
           <FadeIn className="max-w-2xl mb-12">
             <SectionLabel>Services</SectionLabel>
@@ -260,8 +365,8 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
             </p>
           </FadeIn>
 
-          <div className="space-y-12 max-w-4xl">
-            {servicesOfferts.map((cat, i) => (
+          <div className="space-y-10 max-w-4xl">
+            {servicesLab.map((cat, i) => (
               <FadeIn key={cat.category}>
                 <NumberedSection number={i + 1} label="Catégorie" title={cat.category}>
                   <ul className="grid gap-2 sm:grid-cols-2">
@@ -279,51 +384,152 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
         </Container>
       </section>
 
-      {/* e.max + zircone highlights */}
-      <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
-        <Container>
-          <div className="grid gap-12 md:grid-cols-2 max-w-5xl">
-            <FadeIn>
-              <SectionLabel>e.max pressé</SectionLabel>
-              <h3 className="font-display text-2xl md:text-3xl mb-4 leading-tight">
-                Précision et esthétique contrôlées
-              </h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Les restaurations e.max pressées peuvent offrir une excellente précision, une esthétique contrôlée et une résistance adaptée à de nombreuses situations cliniques lorsqu&apos;elles sont bien indiquées.
-              </p>
-            </FadeIn>
-            <FadeIn>
-              <SectionLabel>Zircone usinée</SectionLabel>
-              <h3 className="font-display text-2xl md:text-3xl mb-4 leading-tight">
-                Résistance et reproductibilité
-              </h3>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                La zircone usinée permet de produire des restaurations résistantes et reproductibles, particulièrement utiles dans plusieurs situations restauratrices ou prothétiques, selon l&apos;indication clinique.
-              </p>
-            </FadeIn>
-          </div>
-        </Container>
-      </section>
-
-      {/* Traçabilité */}
+      {/* Écosystème Ivoclar / e.max */}
       <section className="py-20 md:py-24">
         <Container>
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mb-12">
             <FadeIn>
-              <SectionLabel>Contrôle qualité</SectionLabel>
-              <h2 className="font-display text-2xl md:text-3xl leading-[1.15] mb-6">
-                Traçabilité et documentation
+              <SectionLabel>Écosystème Ivoclar</SectionLabel>
+              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
+                L&apos;écosystème Ivoclar : précision numérique et céramique éprouvée
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Chaque cas peut être accompagné d&apos;un rapport de traçabilité précisant les matériaux utilisés, les équipements, les limites techniques et les étapes pertinentes de production.
-              </p>
+              <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
+                <p>
+                  Le laboratoire De Facto utilise l&apos;écosystème Ivoclar pour certaines restaurations en céramique, notamment la famille IPS e.max.
+                </p>
+                <p>
+                  Cet écosystème permet de combiner la planification numérique, la sélection rigoureuse des matériaux et des protocoles de laboratoire contrôlés.
+                </p>
+                <p>
+                  Selon le type de restauration, l&apos;indication clinique, l&apos;espace disponible, la couleur du substrat et les objectifs esthétiques, une restauration peut être conçue en e.max usiné ou en e.max pressé.
+                </p>
+                <p>
+                  Le choix n&apos;est pas uniquement technique : il dépend du cas, du niveau d&apos;esthétique recherché, de la précision nécessaire, de la translucidité souhaitée et du protocole de finition.
+                </p>
+              </div>
             </FadeIn>
           </div>
+
+          {/* Tableau e.max pressé vs usiné */}
+          <FadeIn>
+            <div className="border border-border bg-background overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-3 bg-primary/10 border-b border-border">
+                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground">
+                  Aspect
+                </div>
+                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground border-t md:border-t-0 md:border-l border-border">
+                  E.max pressé
+                </div>
+                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground border-t md:border-t-0 md:border-l border-border">
+                  E.max usiné
+                </div>
+              </div>
+              {emaxComparison.map((row, i) => (
+                <div
+                  key={row.aspect}
+                  className={`grid grid-cols-1 md:grid-cols-3 ${i > 0 ? "border-t border-border" : ""}`}
+                >
+                  <div className="p-4 md:p-5 font-medium text-sm text-foreground bg-surface/40">
+                    {row.aspect}
+                  </div>
+                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
+                    {row.presse}
+                  </div>
+                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
+                    {row.cad}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* Texte court résumé (cahier §15.4) */}
+          <FadeIn className="mt-12 max-w-3xl">
+            <div className="border-l-2 border-accent pl-6 space-y-4 text-base text-muted-foreground leading-relaxed">
+              <p>Le laboratoire De Facto utilise l&apos;e.max selon l&apos;indication clinique.</p>
+              <p>
+                L&apos;e.max pressé permet une grande latitude esthétique pour les restaurations personnalisées, notamment dans les zones visibles.
+              </p>
+              <p>
+                L&apos;e.max usiné s&apos;intègre à un flux numérique efficace et précis pour produire certaines restaurations en céramique avec constance.
+              </p>
+              <p>
+                Dans les deux cas, le choix du matériau et du procédé est guidé par la situation clinique, l&apos;esthétique recherchée et les exigences fonctionnelles du cas.
+              </p>
+            </div>
+          </FadeIn>
         </Container>
       </section>
 
-      {/* Équipements et matériaux utilisés */}
+      {/* Écosystème Formlabs Dental */}
       <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
+        <Container>
+          <div className="max-w-3xl mb-12">
+            <FadeIn>
+              <SectionLabel>Écosystème Formlabs Dental</SectionLabel>
+              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
+                Impression 3D dentaire : l&apos;écosystème Formlabs
+              </h2>
+              <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
+                <p>
+                  Le laboratoire De Facto utilise l&apos;écosystème Formlabs Dental pour certaines étapes de production numérique.
+                </p>
+                <p>
+                  L&apos;impression 3D permet de produire rapidement des modèles, guides, gouttières, plaques occlusales et autres appareils selon les indications cliniques et les matériaux validés.
+                </p>
+                <p>
+                  L&apos;intérêt de cet écosystème ne repose pas seulement sur l&apos;imprimante. Il repose sur l&apos;ensemble du flux : conception numérique, choix du matériau, impression, lavage, post-polymérisation, finition, contrôle de qualité et traçabilité.
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Tableau applications Formlabs */}
+          <FadeIn>
+            <div className="border border-border bg-background overflow-hidden max-w-4xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 bg-primary/10 border-b border-border">
+                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground">
+                  Application
+                </div>
+                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground border-t md:border-t-0 md:border-l border-border">
+                  Utilité clinique ou laboratoire
+                </div>
+              </div>
+              {formlabsApps.map((row, i) => (
+                <div
+                  key={row.app}
+                  className={`grid grid-cols-1 md:grid-cols-2 ${i > 0 ? "border-t border-border" : ""}`}
+                >
+                  <div className="p-4 md:p-5 font-medium text-sm text-foreground bg-surface/40">
+                    {row.app}
+                  </div>
+                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
+                    {row.use}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* Texte court résumé (cahier §16.4) */}
+          <FadeIn className="mt-12 max-w-3xl">
+            <div className="border-l-2 border-accent pl-6 space-y-4 text-base text-muted-foreground leading-relaxed">
+              <p>
+                L&apos;impression 3D permet au laboratoire De Facto de produire certains modèles, appareils et outils de planification avec rapidité, précision et traçabilité.
+              </p>
+              <p>
+                L&apos;écosystème Formlabs Dental soutient un flux complet : impression, lavage, post-polymérisation, finition et contrôle qualité.
+              </p>
+              <p>
+                Chaque appareil est réalisé selon l&apos;indication, le matériau approprié et les protocoles du fabricant.
+              </p>
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Équipements et matériaux */}
+      <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="max-w-2xl mb-12">
             <SectionLabel>Équipements et matériaux</SectionLabel>
@@ -331,47 +537,160 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
               Équipements et matériaux utilisés
             </h2>
           </FadeIn>
-          <div className="grid gap-px bg-border sm:grid-cols-2 md:grid-cols-3 border border-border max-w-4xl">
-            {equipements.map((eq, i) => (
-              <FadeIn key={eq} className="bg-background">
-                <div className="p-5 md:p-6 h-full flex items-baseline gap-4">
-                  <span className="font-display text-sm text-accent/70 tabular-nums shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-sm md:text-base text-foreground leading-snug">{eq}</span>
-                </div>
-              </FadeIn>
-            ))}
+
+          <div className="max-w-4xl mb-12">
+            <FadeIn>
+              <h3 className="font-display text-xl text-foreground mb-6">Équipements</h3>
+              <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border">
+                {equipements.map((eq, i) => (
+                  <div key={eq.name} className="bg-background p-5 h-full">
+                    <div className="flex items-baseline gap-3 mb-2">
+                      <span className="font-display text-xs text-accent/70 tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h4 className="font-display text-sm md:text-base text-foreground">{eq.name}</h4>
+                    </div>
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed pl-7">
+                      {eq.role}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
           </div>
+
+          <div className="max-w-4xl">
+            <FadeIn>
+              <h3 className="font-display text-xl text-foreground mb-6">Matériaux</h3>
+              <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border">
+                {materiaux.map((mat, i) => (
+                  <div key={mat.name} className="bg-background p-5 h-full">
+                    <div className="flex items-baseline gap-3 mb-2">
+                      <span className="font-display text-xs text-accent/70 tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h4 className="font-display text-sm md:text-base text-foreground">{mat.name}</h4>
+                    </div>
+                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed pl-7">
+                      {mat.use}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+
+          {/*
+            Sources techniques (interne, non affichées publiquement) :
+            - Ivoclar IPS e.max Press : https://www.ivoclar.com/en_ca/products/metal-free-ceramics/ips-e.max-press-lab
+            - Ivoclar IPS e.max CAD : https://www.ivoclar.com/en_li/products/digital-processes/ips-e.max-cad
+            - Formlabs Form 4B : https://dental.formlabs.com/products/form-4b/
+            - Formlabs Materials : https://dental.formlabs.com/materials/
+          */}
         </Container>
       </section>
 
-      {/* CTA professionnel */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      {/* Contrôle qualité + Fiche de traçabilité */}
+      <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
         <Container>
-          <FadeIn className="max-w-2xl">
-            <div className="label-sm text-accent/80 mb-4">Pour les professionnels</div>
-            <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Espace dédié aux dentistes référents
-            </h2>
-            <p className="text-lg opacity-80 mb-8 leading-relaxed">
-              Prescription numérique, référence de cas, prise de teinte, contact direct. Découvrez l&apos;espace dédié.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href={`/${lang}/laboratoire/professionnels`}
-                className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
-              >
-                Espace professionnels
-              </Link>
-              <Link
-                href={`/${lang}/laboratoire/partenaire-de-soin`}
-                className="inline-flex items-center justify-center border border-primary-foreground/40 hover:border-primary-foreground hover:bg-primary-foreground/5 text-primary-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
-              >
-                Devenir partenaire
-              </Link>
+          <div className="max-w-3xl mb-12">
+            <FadeIn>
+              <SectionLabel>Contrôle qualité</SectionLabel>
+              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
+                Fiche de production et traçabilité
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                Chaque cas peut être accompagné d&apos;un rapport de traçabilité précisant les matériaux utilisés, les équipements, les limites techniques et les étapes pertinentes de production.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Chaque cas de laboratoire est associé à une fiche de production interne qui documente les étapes pertinentes :
+              </p>
+            </FadeIn>
+          </div>
+
+          <FadeIn>
+            <div className="border border-border bg-background overflow-hidden max-w-4xl">
+              {fichesTracabilite.map((row, i) => (
+                <div
+                  key={row.item}
+                  className={`grid grid-cols-1 md:grid-cols-[14rem_1fr] ${i > 0 ? "border-t border-border" : ""}`}
+                >
+                  <div className="p-4 md:p-5 font-medium text-sm text-foreground bg-surface/40 flex items-center gap-3">
+                    <span className="font-display text-xs text-accent/70 tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {row.item}
+                  </div>
+                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
+                    {row.desc}
+                  </div>
+                </div>
+              ))}
             </div>
           </FadeIn>
+        </Container>
+      </section>
+
+      {/* CTA professionnel — 3 boutons distincts */}
+      <section className="py-20 bg-primary text-primary-foreground">
+        <Container>
+          <FadeIn className="max-w-3xl mb-10">
+            <div className="label-sm text-accent/80 mb-4">Pour les professionnels</div>
+            <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
+              Trois parcours dédiés aux dentistes et spécialistes
+            </h2>
+            <p className="text-lg opacity-80 leading-relaxed">
+              Chaque demande professionnelle a son propre formulaire et son propre flux.
+            </p>
+          </FadeIn>
+
+          <div className="grid gap-px bg-primary-foreground/10 md:grid-cols-3">
+            <FadeIn className="bg-primary">
+              <Link
+                href={`/${lang}/laboratoire/partenaires`}
+                className="block p-6 md:p-8 hover:bg-primary-hover transition-colors h-full group"
+              >
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <span className="font-display text-sm text-accent/90 tabular-nums">01</span>
+                  <ArrowUpRight className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                </div>
+                <h3 className="font-display text-lg md:text-xl mb-2">Devenir partenaire</h3>
+                <p className="text-sm opacity-75 leading-relaxed">
+                  Premier contact pour discuter d&apos;une collaboration.
+                </p>
+              </Link>
+            </FadeIn>
+            <FadeIn className="bg-primary">
+              <Link
+                href={`/${lang}/laboratoire/prescription`}
+                className="block p-6 md:p-8 hover:bg-primary-hover transition-colors h-full group"
+              >
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <span className="font-display text-sm text-accent/90 tabular-nums">02</span>
+                  <ArrowUpRight className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                </div>
+                <h3 className="font-display text-lg md:text-xl mb-2">Transmettre une prescription</h3>
+                <p className="text-sm opacity-75 leading-relaxed">
+                  Prescription d&apos;appareil ou de restauration avec fichiers STL.
+                </p>
+              </Link>
+            </FadeIn>
+            <FadeIn className="bg-primary">
+              <Link
+                href={`/${lang}/laboratoire/reference-clinique`}
+                className="block p-6 md:p-8 hover:bg-primary-hover transition-colors h-full group"
+              >
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <span className="font-display text-sm text-accent/90 tabular-nums">03</span>
+                  <ArrowUpRight className="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                </div>
+                <h3 className="font-display text-lg md:text-xl mb-2">Référer un patient</h3>
+                <p className="text-sm opacity-75 leading-relaxed">
+                  Référence clinique pour évaluation ou traitement.
+                </p>
+              </Link>
+            </FadeIn>
+          </div>
         </Container>
       </section>
     </>

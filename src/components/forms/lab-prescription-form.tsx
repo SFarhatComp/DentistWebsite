@@ -4,27 +4,44 @@ import { useState } from "react"
 import { Field, TextareaField, SelectField, CheckboxField, FileField, FormSection, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
-const PRESCRIPTION_TYPES = [
-  { value: "couronne", label: "Couronne" },
-  { value: "couronne_emax", label: "Couronne e.max pressée" },
-  { value: "couronne_zircone", label: "Couronne zircone usinée" },
-  { value: "pont", label: "Pont" },
-  { value: "facette", label: "Facette" },
-  { value: "incrustation", label: "Incrustation / onlay" },
-  { value: "prothese_complete", label: "Prothèse complète" },
-  { value: "prothese_partielle", label: "Prothèse partielle" },
-  { value: "gouttiere", label: "Gouttière" },
-  { value: "wax_up", label: "Wax-up diagnostique" },
-  { value: "modele", label: "Modèle imprimé" },
-  { value: "plo", label: "PLO" },
-  { value: "temporaire", label: "Restauration temporaire" },
-  { value: "reparation", label: "Réparation" },
-  { value: "autre", label: "Autre — voir notes" },
+const TYPES_CAS = [
+  { v: "couronne", l: "Couronne" },
+  { v: "couronne_emax_presse", l: "Couronne e.max pressée" },
+  { v: "couronne_emax_usine", l: "Couronne e.max usinée" },
+  { v: "couronne_zircone", l: "Couronne zircone usinée" },
+  { v: "pont", l: "Pont" },
+  { v: "facette", l: "Facette" },
+  { v: "incrustation", l: "Incrustation / onlay" },
+  { v: "prothese_complete", l: "Prothèse complète" },
+  { v: "prothese_partielle", l: "Prothèse partielle" },
+  { v: "plaque_occlusale", l: "Plaque occlusale" },
+  { v: "gouttiere", l: "Gouttière" },
+  { v: "wax_up", l: "Wax-up diagnostique" },
+  { v: "modele", l: "Modèle imprimé" },
+  { v: "temporaire", l: "Restauration temporaire" },
+  { v: "recimentation_couronne", l: "Recimentation de couronne" },
+  { v: "recimentation_pont", l: "Recimentation de pont" },
+  { v: "recollage_facette", l: "Recollage de facette" },
+  { v: "reparation", l: "Réparation" },
+  { v: "autre", l: "Autre" },
+]
+
+const MATERIAUX = [
+  { value: "zircone", label: "Zircone" },
+  { value: "emax_presse", label: "E.max pressé" },
+  { value: "emax_usine", label: "E.max usiné" },
+  { value: "resine_imprimee", label: "Résine imprimée" },
+  { value: "resine_usinee", label: "Résine usinée" },
+  { value: "pmma", label: "PMMA" },
+  { value: "composite_lab", label: "Composite de laboratoire" },
+  { value: "a_determiner", label: "À déterminer par le laboratoire" },
+  { value: "autre", label: "Autre" },
 ]
 
 export function LabPrescriptionForm({ lang }: { lang: Locale }) {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
+  const [materialValue, setMaterialValue] = useState("")
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -61,7 +78,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         </p>
       </div>
 
-      <FormSection number="01" title="Professionnel prescripteur">
+      <FormSection number="01" title="Professionnel">
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="prescribingProfessional" label="Nom du professionnel" required />
           <Field name="clinicName" label="Clinique" required />
@@ -71,24 +88,48 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
       </FormSection>
 
       <FormSection number="02" title="Patient">
-        <Field name="patientName" label="Nom du patient" required />
+        <Field name="patientName" label="Nom ou code patient" required />
       </FormSection>
 
-      <FormSection number="03" title="Détails de la prescription">
-        <SelectField name="prescriptionType" label="Type de prescription" required options={PRESCRIPTION_TYPES} />
-        <div className="grid gap-6 md:grid-cols-2">
+      <FormSection number="03" title="Détails du cas">
+        <p className="text-sm text-muted-foreground">
+          Cochez le ou les types de cas applicables.
+        </p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {TYPES_CAS.map((t) => (
+            <CheckboxField key={t.v} name={`type_${t.v}`} value="1" label={t.l} />
+          ))}
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 mt-4">
           <Field name="affectedTeeth" label="Dent(s) concernée(s)" />
-          <Field name="material" label="Matériau souhaité" />
+          <SelectField
+            name="material"
+            label="Matériau demandé"
+            options={MATERIAUX}
+            onChange={(v) => setMaterialValue(v)}
+          />
+        </div>
+        {materialValue === "autre" && (
+          <Field name="materialOther" label="Veuillez préciser le matériau" required />
+        )}
+        <div className="grid gap-6 md:grid-cols-2">
           <Field name="shade" label="Teinte" />
-          <Field name="applianceType" label="Type d'appareil (si applicable)" />
-          <Field name="desiredDeadline" label="Délai souhaité (optionnel)" type="date" className="md:col-span-2" />
+          <Field name="desiredDate" label="Date souhaitée" type="date" />
         </div>
       </FormSection>
 
-      <FormSection number="04" title="Fichiers">
+      <FormSection number="04" title="Instructions cliniques">
+        <TextareaField
+          name="clinicalInstructions"
+          label="Instructions cliniques, particularités, exigences"
+          rows={5}
+        />
+      </FormSection>
+
+      <FormSection number="05" title="Fichiers">
         <FileField
           name="stlFiles"
-          label="Fichiers STL"
+          label="STL / scan"
           accept=".stl,.zip,.obj,.ply"
           multiple
           helpText="STL, OBJ, PLY ou ZIP. Maximum 25 MB par fichier."
@@ -109,17 +150,12 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         />
       </FormSection>
 
-      <FormSection number="05" title="Notes cliniques">
-        <TextareaField name="clinicalNotes" label="Notes cliniques" rows={4} />
-        <TextareaField name="specialRequirements" label="Exigences particulières (optionnel)" rows={3} />
-      </FormSection>
-
       <FormSection number="06" title="Consentement">
         <CheckboxField
-          name="consent_clarification"
+          name="consent_patient_transmission"
           value="1"
           required
-          label="J'accepte d'être contacté pour clarifications si nécessaire."
+          label="Je confirme que le patient a consenti à la transmission des renseignements nécessaires."
         />
         <CheckboxField
           name="consent_privacy"
