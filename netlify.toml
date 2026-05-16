@@ -1,9 +1,14 @@
 [build]
-  command = "npm run build"
+  # `npm ci` enforces the package-lock.json EXACTLY — refuses to install
+  # if lockfile is missing/out of sync. Prevents drive-by version drift
+  # which is the main npm supply chain attack vector.
+  command = "npm ci && npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
+  # Defense-in-depth: skip optional packages, keep installs predictable
+  NPM_FLAGS = "--no-audit --prefer-offline"
 
 # Netlify auto-detects Next.js and applies @netlify/plugin-nextjs.
 # No manual plugin config needed.
