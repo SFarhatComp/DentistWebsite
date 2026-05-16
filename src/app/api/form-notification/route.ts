@@ -51,8 +51,8 @@ export async function POST(request: Request) {
 
   console.log(`[form-notification] Received submission for form: ${payload.form_name}`)
 
-  // Render the appropriate template
-  const template = renderTemplate(payload)
+  // Render the appropriate template (returns Promise — render() is async)
+  const template = await renderTemplate(payload)
   if (!template) {
     console.warn(`[form-notification] No template for form: ${payload.form_name}`)
     // Still return 200 so Netlify doesn't retry
