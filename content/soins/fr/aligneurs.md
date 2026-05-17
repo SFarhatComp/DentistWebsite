@@ -1,6 +1,6 @@
 ---
 slug: aligneurs
-title: Orthodontie par aligneurs - TEST BADER
+title: Orthodontie par aligneurs
 shortDescription: Alignement léger à modéré par aligneurs transparents.
 heroImage: /uploads/bigstock-test-icon-63758263-300x300.jpg
 whenToConsult:
