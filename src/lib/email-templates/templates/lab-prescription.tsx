@@ -75,15 +75,12 @@ export function LabPrescriptionEmail({ payload }: { payload: NetlifyPayload }) {
         timestamp={formatDate(payload.created_at)}
       />
 
-      <PhoneCallCard phone={phone} />
-
-      <SectionTitle>Professionnel</SectionTitle>
-      <Section>
-        <DetailRow label="Nom" value={professional} />
-        <DetailRow label="Clinique" value={clinic} />
-        <DetailRow label="Courriel" value={email} />
-        <DetailRow label="Téléphone" value={phone} />
-      </Section>
+      {instructions && (
+        <>
+          <SectionTitle>Instructions cliniques</SectionTitle>
+          <LongTextBlock value={instructions} />
+        </>
+      )}
 
       <SectionTitle>Détails du cas</SectionTitle>
       <Section>
@@ -96,12 +93,15 @@ export function LabPrescriptionEmail({ payload }: { payload: NetlifyPayload }) {
       <SectionTitle>Type(s) de cas</SectionTitle>
       <TagList items={TYPES_LIST.map((t) => ({ ...t, selected: isChecked(d, t.key) }))} />
 
-      {instructions && (
-        <>
-          <SectionTitle>Instructions cliniques</SectionTitle>
-          <LongTextBlock value={instructions} />
-        </>
-      )}
+      <SectionTitle>Professionnel</SectionTitle>
+      <Section>
+        <DetailRow label="Nom" value={professional} />
+        <DetailRow label="Clinique" value={clinic} />
+        <DetailRow label="Courriel" value={email} />
+        <DetailRow label="Téléphone" value={phone} />
+      </Section>
+
+      <PhoneCallCard phone={phone} />
     </EmailLayout>
   )
 }

@@ -70,20 +70,12 @@ export function EmergencyEmail({ payload }: { payload: NetlifyPayload }) {
         timestamp={formatDate(payload.created_at)}
       />
 
-      <PhoneCallCard phone={phone} urgent />
-
       {showCriticalBanner && (
         <AlertBanner
           title="⚠ Signaux d'alerte"
           items={[...alertingTypesSelected.map((t) => t.label), ...criticalSymptoms.map((s) => s.label)]}
         />
       )}
-
-      <SectionTitle>Patient</SectionTitle>
-      <Section>
-        <DetailRow label="Courriel" value={email} />
-        <DetailRow label="Date naissance" value={dob} />
-      </Section>
 
       <SectionTitle accent={alertingTypesSelected.length > 0 ? "red" : "default"}>Type d&apos;urgence</SectionTitle>
       <TagList
@@ -95,6 +87,14 @@ export function EmergencyEmail({ payload }: { payload: NetlifyPayload }) {
       <SectionTitle accent={criticalSymptoms.length > 0 ? "red" : "default"}>Symptômes</SectionTitle>
       <YnIndicatorList items={symptomsItems} />
       {symptomDuration && <DetailRow label="Durée" value={symptomDuration} />}
+
+      <SectionTitle>Patient</SectionTitle>
+      <Section>
+        <DetailRow label="Courriel" value={email} />
+        <DetailRow label="Date naissance" value={dob} />
+      </Section>
+
+      <PhoneCallCard phone={phone} urgent />
     </EmailLayout>
   )
 }

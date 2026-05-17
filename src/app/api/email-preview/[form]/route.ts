@@ -52,6 +52,10 @@ function renderIndex(): string {
 }
 
 export async function GET(_request: Request, { params }: { params: { form: string } }) {
+  if (process.env.NODE_ENV === "production") {
+    return new NextResponse("Not found", { status: 404 })
+  }
+
   const formName = params.form
 
   // Special case: list page

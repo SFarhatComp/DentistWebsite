@@ -42,7 +42,12 @@ export function ContactEmail({ payload }: { payload: NetlifyPayload }) {
         timestamp={formatDate(payload.created_at)}
       />
 
-      {phone && <PhoneCallCard phone={phone} />}
+      {message && (
+        <>
+          <SectionTitle>Message</SectionTitle>
+          <LongTextBlock value={message} />
+        </>
+      )}
 
       <SectionTitle>Coordonnées</SectionTitle>
       <Section>
@@ -50,12 +55,7 @@ export function ContactEmail({ payload }: { payload: NetlifyPayload }) {
         <DetailRow label="Téléphone" value={phone} />
       </Section>
 
-      {message && (
-        <>
-          <SectionTitle>Message</SectionTitle>
-          <LongTextBlock value={message} />
-        </>
-      )}
+      {phone && <PhoneCallCard phone={phone} />}
     </EmailLayout>
   )
 }

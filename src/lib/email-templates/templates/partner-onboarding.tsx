@@ -83,7 +83,12 @@ export function PartnerOnboardingEmail({ payload }: { payload: NetlifyPayload })
         timestamp={formatDate(payload.created_at)}
       />
 
-      <PhoneCallCard phone={phone} />
+      {message && (
+        <>
+          <SectionTitle>Message</SectionTitle>
+          <LongTextBlock value={message} />
+        </>
+      )}
 
       <SectionTitle>Coordonnées</SectionTitle>
       <Section>
@@ -102,12 +107,7 @@ export function PartnerOnboardingEmail({ payload }: { payload: NetlifyPayload })
       <SectionTitle>Préférence de contact</SectionTitle>
       <TagList items={CONTACT_PREFS.map((c) => ({ ...c, selected: isChecked(d, c.key) }))} />
 
-      {message && (
-        <>
-          <SectionTitle>Message</SectionTitle>
-          <LongTextBlock value={message} />
-        </>
-      )}
+      <PhoneCallCard phone={phone} />
     </EmailLayout>
   )
 }

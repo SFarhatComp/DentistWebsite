@@ -34,13 +34,12 @@ export function LabProfessionalEmail({ payload }: { payload: NetlifyPayload }) {
         timestamp={formatDate(payload.created_at)}
       />
 
-      <PhoneCallCard phone={phone} />
-
-      <SectionTitle>Professionnel</SectionTitle>
-      <Section>
-        <DetailRow label="Courriel" value={email} />
-        <DetailRow label="Clinique" value={clinic} />
-      </Section>
+      {comments && (
+        <>
+          <SectionTitle>Commentaires</SectionTitle>
+          <LongTextBlock value={comments} />
+        </>
+      )}
 
       <SectionTitle>Cas</SectionTitle>
       <Section>
@@ -48,12 +47,13 @@ export function LabProfessionalEmail({ payload }: { payload: NetlifyPayload }) {
         <DetailRow label="Matériau" value={material} />
       </Section>
 
-      {comments && (
-        <>
-          <SectionTitle>Commentaires</SectionTitle>
-          <LongTextBlock value={comments} />
-        </>
-      )}
+      <SectionTitle>Professionnel</SectionTitle>
+      <Section>
+        <DetailRow label="Courriel" value={email} />
+        <DetailRow label="Clinique" value={clinic} />
+      </Section>
+
+      <PhoneCallCard phone={phone} />
     </EmailLayout>
   )
 }

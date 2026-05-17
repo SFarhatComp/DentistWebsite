@@ -144,13 +144,18 @@ export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
         timestamp={formatDate(payload.created_at)}
       />
 
-      <PhoneCallCard phone={phone} urgent={isUrgent} />
-
       {criticalCount > 0 && (
         <AlertBanner
           title={`${criticalCount} condition${criticalCount > 1 ? "s" : ""} médicale${criticalCount > 1 ? "s" : ""} à considérer`}
           items={conditionsItems.filter((c) => c.selected && CRITICAL_CONDITIONS.includes(c.key)).map((c) => c.label)}
         />
+      )}
+
+      {message && (
+        <>
+          <SectionTitle>Message du patient</SectionTitle>
+          <LongTextBlock value={message} />
+        </>
       )}
 
       <SectionTitle>Coordonnées</SectionTitle>
@@ -164,13 +169,6 @@ export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
         <>
           <SectionTitle>Motifs secondaires</SectionTitle>
           <TagList items={motifsItems} alertItems={ALERTING_MOTIFS} />
-        </>
-      )}
-
-      {message && (
-        <>
-          <SectionTitle>Message du patient</SectionTitle>
-          <LongTextBlock value={message} />
         </>
       )}
 
@@ -206,6 +204,8 @@ export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
           )}
         </>
       )}
+
+      <PhoneCallCard phone={phone} urgent={isUrgent} />
     </EmailLayout>
   )
 }

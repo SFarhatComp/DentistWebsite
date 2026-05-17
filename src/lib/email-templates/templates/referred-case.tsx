@@ -89,9 +89,14 @@ export function ReferredCaseEmail({ payload }: { payload: NetlifyPayload }) {
         timestamp={formatDate(payload.created_at)}
       />
 
-      <PhoneCallCard phone={patientPhone} urgent={isUrgent} />
-
       {isUrgent && <AlertBanner title="Référence marquée URGENTE par le professionnel référent" />}
+
+      {summary && (
+        <>
+          <SectionTitle>Résumé clinique</SectionTitle>
+          <LongTextBlock value={summary} />
+        </>
+      )}
 
       <SectionTitle>Patient</SectionTitle>
       <Section>
@@ -115,13 +120,6 @@ export function ReferredCaseEmail({ payload }: { payload: NetlifyPayload }) {
         </>
       )}
 
-      {summary && (
-        <>
-          <SectionTitle>Résumé clinique</SectionTitle>
-          <LongTextBlock value={summary} />
-        </>
-      )}
-
       {previous && (
         <>
           <SectionTitle>Traitements déjà réalisés</SectionTitle>
@@ -135,6 +133,8 @@ export function ReferredCaseEmail({ payload }: { payload: NetlifyPayload }) {
           <TagList items={DOCS_LIST.map((doc) => ({ ...doc, selected: isChecked(d, doc.key) }))} />
         </>
       )}
+
+      <PhoneCallCard phone={patientPhone} urgent={isUrgent} />
     </EmailLayout>
   )
 }
