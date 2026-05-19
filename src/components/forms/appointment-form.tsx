@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
 import { ConsentGroup } from "./consent-group"
 import type { Locale } from "@/types"
 
@@ -151,7 +151,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
 
       <FormSection number="02" title="Coordonnées">
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="phone" label="Téléphone" type="tel" required />
+          <PhoneField name="phone" required />
           <Field name="email" label="Courriel" type="email" />
         </div>
         <SelectField

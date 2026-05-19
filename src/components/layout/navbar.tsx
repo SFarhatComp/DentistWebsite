@@ -22,7 +22,6 @@ export function Navbar({ lang }: { lang: Locale }) {
     { href: `/${lang}/le-studio`, label: t("nav.studio") },
     { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
     { href: `/${lang}/soins`, label: t("nav.soins") },
-    { href: `/${lang}/portfolio-clinique`, label: t("nav.portfolioClinique") },
     { href: `/${lang}/laboratoire`, label: t("nav.laboratoire") },
     { href: `/${lang}/ressources`, label: t("nav.ressources") },
     { href: `/${lang}/contact`, label: t("nav.contact") },

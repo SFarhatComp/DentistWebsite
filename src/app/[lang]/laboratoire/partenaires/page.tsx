@@ -3,7 +3,7 @@ import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
-import { PartnerOnboardingForm } from "@/components/forms/partner-onboarding-form"
+import { ProfessionnelsToggle } from "@/components/forms/professionnels-toggle"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
@@ -53,21 +53,21 @@ export default function PartenaireDeSoinPage({ params }: { params: { lang: strin
         </Container>
       </section>
 
-      {/* Formulaire */}
+      {/* Toggle de formulaires — pré-sélection sur Partenariat */}
       <section id="formulaire" className="py-20 md:py-24 scroll-mt-24">
         <Container>
-          <div className="max-w-3xl">
-            <FadeIn>
-              <SectionLabel>Formulaire</SectionLabel>
-              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-8">
-                Formulaire professionnel
-              </h2>
-              <p className="text-base text-muted-foreground leading-relaxed mb-12">
-                Ces informations nous aident à préparer notre premier échange. Nous vous contacterons selon le mode de communication que vous préférez.
-              </p>
-            </FadeIn>
-            <PartnerOnboardingForm lang={lang} />
-          </div>
+          <FadeIn className="max-w-2xl mb-8">
+            <SectionLabel>Formulaire</SectionLabel>
+            <h2 className="font-display text-2xl md:text-3xl mb-3">
+              Choisissez votre démarche
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Cette page est destinée au premier contact, mais vous pouvez aussi transmettre une prescription ou référer un cas directement.
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <ProfessionnelsToggle lang={lang} defaultActive="partenaire" />
+          </FadeIn>
         </Container>
       </section>
 

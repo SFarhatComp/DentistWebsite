@@ -2,7 +2,8 @@ import Link from "next/link"
 import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
-import { LabPrescriptionForm } from "@/components/forms/lab-prescription-form"
+import { SectionLabel } from "@/components/shared/section-label"
+import { ProfessionnelsToggle } from "@/components/forms/professionnels-toggle"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
@@ -24,9 +25,18 @@ export default function PrescriptionPage({ params }: { params: { lang: string } 
 
       <section className="py-20 md:py-24">
         <Container>
-          <div className="max-w-3xl">
-            <LabPrescriptionForm lang={lang} />
-          </div>
+          <FadeIn className="max-w-2xl mb-8">
+            <SectionLabel>Formulaire</SectionLabel>
+            <h2 className="font-display text-2xl md:text-3xl mb-3">
+              Choisissez votre démarche
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Vous pouvez aussi devenir partenaire ou référer un cas directement depuis cette page.
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <ProfessionnelsToggle lang={lang} defaultActive="prescription" />
+          </FadeIn>
         </Container>
       </section>
 

@@ -59,6 +59,63 @@ export function Field({
   )
 }
 
+/**
+ * Champ téléphone avec validation format nord-américain (NANP) — Canada/US.
+ * Accepte : 514 863 7805, (514) 863-7805, 5148637805, +1 514 863 7805, 1-514-863-7805
+ * Refuse : numéros < 10 chiffres, indicatifs non-NANP (ex: +33, +44, +212)
+ *
+ * On valide en deux temps :
+ *  1. `pattern` HTML — feedback immédiat du navigateur via :user-invalid
+ *  2. `title` — message d'aide au survol / sur erreur
+ *  3. La validation serveur (dans route handler) doit aussi vérifier.
+ */
+const NANP_PATTERN = "^[+]?1?[\\s.()-]*[2-9][0-9]{2}[\\s.()-]*[0-9]{3}[\\s.()-]*[0-9]{4}$"
+
+export function PhoneField({
+  name,
+  label = "Téléphone",
+  required,
+  defaultValue,
+  className,
+  error,
+}: {
+  name: string
+  label?: string
+  required?: boolean
+  defaultValue?: string
+  className?: string
+  error?: string
+}) {
+  const errorId = `${name}-error`
+  return (
+    <div className={className}>
+      <label htmlFor={name} className={labelClass}>
+        {label}
+        {required && " *"}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type="tel"
+        inputMode="tel"
+        autoComplete="tel"
+        required={required}
+        placeholder="514 863 7805"
+        defaultValue={defaultValue}
+        pattern={NANP_PATTERN}
+        title="Numéro canadien à 10 chiffres (ex : 514 863 7805)"
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : `${name}-help`}
+        className={cn(inputClass, error ? inputClassError : inputClassNormal)}
+      />
+      <p id={`${name}-help`} className="mt-2 text-xs text-muted-foreground">
+        Format canadien à 10 chiffres
+      </p>
+      <ErrorMessage id={errorId} message={error} />
+    </div>
+  )
+}
+
 export function TextareaField({
   name,
   label,

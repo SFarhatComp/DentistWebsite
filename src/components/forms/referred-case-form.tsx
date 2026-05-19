@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, RadioField, FileField, FormSection, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, SelectField, CheckboxField, RadioField, FileField, FormSection, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
 const LANGUES = [
@@ -90,7 +90,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="referringProfessionalName" label="Nom du professionnel" required />
           <Field name="clinicName" label="Clinique" required />
-          <Field name="clinicPhone" label="Téléphone de la clinique" type="tel" required />
+          <PhoneField name="clinicPhone" label="Téléphone de la clinique" required />
           <Field name="email" label="Courriel" type="email" required />
         </div>
       </FormSection>
@@ -99,7 +99,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="patientName" label="Nom complet du patient" required />
           <Field name="patientDob" label="Date de naissance" type="date" required />
-          <Field name="patientPhone" label="Téléphone du patient" type="tel" required />
+          <PhoneField name="patientPhone" label="Téléphone du patient" required />
           <Field name="patientEmail" label="Courriel du patient" type="email" />
         </div>
         <SelectField

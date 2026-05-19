@@ -1,9 +1,9 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
 import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
+import { ProfessionnelsToggle } from "@/components/forms/professionnels-toggle"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
@@ -42,60 +42,21 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
         subtitle="Un laboratoire intégré pensé pour une communication clinique claire et des restaurations planifiées avec précision."
       />
 
-      {/* Accès rapides */}
+      {/* Toggle bascule — sélection inline du formulaire */}
       <section className="py-12 md:py-16 border-b border-border">
         <Container>
           <FadeIn className="mb-8">
-            <SectionLabel>Accès rapides</SectionLabel>
-            <h2 className="font-display text-2xl md:text-3xl">Que souhaitez-vous faire ?</h2>
+            <SectionLabel>Que souhaitez-vous faire ?</SectionLabel>
+            <h2 className="font-display text-2xl md:text-3xl mb-3">
+              Sélectionnez une démarche
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              Cliquez sur une carte pour afficher le formulaire correspondant directement sur cette page.
+            </p>
           </FadeIn>
-          <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3 border border-border">
-            <FadeIn className="bg-background">
-              <Link
-                href={`/${lang}/laboratoire/partenaires`}
-                className="block p-6 md:p-8 hover:bg-surface/40 transition-colors h-full group"
-              >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <span className="font-display text-sm text-accent/70 tabular-nums">01</span>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
-                </div>
-                <h3 className="font-display text-lg md:text-xl mb-2">Devenir partenaire de soin</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Premier contact pour discuter d&apos;une collaboration.
-                </p>
-              </Link>
-            </FadeIn>
-            <FadeIn className="bg-background">
-              <Link
-                href={`/${lang}/laboratoire/prescription`}
-                className="block p-6 md:p-8 hover:bg-surface/40 transition-colors h-full group"
-              >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <span className="font-display text-sm text-accent/70 tabular-nums">02</span>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
-                </div>
-                <h3 className="font-display text-lg md:text-xl mb-2">Transmettre une prescription</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Prescription d&apos;appareil ou de restauration avec fichiers STL.
-                </p>
-              </Link>
-            </FadeIn>
-            <FadeIn className="bg-background">
-              <Link
-                href={`/${lang}/laboratoire/reference-clinique`}
-                className="block p-6 md:p-8 hover:bg-surface/40 transition-colors h-full group"
-              >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <span className="font-display text-sm text-accent/70 tabular-nums">03</span>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
-                </div>
-                <h3 className="font-display text-lg md:text-xl mb-2">Référer un cas</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Référer un patient pour prise de teinte, réparation ou service technique.
-                </p>
-              </Link>
-            </FadeIn>
-          </div>
+          <FadeIn>
+            <ProfessionnelsToggle lang={lang} />
+          </FadeIn>
         </Container>
       </section>
 
@@ -114,19 +75,13 @@ export default function ProfessionnelsPage({ params }: { params: { lang: string 
                 </p>
                 <p>Ce premier contact peut se faire en personne, par téléphone ou par formulaire.</p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 mt-10">
+              <div className="mt-10">
                 <a
                   href="tel:+15148637805"
                   className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
                 >
                   Nous appeler — 514 863 7805
                 </a>
-                <Link
-                  href={`/${lang}/laboratoire/partenaires`}
-                  className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
-                >
-                  Remplir le formulaire professionnel
-                </Link>
               </div>
             </FadeIn>
           </div>

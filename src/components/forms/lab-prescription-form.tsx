@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, FileField, FormSection, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, SelectField, CheckboxField, FileField, FormSection, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
 const TYPES_CAS = [
@@ -82,7 +82,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="prescribingProfessional" label="Nom du professionnel" required />
           <Field name="clinicName" label="Clinique" required />
-          <Field name="phone" label="Téléphone" type="tel" required />
+          <PhoneField name="phone" required />
           <Field name="email" label="Courriel" type="email" required />
         </div>
       </FormSection>

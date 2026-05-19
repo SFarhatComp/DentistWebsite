@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { notFound } from "next/navigation"
 import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
@@ -6,6 +7,10 @@ import { SectionLabel } from "@/components/shared/section-label"
 import { PlaceholderImage } from "@/components/shared/placeholder-image"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
+
+// Page désactivée jusqu'à ce qu'il y ait des cas cliniques réels à présenter.
+// Pour réactiver : passer à `true`.
+const PORTFOLIO_ENABLED = false
 
 export const metadata: Metadata = {
   title: "Portfolio clinique",
@@ -60,6 +65,7 @@ const categories: Category[] = [
 ]
 
 export default function PortfolioCliniquePage({ params }: { params: { lang: string } }) {
+  if (!PORTFOLIO_ENABLED) notFound()
   const lang = params.lang as Locale
   return (
     <>

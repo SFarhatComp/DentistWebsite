@@ -9,7 +9,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/premiere-visite",
     "/plan-traitement-visuel",
     "/soins",
-    "/portfolio-clinique",
     "/le-studio",
     "/laboratoire",
     "/laboratoire/professionnels",

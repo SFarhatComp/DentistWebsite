@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, FileField, FormSection, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, SelectField, CheckboxField, FileField, FormSection, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
 const CASE_TYPES = [
@@ -64,7 +64,7 @@ export function ProfessionalForm({ lang }: { lang: Locale }) {
           <Field name="dentistName" label="Nom du dentiste" required />
           <Field name="clinic" label="Clinique / cabinet" />
           <Field name="email" label="Courriel professionnel" type="email" required />
-          <Field name="phone" label="Téléphone" type="tel" required />
+          <PhoneField name="phone" required />
         </div>
       </FormSection>
 

@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
 const PROFESSIONAL_TITLES = [
@@ -105,7 +105,7 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="clinicName" label="Nom de la clinique" required />
           <Field name="clinicAddress" label="Adresse de la clinique" />
-          <Field name="phone" label="Téléphone" type="tel" required />
+          <PhoneField name="phone" required />
           <Field name="email" label="Courriel" type="email" required />
         </div>
       </FormSection>

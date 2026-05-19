@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, CheckboxField, RadioField, FileField, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, CheckboxField, RadioField, FileField, HoneypotField } from "./fields"
 import type { Locale } from "@/types"
 
 const TYPES = [
@@ -69,7 +69,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="firstName" label="Prénom" required />
           <Field name="lastName" label="Nom" required />
-          <Field name="phone" label="Téléphone" type="tel" required />
+          <PhoneField name="phone" required />
           <Field name="email" label="Courriel" type="email" required />
           <Field name="dob" label="Date de naissance" type="date" required className="md:col-span-2" />
         </div>

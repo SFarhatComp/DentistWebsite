@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, TextareaField, SelectField, CheckboxField, HoneypotField } from "./fields"
+import { Field, PhoneField, TextareaField, SelectField, CheckboxField, HoneypotField } from "./fields"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -47,7 +47,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
 
       <Field name="name" label={t("contactForm.nom")} required />
       <Field name="email" label={t("contactForm.courriel")} type="email" required />
-      <Field name="phone" label={t("contactForm.telephone")} type="tel" />
+      <PhoneField name="phone" label={t("contactForm.telephone")} />
       <SelectField
         name="subject"
         label={t("contactForm.sujet")}
