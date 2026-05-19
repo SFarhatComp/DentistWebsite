@@ -2,7 +2,7 @@
  * Netlify Forms webhook receiver.
  *
  * Configured in Netlify Site → Forms → Form notifications → Outgoing webhook
- * pointing to: https://defactodentiste.netlify.app/api/form-notification
+ * pointing to: https://studiodefacto.ca/api/form-notification
  *
  * For each submission, this route:
  * 1. Receives the JSON payload from Netlify

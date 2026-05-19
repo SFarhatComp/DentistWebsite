@@ -283,9 +283,18 @@ export function ActionButtons({ buttons }: { buttons: ActionButton[] }) {
 /* HIGHLIGHTED PHONE CALL CARD                                                */
 /* -------------------------------------------------------------------------- */
 
+/** Normalise vers format E.164 nord-américain (+1XXXXXXXXXX). */
+function toE164NorthAmerica(raw: string): string {
+  const digits = raw.replace(/[^0-9+]/g, "")
+  if (digits.startsWith("+")) return digits
+  if (digits.length === 11 && digits.startsWith("1")) return `+${digits}`
+  if (digits.length === 10) return `+1${digits}`
+  return digits
+}
+
 export function PhoneCallCard({ phone, urgent = false }: { phone: string; urgent?: boolean }) {
   if (!phone) return null
-  const cleanPhone = phone.replace(/[^0-9+]/g, "")
+  const cleanPhone = toE164NorthAmerica(phone)
   const bg = urgent ? colors.alertBg : colors.surfaceMuted
   const border = urgent ? colors.alertBorder : colors.borderSubtle
   const accent = urgent ? colors.alertText : colors.accent
@@ -686,7 +695,7 @@ export function EmailFooter() {
         </Link>{" "}
         ·{" "}
         <Link
-          href="https://defactodentiste.netlify.app"
+          href="https://studiodefacto.ca"
           style={{ color: colors.primary, textDecoration: "none" }}
         >
           studiodefacto.ca
