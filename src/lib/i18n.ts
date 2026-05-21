@@ -25,3 +25,10 @@ export function getTranslationList(lang: Locale, key: string): string[] {
   if (Array.isArray(result) && result.every((v) => typeof v === "string")) return result as string[]
   return []
 }
+
+/** Retourne un tableau d'objets (typé) pour les clés array-of-objects dans common.json. */
+export function getTranslationObjectList<T>(lang: Locale, key: string): T[] {
+  const result = resolve(lang, key)
+  if (Array.isArray(result)) return result as T[]
+  return []
+}

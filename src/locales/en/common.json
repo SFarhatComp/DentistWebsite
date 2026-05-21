@@ -268,6 +268,68 @@
     "aligneurs": { "title": "Orthodontic aligners", "short": "Light to moderate alignment with clear aligners." },
     "urgences": { "title": "Dental emergencies", "short": "Rapid evaluation for pain or trauma." }
   },
+  "planTraitement": {
+    "label": "Treatment plan",
+    "title": "A clear plan before we begin.",
+    "subtitle": "For some cases, a brief end-of-appointment explanation is not enough. When the situation calls for a more thorough reflection, we may present the treatment plan in a dedicated appointment, supported by photos, radiographs, models, scans and visual documents.",
+    "metaTitle": "Treatment plan presentation",
+    "metaDescription": "For complex cases, De Facto presents the treatment plan in a dedicated appointment — with photos, radiographs, models, scans and visual documents.",
+    "pourquoiLabel": "Why",
+    "pourquoiTitle": "Why we don't decide everything in 5 minutes",
+    "pourquoiBody": "Some dental decisions have biological, functional, aesthetic and financial implications. Taking the time to explain them helps you better understand the priorities, alternatives and treatment sequence.",
+    "contenuLabel": "Content",
+    "contenuTitle": "What may be presented",
+    "peutEtrePresente": [
+      "Intraoral photos",
+      "Explained radiographs",
+      "Scan or printed model",
+      "Clinical observations",
+      "Priority concerns",
+      "Stable elements",
+      "Items to monitor",
+      "Treatment options",
+      "Alternatives",
+      "Risks of doing nothing",
+      "Financial estimate",
+      "Sequence over time"
+    ],
+    "phasesLabel": "Phases",
+    "phasesTitle": "Phases of the plan",
+    "phases": [
+      { "num": "Phase 1", "title": "Stabilization", "body": "Address what must be controlled first: pain, infection, active lesions." },
+      { "num": "Phase 2", "title": "Necessary treatments", "body": "Restorations, conservative treatments and indicated care according to priorities." },
+      { "num": "Phase 3", "title": "Prevention and maintenance", "body": "Hygiene, periodontal follow-up, personalized advice and long-term maintenance." },
+      { "num": "Phase 4", "title": "Aesthetic options or optimizations", "body": "Once the foundation is stable, certain optimizations may be considered according to your goals." },
+      { "num": "Phase 5", "title": "Long-term follow-up", "body": "According to the clinical situation and the stability achieved." }
+    ],
+    "choixLabel": "Choices",
+    "choixTitle": "Ideal plan, alternatives and status quo",
+    "idealAlternatives": [
+      "The ideal plan when relevant",
+      "Reasonable alternatives",
+      "The limits of each option",
+      "The possible consequences of not treating",
+      "The option to sequence over time"
+    ],
+    "remisLabel": "Provided",
+    "remisTitle": "Documents provided to the patient",
+    "remisIntro": "Depending on the situation, the patient may receive concrete documents to re-read, compare, reflect on and ask questions about.",
+    "documentsRemis": [
+      "Personalized oral health summary",
+      "Phased treatment plan",
+      "Estimate",
+      "Post-operative instructions",
+      "Educational sheet",
+      "Insurance documents",
+      "Specialist referral",
+      "Photos or visual explanations",
+      "Follow-up recommendations"
+    ],
+    "ctaTitle": "Understand before deciding",
+    "ctaBody": "A complete evaluation is necessary to determine if a plan presentation appointment is indicated in your case.",
+    "ctaPrimary": "Request a first visit",
+    "ctaSecondary": "Understand our approach"
+  },
   "nouveauxPatients": {
     "label": "New patients",
     "title": "New patients",
@@ -416,8 +478,11 @@
     }
   },
   "emergency": {
+    "label": "Emergency",
     "title": "Dental emergency",
-    "subtitle": "If you have significant swelling, fever, or difficulty breathing or swallowing, contact emergency services immediately."
+    "subtitle": "If you have significant swelling, fever, or difficulty breathing or swallowing, contact emergency services immediately.",
+    "pageSubtitle": "For an emergency request, use the dedicated form on the Appointment page. A standalone page is being prepared.",
+    "metaDescription": "For a dental emergency in Ahuntsic — pain, trauma, swelling, broken tooth. Use the dedicated form on the Appointment page or call the clinic."
   },
   "emergencyForm": {
     "medicalWarningStrong": "Medical warning.",
@@ -728,6 +793,202 @@
     "ctaPrimary": "Ask an administrative question",
     "ctaSecondary": "Request an appointment"
   },
+  "confidentialite": {
+    "label": "Compliance",
+    "title": "Privacy and personal information",
+    "subtitle": "How De Facto Dental Studio collects, uses and protects your personal and health information.",
+    "metaTitle": "Privacy and personal information",
+    "metaDescription": "How De Facto Dental Studio collects, uses and protects your personal and health information. A simple policy adapted to the dental context.",
+    "intro": "Electronic communications may involve certain risks. Information transmitted by form, email or SMS should be limited to what is necessary for the request.",
+    "lastUpdated": "Last updated: May 15, 2026.",
+    "sections": [
+      { "title": "Information collected", "body": "We collect the information needed for your care: identification, contact details, medical and dental information relevant to the safety and quality of care." },
+      { "title": "Use of information", "body": "Your information is used to organize appointments, maintain the clinical record, deliver care, follow up and communicate as needed for your care." },
+      { "title": "Sharing of information", "body": "Your information is only shared when necessary for care, for a referral to another professional, for collaboration with the laboratory, or when required by law." },
+      { "title": "Security", "body": "Reasonable technical and organizational measures are in place to protect your information against loss, unauthorized access, modification or unintended disclosure." },
+      { "title": "Access and correction", "body": "You may request access to your information or correction of inaccurate details. An identity check may be required before processing the request." },
+      { "title": "Consent", "body": "Your consent is required to transmit certain information or documents (specialist referral, transmission to the laboratory, electronic communications). You may withdraw your consent for purposes not essential to care." },
+      { "title": "Electronic communication", "body": "Communications by email, SMS or web form may involve risks inherent to digital transit. The information transmitted should be limited to what is necessary for the request. For particularly sensitive information, an in-person or phone exchange may be preferable." },
+      { "title": "Person responsible for the protection of personal information", "body": "For any question regarding privacy, access to or correction of your personal information, or data security, you may contact the De Facto Dental Studio's person responsible for the protection of personal information by phone or email. De Facto Dental Studio operates under the laws applicable in Quebec and Canada, in particular the Act respecting the protection of personal information in the private sector (Law 25) and PIPEDA at the federal level." }
+    ]
+  },
+  "conditions": {
+    "label": "Terms",
+    "title": "Terms of use",
+    "subtitle": "Terms governing use of the De Facto Dental Studio website.",
+    "metaTitle": "Terms of use",
+    "sections": [
+      { "title": "Acceptance", "body": "Use of this website implies your acceptance of these terms. If you do not accept these terms, please do not use the site." },
+      { "title": "Nature of information", "body": "The information published on this site is provided for informational purposes only and does not constitute medical advice, diagnosis or prescription. A clinical consultation is always necessary to evaluate your situation." },
+      { "title": "Clinical results and before/after photos", "body": "The cases and photographs presented illustrate treated situations. Each patient is different: results vary according to the initial condition, habits, goals and biology of each person. No results are guaranteed." },
+      { "title": "Intellectual property", "body": "The site's content (text, images, trademarks, layout) belongs to De Facto Dental Studio or its partners. Any reproduction without authorization is prohibited." },
+      { "title": "Limitation of liability", "body": "De Facto Dental Studio strives to provide accurate, up-to-date information but cannot guarantee the absence of errors. The user remains responsible for their use of the information consulted." },
+      { "title": "External links", "body": "Some links may lead to third-party sites. The studio cannot be held responsible for the content or practices of those sites." },
+      { "title": "Applicable law", "body": "These terms are governed by the laws applicable in Quebec and Canada. Any dispute falls under the competent courts of the Montreal district." },
+      { "title": "Modifications", "body": "These terms may be modified at any time. The version in force is the one published on the site." }
+    ]
+  },
+  "laboratoire": {
+    "metaTitle": "Integrated dental laboratory",
+    "metaDescription": "An integrated dental laboratory, open to dental professionals. Direct communication, traceability, non-solicitation.",
+    "heroLabel": "Laboratory",
+    "heroTitle": "An integrated dental laboratory, open to dental professionals.",
+    "intro1": "The De Facto laboratory supports dentists and specialists who wish to collaborate with a team focused on communication, precision and traceability.",
+    "intro2": "Our goal is to support the professional's clinical work, never to replace their relationship with their patient.",
+    "intro3": "We fully respect our referring colleagues. No patient sent to the laboratory for a technical service will be solicited to become a patient of De Facto Dental Studio.",
+    "paths": {
+      "patientTitle": "I am a patient",
+      "patientBody": "Understand how the integrated laboratory supports my care.",
+      "proTitle": "I am a dental professional",
+      "proBody": "Become a partner, send a prescription, refer a case.",
+      "proItem1": "→ Become a care partner",
+      "proItem2": "→ Send a prescription",
+      "proItem3": "→ Refer a patient"
+    },
+    "philosophie": {
+      "label": "Philosophy",
+      "title": "Technology in service of predictability",
+      "body": "Our laboratory uses recognized equipment, rigorous protocols and materials approved by Health Canada when required. Technology is not an end in itself: it supports craftsmanship, communication and consistency of outcomes.",
+      "imageAlt": "laboratoire-integre-de-facto.jpg"
+    },
+    "engagement": {
+      "label": "Commitment to referring professionals",
+      "title": "Respecting the professional-patient relationship",
+      "body1": "When a patient is sent to De Facto for shade selection, photographic documentation or a laboratory-related service, they remain the patient of the referring professional.",
+      "body2": "To avoid any ambiguity, De Facto can provide a declaration confirming that the patient is not registered at De Facto Dental Studio for a defined period, when the situation warrants it.",
+      "body3": "This measure aims to protect the relationship of trust between the referring professional, their patient and our laboratory."
+    },
+    "piliers": {
+      "label": "Laboratory pillars",
+      "title": "Four pillars",
+      "1": {
+        "title": "Constant communication",
+        "body": "Direct communication with the professional and with the people who fabricate the appliances."
+      },
+      "2": {
+        "title": "Rigorous protocols and traceability",
+        "body": "Each case is backed by a technical sheet, material traceability and documentation of the relevant steps."
+      },
+      "3": {
+        "title": "Technology in service of craftsmanship",
+        "body": "Digital equipment, printing, milling and controlled protocols in service of clinical precision."
+      },
+      "4": {
+        "title": "Technical and clinical supervision",
+        "body": "A technician and a supervising dentist take part in verifying the important steps of production."
+      }
+    },
+    "services": {
+      "label": "Services",
+      "title": "Services offered",
+      "categoryLabel": "Category",
+      "intro": "A complete range of restorations, prostheses, splints, retainers and planning aids, offered to studio patients and referring professionals.",
+      "orthodontie": {
+        "category": "Orthodontics",
+        "items": [
+          "Retention trays",
+          "Hawley retainers",
+          "Twin Block appliances",
+          "HAAS appliances",
+          "Hyrax expanders",
+          "Space maintainers",
+          "Lingual wires"
+        ]
+      },
+      "prosthodontie_amovible": {
+        "category": "Removable prosthodontics",
+        "items": [
+          "Complete dentures, printed or milled"
+        ]
+      },
+      "prosthodontie_fixe": {
+        "category": "Fixed prosthodontics",
+        "items": [
+          "Single-unit restorations (crown, inlay, veneer, bonded partial restoration)",
+          "Multi-unit restorations (conventional bridge, bonded bridge)",
+          "Implant restorations (crown or bridge on implants)",
+          "Prosthetic planning (wax-up, mock-up, printed model)"
+        ]
+      },
+      "plaques_occlusales": {
+        "category": "Occlusal splints",
+        "items": [
+          "Rigid occlusal splint, Formlabs LT Clear",
+          "Flexible occlusal splint, Formlabs LT Comfort"
+        ]
+      },
+      "gouttieres": {
+        "category": "Trays and guards",
+        "items": [
+          "Bleaching trays",
+          "Retention trays",
+          "Mouthguards for combat and extreme sports"
+        ]
+      },
+      "waxup": {
+        "category": "Diagnostic wax-up",
+        "items": [
+          "Digital wax-up for aesthetic, functional or prosthetic planning"
+        ]
+      },
+      "stratification": {
+        "category": "Layering and characterization",
+        "items": [
+          "Characterization",
+          "Ceramic layering",
+          "Aesthetic finishing of temporary or permanent cases"
+        ]
+      },
+      "documentation": {
+        "category": "Clinical documentation",
+        "items": [
+          "Shade selection",
+          "Intraoral and extraoral photography for complex and aesthetic cases"
+        ]
+      }
+    },
+    "equipements": {
+      "label": "Equipment",
+      "title": "Equipment in use",
+      "1": { "name": "Intraoral scanner", "role": "Digital capture of the arches and clinic-laboratory communication" },
+      "2": { "name": "Digital design software", "role": "Planning and design of restorations and appliances" },
+      "3": { "name": "CAD/CAM milling", "role": "Fabrication of selected restorations, models or appliances as indicated" },
+      "4": { "name": "Pressing furnace", "role": "Pressing of selected ceramic restorations according to protocol" },
+      "5": { "name": "Crystallization / firing furnace", "role": "Crystallization, characterization, glazing or finishing according to material" },
+      "6": { "name": "Formlabs Dental 3D printing", "role": "Models, guides, retainers, occlusal splints, prototypes as indicated" },
+      "7": { "name": "Wash and post-curing", "role": "Post-processing of printed parts following the manufacturer's protocols" },
+      "8": { "name": "Finishing and polishing", "role": "Adjustment, finishing, characterization and final quality check" },
+      "9": { "name": "Photographic documentation", "role": "Case communication, shade selection, follow-up and quality control" }
+    },
+    "tracabilite": {
+      "label": "Quality control",
+      "title": "Production record and traceability",
+      "intro1": "Each case can be accompanied by a traceability report specifying the materials used, the equipment, the technical limits and the relevant production steps.",
+      "intro2": "Every laboratory case is tied to an internal production sheet that documents the relevant steps:",
+      "1": { "item": "Case code", "desc": "Unique identifier" },
+      "2": { "item": "Reception date", "desc": "Entry at the laboratory" },
+      "3": { "item": "Referring professional", "desc": "Dentist or clinic that sent the case" },
+      "4": { "item": "Type of appliance or restoration", "desc": "Crown, occlusal splint, model, tray, etc." },
+      "5": { "item": "Material used", "desc": "Commercial name and family" },
+      "6": { "item": "Shade", "desc": "If applicable" },
+      "7": { "item": "Digital file", "desc": "STL, scan, photo, radiograph" },
+      "8": { "item": "Production steps", "desc": "Reception, design, fabrication, finishing, control, delivery" },
+      "9": { "item": "Operator", "desc": "Initials of the person responsible for each step" },
+      "10": { "item": "Quality control", "desc": "Final verification before delivery" },
+      "11": { "item": "Technical notes", "desc": "Particularities, limits, recommendations" }
+    },
+    "cta": {
+      "label": "For dental professionals",
+      "title": "Three dedicated paths for dentists and specialists",
+      "body": "Each professional request has its own form and its own workflow.",
+      "partenaireTitle": "Become a partner",
+      "partenaireBody": "First contact to discuss a collaboration.",
+      "prescriptionTitle": "Send a prescription",
+      "prescriptionBody": "Prescription for an appliance or restoration with STL files.",
+      "referenceTitle": "Refer a patient",
+      "referenceBody": "Clinical referral for evaluation or treatment."
+    }
+  },
   "footer": {
     "tagline": "De Facto Dental Studio — considered dentistry in the heart of Ahuntsic, Montreal.",
     "coordonnees": "Contact",
@@ -746,5 +1007,239 @@
     "horaires": "Hours",
     "horairesPlaceholder": "Mon.–Fri.: 9 a.m. to 6 p.m.",
     "mention": "Information on this site does not replace a clinical evaluation by a dentist."
+  },
+  "labPrescriptionForm": {
+    "ariaLabel": "Laboratory prescription form",
+    "intro": "Prescription for an appliance or restoration. Fields adapt based on the type of appliance selected.",
+    "section1Title": "Professional",
+    "section2Title": "Patient",
+    "section3Title": "Dental appliance",
+    "section3Intro": "Select the type of appliance being prescribed.",
+    "section4Title": "Type",
+    "section4IntroPrefix": "Specify the type for: ",
+    "section5Title": "Arch and teeth",
+    "section6Title": "Shade",
+    "section7Title": "Desired material",
+    "section8Title": "Clinical instructions",
+    "section9Title": "Files",
+    "section10Title": "Consent",
+    "prescribingProfessional": "Prescribing professional",
+    "clinicName": "Clinic",
+    "email": "Email",
+    "patientName": "Patient name or code",
+    "appareilOtherText": "Please specify the appliance",
+    "arcadeLabel": "Arch involved",
+    "teethLabel": "Tooth numbers",
+    "colorIndicationsLabel": "Shade, tint and custom characterization indications",
+    "colorIndicationsPlaceholder": "E.g. A2 cervical, A1 incisal, bluish incisal characterizations, subtle staining.",
+    "temporaryRestorationNote": "Temporary restoration: only resin is available.",
+    "laminationLabel": "Porcelain lamination desired",
+    "yes": "Yes",
+    "no": "No",
+    "clinicalInstructionsLabel": "Clinical instructions, particularities, requirements",
+    "stlFilesLabel": "STL / scan",
+    "stlFilesHelp": "STL, OBJ, PLY or ZIP. Maximum 25 MB per file.",
+    "photosLabel": "Clinical photos",
+    "photosHelp": "JPG, PNG or HEIC.",
+    "radiographsLabel": "Radiographs",
+    "radiographsHelp": "JPG, PNG or PDF.",
+    "consentPatientTransmission": "I confirm the patient has consented to the transmission of the necessary information.",
+    "consentPrivacyBefore": "I have read the ",
+    "consentPrivacyLink": "privacy policy",
+    "consentPrivacyAfter": ".",
+    "errorGeneric": "An error occurred. Please try again or reach us by phone.",
+    "submit": "Submit prescription",
+    "submitting": "Submitting…",
+    "toothPickerInstruction": "Click on the affected teeth (FDI notation)",
+    "toothPickerSelected": "Selected:",
+    "toothPickerNone": "none",
+    "toothPickerAriaUpper": "Upper right arch",
+    "toothPickerAriaLower": "Lower right arch",
+    "appareils": {
+      "couronne": "Crown",
+      "pont": "Bridge",
+      "incrustation": "Inlay",
+      "facette": "Veneer",
+      "prothese_amovible_complete": "Complete removable denture",
+      "guide_chirurgical": "Surgical guide",
+      "plaque_occlusale": "Occlusal splint",
+      "porte_empreinte": "Custom impression tray",
+      "gouttiere_retention": "Retainer",
+      "gouttiere_blanchiment": "Bleaching tray",
+      "essix": "Essix",
+      "wax_up": "Diagnostic wax-up",
+      "reparation": "Repair",
+      "autres": "Other"
+    },
+    "subOptions": {
+      "temporaire": "Temporary",
+      "permanente": "Permanent",
+      "immediat": "Immediate",
+      "permanent": "Permanent",
+      "rigide": "Rigid",
+      "flexible": "Flexible",
+      "avec_dent_postiche": "With pontic tooth",
+      "sans_dent_postiche": "Without pontic tooth"
+    },
+    "materials": {
+      "porcelaine_feldspathique": "Feldspathic porcelain",
+      "emax_presse": "Pressed e.max",
+      "zircone_3y": "3Y zirconia",
+      "zircone_multicouche": "Multi-layer zirconia",
+      "resine": "Resin",
+      "lt_clear": "LT Clear (rigid)",
+      "lt_comfort": "LT Comfort (flexible)"
+    },
+    "arcades": {
+      "superieure": "Upper",
+      "inferieure": "Lower",
+      "les_deux": "Both"
+    }
+  },
+  "referredCaseForm": {
+    "ariaLabel": "Patient referral form",
+    "intro": "Refer a patient to Studio Dentaire De Facto for evaluation, treatment or technical services. The patient remains under your clinical responsibility.",
+    "section1Title": "Referring professional",
+    "section2Title": "Patient",
+    "section3Title": "Referral",
+    "section4Title": "Files",
+    "section5Title": "Consents",
+    "referringProfessionalName": "Professional name",
+    "clinicName": "Clinic",
+    "clinicPhone": "Clinic phone",
+    "email": "Email",
+    "patientName": "Patient full name",
+    "patientDob": "Date of birth",
+    "patientPhone": "Patient phone",
+    "patientEmail": "Patient email",
+    "patientLanguage": "Preferred language",
+    "patientLanguageOther": "Please specify the language",
+    "referralMainReason": "Main reason",
+    "referralMainReasonOther": "Please specify the main reason",
+    "motifsSecondairesLabel": "Secondary reasons (optional)",
+    "urgencyLabel": "Urgent",
+    "yes": "Yes",
+    "no": "No",
+    "clinicalSummary": "Clinical summary",
+    "previousTreatments": "Previous treatments performed",
+    "documentsTransmisLabel": "Documents transmitted",
+    "photosLabel": "Clinical photos",
+    "photosHelp": "JPG, PNG or HEIC. Maximum 10 MB per photo.",
+    "radiographsLabel": "Radiographs",
+    "radiographsHelp": "JPG, PNG or PDF.",
+    "stlFilesLabel": "STL / scan (optional)",
+    "stlFilesHelp": "STL, OBJ, PLY or ZIP.",
+    "consentPatientInformed": "The patient has been informed of this referral.",
+    "consentTransmission": "I authorize the transmission of relevant documents and information to Studio Dentaire De Facto.",
+    "consentPrivacyBefore": "I have read the ",
+    "consentPrivacyLink": "privacy policy",
+    "consentPrivacyAfter": ".",
+    "errorGeneric": "An error occurred. Please try again or reach us by phone.",
+    "submit": "Submit referral",
+    "submitting": "Submitting…",
+    "langues": {
+      "francais": "French",
+      "anglais": "English",
+      "francais_anglais": "French or English",
+      "autre": "Other"
+    },
+    "motifsPrincipaux": {
+      "evaluation_complete": "Complete evaluation",
+      "douleur": "Pain",
+      "esthetique": "Esthetic concern",
+      "endodontie": "Endodontics",
+      "parodontie": "Periodontics / graft",
+      "implantologie": "Implantology",
+      "prosthodontie": "Prosthodontics / complex restoration",
+      "deuxieme_avis": "Second opinion",
+      "laboratoire": "Laboratory service (shade taking, repair)",
+      "autre": "Other"
+    },
+    "motifsSecondaires": {
+      "douleur": "Pain",
+      "sensibilite": "Sensitivity",
+      "saignement_gencives": "Bleeding gums",
+      "dent_mobile": "Loose tooth",
+      "fracture": "Fracture",
+      "usure": "Tooth wear",
+      "esthetique": "Esthetic concern",
+      "infection": "Suspected infection",
+      "autre": "Other"
+    },
+    "documentsTransmis": {
+      "photos": "Photos",
+      "radiographies": "Radiographs",
+      "stl_scan": "STL / scan",
+      "plan_traitement": "Existing treatment plan",
+      "notes_cliniques": "Clinical notes",
+      "autre": "Other"
+    }
+  },
+  "partnerOnboardingForm": {
+    "ariaLabel": "Professional partnership form",
+    "intro": "This form is intended for dentists and specialists who wish to discuss a collaboration with our integrated laboratory.",
+    "section1Title": "Professional identification",
+    "section2Title": "Type of collaboration sought",
+    "section2Intro": "Check all that apply.",
+    "section3Title": "Services of interest",
+    "section3Intro": "Check what interests you.",
+    "section4Title": "Preferred contact method",
+    "section5Title": "Message or context of the request",
+    "section6Title": "Consent",
+    "dentistName": "Professional name",
+    "professionalTitle": "Professional title",
+    "professionalTitleOther": "Please specify your title",
+    "clinicName": "Clinic name",
+    "clinicAddress": "Clinic address",
+    "email": "Email",
+    "messageLabel": "Details, specific needs, context",
+    "consentContact": "I authorize Studio Dentaire De Facto to contact me regarding this collaboration request.",
+    "consentPrivacyBefore": "I have read the ",
+    "consentPrivacyLink": "privacy policy",
+    "consentPrivacyAfter": ".",
+    "errorGeneric": "An error occurred. Please try again or reach us by phone.",
+    "submit": "Submit request",
+    "submitting": "Submitting…",
+    "professionalTitles": {
+      "dentiste_generaliste": "General dentist",
+      "prosthodontiste": "Prosthodontist",
+      "orthodontiste": "Orthodontist",
+      "parodontiste": "Periodontist",
+      "endodontiste": "Endodontist",
+      "chirurgien_maxillo_facial": "Maxillofacial surgeon",
+      "denturologiste": "Denturologist",
+      "hygieniste_dentaire": "Dental hygienist",
+      "gestionnaire_clinique": "Clinic manager",
+      "autre": "Other"
+    },
+    "collaborationTypes": {
+      "lab_regulier": "Regular laboratory cases",
+      "lab_occasionnel": "Occasional laboratory cases",
+      "cas_esthetiques": "Complex esthetic cases",
+      "consultation": "Clinical consultations",
+      "reference_clinique": "Clinical referrals",
+      "autre": "Other"
+    },
+    "services": {
+      "orthodontie": "Orthodontics",
+      "prostho_amovible": "Removable prosthodontics",
+      "prostho_fixe": "Fixed prosthodontics",
+      "plaques_occlusales": "Occlusal splints",
+      "gouttieres": "Trays",
+      "wax_up": "Wax-up",
+      "prise_teinte": "Shade taking",
+      "esthetique": "Esthetic cases",
+      "reparations": "Repairs",
+      "emax": "Pressed or milled e.max",
+      "zircone": "Zirconia",
+      "impression_3d": "3D printing / Formlabs",
+      "autre": "Other"
+    },
+    "contactPrefs": {
+      "telephone": "Phone",
+      "courriel": "Email",
+      "sms": "SMS",
+      "en_personne": "In person"
+    }
   }
 }

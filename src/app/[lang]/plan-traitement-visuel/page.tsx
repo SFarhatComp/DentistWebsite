@@ -4,81 +4,49 @@ import { Container } from "@/components/layout/container"
 import { NumberedSection } from "@/components/shared/numbered-section"
 import { DocumentList } from "@/components/shared/document-list"
 import { FadeIn } from "@/components/motion/fade-in"
+import { getTranslations, getTranslationList, getTranslationObjectList } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Présentation du plan de traitement",
-  description:
-    "Pour les cas complexes, De Facto présente le plan de traitement dans un rendez-vous dédié — avec photos, radiographies, modèles, scans et documents visuels.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("planTraitement.metaTitle"),
+    description: t("planTraitement.metaDescription"),
+  }
 }
 
-const peutEtrePresente = [
-  "Photos intraorales",
-  "Radiographies expliquées",
-  "Scan ou modèle imprimé",
-  "Observations cliniques",
-  "Problèmes prioritaires",
-  "Éléments stables",
-  "Éléments à surveiller",
-  "Options de traitement",
-  "Alternatives",
-  "Risques du statu quo",
-  "Estimation financière",
-  "Séquence dans le temps",
-]
-
-const phases = [
-  { num: "Phase 1", title: "Stabilisation", body: "Maîtriser ce qui doit l'être avant tout : douleur, infection, lésions actives." },
-  { num: "Phase 2", title: "Traitements nécessaires", body: "Restaurations, traitements conservateurs et soins indiqués selon les priorités." },
-  { num: "Phase 3", title: "Prévention et maintien", body: "Hygiène, suivi parodontal, conseils personnalisés et entretien à long terme." },
-  { num: "Phase 4", title: "Options esthétiques ou optimisations", body: "Lorsque la base est stable, certaines optimisations peuvent être envisagées selon vos objectifs." },
-  { num: "Phase 5", title: "Suivi à long terme", body: "Selon la situation clinique et la stabilité atteinte." },
-]
-
-const idealAlternatives = [
-  "Le plan idéal lorsque pertinent",
-  "Les alternatives raisonnables",
-  "Les limites de chaque option",
-  "Les conséquences possibles de ne pas traiter",
-  "La possibilité de séquencer dans le temps",
-]
-
-const documentsRemis = [
-  "Résumé personnalisé de santé buccodentaire",
-  "Plan de traitement par phases",
-  "Estimation",
-  "Instructions postopératoires",
-  "Fiche éducative",
-  "Documents d'assurance",
-  "Référence spécialiste",
-  "Photos ou explications visuelles",
-  "Recommandations de suivi",
-]
+type Phase = { num: string; title: string; body: string }
 
 export default function PlanTraitementVisuelPage({ params }: { params: { lang: string } }) {
   const lang = params.lang as Locale
+  const t = getTranslations(lang)
+  const peutEtrePresente = getTranslationList(lang, "planTraitement.peutEtrePresente")
+  const phases = getTranslationObjectList<Phase>(lang, "planTraitement.phases")
+  const idealAlternatives = getTranslationList(lang, "planTraitement.idealAlternatives")
+  const documentsRemis = getTranslationList(lang, "planTraitement.documentsRemis")
+
   return (
     <>
       <PageHero
-        label="Plan de traitement"
-        title="Un plan clair avant de commencer."
-        subtitle="Pour certains cas, une simple explication en fin de rendez-vous ne suffit pas. Lorsque la situation demande une réflexion plus complète, nous pouvons présenter le plan de traitement dans un rendez-vous dédié, à l'aide de photos, radiographies, modèles, scans et documents visuels."
+        label={t("planTraitement.label")}
+        title={t("planTraitement.title")}
+        subtitle={t("planTraitement.subtitle")}
       />
 
       <section className="py-20 md:py-24">
         <Container>
           <div className="max-w-3xl space-y-20">
             <FadeIn>
-              <NumberedSection number={1} label="Pourquoi" title="Pourquoi on ne décide pas tout en 5 minutes">
+              <NumberedSection number={1} label={t("planTraitement.pourquoiLabel")} title={t("planTraitement.pourquoiTitle")}>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Certaines décisions dentaires ont des implications biologiques, fonctionnelles, esthétiques et financières. Prendre le temps de les expliquer permet de mieux comprendre les priorités, les alternatives et la séquence de traitement.
+                  {t("planTraitement.pourquoiBody")}
                 </p>
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={2} label="Contenu" title="Ce qui peut être présenté">
+              <NumberedSection number={2} label={t("planTraitement.contenuLabel")} title={t("planTraitement.contenuTitle")}>
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {peutEtrePresente.map((item) => (
                     <li key={item} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
@@ -91,7 +59,7 @@ export default function PlanTraitementVisuelPage({ params }: { params: { lang: s
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={3} label="Phases" title="Les phases du plan">
+              <NumberedSection number={3} label={t("planTraitement.phasesLabel")} title={t("planTraitement.phasesTitle")}>
                 <div className="space-y-6">
                   {phases.map((p, i) => (
                     <div key={p.num} className="border-t border-border pt-5 first:border-t-0 first:pt-0 grid sm:grid-cols-[8rem_1fr] gap-3 sm:gap-6">
@@ -110,7 +78,7 @@ export default function PlanTraitementVisuelPage({ params }: { params: { lang: s
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={4} label="Choix" title="Plan idéal, alternatives et statu quo">
+              <NumberedSection number={4} label={t("planTraitement.choixLabel")} title={t("planTraitement.choixTitle")}>
                 <ul className="space-y-3">
                   {idealAlternatives.map((item) => (
                     <li key={item} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
@@ -123,10 +91,10 @@ export default function PlanTraitementVisuelPage({ params }: { params: { lang: s
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={5} label="Remis" title="Documents remis au patient">
+              <NumberedSection number={5} label={t("planTraitement.remisLabel")} title={t("planTraitement.remisTitle")}>
                 <div className="bg-surface/60 border border-border p-8 md:p-10">
                   <p className="text-base text-muted-foreground leading-relaxed mb-8 italic">
-                    Selon la situation, le patient peut recevoir des documents concrets pour relire, comparer, réfléchir et poser ses questions.
+                    {t("planTraitement.remisIntro")}
                   </p>
                   <DocumentList items={documentsRemis} />
                 </div>
@@ -140,23 +108,23 @@ export default function PlanTraitementVisuelPage({ params }: { params: { lang: s
         <Container>
           <FadeIn className="max-w-2xl">
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Comprendre avant de décider
+              {t("planTraitement.ctaTitle")}
             </h2>
             <p className="text-lg opacity-80 mb-8 leading-relaxed">
-              Une évaluation complète est nécessaire pour déterminer si un rendez-vous de présentation du plan est indiqué dans votre cas.
+              {t("planTraitement.ctaBody")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href={`/${lang}/rendez-vous`}
                 className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
               >
-                Demander une première visite
+                {t("planTraitement.ctaPrimary")}
               </Link>
               <Link
                 href={`/${lang}/le-studio`}
                 className="inline-flex items-center justify-center border border-primary-foreground/40 hover:border-primary-foreground hover:bg-primary-foreground/5 text-primary-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
               >
-                Comprendre notre approche
+                {t("planTraitement.ctaSecondary")}
               </Link>
             </div>
           </FadeIn>

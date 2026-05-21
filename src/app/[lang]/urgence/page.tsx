@@ -1,18 +1,23 @@
 import { PageHero } from "@/components/shared/page-hero"
+import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
+import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Urgence dentaire",
-  description:
-    "Pour une urgence dentaire à Ahuntsic — douleur, traumatisme, enflure, dent cassée. Utilisez le formulaire dédié sur la page Rendez-vous ou appelez la clinique.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("emergency.title"),
+    description: t("emergency.metaDescription"),
+  }
 }
 
-export default function UrgencePage() {
+export default function UrgencePage({ params }: { params: { lang: string } }) {
+  const t = getTranslations(params.lang as Locale)
   return (
     <PageHero
-      label="Urgence"
-      title="Urgence dentaire"
-      subtitle="Pour une demande d'urgence, utilisez le formulaire dédié sur la page Rendez-vous. Une page autonome est en préparation."
+      label={t("emergency.label")}
+      title={t("emergency.title")}
+      subtitle={t("emergency.pageSubtitle")}
     />
   )
 }

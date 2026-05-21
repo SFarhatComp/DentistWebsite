@@ -268,6 +268,68 @@
     "aligneurs": { "title": "Aligneurs orthodontiques", "short": "Alignement léger à modéré par aligneurs transparents." },
     "urgences": { "title": "Urgences dentaires", "short": "Évaluation rapide en cas de douleur ou traumatisme." }
   },
+  "planTraitement": {
+    "label": "Plan de traitement",
+    "title": "Un plan clair avant de commencer.",
+    "subtitle": "Pour certains cas, une simple explication en fin de rendez-vous ne suffit pas. Lorsque la situation demande une réflexion plus complète, nous pouvons présenter le plan de traitement dans un rendez-vous dédié, à l'aide de photos, radiographies, modèles, scans et documents visuels.",
+    "metaTitle": "Présentation du plan de traitement",
+    "metaDescription": "Pour les cas complexes, De Facto présente le plan de traitement dans un rendez-vous dédié — avec photos, radiographies, modèles, scans et documents visuels.",
+    "pourquoiLabel": "Pourquoi",
+    "pourquoiTitle": "Pourquoi on ne décide pas tout en 5 minutes",
+    "pourquoiBody": "Certaines décisions dentaires ont des implications biologiques, fonctionnelles, esthétiques et financières. Prendre le temps de les expliquer permet de mieux comprendre les priorités, les alternatives et la séquence de traitement.",
+    "contenuLabel": "Contenu",
+    "contenuTitle": "Ce qui peut être présenté",
+    "peutEtrePresente": [
+      "Photos intraorales",
+      "Radiographies expliquées",
+      "Scan ou modèle imprimé",
+      "Observations cliniques",
+      "Problèmes prioritaires",
+      "Éléments stables",
+      "Éléments à surveiller",
+      "Options de traitement",
+      "Alternatives",
+      "Risques du statu quo",
+      "Estimation financière",
+      "Séquence dans le temps"
+    ],
+    "phasesLabel": "Phases",
+    "phasesTitle": "Les phases du plan",
+    "phases": [
+      { "num": "Phase 1", "title": "Stabilisation", "body": "Maîtriser ce qui doit l'être avant tout : douleur, infection, lésions actives." },
+      { "num": "Phase 2", "title": "Traitements nécessaires", "body": "Restaurations, traitements conservateurs et soins indiqués selon les priorités." },
+      { "num": "Phase 3", "title": "Prévention et maintien", "body": "Hygiène, suivi parodontal, conseils personnalisés et entretien à long terme." },
+      { "num": "Phase 4", "title": "Options esthétiques ou optimisations", "body": "Lorsque la base est stable, certaines optimisations peuvent être envisagées selon vos objectifs." },
+      { "num": "Phase 5", "title": "Suivi à long terme", "body": "Selon la situation clinique et la stabilité atteinte." }
+    ],
+    "choixLabel": "Choix",
+    "choixTitle": "Plan idéal, alternatives et statu quo",
+    "idealAlternatives": [
+      "Le plan idéal lorsque pertinent",
+      "Les alternatives raisonnables",
+      "Les limites de chaque option",
+      "Les conséquences possibles de ne pas traiter",
+      "La possibilité de séquencer dans le temps"
+    ],
+    "remisLabel": "Remis",
+    "remisTitle": "Documents remis au patient",
+    "remisIntro": "Selon la situation, le patient peut recevoir des documents concrets pour relire, comparer, réfléchir et poser ses questions.",
+    "documentsRemis": [
+      "Résumé personnalisé de santé buccodentaire",
+      "Plan de traitement par phases",
+      "Estimation",
+      "Instructions postopératoires",
+      "Fiche éducative",
+      "Documents d'assurance",
+      "Référence spécialiste",
+      "Photos ou explications visuelles",
+      "Recommandations de suivi"
+    ],
+    "ctaTitle": "Comprendre avant de décider",
+    "ctaBody": "Une évaluation complète est nécessaire pour déterminer si un rendez-vous de présentation du plan est indiqué dans votre cas.",
+    "ctaPrimary": "Demander une première visite",
+    "ctaSecondary": "Comprendre notre approche"
+  },
   "nouveauxPatients": {
     "label": "Nouveaux patients",
     "title": "Nouveaux patients",
@@ -416,8 +478,11 @@
     }
   },
   "emergency": {
+    "label": "Urgence",
     "title": "Urgence dentaire",
-    "subtitle": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, contactez immédiatement les services d'urgence."
+    "subtitle": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, contactez immédiatement les services d'urgence.",
+    "pageSubtitle": "Pour une demande d'urgence, utilisez le formulaire dédié sur la page Rendez-vous. Une page autonome est en préparation.",
+    "metaDescription": "Pour une urgence dentaire à Ahuntsic — douleur, traumatisme, enflure, dent cassée. Utilisez le formulaire dédié sur la page Rendez-vous ou appelez la clinique."
   },
   "emergencyForm": {
     "medicalWarningStrong": "Avertissement médical.",
@@ -728,6 +793,202 @@
     "ctaPrimary": "Poser une question administrative",
     "ctaSecondary": "Demander un rendez-vous"
   },
+  "confidentialite": {
+    "label": "Conformité",
+    "title": "Confidentialité et renseignements personnels",
+    "subtitle": "Comment Studio Dentaire De Facto recueille, utilise et protège vos renseignements personnels et de santé.",
+    "metaTitle": "Confidentialité et renseignements personnels",
+    "metaDescription": "Comment Studio Dentaire De Facto recueille, utilise et protège vos renseignements personnels et de santé. Politique simple et adaptée au contexte dentaire.",
+    "intro": "Les communications électroniques peuvent comporter certains risques. Les informations transmises par formulaire, courriel ou SMS doivent être limitées aux renseignements nécessaires à la demande.",
+    "lastUpdated": "Dernière mise à jour : 15 mai 2026.",
+    "sections": [
+      { "title": "Renseignements recueillis", "body": "Nous recueillons les renseignements nécessaires à votre prise en charge : identification, coordonnées, renseignements médicaux et dentaires pertinents pour la sécurité et la qualité des soins." },
+      { "title": "Usage des renseignements", "body": "Vos renseignements servent à l'organisation des rendez-vous, à la tenue du dossier clinique, à la prestation des soins, aux suivis et aux communications nécessaires à votre prise en charge." },
+      { "title": "Partage des renseignements", "body": "Vos renseignements ne sont partagés que lorsque cela est nécessaire au soin, à une référence à un autre professionnel, à la collaboration avec le laboratoire, ou lorsque la loi l'exige." },
+      { "title": "Sécurité", "body": "Des mesures techniques et organisationnelles raisonnables sont mises en place pour protéger vos renseignements contre la perte, l'accès non autorisé, la modification ou la divulgation non désirée." },
+      { "title": "Accès et correction", "body": "Vous pouvez demander l'accès à vos renseignements ou la correction d'informations inexactes. Une vérification d'identité peut être requise avant le traitement de la demande." },
+      { "title": "Consentement", "body": "Votre consentement est requis pour la transmission de certains renseignements ou documents (référence à un spécialiste, transmission au laboratoire, communications électroniques). Vous pouvez retirer votre consentement pour des fins non essentielles aux soins." },
+      { "title": "Communication électronique", "body": "Les communications par courriel, SMS ou formulaire web peuvent comporter certains risques inhérents au transit numérique. Les informations transmises doivent être limitées à ce qui est nécessaire à la demande. Pour des renseignements particulièrement sensibles, un échange en personne ou téléphonique peut être préférable." },
+      { "title": "Responsable de la protection des renseignements personnels", "body": "Pour toute question relative à la confidentialité, à l'accès, à la correction de vos renseignements personnels ou à la sécurité des données, vous pouvez contacter le responsable de la protection des renseignements personnels du Studio Dentaire De Facto par téléphone ou par courriel. Studio Dentaire De Facto opère dans le cadre des lois applicables au Québec et au Canada, notamment la Loi sur la protection des renseignements personnels dans le secteur privé (Loi 25) et la LPRPDE au niveau fédéral." }
+    ]
+  },
+  "conditions": {
+    "label": "Conditions",
+    "title": "Conditions d'utilisation",
+    "subtitle": "Conditions encadrant l'utilisation du site web de De Facto Studio Dentaire.",
+    "metaTitle": "Conditions d'utilisation",
+    "sections": [
+      { "title": "Acceptation", "body": "L'utilisation de ce site implique votre acceptation des présentes conditions. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le site." },
+      { "title": "Nature des informations", "body": "Les informations publiées sur ce site sont fournies à titre informatif et ne constituent pas un avis médical, un diagnostic ni une prescription. Une consultation clinique est toujours nécessaire pour évaluer votre situation." },
+      { "title": "Résultats cliniques et photos avant/après", "body": "Les cas et photographies présentés illustrent des situations traitées. Chaque patient est différent : les résultats varient selon la condition initiale, les habitudes, les objectifs et la biologie de chaque personne. Aucun résultat n'est garanti." },
+      { "title": "Propriété intellectuelle", "body": "Le contenu du site (textes, images, marques, mise en page) appartient à De Facto Studio Dentaire ou à ses partenaires. Toute reproduction sans autorisation est interdite." },
+      { "title": "Limitation de responsabilité", "body": "De Facto Studio Dentaire s'efforce de fournir des informations exactes et à jour, mais ne peut garantir l'absence d'erreurs. L'utilisateur reste responsable de l'usage qu'il fait des informations consultées." },
+      { "title": "Liens externes", "body": "Certains liens peuvent renvoyer à des sites tiers. Le studio ne peut être tenu responsable du contenu ou des pratiques de ces sites." },
+      { "title": "Droit applicable", "body": "Les présentes conditions sont régies par les lois applicables au Québec et au Canada. Tout litige relèvera des tribunaux compétents du district de Montréal." },
+      { "title": "Modifications", "body": "Ces conditions peuvent être modifiées à tout moment. La version en vigueur est celle publiée sur le site." }
+    ]
+  },
+  "laboratoire": {
+    "metaTitle": "Laboratoire dentaire intégré",
+    "metaDescription": "Un laboratoire dentaire intégré, ouvert aux professionnels. Communication directe, traçabilité, non-sollicitation.",
+    "heroLabel": "Laboratoire",
+    "heroTitle": "Un laboratoire dentaire intégré, ouvert aux professionnels.",
+    "intro1": "Le laboratoire De Facto accompagne les dentistes et spécialistes qui souhaitent collaborer avec une équipe attentive à la communication, à la précision et à la traçabilité.",
+    "intro2": "Notre objectif est de soutenir le travail clinique du professionnel, sans jamais remplacer sa relation avec son patient.",
+    "intro3": "Nous respectons pleinement nos collègues référents. Aucun patient adressé au laboratoire pour un service technique ne sera sollicité pour devenir patient du Studio Dentaire De Facto.",
+    "paths": {
+      "patientTitle": "Je suis un patient",
+      "patientBody": "Comprendre comment le laboratoire intégré soutient mes soins.",
+      "proTitle": "Je suis un professionnel dentaire",
+      "proBody": "Devenir partenaire, transmettre une prescription, référer un cas.",
+      "proItem1": "→ Devenir partenaire de soins",
+      "proItem2": "→ Transmettre une prescription",
+      "proItem3": "→ Référer un patient"
+    },
+    "philosophie": {
+      "label": "Philosophie",
+      "title": "La technologie au service de la prédictibilité",
+      "body": "Notre laboratoire utilise des équipements reconnus, des protocoles rigoureux et des matériaux approuvés par Santé Canada lorsque requis. La technologie n'est pas une fin en soi : elle soutient le savoir-faire, la communication et la constance des résultats.",
+      "imageAlt": "laboratoire-integre-de-facto.jpg"
+    },
+    "engagement": {
+      "label": "Engagement envers les référents",
+      "title": "Respect de la relation professionnel-patient",
+      "body1": "Lorsqu'un patient est dirigé vers De Facto pour une prise de teinte, une documentation photographique ou un service lié au laboratoire, il demeure le patient du professionnel référent.",
+      "body2": "Afin d'éviter toute ambiguïté, De Facto peut fournir une déclaration de non-inscription du patient au Studio Dentaire De Facto pour une période déterminée, lorsque la situation le justifie.",
+      "body3": "Cette mesure vise à protéger la relation de confiance entre le professionnel référent, son patient et notre laboratoire."
+    },
+    "piliers": {
+      "label": "Piliers du laboratoire",
+      "title": "Quatre piliers",
+      "1": {
+        "title": "Communication constante",
+        "body": "Communication directe avec le professionnel et avec les personnes qui confectionnent les appareils."
+      },
+      "2": {
+        "title": "Protocoles rigoureux et traçabilité",
+        "body": "Chaque cas est soutenu par une fiche technique, une traçabilité des matériaux et une documentation des étapes pertinentes."
+      },
+      "3": {
+        "title": "Technologie au service du savoir-faire",
+        "body": "Équipements numériques, impression, usinage et protocoles contrôlés au service de la précision clinique."
+      },
+      "4": {
+        "title": "Supervision technique et clinique",
+        "body": "Un technicien et un dentiste responsable participent à la vérification des étapes importantes de production."
+      }
+    },
+    "services": {
+      "label": "Services",
+      "title": "Services offerts",
+      "categoryLabel": "Catégorie",
+      "intro": "Une gamme complète de restaurations, prothèses, gouttières et accessoires de planification, offerts aux patients du studio et aux professionnels référents.",
+      "orthodontie": {
+        "category": "Orthodontie",
+        "items": [
+          "Gouttières de rétention",
+          "Plaques de Hawley",
+          "Twin Block",
+          "HAAS",
+          "Hyrax",
+          "Mainteneurs d'espace",
+          "Fils linguaux"
+        ]
+      },
+      "prosthodontie_amovible": {
+        "category": "Prosthodontie amovible",
+        "items": [
+          "Prothèses complètes imprimées ou usinées"
+        ]
+      },
+      "prosthodontie_fixe": {
+        "category": "Prosthodontie fixe",
+        "items": [
+          "Restaurations unitaires (couronne, incrustation, facette, restauration partielle collée)",
+          "Restaurations plurales (pont conventionnel, pont collé)",
+          "Restaurations implantaires (couronne ou pont sur implants)",
+          "Planification prothétique (wax-up, mock-up, modèle imprimé)"
+        ]
+      },
+      "plaques_occlusales": {
+        "category": "Plaques occlusales",
+        "items": [
+          "Plaque occlusale rigide Formlabs LT Clear",
+          "Plaque occlusale flexible Formlabs LT Comfort"
+        ]
+      },
+      "gouttieres": {
+        "category": "Gouttières",
+        "items": [
+          "Gouttière de blanchiment",
+          "Gouttière de rétention",
+          "Gouttière pour sport de combat et extrême"
+        ]
+      },
+      "waxup": {
+        "category": "Wax-up diagnostique",
+        "items": [
+          "Wax-up numérique pour planification esthétique, fonctionnelle ou prothétique"
+        ]
+      },
+      "stratification": {
+        "category": "Stratification et maquillage",
+        "items": [
+          "Maquillage",
+          "Stratification céramique",
+          "Finition esthétique de cas temporaires ou permanents"
+        ]
+      },
+      "documentation": {
+        "category": "Documentation clinique",
+        "items": [
+          "Prise de teinte",
+          "Photos intraorales et extraorales pour cas complexes et esthétiques"
+        ]
+      }
+    },
+    "equipements": {
+      "label": "Équipements",
+      "title": "Équipements utilisés",
+      "1": { "name": "Scanner intraoral", "role": "Capture numérique des arcades et communication clinique-laboratoire" },
+      "2": { "name": "Logiciel de conception numérique", "role": "Planification et conception des restaurations ou appareils" },
+      "3": { "name": "Usinage CAD/CAM", "role": "Fabrication de certaines restaurations, modèles ou appareils selon indication" },
+      "4": { "name": "Four de pressée", "role": "Pressée de certaines restaurations en céramique selon protocole" },
+      "5": { "name": "Four de cristallisation / cuisson", "role": "Cristallisation, maquillage, glaçage ou finition selon matériau" },
+      "6": { "name": "Impression 3D Formlabs Dental", "role": "Modèles, guides, gouttières, plaques occlusales, prototypes selon indication" },
+      "7": { "name": "Lavage et post-polymérisation", "role": "Étapes de post-traitement des pièces imprimées selon les protocoles du fabricant" },
+      "8": { "name": "Finition et polissage", "role": "Ajustement, finition, caractérisation et contrôle final" },
+      "9": { "name": "Documentation photo", "role": "Communication de cas, prise de teinte, suivi et contrôle de qualité" }
+    },
+    "tracabilite": {
+      "label": "Contrôle qualité",
+      "title": "Fiche de production et traçabilité",
+      "intro1": "Chaque cas peut être accompagné d'un rapport de traçabilité précisant les matériaux utilisés, les équipements, les limites techniques et les étapes pertinentes de production.",
+      "intro2": "Chaque cas de laboratoire est associé à une fiche de production interne qui documente les étapes pertinentes :",
+      "1": { "item": "Code du cas", "desc": "Identifiant unique" },
+      "2": { "item": "Date de réception", "desc": "Entrée au laboratoire" },
+      "3": { "item": "Professionnel référent", "desc": "Dentiste ou clinique ayant transmis le cas" },
+      "4": { "item": "Type d'appareil ou restauration", "desc": "Couronne, plaque occlusale, modèle, gouttière, etc." },
+      "5": { "item": "Matériau utilisé", "desc": "Nom commercial et famille" },
+      "6": { "item": "Teinte", "desc": "Si applicable" },
+      "7": { "item": "Fichier numérique", "desc": "STL, scan, photo, radiographie" },
+      "8": { "item": "Étapes de production", "desc": "Réception, conception, fabrication, finition, contrôle, livraison" },
+      "9": { "item": "Opérateur", "desc": "Initiales du responsable de chaque étape" },
+      "10": { "item": "Contrôle qualité", "desc": "Vérification finale avant livraison" },
+      "11": { "item": "Notes techniques", "desc": "Particularités, limites, recommandations" }
+    },
+    "cta": {
+      "label": "Pour les professionnels",
+      "title": "Trois parcours dédiés aux dentistes et spécialistes",
+      "body": "Chaque demande professionnelle a son propre formulaire et son propre flux.",
+      "partenaireTitle": "Devenir partenaire",
+      "partenaireBody": "Premier contact pour discuter d'une collaboration.",
+      "prescriptionTitle": "Transmettre une prescription",
+      "prescriptionBody": "Prescription d'appareil ou de restauration avec fichiers STL.",
+      "referenceTitle": "Référer un patient",
+      "referenceBody": "Référence clinique pour évaluation ou traitement."
+    }
+  },
   "footer": {
     "tagline": "Studio Dentaire De Facto — dentisterie réfléchie au cœur d'Ahuntsic, Montréal.",
     "coordonnees": "Coordonnées",
@@ -746,5 +1007,239 @@
     "horaires": "Heures d'ouverture",
     "horairesPlaceholder": "Lun.–ven. : 9 h à 18 h",
     "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste."
+  },
+  "labPrescriptionForm": {
+    "ariaLabel": "Formulaire de prescription au laboratoire",
+    "intro": "Prescription d'un appareil ou d'une restauration. Les champs s'adaptent selon le type d'appareil choisi.",
+    "section1Title": "Professionnel",
+    "section2Title": "Patient",
+    "section3Title": "Appareil dentaire",
+    "section3Intro": "Choisissez le type d'appareil prescrit.",
+    "section4Title": "Type",
+    "section4IntroPrefix": "Précisez le type pour : ",
+    "section5Title": "Arcade et dents",
+    "section6Title": "Couleur",
+    "section7Title": "Matériau souhaité",
+    "section8Title": "Instructions cliniques",
+    "section9Title": "Fichiers",
+    "section10Title": "Consentement",
+    "prescribingProfessional": "Nom du professionnel",
+    "clinicName": "Clinique",
+    "email": "Courriel",
+    "patientName": "Nom ou code patient",
+    "appareilOtherText": "Veuillez préciser l'appareil",
+    "arcadeLabel": "Arcade concernée",
+    "teethLabel": "Numéros des dents",
+    "colorIndicationsLabel": "Indications de couleur, teinte et maquillage personnalisé souhaité",
+    "colorIndicationsPlaceholder": "Ex : A2 cervical, A1 incisal, caractérisations bleutées en incisal, maquillage discret.",
+    "temporaryRestorationNote": "Restauration temporaire : seule la résine est offerte.",
+    "laminationLabel": "Lamination de porcelaine souhaitée",
+    "yes": "Oui",
+    "no": "Non",
+    "clinicalInstructionsLabel": "Instructions cliniques, particularités, exigences",
+    "stlFilesLabel": "STL / scan",
+    "stlFilesHelp": "STL, OBJ, PLY ou ZIP. Maximum 25 MB par fichier.",
+    "photosLabel": "Photos cliniques",
+    "photosHelp": "JPG, PNG ou HEIC.",
+    "radiographsLabel": "Radiographies",
+    "radiographsHelp": "JPG, PNG ou PDF.",
+    "consentPatientTransmission": "Je confirme que le patient a consenti à la transmission des renseignements nécessaires.",
+    "consentPrivacyBefore": "J'ai pris connaissance de la ",
+    "consentPrivacyLink": "politique de confidentialité",
+    "consentPrivacyAfter": ".",
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
+    "submit": "Transmettre la prescription",
+    "submitting": "Envoi en cours…",
+    "toothPickerInstruction": "Cliquez sur les dents concernées (notation FDI)",
+    "toothPickerSelected": "Sélectionnées :",
+    "toothPickerNone": "aucune",
+    "toothPickerAriaUpper": "Arcade supérieure droite",
+    "toothPickerAriaLower": "Arcade inférieure droite",
+    "appareils": {
+      "couronne": "Couronne",
+      "pont": "Pont",
+      "incrustation": "Incrustation",
+      "facette": "Facette",
+      "prothese_amovible_complete": "Prothèse dentaire amovible complète",
+      "guide_chirurgical": "Guide chirurgical",
+      "plaque_occlusale": "Plaque occlusale",
+      "porte_empreinte": "Porte-empreinte personnalisé",
+      "gouttiere_retention": "Gouttière de rétention",
+      "gouttiere_blanchiment": "Gouttière de blanchiment",
+      "essix": "Essix",
+      "wax_up": "Wax-up diagnostique",
+      "reparation": "Réparation",
+      "autres": "Autres"
+    },
+    "subOptions": {
+      "temporaire": "Temporaire",
+      "permanente": "Permanente",
+      "immediat": "Immédiat",
+      "permanent": "Permanent",
+      "rigide": "Rigide",
+      "flexible": "Flexible",
+      "avec_dent_postiche": "Avec dent postiche",
+      "sans_dent_postiche": "Sans dent postiche"
+    },
+    "materials": {
+      "porcelaine_feldspathique": "Porcelaine feldspathique",
+      "emax_presse": "E.max pressé",
+      "zircone_3y": "Zircone 3Y",
+      "zircone_multicouche": "Zircone multi-couche",
+      "resine": "Résine",
+      "lt_clear": "LT Clear (rigide)",
+      "lt_comfort": "LT Comfort (flexible)"
+    },
+    "arcades": {
+      "superieure": "Supérieure",
+      "inferieure": "Inférieure",
+      "les_deux": "Les deux"
+    }
+  },
+  "referredCaseForm": {
+    "ariaLabel": "Formulaire de référence d'un patient",
+    "intro": "Référer un patient au Studio Dentaire De Facto pour évaluation, traitement ou service technique. Le patient reste sous votre responsabilité clinique.",
+    "section1Title": "Professionnel référent",
+    "section2Title": "Patient",
+    "section3Title": "Référence",
+    "section4Title": "Fichiers",
+    "section5Title": "Consentements",
+    "referringProfessionalName": "Nom du professionnel",
+    "clinicName": "Clinique",
+    "clinicPhone": "Téléphone de la clinique",
+    "email": "Courriel",
+    "patientName": "Nom complet du patient",
+    "patientDob": "Date de naissance",
+    "patientPhone": "Téléphone du patient",
+    "patientEmail": "Courriel du patient",
+    "patientLanguage": "Langue préférée",
+    "patientLanguageOther": "Veuillez préciser la langue",
+    "referralMainReason": "Motif principal",
+    "referralMainReasonOther": "Veuillez préciser le motif principal",
+    "motifsSecondairesLabel": "Motifs secondaires (optionnel)",
+    "urgencyLabel": "Urgence",
+    "yes": "Oui",
+    "no": "Non",
+    "clinicalSummary": "Résumé clinique",
+    "previousTreatments": "Traitements déjà réalisés",
+    "documentsTransmisLabel": "Documents transmis",
+    "photosLabel": "Photos cliniques",
+    "photosHelp": "JPG, PNG ou HEIC. Maximum 10 MB par photo.",
+    "radiographsLabel": "Radiographies",
+    "radiographsHelp": "JPG, PNG ou PDF.",
+    "stlFilesLabel": "STL / scan (optionnel)",
+    "stlFilesHelp": "STL, OBJ, PLY ou ZIP.",
+    "consentPatientInformed": "Le patient a été informé de cette référence.",
+    "consentTransmission": "J'autorise la transmission des documents et renseignements pertinents au Studio Dentaire De Facto.",
+    "consentPrivacyBefore": "J'ai pris connaissance de la ",
+    "consentPrivacyLink": "politique de confidentialité",
+    "consentPrivacyAfter": ".",
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
+    "submit": "Transmettre la référence",
+    "submitting": "Envoi en cours…",
+    "langues": {
+      "francais": "Français",
+      "anglais": "Anglais",
+      "francais_anglais": "Français ou anglais",
+      "autre": "Autre"
+    },
+    "motifsPrincipaux": {
+      "evaluation_complete": "Évaluation complète",
+      "douleur": "Douleur",
+      "esthetique": "Préoccupation esthétique",
+      "endodontie": "Endodontie",
+      "parodontie": "Parodontie / greffe",
+      "implantologie": "Implantologie",
+      "prosthodontie": "Prosthodontie / restauration complexe",
+      "deuxieme_avis": "Deuxième avis",
+      "laboratoire": "Service de laboratoire (teinte, réparation)",
+      "autre": "Autre"
+    },
+    "motifsSecondaires": {
+      "douleur": "Douleur",
+      "sensibilite": "Sensibilité",
+      "saignement_gencives": "Saignement des gencives",
+      "dent_mobile": "Dent mobile",
+      "fracture": "Fracture",
+      "usure": "Usure dentaire",
+      "esthetique": "Préoccupation esthétique",
+      "infection": "Infection suspectée",
+      "autre": "Autre"
+    },
+    "documentsTransmis": {
+      "photos": "Photos",
+      "radiographies": "Radiographies",
+      "stl_scan": "STL / scan",
+      "plan_traitement": "Plan de traitement existant",
+      "notes_cliniques": "Notes cliniques",
+      "autre": "Autre"
+    }
+  },
+  "partnerOnboardingForm": {
+    "ariaLabel": "Formulaire de partenariat professionnel",
+    "intro": "Ce formulaire est destiné aux dentistes et spécialistes qui souhaitent discuter d'une collaboration avec notre laboratoire intégré.",
+    "section1Title": "Identification professionnelle",
+    "section2Title": "Type de collaboration recherchée",
+    "section2Intro": "Cochez ce qui s'applique.",
+    "section3Title": "Services d'intérêt",
+    "section3Intro": "Cochez ce qui vous intéresse.",
+    "section4Title": "Préférence de contact",
+    "section5Title": "Message ou contexte de la demande",
+    "section6Title": "Consentement",
+    "dentistName": "Nom du professionnel",
+    "professionalTitle": "Titre professionnel",
+    "professionalTitleOther": "Veuillez préciser votre titre",
+    "clinicName": "Nom de la clinique",
+    "clinicAddress": "Adresse de la clinique",
+    "email": "Courriel",
+    "messageLabel": "Précisions, besoins spécifiques, contexte",
+    "consentContact": "J'autorise Studio Dentaire De Facto à me contacter concernant cette demande de collaboration.",
+    "consentPrivacyBefore": "J'ai pris connaissance de la ",
+    "consentPrivacyLink": "politique de confidentialité",
+    "consentPrivacyAfter": ".",
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
+    "submit": "Transmettre la demande",
+    "submitting": "Envoi en cours…",
+    "professionalTitles": {
+      "dentiste_generaliste": "Dentiste généraliste",
+      "prosthodontiste": "Prosthodontiste",
+      "orthodontiste": "Orthodontiste",
+      "parodontiste": "Parodontiste",
+      "endodontiste": "Endodontiste",
+      "chirurgien_maxillo_facial": "Chirurgien maxillo-facial",
+      "denturologiste": "Denturologiste",
+      "hygieniste_dentaire": "Hygiéniste dentaire",
+      "gestionnaire_clinique": "Gestionnaire de clinique",
+      "autre": "Autre"
+    },
+    "collaborationTypes": {
+      "lab_regulier": "Cas de laboratoire réguliers",
+      "lab_occasionnel": "Cas de laboratoire occasionnels",
+      "cas_esthetiques": "Cas esthétiques complexes",
+      "consultation": "Consultations cliniques",
+      "reference_clinique": "Références cliniques",
+      "autre": "Autre"
+    },
+    "services": {
+      "orthodontie": "Orthodontie",
+      "prostho_amovible": "Prosthodontie amovible",
+      "prostho_fixe": "Prosthodontie fixe",
+      "plaques_occlusales": "Plaques occlusales",
+      "gouttieres": "Gouttières",
+      "wax_up": "Wax-up",
+      "prise_teinte": "Prise de teinte",
+      "esthetique": "Cas esthétiques",
+      "reparations": "Réparations",
+      "emax": "E.max pressé ou usiné",
+      "zircone": "Zircone",
+      "impression_3d": "Impression 3D / Formlabs",
+      "autre": "Autre"
+    },
+    "contactPrefs": {
+      "telephone": "Téléphone",
+      "courriel": "Courriel",
+      "sms": "SMS",
+      "en_personne": "En personne"
+    }
   }
 }
