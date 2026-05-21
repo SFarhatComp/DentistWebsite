@@ -45,6 +45,7 @@ const MATERIAL_LABELS: Record<string, string> = {
   emax_presse: "E.max pressé",
   zircone_3y: "Zircone 3Y",
   zircone_multicouche: "Zircone multi-couche",
+  resine: "Résine",
   lt_clear: "LT Clear (rigide)",
   lt_comfort: "LT Comfort (flexible)",
 }

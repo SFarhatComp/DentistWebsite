@@ -119,17 +119,6 @@ const equipements = [
   { name: "Documentation photo", role: "Communication de cas, prise de teinte, suivi et contrôle de qualité" },
 ]
 
-// Matériaux (cahier §16A.3)
-const materiaux = [
-  { name: "IPS e.max Press", use: "Restaurations pressées en disilicate de lithium selon indication" },
-  { name: "IPS e.max CAD", use: "Restaurations usinées en disilicate de lithium selon indication" },
-  { name: "Zircone", use: "Couronnes, ponts ou restaurations selon indication clinique" },
-  { name: "Résines dentaires imprimables", use: "Modèles, guides, gouttières ou appareils selon indication et matériau" },
-  { name: "Résines pour temporaires", use: "Provisoires ou prototypes selon indication" },
-  { name: "Matériaux pour plaques occlusales", use: "Plaques occlusales selon indication clinique et matériau validé" },
-  { name: "Matériaux de finition", use: "Maquillage, glaçage, polissage et caractérisation selon le cas" },
-]
-
 // Fiche de traçabilité (cahier §16A.4)
 const fichesTracabilite = [
   { item: "Code du cas", desc: "Identifiant unique" },
@@ -321,19 +310,18 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
         </Container>
       </section>
 
-      {/* Équipements et matériaux */}
+      {/* Équipements */}
       <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="max-w-2xl mb-12">
-            <SectionLabel>Équipements et matériaux</SectionLabel>
+            <SectionLabel>Équipements</SectionLabel>
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1]">
-              Équipements et matériaux utilisés
+              Équipements utilisés
             </h2>
           </FadeIn>
 
-          <div className="max-w-4xl mb-12">
+          <div className="max-w-4xl">
             <FadeIn>
-              <h3 className="font-display text-xl text-foreground mb-6">Équipements</h3>
               <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border">
                 {equipements.map((eq, i) => (
                   <div key={eq.name} className="bg-background p-5 h-full">
@@ -351,35 +339,6 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
               </div>
             </FadeIn>
           </div>
-
-          <div className="max-w-4xl">
-            <FadeIn>
-              <h3 className="font-display text-xl text-foreground mb-6">Matériaux</h3>
-              <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3 border border-border">
-                {materiaux.map((mat, i) => (
-                  <div key={mat.name} className="bg-background p-5 h-full">
-                    <div className="flex items-baseline gap-3 mb-2">
-                      <span className="font-display text-xs text-accent/70 tabular-nums">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h4 className="font-display text-sm md:text-base text-foreground">{mat.name}</h4>
-                    </div>
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed pl-7">
-                      {mat.use}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-          </div>
-
-          {/*
-            Sources techniques (interne, non affichées publiquement) :
-            - Ivoclar IPS e.max Press : https://www.ivoclar.com/en_ca/products/metal-free-ceramics/ips-e.max-press-lab
-            - Ivoclar IPS e.max CAD : https://www.ivoclar.com/en_li/products/digital-processes/ips-e.max-cad
-            - Formlabs Form 4B : https://dental.formlabs.com/products/form-4b/
-            - Formlabs Materials : https://dental.formlabs.com/materials/
-          */}
         </Container>
       </section>
 

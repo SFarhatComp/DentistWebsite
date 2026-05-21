@@ -33,11 +33,15 @@ type Appareil = {
   lamination?: boolean
 }
 
-const RESTAURATION_MATERIALS: MaterialOption[] = [
+const RESTAURATION_MATERIALS_PERMANENT: MaterialOption[] = [
   { v: "porcelaine_feldspathique", l: "Porcelaine feldspathique" },
   { v: "emax_presse", l: "E.max pressé" },
   { v: "zircone_3y", l: "Zircone 3Y" },
   { v: "zircone_multicouche", l: "Zircone multi-couche" },
+]
+
+const RESTAURATION_MATERIALS_TEMPORARY: MaterialOption[] = [
+  { v: "resine", l: "Résine" },
 ]
 
 const PLAQUE_MATERIALS: MaterialOption[] = [
@@ -55,7 +59,7 @@ const APPAREILS: Appareil[] = [
     ],
     teeth: "required",
     arch: "required",
-    materials: RESTAURATION_MATERIALS,
+    materials: RESTAURATION_MATERIALS_PERMANENT,
     lamination: true,
   },
   {
@@ -67,7 +71,7 @@ const APPAREILS: Appareil[] = [
     ],
     teeth: "required",
     arch: "required",
-    materials: RESTAURATION_MATERIALS,
+    materials: RESTAURATION_MATERIALS_PERMANENT,
     lamination: true,
   },
   {
@@ -79,7 +83,7 @@ const APPAREILS: Appareil[] = [
     ],
     teeth: "required",
     arch: "required",
-    materials: RESTAURATION_MATERIALS,
+    materials: RESTAURATION_MATERIALS_PERMANENT,
     lamination: true,
   },
   {
@@ -91,7 +95,7 @@ const APPAREILS: Appareil[] = [
     ],
     teeth: "required",
     arch: "required",
-    materials: RESTAURATION_MATERIALS,
+    materials: RESTAURATION_MATERIALS_PERMANENT,
     lamination: true,
   },
   {
@@ -107,7 +111,7 @@ const APPAREILS: Appareil[] = [
   {
     v: "guide_chirurgical",
     l: "Guide chirurgical",
-    teeth: "none",
+    teeth: "optional",
     arch: "required",
   },
   {
@@ -445,38 +449,8 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         )}
       </AnimatePresence>
 
-      {/* Matériau */}
-      <AnimatePresence mode="wait">
-        {appareil?.materials && (
-          <motion.div key={`mat-${appareil.v}`} {...anim}>
-            <FormSection number="06" title="Matériau souhaité">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {appareil.materials.map((m) => (
-                  <RadioField
-                    key={m.v}
-                    name="material"
-                    value={m.v}
-                    label={m.l}
-                    required
-                  />
-                ))}
-              </div>
-              {appareil.lamination && (
-                <div className="mt-6 pt-6 border-t border-border">
-                  <p className="label-sm text-foreground mb-3">Lamination de porcelaine souhaitée *</p>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <RadioField name="lamination" value="oui" label="Oui" required />
-                    <RadioField name="lamination" value="non" label="Non" required />
-                  </div>
-                </div>
-              )}
-            </FormSection>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Couleur */}
-      <FormSection number="07" title="Couleur">
+      {/* Couleur — affichée avant le matériau (ordre Forme → Couleur → Matériaux) */}
+      <FormSection number="06" title="Couleur">
         <TextareaField
           name="colorIndications"
           label="Indications de couleur, teinte et maquillage personnalisé souhaité"
@@ -484,6 +458,50 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
           rows={4}
         />
       </FormSection>
+
+      {/* Matériau — pour C/P/I/F temporaire : seule la Résine est offerte, pas de lamination */}
+      <AnimatePresence mode="wait">
+        {appareil?.materials && (() => {
+          const isTemporaryRestoration =
+            ["couronne", "pont", "incrustation", "facette"].includes(appareil.v) &&
+            subOption === "temporaire"
+          const activeMaterials = isTemporaryRestoration
+            ? RESTAURATION_MATERIALS_TEMPORARY
+            : appareil.materials
+          const showLamination = appareil.lamination && !isTemporaryRestoration
+          return (
+            <motion.div key={`mat-${appareil.v}-${subOption}`} {...anim}>
+              <FormSection number="07" title="Matériau souhaité">
+                {isTemporaryRestoration && (
+                  <p className="text-sm text-muted-foreground italic mb-4">
+                    Restauration temporaire : seule la résine est offerte.
+                  </p>
+                )}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {activeMaterials.map((m) => (
+                    <RadioField
+                      key={m.v}
+                      name="material"
+                      value={m.v}
+                      label={m.l}
+                      required
+                    />
+                  ))}
+                </div>
+                {showLamination && (
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <p className="label-sm text-foreground mb-3">Lamination de porcelaine souhaitée *</p>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <RadioField name="lamination" value="oui" label="Oui" required />
+                      <RadioField name="lamination" value="non" label="Non" required />
+                    </div>
+                  </div>
+                )}
+              </FormSection>
+            </motion.div>
+          )
+        })()}
+      </AnimatePresence>
 
       <FormSection number="08" title="Instructions cliniques">
         <TextareaField
