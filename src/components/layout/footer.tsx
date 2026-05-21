@@ -14,7 +14,7 @@ export function Footer({ lang }: { lang: Locale }) {
       <Container>
         <div className="py-16 grid gap-12 md:grid-cols-4">
           <div>
-            <div className="font-display text-2xl text-primary mb-4">Studio Dentaire De Facto</div>
+            <div className="font-display text-2xl text-primary mb-4">{t("site.name")}</div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-6">{t("footer.tagline")}</p>
             <div className="label-sm text-foreground mb-3">{t("footer.coordonnees")}</div>
             <ul className="text-sm text-muted-foreground space-y-1.5">
@@ -50,7 +50,7 @@ export function Footer({ lang }: { lang: Locale }) {
               </li>
               <li>
                 <Link href={`/${lang}/nouveaux-patients`} className="hover:text-primary">
-                  Nouveaux patients
+                  {t("footer.nouveauxPatients")}
                 </Link>
               </li>
               <li>
@@ -103,7 +103,7 @@ export function Footer({ lang }: { lang: Locale }) {
           </div>
 
           <div>
-            <div className="label-sm text-foreground mb-4">Légal</div>
+            <div className="label-sm text-foreground mb-4">{t("footer.legal")}</div>
             <ul className="text-sm text-muted-foreground space-y-2">
               <li>
                 <Link href={`/${lang}/confidentialite`} className="hover:text-primary">
@@ -121,7 +121,7 @@ export function Footer({ lang }: { lang: Locale }) {
 
         <div className="border-t border-border py-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
           <p className="text-xs text-muted-foreground italic max-w-2xl leading-relaxed">{t("footer.mention")}</p>
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Studio Dentaire De Facto</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} {t("site.name")}</p>
         </div>
       </Container>
     </footer>

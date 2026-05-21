@@ -5,12 +5,15 @@ import { PiliersSection } from "@/components/home/piliers-section"
 import { EvaluationCompleteSection } from "@/components/home/evaluation-complete-section"
 import { StudioPreviewSection } from "@/components/home/studio-preview-section"
 import { CoordonneesSection } from "@/components/home/coordonnees-section"
+import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: { absolute: "Studio Dentaire De Facto — Dentiste Ahuntsic, Montréal" },
-  description:
-    "Studio dentaire à Ahuntsic, Montréal. Une approche fondée sur le temps, la clarté, la justesse et la continuité. Comprendre avant d'intervenir.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: { absolute: t("home.metaTitle") },
+    description: t("home.metaDescription"),
+  }
 }
 
 export default function HomePage({ params }: { params: { lang: string } }) {

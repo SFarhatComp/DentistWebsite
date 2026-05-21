@@ -10,10 +10,12 @@ import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale, Service } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Soins dentaires à Ahuntsic",
-  description:
-    "Examen complet, prévention, restaurations, parodontie, couronnes, endodontie, implantologie, aligneurs, esthétique et urgences — tous les soins proposés par Studio Dentaire De Facto à Ahuntsic, Montréal.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("services.metaTitle"),
+    description: t("services.metaDescription"),
+  }
 }
 
 const ESSENTIELS = ["examen-complet", "prevention-hygiene", "dentisterie-operatoire", "parodontie", "urgences"]
@@ -76,23 +78,23 @@ export default function SoinsPage({ params }: { params: { lang: string } }) {
       <PatientNeedsMatrix lang={lang} />
 
       <CategorySection
-        label="Soins essentiels"
-        title="Soins essentiels"
+        label={t("services.essentiels.label")}
+        title={t("services.essentiels.title")}
         services={essentiels}
         lang={lang}
       />
 
       <CategorySection
-        label="Soins restaurateurs et esthétiques"
-        title="Soins restaurateurs et esthétiques"
+        label={t("services.restaurateurs.label")}
+        title={t("services.restaurateurs.title")}
         services={restaurateurs}
         lang={lang}
       />
 
       <CategorySection
-        label="Soins avancés ou coordonnés"
-        title="Soins avancés ou coordonnés"
-        description="Pour les cas plus complexes, certains traitements peuvent être réalisés au studio ou coordonnés avec des spécialistes appropriés."
+        label={t("services.avances.label")}
+        title={t("services.avances.title")}
+        description={t("services.avances.description")}
         services={avances}
         lang={lang}
       />
@@ -100,25 +102,25 @@ export default function SoinsPage({ params }: { params: { lang: string } }) {
       <section className="py-20 md:py-24 bg-surface/40 border-t border-border">
         <Container>
           <FadeIn className="max-w-3xl">
-            <SectionLabel>Références spécialisées</SectionLabel>
+            <SectionLabel>{t("services.collaboration.label")}</SectionLabel>
             <h2 className="font-display text-2xl md:text-3xl leading-[1.15] mb-6">
-              Collaboration avec les spécialistes
+              {t("services.collaboration.title")}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Lorsque la situation dépasse le champ de traitement indiqué au studio, nous coordonnons la référence vers un spécialiste approprié.
+              {t("services.collaboration.body")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href={`/${lang}/laboratoire`}
                 className="inline-flex items-center justify-center border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
               >
-                Laboratoire intégré
+                {t("services.collaboration.labCta")}
               </Link>
               <Link
                 href={`/${lang}/rendez-vous`}
                 className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-3 text-sm font-medium tracking-wide transition-colors"
               >
-                Demander un rendez-vous
+                {t("services.collaboration.rdvCta")}
               </Link>
             </div>
           </FadeIn>

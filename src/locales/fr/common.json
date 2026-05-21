@@ -22,6 +22,8 @@
     "retour": "Retour"
   },
   "home": {
+    "metaTitle": "Studio Dentaire De Facto — Dentiste Ahuntsic, Montréal",
+    "metaDescription": "Studio dentaire à Ahuntsic, Montréal. Une approche fondée sur le temps, la clarté, la justesse et la continuité. Comprendre avant d'intervenir.",
     "hero": {
       "label": "Studio dentaire — Ahuntsic, Montréal",
       "title": "Une clinique dentaire pour ceux qui veulent comprendre avant de décider.",
@@ -162,6 +164,7 @@
     "coordonnees": { "label": "Nous trouver", "title": "Au cœur d'Ahuntsic" }
   },
   "studio": {
+    "metaDescription": "Studio Dentaire De Facto à Ahuntsic — pourquoi nous existons, notre approche clinique, l'espace, la technologie et nos engagements qualité.",
     "intro": {
       "label": "Le Studio",
       "title": "Un studio dentaire conçu pour ralentir, comprendre et mieux planifier.",
@@ -232,6 +235,28 @@
     "label": "Soins",
     "pageTitle": "Des soins dentaires complets, planifiés selon vos besoins",
     "pageSubtitle": "Les traitements proposés au studio sont intégrés dans une vision globale.",
+    "metaTitle": "Soins dentaires à Ahuntsic",
+    "metaDescription": "Examen complet, prévention, restaurations, parodontie, couronnes, endodontie, implantologie, aligneurs, esthétique et urgences — tous les soins proposés par Studio Dentaire De Facto à Ahuntsic, Montréal.",
+    "essentiels": {
+      "label": "Soins essentiels",
+      "title": "Soins essentiels"
+    },
+    "restaurateurs": {
+      "label": "Soins restaurateurs et esthétiques",
+      "title": "Soins restaurateurs et esthétiques"
+    },
+    "avances": {
+      "label": "Soins avancés ou coordonnés",
+      "title": "Soins avancés ou coordonnés",
+      "description": "Pour les cas plus complexes, certains traitements peuvent être réalisés au studio ou coordonnés avec des spécialistes appropriés."
+    },
+    "collaboration": {
+      "label": "Références spécialisées",
+      "title": "Collaboration avec les spécialistes",
+      "body": "Lorsque la situation dépasse le champ de traitement indiqué au studio, nous coordonnons la référence vers un spécialiste approprié.",
+      "labCta": "Laboratoire intégré",
+      "rdvCta": "Demander un rendez-vous"
+    },
     "examen-complet": { "title": "Examen complet et diagnostic", "short": "Une première visite structurée pour comprendre votre santé buccodentaire." },
     "prevention-hygiene": { "title": "Prévention et hygiène", "short": "Nettoyage, évaluation et conseils personnalisés." },
     "dentisterie-operatoire": { "title": "Dentisterie opératoire", "short": "Composites, restaurations et traitements conservateurs." },
@@ -332,6 +357,8 @@
     "coordonnees": "Coordonnées",
     "liens": "Patients",
     "secondaires": "Informations",
+    "legal": "Légal",
+    "nouveauxPatients": "Nouveaux patients",
     "confidentialite": "Confidentialité",
     "conditions": "Conditions d'utilisation",
     "assurances": "Assurances et paiements",

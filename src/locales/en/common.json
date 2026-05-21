@@ -22,6 +22,8 @@
     "retour": "Back"
   },
   "home": {
+    "metaTitle": "De Facto Dental Studio — Dentist in Ahuntsic, Montreal",
+    "metaDescription": "Dental studio in Ahuntsic, Montreal. An approach grounded in time, clarity, precision and continuity. Understand before intervening.",
     "hero": {
       "label": "Dental studio — Ahuntsic, Montreal",
       "title": "A dental clinic for those who want to understand before they decide.",
@@ -162,6 +164,7 @@
     "coordonnees": { "label": "Find us", "title": "In the heart of Ahuntsic" }
   },
   "studio": {
+    "metaDescription": "De Facto Dental Studio in Ahuntsic — why we exist, our clinical approach, the space, the technology and our quality commitments.",
     "intro": {
       "label": "The Studio",
       "title": "A dental studio designed to slow down, understand and plan better.",
@@ -232,6 +235,28 @@
     "label": "Care",
     "pageTitle": "Comprehensive dental care, planned to your needs",
     "pageSubtitle": "The treatments offered at the studio are integrated into a global vision.",
+    "metaTitle": "Dental care in Ahuntsic",
+    "metaDescription": "Complete examination, prevention, restorations, periodontics, crowns, endodontics, implantology, aligners, aesthetics and emergencies — all the care offered by De Facto Dental Studio in Ahuntsic, Montreal.",
+    "essentiels": {
+      "label": "Essential care",
+      "title": "Essential care"
+    },
+    "restaurateurs": {
+      "label": "Restorative and aesthetic care",
+      "title": "Restorative and aesthetic care"
+    },
+    "avances": {
+      "label": "Advanced or coordinated care",
+      "title": "Advanced or coordinated care",
+      "description": "For more complex cases, certain treatments may be carried out at the studio or coordinated with appropriate specialists."
+    },
+    "collaboration": {
+      "label": "Specialist referrals",
+      "title": "Collaboration with specialists",
+      "body": "When a situation goes beyond what can be treated at the studio, we coordinate referral to an appropriate specialist.",
+      "labCta": "Integrated laboratory",
+      "rdvCta": "Book an appointment"
+    },
     "examen-complet": { "title": "Complete examination and diagnosis", "short": "A structured first visit to understand your oral health." },
     "prevention-hygiene": { "title": "Prevention and hygiene", "short": "Cleaning, evaluation and personalized advice." },
     "dentisterie-operatoire": { "title": "Operative dentistry", "short": "Composites, restorations and conservative treatments." },
@@ -332,6 +357,8 @@
     "coordonnees": "Contact",
     "liens": "Patients",
     "secondaires": "Information",
+    "legal": "Legal",
+    "nouveauxPatients": "New patients",
     "confidentialite": "Privacy",
     "conditions": "Terms of use",
     "assurances": "Insurance and payments",
