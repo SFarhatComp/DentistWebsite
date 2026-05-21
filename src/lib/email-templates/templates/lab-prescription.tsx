@@ -7,45 +7,53 @@ import {
   DetailRow,
   LongTextBlock,
   PhoneCallCard,
-  TagList,
   Section,
 } from "../components"
-import { formatDate, getString, isChecked } from "../theme"
+import { formatDate, getString } from "../theme"
 import type { NetlifyPayload } from "../types"
 
-const MATERIAL_LABELS: Record<string, string> = {
-  zircone: "Zircone",
-  emax_presse: "E.max pressé",
-  emax_usine: "E.max usiné",
-  resine_imprimee: "Résine imprimée",
-  resine_usinee: "Résine usinée",
-  pmma: "PMMA",
-  composite_lab: "Composite de laboratoire",
-  a_determiner: "À déterminer par le laboratoire",
-  autre: "Autre",
+const APPAREIL_LABELS: Record<string, string> = {
+  couronne: "Couronne",
+  pont: "Pont",
+  incrustation: "Incrustation",
+  facette: "Facette",
+  prothese_amovible_complete: "Prothèse amovible complète",
+  guide_chirurgical: "Guide chirurgical",
+  plaque_occlusale: "Plaque occlusale",
+  porte_empreinte: "Porte-empreinte personnalisé",
+  gouttiere_retention: "Gouttière de rétention",
+  gouttiere_blanchiment: "Gouttière de blanchiment",
+  essix: "Essix",
+  wax_up: "Wax-up diagnostique",
+  reparation: "Réparation",
+  autres: "Autres",
 }
 
-const TYPES_LIST = [
-  { key: "type_couronne", label: "Couronne" },
-  { key: "type_couronne_emax_presse", label: "Couronne e.max pressée" },
-  { key: "type_couronne_emax_usine", label: "Couronne e.max usinée" },
-  { key: "type_couronne_zircone", label: "Couronne zircone" },
-  { key: "type_pont", label: "Pont" },
-  { key: "type_facette", label: "Facette" },
-  { key: "type_incrustation", label: "Incrustation / onlay" },
-  { key: "type_prothese_complete", label: "Prothèse complète" },
-  { key: "type_prothese_partielle", label: "Prothèse partielle" },
-  { key: "type_plaque_occlusale", label: "Plaque occlusale" },
-  { key: "type_gouttiere", label: "Gouttière" },
-  { key: "type_wax_up", label: "Wax-up diagnostique" },
-  { key: "type_modele", label: "Modèle imprimé" },
-  { key: "type_temporaire", label: "Restauration temporaire" },
-  { key: "type_recimentation_couronne", label: "Recimentation couronne" },
-  { key: "type_recimentation_pont", label: "Recimentation pont" },
-  { key: "type_recollage_facette", label: "Recollage facette" },
-  { key: "type_reparation", label: "Réparation" },
-  { key: "type_autre", label: "Autre" },
-]
+const SUB_OPTION_LABELS: Record<string, string> = {
+  temporaire: "Temporaire",
+  permanente: "Permanente",
+  immediat: "Immédiat",
+  permanent: "Permanent",
+  rigide: "Rigide",
+  flexible: "Flexible",
+  avec_dent_postiche: "Avec dent postiche",
+  sans_dent_postiche: "Sans dent postiche",
+}
+
+const MATERIAL_LABELS: Record<string, string> = {
+  porcelaine_feldspathique: "Porcelaine feldspathique",
+  emax_presse: "E.max pressé",
+  zircone_3y: "Zircone 3Y",
+  zircone_multicouche: "Zircone multi-couche",
+  lt_clear: "LT Clear (rigide)",
+  lt_comfort: "LT Comfort (flexible)",
+}
+
+const ARCADE_LABELS: Record<string, string> = {
+  superieure: "Supérieure",
+  inferieure: "Inférieure",
+  les_deux: "Les deux",
+}
 
 export function LabPrescriptionEmail({ payload }: { payload: NetlifyPayload }) {
   const d = payload.data
@@ -54,23 +62,35 @@ export function LabPrescriptionEmail({ payload }: { payload: NetlifyPayload }) {
   const phone = getString(d, "phone")
   const email = getString(d, "email")
   const patient = getString(d, "patientName")
-  const teeth = getString(d, "affectedTeeth")
-  const material = getString(d, "material")
-  const materialOther = getString(d, "materialOther")
-  const shade = getString(d, "shade")
-  const date = getString(d, "desiredDate")
+
+  const appareilKey = getString(d, "appareil")
+  const appareilOtherText = getString(d, "appareilOtherText")
+  const subOptionKey = getString(d, "subOption")
+  const arcadeKey = getString(d, "arcade")
+  const teethList = getString(d, "teeth")
+  const materialKey = getString(d, "material")
+  const lamination = getString(d, "lamination")
+  const colorIndications = getString(d, "colorIndications")
   const instructions = getString(d, "clinicalInstructions")
 
-  const materialLabel = material === "autre" && materialOther ? materialOther : (MATERIAL_LABELS[material] || material)
+  const appareilLabel =
+    appareilKey === "autres" && appareilOtherText
+      ? appareilOtherText
+      : APPAREIL_LABELS[appareilKey] || appareilKey
+  const subOptionLabel = SUB_OPTION_LABELS[subOptionKey] || subOptionKey
+  const materialLabel = MATERIAL_LABELS[materialKey] || materialKey
+  const arcadeLabel = ARCADE_LABELS[arcadeKey] || arcadeKey
+
+  const heroLabel = subOptionLabel ? `${appareilLabel} — ${subOptionLabel}` : appareilLabel
 
   return (
-    <EmailLayout preview={`Prescription — ${patient} (${clinic})`}>
+    <EmailLayout preview={`Prescription — ${patient} (${appareilLabel})`}>
       <EmailHeader kicker="Prescription laboratoire" />
 
       <Hero
         eyebrow="Nouvelle prescription"
         name={patient || "Cas"}
-        badge={materialLabel ? { label: materialLabel, tone: "info" } : undefined}
+        badge={heroLabel ? { label: heroLabel, tone: "info" } : undefined}
         subtitle={`Prescripteur : ${professional} — ${clinic}`}
         timestamp={formatDate(payload.created_at)}
       />
@@ -82,16 +102,32 @@ export function LabPrescriptionEmail({ payload }: { payload: NetlifyPayload }) {
         </>
       )}
 
-      <SectionTitle>Détails du cas</SectionTitle>
+      <SectionTitle>Appareil prescrit</SectionTitle>
       <Section>
-        <DetailRow label="Dents" value={teeth} />
-        <DetailRow label="Matériau" value={materialLabel} />
-        <DetailRow label="Teinte" value={shade} />
-        <DetailRow label="Date souhaitée" value={date} />
+        <DetailRow label="Appareil" value={appareilLabel} />
+        {subOptionLabel && <DetailRow label="Type" value={subOptionLabel} />}
+        {arcadeLabel && <DetailRow label="Arcade" value={arcadeLabel} />}
+        {teethList && <DetailRow label="Dents (FDI)" value={teethList} />}
       </Section>
 
-      <SectionTitle>Type(s) de cas</SectionTitle>
-      <TagList items={TYPES_LIST.map((t) => ({ ...t, selected: isChecked(d, t.key) }))} />
+      {(materialLabel || lamination) && (
+        <>
+          <SectionTitle>Matériau et finition</SectionTitle>
+          <Section>
+            {materialLabel && <DetailRow label="Matériau" value={materialLabel} />}
+            {lamination && (
+              <DetailRow label="Lamination de porcelaine" value={lamination === "oui" ? "Oui" : "Non"} />
+            )}
+          </Section>
+        </>
+      )}
+
+      {colorIndications && (
+        <>
+          <SectionTitle>Couleur et maquillage</SectionTitle>
+          <LongTextBlock value={colorIndications} />
+        </>
+      )}
 
       <SectionTitle>Professionnel</SectionTitle>
       <Section>
@@ -109,9 +145,13 @@ export function LabPrescriptionEmail({ payload }: { payload: NetlifyPayload }) {
 export const labPrescriptionMeta = (payload: NetlifyPayload) => {
   const patient = getString(payload.data, "patientName")
   const clinic = getString(payload.data, "clinicName")
+  const appareilKey = getString(payload.data, "appareil")
+  const appareilOther = getString(payload.data, "appareilOtherText")
+  const appareilLabel =
+    appareilKey === "autres" && appareilOther ? appareilOther : APPAREIL_LABELS[appareilKey] || appareilKey
   return {
     to: "laboratoire@studiodefacto.ca",
-    subject: `[Prescription] ${patient} — ${clinic}`,
+    subject: `[Prescription] ${patient} — ${appareilLabel} (${clinic})`,
     replyTo: getString(payload.data, "email") || undefined,
   }
 }

@@ -12,7 +12,7 @@ import type { Locale } from "@/types"
 export const metadata: Metadata = {
   title: "Laboratoire dentaire intégré",
   description:
-    "Un laboratoire dentaire intégré, ouvert aux professionnels. Écosystèmes Ivoclar (IPS e.max pressé et usiné) et Formlabs Dental (impression 3D). Communication directe, traçabilité, non-sollicitation.",
+    "Un laboratoire dentaire intégré, ouvert aux professionnels. Communication directe, traçabilité, non-sollicitation.",
 }
 
 // 4 piliers du laboratoire
@@ -57,7 +57,6 @@ const servicesLab: { category: string; items: string[] }[] = [
     category: "Prosthodontie amovible",
     items: [
       "Prothèses complètes imprimées ou usinées",
-      "Prothèses partielles en résine imprimée",
     ],
   },
   {
@@ -70,34 +69,18 @@ const servicesLab: { category: string; items: string[] }[] = [
     ],
   },
   {
-    category: "E.max pressé",
-    items: [
-      "Facettes",
-      "Incrustations",
-      "Couronnes",
-      "Restaurations esthétiques selon indication",
-    ],
-  },
-  {
-    category: "E.max usiné",
-    items: ["Restaurations CAD/CAM en disilicate de lithium selon indication"],
-  },
-  {
-    category: "Zircone usinée",
-    items: ["Couronnes et ponts en zircone selon indication clinique"],
-  },
-  {
     category: "Plaques occlusales",
     items: [
-      "Plaques occlusales rigides, flexibles ou imprimées selon matériau et indication",
+      "Plaque occlusale rigide Formlabs LT Clear",
+      "Plaque occlusale flexible Formlabs LT Comfort",
     ],
   },
   {
     category: "Gouttières",
     items: [
-      "Gouttières de protection",
-      "Gouttières de blanchiment",
-      "Autres indications prescrites",
+      "Gouttière de blanchiment",
+      "Gouttière de rétention",
+      "Gouttière pour sport de combat et extrême",
     ],
   },
   {
@@ -121,52 +104,6 @@ const servicesLab: { category: string; items: string[] }[] = [
       "Photos intraorales et extraorales pour cas complexes et esthétiques",
     ],
   },
-]
-
-// Comparaison e.max pressé vs usiné (cahier §15.3)
-const emaxComparison = [
-  {
-    aspect: "Procédé",
-    presse: "Restauration pressée à partir d'un lingotin de céramique",
-    cad: "Restauration usinée à partir d'un bloc CAD/CAM pré-cristallisé",
-  },
-  {
-    aspect: "Workflow",
-    presse: "Design numérique ou wax-up, mise en revêtement, pressée, finition",
-    cad: "Design numérique, usinage en état pré-cristallisé, cristallisation, finition",
-  },
-  {
-    aspect: "Force principale",
-    presse: "Grande latitude esthétique et personnalisation avancée",
-    cad: "Reproductibilité numérique, efficacité CAD/CAM, précision du flux",
-  },
-  {
-    aspect: "Indications fréquentes",
-    presse: "Facettes, incrustations, couronnes esthétiques, cas antérieurs exigeants",
-    cad: "Couronnes, incrustations, restaurations unitaires, flux numérique efficace",
-  },
-  {
-    aspect: "Esthétique",
-    presse: "Très grande latitude avec stratification, maquillage ou cut-back",
-    cad: "Très bonne esthétique selon le bloc, la caractérisation et la finition",
-  },
-  {
-    aspect: "Choix clinique",
-    presse: "Cas hautement esthétique ou personnalisé",
-    cad: "Cas numérique, unitaire ou standardisé selon indication",
-  },
-]
-
-// Applications Formlabs (cahier §16.3)
-const formlabsApps = [
-  { app: "Modèles imprimés", use: "Visualiser, planifier et communiquer le cas" },
-  { app: "Modèles orthodontiques", use: "Produire ou vérifier certains appareils" },
-  { app: "Plaques occlusales", use: "Fabriquer certains appareils selon matériau et indication" },
-  { app: "Gouttières", use: "Produire des dispositifs selon prescription" },
-  { app: "Guides", use: "Soutenir certaines étapes cliniques ou techniques" },
-  { app: "Porte-empreintes individuels", use: "Améliorer la précision d'une empreinte conventionnelle lorsque nécessaire" },
-  { app: "Wax-up / mock-up", use: "Aider à la planification esthétique et prothétique" },
-  { app: "Prototypes", use: "Valider une forme, une occlusion ou une séquence avant fabrication définitive" },
 ]
 
 // Équipements (cahier §16A.2)
@@ -381,150 +318,6 @@ export default function LaboratoirePage({ params }: { params: { lang: string } }
               </FadeIn>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* Écosystème Ivoclar / e.max */}
-      <section className="py-20 md:py-24">
-        <Container>
-          <div className="max-w-3xl mb-12">
-            <FadeIn>
-              <SectionLabel>Écosystème Ivoclar</SectionLabel>
-              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-                L&apos;écosystème Ivoclar : précision numérique et céramique éprouvée
-              </h2>
-              <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
-                <p>
-                  Le laboratoire De Facto utilise l&apos;écosystème Ivoclar pour certaines restaurations en céramique, notamment la famille IPS e.max.
-                </p>
-                <p>
-                  Cet écosystème permet de combiner la planification numérique, la sélection rigoureuse des matériaux et des protocoles de laboratoire contrôlés.
-                </p>
-                <p>
-                  Selon le type de restauration, l&apos;indication clinique, l&apos;espace disponible, la couleur du substrat et les objectifs esthétiques, une restauration peut être conçue en e.max usiné ou en e.max pressé.
-                </p>
-                <p>
-                  Le choix n&apos;est pas uniquement technique : il dépend du cas, du niveau d&apos;esthétique recherché, de la précision nécessaire, de la translucidité souhaitée et du protocole de finition.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Tableau e.max pressé vs usiné */}
-          <FadeIn>
-            <div className="border border-border bg-background overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-3 bg-primary/10 border-b border-border">
-                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground">
-                  Aspect
-                </div>
-                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground border-t md:border-t-0 md:border-l border-border">
-                  E.max pressé
-                </div>
-                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground border-t md:border-t-0 md:border-l border-border">
-                  E.max usiné
-                </div>
-              </div>
-              {emaxComparison.map((row, i) => (
-                <div
-                  key={row.aspect}
-                  className={`grid grid-cols-1 md:grid-cols-3 ${i > 0 ? "border-t border-border" : ""}`}
-                >
-                  <div className="p-4 md:p-5 font-medium text-sm text-foreground bg-surface/40">
-                    {row.aspect}
-                  </div>
-                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
-                    {row.presse}
-                  </div>
-                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
-                    {row.cad}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Texte court résumé (cahier §15.4) */}
-          <FadeIn className="mt-12 max-w-3xl">
-            <div className="border-l-2 border-accent pl-6 space-y-4 text-base text-muted-foreground leading-relaxed">
-              <p>Le laboratoire De Facto utilise l&apos;e.max selon l&apos;indication clinique.</p>
-              <p>
-                L&apos;e.max pressé permet une grande latitude esthétique pour les restaurations personnalisées, notamment dans les zones visibles.
-              </p>
-              <p>
-                L&apos;e.max usiné s&apos;intègre à un flux numérique efficace et précis pour produire certaines restaurations en céramique avec constance.
-              </p>
-              <p>
-                Dans les deux cas, le choix du matériau et du procédé est guidé par la situation clinique, l&apos;esthétique recherchée et les exigences fonctionnelles du cas.
-              </p>
-            </div>
-          </FadeIn>
-        </Container>
-      </section>
-
-      {/* Écosystème Formlabs Dental */}
-      <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
-        <Container>
-          <div className="max-w-3xl mb-12">
-            <FadeIn>
-              <SectionLabel>Écosystème Formlabs Dental</SectionLabel>
-              <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-                Impression 3D dentaire : l&apos;écosystème Formlabs
-              </h2>
-              <div className="space-y-5 text-base text-muted-foreground leading-relaxed">
-                <p>
-                  Le laboratoire De Facto utilise l&apos;écosystème Formlabs Dental pour certaines étapes de production numérique.
-                </p>
-                <p>
-                  L&apos;impression 3D permet de produire rapidement des modèles, guides, gouttières, plaques occlusales et autres appareils selon les indications cliniques et les matériaux validés.
-                </p>
-                <p>
-                  L&apos;intérêt de cet écosystème ne repose pas seulement sur l&apos;imprimante. Il repose sur l&apos;ensemble du flux : conception numérique, choix du matériau, impression, lavage, post-polymérisation, finition, contrôle de qualité et traçabilité.
-                </p>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Tableau applications Formlabs */}
-          <FadeIn>
-            <div className="border border-border bg-background overflow-hidden max-w-4xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 bg-primary/10 border-b border-border">
-                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground">
-                  Application
-                </div>
-                <div className="p-4 md:p-5 font-display text-sm uppercase tracking-wider text-foreground border-t md:border-t-0 md:border-l border-border">
-                  Utilité clinique ou laboratoire
-                </div>
-              </div>
-              {formlabsApps.map((row, i) => (
-                <div
-                  key={row.app}
-                  className={`grid grid-cols-1 md:grid-cols-2 ${i > 0 ? "border-t border-border" : ""}`}
-                >
-                  <div className="p-4 md:p-5 font-medium text-sm text-foreground bg-surface/40">
-                    {row.app}
-                  </div>
-                  <div className="p-4 md:p-5 text-sm text-muted-foreground leading-relaxed border-t md:border-t-0 md:border-l border-border">
-                    {row.use}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Texte court résumé (cahier §16.4) */}
-          <FadeIn className="mt-12 max-w-3xl">
-            <div className="border-l-2 border-accent pl-6 space-y-4 text-base text-muted-foreground leading-relaxed">
-              <p>
-                L&apos;impression 3D permet au laboratoire De Facto de produire certains modèles, appareils et outils de planification avec rapidité, précision et traçabilité.
-              </p>
-              <p>
-                L&apos;écosystème Formlabs Dental soutient un flux complet : impression, lavage, post-polymérisation, finition et contrôle qualité.
-              </p>
-              <p>
-                Chaque appareil est réalisé selon l&apos;indication, le matériau approprié et les protocoles du fabricant.
-              </p>
-            </div>
-          </FadeIn>
         </Container>
       </section>
 
