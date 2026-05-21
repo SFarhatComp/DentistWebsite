@@ -268,6 +268,129 @@
     "aligneurs": { "title": "Aligneurs orthodontiques", "short": "Alignement léger à modéré par aligneurs transparents." },
     "urgences": { "title": "Urgences dentaires", "short": "Évaluation rapide en cas de douleur ou traumatisme." }
   },
+  "nouveauxPatients": {
+    "label": "Nouveaux patients",
+    "title": "Nouveaux patients",
+    "subtitle": "Tout ce qu'il faut savoir avant votre première visite chez Studio Dentaire De Facto.",
+    "metaDescription": "Tout ce qu'il faut savoir avant votre première visite chez Studio Dentaire De Facto : préparation, documents, assurances, urgences et prochaines étapes.",
+    "welcomeLabel": "Bienvenue",
+    "welcomeTitle": "Bienvenue chez De Facto",
+    "welcomeBody": "Si c'est votre première visite, voici un parcours d'orientation pour préparer votre rendez-vous, comprendre ce qui vous attend et savoir où trouver l'information dont vous avez besoin. Notre équipe reste joignable pour toute question avant, pendant ou après votre visite.",
+    "cards": {
+      "premiereVisite": {
+        "title": "Première visite",
+        "body": "Découvrez ce qui est inclus, la durée approximative, les documents à apporter et ce que vous recevrez après l'examen.",
+        "cta": "Voir le déroulement"
+      },
+      "documents": {
+        "title": "Documents à préparer",
+        "body": "Carte d'assurance maladie, informations d'assurance dentaire, liste de médicaments, radiographies récentes et appareils dentaires si applicable.",
+        "cta": "Voir la liste complète"
+      },
+      "assurances": {
+        "title": "Assurances et paiements",
+        "body": "Comprendre comment fonctionnent les estimations, la transmission aux assureurs, le RCSD, la RAMQ et la responsabilité du patient.",
+        "cta": "Modalités administratives"
+      },
+      "urgence": {
+        "title": "Urgence ou rendez-vous régulier ?",
+        "body": "Pour une douleur, une enflure ou un traumatisme, suivez le parcours d'urgence. Pour une première rencontre, demandez un rendez-vous régulier.",
+        "cta": "Voir les urgences"
+      },
+      "plan": {
+        "title": "Plan de traitement",
+        "body": "Pour les cas complexes, un rendez-vous dédié peut être organisé pour présenter le plan avec photos, scans, modèles et documents.",
+        "cta": "Comprendre la présentation"
+      },
+      "faq": {
+        "title": "Questions fréquentes",
+        "body": "Réponses aux questions les plus courantes sur l'examen, les enfants, les aligneurs, les références aux spécialistes et plus.",
+        "cta": "Lire la FAQ"
+      },
+      "studio": {
+        "title": "Le Studio",
+        "body": "Notre approche, notre philosophie clinique et la raison d'être de De Facto.",
+        "cta": "Découvrir le studio"
+      },
+      "contact": {
+        "title": "Contact et accès",
+        "body": "Adresse, téléphone, courriel, transit, stationnement et accessibilité.",
+        "cta": "Coordonnées"
+      }
+    },
+    "ctaTitle": "Prêt pour votre première visite ?",
+    "ctaBody": "Notre équipe vous contactera pour préparer votre dossier et confirmer les prochaines étapes.",
+    "ctaPrimary": "Demander une première visite",
+    "ctaCall": "Nous appeler — 514 863 7805"
+  },
+  "premiereVisite": {
+    "label": "Première visite",
+    "title": "Une expérience structurée en deux temps",
+    "subtitle": "S'il ne s'agit pas d'une consultation ciblée ou d'une urgence spécifique, De Facto souhaite structurer l'expérience de tout nouveau patient en débutant par un rendez-vous d'examen complet.",
+    "metaDescription": "Une expérience structurée en deux temps : collecte de données puis présentation du portrait buccodentaire. Studio Dentaire De Facto à Ahuntsic, Montréal.",
+    "onThisPage": "Sur cette page",
+    "tocObjectifs": "Objectifs",
+    "tocDuree": "Durée",
+    "tocRdv1": "Rendez-vous 1 — Collecte",
+    "tocRdv2": "Rendez-vous 2 — Portrait",
+    "tocApporter": "Quoi apporter",
+    "objectifsTitle": "Objectifs du rendez-vous",
+    "objectifs": [
+      "Établir un lien concret et humain entre le patient et son professionnel de la santé.",
+      "Collecter les données médicales et dentaires pertinentes à une prise en charge sécuritaire et complète.",
+      "Diagnostiquer.",
+      "Identifier les priorités.",
+      "Comprendre les attentes, inconforts ou craintes du patient.",
+      "Préparer, lorsque nécessaire, une présentation distincte du portrait buccodentaire."
+    ],
+    "dureeLabel": "Durée",
+    "dureeTitle": "Durée approximative",
+    "dureeIntro": "Durée approximative :",
+    "dureeValue": "30 à 60 minutes selon votre situation.",
+    "rdv1Label": "Rendez-vous 1",
+    "rdv1Title": "Collecte de données",
+    "rdv1Etapes": [
+      "Accueil et présentation de l'équipe et du studio.",
+      "Révision et discussion des renseignements médicaux et dentaires.",
+      "Discussion de la raison de consultation.",
+      "Identification et discussion des attentes et des besoins du patient.",
+      "Identification des inconforts ou craintes.",
+      "Questionnaires supplémentaires lorsque pertinent (habitudes orales, hygiène, risque carieux, alimentation/diététique, DTM, apnée du sommeil, autres selon le contexte).",
+      "Photographies intraorales et extraorales.",
+      "Examen buccodentaire complet.",
+      "Radiographies si pertinent.",
+      "Scan intraoral bouche complète.",
+      "Discussion initiale des observations."
+    ],
+    "rdv2Label": "Rendez-vous 2",
+    "rdv2Title": "Portrait buccodentaire",
+    "rdv2Intro": "Lorsque la situation nécessite une analyse plus complète, un second rendez-vous peut être prévu afin de présenter le portrait buccodentaire, les priorités, les options et la séquence de traitement proposée.",
+    "rdv2Inclus": [
+      "Photos expliquées",
+      "Radiographies pertinentes",
+      "Scan ou modèle si utile",
+      "Priorités",
+      "Plan idéal",
+      "Alternatives",
+      "Risques du statu quo",
+      "Séquence dans le temps",
+      "Estimation lorsque disponible"
+    ],
+    "apporterLabel": "Préparation",
+    "apporterTitle": "Quoi apporter",
+    "apporter": [
+      "Carte d'assurance maladie si applicable",
+      "Informations d'assurance dentaire",
+      "Liste de médicaments",
+      "Coordonnées du médecin si pertinent",
+      "Radiographies antérieures si disponibles",
+      "Appareil dentaire, gouttière ou protecteur si applicable"
+    ],
+    "ctaTitle": "Prêt pour votre première visite ?",
+    "ctaBody": "Notre équipe vous contactera pour confirmer les prochaines étapes et préparer votre dossier.",
+    "ctaPrimary": "Demander une première visite",
+    "ctaSecondary": "Poser une question à l'équipe"
+  },
   "appointment": {
     "label": "Rendez-vous",
     "title": "Demander un rendez-vous",
@@ -295,6 +418,121 @@
   "emergency": {
     "title": "Urgence dentaire",
     "subtitle": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, contactez immédiatement les services d'urgence."
+  },
+  "appointmentForm": {
+    "ariaLabel": "Formulaire de demande de rendez-vous",
+    "introPrimary": "Vous n'avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.",
+    "introSecondary": "Une membre de l'équipe vous contactera pour confirmer les prochaines étapes. Pour une urgence sévère, utilisez plutôt le formulaire d'urgence dédié.",
+    "section1Title": "Identification",
+    "section2Title": "Coordonnées",
+    "section3Title": "Type de demande",
+    "section4Title": "Disponibilités",
+    "section5Title": "Mode de contact préféré",
+    "section6Title": "Profil médical (optionnel)",
+    "section7Title": "Consentements",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "Courriel",
+    "preferredLanguage": "Langue préférée",
+    "preferredLanguageOther": "Veuillez préciser la langue",
+    "typeDemande": "Type de demande principale",
+    "typeDemandeOther": "Veuillez préciser",
+    "motifsLabel": "Motifs secondaires (optionnel)",
+    "messageLabel": "Message ou précision (optionnel)",
+    "joursLabel": "Journée(s) préférée(s)",
+    "momentsLabel": "Moment(s) préféré(s)",
+    "medicalIntro": "Ces informations sont optionnelles et peuvent être remplies au moment du rendez-vous. Si vous préférez les transmettre à l'avance, cliquez pour développer cette section.",
+    "medicalShow": "Compléter le questionnaire médical maintenant",
+    "medicalHide": "Masquer le questionnaire médical",
+    "medicalQuestion": "Avez-vous déjà reçu un diagnostic ou êtes-vous suivi pour l'une des conditions suivantes ? (Cochez toutes celles qui s'appliquent)",
+    "conditionAllergies": "Allergies connues",
+    "conditionAutre": "Autre condition médicale",
+    "hasAllergiesCheckbox": "J'ai des allergies à préciser",
+    "allergiesDetailsLabel": "Allergies et réactions observées",
+    "hasOtherConditionCheckbox": "J'ai une autre condition médicale à préciser",
+    "otherConditionDetailsLabel": "Veuillez préciser",
+    "consentsIntro": "Chaque consentement est cochable individuellement. Les communications informatives (bloc 05) sont optionnelles et ne sont pas pré-cochées.",
+    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
+    "submitting": "Envoi en cours…",
+    "submit": "Envoyer ma demande",
+    "typesDemande": {
+      "premiere_visite": "Première visite / examen complet",
+      "nettoyage": "Nettoyage et suivi",
+      "consultation_ciblee": "Consultation ciblée",
+      "urgence": "Urgence dentaire",
+      "douleur": "Douleur",
+      "dent_cassee": "Dent cassée ou restauration fracturée",
+      "esthetique": "Esthétique",
+      "orthodontie": "Orthodontie / aligneurs",
+      "implant_couronne": "Implant / couronne / prothèse",
+      "laboratoire": "Laboratoire ou demande professionnelle",
+      "autre": "Autre"
+    },
+    "motifsSecondaires": {
+      "douleur": "Douleur",
+      "sensibilite": "Sensibilité",
+      "saignement_gencives": "Saignement des gencives",
+      "mauvaise_haleine": "Mauvaise haleine",
+      "dent_mobile": "Dent mobile",
+      "fracture": "Fracture",
+      "usure": "Usure dentaire",
+      "serrement_grincement": "Serrement ou grincement",
+      "esthetique": "Préoccupation esthétique",
+      "deuxieme_avis": "Deuxième avis",
+      "suivi_traitement": "Suivi de traitement existant",
+      "autre": "Autre"
+    },
+    "langues": {
+      "francais": "Français",
+      "anglais": "Anglais",
+      "francais_anglais": "Français ou anglais",
+      "autre": "Autre"
+    },
+    "jours": {
+      "lundi": "Lundi",
+      "mardi": "Mardi",
+      "mercredi": "Mercredi",
+      "jeudi": "Jeudi",
+      "vendredi": "Vendredi",
+      "asap": "Dès que possible",
+      "flexible": "Je suis flexible"
+    },
+    "moments": {
+      "matin": "Matin (9 h – 12 h)",
+      "midi": "Midi (12 h – 14 h)",
+      "apres_midi": "Après-midi (14 h – 18 h)",
+      "flexible": "Flexible"
+    },
+    "contactModes": {
+      "telephone": "Téléphone",
+      "courriel": "Courriel",
+      "sms": "SMS"
+    },
+    "medicalConditions": {
+      "hypertension": "Hypertension artérielle",
+      "cardiaque": "Maladie cardiaque",
+      "souffle_valvulaire": "Souffle cardiaque ou problème valvulaire",
+      "endocardite": "Antécédent d'endocardite",
+      "diabete": "Diabète",
+      "respiratoire": "Asthme ou maladie respiratoire",
+      "apnee_sommeil": "Apnée du sommeil",
+      "foie": "Maladie du foie",
+      "renale": "Maladie rénale",
+      "coagulation": "Trouble de coagulation ou saignements prolongés",
+      "anticoagulants": "Anticoagulants ou antiplaquettaires",
+      "epilepsie": "Épilepsie ou convulsions",
+      "neurologique": "Trouble neurologique",
+      "cancer": "Cancer actuel ou antécédent de cancer",
+      "radiotherapie": "Radiothérapie à la tête ou au cou",
+      "chimiotherapie": "Chimiothérapie ou immunothérapie",
+      "immunosuppression": "Immunosuppression",
+      "osteoporose": "Ostéoporose",
+      "bisphosphonates": "Prise actuelle ou passée de bisphosphonates / anti-résorptifs",
+      "thyroide": "Trouble thyroïdien",
+      "reflux": "Reflux gastrique important",
+      "anxiete": "Anxiété importante liée aux soins dentaires",
+      "grossesse": "Grossesse ou allaitement"
+    }
   },
   "contact": {
     "label": "Contact",

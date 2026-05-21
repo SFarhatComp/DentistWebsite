@@ -268,6 +268,129 @@
     "aligneurs": { "title": "Orthodontic aligners", "short": "Light to moderate alignment with clear aligners." },
     "urgences": { "title": "Dental emergencies", "short": "Rapid evaluation for pain or trauma." }
   },
+  "nouveauxPatients": {
+    "label": "New patients",
+    "title": "New patients",
+    "subtitle": "Everything to know before your first visit at De Facto Dental Studio.",
+    "metaDescription": "Everything to know before your first visit at De Facto Dental Studio: preparation, documents, insurance, emergencies and next steps.",
+    "welcomeLabel": "Welcome",
+    "welcomeTitle": "Welcome to De Facto",
+    "welcomeBody": "If this is your first visit, here is an orientation path to prepare for your appointment, understand what to expect and know where to find the information you need. Our team remains reachable for any question before, during or after your visit.",
+    "cards": {
+      "premiereVisite": {
+        "title": "First visit",
+        "body": "Discover what is included, the approximate duration, the documents to bring and what you will receive after the examination.",
+        "cta": "See the walkthrough"
+      },
+      "documents": {
+        "title": "Documents to prepare",
+        "body": "Health insurance card, dental insurance information, medication list, recent radiographs and dental appliances if applicable.",
+        "cta": "See the full list"
+      },
+      "assurances": {
+        "title": "Insurance and payments",
+        "body": "Understand how estimates work, transmission to insurers, RCSD, RAMQ and patient responsibility.",
+        "cta": "Administrative details"
+      },
+      "urgence": {
+        "title": "Emergency or regular appointment?",
+        "body": "For pain, swelling or trauma, follow the emergency path. For a first encounter, request a regular appointment.",
+        "cta": "View emergencies"
+      },
+      "plan": {
+        "title": "Treatment plan",
+        "body": "For complex cases, a dedicated appointment may be scheduled to present the plan with photos, scans, models and documents.",
+        "cta": "Understand the presentation"
+      },
+      "faq": {
+        "title": "Frequently asked questions",
+        "body": "Answers to the most common questions about the examination, children, aligners, specialist referrals and more.",
+        "cta": "Read the FAQ"
+      },
+      "studio": {
+        "title": "The Studio",
+        "body": "Our approach, our clinical philosophy and the reason De Facto exists.",
+        "cta": "Discover the studio"
+      },
+      "contact": {
+        "title": "Contact and access",
+        "body": "Address, phone, email, transit, parking and accessibility.",
+        "cta": "Contact information"
+      }
+    },
+    "ctaTitle": "Ready for your first visit?",
+    "ctaBody": "Our team will contact you to prepare your file and confirm the next steps.",
+    "ctaPrimary": "Request a first visit",
+    "ctaCall": "Call us — 514 863 7805"
+  },
+  "premiereVisite": {
+    "label": "First visit",
+    "title": "A two-part structured experience",
+    "subtitle": "Unless it is a targeted consultation or a specific emergency, De Facto structures every new patient's experience starting with a complete examination appointment.",
+    "metaDescription": "A two-part structured experience: data gathering followed by presentation of the oral health portrait. De Facto Dental Studio in Ahuntsic, Montreal.",
+    "onThisPage": "On this page",
+    "tocObjectifs": "Objectives",
+    "tocDuree": "Duration",
+    "tocRdv1": "Appointment 1 — Data gathering",
+    "tocRdv2": "Appointment 2 — Portrait",
+    "tocApporter": "What to bring",
+    "objectifsTitle": "Goals of the appointment",
+    "objectifs": [
+      "Build a concrete, human connection between patient and dental professional.",
+      "Gather the medical and dental information needed for safe, complete care.",
+      "Diagnose.",
+      "Identify priorities.",
+      "Understand the patient's expectations, discomforts and concerns.",
+      "Prepare, when needed, a separate presentation of the oral health portrait."
+    ],
+    "dureeLabel": "Duration",
+    "dureeTitle": "Approximate duration",
+    "dureeIntro": "Approximate duration:",
+    "dureeValue": "30 to 60 minutes depending on your situation.",
+    "rdv1Label": "Appointment 1",
+    "rdv1Title": "Data gathering",
+    "rdv1Etapes": [
+      "Welcome and introduction to the team and the studio.",
+      "Review and discussion of medical and dental information.",
+      "Discussion of the reason for the visit.",
+      "Identification and discussion of patient expectations and needs.",
+      "Identification of discomforts or concerns.",
+      "Additional questionnaires when relevant (oral habits, hygiene, caries risk, diet/nutrition, TMD, sleep apnea, others depending on context).",
+      "Intraoral and extraoral photographs.",
+      "Complete dental examination.",
+      "Radiographs if relevant.",
+      "Full-arch intraoral scan.",
+      "Initial discussion of observations."
+    ],
+    "rdv2Label": "Appointment 2",
+    "rdv2Title": "Oral health portrait",
+    "rdv2Intro": "When the situation calls for a more thorough analysis, a second appointment may be scheduled to present the oral health portrait, the priorities, the options and the proposed treatment sequence.",
+    "rdv2Inclus": [
+      "Explained photos",
+      "Relevant radiographs",
+      "Scan or model when helpful",
+      "Priorities",
+      "Ideal plan",
+      "Alternatives",
+      "Risks of the status quo",
+      "Sequence over time",
+      "Estimate when available"
+    ],
+    "apporterLabel": "Preparation",
+    "apporterTitle": "What to bring",
+    "apporter": [
+      "Health insurance card if applicable",
+      "Dental insurance information",
+      "Medication list",
+      "Physician contact information if relevant",
+      "Previous radiographs if available",
+      "Dental appliance, night guard or mouthguard if applicable"
+    ],
+    "ctaTitle": "Ready for your first visit?",
+    "ctaBody": "Our team will contact you to confirm the next steps and prepare your file.",
+    "ctaPrimary": "Request a first visit",
+    "ctaSecondary": "Ask the team a question"
+  },
   "appointment": {
     "label": "Appointment",
     "title": "Book an appointment",
@@ -295,6 +418,121 @@
   "emergency": {
     "title": "Dental emergency",
     "subtitle": "If you have significant swelling, fever, or difficulty breathing or swallowing, contact emergency services immediately."
+  },
+  "appointmentForm": {
+    "ariaLabel": "Appointment request form",
+    "introPrimary": "You don't need to know everything — simply describe your situation. This form helps us prepare for your visit.",
+    "introSecondary": "A member of our team will contact you to confirm the next steps. For a severe emergency, please use the dedicated emergency form instead.",
+    "section1Title": "Identification",
+    "section2Title": "Contact information",
+    "section3Title": "Reason for the appointment",
+    "section4Title": "Availability",
+    "section5Title": "Preferred contact method",
+    "section6Title": "Medical profile (optional)",
+    "section7Title": "Consents",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "preferredLanguage": "Preferred language",
+    "preferredLanguageOther": "Please specify the language",
+    "typeDemande": "Primary reason",
+    "typeDemandeOther": "Please specify",
+    "motifsLabel": "Additional reasons (optional)",
+    "messageLabel": "Message or details (optional)",
+    "joursLabel": "Preferred day(s)",
+    "momentsLabel": "Preferred time(s)",
+    "medicalIntro": "This information is optional and may also be completed at your appointment. If you prefer to share it in advance, click to expand this section.",
+    "medicalShow": "Complete the medical questionnaire now",
+    "medicalHide": "Hide the medical questionnaire",
+    "medicalQuestion": "Have you been diagnosed with or are you being followed for any of the following conditions? (Check all that apply)",
+    "conditionAllergies": "Known allergies",
+    "conditionAutre": "Other medical condition",
+    "hasAllergiesCheckbox": "I have allergies to specify",
+    "allergiesDetailsLabel": "Allergies and observed reactions",
+    "hasOtherConditionCheckbox": "I have another medical condition to specify",
+    "otherConditionDetailsLabel": "Please specify",
+    "consentsIntro": "Each consent is individually selectable. Informational communications (block 05) are optional and not pre-checked.",
+    "errorGeneric": "Something went wrong. Please try again or reach us by phone.",
+    "submitting": "Sending…",
+    "submit": "Send request",
+    "typesDemande": {
+      "premiere_visite": "First visit / complete examination",
+      "nettoyage": "Cleaning and follow-up",
+      "consultation_ciblee": "Targeted consultation",
+      "urgence": "Dental emergency",
+      "douleur": "Pain",
+      "dent_cassee": "Broken tooth or fractured restoration",
+      "esthetique": "Aesthetics",
+      "orthodontie": "Orthodontics / aligners",
+      "implant_couronne": "Implant / crown / prosthesis",
+      "laboratoire": "Laboratory or professional inquiry",
+      "autre": "Other"
+    },
+    "motifsSecondaires": {
+      "douleur": "Pain",
+      "sensibilite": "Sensitivity",
+      "saignement_gencives": "Bleeding gums",
+      "mauvaise_haleine": "Bad breath",
+      "dent_mobile": "Loose tooth",
+      "fracture": "Fracture",
+      "usure": "Tooth wear",
+      "serrement_grincement": "Clenching or grinding",
+      "esthetique": "Aesthetic concern",
+      "deuxieme_avis": "Second opinion",
+      "suivi_traitement": "Follow-up on existing treatment",
+      "autre": "Other"
+    },
+    "langues": {
+      "francais": "French",
+      "anglais": "English",
+      "francais_anglais": "French or English",
+      "autre": "Other"
+    },
+    "jours": {
+      "lundi": "Monday",
+      "mardi": "Tuesday",
+      "mercredi": "Wednesday",
+      "jeudi": "Thursday",
+      "vendredi": "Friday",
+      "asap": "As soon as possible",
+      "flexible": "I'm flexible"
+    },
+    "moments": {
+      "matin": "Morning (9 a.m. – 12 p.m.)",
+      "midi": "Midday (12 p.m. – 2 p.m.)",
+      "apres_midi": "Afternoon (2 p.m. – 6 p.m.)",
+      "flexible": "Flexible"
+    },
+    "contactModes": {
+      "telephone": "Phone",
+      "courriel": "Email",
+      "sms": "SMS"
+    },
+    "medicalConditions": {
+      "hypertension": "High blood pressure",
+      "cardiaque": "Cardiac condition",
+      "souffle_valvulaire": "Heart murmur or valvular problem",
+      "endocardite": "History of endocarditis",
+      "diabete": "Diabetes",
+      "respiratoire": "Asthma or respiratory disease",
+      "apnee_sommeil": "Sleep apnea",
+      "foie": "Liver disease",
+      "renale": "Kidney disease",
+      "coagulation": "Coagulation disorder or prolonged bleeding",
+      "anticoagulants": "Anticoagulants or antiplatelets",
+      "epilepsie": "Epilepsy or seizures",
+      "neurologique": "Neurological disorder",
+      "cancer": "Current or past cancer",
+      "radiotherapie": "Radiation therapy to the head or neck",
+      "chimiotherapie": "Chemotherapy or immunotherapy",
+      "immunosuppression": "Immunosuppression",
+      "osteoporose": "Osteoporosis",
+      "bisphosphonates": "Current or past use of bisphosphonates / anti-resorptives",
+      "thyroide": "Thyroid disorder",
+      "reflux": "Significant gastric reflux",
+      "anxiete": "Significant anxiety related to dental care",
+      "grossesse": "Pregnancy or breastfeeding"
+    }
   },
   "contact": {
     "label": "Contact",

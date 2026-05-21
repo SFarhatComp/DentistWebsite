@@ -4,13 +4,24 @@ import type { Locale } from "@/types"
 
 const dictionaries = { fr, en }
 
-export function getTranslations(lang: Locale) {
+function resolve(lang: Locale, key: string): unknown {
   const dict = dictionaries[lang] || dictionaries.fr
+  return key.split(".").reduce<unknown>((acc, k) => {
+    if (acc && typeof acc === "object" && k in acc) return (acc as Record<string, unknown>)[k]
+    return undefined
+  }, dict)
+}
+
+export function getTranslations(lang: Locale) {
   return (key: string): string => {
-    const result = key.split(".").reduce<unknown>((acc, k) => {
-      if (acc && typeof acc === "object" && k in acc) return (acc as Record<string, unknown>)[k]
-      return undefined
-    }, dict)
+    const result = resolve(lang, key)
     return typeof result === "string" ? result : key
   }
+}
+
+/** Retourne un tableau de chaînes pour les clés stockées en array dans common.json. */
+export function getTranslationList(lang: Locale, key: string): string[] {
+  const result = resolve(lang, key)
+  if (Array.isArray(result) && result.every((v) => typeof v === "string")) return result as string[]
+  return []
 }

@@ -2,100 +2,84 @@
 import { useState } from "react"
 import { Field, PhoneField, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
 import { ConsentGroup } from "./consent-group"
+import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-// Type de demande principale (cahier §20A.3)
-const TYPES_DEMANDE = [
-  { value: "premiere_visite", label: "Première visite / examen complet" },
-  { value: "nettoyage", label: "Nettoyage et suivi" },
-  { value: "consultation_ciblee", label: "Consultation ciblée" },
-  { value: "urgence", label: "Urgence dentaire" },
-  { value: "douleur", label: "Douleur" },
-  { value: "dent_cassee", label: "Dent cassée ou restauration fracturée" },
-  { value: "esthetique", label: "Esthétique" },
-  { value: "orthodontie", label: "Orthodontie / aligneurs" },
-  { value: "implant_couronne", label: "Implant / couronne / prothèse" },
-  { value: "laboratoire", label: "Laboratoire ou demande professionnelle" },
-  { value: "autre", label: "Autre" },
-]
+// Codes de valeur — stables (soumis à Netlify, conservés tels quels)
+const TYPES_DEMANDE_CODES = [
+  "premiere_visite",
+  "nettoyage",
+  "consultation_ciblee",
+  "urgence",
+  "douleur",
+  "dent_cassee",
+  "esthetique",
+  "orthodontie",
+  "implant_couronne",
+  "laboratoire",
+  "autre",
+] as const
 
-// Motifs secondaires (cahier §20A.4)
-const MOTIFS_SECONDAIRES = [
-  { v: "douleur", l: "Douleur" },
-  { v: "sensibilite", l: "Sensibilité" },
-  { v: "saignement_gencives", l: "Saignement des gencives" },
-  { v: "mauvaise_haleine", l: "Mauvaise haleine" },
-  { v: "dent_mobile", l: "Dent mobile" },
-  { v: "fracture", l: "Fracture" },
-  { v: "usure", l: "Usure dentaire" },
-  { v: "serrement_grincement", l: "Serrement ou grincement" },
-  { v: "esthetique", l: "Préoccupation esthétique" },
-  { v: "deuxieme_avis", l: "Deuxième avis" },
-  { v: "suivi_traitement", l: "Suivi de traitement existant" },
-  { v: "autre", l: "Autre" },
-]
+const MOTIFS_SECONDAIRES_CODES = [
+  "douleur",
+  "sensibilite",
+  "saignement_gencives",
+  "mauvaise_haleine",
+  "dent_mobile",
+  "fracture",
+  "usure",
+  "serrement_grincement",
+  "esthetique",
+  "deuxieme_avis",
+  "suivi_traitement",
+  "autre",
+] as const
 
-// Langue préférée (cahier §20A — listes déroulantes)
-const LANGUES = [
-  { value: "francais", label: "Français" },
-  { value: "anglais", label: "Anglais" },
-  { value: "francais_anglais", label: "Français ou anglais" },
-  { value: "autre", label: "Autre" },
-]
+const LANGUES_CODES = ["francais", "anglais", "francais_anglais", "autre"] as const
 
-// Disponibilités - jours
-const JOURS = [
-  { v: "lundi", l: "Lundi" },
-  { v: "mardi", l: "Mardi" },
-  { v: "mercredi", l: "Mercredi" },
-  { v: "jeudi", l: "Jeudi" },
-  { v: "vendredi", l: "Vendredi" },
-  { v: "asap", l: "Dès que possible" },
-  { v: "flexible", l: "Je suis flexible" },
-]
+const JOURS_CODES = [
+  "lundi",
+  "mardi",
+  "mercredi",
+  "jeudi",
+  "vendredi",
+  "asap",
+  "flexible",
+] as const
 
-const MOMENTS = [
-  { v: "matin", l: "Matin (9 h – 12 h)" },
-  { v: "midi", l: "Midi (12 h – 14 h)" },
-  { v: "apres_midi", l: "Après-midi (14 h – 18 h)" },
-  { v: "flexible", l: "Flexible" },
-]
+const MOMENTS_CODES = ["matin", "midi", "apres_midi", "flexible"] as const
 
-// Modes de contact
-const CONTACT_MODES = [
-  { v: "telephone", l: "Téléphone" },
-  { v: "courriel", l: "Courriel" },
-  { v: "sms", l: "SMS" },
-]
+const CONTACT_MODES_CODES = ["telephone", "courriel", "sms"] as const
 
-// Conditions médicales (cahier §22.2) — 25 conditions cochables
-const MEDICAL_CONDITIONS = [
-  { v: "hypertension", l: "Hypertension artérielle" },
-  { v: "cardiaque", l: "Maladie cardiaque" },
-  { v: "souffle_valvulaire", l: "Souffle cardiaque ou problème valvulaire" },
-  { v: "endocardite", l: "Antécédent d'endocardite" },
-  { v: "diabete", l: "Diabète" },
-  { v: "respiratoire", l: "Asthme ou maladie respiratoire" },
-  { v: "apnee_sommeil", l: "Apnée du sommeil" },
-  { v: "foie", l: "Maladie du foie" },
-  { v: "renale", l: "Maladie rénale" },
-  { v: "coagulation", l: "Trouble de coagulation ou saignements prolongés" },
-  { v: "anticoagulants", l: "Anticoagulants ou antiplaquettaires" },
-  { v: "epilepsie", l: "Épilepsie ou convulsions" },
-  { v: "neurologique", l: "Trouble neurologique" },
-  { v: "cancer", l: "Cancer actuel ou antécédent de cancer" },
-  { v: "radiotherapie", l: "Radiothérapie à la tête ou au cou" },
-  { v: "chimiotherapie", l: "Chimiothérapie ou immunothérapie" },
-  { v: "immunosuppression", l: "Immunosuppression" },
-  { v: "osteoporose", l: "Ostéoporose" },
-  { v: "bisphosphonates", l: "Prise actuelle ou passée de bisphosphonates / anti-résorptifs" },
-  { v: "thyroide", l: "Trouble thyroïdien" },
-  { v: "reflux", l: "Reflux gastrique important" },
-  { v: "anxiete", l: "Anxiété importante liée aux soins dentaires" },
-  { v: "grossesse", l: "Grossesse ou allaitement" },
-]
+// Conditions médicales (cahier §22.2) — 23 conditions cochables (+ allergies + autre rendues séparément)
+const MEDICAL_CONDITIONS_CODES = [
+  "hypertension",
+  "cardiaque",
+  "souffle_valvulaire",
+  "endocardite",
+  "diabete",
+  "respiratoire",
+  "apnee_sommeil",
+  "foie",
+  "renale",
+  "coagulation",
+  "anticoagulants",
+  "epilepsie",
+  "neurologique",
+  "cancer",
+  "radiotherapie",
+  "chimiotherapie",
+  "immunosuppression",
+  "osteoporose",
+  "bisphosphonates",
+  "thyroide",
+  "reflux",
+  "anxiete",
+  "grossesse",
+] as const
 
 export function AppointmentForm({ lang }: { lang: Locale }) {
+  const t = getTranslations(lang)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
   const [typeValue, setTypeValue] = useState("")
@@ -103,6 +87,15 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
   const [showMedicalQuestionnaire, setShowMedicalQuestionnaire] = useState(false)
   const [hasAllergies, setHasAllergies] = useState(false)
   const [hasOtherCondition, setHasOtherCondition] = useState(false)
+
+  const typesDemande = TYPES_DEMANDE_CODES.map((v) => ({
+    value: v,
+    label: t(`appointmentForm.typesDemande.${v}`),
+  }))
+  const langues = LANGUES_CODES.map((v) => ({
+    value: v,
+    label: t(`appointmentForm.langues.${v}`),
+  }))
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -128,96 +121,96 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
       encType="multipart/form-data"
       onSubmit={handleSubmit}
       className="space-y-12"
-      aria-label="Formulaire de demande de rendez-vous"
+      aria-label={t("appointmentForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="appointment" />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3 mb-4">
         <p className="text-base text-foreground leading-relaxed">
-          Vous n&apos;avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.
+          {t("appointmentForm.introPrimary")}
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Une membre de l&apos;équipe vous contactera pour confirmer les prochaines étapes. Pour une urgence sévère, utilisez plutôt le formulaire d&apos;urgence dédié.
+          {t("appointmentForm.introSecondary")}
         </p>
       </div>
 
-      <FormSection number="01" title="Identification">
+      <FormSection number="01" title={t("appointmentForm.section1Title")}>
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="firstName" label="Prénom" required />
-          <Field name="lastName" label="Nom" required />
+          <Field name="firstName" label={t("appointmentForm.firstName")} required />
+          <Field name="lastName" label={t("appointmentForm.lastName")} required />
         </div>
       </FormSection>
 
-      <FormSection number="02" title="Coordonnées">
+      <FormSection number="02" title={t("appointmentForm.section2Title")}>
         <div className="grid gap-6 md:grid-cols-2">
           <PhoneField name="phone" required />
-          <Field name="email" label="Courriel" type="email" />
+          <Field name="email" label={t("appointmentForm.email")} type="email" />
         </div>
         <SelectField
           name="preferredLanguage"
-          label="Langue préférée"
-          options={LANGUES}
+          label={t("appointmentForm.preferredLanguage")}
+          options={langues}
           onChange={(v) => setLangValue(v)}
         />
         {langValue === "autre" && (
-          <Field name="preferredLanguageOther" label="Veuillez préciser la langue" required />
+          <Field name="preferredLanguageOther" label={t("appointmentForm.preferredLanguageOther")} required />
         )}
       </FormSection>
 
-      <FormSection number="03" title="Type de demande">
+      <FormSection number="03" title={t("appointmentForm.section3Title")}>
         <SelectField
           name="typeDemande"
-          label="Type de demande principale"
+          label={t("appointmentForm.typeDemande")}
           required
-          options={TYPES_DEMANDE}
+          options={typesDemande}
           onChange={(v) => setTypeValue(v)}
         />
         {typeValue === "autre" && (
-          <Field name="typeDemandeOther" label="Veuillez préciser" required />
+          <Field name="typeDemandeOther" label={t("appointmentForm.typeDemandeOther")} required />
         )}
         <div>
-          <div className="label-sm text-foreground mb-3">Motifs secondaires (optionnel)</div>
+          <div className="label-sm text-foreground mb-3">{t("appointmentForm.motifsLabel")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {MOTIFS_SECONDAIRES.map((m) => (
-              <CheckboxField key={m.v} name={`motif_${m.v}`} value="1" label={m.l} />
+            {MOTIFS_SECONDAIRES_CODES.map((v) => (
+              <CheckboxField key={v} name={`motif_${v}`} value="1" label={t(`appointmentForm.motifsSecondaires.${v}`)} />
             ))}
           </div>
         </div>
-        <TextareaField name="message" label="Message ou précision (optionnel)" rows={4} />
+        <TextareaField name="message" label={t("appointmentForm.messageLabel")} rows={4} />
       </FormSection>
 
-      <FormSection number="04" title="Disponibilités">
+      <FormSection number="04" title={t("appointmentForm.section4Title")}>
         <div>
-          <div className="label-sm text-foreground mb-3">Journée(s) préférée(s)</div>
+          <div className="label-sm text-foreground mb-3">{t("appointmentForm.joursLabel")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {JOURS.map((j) => (
-              <CheckboxField key={j.v} name={`jour_${j.v}`} value="1" label={j.l} />
+            {JOURS_CODES.map((v) => (
+              <CheckboxField key={v} name={`jour_${v}`} value="1" label={t(`appointmentForm.jours.${v}`)} />
             ))}
           </div>
         </div>
         <div>
-          <div className="label-sm text-foreground mb-3">Moment(s) préféré(s)</div>
+          <div className="label-sm text-foreground mb-3">{t("appointmentForm.momentsLabel")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {MOMENTS.map((m) => (
-              <CheckboxField key={m.v} name={`moment_${m.v}`} value="1" label={m.l} />
+            {MOMENTS_CODES.map((v) => (
+              <CheckboxField key={v} name={`moment_${v}`} value="1" label={t(`appointmentForm.moments.${v}`)} />
             ))}
           </div>
         </div>
       </FormSection>
 
-      <FormSection number="05" title="Mode de contact préféré">
+      <FormSection number="05" title={t("appointmentForm.section5Title")}>
         <div className="grid gap-3 sm:grid-cols-2">
-          {CONTACT_MODES.map((c) => (
-            <CheckboxField key={c.v} name={`contact_${c.v}`} value="1" label={c.l} />
+          {CONTACT_MODES_CODES.map((v) => (
+            <CheckboxField key={v} name={`contact_${v}`} value="1" label={t(`appointmentForm.contactModes.${v}`)} />
           ))}
         </div>
       </FormSection>
 
       {/* Questionnaire médical — section optionnelle dépliable */}
-      <FormSection number="06" title="Profil médical (optionnel)">
+      <FormSection number="06" title={t("appointmentForm.section6Title")}>
         <p className="text-sm text-muted-foreground leading-relaxed">
-          Ces informations sont optionnelles et peuvent être remplies au moment du rendez-vous. Si vous préférez les transmettre à l&apos;avance, cliquez pour développer cette section.
+          {t("appointmentForm.medicalIntro")}
         </p>
         <button
           type="button"
@@ -226,29 +219,29 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
           aria-expanded={showMedicalQuestionnaire}
           aria-controls="medical-questionnaire"
         >
-          {showMedicalQuestionnaire ? "Masquer le questionnaire médical" : "Compléter le questionnaire médical maintenant"}
+          {showMedicalQuestionnaire ? t("appointmentForm.medicalHide") : t("appointmentForm.medicalShow")}
         </button>
 
         {showMedicalQuestionnaire && (
           <div id="medical-questionnaire" className="space-y-6 pt-4 border-t border-border">
             <div>
               <p className="text-sm text-foreground mb-4">
-                Avez-vous déjà reçu un diagnostic ou êtes-vous suivi pour l&apos;une des conditions suivantes ? (Cochez toutes celles qui s&apos;appliquent)
+                {t("appointmentForm.medicalQuestion")}
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
-                {MEDICAL_CONDITIONS.map((c) => (
-                  <CheckboxField key={c.v} name={`condition_${c.v}`} value="1" label={c.l} />
+                {MEDICAL_CONDITIONS_CODES.map((v) => (
+                  <CheckboxField key={v} name={`condition_${v}`} value="1" label={t(`appointmentForm.medicalConditions.${v}`)} />
                 ))}
                 <CheckboxField
                   name="condition_allergies"
                   value="1"
-                  label="Allergies connues"
+                  label={t("appointmentForm.conditionAllergies")}
                   className="col-span-full"
                 />
                 <CheckboxField
                   name="condition_autre"
                   value="1"
-                  label="Autre condition médicale"
+                  label={t("appointmentForm.conditionAutre")}
                   className="col-span-full"
                 />
               </div>
@@ -261,12 +254,12 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
                     onChange={(e) => setHasAllergies(e.target.checked)}
                     className="mt-1 h-4 w-4 border-border accent-primary"
                   />
-                  <span>J&apos;ai des allergies à préciser</span>
+                  <span>{t("appointmentForm.hasAllergiesCheckbox")}</span>
                 </label>
                 {hasAllergies && (
                   <TextareaField
                     name="allergies_details"
-                    label="Allergies et réactions observées"
+                    label={t("appointmentForm.allergiesDetailsLabel")}
                     rows={3}
                   />
                 )}
@@ -277,12 +270,12 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
                     onChange={(e) => setHasOtherCondition(e.target.checked)}
                     className="mt-1 h-4 w-4 border-border accent-primary"
                   />
-                  <span>J&apos;ai une autre condition médicale à préciser</span>
+                  <span>{t("appointmentForm.hasOtherConditionCheckbox")}</span>
                 </label>
                 {hasOtherCondition && (
                   <TextareaField
                     name="other_condition_details"
-                    label="Veuillez préciser"
+                    label={t("appointmentForm.otherConditionDetailsLabel")}
                     rows={3}
                   />
                 )}
@@ -292,16 +285,16 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         )}
       </FormSection>
 
-      <FormSection number="07" title="Consentements">
+      <FormSection number="07" title={t("appointmentForm.section7Title")}>
         <p className="text-sm text-muted-foreground leading-relaxed mb-2">
-          Chaque consentement est cochable individuellement. Les communications informatives (bloc 05) sont optionnelles et ne sont pas pré-cochées.
+          {t("appointmentForm.consentsIntro")}
         </p>
         <ConsentGroup lang={lang} />
       </FormSection>
 
       {error && (
         <p className="text-sm text-red-600" role="alert">
-          Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.
+          {t("appointmentForm.errorGeneric")}
         </p>
       )}
 
@@ -310,7 +303,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
         disabled={submitting}
         className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 text-base font-medium tracking-wide disabled:opacity-50 transition-colors"
       >
-        {submitting ? "Envoi en cours…" : "Envoyer ma demande"}
+        {submitting ? t("appointmentForm.submitting") : t("appointmentForm.submit")}
       </button>
     </form>
   )
