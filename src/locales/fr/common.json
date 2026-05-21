@@ -126,6 +126,18 @@
       "cta": "Voir le déroulement de la première visite"
     },
     "services": { "label": "Nos soins", "title": "Des soins complets, planifiés selon vos besoins" },
+    "evaluationSection": {
+      "label": "Première étape",
+      "title": "Commencer par une évaluation complète",
+      "body": "La première étape est de comprendre votre situation. Chez De Facto, la première visite permet de documenter, expliquer et planifier les soins avant de prendre des décisions importantes.",
+      "cta": "Demander une première visite"
+    },
+    "studioPreview": {
+      "label": "Le Studio",
+      "title": "Un studio dentaire conçu pour ralentir, comprendre et mieux planifier.",
+      "body": "L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement.",
+      "cta": "Découvrir le studio"
+    },
     "laboratoire": {
       "label": "Laboratoire intégré",
       "title": "Un laboratoire dentaire intégré au service de la précision",
@@ -233,9 +245,27 @@
   },
   "appointment": {
     "label": "Rendez-vous",
-    "title": "Demande de rendez-vous",
-    "subtitle": "Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier.",
-    "emergencyCta": "J'ai une urgence dentaire"
+    "title": "Demander un rendez-vous",
+    "subtitle": "Deux parcours sont disponibles : une demande de rendez-vous régulière, et un parcours d'urgence dentaire. Choisissez celui qui correspond à votre situation.",
+    "metaDescription": "Demande de rendez-vous régulier ou parcours d'urgence — Studio Dentaire De Facto, Ahuntsic, Montréal. Téléphone : 514 863 7805.",
+    "formIntro": "Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier.",
+    "emergencyCta": "J'ai une urgence dentaire",
+    "otherQuestions": "Pour toute autre question administrative, consultez notre page",
+    "or": " ou notre ",
+    "contactLink": "Contact",
+    "faqLink": "FAQ",
+    "toggle": {
+      "principal": "Parcours principal",
+      "secondaire": "Parcours secondaire",
+      "cardRegulierTitle": "Demander un rendez-vous régulier",
+      "cardRegulierBody": "Première visite, examen, suivi, traitement planifié.",
+      "cardUrgenceTitle": "J'ai une urgence dentaire",
+      "cardUrgenceBody": "Douleur, traumatisme, enflure, dent cassée.",
+      "sectionRegulierTitle": "Demande de rendez-vous",
+      "sectionRegulierBody": "Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier. Les informations transmises restent confidentielles.",
+      "sectionUrgenceTitle": "Urgence dentaire",
+      "sectionUrgenceBody": "Pour une réponse rapide, remplissez ce formulaire. Notre équipe vous contactera au plus tôt."
+    }
   },
   "emergency": {
     "title": "Urgence dentaire",
@@ -244,15 +274,42 @@
   "contact": {
     "label": "Contact",
     "title": "Nous joindre",
-    "subtitle": "Notre équipe vous répond dans les meilleurs délais.",
+    "subtitle": "Simple, direct et rassurant. Notre équipe vous répond dans les meilleurs délais.",
     "adresse": "Adresse",
+    "adresseValue": "728 rue Fleury Est",
+    "adresseCity": "Montréal, QC",
     "telephone": "Téléphone",
     "courriel": "Courriel",
     "heures": "Heures d'ouverture",
+    "horaireLabel": "Horaire",
+    "horaireDays": "Lundi au vendredi",
+    "horaireHours": "9 h à 18 h",
     "phonePlaceholder": "514 863 7805",
     "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@studiodefacto.ca",
-    "hoursPlaceholder": "Lun.–ven. : 9 h à 18 h"
+    "hoursPlaceholder": "Lun.–ven. : 9 h à 18 h",
+    "coordonneesHeading": "Coordonnées",
+    "nousEcrireHeading": "Nous écrire",
+    "demanderRdv": "Demander un rendez-vous",
+    "premiereVisite": "Première visite",
+    "acces": {
+      "label": "Accès",
+      "title": "Comment se rendre au studio",
+      "voiture": "En voiture",
+      "voitureBody": "Stationnement disponible à proximité.",
+      "transport": "Transport en commun",
+      "transportBody": "Accès par les lignes locales d'Ahuntsic.",
+      "reperes": "Repères de quartier",
+      "reperesBody": "Au cœur d'Ahuntsic, sur Fleury Est."
+    },
+    "urgence": {
+      "label": "Urgence dentaire",
+      "body": "En cas de douleur, traumatisme, fracture ou enflure : appelez la clinique ou remplissez le formulaire d'urgence dédié.",
+      "appeler": "Appeler la clinique",
+      "formulaire": "Formulaire d'urgence"
+    },
+    "mapTitle": "Carte — Studio Dentaire De Facto",
+    "metaDescription": "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au vendredi, 9 h à 18 h."
   },
   "contactForm": {
     "nom": "Nom complet",

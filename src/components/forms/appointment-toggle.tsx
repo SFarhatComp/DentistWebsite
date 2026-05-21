@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { AppointmentForm } from "@/components/forms/appointment-form"
 import { EmergencyForm } from "@/components/forms/emergency-form"
 import { MedicalEmergencyNotice } from "@/components/forms/medical-emergency-notice"
+import { getTranslations } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 import type { Locale } from "@/types"
 
@@ -12,9 +13,8 @@ type Choice = "regulier" | "urgence"
 export function AppointmentToggle({ lang }: { lang: Locale }) {
   const [active, setActive] = useState<Choice | null>(null)
   const reduce = useReducedMotion()
+  const t = getTranslations(lang)
 
-  // Animation à l'entrée : fade + slide vers le haut.
-  // À la sortie : fade out plus rapide pour ne pas garder de form fantôme.
   const enter = reduce
     ? { initial: false, animate: { opacity: 1 }, exit: { opacity: 0 } }
     : {
@@ -31,11 +31,13 @@ export function AppointmentToggle({ lang }: { lang: Locale }) {
           kind="regulier"
           active={active}
           onClick={() => setActive(active === "regulier" ? null : "regulier")}
+          lang={lang}
         />
         <ToggleCard
           kind="urgence"
           active={active}
           onClick={() => setActive(active === "urgence" ? null : "urgence")}
+          lang={lang}
         />
       </div>
 
@@ -47,12 +49,12 @@ export function AppointmentToggle({ lang }: { lang: Locale }) {
             className="max-w-3xl pt-4 pb-16 scroll-mt-24"
             id="form-active"
           >
-            <div className="label-sm text-primary mb-4">Rendez-vous régulier</div>
+            <div className="label-sm text-primary mb-4">{t("appointment.toggle.cardRegulierTitle")}</div>
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Demande de rendez-vous
+              {t("appointment.toggle.sectionRegulierTitle")}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-              Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier. Les informations transmises restent confidentielles.
+              {t("appointment.toggle.sectionRegulierBody")}
             </p>
             <AppointmentForm lang={lang} />
           </motion.div>
@@ -65,12 +67,12 @@ export function AppointmentToggle({ lang }: { lang: Locale }) {
             className="max-w-3xl pt-4 pb-16 scroll-mt-24"
             id="form-active"
           >
-            <div className="label-sm text-accent mb-4">Urgence dentaire</div>
+            <div className="label-sm text-accent mb-4">{t("appointment.toggle.sectionUrgenceTitle")}</div>
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Urgence dentaire
+              {t("appointment.toggle.sectionUrgenceTitle")}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              Pour une réponse rapide, remplissez ce formulaire. Notre équipe vous contactera au plus tôt.
+              {t("appointment.toggle.sectionUrgenceBody")}
             </p>
             <MedicalEmergencyNotice />
             <EmergencyForm lang={lang} />
@@ -85,13 +87,16 @@ function ToggleCard({
   kind,
   active,
   onClick,
+  lang,
 }: {
   kind: Choice
   active: Choice | null
   onClick: () => void
+  lang: Locale
 }) {
   const isActive = active === kind
   const isUrgence = kind === "urgence"
+  const t = getTranslations(lang)
 
   return (
     <button
@@ -110,7 +115,7 @@ function ToggleCard({
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className={cn("label-sm", isUrgence ? "text-accent" : "text-primary")}>
-          {isUrgence ? "Parcours secondaire" : "Parcours principal"}
+          {isUrgence ? t("appointment.toggle.secondaire") : t("appointment.toggle.principal")}
         </div>
         <div
           className={cn(
@@ -123,12 +128,10 @@ function ToggleCard({
         />
       </div>
       <h2 className="font-display text-xl md:text-2xl text-foreground mb-3">
-        {isUrgence ? "J’ai une urgence dentaire" : "Demander un rendez-vous régulier"}
+        {isUrgence ? t("appointment.toggle.cardUrgenceTitle") : t("appointment.toggle.cardRegulierTitle")}
       </h2>
       <p className="text-sm text-muted-foreground leading-relaxed">
-        {isUrgence
-          ? "Douleur, traumatisme, enflure, dent cassée."
-          : "Première visite, examen, suivi, traitement planifié."}
+        {isUrgence ? t("appointment.toggle.cardUrgenceBody") : t("appointment.toggle.cardRegulierBody")}
       </p>
     </button>
   )

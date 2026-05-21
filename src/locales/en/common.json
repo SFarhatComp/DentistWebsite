@@ -1,1 +1,347 @@
-{ "_placeholder": "English translations to be added in Phase 3" }
+{
+  "site": { "name": "De Facto Dental Studio" },
+  "nav": {
+    "accueil": "Home",
+    "studio": "The Studio",
+    "premiereVisite": "First Visit",
+    "soins": "Care",
+    "services": "Care",
+    "portfolioClinique": "Clinical portfolio",
+    "laboratoire": "Laboratory",
+    "ressources": "Resources",
+    "contact": "Contact",
+    "experience": "Patient experience",
+    "realisations": "Cases",
+    "cta": "Book an appointment",
+    "appeler": "Call"
+  },
+  "common": {
+    "enSavoirPlus": "Learn more",
+    "lire": "Read",
+    "voir": "View",
+    "retour": "Back"
+  },
+  "home": {
+    "hero": {
+      "label": "Dental studio — Ahuntsic, Montreal",
+      "title": "A dental clinic for those who want to understand before they decide.",
+      "subtitle": "At De Facto Dental Studio, every examination is taken seriously. We document, explain, prioritize and plan your care so every decision is clear, tailored and considered.",
+      "ctaPrimary": "Start with a first visit",
+      "ctaSecondary": "Discover our approach",
+      "ctaTertiary": "Book an appointment"
+    },
+    "manifeste": {
+      "label": "Manifesto",
+      "title": "The De Facto Manifesto",
+      "lines": {
+        "1": "We believe that good treatment begins with good understanding.",
+        "2": "That an informed patient makes better decisions.",
+        "3": "That prevention deserves as much attention as repair.",
+        "4": "That rigour is not a luxury, but a clinical responsibility.",
+        "5": "And that trust is built through clarity.",
+        "6": "De Facto is a dental studio founded on a simple idea: take the time to understand before intervening."
+      }
+    },
+    "approche": {
+      "label": "Approach",
+      "title": "A structured, measured approach",
+      "body": "De Facto favours a structured approach: understand the situation, identify priorities, explain the options and plan care with measure. The goal is not to accumulate treatments, but to propose a coherent sequence, adapted to the clinical and personal reality of each patient."
+    },
+    "difference": {
+      "label": "Approach",
+      "title": "What makes the approach different",
+      "items": {
+        "1": "A complete examination before important decisions.",
+        "2": "Clear clinical documentation.",
+        "3": "A treatment plan explained in phases.",
+        "4": "An integrated laboratory for better control over key details.",
+        "5": "A conservative, considered approach.",
+        "6": "Coordination with specialists when needed."
+      }
+    },
+    "portfolio": {
+      "label": "Clinical portfolio",
+      "title": "Selected clinical cases",
+      "intro": "Selected cases will be presented with consent, clinical context and measured explanations to illustrate how we diagnose, plan and treat.",
+      "items": {
+        "1": { "title": "Diagnostic chart", "alt": "fiche-diagnostic-de-facto.jpg" },
+        "2": { "title": "Phased plan", "alt": "plan-phases-de-facto.jpg" },
+        "3": { "title": "Annotated intraoral photos", "alt": "photos-intraorales-annotees-de-facto.jpg" },
+        "4": { "title": "3D model", "alt": "modele-3d-de-facto.jpg" },
+        "5": { "title": "Intraoral scan", "alt": "scan-intraoral-de-facto.jpg" },
+        "6": { "title": "Laboratory steps", "alt": "etapes-laboratoire-de-facto.jpg" },
+        "7": { "title": "Anonymized patient summary", "alt": "resume-patient-anonymise-de-facto.jpg" }
+      }
+    },
+    "triad": {
+      "label": "A global reading of risk",
+      "title": "A global reading of risk",
+      "body": "During the complete examination, we analyze the patient with a global lens: caries risk, periodontal health, habits, function and personal context. This reading lets us draw a fairer picture and adapt follow-up frequency, priorities and prevention."
+    },
+    "deuxRdv": {
+      "label": "Examination and presentation",
+      "title": "A two-part structured experience",
+      "body": "When the situation warrants it, the examination and the plan presentation are separated to allow a more thorough analysis and a clearer discussion.",
+      "rdv1": {
+        "title": "Appointment 1 — Data gathering",
+        "body": "Complete examination, photos, radiographs as indicated, scan, initial discussion."
+      },
+      "rdv2": {
+        "title": "Appointment 2 — Oral health portrait",
+        "body": "Presentation of the oral health portrait and treatment plan when required."
+      }
+    },
+    "piliers": {
+      "label": "The De Facto pillars",
+      "title": "An approach built on time, clarity, precision and continuity.",
+      "temps": {
+        "title": "Time",
+        "phrase": "Understand before intervening.",
+        "body": "Good treatment begins with a complete understanding of the situation."
+      },
+      "clarte": {
+        "title": "Clarity",
+        "phrase": "Make what matters visible.",
+        "body": "Images, models and explanations turn an examination into a clear picture."
+      },
+      "justesse": {
+        "title": "Precision",
+        "phrase": "Plan with measure.",
+        "body": "Care is prioritized, explained and adapted to your reality."
+      },
+      "continuite": {
+        "title": "Continuity",
+        "phrase": "Care with a unified vision.",
+        "body": "Every step links diagnosis, treatment, laboratory and follow-up."
+      }
+    },
+    "parcours": {
+      "label": "Patient journey",
+      "title": "A structured experience, from first contact to follow-up",
+      "body": "We have designed the patient experience so each step is clear, documented and understandable.",
+      "demande": { "title": "Appointment request", "body": "You share your information and the reason for the consultation." },
+      "examen": { "title": "Complete examination", "body": "Clinical evaluation, radiographs and photos as indicated." },
+      "plan": { "title": "Personalized plan", "body": "Presentation of options, priorities, sequence and estimate." },
+      "traitement": { "title": "Treatment and follow-up", "body": "Delivery, post-operative follow-ups and long-term maintenance." },
+      "cta": "See the first-visit walkthrough"
+    },
+    "services": { "label": "Our care", "title": "Comprehensive care, planned to your needs" },
+    "evaluationSection": {
+      "label": "First step",
+      "title": "Start with a complete evaluation",
+      "body": "The first step is to understand your situation. At De Facto, the first visit allows us to document, explain and plan care before making important decisions.",
+      "cta": "Request a first visit"
+    },
+    "studioPreview": {
+      "label": "The Studio",
+      "title": "A dental studio designed to slow down, understand and plan better.",
+      "body": "The space, the clinical approach and the digital tools come together to create continuity between analysis, decision and treatment.",
+      "cta": "Discover the studio"
+    },
+    "laboratoire": {
+      "label": "Integrated laboratory",
+      "title": "An integrated dental laboratory in service of precision",
+      "body": "Having a laboratory within the studio allows for direct communication between clinic, technician and supervising dentist. Certain adjustments, repairs or fabrications can be carried out more efficiently, according to indication and need.",
+      "items": {
+        "1": "On-site dental technician",
+        "2": "Fast repairs depending on the case",
+        "3": "Express fabrication when needed",
+        "4": "Direct communication between clinic and laboratory",
+        "5": "Services also offered to external dentists and specialists"
+      }
+    },
+    "realisations": {
+      "label": "Cases",
+      "title": "Treatments planned with care",
+      "case1": { "tag": "Aesthetic", "title": "Anterior restoration" },
+      "case2": { "tag": "Prosthesis", "title": "Zirconia crown" },
+      "case3": { "tag": "Orthodontics", "title": "Aligners — light alignment" },
+      "cta": "View all cases"
+    },
+    "cta": { "title": "Start with a complete evaluation", "body": "The first step is understanding your situation. Our team accompanies you through a clear, structured and personalized process.", "primary": "Request an appointment", "secondary": "Contact us" },
+    "coordonnees": { "label": "Find us", "title": "In the heart of Ahuntsic" }
+  },
+  "studio": {
+    "intro": {
+      "label": "The Studio",
+      "title": "A dental studio designed to slow down, understand and plan better.",
+      "body": "De Facto Dental Studio was designed to offer a calmer, more structured and more personalized experience. The space, the clinical approach and the digital tools come together to create continuity between analysis, decision and treatment."
+    },
+    "pourquoi": {
+      "label": "Why De Facto exists",
+      "title": "Dr Ramdani's intention",
+      "body": "De Facto Dental Studio grew out of Dr Ramdani's intention to create a different kind of care setting: a calm, precise and reassuring environment where the patient can be heard, understood and guided with clarity.",
+      "body2": "The goal is not only to treat a tooth or respond to a symptom. The goal is to take the time to understand the patient's complete situation, explain what has been observed, plan care with judgment and set the right priorities.",
+      "body3": "At De Facto, time, listening, precision and continuity are not details. They are the conditions for care that is better understood, better planned and more durable.",
+      "body4": "The studio was designed to put the clinical relationship back at the centre of the experience: a place where technology supports the dentist's judgment without replacing it, and where every decision is made with measure."
+    },
+    "philosophie": {
+      "label": "Clinical philosophy",
+      "title": "Understand before intervening",
+      "body": "Our philosophy rests on a simple idea: every treatment must fit within a global understanding of the patient. Before intervening, we seek to understand the risks, priorities, expectations and limits specific to each situation."
+    },
+    "espace": {
+      "label": "The space",
+      "title": "A space designed to slow the pace",
+      "body": "The studio environment was designed to create a calmer, clearer and more human experience. Each zone — reception, clinical room, laboratory and discussion area — supports the same idea: take the time to do things well."
+    },
+    "equipement": {
+      "label": "Equipment and technology",
+      "title": "Technology in service of diagnosis",
+      "intro": "Technology is not used as an end in itself. It serves to better diagnose, better communicate, better plan and better verify outcomes.",
+      "1": { "title": "Digital radiography", "body": "Precise imaging with reduced exposure." },
+      "2": { "title": "Intraoral scanner", "body": "Digital impressions without paste, more comfortable and precise." },
+      "3": { "title": "Clinical photography", "body": "Comprehensive visual documentation for planning." },
+      "4": { "title": "3D printing", "body": "Models, guides and provisional restorations produced on site." },
+      "5": { "title": "Digital design", "body": "Visualization and planning of aesthetic and functional treatments." },
+      "6": { "title": "Integrated laboratory", "body": "Direct coordination between clinic and fabrication." }
+    },
+    "engagement": {
+      "label": "Quality commitment",
+      "title": "A quality built in every decision",
+      "body": "Our commitment rests on rigorous protocols, traceability of materials, the quality of clinical communications and careful review of key steps. Quality is not limited to the final result: it is built in every decision."
+    }
+  },
+  "experience": {
+    "label": "Patient experience",
+    "heroTitle": "A first visit designed to understand your situation as a whole",
+    "heroSubtitle": "The patient journey is designed so each step is clear, documented and understandable.",
+    "parcours": {
+      "label": "The journey in 4 phases",
+      "title": "From first contact to follow-up",
+      "body": "Each phase has a clear objective. The patient knows where they stand, why a recommendation is being made, and what their options are."
+    },
+    "phases": {
+      "1": { "title": "Before the appointment", "body": "You complete a request form, share the reason for the consultation, transmit your basic information and receive pre-visit instructions." },
+      "2": { "title": "Complete examination", "body": "Medical questionnaire, dental history, radiographs as indicated, periodontal examination, dental examination, intraoral photos, digital scan when applicable, and discussion of your concerns." },
+      "3": { "title": "Personalized plan", "body": "Presentation of needs, prioritization of treatments, possible options, risks of the status quo, ideal sequence, alternatives, financial estimate and coordination with insurance." },
+      "4": { "title": "Treatment and follow-up", "body": "Delivery according to priorities, post-operative follow-up, prevention, personalized recalls and long-term maintenance." }
+    },
+    "difference": {
+      "label": "What makes the experience different",
+      "title": "More time. More clarity. More precision.",
+      "1": { "title": "More time to understand", "body": "Every consultation is planned to allow a real conversation." },
+      "2": { "title": "More clarity in explanations", "body": "Options are presented in accessible terms, with their limits." },
+      "3": { "title": "More precision in documentation", "body": "Photos, scans and structured notes follow every step of the record." },
+      "4": { "title": "More clinic-laboratory cohesion", "body": "Laboratory proximity improves communication and finishing." },
+      "5": { "title": "More prevention", "body": "Identify risks before they become problems." },
+      "6": { "title": "More transparency in the options", "body": "Clear estimates, alternatives named, shared decisions." }
+    }
+  },
+  "services": {
+    "label": "Care",
+    "pageTitle": "Comprehensive dental care, planned to your needs",
+    "pageSubtitle": "The treatments offered at the studio are integrated into a global vision.",
+    "examen-complet": { "title": "Complete examination and diagnosis", "short": "A structured first visit to understand your oral health." },
+    "prevention-hygiene": { "title": "Prevention and hygiene", "short": "Cleaning, evaluation and personalized advice." },
+    "dentisterie-operatoire": { "title": "Operative dentistry", "short": "Composites, restorations and conservative treatments." },
+    "esthetique-dentaire": { "title": "Aesthetic dentistry", "short": "Veneers, whitening and smile harmonization." },
+    "parodontie": { "title": "Periodontics", "short": "Gum evaluation, non-surgical debridement, soft-tissue grafts, bone grafts and surgical implant placement when indicated." },
+    "endodontie": { "title": "Endodontics", "short": "Root canal treatment and pain diagnosis." },
+    "couronnes-ponts": { "title": "Crowns and bridges", "short": "Indirect restorations in ceramic and zirconia." },
+    "implantologie": { "title": "Implantology", "short": "Crowns, bridges and prostheses on implants." },
+    "aligneurs": { "title": "Orthodontic aligners", "short": "Light to moderate alignment with clear aligners." },
+    "urgences": { "title": "Dental emergencies", "short": "Rapid evaluation for pain or trauma." }
+  },
+  "appointment": {
+    "label": "Appointment",
+    "title": "Book an appointment",
+    "subtitle": "Two paths are available: a regular appointment request, or a dental emergency path. Choose the one that matches your situation.",
+    "metaDescription": "Regular appointment request or emergency path — De Facto Dental Studio, Ahuntsic, Montreal. Phone: 514 863 7805.",
+    "formIntro": "Complete this form so our team can prepare your file.",
+    "emergencyCta": "I have a dental emergency",
+    "otherQuestions": "For any other administrative question, see our",
+    "or": " or our ",
+    "contactLink": "Contact",
+    "faqLink": "FAQ",
+    "toggle": {
+      "principal": "Main path",
+      "secondaire": "Secondary path",
+      "cardRegulierTitle": "Book a regular appointment",
+      "cardRegulierBody": "First visit, examination, follow-up, planned treatment.",
+      "cardUrgenceTitle": "I have a dental emergency",
+      "cardUrgenceBody": "Pain, trauma, swelling, broken tooth.",
+      "sectionRegulierTitle": "Appointment request",
+      "sectionRegulierBody": "Complete this form so our team can prepare your file. The information transmitted remains confidential.",
+      "sectionUrgenceTitle": "Dental emergency",
+      "sectionUrgenceBody": "For a rapid response, complete this form. Our team will contact you as soon as possible."
+    }
+  },
+  "emergency": {
+    "title": "Dental emergency",
+    "subtitle": "If you have significant swelling, fever, or difficulty breathing or swallowing, contact emergency services immediately."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Get in touch",
+    "subtitle": "Simple, direct and reassuring. Our team will respond as soon as possible.",
+    "adresse": "Address",
+    "adresseValue": "728 rue Fleury Est",
+    "adresseCity": "Montreal, QC",
+    "telephone": "Phone",
+    "courriel": "Email",
+    "heures": "Hours",
+    "horaireLabel": "Hours",
+    "horaireDays": "Monday to Friday",
+    "horaireHours": "9 a.m. to 6 p.m.",
+    "phonePlaceholder": "514 863 7805",
+    "phoneTel": "+15148637805",
+    "emailPlaceholder": "contact@studiodefacto.ca",
+    "hoursPlaceholder": "Mon.–Fri.: 9 a.m. to 6 p.m.",
+    "coordonneesHeading": "Contact information",
+    "nousEcrireHeading": "Write to us",
+    "demanderRdv": "Book an appointment",
+    "premiereVisite": "First visit",
+    "acces": {
+      "label": "Getting here",
+      "title": "How to reach the studio",
+      "voiture": "By car",
+      "voitureBody": "Parking available nearby.",
+      "transport": "Public transit",
+      "transportBody": "Access via local Ahuntsic routes.",
+      "reperes": "Neighbourhood landmarks",
+      "reperesBody": "In the heart of Ahuntsic, on Fleury Est."
+    },
+    "urgence": {
+      "label": "Dental emergency",
+      "body": "In case of pain, trauma, fracture or swelling: call the clinic or fill out the dedicated emergency form.",
+      "appeler": "Call the clinic",
+      "formulaire": "Emergency form"
+    },
+    "mapTitle": "Map — De Facto Dental Studio",
+    "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Friday, 9 a.m. to 6 p.m."
+  },
+  "contactForm": {
+    "nom": "Full name",
+    "courriel": "Email",
+    "telephone": "Phone",
+    "sujet": "Subject",
+    "sujetOptions": { "general": "General question", "rdv": "Appointment", "assurance": "Insurance", "urgence": "Emergency", "professionnel": "Professional inquiry", "laboratoire": "Laboratory", "autre": "Other" },
+    "message": "Message",
+    "envoyer": "Send",
+    "envoi": "Sending…"
+  },
+  "merci": {
+    "label": "Confirmation",
+    "title": "Thank you — your request has been received.",
+    "body": "Our team will contact you to confirm the next steps.",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "tagline": "De Facto Dental Studio — considered dentistry in the heart of Ahuntsic, Montreal.",
+    "coordonnees": "Contact",
+    "liens": "Patients",
+    "secondaires": "Information",
+    "confidentialite": "Privacy",
+    "conditions": "Terms of use",
+    "assurances": "Insurance and payments",
+    "faq": "Frequently asked questions",
+    "premiereVisite": "First visit",
+    "urgence": "Dental emergency",
+    "laboratoire": "Laboratory",
+    "rendezVous": "Book an appointment",
+    "horaires": "Hours",
+    "horairesPlaceholder": "Mon.–Fri.: 9 a.m. to 6 p.m.",
+    "mention": "Information on this site does not replace a clinical evaluation by a dentist."
+  }
+}

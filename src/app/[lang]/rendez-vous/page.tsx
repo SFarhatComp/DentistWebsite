@@ -3,23 +3,27 @@ import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { AppointmentToggle } from "@/components/forms/appointment-toggle"
 import { FadeIn } from "@/components/motion/fade-in"
+import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Demander un rendez-vous",
-  description:
-    "Demande de rendez-vous régulier ou parcours d'urgence — Studio Dentaire De Facto, Ahuntsic, Montréal. Téléphone : 514 863 7805.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("appointment.title"),
+    description: t("appointment.metaDescription"),
+  }
 }
 
 export default function AppointmentPage({ params }: { params: { lang: string } }) {
   const lang = params.lang as Locale
+  const t = getTranslations(lang)
   return (
     <>
       <PageHero
-        label="Rendez-vous"
-        title="Demander un rendez-vous"
-        subtitle="Deux parcours sont disponibles : une demande de rendez-vous régulière, et un parcours d'urgence dentaire. Choisissez celui qui correspond à votre situation."
+        label={t("appointment.label")}
+        title={t("appointment.title")}
+        subtitle={t("appointment.subtitle")}
       />
 
       <Container>
@@ -32,13 +36,13 @@ export default function AppointmentPage({ params }: { params: { lang: string } }
         <FadeIn>
           <div className="pb-20 pt-4 max-w-3xl border-t border-border">
             <p className="text-sm text-muted-foreground leading-relaxed pt-8">
-              Pour toute autre question administrative, consultez notre page{" "}
+              {t("appointment.otherQuestions")}{" "}
               <Link href={`/${lang}/contact`} className="text-primary hover:underline">
-                Contact
+                {t("appointment.contactLink")}
               </Link>
-              {" ou notre "}
+              {t("appointment.or")}
               <Link href={`/${lang}/questions-frequentes`} className="text-primary hover:underline">
-                FAQ
+                {t("appointment.faqLink")}
               </Link>
               .
             </p>
