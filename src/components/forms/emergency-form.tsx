@@ -1,31 +1,27 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
-import { Field, PhoneField, TextareaField, CheckboxField, RadioField, FileField, HoneypotField } from "./fields"
+import { Field, PhoneField, CheckboxField, RadioField, FileField, HoneypotField } from "./fields"
+import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-const TYPES = [
-  { v: "douleur", l: "Douleur intense" },
-  { v: "enflure", l: "Enflure" },
-  { v: "abces", l: "Abcès" },
-  { v: "fracture", l: "Dent cassée" },
-  { v: "trauma", l: "Traumatisme" },
-  { v: "saignement", l: "Saignement" },
-  { v: "couronne", l: "Perte d'une couronne" },
-  { v: "restauration", l: "Perte d'une restauration" },
-  { v: "infection", l: "Infection suspectée" },
-  { v: "autre", l: "Autre" },
-]
+const TYPES_CODES = [
+  "douleur",
+  "enflure",
+  "abces",
+  "fracture",
+  "trauma",
+  "saignement",
+  "couronne",
+  "restauration",
+  "infection",
+  "autre",
+] as const
 
-const SYMPTOMS = [
-  { name: "sym_swelling", label: "Avez-vous de l'enflure ?" },
-  { name: "sym_fever", label: "Avez-vous de la fièvre ?" },
-  { name: "sym_swallow", label: "Avez-vous de la difficulté à avaler ?" },
-  { name: "sym_breathe", label: "Avez-vous de la difficulté à respirer ?" },
-  { name: "sym_night", label: "La douleur vous réveille-t-elle la nuit ?" },
-]
+const SYMPTOM_CODES = ["sym_swelling", "sym_fever", "sym_swallow", "sym_breathe", "sym_night"] as const
 
 export function EmergencyForm({ lang }: { lang: Locale }) {
+  const t = getTranslations(lang)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
 
@@ -59,67 +55,66 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
 
       <div className="border-l-4 border-accent bg-accent/5 p-6">
         <p className="text-sm text-foreground leading-relaxed">
-          <strong className="font-medium">Avertissement médical.</strong> Si vous présentez une enflure importante,
-          de la fièvre, une difficulté à respirer ou à avaler, ou un traumatisme majeur, contactez immédiatement
-          les services d&apos;urgence (911) ou rendez-vous à l&apos;hôpital le plus proche.
+          <strong className="font-medium">{t("emergencyForm.medicalWarningStrong")}</strong>{" "}
+          {t("emergencyForm.medicalWarning")}
         </p>
       </div>
 
       <div className="space-y-6">
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="firstName" label="Prénom" required />
-          <Field name="lastName" label="Nom" required />
+          <Field name="firstName" label={t("emergencyForm.firstName")} required />
+          <Field name="lastName" label={t("emergencyForm.lastName")} required />
           <PhoneField name="phone" required />
-          <Field name="email" label="Courriel" type="email" required />
-          <Field name="dob" label="Date de naissance" type="date" required className="md:col-span-2" />
+          <Field name="email" label={t("emergencyForm.email")} type="email" required />
+          <Field name="dob" label={t("emergencyForm.dob")} type="date" required className="md:col-span-2" />
         </div>
 
         <div>
-          <div className="label-sm text-foreground mb-3">Type d&apos;urgence (sélectionnez tout ce qui s&apos;applique) *</div>
+          <div className="label-sm text-foreground mb-3">{t("emergencyForm.typesLabel")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {TYPES.map((t) => (
-              <CheckboxField key={t.v} name={`type_${t.v}`} value="1" label={t.l} />
+            {TYPES_CODES.map((code) => (
+              <CheckboxField key={code} name={`type_${code}`} value="1" label={t(`emergencyForm.types.${code}`)} />
             ))}
           </div>
         </div>
 
         <div>
-          <div className="label-sm text-foreground mb-3">Symptômes</div>
+          <div className="label-sm text-foreground mb-3">{t("emergencyForm.symptomsLabel")}</div>
           <div className="space-y-4">
-            {SYMPTOMS.map((s) => (
-              <div key={s.name} className="border-t border-border pt-4">
-                <div className="text-sm text-foreground mb-2">{s.label}</div>
+            {SYMPTOM_CODES.map((code) => (
+              <div key={code} className="border-t border-border pt-4">
+                <div className="text-sm text-foreground mb-2">{t(`emergencyForm.symptoms.${code}`)}</div>
                 <div className="flex gap-6">
-                  <RadioField name={s.name} value="yes" label="Oui" />
-                  <RadioField name={s.name} value="no" label="Non" />
+                  <RadioField name={code} value="yes" label={t("emergencyForm.yes")} />
+                  <RadioField name={code} value="no" label={t("emergencyForm.no")} />
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <Field name="symptomDuration" label="Depuis combien de temps ?" />
+        <Field name="symptomDuration" label={t("emergencyForm.symptomDuration")} />
 
         <FileField
           name="photo"
-          label="Photo (optionnel)"
+          label={t("emergencyForm.photoLabel")}
           accept="image/jpeg,image/png,image/heic,.heic"
-          helpText="JPG, PNG ou HEIC. Maximum 10 MB."
+          helpText={t("emergencyForm.photoHelp")}
         />
 
         <div className="border-t border-border pt-6 space-y-4">
-          <div className="label-sm text-foreground">Consentements</div>
+          <div className="label-sm text-foreground">{t("emergencyForm.consentsLabel")}</div>
           <CheckboxField
             name="consent_emergency"
             value="1"
             required
-            label="Je comprends que pour une urgence médicale (difficulté à respirer, enflure importante, fièvre élevée, traumatisme sévère), je dois contacter les services d'urgence ou me présenter à l'hôpital."
+            label={t("emergencyForm.consentEmergency")}
           />
           <CheckboxField
             name="consent_contact"
             value="1"
             required
-            label="J'autorise Studio Dentaire De Facto à me contacter rapidement concernant cette demande."
+            label={t("emergencyForm.consentContact")}
           />
           <CheckboxField
             name="consent_privacy"
@@ -127,11 +122,11 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
             required
             label={
               <>
-                J&apos;ai pris connaissance de la{" "}
+                {t("emergencyForm.consentPrivacyPrefix")}
                 <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
-                  politique de confidentialité
+                  {t("emergencyForm.consentPrivacyLink")}
                 </Link>
-                .
+                {t("emergencyForm.consentPrivacySuffix")}
               </>
             }
           />
@@ -139,7 +134,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
       </div>
 
       {error && (
-        <p className="text-sm text-accent">Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.</p>
+        <p className="text-sm text-accent">{t("emergencyForm.error")}</p>
       )}
 
       <button
@@ -147,7 +142,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
         disabled={submitting}
         className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 text-base font-medium tracking-wide disabled:opacity-50 transition-colors"
       >
-        {submitting ? "Envoi en cours…" : "Envoyer ma demande d'urgence"}
+        {submitting ? t("emergencyForm.submitting") : t("emergencyForm.submit")}
       </button>
     </form>
   )

@@ -3,49 +3,17 @@ import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
 import { NumberedSection } from "@/components/shared/numbered-section"
 import { FadeIn } from "@/components/motion/fade-in"
+import { getTranslations, getTranslationList } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Assurances et paiements",
-  description:
-    "Informations sur les estimations, assurances dentaires, préautorisations, paiements et responsabilité du patient chez Studio Dentaire De Facto.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("assurances.metaTitle"),
+    description: t("assurances.metaDescription"),
+  }
 }
-
-const estimations = [
-  "Une estimation n'est pas une garantie de paiement",
-  "La réponse de l'assureur peut varier",
-  "Les franchises, maximums annuels, exclusions et fréquences peuvent influencer le remboursement",
-  "Le solde non couvert demeure payable par le patient",
-]
-
-const privee = [
-  "Transmission possible selon les systèmes disponibles",
-  "Coordination avec la secrétaire",
-  "Importance de fournir les bons renseignements",
-]
-
-const paiement = [
-  "Paiement par le patient puis remboursement",
-  "Transmission électronique possible selon l'assureur",
-  "Solde à acquitter",
-  "Dépôt ou paiement requis selon le traitement si applicable",
-]
-
-const preauth = [
-  "Utile pour certains traitements",
-  "Pas une garantie absolue",
-  "Peut prendre du temps",
-  "Peut nécessiter radiographies, codes, plans ou justification",
-]
-
-const politiqueRdv = [
-  "Annulation",
-  "Retard",
-  "Rendez-vous manqué",
-  "Frais de rendez-vous manqué si applicable",
-  "Respect du temps clinique",
-]
 
 function BulletList({ items }: { items: string[] }) {
   return (
@@ -62,73 +30,80 @@ function BulletList({ items }: { items: string[] }) {
 
 export default function AssurancesPage({ params }: { params: { lang: string } }) {
   const lang = params.lang as Locale
+  const t = getTranslations(lang)
+  const estimations = getTranslationList(lang, "assurances.estimations")
+  const privee = getTranslationList(lang, "assurances.privee")
+  const paiement = getTranslationList(lang, "assurances.paiement")
+  const preauth = getTranslationList(lang, "assurances.preauth")
+  const politiqueRdv = getTranslationList(lang, "assurances.politiqueRdv")
+
   return (
     <>
       <PageHero
-        label="Administratif"
-        title="Assurances et paiements"
-        subtitle="Comprendre comment fonctionnent les estimations, les assurances, les préautorisations et la responsabilité du patient."
+        label={t("assurances.label")}
+        title={t("assurances.title")}
+        subtitle={t("assurances.subtitle")}
       />
 
       <section className="py-20 md:py-24">
         <Container>
           <div className="max-w-3xl space-y-20">
             <FadeIn>
-              <NumberedSection number={1} label="Rôle" title="Comprendre le rôle de l'assurance">
+              <NumberedSection number={1} label={t("assurances.roleLabel")} title={t("assurances.roleTitle")}>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  L&apos;assurance dentaire est une entente entre le patient et son assureur. Nous pouvons vous aider à transmettre certaines informations ou estimations, mais la confirmation finale de la couverture, des limites et des soldes demeure la responsabilité du patient.
+                  {t("assurances.roleBody")}
                 </p>
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={2} label="Estimations" title="Estimations">
+              <NumberedSection number={2} label={t("assurances.estimationsLabel")} title={t("assurances.estimationsTitle")}>
                 <BulletList items={estimations} />
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={3} label="Privée" title="Assurance privée">
+              <NumberedSection number={3} label={t("assurances.priveeLabel")} title={t("assurances.priveeTitle")}>
                 <BulletList items={privee} />
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={4} label="RCSD" title="Programme fédéral / RCSD">
+              <NumberedSection number={4} label={t("assurances.rcsdLabel")} title={t("assurances.rcsdTitle")}>
                 <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                  Certains patients peuvent être admissibles au Régime canadien de soins dentaires (RCSD) selon les critères du programme.
+                  {t("assurances.rcsdBody1")}
                 </p>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  L&apos;équipe peut aider à vérifier les renseignements administratifs disponibles. Les règles du programme peuvent varier selon le traitement, la couverture et les autorisations requises. Nous ne pouvons pas garantir d&apos;avance la prise en charge d&apos;un acte clinique.
+                  {t("assurances.rcsdBody2")}
                 </p>
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={5} label="RAMQ" title="RAMQ si applicable">
+              <NumberedSection number={5} label={t("assurances.ramqLabel")} title={t("assurances.ramqTitle")}>
                 <p className="text-base text-muted-foreground leading-relaxed">
-                  Certains services dentaires peuvent être couverts par la RAMQ dans des contextes précis (par exemple certains soins pour enfants ou bénéficiaires d&apos;aide de dernier recours). Plusieurs traitements dentaires ne sont toutefois pas couverts par le régime public.
+                  {t("assurances.ramqBody")}
                 </p>
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={6} label="Paiement" title="Paiement direct ou remboursement">
+              <NumberedSection number={6} label={t("assurances.paiementLabel")} title={t("assurances.paiementTitle")}>
                 <BulletList items={paiement} />
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={7} label="Préautorisation" title="Préautorisations">
+              <NumberedSection number={7} label={t("assurances.preauthLabel")} title={t("assurances.preauthTitle")}>
                 <BulletList items={preauth} />
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={8} label="Politique RDV" title="Politique de rendez-vous">
+              <NumberedSection number={8} label={t("assurances.politiqueRdvLabel")} title={t("assurances.politiqueRdvTitle")}>
                 <BulletList items={politiqueRdv} />
                 <p className="mt-6 text-base text-muted-foreground leading-relaxed italic">
-                  Les politiques précises seront communiquées au moment de la prise de rendez-vous ou avant les traitements concernés.
+                  {t("assurances.politiqueRdvNote")}
                 </p>
               </NumberedSection>
             </FadeIn>
@@ -140,23 +115,23 @@ export default function AssurancesPage({ params }: { params: { lang: string } })
         <Container>
           <FadeIn className="max-w-2xl">
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Une question administrative ?
+              {t("assurances.ctaTitle")}
             </h2>
             <p className="text-lg opacity-80 mb-8 leading-relaxed">
-              L&apos;équipe peut vous accompagner dans la coordination avec votre assureur ou clarifier les modalités d&apos;un traitement.
+              {t("assurances.ctaBody")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href={`/${lang}/contact`}
                 className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
               >
-                Poser une question administrative
+                {t("assurances.ctaPrimary")}
               </Link>
               <Link
                 href={`/${lang}/rendez-vous`}
                 className="inline-flex items-center justify-center border border-primary-foreground/40 hover:border-primary-foreground hover:bg-primary-foreground/5 text-primary-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
               >
-                Demander un rendez-vous
+                {t("assurances.ctaSecondary")}
               </Link>
             </div>
           </FadeIn>
