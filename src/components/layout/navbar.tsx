@@ -31,7 +31,18 @@ export function Navbar({ lang }: { lang: Locale }) {
     <header className="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-border">
       <Container>
         <nav className="flex h-20 items-center justify-between gap-6">
-          <Link href={`/${lang}`} className="font-display text-xl tracking-wide text-primary shrink-0">De Facto</Link>
+          <Link
+            href={`/${lang}`}
+            className="shrink-0 flex items-center"
+            aria-label="Studio Dentaire De Facto — Accueil"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.svg"
+              alt="Studio Dentaire De Facto"
+              className="h-12 w-auto md:h-14"
+            />
+          </Link>
           <div className="hidden lg:flex items-center gap-5 xl:gap-7 flex-1 justify-center">
             {links.map((l) => {
               const isActive = pathname === l.href || pathname === `${l.href}/`
