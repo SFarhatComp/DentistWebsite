@@ -2,57 +2,59 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Field, PhoneField, TextareaField, SelectField, CheckboxField, FormSection, HoneypotField } from "./fields"
+import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-const PROFESSIONAL_TITLES = [
-  { value: "dentiste_generaliste", label: "Dentiste généraliste" },
-  { value: "prosthodontiste", label: "Prosthodontiste" },
-  { value: "orthodontiste", label: "Orthodontiste" },
-  { value: "parodontiste", label: "Parodontiste" },
-  { value: "endodontiste", label: "Endodontiste" },
-  { value: "chirurgien_maxillo_facial", label: "Chirurgien maxillo-facial" },
-  { value: "denturologiste", label: "Denturologiste" },
-  { value: "hygieniste_dentaire", label: "Hygiéniste dentaire" },
-  { value: "gestionnaire_clinique", label: "Gestionnaire de clinique" },
-  { value: "autre", label: "Autre" },
-]
+const PROFESSIONAL_TITLES_CODES = [
+  "dentiste_generaliste",
+  "prosthodontiste",
+  "orthodontiste",
+  "parodontiste",
+  "endodontiste",
+  "chirurgien_maxillo_facial",
+  "denturologiste",
+  "hygieniste_dentaire",
+  "gestionnaire_clinique",
+  "autre",
+] as const
 
-const COLLABORATION_TYPES = [
-  { v: "lab_regulier", l: "Cas de laboratoire réguliers" },
-  { v: "lab_occasionnel", l: "Cas de laboratoire occasionnels" },
-  { v: "cas_esthetiques", l: "Cas esthétiques complexes" },
-  { v: "consultation", l: "Consultations cliniques" },
-  { v: "reference_clinique", l: "Références cliniques" },
-  { v: "autre", l: "Autre" },
-]
+const COLLABORATION_TYPES_CODES = [
+  "lab_regulier",
+  "lab_occasionnel",
+  "cas_esthetiques",
+  "consultation",
+  "reference_clinique",
+  "autre",
+] as const
 
-const SERVICES = [
-  { v: "orthodontie", l: "Orthodontie" },
-  { v: "prostho_amovible", l: "Prosthodontie amovible" },
-  { v: "prostho_fixe", l: "Prosthodontie fixe" },
-  { v: "plaques_occlusales", l: "Plaques occlusales" },
-  { v: "gouttieres", l: "Gouttières" },
-  { v: "wax_up", l: "Wax-up" },
-  { v: "prise_teinte", l: "Prise de teinte" },
-  { v: "esthetique", l: "Cas esthétiques" },
-  { v: "reparations", l: "Réparations" },
-  { v: "emax", l: "E.max pressé ou usiné" },
-  { v: "zircone", l: "Zircone" },
-  { v: "impression_3d", l: "Impression 3D / Formlabs" },
-  { v: "autre", l: "Autre" },
-]
+const SERVICES_CODES = [
+  "orthodontie",
+  "prostho_amovible",
+  "prostho_fixe",
+  "plaques_occlusales",
+  "gouttieres",
+  "wax_up",
+  "prise_teinte",
+  "esthetique",
+  "reparations",
+  "emax",
+  "zircone",
+  "impression_3d",
+  "autre",
+] as const
 
-const CONTACT_PREFS = [
-  { v: "telephone", l: "Téléphone" },
-  { v: "courriel", l: "Courriel" },
-  { v: "sms", l: "SMS" },
-  { v: "en_personne", l: "En personne" },
-]
+const CONTACT_PREFS_CODES = ["telephone", "courriel", "sms", "en_personne"] as const
 
 export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
+  const t = getTranslations(lang)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
   const [titleValue, setTitleValue] = useState("")
+
+  const professionalTitles = PROFESSIONAL_TITLES_CODES.map((v) => ({
+    value: v,
+    label: t(`partnerOnboardingForm.professionalTitles.${v}`),
+  }))
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -77,75 +79,90 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="space-y-12"
-      aria-label="Formulaire de partenariat professionnel"
+      aria-label={t("partnerOnboardingForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="partner-onboarding" />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3">
         <p className="text-base text-foreground leading-relaxed">
-          Ce formulaire est destiné aux dentistes et spécialistes qui souhaitent discuter d&apos;une collaboration avec notre laboratoire intégré.
+          {t("partnerOnboardingForm.intro")}
         </p>
       </div>
 
-      <FormSection number="01" title="Identification professionnelle">
+      <FormSection number="01" title={t("partnerOnboardingForm.section1Title")}>
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="dentistName" label="Nom du professionnel" required />
+          <Field name="dentistName" label={t("partnerOnboardingForm.dentistName")} required />
           <SelectField
             name="professionalTitle"
-            label="Titre professionnel"
+            label={t("partnerOnboardingForm.professionalTitle")}
             required
-            options={PROFESSIONAL_TITLES}
+            options={professionalTitles}
             onChange={(v) => setTitleValue(v)}
           />
         </div>
         {titleValue === "autre" && (
-          <Field name="professionalTitleOther" label="Veuillez préciser votre titre" required />
+          <Field name="professionalTitleOther" label={t("partnerOnboardingForm.professionalTitleOther")} required />
         )}
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="clinicName" label="Nom de la clinique" required />
-          <Field name="clinicAddress" label="Adresse de la clinique" />
+          <Field name="clinicName" label={t("partnerOnboardingForm.clinicName")} required />
+          <Field name="clinicAddress" label={t("partnerOnboardingForm.clinicAddress")} />
           <PhoneField name="phone" required />
-          <Field name="email" label="Courriel" type="email" required />
+          <Field name="email" label={t("partnerOnboardingForm.email")} type="email" required />
         </div>
       </FormSection>
 
-      <FormSection number="02" title="Type de collaboration recherchée">
-        <p className="text-sm text-muted-foreground">Cochez ce qui s&apos;applique.</p>
+      <FormSection number="02" title={t("partnerOnboardingForm.section2Title")}>
+        <p className="text-sm text-muted-foreground">{t("partnerOnboardingForm.section2Intro")}</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {COLLABORATION_TYPES.map((c) => (
-            <CheckboxField key={c.v} name={`collaboration_${c.v}`} value="1" label={c.l} />
+          {COLLABORATION_TYPES_CODES.map((v) => (
+            <CheckboxField
+              key={v}
+              name={`collaboration_${v}`}
+              value="1"
+              label={t(`partnerOnboardingForm.collaborationTypes.${v}`)}
+            />
           ))}
         </div>
       </FormSection>
 
-      <FormSection number="03" title="Services d'intérêt">
-        <p className="text-sm text-muted-foreground">Cochez ce qui vous intéresse.</p>
+      <FormSection number="03" title={t("partnerOnboardingForm.section3Title")}>
+        <p className="text-sm text-muted-foreground">{t("partnerOnboardingForm.section3Intro")}</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {SERVICES.map((s) => (
-            <CheckboxField key={s.v} name={`service_${s.v}`} value="1" label={s.l} />
+          {SERVICES_CODES.map((v) => (
+            <CheckboxField
+              key={v}
+              name={`service_${v}`}
+              value="1"
+              label={t(`partnerOnboardingForm.services.${v}`)}
+            />
           ))}
         </div>
       </FormSection>
 
-      <FormSection number="04" title="Préférence de contact">
+      <FormSection number="04" title={t("partnerOnboardingForm.section4Title")}>
         <div className="grid gap-3 sm:grid-cols-2">
-          {CONTACT_PREFS.map((c) => (
-            <CheckboxField key={c.v} name={`contact_${c.v}`} value="1" label={c.l} />
+          {CONTACT_PREFS_CODES.map((v) => (
+            <CheckboxField
+              key={v}
+              name={`contact_${v}`}
+              value="1"
+              label={t(`partnerOnboardingForm.contactPrefs.${v}`)}
+            />
           ))}
         </div>
       </FormSection>
 
-      <FormSection number="05" title="Message ou contexte de la demande">
-        <TextareaField name="message" label="Précisions, besoins spécifiques, contexte" rows={5} />
+      <FormSection number="05" title={t("partnerOnboardingForm.section5Title")}>
+        <TextareaField name="message" label={t("partnerOnboardingForm.messageLabel")} rows={5} />
       </FormSection>
 
-      <FormSection number="06" title="Consentement">
+      <FormSection number="06" title={t("partnerOnboardingForm.section6Title")}>
         <CheckboxField
           name="consent_contact"
           value="1"
           required
-          label="J'autorise Studio Dentaire De Facto à me contacter concernant cette demande de collaboration."
+          label={t("partnerOnboardingForm.consentContact")}
         />
         <CheckboxField
           name="consent_privacy"
@@ -153,11 +170,11 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
           required
           label={
             <>
-              J&apos;ai pris connaissance de la{" "}
+              {t("partnerOnboardingForm.consentPrivacyBefore")}
               <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
-                politique de confidentialité
+                {t("partnerOnboardingForm.consentPrivacyLink")}
               </Link>
-              .
+              {t("partnerOnboardingForm.consentPrivacyAfter")}
             </>
           }
         />
@@ -165,7 +182,7 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
 
       {error && (
         <p className="text-sm text-accent" role="alert">
-          Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.
+          {t("partnerOnboardingForm.errorGeneric")}
         </p>
       )}
 
@@ -174,7 +191,7 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
         disabled={submitting}
         className="bg-primary hover:bg-primary-hover text-primary-foreground px-10 py-4 text-base font-medium tracking-wide disabled:opacity-50 transition-colors"
       >
-        {submitting ? "Envoi en cours…" : "Transmettre la demande"}
+        {submitting ? t("partnerOnboardingForm.submitting") : t("partnerOnboardingForm.submit")}
       </button>
     </form>
   )

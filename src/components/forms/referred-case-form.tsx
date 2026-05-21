@@ -2,54 +2,61 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Field, PhoneField, TextareaField, SelectField, CheckboxField, RadioField, FileField, FormSection, HoneypotField } from "./fields"
+import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-const LANGUES = [
-  { value: "francais", label: "Français" },
-  { value: "anglais", label: "Anglais" },
-  { value: "francais_anglais", label: "Français ou anglais" },
-  { value: "autre", label: "Autre" },
-]
+const LANGUES_CODES = ["francais", "anglais", "francais_anglais", "autre"] as const
 
-const MOTIFS_PRINCIPAUX = [
-  { value: "evaluation_complete", label: "Évaluation complète" },
-  { value: "douleur", label: "Douleur" },
-  { value: "esthetique", label: "Préoccupation esthétique" },
-  { value: "endodontie", label: "Endodontie" },
-  { value: "parodontie", label: "Parodontie / greffe" },
-  { value: "implantologie", label: "Implantologie" },
-  { value: "prosthodontie", label: "Prosthodontie / restauration complexe" },
-  { value: "deuxieme_avis", label: "Deuxième avis" },
-  { value: "laboratoire", label: "Service de laboratoire (teinte, réparation)" },
-  { value: "autre", label: "Autre" },
-]
+const MOTIFS_PRINCIPAUX_CODES = [
+  "evaluation_complete",
+  "douleur",
+  "esthetique",
+  "endodontie",
+  "parodontie",
+  "implantologie",
+  "prosthodontie",
+  "deuxieme_avis",
+  "laboratoire",
+  "autre",
+] as const
 
-const MOTIFS_SECONDAIRES = [
-  { v: "douleur", l: "Douleur" },
-  { v: "sensibilite", l: "Sensibilité" },
-  { v: "saignement_gencives", l: "Saignement des gencives" },
-  { v: "dent_mobile", l: "Dent mobile" },
-  { v: "fracture", l: "Fracture" },
-  { v: "usure", l: "Usure dentaire" },
-  { v: "esthetique", l: "Préoccupation esthétique" },
-  { v: "infection", l: "Infection suspectée" },
-  { v: "autre", l: "Autre" },
-]
+const MOTIFS_SECONDAIRES_CODES = [
+  "douleur",
+  "sensibilite",
+  "saignement_gencives",
+  "dent_mobile",
+  "fracture",
+  "usure",
+  "esthetique",
+  "infection",
+  "autre",
+] as const
 
-const DOCUMENTS_TRANSMIS = [
-  { v: "photos", l: "Photos" },
-  { v: "radiographies", l: "Radiographies" },
-  { v: "stl_scan", l: "STL / scan" },
-  { v: "plan_traitement", l: "Plan de traitement existant" },
-  { v: "notes_cliniques", l: "Notes cliniques" },
-  { v: "autre", l: "Autre" },
-]
+const DOCUMENTS_TRANSMIS_CODES = [
+  "photos",
+  "radiographies",
+  "stl_scan",
+  "plan_traitement",
+  "notes_cliniques",
+  "autre",
+] as const
 
 export function ReferredCaseForm({ lang }: { lang: Locale }) {
+  const t = getTranslations(lang)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
   const [langValue, setLangValue] = useState("")
   const [motifValue, setMotifValue] = useState("")
+
+  const langues = LANGUES_CODES.map((v) => ({
+    value: v,
+    label: t(`referredCaseForm.langues.${v}`),
+  }))
+
+  const motifsPrincipaux = MOTIFS_PRINCIPAUX_CODES.map((v) => ({
+    value: v,
+    label: t(`referredCaseForm.motifsPrincipaux.${v}`),
+  }))
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -75,118 +82,128 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
       encType="multipart/form-data"
       onSubmit={handleSubmit}
       className="space-y-12"
-      aria-label="Formulaire de référence d'un patient"
+      aria-label={t("referredCaseForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="referred-case" />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3">
         <p className="text-base text-foreground leading-relaxed">
-          Référer un patient au Studio Dentaire De Facto pour évaluation, traitement ou service technique. Le patient reste sous votre responsabilité clinique.
+          {t("referredCaseForm.intro")}
         </p>
       </div>
 
-      <FormSection number="01" title="Professionnel référent">
+      <FormSection number="01" title={t("referredCaseForm.section1Title")}>
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="referringProfessionalName" label="Nom du professionnel" required />
-          <Field name="clinicName" label="Clinique" required />
-          <PhoneField name="clinicPhone" label="Téléphone de la clinique" required />
-          <Field name="email" label="Courriel" type="email" required />
+          <Field name="referringProfessionalName" label={t("referredCaseForm.referringProfessionalName")} required />
+          <Field name="clinicName" label={t("referredCaseForm.clinicName")} required />
+          <PhoneField name="clinicPhone" label={t("referredCaseForm.clinicPhone")} required />
+          <Field name="email" label={t("referredCaseForm.email")} type="email" required />
         </div>
       </FormSection>
 
-      <FormSection number="02" title="Patient">
+      <FormSection number="02" title={t("referredCaseForm.section2Title")}>
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="patientName" label="Nom complet du patient" required />
-          <Field name="patientDob" label="Date de naissance" type="date" required />
-          <PhoneField name="patientPhone" label="Téléphone du patient" required />
-          <Field name="patientEmail" label="Courriel du patient" type="email" />
+          <Field name="patientName" label={t("referredCaseForm.patientName")} required />
+          <Field name="patientDob" label={t("referredCaseForm.patientDob")} type="date" required />
+          <PhoneField name="patientPhone" label={t("referredCaseForm.patientPhone")} required />
+          <Field name="patientEmail" label={t("referredCaseForm.patientEmail")} type="email" />
         </div>
         <SelectField
           name="patientLanguage"
-          label="Langue préférée"
-          options={LANGUES}
+          label={t("referredCaseForm.patientLanguage")}
+          options={langues}
           onChange={(v) => setLangValue(v)}
         />
         {langValue === "autre" && (
-          <Field name="patientLanguageOther" label="Veuillez préciser la langue" required />
+          <Field name="patientLanguageOther" label={t("referredCaseForm.patientLanguageOther")} required />
         )}
       </FormSection>
 
-      <FormSection number="03" title="Référence">
+      <FormSection number="03" title={t("referredCaseForm.section3Title")}>
         <SelectField
           name="referralMainReason"
-          label="Motif principal"
+          label={t("referredCaseForm.referralMainReason")}
           required
-          options={MOTIFS_PRINCIPAUX}
+          options={motifsPrincipaux}
           onChange={(v) => setMotifValue(v)}
         />
         {motifValue === "autre" && (
-          <Field name="referralMainReasonOther" label="Veuillez préciser le motif principal" required />
+          <Field name="referralMainReasonOther" label={t("referredCaseForm.referralMainReasonOther")} required />
         )}
         <div>
-          <div className="label-sm text-foreground mb-3">Motifs secondaires (optionnel)</div>
+          <div className="label-sm text-foreground mb-3">{t("referredCaseForm.motifsSecondairesLabel")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {MOTIFS_SECONDAIRES.map((m) => (
-              <CheckboxField key={m.v} name={`motif_secondaire_${m.v}`} value="1" label={m.l} />
+            {MOTIFS_SECONDAIRES_CODES.map((v) => (
+              <CheckboxField
+                key={v}
+                name={`motif_secondaire_${v}`}
+                value="1"
+                label={t(`referredCaseForm.motifsSecondaires.${v}`)}
+              />
             ))}
           </div>
         </div>
         <div>
-          <div className="label-sm text-foreground mb-3">Urgence *</div>
+          <div className="label-sm text-foreground mb-3">{t("referredCaseForm.urgencyLabel")} *</div>
           <div className="flex gap-6">
-            <RadioField name="urgency" value="oui" label="Oui" required />
-            <RadioField name="urgency" value="non" label="Non" required />
+            <RadioField name="urgency" value="oui" label={t("referredCaseForm.yes")} required />
+            <RadioField name="urgency" value="non" label={t("referredCaseForm.no")} required />
           </div>
         </div>
-        <TextareaField name="clinicalSummary" label="Résumé clinique" rows={4} />
-        <TextareaField name="previousTreatments" label="Traitements déjà réalisés" rows={3} />
+        <TextareaField name="clinicalSummary" label={t("referredCaseForm.clinicalSummary")} rows={4} />
+        <TextareaField name="previousTreatments" label={t("referredCaseForm.previousTreatments")} rows={3} />
         <div>
-          <div className="label-sm text-foreground mb-3">Documents transmis</div>
+          <div className="label-sm text-foreground mb-3">{t("referredCaseForm.documentsTransmisLabel")}</div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {DOCUMENTS_TRANSMIS.map((d) => (
-              <CheckboxField key={d.v} name={`doc_${d.v}`} value="1" label={d.l} />
+            {DOCUMENTS_TRANSMIS_CODES.map((v) => (
+              <CheckboxField
+                key={v}
+                name={`doc_${v}`}
+                value="1"
+                label={t(`referredCaseForm.documentsTransmis.${v}`)}
+              />
             ))}
           </div>
         </div>
       </FormSection>
 
-      <FormSection number="04" title="Fichiers">
+      <FormSection number="04" title={t("referredCaseForm.section4Title")}>
         <FileField
           name="photos"
-          label="Photos cliniques"
+          label={t("referredCaseForm.photosLabel")}
           accept="image/jpeg,image/png,image/heic,.heic"
           multiple
-          helpText="JPG, PNG ou HEIC. Maximum 10 MB par photo."
+          helpText={t("referredCaseForm.photosHelp")}
         />
         <FileField
           name="radiographs"
-          label="Radiographies"
+          label={t("referredCaseForm.radiographsLabel")}
           accept="image/jpeg,image/png,application/pdf,.heic"
           multiple
-          helpText="JPG, PNG ou PDF."
+          helpText={t("referredCaseForm.radiographsHelp")}
         />
         <FileField
           name="stlFiles"
-          label="STL / scan (optionnel)"
+          label={t("referredCaseForm.stlFilesLabel")}
           accept=".stl,.zip,.obj,.ply"
           multiple
-          helpText="STL, OBJ, PLY ou ZIP."
+          helpText={t("referredCaseForm.stlFilesHelp")}
         />
       </FormSection>
 
-      <FormSection number="05" title="Consentements">
+      <FormSection number="05" title={t("referredCaseForm.section5Title")}>
         <CheckboxField
           name="consent_patient_informed"
           value="1"
           required
-          label="Le patient a été informé de cette référence."
+          label={t("referredCaseForm.consentPatientInformed")}
         />
         <CheckboxField
           name="consent_transmission"
           value="1"
           required
-          label="J'autorise la transmission des documents et renseignements pertinents au Studio Dentaire De Facto."
+          label={t("referredCaseForm.consentTransmission")}
         />
         <CheckboxField
           name="consent_privacy"
@@ -194,11 +211,11 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
           required
           label={
             <>
-              J&apos;ai pris connaissance de la{" "}
+              {t("referredCaseForm.consentPrivacyBefore")}
               <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
-                politique de confidentialité
+                {t("referredCaseForm.consentPrivacyLink")}
               </Link>
-              .
+              {t("referredCaseForm.consentPrivacyAfter")}
             </>
           }
         />
@@ -206,7 +223,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
 
       {error && (
         <p className="text-sm text-accent" role="alert">
-          Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.
+          {t("referredCaseForm.errorGeneric")}
         </p>
       )}
 
@@ -215,7 +232,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
         disabled={submitting}
         className="bg-primary hover:bg-primary-hover text-primary-foreground px-10 py-4 text-base font-medium tracking-wide disabled:opacity-50 transition-colors"
       >
-        {submitting ? "Envoi en cours…" : "Transmettre la référence"}
+        {submitting ? t("referredCaseForm.submitting") : t("referredCaseForm.submit")}
       </button>
     </form>
   )

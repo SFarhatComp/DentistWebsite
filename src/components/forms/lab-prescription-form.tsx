@@ -13,18 +13,18 @@ import {
   HoneypotField,
 } from "./fields"
 import { cn } from "@/lib/utils"
+import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
 /* -------------------------------------------------------------------------- */
 /* Modèle de données — appareils et leurs comportements                        */
 /* -------------------------------------------------------------------------- */
 
-type SubOption = { v: string; l: string }
-type MaterialOption = { v: string; l: string }
+type SubOption = { v: string }
+type MaterialOption = { v: string }
 
 type Appareil = {
   v: string
-  l: string
   subOptions?: SubOption[]
   // teeth: "required" | "optional" | "none" (Essix dépend du sous-choix, géré séparément)
   teeth: "required" | "optional" | "conditional" | "none"
@@ -34,29 +34,25 @@ type Appareil = {
 }
 
 const RESTAURATION_MATERIALS_PERMANENT: MaterialOption[] = [
-  { v: "porcelaine_feldspathique", l: "Porcelaine feldspathique" },
-  { v: "emax_presse", l: "E.max pressé" },
-  { v: "zircone_3y", l: "Zircone 3Y" },
-  { v: "zircone_multicouche", l: "Zircone multi-couche" },
+  { v: "porcelaine_feldspathique" },
+  { v: "emax_presse" },
+  { v: "zircone_3y" },
+  { v: "zircone_multicouche" },
 ]
 
 const RESTAURATION_MATERIALS_TEMPORARY: MaterialOption[] = [
-  { v: "resine", l: "Résine" },
+  { v: "resine" },
 ]
 
 const PLAQUE_MATERIALS: MaterialOption[] = [
-  { v: "lt_clear", l: "LT Clear (rigide)" },
-  { v: "lt_comfort", l: "LT Comfort (flexible)" },
+  { v: "lt_clear" },
+  { v: "lt_comfort" },
 ]
 
 const APPAREILS: Appareil[] = [
   {
     v: "couronne",
-    l: "Couronne",
-    subOptions: [
-      { v: "temporaire", l: "Temporaire" },
-      { v: "permanente", l: "Permanente" },
-    ],
+    subOptions: [{ v: "temporaire" }, { v: "permanente" }],
     teeth: "required",
     arch: "required",
     materials: RESTAURATION_MATERIALS_PERMANENT,
@@ -64,11 +60,7 @@ const APPAREILS: Appareil[] = [
   },
   {
     v: "pont",
-    l: "Pont",
-    subOptions: [
-      { v: "temporaire", l: "Temporaire" },
-      { v: "permanente", l: "Permanente" },
-    ],
+    subOptions: [{ v: "temporaire" }, { v: "permanente" }],
     teeth: "required",
     arch: "required",
     materials: RESTAURATION_MATERIALS_PERMANENT,
@@ -76,11 +68,7 @@ const APPAREILS: Appareil[] = [
   },
   {
     v: "incrustation",
-    l: "Incrustation",
-    subOptions: [
-      { v: "temporaire", l: "Temporaire" },
-      { v: "permanente", l: "Permanente" },
-    ],
+    subOptions: [{ v: "temporaire" }, { v: "permanente" }],
     teeth: "required",
     arch: "required",
     materials: RESTAURATION_MATERIALS_PERMANENT,
@@ -88,11 +76,7 @@ const APPAREILS: Appareil[] = [
   },
   {
     v: "facette",
-    l: "Facette",
-    subOptions: [
-      { v: "temporaire", l: "Temporaire" },
-      { v: "permanente", l: "Permanente" },
-    ],
+    subOptions: [{ v: "temporaire" }, { v: "permanente" }],
     teeth: "required",
     arch: "required",
     materials: RESTAURATION_MATERIALS_PERMANENT,
@@ -100,74 +84,55 @@ const APPAREILS: Appareil[] = [
   },
   {
     v: "prothese_amovible_complete",
-    l: "Prothèse dentaire amovible complète",
-    subOptions: [
-      { v: "immediat", l: "Immédiat" },
-      { v: "permanent", l: "Permanent" },
-    ],
+    subOptions: [{ v: "immediat" }, { v: "permanent" }],
     teeth: "none",
     arch: "required",
   },
   {
     v: "guide_chirurgical",
-    l: "Guide chirurgical",
     teeth: "optional",
     arch: "required",
   },
   {
     v: "plaque_occlusale",
-    l: "Plaque occlusale",
-    subOptions: [
-      { v: "rigide", l: "Rigide" },
-      { v: "flexible", l: "Flexible" },
-    ],
+    subOptions: [{ v: "rigide" }, { v: "flexible" }],
     teeth: "none",
     arch: "required",
     materials: PLAQUE_MATERIALS,
   },
   {
     v: "porte_empreinte",
-    l: "Porte-empreinte personnalisé",
     teeth: "none",
     arch: "required",
   },
   {
     v: "gouttiere_retention",
-    l: "Gouttière de rétention",
     teeth: "none",
     arch: "required",
   },
   {
     v: "gouttiere_blanchiment",
-    l: "Gouttière de blanchiment",
     teeth: "none",
     arch: "required",
   },
   {
     v: "essix",
-    l: "Essix",
-    subOptions: [
-      { v: "avec_dent_postiche", l: "Avec dent postiche" },
-      { v: "sans_dent_postiche", l: "Sans dent postiche" },
-    ],
+    subOptions: [{ v: "avec_dent_postiche" }, { v: "sans_dent_postiche" }],
     teeth: "conditional", // requis seulement si "avec dent postiche"
     arch: "required",
   },
   {
     v: "wax_up",
-    l: "Wax-up diagnostique",
     teeth: "required",
     arch: "required",
   },
   {
     v: "reparation",
-    l: "Réparation",
     teeth: "optional",
     arch: "optional",
   },
   {
     v: "autres",
-    l: "Autres",
     teeth: "none",
     arch: "none",
   },
@@ -184,22 +149,27 @@ const TEETH_UPPER_LEFT = [21, 22, 23, 24, 25, 26, 27, 28]
 const TEETH_LOWER_RIGHT = [48, 47, 46, 45, 44, 43, 42, 41]
 const TEETH_LOWER_LEFT = [31, 32, 33, 34, 35, 36, 37, 38]
 
-const ARCADES = [
-  { v: "superieure", l: "Supérieure" },
-  { v: "inferieure", l: "Inférieure" },
-  { v: "les_deux", l: "Les deux" },
-]
+const ARCADES_CODES = ["superieure", "inferieure", "les_deux"] as const
 
 /* -------------------------------------------------------------------------- */
 /* Sous-composant : sélecteur de dents par quadrant                           */
 /* -------------------------------------------------------------------------- */
 
-function ToothPicker({ selected, onChange }: { selected: Set<number>; onChange: (n: number) => void }) {
+function ToothPicker({
+  selected,
+  onChange,
+  lang,
+}: {
+  selected: Set<number>
+  onChange: (n: number) => void
+  lang: Locale
+}) {
+  const t = getTranslations(lang)
   return (
     <div className="border border-border bg-surface/40 p-4 space-y-3">
-      <p className="label-sm text-muted-foreground">Cliquez sur les dents concernées (notation FDI)</p>
+      <p className="label-sm text-muted-foreground">{t("labPrescriptionForm.toothPickerInstruction")}</p>
       <div className="space-y-2 font-mono text-sm">
-        <div className="flex gap-1 justify-center" aria-label="Arcade supérieure droite">
+        <div className="flex gap-1 justify-center" aria-label={t("labPrescriptionForm.toothPickerAriaUpper")}>
           {TEETH_UPPER_RIGHT.map((n) => (
             <ToothButton key={n} n={n} selected={selected.has(n)} onClick={() => onChange(n)} />
           ))}
@@ -208,7 +178,7 @@ function ToothPicker({ selected, onChange }: { selected: Set<number>; onChange: 
             <ToothButton key={n} n={n} selected={selected.has(n)} onClick={() => onChange(n)} />
           ))}
         </div>
-        <div className="flex gap-1 justify-center" aria-label="Arcade inférieure droite">
+        <div className="flex gap-1 justify-center" aria-label={t("labPrescriptionForm.toothPickerAriaLower")}>
           {TEETH_LOWER_RIGHT.map((n) => (
             <ToothButton key={n} n={n} selected={selected.has(n)} onClick={() => onChange(n)} />
           ))}
@@ -219,11 +189,11 @@ function ToothPicker({ selected, onChange }: { selected: Set<number>; onChange: 
         </div>
       </div>
       <p className="text-xs text-muted-foreground">
-        Sélectionnées :{" "}
+        {t("labPrescriptionForm.toothPickerSelected")}{" "}
         {selected.size > 0 ? (
           <span className="font-mono">{Array.from(selected).sort((a, b) => a - b).join(", ")}</span>
         ) : (
-          <em>aucune</em>
+          <em>{t("labPrescriptionForm.toothPickerNone")}</em>
         )}
       </p>
     </div>
@@ -271,6 +241,7 @@ function useFieldAnimation() {
 /* -------------------------------------------------------------------------- */
 
 export function LabPrescriptionForm({ lang }: { lang: Locale }) {
+  const t = getTranslations(lang)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(false)
 
@@ -329,32 +300,32 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
       encType="multipart/form-data"
       onSubmit={handleSubmit}
       className="space-y-12"
-      aria-label="Formulaire de prescription au laboratoire"
+      aria-label={t("labPrescriptionForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="lab-prescription" />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3">
         <p className="text-base text-foreground leading-relaxed">
-          Prescription d&apos;un appareil ou d&apos;une restauration. Les champs s&apos;adaptent selon le type d&apos;appareil choisi.
+          {t("labPrescriptionForm.intro")}
         </p>
       </div>
 
-      <FormSection number="01" title="Professionnel">
+      <FormSection number="01" title={t("labPrescriptionForm.section1Title")}>
         <div className="grid gap-6 md:grid-cols-2">
-          <Field name="prescribingProfessional" label="Nom du professionnel" required />
-          <Field name="clinicName" label="Clinique" required />
+          <Field name="prescribingProfessional" label={t("labPrescriptionForm.prescribingProfessional")} required />
+          <Field name="clinicName" label={t("labPrescriptionForm.clinicName")} required />
           <PhoneField name="phone" required />
-          <Field name="email" label="Courriel" type="email" required />
+          <Field name="email" label={t("labPrescriptionForm.email")} type="email" required />
         </div>
       </FormSection>
 
-      <FormSection number="02" title="Patient">
-        <Field name="patientName" label="Nom ou code patient" required />
+      <FormSection number="02" title={t("labPrescriptionForm.section2Title")}>
+        <Field name="patientName" label={t("labPrescriptionForm.patientName")} required />
       </FormSection>
 
-      <FormSection number="03" title="Appareil dentaire">
-        <p className="text-sm text-muted-foreground mb-2">Choisissez le type d&apos;appareil prescrit.</p>
+      <FormSection number="03" title={t("labPrescriptionForm.section3Title")}>
+        <p className="text-sm text-muted-foreground mb-2">{t("labPrescriptionForm.section3Intro")}</p>
         <div
           className="grid gap-3 sm:grid-cols-2"
           onChange={(e) => {
@@ -371,14 +342,14 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
               key={a.v}
               name="appareil"
               value={a.v}
-              label={a.l}
+              label={t(`labPrescriptionForm.appareils.${a.v}`)}
               required
               defaultChecked={appareilKey === a.v}
             />
           ))}
         </div>
         {appareilKey === "autres" && (
-          <Field name="appareilOtherText" label="Veuillez préciser l'appareil" required />
+          <Field name="appareilOtherText" label={t("labPrescriptionForm.appareilOtherText")} required />
         )}
       </FormSection>
 
@@ -386,8 +357,11 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
       <AnimatePresence mode="wait">
         {appareil?.subOptions && (
           <motion.div key={`sub-${appareil.v}`} {...anim}>
-            <FormSection number="04" title="Type">
-              <p className="text-sm text-muted-foreground mb-2">Précisez le type pour : {appareil.l}.</p>
+            <FormSection number="04" title={t("labPrescriptionForm.section4Title")}>
+              <p className="text-sm text-muted-foreground mb-2">
+                {t("labPrescriptionForm.section4IntroPrefix")}
+                {t(`labPrescriptionForm.appareils.${appareil.v}`)}.
+              </p>
               <div
                 className="grid gap-3 sm:grid-cols-2"
                 onChange={(e) => {
@@ -400,7 +374,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
                     key={s.v}
                     name="subOption"
                     value={s.v}
-                    label={s.l}
+                    label={t(`labPrescriptionForm.subOptions.${s.v}`)}
                     required
                     defaultChecked={subOption === s.v}
                   />
@@ -415,19 +389,19 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
       <AnimatePresence mode="wait">
         {(showArch || showTeethPicker) && (
           <motion.div key={`teeth-${appareil?.v}-${subOption}`} {...anim}>
-            <FormSection number="05" title="Arcade et dents">
+            <FormSection number="05" title={t("labPrescriptionForm.section5Title")}>
               {showArch && (
                 <div>
                   <p className="label-sm text-foreground mb-3">
-                    Arcade concernée {archRequired && "*"}
+                    {t("labPrescriptionForm.arcadeLabel")} {archRequired && "*"}
                   </p>
                   <div className="grid gap-3 sm:grid-cols-3">
-                    {ARCADES.map((a) => (
+                    {ARCADES_CODES.map((v) => (
                       <RadioField
-                        key={a.v}
+                        key={v}
                         name="arcade"
-                        value={a.v}
-                        label={a.l}
+                        value={v}
+                        label={t(`labPrescriptionForm.arcades.${v}`)}
                         required={archRequired}
                       />
                     ))}
@@ -437,9 +411,9 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
               {showTeethPicker && (
                 <div className="mt-6">
                   <p className="label-sm text-foreground mb-3">
-                    Numéros des dents {teethRequired && "*"}
+                    {t("labPrescriptionForm.teethLabel")} {teethRequired && "*"}
                   </p>
-                  <ToothPicker selected={selectedTeeth} onChange={toggleTooth} />
+                  <ToothPicker selected={selectedTeeth} onChange={toggleTooth} lang={lang} />
                   {/* Champ caché pour Netlify — peuplé via JS dans handleSubmit */}
                   <input type="hidden" name="teeth" value={Array.from(selectedTeeth).sort((a, b) => a - b).join(",")} />
                 </div>
@@ -450,11 +424,11 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
       </AnimatePresence>
 
       {/* Couleur — affichée avant le matériau (ordre Forme → Couleur → Matériaux) */}
-      <FormSection number="06" title="Couleur">
+      <FormSection number="06" title={t("labPrescriptionForm.section6Title")}>
         <TextareaField
           name="colorIndications"
-          label="Indications de couleur, teinte et maquillage personnalisé souhaité"
-          placeholder="Ex : A2 cervical, A1 incisal, caractérisations bleutées en incisal, maquillage discret."
+          label={t("labPrescriptionForm.colorIndicationsLabel")}
+          placeholder={t("labPrescriptionForm.colorIndicationsPlaceholder")}
           rows={4}
         />
       </FormSection>
@@ -471,10 +445,10 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
           const showLamination = appareil.lamination && !isTemporaryRestoration
           return (
             <motion.div key={`mat-${appareil.v}-${subOption}`} {...anim}>
-              <FormSection number="07" title="Matériau souhaité">
+              <FormSection number="07" title={t("labPrescriptionForm.section7Title")}>
                 {isTemporaryRestoration && (
                   <p className="text-sm text-muted-foreground italic mb-4">
-                    Restauration temporaire : seule la résine est offerte.
+                    {t("labPrescriptionForm.temporaryRestorationNote")}
                   </p>
                 )}
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -483,17 +457,17 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
                       key={m.v}
                       name="material"
                       value={m.v}
-                      label={m.l}
+                      label={t(`labPrescriptionForm.materials.${m.v}`)}
                       required
                     />
                   ))}
                 </div>
                 {showLamination && (
                   <div className="mt-6 pt-6 border-t border-border">
-                    <p className="label-sm text-foreground mb-3">Lamination de porcelaine souhaitée *</p>
+                    <p className="label-sm text-foreground mb-3">{t("labPrescriptionForm.laminationLabel")} *</p>
                     <div className="grid gap-3 sm:grid-cols-2">
-                      <RadioField name="lamination" value="oui" label="Oui" required />
-                      <RadioField name="lamination" value="non" label="Non" required />
+                      <RadioField name="lamination" value="oui" label={t("labPrescriptionForm.yes")} required />
+                      <RadioField name="lamination" value="non" label={t("labPrescriptionForm.no")} required />
                     </div>
                   </div>
                 )}
@@ -503,44 +477,44 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         })()}
       </AnimatePresence>
 
-      <FormSection number="08" title="Instructions cliniques">
+      <FormSection number="08" title={t("labPrescriptionForm.section8Title")}>
         <TextareaField
           name="clinicalInstructions"
-          label="Instructions cliniques, particularités, exigences"
+          label={t("labPrescriptionForm.clinicalInstructionsLabel")}
           rows={5}
         />
       </FormSection>
 
-      <FormSection number="09" title="Fichiers">
+      <FormSection number="09" title={t("labPrescriptionForm.section9Title")}>
         <FileField
           name="stlFiles"
-          label="STL / scan"
+          label={t("labPrescriptionForm.stlFilesLabel")}
           accept=".stl,.zip,.obj,.ply"
           multiple
-          helpText="STL, OBJ, PLY ou ZIP. Maximum 25 MB par fichier."
+          helpText={t("labPrescriptionForm.stlFilesHelp")}
         />
         <FileField
           name="photos"
-          label="Photos cliniques"
+          label={t("labPrescriptionForm.photosLabel")}
           accept="image/jpeg,image/png,image/heic,.heic"
           multiple
-          helpText="JPG, PNG ou HEIC."
+          helpText={t("labPrescriptionForm.photosHelp")}
         />
         <FileField
           name="radiographs"
-          label="Radiographies"
+          label={t("labPrescriptionForm.radiographsLabel")}
           accept="image/jpeg,image/png,application/pdf,.heic"
           multiple
-          helpText="JPG, PNG ou PDF."
+          helpText={t("labPrescriptionForm.radiographsHelp")}
         />
       </FormSection>
 
-      <FormSection number="10" title="Consentement">
+      <FormSection number="10" title={t("labPrescriptionForm.section10Title")}>
         <CheckboxField
           name="consent_patient_transmission"
           value="1"
           required
-          label="Je confirme que le patient a consenti à la transmission des renseignements nécessaires."
+          label={t("labPrescriptionForm.consentPatientTransmission")}
         />
         <CheckboxField
           name="consent_privacy"
@@ -548,11 +522,11 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
           required
           label={
             <>
-              J&apos;ai pris connaissance de la{" "}
+              {t("labPrescriptionForm.consentPrivacyBefore")}
               <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
-                politique de confidentialité
+                {t("labPrescriptionForm.consentPrivacyLink")}
               </Link>
-              .
+              {t("labPrescriptionForm.consentPrivacyAfter")}
             </>
           }
         />
@@ -560,7 +534,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
 
       {error && (
         <p className="text-sm text-accent" role="alert">
-          Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.
+          {t("labPrescriptionForm.errorGeneric")}
         </p>
       )}
 
@@ -569,7 +543,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         disabled={submitting}
         className="bg-primary hover:bg-primary-hover text-primary-foreground px-10 py-4 text-base font-medium tracking-wide disabled:opacity-50 transition-colors"
       >
-        {submitting ? "Envoi en cours…" : "Transmettre la prescription"}
+        {submitting ? t("labPrescriptionForm.submitting") : t("labPrescriptionForm.submit")}
       </button>
     </form>
   )
