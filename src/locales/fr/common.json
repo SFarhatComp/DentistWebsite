@@ -252,7 +252,7 @@
     "phonePlaceholder": "514 863 7805",
     "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@studiodefacto.ca",
-    "hoursPlaceholder": "Lun.–mer. : 9 h à 18 h · Jeu.–ven. : sur rendez-vous"
+    "hoursPlaceholder": "Lun.–ven. : 9 h à 18 h"
   },
   "contactForm": {
     "nom": "Nom complet",
@@ -284,7 +284,7 @@
     "laboratoire": "Laboratoire",
     "rendezVous": "Prendre rendez-vous",
     "horaires": "Heures d'ouverture",
-    "horairesPlaceholder": "Lun.–mer. : 9 h à 18 h · Jeu.–ven. : sur rendez-vous",
+    "horairesPlaceholder": "Lun.–ven. : 9 h à 18 h",
     "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste."
   }
 }

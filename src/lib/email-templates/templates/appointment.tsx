@@ -51,8 +51,8 @@ const JOURS_LIST = [
   { key: "jour_lundi", label: "Lundi" },
   { key: "jour_mardi", label: "Mardi" },
   { key: "jour_mercredi", label: "Mercredi" },
-  { key: "jour_jeudi", label: "Jeudi (sur RDV)" },
-  { key: "jour_vendredi", label: "Vendredi (sur RDV)" },
+  { key: "jour_jeudi", label: "Jeudi" },
+  { key: "jour_vendredi", label: "Vendredi" },
   { key: "jour_asap", label: "Dès que possible" },
   { key: "jour_flexible", label: "Flexible" },
 ]

@@ -12,7 +12,7 @@ import type { Locale } from "@/types"
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi-mercredi 9 h à 18 h, jeudi-vendredi sur rendez-vous.",
+    "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au vendredi, 9 h à 18 h.",
 }
 
 export default function ContactPage({ params }: { params: { lang: string } }) {
@@ -70,8 +70,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
                   <div>
                     <div className="label-sm text-muted mb-1">Horaire</div>
                     <ul className="text-base text-foreground space-y-1">
-                      <li>Lundi au mercredi : <span className="font-medium">9 h à 18 h</span></li>
-                      <li>Jeudi et vendredi : <span className="italic">sur rendez-vous</span></li>
+                      <li>Lundi au vendredi : <span className="font-medium">9 h à 18 h</span></li>
                     </ul>
                   </div>
                 </div>

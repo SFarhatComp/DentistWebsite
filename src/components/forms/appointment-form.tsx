@@ -48,8 +48,8 @@ const JOURS = [
   { v: "lundi", l: "Lundi" },
   { v: "mardi", l: "Mardi" },
   { v: "mercredi", l: "Mercredi" },
-  { v: "jeudi", l: "Jeudi (sur RDV)" },
-  { v: "vendredi", l: "Vendredi (sur RDV)" },
+  { v: "jeudi", l: "Jeudi" },
+  { v: "vendredi", l: "Vendredi" },
   { v: "asap", l: "Dès que possible" },
   { v: "flexible", l: "Je suis flexible" },
 ]
