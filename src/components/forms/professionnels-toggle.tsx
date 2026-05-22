@@ -4,30 +4,18 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { PartnerOnboardingForm } from "@/components/forms/partner-onboarding-form"
 import { LabPrescriptionForm } from "@/components/forms/lab-prescription-form"
 import { ReferredCaseForm } from "@/components/forms/referred-case-form"
+import { getTranslations } from "@/lib/i18n"
 import { cn } from "@/lib/utils"
 import type { Locale } from "@/types"
 
 type Choice = "partenaire" | "prescription" | "reference"
 
-const CARDS: { kind: Choice; num: string; title: string; description: string }[] = [
-  {
-    kind: "partenaire",
-    num: "01",
-    title: "Devenir partenaire de soin",
-    description: "Premier contact pour discuter d’une collaboration.",
-  },
-  {
-    kind: "prescription",
-    num: "02",
-    title: "Transmettre une prescription",
-    description: "Prescription d’appareil ou de restauration avec fichiers STL.",
-  },
-  {
-    kind: "reference",
-    num: "03",
-    title: "Référer un cas",
-    description: "Référer un patient pour prise de teinte, réparation ou service technique.",
-  },
+type Card = { kind: Choice; num: string; titleKey: string; descKey: string }
+
+const CARDS: Card[] = [
+  { kind: "partenaire", num: "01", titleKey: "professionnelsToggle.card1Title", descKey: "professionnelsToggle.card1Description" },
+  { kind: "prescription", num: "02", titleKey: "professionnelsToggle.card2Title", descKey: "professionnelsToggle.card2Description" },
+  { kind: "reference", num: "03", titleKey: "professionnelsToggle.card3Title", descKey: "professionnelsToggle.card3Description" },
 ]
 
 export function ProfessionnelsToggle({
@@ -39,6 +27,7 @@ export function ProfessionnelsToggle({
 }) {
   const [active, setActive] = useState<Choice | null>(defaultActive)
   const reduce = useReducedMotion()
+  const t = getTranslations(lang)
 
   const enter = reduce
     ? { initial: false, animate: { opacity: 1 }, exit: { opacity: 0 } }
@@ -58,6 +47,7 @@ export function ProfessionnelsToggle({
             card={c}
             active={active}
             onClick={() => setActive(active === c.kind ? null : c.kind)}
+            lang={lang}
           />
         ))}
       </div>
@@ -70,12 +60,12 @@ export function ProfessionnelsToggle({
             className="max-w-3xl pt-4 pb-16 scroll-mt-24"
             id="form-active"
           >
-            <div className="label-sm text-primary mb-4">Partenariat professionnel</div>
+            <div className="label-sm text-primary mb-4">{t("professionnelsToggle.partenaireLabel")}</div>
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Devenir partenaire de soin
+              {t("professionnelsToggle.partenaireHeading")}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              Avant de débuter une collaboration, nous souhaitons échanger directement avec vous afin de mieux comprendre votre pratique et les types d’appareils que vous souhaitez confier au laboratoire.
+              {t("professionnelsToggle.partenaireBody")}
             </p>
             <PartnerOnboardingForm lang={lang} />
           </motion.div>
@@ -88,12 +78,12 @@ export function ProfessionnelsToggle({
             className="max-w-3xl pt-4 pb-16 scroll-mt-24"
             id="form-active"
           >
-            <div className="label-sm text-primary mb-4">Prescription laboratoire</div>
+            <div className="label-sm text-primary mb-4">{t("professionnelsToggle.prescriptionLabel")}</div>
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Transmettre une prescription
+              {t("professionnelsToggle.prescriptionHeading")}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              Permettre la prescription d’un appareil ou d’une restauration et la transmission de fichiers STL, radiographies, photos ou documents cliniques.
+              {t("professionnelsToggle.prescriptionBody")}
             </p>
             <LabPrescriptionForm lang={lang} />
           </motion.div>
@@ -106,12 +96,12 @@ export function ProfessionnelsToggle({
             className="max-w-3xl pt-4 pb-16 scroll-mt-24"
             id="form-active"
           >
-            <div className="label-sm text-primary mb-4">Référence clinique</div>
+            <div className="label-sm text-primary mb-4">{t("professionnelsToggle.referenceLabel")}</div>
             <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              Référer un cas
+              {t("professionnelsToggle.referenceHeading")}
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
-              Référer un patient pour prise de teinte, réparation ou service technique. Le patient demeure le vôtre.
+              {t("professionnelsToggle.referenceBody")}
             </p>
             <ReferredCaseForm lang={lang} />
           </motion.div>
@@ -125,12 +115,15 @@ function ToggleCard({
   card,
   active,
   onClick,
+  lang,
 }: {
-  card: { kind: Choice; num: string; title: string; description: string }
+  card: Card
   active: Choice | null
   onClick: () => void
+  lang: Locale
 }) {
   const isActive = active === card.kind
+  const t = getTranslations(lang)
   return (
     <button
       type="button"
@@ -159,8 +152,8 @@ function ToggleCard({
           aria-hidden="true"
         />
       </div>
-      <h3 className="font-display text-lg md:text-xl mb-2">{card.title}</h3>
-      <p className="text-sm text-muted-foreground leading-relaxed">{card.description}</p>
+      <h3 className="font-display text-lg md:text-xl mb-2">{t(card.titleKey)}</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">{t(card.descKey)}</p>
     </button>
   )
 }

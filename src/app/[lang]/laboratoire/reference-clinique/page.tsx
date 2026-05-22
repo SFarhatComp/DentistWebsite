@@ -4,34 +4,38 @@ import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
 import { ProfessionnelsToggle } from "@/components/forms/professionnels-toggle"
+import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Référer un patient",
-  description:
-    "Formulaire de référence clinique pour dentistes et spécialistes. Permet de référer un patient au Studio Dentaire De Facto avec photos, radiographies et contexte clinique.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("laboratoireSubRoutes.referenceMetaTitle"),
+    description: t("laboratoireSubRoutes.referenceMetaDescription"),
+  }
 }
 
 export default function ReferenceCliniquePage({ params }: { params: { lang: string } }) {
   const lang = params.lang as Locale
+  const t = getTranslations(lang)
   return (
     <>
       <PageHero
-        label="Référence clinique"
-        title="Référer un patient"
-        subtitle="Référer un patient au Studio Dentaire De Facto pour évaluation, traitement ou service technique. Le patient demeure sous votre responsabilité clinique lorsque applicable."
+        label={t("laboratoireSubRoutes.referenceHeroLabel")}
+        title={t("laboratoireSubRoutes.referenceHeroTitle")}
+        subtitle={t("laboratoireSubRoutes.referenceHeroSubtitle")}
       />
 
       <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="max-w-2xl mb-8">
-            <SectionLabel>Formulaire</SectionLabel>
+            <SectionLabel>{t("professionnelsToggle.formHeading")}</SectionLabel>
             <h2 className="font-display text-2xl md:text-3xl mb-3">
-              Choisissez votre démarche
+              {t("professionnelsToggle.chooseTitle")}
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Vous pouvez aussi devenir partenaire ou transmettre une prescription depuis cette page.
+              {t("professionnelsToggle.referenceBoxBody")}
             </p>
           </FadeIn>
           <FadeIn>
@@ -47,7 +51,7 @@ export default function ReferenceCliniquePage({ params }: { params: { lang: stri
               href={`/${lang}/laboratoire`}
               className="inline-flex items-center text-sm text-muted-foreground hover:text-primary"
             >
-              ← Retour au laboratoire intégré
+              {t("laboratoireSubRoutes.backToLab")}
             </Link>
           </FadeIn>
         </Container>

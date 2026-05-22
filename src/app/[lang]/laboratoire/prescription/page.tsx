@@ -4,34 +4,38 @@ import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
 import { ProfessionnelsToggle } from "@/components/forms/professionnels-toggle"
+import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export const metadata: Metadata = {
-  title: "Transmettre une prescription au laboratoire",
-  description:
-    "Formulaire de prescription au laboratoire De Facto pour dentistes et spécialistes. Transmission de fichiers STL, photos, radiographies et instructions cliniques.",
+export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+  const t = getTranslations(params.lang as Locale)
+  return {
+    title: t("laboratoireSubRoutes.prescriptionMetaTitle"),
+    description: t("laboratoireSubRoutes.prescriptionMetaDescription"),
+  }
 }
 
 export default function PrescriptionPage({ params }: { params: { lang: string } }) {
   const lang = params.lang as Locale
+  const t = getTranslations(lang)
   return (
     <>
       <PageHero
-        label="Prescription laboratoire"
-        title="Transmettre une prescription"
-        subtitle="Permettre la prescription d'un appareil ou d'une restauration et la transmission de fichiers STL, radiographies, photos ou documents cliniques."
+        label={t("professionnelsToggle.prescriptionLabel")}
+        title={t("professionnelsToggle.prescriptionHeading")}
+        subtitle={t("professionnelsToggle.prescriptionBody")}
       />
 
       <section className="py-20 md:py-24">
         <Container>
           <FadeIn className="max-w-2xl mb-8">
-            <SectionLabel>Formulaire</SectionLabel>
+            <SectionLabel>{t("professionnelsToggle.formHeading")}</SectionLabel>
             <h2 className="font-display text-2xl md:text-3xl mb-3">
-              Choisissez votre démarche
+              {t("professionnelsToggle.chooseTitle")}
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Vous pouvez aussi devenir partenaire ou référer un cas directement depuis cette page.
+              {t("professionnelsToggle.prescriptionBoxBody")}
             </p>
           </FadeIn>
           <FadeIn>
@@ -47,7 +51,7 @@ export default function PrescriptionPage({ params }: { params: { lang: string } 
               href={`/${lang}/laboratoire`}
               className="inline-flex items-center text-sm text-muted-foreground hover:text-primary"
             >
-              ← Retour au laboratoire intégré
+              {t("laboratoireSubRoutes.backToLab")}
             </Link>
           </FadeIn>
         </Container>

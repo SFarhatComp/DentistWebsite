@@ -58,12 +58,12 @@ export function ContactForm({ lang }: { lang: Locale }) {
       <TextareaField name="message" label={t("contactForm.message")} required rows={5} />
 
       <div className="border-t border-border pt-6 space-y-4">
-        <div className="label-sm text-foreground">Consentements</div>
+        <div className="label-sm text-foreground">{t("consentGroup.block1Title")}</div>
         <CheckboxField
           name="consent_contact"
           value="1"
           required
-          label="J'autorise Studio Dentaire De Facto à me contacter concernant ma demande."
+          label={t("contactForm.consentContact")}
         />
         <CheckboxField
           name="consent_privacy"
@@ -71,18 +71,18 @@ export function ContactForm({ lang }: { lang: Locale }) {
           required
           label={
             <>
-              J&apos;ai pris connaissance de la{" "}
+              {t("contactForm.consentPrivacyPrefix")}
               <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
-                politique de confidentialité
+                {t("contactForm.consentPrivacyLink")}
               </Link>
-              .
+              {t("contactForm.consentPrivacySuffix")}
             </>
           }
         />
       </div>
 
       {error && (
-        <p className="text-sm text-accent">Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.</p>
+        <p className="text-sm text-accent">{t("contactForm.errorMessage")}</p>
       )}
 
       <button
