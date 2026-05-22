@@ -27,6 +27,13 @@ export function Navbar({ lang }: { lang: Locale }) {
     { href: `/${lang}/contact`, label: t("nav.contact") },
   ]
 
+  // Construit l'URL équivalente dans l'autre langue en remplaçant le préfixe.
+  // Ex: /fr/laboratoire/prescription → /en/laboratoire/prescription
+  const otherLang: Locale = lang === "fr" ? "en" : "fr"
+  const switchedPath = pathname
+    ? pathname.replace(/^\/(fr|en)(\/|$)/, `/${otherLang}$2`)
+    : `/${otherLang}`
+
   return (
     <header className="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-border">
       <Container>
@@ -57,12 +64,28 @@ export function Navbar({ lang }: { lang: Locale }) {
               )
             })}
           </div>
-          <div className="hidden lg:block shrink-0">
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
+            <Link
+              href={switchedPath}
+              hrefLang={otherLang}
+              className="text-xs tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors"
+              aria-label={otherLang === "en" ? "Switch to English" : "Passer au français"}
+            >
+              {otherLang === "en" ? "EN" : "FR"}
+            </Link>
             <Link href={`/${lang}/rendez-vous`} className="inline-flex items-center bg-accent hover:bg-accent/90 text-accent-foreground px-5 py-2.5 text-sm font-medium tracking-wide transition-colors">
               {t("nav.cta")}
             </Link>
           </div>
           <div className="lg:hidden flex items-center gap-2">
+            <Link
+              href={switchedPath}
+              hrefLang={otherLang}
+              className="text-xs tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors px-2"
+              aria-label={otherLang === "en" ? "Switch to English" : "Passer au français"}
+            >
+              {otherLang === "en" ? "EN" : "FR"}
+            </Link>
             <a
               href={`tel:${phoneTel}`}
               className="inline-flex items-center justify-center w-10 h-10 text-foreground hover:text-accent transition-colors"
