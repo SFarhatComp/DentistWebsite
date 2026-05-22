@@ -1,6 +1,7 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, Phone } from "lucide-react"
 import { Container } from "./container"
 import { getTranslations } from "@/lib/i18n"
@@ -9,13 +10,9 @@ import { cn } from "@/lib/utils"
 
 export function Navbar({ lang }: { lang: Locale }) {
   const [open, setOpen] = useState(false)
-  const [pathname, setPathname] = useState<string>("")
+  const pathname = usePathname()
   const t = getTranslations(lang)
   const phoneTel = t("contact.phoneTel")
-
-  useEffect(() => {
-    setPathname(window.location.pathname)
-  }, [])
 
   const links = [
     { href: `/${lang}`, label: t("nav.accueil") },
