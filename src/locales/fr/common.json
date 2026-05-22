@@ -297,6 +297,28 @@
     "relatedLabel": "Services liés",
     "relatedTitle": "Vous pourriez aussi être intéressé par"
   },
+  "patientNeeds": {
+    "label": "Vous consultez parce que…",
+    "title": "Trouver le bon point de départ",
+    "body": "Choisissez ce qui correspond le mieux à votre situation actuelle. Une évaluation clinique reste nécessaire pour confirmer l'approche adaptée.",
+    "needs": [
+      "J'ai mal",
+      "J'ai une dent cassée",
+      "Je veux un examen complet",
+      "Je veux améliorer mon sourire",
+      "Je veux remplacer une dent",
+      "Je veux aligner mes dents",
+      "Mes gencives saignent",
+      "Je veux comprendre un plan de traitement",
+      "J'ai besoin d'une urgence"
+    ]
+  },
+  "realisationsPage": {
+    "label": "Bientôt",
+    "title": "Réalisations cliniques",
+    "subtitle": "Cette section présentera des cas traités au studio. Elle sera publiée après une révision clinique et le consentement des patients concernés.",
+    "metaTitle": "Réalisations"
+  },
   "ressources": {
     "label": "Ressources",
     "title": "Ressources",

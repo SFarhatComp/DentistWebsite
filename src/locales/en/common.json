@@ -297,6 +297,28 @@
     "relatedLabel": "Related services",
     "relatedTitle": "You may also be interested in"
   },
+  "patientNeeds": {
+    "label": "You're here because…",
+    "title": "Find the right starting point",
+    "body": "Pick what best matches your current situation. A clinical evaluation is still needed to confirm the suitable approach.",
+    "needs": [
+      "I'm in pain",
+      "I have a broken tooth",
+      "I want a complete examination",
+      "I want to improve my smile",
+      "I want to replace a tooth",
+      "I want to straighten my teeth",
+      "My gums are bleeding",
+      "I want to understand a treatment plan",
+      "I need an emergency"
+    ]
+  },
+  "realisationsPage": {
+    "label": "Coming soon",
+    "title": "Clinical cases",
+    "subtitle": "This section will present cases treated at the studio. It will be published after clinical review and consent from the patients concerned.",
+    "metaTitle": "Cases"
+  },
   "ressources": {
     "label": "Resources",
     "title": "Resources",
