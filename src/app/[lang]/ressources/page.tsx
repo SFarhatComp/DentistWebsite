@@ -8,7 +8,8 @@ import { getTranslations, getTranslationObjectList } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return {
     title: t("ressources.metaTitle"),
@@ -29,7 +30,8 @@ const ESSENTIELLES_HREFS = [
 
 const PRO_HREFS = ["laboratoire/professionnels", "laboratoire/prescription"]
 
-export default function RessourcesPage({ params }: { params: { lang: string } }) {
+export default async function RessourcesPage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   const t = getTranslations(lang)
   const essentielles = getTranslationObjectList<HubLinkLabel>(lang, "ressources.essentielles")

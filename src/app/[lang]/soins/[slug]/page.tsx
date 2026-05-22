@@ -11,13 +11,15 @@ export function generateStaticParams() {
   )
 }
 
-export function generateMetadata({ params }: { params: { lang: string; slug: string } }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const service = getService(params.lang as Locale, params.slug)
   if (!service) return {}
   return { title: service.title, description: service.shortDescription }
 }
 
-export default function ServiceDetailPage({ params }: { params: { lang: string; slug: string } }) {
+export default async function ServiceDetailPage(props: { params: Promise<{ lang: string; slug: string }> }) {
+  const params = await props.params;
   const service = getService(params.lang as Locale, params.slug)
   if (!service) notFound()
   return <ServicePageTemplate service={service} lang={params.lang as Locale} />

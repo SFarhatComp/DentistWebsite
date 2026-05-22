@@ -7,7 +7,8 @@ import { getTranslations, getTranslationList } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return {
     title: t("assurances.metaTitle"),
@@ -28,7 +29,8 @@ function BulletList({ items }: { items: string[] }) {
   )
 }
 
-export default function AssurancesPage({ params }: { params: { lang: string } }) {
+export default async function AssurancesPage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   const t = getTranslations(lang)
   const estimations = getTranslationList(lang, "assurances.estimations")

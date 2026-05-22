@@ -10,7 +10,8 @@ import { getTranslations, getTranslationList } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return {
     title: t("laboratoire.metaTitle"),
@@ -39,7 +40,8 @@ const equipementsKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9"] as const
 // Fiche de traçabilité (cahier §16A.4)
 const fichesTracabiliteKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"] as const
 
-export default function LaboratoirePage({ params }: { params: { lang: string } }) {
+export default async function LaboratoirePage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   const t = getTranslations(lang)
   return (

@@ -64,7 +64,8 @@ const categories: Category[] = [
   },
 ]
 
-export default function PortfolioCliniquePage({ params }: { params: { lang: string } }) {
+export default async function PortfolioCliniquePage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   if (!PORTFOLIO_ENABLED) notFound()
   const lang = params.lang as Locale
   return (
