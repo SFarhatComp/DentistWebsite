@@ -315,7 +315,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="prescribingProfessional" label={t("labPrescriptionForm.prescribingProfessional")} required />
           <Field name="clinicName" label={t("labPrescriptionForm.clinicName")} required />
-          <PhoneField name="phone" required />
+          <PhoneField name="phone" required lang={lang} />
           <Field name="email" label={t("labPrescriptionForm.email")} type="email" required />
         </div>
       </FormSection>

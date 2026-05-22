@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { CheckboxField } from "./fields"
+import { getTranslations } from "@/lib/i18n"
+import type { Locale } from "@/types"
 
 interface ConsentItem {
   name: string
@@ -42,65 +44,50 @@ export function ConsentBlock({ number, title, description, items }: ConsentBlock
 }
 
 interface ConsentGroupProps {
-  lang: string
+  lang: Locale
 }
 
 export function ConsentGroup({ lang }: ConsentGroupProps) {
+  const t = getTranslations(lang)
   return (
     <div className="space-y-6">
       <ConsentBlock
         number="01"
-        title="Consentements obligatoires"
+        title={t("consentGroup.block1Title")}
         items={[
-          {
-            name: "consent_no_replace",
-            required: true,
-            label: "Je comprends que ce formulaire ne remplace pas une consultation dentaire.",
-          },
-          {
-            name: "consent_contact",
-            required: true,
-            label: "J'autorise Studio Dentaire De Facto à me contacter concernant ma demande.",
-          },
-          {
-            name: "consent_no_confirmation",
-            required: true,
-            label: "Je comprends que l'envoi d'un formulaire ne confirme pas automatiquement un rendez-vous.",
-          },
+          { name: "consent_no_replace", required: true, label: t("consentGroup.consent_no_replace") },
+          { name: "consent_contact", required: true, label: t("consentGroup.consent_contact") },
+          { name: "consent_no_confirmation", required: true, label: t("consentGroup.consent_no_confirmation") },
         ]}
       />
 
       <ConsentBlock
         number="02"
-        title="Communications cliniques"
+        title={t("consentGroup.block2Title")}
         items={[
-          {
-            name: "consent_use",
-            required: true,
-            label: "J'accepte que mes renseignements soient utilisés pour traiter ma demande de rendez-vous et préparer mon dossier.",
-          },
+          { name: "consent_use", required: true, label: t("consentGroup.consent_use") },
         ]}
       />
 
       <ConsentBlock
         number="03"
-        title="Confidentialité"
-        description="Pour plus d'informations, consultez notre politique de confidentialité."
+        title={t("consentGroup.block3Title")}
+        description={t("consentGroup.block3Description")}
         items={[
           {
             name: "consent_privacy",
             required: true,
             label: (
               <>
-                Je comprends que les communications électroniques peuvent comporter certains risques et j&apos;ai pris connaissance de la{" "}
+                {t("consentGroup.consent_privacy_prefix")}
                 <Link
                   href={`/${lang}/confidentialite`}
                   className="text-primary underline hover:no-underline"
                   target="_blank"
                 >
-                  politique de confidentialité
+                  {t("consentGroup.consent_privacy_link")}
                 </Link>
-                .
+                {t("consentGroup.consent_privacy_suffix")}
               </>
             ),
           },
@@ -109,26 +96,22 @@ export function ConsentGroup({ lang }: ConsentGroupProps) {
 
       <ConsentBlock
         number="04"
-        title="Urgence médicale"
+        title={t("consentGroup.block4Title")}
         items={[
-          {
-            name: "consent_emergency",
-            required: true,
-            label: "Je comprends que pour une urgence médicale (difficulté à respirer, enflure importante, fièvre élevée, traumatisme sévère), je dois contacter les services d'urgence ou me présenter à l'hôpital.",
-          },
+          { name: "consent_emergency", required: true, label: t("consentGroup.consent_emergency") },
         ]}
       />
 
       <ConsentBlock
         number="05"
-        title="Communications informatives (optionnel)"
-        description="Cochez uniquement si vous souhaitez recevoir nos communications. Cette case n'est pas pré-cochée."
+        title={t("consentGroup.block5Title")}
+        description={t("consentGroup.block5Description")}
         items={[
           {
             name: "consent_communications",
             required: false,
             defaultChecked: false,
-            label: "J'accepte de recevoir des communications informatives de la clinique.",
+            label: t("consentGroup.consent_communications"),
           },
         ]}
       />

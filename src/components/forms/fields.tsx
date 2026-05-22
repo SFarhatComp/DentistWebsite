@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils"
+import { getTranslations } from "@/lib/i18n"
+import type { Locale } from "@/types"
 
 // Base styles. `[&:user-invalid]:border-red-500` triggers AFTER the user
 // has interacted with the field (vs `:invalid` which fires immediately on
@@ -73,11 +75,12 @@ const NANP_PATTERN = "^[+]?1?[\\s.()-]*[2-9][0-9]{2}[\\s.()-]*[0-9]{3}[\\s.()-]*
 
 export function PhoneField({
   name,
-  label = "Téléphone",
+  label,
   required,
   defaultValue,
   className,
   error,
+  lang = "fr",
 }: {
   name: string
   label?: string
@@ -85,12 +88,15 @@ export function PhoneField({
   defaultValue?: string
   className?: string
   error?: string
+  lang?: Locale
 }) {
+  const t = getTranslations(lang)
+  const finalLabel = label ?? t("fields.phoneLabel")
   const errorId = `${name}-error`
   return (
     <div className={className}>
       <label htmlFor={name} className={labelClass}>
-        {label}
+        {finalLabel}
         {required && " *"}
       </label>
       <input
@@ -103,13 +109,13 @@ export function PhoneField({
         placeholder="514 863 7805"
         defaultValue={defaultValue}
         pattern={NANP_PATTERN}
-        title="Numéro canadien à 10 chiffres (ex : 514 863 7805)"
+        title={t("fields.phoneTitle")}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : `${name}-help`}
         className={cn(inputClass, error ? inputClassError : inputClassNormal)}
       />
       <p id={`${name}-help`} className="mt-2 text-xs text-muted-foreground">
-        Format canadien à 10 chiffres
+        {t("fields.phoneHelp")}
       </p>
       <ErrorMessage id={errorId} message={error} />
     </div>
@@ -335,7 +341,8 @@ export function HoneypotField() {
  * Summary of validation errors shown at the top of a form.
  * Pass an object like { fieldName: "Veuillez inscrire votre nom" }.
  */
-export function FormErrorSummary({ errors }: { errors: Record<string, string> }) {
+export function FormErrorSummary({ errors, lang = "fr" }: { errors: Record<string, string>; lang?: Locale }) {
+  const t = getTranslations(lang)
   const entries = Object.entries(errors).filter(([, msg]) => Boolean(msg))
   if (entries.length === 0) return null
   return (
@@ -345,7 +352,7 @@ export function FormErrorSummary({ errors }: { errors: Record<string, string> })
       className="border-2 border-red-500 bg-red-50/50 p-5 md:p-6"
     >
       <h3 className="font-display text-base text-red-700 mb-3">
-        Veuillez corriger les éléments suivants :
+        {t("fields.errorSummaryTitle")}
       </h3>
       <ul className="list-disc list-inside space-y-1 text-sm text-red-700">
         {entries.map(([name, msg]) => (

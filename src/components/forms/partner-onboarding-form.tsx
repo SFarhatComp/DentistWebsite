@@ -107,7 +107,7 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="clinicName" label={t("partnerOnboardingForm.clinicName")} required />
           <Field name="clinicAddress" label={t("partnerOnboardingForm.clinicAddress")} />
-          <PhoneField name="phone" required />
+          <PhoneField name="phone" required lang={lang} />
           <Field name="email" label={t("partnerOnboardingForm.email")} type="email" required />
         </div>
       </FormSection>

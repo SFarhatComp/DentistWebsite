@@ -64,7 +64,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="firstName" label={t("emergencyForm.firstName")} required />
           <Field name="lastName" label={t("emergencyForm.lastName")} required />
-          <PhoneField name="phone" required />
+          <PhoneField name="phone" required lang={lang} />
           <Field name="email" label={t("emergencyForm.email")} type="email" required />
           <Field name="dob" label={t("emergencyForm.dob")} type="date" required className="md:col-span-2" />
         </div>

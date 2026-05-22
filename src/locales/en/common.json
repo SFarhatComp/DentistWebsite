@@ -736,6 +736,34 @@
     "mapTitle": "Map — De Facto Dental Studio",
     "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Friday, 9 a.m. to 6 p.m."
   },
+  "consentGroup": {
+    "block1Title": "Required consents",
+    "consent_no_replace": "I understand that this form does not replace a dental consultation.",
+    "consent_contact": "I authorize De Facto Dental Studio to contact me regarding my request.",
+    "consent_no_confirmation": "I understand that submitting a form does not automatically confirm an appointment.",
+    "block2Title": "Clinical communications",
+    "consent_use": "I accept that my information will be used to process my appointment request and prepare my file.",
+    "block3Title": "Privacy",
+    "block3Description": "For more information, see our privacy policy.",
+    "consent_privacy_prefix": "I understand that electronic communications may involve certain risks and I have read the ",
+    "consent_privacy_link": "privacy policy",
+    "consent_privacy_suffix": ".",
+    "block4Title": "Medical emergency",
+    "consent_emergency": "I understand that for a medical emergency (difficulty breathing, major swelling, high fever, severe trauma), I must contact emergency services or go to the hospital.",
+    "block5Title": "Informational communications (optional)",
+    "block5Description": "Check only if you wish to receive our communications. This box is not pre-checked.",
+    "consent_communications": "I agree to receive informational communications from the clinic."
+  },
+  "medicalEmergencyNotice": {
+    "body": "If you have difficulty breathing, significant swelling of the face or neck, high fever, severe trauma or other concerning signs, contact emergency services or go to the hospital.",
+    "callButton": "Call the clinic"
+  },
+  "fields": {
+    "phoneLabel": "Phone",
+    "phoneTitle": "10-digit Canadian number (e.g. 514 863 7805)",
+    "phoneHelp": "10-digit Canadian format",
+    "errorSummaryTitle": "Please correct the following:"
+  },
   "contactForm": {
     "nom": "Full name",
     "courriel": "Email",
@@ -749,7 +777,7 @@
   "merci": {
     "label": "Confirmation",
     "title": "Thank you — your request has been received.",
-    "body": "Our team will contact you to confirm the next steps.",
+    "body": "Our team will contact you to confirm the next steps. In case of a medical emergency, contact emergency services (911).",
     "backHome": "Back to home"
   },
   "faq": {

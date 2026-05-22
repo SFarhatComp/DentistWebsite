@@ -47,7 +47,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
 
       <Field name="name" label={t("contactForm.nom")} required />
       <Field name="email" label={t("contactForm.courriel")} type="email" required />
-      <PhoneField name="phone" label={t("contactForm.telephone")} />
+      <PhoneField name="phone" label={t("contactForm.telephone")} lang={lang} />
       <SelectField
         name="subject"
         label={t("contactForm.sujet")}

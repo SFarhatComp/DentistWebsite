@@ -74,7 +74,7 @@ export function AppointmentToggle({ lang }: { lang: Locale }) {
             <p className="text-lg text-muted-foreground leading-relaxed mb-10">
               {t("appointment.toggle.sectionUrgenceBody")}
             </p>
-            <MedicalEmergencyNotice />
+            <MedicalEmergencyNotice lang={lang} />
             <EmergencyForm lang={lang} />
           </motion.div>
         )}

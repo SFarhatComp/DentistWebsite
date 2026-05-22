@@ -144,7 +144,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
 
       <FormSection number="02" title={t("appointmentForm.section2Title")}>
         <div className="grid gap-6 md:grid-cols-2">
-          <PhoneField name="phone" required />
+          <PhoneField name="phone" required lang={lang} />
           <Field name="email" label={t("appointmentForm.email")} type="email" />
         </div>
         <SelectField

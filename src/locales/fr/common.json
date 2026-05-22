@@ -736,6 +736,34 @@
     "mapTitle": "Carte — Studio Dentaire De Facto",
     "metaDescription": "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au vendredi, 9 h à 18 h."
   },
+  "consentGroup": {
+    "block1Title": "Consentements obligatoires",
+    "consent_no_replace": "Je comprends que ce formulaire ne remplace pas une consultation dentaire.",
+    "consent_contact": "J'autorise Studio Dentaire De Facto à me contacter concernant ma demande.",
+    "consent_no_confirmation": "Je comprends que l'envoi d'un formulaire ne confirme pas automatiquement un rendez-vous.",
+    "block2Title": "Communications cliniques",
+    "consent_use": "J'accepte que mes renseignements soient utilisés pour traiter ma demande de rendez-vous et préparer mon dossier.",
+    "block3Title": "Confidentialité",
+    "block3Description": "Pour plus d'informations, consultez notre politique de confidentialité.",
+    "consent_privacy_prefix": "Je comprends que les communications électroniques peuvent comporter certains risques et j'ai pris connaissance de la ",
+    "consent_privacy_link": "politique de confidentialité",
+    "consent_privacy_suffix": ".",
+    "block4Title": "Urgence médicale",
+    "consent_emergency": "Je comprends que pour une urgence médicale (difficulté à respirer, enflure importante, fièvre élevée, traumatisme sévère), je dois contacter les services d'urgence ou me présenter à l'hôpital.",
+    "block5Title": "Communications informatives (optionnel)",
+    "block5Description": "Cochez uniquement si vous souhaitez recevoir nos communications. Cette case n'est pas pré-cochée.",
+    "consent_communications": "J'accepte de recevoir des communications informatives de la clinique."
+  },
+  "medicalEmergencyNotice": {
+    "body": "Si vous présentez une difficulté à respirer, une enflure importante du visage ou du cou, de la fièvre importante, un traumatisme sévère ou des signes généraux inquiétants, contactez les services d'urgence ou présentez-vous à l'hôpital.",
+    "callButton": "Appeler la clinique"
+  },
+  "fields": {
+    "phoneLabel": "Téléphone",
+    "phoneTitle": "Numéro canadien à 10 chiffres (ex : 514 863 7805)",
+    "phoneHelp": "Format canadien à 10 chiffres",
+    "errorSummaryTitle": "Veuillez corriger les éléments suivants :"
+  },
   "contactForm": {
     "nom": "Nom complet",
     "courriel": "Courriel",
@@ -749,7 +777,7 @@
   "merci": {
     "label": "Confirmation",
     "title": "Merci, votre demande a été reçue.",
-    "body": "Notre équipe prendra contact avec vous afin de confirmer les prochaines étapes.",
+    "body": "Notre équipe prendra contact avec vous afin de confirmer les prochaines étapes. En cas d'urgence médicale, contactez les services d'urgence (911).",
     "backHome": "Retour à l'accueil"
   },
   "faq": {

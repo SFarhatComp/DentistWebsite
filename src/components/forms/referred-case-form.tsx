@@ -97,7 +97,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="referringProfessionalName" label={t("referredCaseForm.referringProfessionalName")} required />
           <Field name="clinicName" label={t("referredCaseForm.clinicName")} required />
-          <PhoneField name="clinicPhone" label={t("referredCaseForm.clinicPhone")} required />
+          <PhoneField name="clinicPhone" label={t("referredCaseForm.clinicPhone")} required lang={lang} />
           <Field name="email" label={t("referredCaseForm.email")} type="email" required />
         </div>
       </FormSection>
@@ -106,7 +106,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
         <div className="grid gap-6 md:grid-cols-2">
           <Field name="patientName" label={t("referredCaseForm.patientName")} required />
           <Field name="patientDob" label={t("referredCaseForm.patientDob")} type="date" required />
-          <PhoneField name="patientPhone" label={t("referredCaseForm.patientPhone")} required />
+          <PhoneField name="patientPhone" label={t("referredCaseForm.patientPhone")} required lang={lang} />
           <Field name="patientEmail" label={t("referredCaseForm.patientEmail")} type="email" />
         </div>
         <SelectField
