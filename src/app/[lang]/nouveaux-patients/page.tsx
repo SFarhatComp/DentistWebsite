@@ -8,7 +8,8 @@ import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return {
     title: t("nouveauxPatients.label"),
@@ -24,7 +25,8 @@ interface AggregatorCard {
   ctaKey: string
 }
 
-export default function NouveauxPatientsPage({ params }: { params: { lang: string } }) {
+export default async function NouveauxPatientsPage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   const t = getTranslations(lang)
 

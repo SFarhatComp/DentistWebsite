@@ -9,7 +9,8 @@ import type { Locale } from "@/types"
 
 const FAQ_COUNT = 11
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return {
     title: t("faq.metaTitle"),
@@ -17,7 +18,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   }
 }
 
-export default function FAQPage({ params }: { params: { lang: string } }) {
+export default async function FAQPage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   const t = getTranslations(lang)
 

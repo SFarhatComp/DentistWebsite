@@ -8,7 +8,8 @@ import type { Locale } from "@/types"
 
 export const metadata: Metadata = { title: "Expérience patient" }
 
-export default function ExperiencePage({ params }: { params: { lang: string } }) {
+export default async function ExperiencePage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   const t = getTranslations(lang)
   return (

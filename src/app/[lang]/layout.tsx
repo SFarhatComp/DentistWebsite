@@ -12,7 +12,8 @@ export function generateStaticParams() {
 }
 
 // Surcharge le title template root pour utiliser le nom localisé du site.
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   const siteName = t("site.name")
   return {
@@ -20,7 +21,13 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   }
 }
 
-export default function LangLayout({ children, params }: { children: React.ReactNode; params: { lang: string } }) {
+export default async function LangLayout(props: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   if (!i18n.locales.includes(params.lang as Locale)) notFound()
   const lang = params.lang as Locale
   return (

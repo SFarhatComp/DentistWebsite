@@ -8,7 +8,8 @@ import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return {
     title: t("studio.intro.label"),
@@ -16,7 +17,8 @@ export async function generateMetadata({ params }: { params: { lang: string } })
   }
 }
 
-export default function StudioPage({ params }: { params: { lang: string } }) {
+export default async function StudioPage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const lang = params.lang as Locale
   return (
     <>

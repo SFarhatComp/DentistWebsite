@@ -3,12 +3,14 @@ import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
 import type { Locale } from "@/types"
 
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return { title: t("realisationsPage.metaTitle") }
 }
 
-export default function RealisationsPage({ params }: { params: { lang: string } }) {
+export default async function RealisationsPage(props: { params: Promise<{ lang: string }> }) {
+  const params = await props.params;
   const t = getTranslations(params.lang as Locale)
   return (
     <PageHero

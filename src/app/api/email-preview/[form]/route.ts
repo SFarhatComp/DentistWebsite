@@ -51,7 +51,8 @@ function renderIndex(): string {
 </html>`
 }
 
-export async function GET(_request: Request, { params }: { params: { form: string } }) {
+export async function GET(_request: Request, props: { params: Promise<{ form: string }> }) {
+  const params = await props.params;
   if (process.env.NODE_ENV === "production") {
     return new NextResponse("Not found", { status: 404 })
   }
