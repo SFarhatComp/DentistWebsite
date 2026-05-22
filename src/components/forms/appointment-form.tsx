@@ -124,6 +124,7 @@ export function AppointmentForm({ lang }: { lang: Locale }) {
       aria-label={t("appointmentForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="appointment" />
+      <input type="hidden" name="lang" value={lang} />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3 mb-4">

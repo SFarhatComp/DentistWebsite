@@ -12,6 +12,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "contact",
     created_at: NOW,
     data: {
+      lang: "fr",
       name: "Sami Farhat",
       email: "sfarhat4@gmail.com",
       phone: "514 581 2205",
@@ -24,6 +25,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "appointment",
     created_at: NOW,
     data: {
+      lang: "fr",
       firstName: "Marie-Pier",
       lastName: "Lavoie",
       phone: "514 555 0142",
@@ -53,6 +55,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "emergency",
     created_at: NOW,
     data: {
+      lang: "fr",
       firstName: "Jean-Philippe",
       lastName: "Tremblay",
       phone: "438 555 0917",
@@ -76,6 +79,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "partner-onboarding",
     created_at: NOW,
     data: {
+      lang: "fr",
       dentistName: "Dre Catherine Bouchard",
       professionalTitle: "orthodontiste",
       clinicName: "Orthodontie Plus Montréal",
@@ -98,6 +102,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "lab-prescription",
     created_at: NOW,
     data: {
+      lang: "en",
       prescribingProfessional: "Dr Antoine Roy",
       clinicName: "Clinique Dentaire Ahuntsic",
       phone: "514 555 3344",
@@ -118,6 +123,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "referred-case",
     created_at: NOW,
     data: {
+      lang: "fr",
       referringProfessionalName: "Dre Sophie Larocque",
       clinicName: "Centre dentaire Rosemont",
       clinicPhone: "514 555 8822",
@@ -142,6 +148,7 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     form_name: "lab-professional",
     created_at: NOW,
     data: {
+      lang: "fr",
       dentistName: "Dr Pierre Martin",
       clinic: "Clinique Dentaire de la Cité",
       phone: "514 555 1188",

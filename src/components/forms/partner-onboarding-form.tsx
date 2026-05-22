@@ -82,6 +82,7 @@ export function PartnerOnboardingForm({ lang }: { lang: Locale }) {
       aria-label={t("partnerOnboardingForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="partner-onboarding" />
+      <input type="hidden" name="lang" value={lang} />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3">

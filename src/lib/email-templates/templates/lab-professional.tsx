@@ -9,12 +9,45 @@ import {
   PhoneCallCard,
   Section,
 } from "../components"
-import { formatDate, getString } from "../theme"
+import { formatDate, getString, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+
+const L = {
+  fr: {
+    previewPrefix: "Demande pro (legacy)",
+    kicker: "Demande professionnelle (legacy)",
+    eyebrow: "Demande laboratoire",
+    defaultName: "Demande",
+    sectionComments: "Commentaires",
+    sectionCase: "Cas",
+    labelType: "Type",
+    labelMaterial: "Matériau",
+    sectionProfessional: "Professionnel",
+    labelEmail: "Courriel",
+    labelClinic: "Clinique",
+    subjectPrefix: "[Labo legacy]",
+  },
+  en: {
+    previewPrefix: "Pro request (legacy)",
+    kicker: "Professional request (legacy)",
+    eyebrow: "Laboratory request",
+    defaultName: "Request",
+    sectionComments: "Comments",
+    sectionCase: "Case",
+    labelType: "Type",
+    labelMaterial: "Material",
+    sectionProfessional: "Professional",
+    labelEmail: "Email",
+    labelClinic: "Clinic",
+    subjectPrefix: "[Lab legacy]",
+  },
+} as const
 
 /** Legacy form kept for backwards compatibility. Will eventually be deprecated. */
 export function LabProfessionalEmail({ payload }: { payload: NetlifyPayload }) {
   const d = payload.data
+  const lang = resolveLang(d)
+  const t = L[lang]
   const name = getString(d, "dentistName")
   const clinic = getString(d, "clinic")
   const phone = getString(d, "phone")
@@ -24,45 +57,48 @@ export function LabProfessionalEmail({ payload }: { payload: NetlifyPayload }) {
   const comments = getString(d, "comments")
 
   return (
-    <EmailLayout preview={`Demande pro (legacy) — ${name}`}>
-      <EmailHeader kicker="Demande professionnelle (legacy)" />
+    <EmailLayout preview={`${t.previewPrefix} — ${name}`} lang={lang}>
+      <EmailHeader kicker={t.kicker} />
 
       <Hero
-        eyebrow="Demande laboratoire"
-        name={name || "Demande"}
+        eyebrow={t.eyebrow}
+        name={name || t.defaultName}
         subtitle={clinic}
-        timestamp={formatDate(payload.created_at)}
+        timestamp={formatDate(payload.created_at, lang)}
+        lang={lang}
       />
 
       {comments && (
         <>
-          <SectionTitle>Commentaires</SectionTitle>
+          <SectionTitle>{t.sectionComments}</SectionTitle>
           <LongTextBlock value={comments} />
         </>
       )}
 
-      <SectionTitle>Cas</SectionTitle>
+      <SectionTitle>{t.sectionCase}</SectionTitle>
       <Section>
-        <DetailRow label="Type" value={caseType} />
-        <DetailRow label="Matériau" value={material} />
+        <DetailRow label={t.labelType} value={caseType} />
+        <DetailRow label={t.labelMaterial} value={material} />
       </Section>
 
-      <SectionTitle>Professionnel</SectionTitle>
+      <SectionTitle>{t.sectionProfessional}</SectionTitle>
       <Section>
-        <DetailRow label="Courriel" value={email} />
-        <DetailRow label="Clinique" value={clinic} />
+        <DetailRow label={t.labelEmail} value={email} />
+        <DetailRow label={t.labelClinic} value={clinic} />
       </Section>
 
-      <PhoneCallCard phone={phone} />
+      <PhoneCallCard phone={phone} lang={lang} />
     </EmailLayout>
   )
 }
 
 export const labProfessionalMeta = (payload: NetlifyPayload) => {
+  const lang = resolveLang(payload.data)
+  const t = L[lang]
   const name = getString(payload.data, "dentistName")
   return {
     to: "laboratoire@studiodefacto.ca",
-    subject: `[Labo legacy] ${name}`,
+    subject: `${t.subjectPrefix} ${name}`,
     replyTo: getString(payload.data, "email") || undefined,
   }
 }

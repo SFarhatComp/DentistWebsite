@@ -303,6 +303,7 @@ export function LabPrescriptionForm({ lang }: { lang: Locale }) {
       aria-label={t("labPrescriptionForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="lab-prescription" />
+      <input type="hidden" name="lang" value={lang} />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3">

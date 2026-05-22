@@ -56,11 +56,21 @@ export const spacing = {
   xxl: "64px",
 } as const
 
-/** Format Netlify timestamp into "15 mai 2026 à 16 h 43" */
-export function formatDate(iso: string | undefined): string {
+export type EmailLang = "fr" | "en"
+
+/** Resolve a payload's lang field to a supported language; defaults to "fr". */
+export function resolveLang(data: Record<string, unknown>): EmailLang {
+  const v = data["lang"]
+  if (typeof v === "string" && v.toLowerCase() === "en") return "en"
+  return "fr"
+}
+
+/** Format Netlify timestamp into "15 mai 2026 à 16 h 43" (fr) or "May 15, 2026, 4:43 PM" (en) */
+export function formatDate(iso: string | undefined, lang: EmailLang = "fr"): string {
   try {
     const d = iso ? new Date(iso) : new Date()
-    return d.toLocaleString("fr-CA", {
+    const locale = lang === "en" ? "en-CA" : "fr-CA"
+    return d.toLocaleString(locale, {
       timeZone: "America/Montreal",
       year: "numeric",
       month: "long",

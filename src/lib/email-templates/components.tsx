@@ -19,7 +19,7 @@ import {
   Text,
 } from "@react-email/components"
 import * as React from "react"
-import { colors, fonts, fontSizes, spacing } from "./theme"
+import { colors, fonts, fontSizes, spacing, type EmailLang } from "./theme"
 
 /* -------------------------------------------------------------------------- */
 /* LAYOUT                                                                     */
@@ -29,13 +29,15 @@ interface EmailLayoutProps {
   preview: string
   /** Accent color for the top bar and badges. Default = aubergine. Use "red" for urgences. */
   tone?: "default" | "red"
+  /** Language for translated chrome (footer, etc.). Default = fr. */
+  lang?: EmailLang
   children: React.ReactNode
 }
 
-export function EmailLayout({ preview, tone = "default", children }: EmailLayoutProps) {
+export function EmailLayout({ preview, tone = "default", lang = "fr", children }: EmailLayoutProps) {
   const accentBarColor = tone === "red" ? colors.alertText : colors.accent
   return (
-    <Html lang="fr">
+    <Html lang={lang}>
       <Head>
         <meta name="color-scheme" content="light only" />
         <meta name="supported-color-schemes" content="light" />
@@ -73,7 +75,7 @@ export function EmailLayout({ preview, tone = "default", children }: EmailLayout
             {children}
           </Container>
 
-          <EmailFooter />
+          <EmailFooter lang={lang} />
         </Container>
       </Body>
     </Html>
@@ -133,9 +135,12 @@ interface HeroProps {
   subtitle?: string
   /** Timestamp text */
   timestamp?: string
+  /** Language for "Received on" prefix. Default = fr. */
+  lang?: EmailLang
 }
 
-export function Hero({ eyebrow, name, badge, subtitle, timestamp }: HeroProps) {
+export function Hero({ eyebrow, name, badge, subtitle, timestamp, lang = "fr" }: HeroProps) {
+  const receivedPrefix = lang === "en" ? "Received on" : "Reçu le"
   return (
     <Section style={{ paddingBottom: spacing.lg }}>
       {eyebrow && (
@@ -194,7 +199,7 @@ export function Hero({ eyebrow, name, badge, subtitle, timestamp }: HeroProps) {
             margin: `${spacing.md} 0 0 0`,
           }}
         >
-          Reçu le {timestamp}
+          {receivedPrefix} {timestamp}
         </Text>
       )}
     </Section>
@@ -292,12 +297,28 @@ function toE164NorthAmerica(raw: string): string {
   return digits
 }
 
-export function PhoneCallCard({ phone, urgent = false }: { phone: string; urgent?: boolean }) {
+export function PhoneCallCard({
+  phone,
+  urgent = false,
+  lang = "fr",
+}: {
+  phone: string
+  urgent?: boolean
+  lang?: EmailLang
+}) {
   if (!phone) return null
   const cleanPhone = toE164NorthAmerica(phone)
   const bg = urgent ? colors.alertBg : colors.surfaceMuted
   const border = urgent ? colors.alertBorder : colors.borderSubtle
   const accent = urgent ? colors.alertText : colors.accent
+  const label =
+    lang === "en"
+      ? urgent
+        ? "Urgent action required"
+        : "Reach the contact"
+      : urgent
+        ? "Action urgente requise"
+        : "Joindre le contact"
   return (
     <Section
       style={{
@@ -320,7 +341,7 @@ export function PhoneCallCard({ phone, urgent = false }: { phone: string; urgent
           fontWeight: 600,
         }}
       >
-        {urgent ? "Action urgente requise" : "Joindre le contact"}
+        {label}
       </Text>
       <Link
         href={`tel:${cleanPhone}`}
@@ -537,9 +558,14 @@ export function TagList({
 
 export function YnIndicatorList({
   items,
+  lang = "fr",
 }: {
   items: { label: string; value: "yes" | "no" | ""; alertOnYes?: boolean }[]
+  lang?: EmailLang
 }) {
+  const yesLabel = lang === "en" ? "Yes" : "Oui"
+  const noLabel = lang === "en" ? "No" : "Non"
+  const alertWord = lang === "en" ? "Alert" : "Alerte"
   return (
     <Section style={{ marginBottom: spacing.md }}>
       {items.map((item, i) => {
@@ -587,7 +613,7 @@ export function YnIndicatorList({
                       borderRadius: "2px",
                     }}
                   >
-                    Alerte
+                    {alertWord}
                   </span>
                 )}
               </Text>
@@ -602,7 +628,7 @@ export function YnIndicatorList({
                   margin: 0,
                 }}
               >
-                {isYes ? "Oui" : item.value === "no" ? "Non" : "—"}
+                {isYes ? yesLabel : item.value === "no" ? noLabel : "—"}
               </Text>
             </Column>
           </Row>
@@ -667,7 +693,11 @@ export function AlertBanner({ title, items }: { title: string; items?: string[] 
 /* FOOTER                                                                     */
 /* -------------------------------------------------------------------------- */
 
-export function EmailFooter() {
+export function EmailFooter({ lang = "fr" }: { lang?: EmailLang } = {}) {
+  const automaticEmail =
+    lang === "en"
+      ? "Automated email. To reply to the patient, use Reply — their address is in the Reply-To field."
+      : "Courriel automatique. Pour répondre au patient, utilisez Reply — son adresse est dans le champ Reply-To."
   return (
     <Section style={{ paddingTop: spacing.md, paddingBottom: spacing.lg, textAlign: "center" }}>
       <Text
@@ -711,7 +741,7 @@ export function EmailFooter() {
           lineHeight: 1.5,
         }}
       >
-        Courriel automatique. Pour répondre au patient, utilisez Reply — son adresse est dans le champ Reply-To.
+        {automaticEmail}
       </Text>
     </Section>
   )

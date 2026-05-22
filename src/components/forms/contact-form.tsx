@@ -43,6 +43,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
       className="space-y-6"
     >
       <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="lang" value={lang} />
       <HoneypotField />
 
       <Field name="name" label={t("contactForm.nom")} required />

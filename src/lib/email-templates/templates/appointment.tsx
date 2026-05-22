@@ -11,94 +11,179 @@ import {
   AlertBanner,
   Section,
 } from "../components"
-import { formatDate, getString, isChecked } from "../theme"
+import { formatDate, getString, isChecked, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
 
-const TYPE_LABELS: Record<string, string> = {
-  premiere_visite: "Première visite / examen complet",
-  nettoyage: "Nettoyage et suivi",
-  consultation_ciblee: "Consultation ciblée",
-  urgence: "Urgence dentaire",
-  douleur: "Douleur",
-  dent_cassee: "Dent cassée ou restauration fracturée",
-  esthetique: "Esthétique",
-  orthodontie: "Orthodontie / aligneurs",
-  implant_couronne: "Implant / couronne / prothèse",
-  laboratoire: "Laboratoire ou demande professionnelle",
-  autre: "Autre",
+const TYPE_LABELS = {
+  fr: {
+    premiere_visite: "Première visite / examen complet",
+    nettoyage: "Nettoyage et suivi",
+    consultation_ciblee: "Consultation ciblée",
+    urgence: "Urgence dentaire",
+    douleur: "Douleur",
+    dent_cassee: "Dent cassée ou restauration fracturée",
+    esthetique: "Esthétique",
+    orthodontie: "Orthodontie / aligneurs",
+    implant_couronne: "Implant / couronne / prothèse",
+    laboratoire: "Laboratoire ou demande professionnelle",
+    autre: "Autre",
+  } as Record<string, string>,
+  en: {
+    premiere_visite: "First visit / full exam",
+    nettoyage: "Cleaning and follow-up",
+    consultation_ciblee: "Targeted consultation",
+    urgence: "Dental emergency",
+    douleur: "Pain",
+    dent_cassee: "Broken tooth or fractured restoration",
+    esthetique: "Aesthetics",
+    orthodontie: "Orthodontics / aligners",
+    implant_couronne: "Implant / crown / prosthesis",
+    laboratoire: "Laboratory or professional request",
+    autre: "Other",
+  } as Record<string, string>,
 }
 
 const URGENT_TYPES = new Set(["urgence", "douleur", "dent_cassee"])
 
-const MOTIFS_LIST = [
-  { key: "motif_douleur", label: "Douleur" },
-  { key: "motif_sensibilite", label: "Sensibilité" },
-  { key: "motif_saignement_gencives", label: "Saignement des gencives" },
-  { key: "motif_mauvaise_haleine", label: "Mauvaise haleine" },
-  { key: "motif_dent_mobile", label: "Dent mobile" },
-  { key: "motif_fracture", label: "Fracture" },
-  { key: "motif_usure", label: "Usure dentaire" },
-  { key: "motif_serrement_grincement", label: "Serrement ou grincement" },
-  { key: "motif_esthetique", label: "Préoccupation esthétique" },
-  { key: "motif_deuxieme_avis", label: "Deuxième avis" },
-  { key: "motif_suivi_traitement", label: "Suivi de traitement existant" },
-  { key: "motif_autre", label: "Autre" },
-]
+const MOTIFS_LIST = {
+  fr: [
+    { key: "motif_douleur", label: "Douleur" },
+    { key: "motif_sensibilite", label: "Sensibilité" },
+    { key: "motif_saignement_gencives", label: "Saignement des gencives" },
+    { key: "motif_mauvaise_haleine", label: "Mauvaise haleine" },
+    { key: "motif_dent_mobile", label: "Dent mobile" },
+    { key: "motif_fracture", label: "Fracture" },
+    { key: "motif_usure", label: "Usure dentaire" },
+    { key: "motif_serrement_grincement", label: "Serrement ou grincement" },
+    { key: "motif_esthetique", label: "Préoccupation esthétique" },
+    { key: "motif_deuxieme_avis", label: "Deuxième avis" },
+    { key: "motif_suivi_traitement", label: "Suivi de traitement existant" },
+    { key: "motif_autre", label: "Autre" },
+  ],
+  en: [
+    { key: "motif_douleur", label: "Pain" },
+    { key: "motif_sensibilite", label: "Sensitivity" },
+    { key: "motif_saignement_gencives", label: "Bleeding gums" },
+    { key: "motif_mauvaise_haleine", label: "Bad breath" },
+    { key: "motif_dent_mobile", label: "Loose tooth" },
+    { key: "motif_fracture", label: "Fracture" },
+    { key: "motif_usure", label: "Tooth wear" },
+    { key: "motif_serrement_grincement", label: "Clenching or grinding" },
+    { key: "motif_esthetique", label: "Aesthetic concern" },
+    { key: "motif_deuxieme_avis", label: "Second opinion" },
+    { key: "motif_suivi_traitement", label: "Follow-up on existing treatment" },
+    { key: "motif_autre", label: "Other" },
+  ],
+}
 
 const ALERTING_MOTIFS = ["motif_douleur", "motif_fracture", "motif_dent_mobile"]
 
-const JOURS_LIST = [
-  { key: "jour_lundi", label: "Lundi" },
-  { key: "jour_mardi", label: "Mardi" },
-  { key: "jour_mercredi", label: "Mercredi" },
-  { key: "jour_jeudi", label: "Jeudi" },
-  { key: "jour_vendredi", label: "Vendredi" },
-  { key: "jour_asap", label: "Dès que possible" },
-  { key: "jour_flexible", label: "Flexible" },
-]
+const JOURS_LIST = {
+  fr: [
+    { key: "jour_lundi", label: "Lundi" },
+    { key: "jour_mardi", label: "Mardi" },
+    { key: "jour_mercredi", label: "Mercredi" },
+    { key: "jour_jeudi", label: "Jeudi" },
+    { key: "jour_vendredi", label: "Vendredi" },
+    { key: "jour_asap", label: "Dès que possible" },
+    { key: "jour_flexible", label: "Flexible" },
+  ],
+  en: [
+    { key: "jour_lundi", label: "Monday" },
+    { key: "jour_mardi", label: "Tuesday" },
+    { key: "jour_mercredi", label: "Wednesday" },
+    { key: "jour_jeudi", label: "Thursday" },
+    { key: "jour_vendredi", label: "Friday" },
+    { key: "jour_asap", label: "As soon as possible" },
+    { key: "jour_flexible", label: "Flexible" },
+  ],
+}
 
-const MOMENTS_LIST = [
-  { key: "moment_matin", label: "Matin (9h-12h)" },
-  { key: "moment_midi", label: "Midi (12h-14h)" },
-  { key: "moment_apres_midi", label: "Après-midi (14h-18h)" },
-  { key: "moment_flexible", label: "Flexible" },
-]
+const MOMENTS_LIST = {
+  fr: [
+    { key: "moment_matin", label: "Matin (9h-12h)" },
+    { key: "moment_midi", label: "Midi (12h-14h)" },
+    { key: "moment_apres_midi", label: "Après-midi (14h-18h)" },
+    { key: "moment_flexible", label: "Flexible" },
+  ],
+  en: [
+    { key: "moment_matin", label: "Morning (9am-12pm)" },
+    { key: "moment_midi", label: "Midday (12pm-2pm)" },
+    { key: "moment_apres_midi", label: "Afternoon (2pm-6pm)" },
+    { key: "moment_flexible", label: "Flexible" },
+  ],
+}
 
-const CONTACT_LIST = [
-  { key: "contact_telephone", label: "Téléphone" },
-  { key: "contact_courriel", label: "Courriel" },
-  { key: "contact_sms", label: "SMS" },
-]
+const CONTACT_LIST = {
+  fr: [
+    { key: "contact_telephone", label: "Téléphone" },
+    { key: "contact_courriel", label: "Courriel" },
+    { key: "contact_sms", label: "SMS" },
+  ],
+  en: [
+    { key: "contact_telephone", label: "Phone" },
+    { key: "contact_courriel", label: "Email" },
+    { key: "contact_sms", label: "SMS" },
+  ],
+}
 
-const CONDITIONS_LIST = [
-  { key: "condition_hypertension", label: "Hypertension artérielle" },
-  { key: "condition_cardiaque", label: "Maladie cardiaque" },
-  { key: "condition_souffle_valvulaire", label: "Souffle / valvulaire" },
-  { key: "condition_endocardite", label: "Antécédent d'endocardite" },
-  { key: "condition_diabete", label: "Diabète" },
-  { key: "condition_respiratoire", label: "Asthme / respiratoire" },
-  { key: "condition_apnee_sommeil", label: "Apnée du sommeil" },
-  { key: "condition_foie", label: "Maladie du foie" },
-  { key: "condition_renale", label: "Maladie rénale" },
-  { key: "condition_coagulation", label: "Trouble de coagulation" },
-  { key: "condition_anticoagulants", label: "Anticoagulants / antiplaquettaires" },
-  { key: "condition_epilepsie", label: "Épilepsie ou convulsions" },
-  { key: "condition_neurologique", label: "Trouble neurologique" },
-  { key: "condition_cancer", label: "Cancer (actuel ou antécédent)" },
-  { key: "condition_radiotherapie", label: "Radiothérapie tête/cou" },
-  { key: "condition_chimiotherapie", label: "Chimio / immunothérapie" },
-  { key: "condition_immunosuppression", label: "Immunosuppression" },
-  { key: "condition_osteoporose", label: "Ostéoporose" },
-  { key: "condition_bisphosphonates", label: "Bisphosphonates" },
-  { key: "condition_thyroide", label: "Trouble thyroïdien" },
-  { key: "condition_reflux", label: "Reflux gastrique important" },
-  { key: "condition_anxiete", label: "Anxiété importante" },
-  { key: "condition_grossesse", label: "Grossesse / allaitement" },
-  { key: "condition_allergies", label: "Allergies connues" },
-  { key: "condition_autre", label: "Autre condition" },
-]
+const CONDITIONS_LIST = {
+  fr: [
+    { key: "condition_hypertension", label: "Hypertension artérielle" },
+    { key: "condition_cardiaque", label: "Maladie cardiaque" },
+    { key: "condition_souffle_valvulaire", label: "Souffle / valvulaire" },
+    { key: "condition_endocardite", label: "Antécédent d'endocardite" },
+    { key: "condition_diabete", label: "Diabète" },
+    { key: "condition_respiratoire", label: "Asthme / respiratoire" },
+    { key: "condition_apnee_sommeil", label: "Apnée du sommeil" },
+    { key: "condition_foie", label: "Maladie du foie" },
+    { key: "condition_renale", label: "Maladie rénale" },
+    { key: "condition_coagulation", label: "Trouble de coagulation" },
+    { key: "condition_anticoagulants", label: "Anticoagulants / antiplaquettaires" },
+    { key: "condition_epilepsie", label: "Épilepsie ou convulsions" },
+    { key: "condition_neurologique", label: "Trouble neurologique" },
+    { key: "condition_cancer", label: "Cancer (actuel ou antécédent)" },
+    { key: "condition_radiotherapie", label: "Radiothérapie tête/cou" },
+    { key: "condition_chimiotherapie", label: "Chimio / immunothérapie" },
+    { key: "condition_immunosuppression", label: "Immunosuppression" },
+    { key: "condition_osteoporose", label: "Ostéoporose" },
+    { key: "condition_bisphosphonates", label: "Bisphosphonates" },
+    { key: "condition_thyroide", label: "Trouble thyroïdien" },
+    { key: "condition_reflux", label: "Reflux gastrique important" },
+    { key: "condition_anxiete", label: "Anxiété importante" },
+    { key: "condition_grossesse", label: "Grossesse / allaitement" },
+    { key: "condition_allergies", label: "Allergies connues" },
+    { key: "condition_autre", label: "Autre condition" },
+  ],
+  en: [
+    { key: "condition_hypertension", label: "High blood pressure" },
+    { key: "condition_cardiaque", label: "Heart disease" },
+    { key: "condition_souffle_valvulaire", label: "Murmur / valvular" },
+    { key: "condition_endocardite", label: "History of endocarditis" },
+    { key: "condition_diabete", label: "Diabetes" },
+    { key: "condition_respiratoire", label: "Asthma / respiratory" },
+    { key: "condition_apnee_sommeil", label: "Sleep apnea" },
+    { key: "condition_foie", label: "Liver disease" },
+    { key: "condition_renale", label: "Kidney disease" },
+    { key: "condition_coagulation", label: "Coagulation disorder" },
+    { key: "condition_anticoagulants", label: "Anticoagulants / antiplatelets" },
+    { key: "condition_epilepsie", label: "Epilepsy or seizures" },
+    { key: "condition_neurologique", label: "Neurological disorder" },
+    { key: "condition_cancer", label: "Cancer (current or past)" },
+    { key: "condition_radiotherapie", label: "Head/neck radiotherapy" },
+    { key: "condition_chimiotherapie", label: "Chemo / immunotherapy" },
+    { key: "condition_immunosuppression", label: "Immunosuppression" },
+    { key: "condition_osteoporose", label: "Osteoporosis" },
+    { key: "condition_bisphosphonates", label: "Bisphosphonates" },
+    { key: "condition_thyroide", label: "Thyroid disorder" },
+    { key: "condition_reflux", label: "Significant acid reflux" },
+    { key: "condition_anxiete", label: "Significant anxiety" },
+    { key: "condition_grossesse", label: "Pregnancy / breastfeeding" },
+    { key: "condition_allergies", label: "Known allergies" },
+    { key: "condition_autre", label: "Other condition" },
+  ],
+}
 
-// Conditions that require special attention (could affect treatment)
 const CRITICAL_CONDITIONS = [
   "condition_cardiaque",
   "condition_souffle_valvulaire",
@@ -111,8 +196,62 @@ const CRITICAL_CONDITIONS = [
   "condition_allergies",
 ]
 
+const L = {
+  fr: {
+    kickerUrgent: "Demande potentiellement urgente",
+    kickerNormal: "Nouvelle demande de rendez-vous",
+    eyebrow: "Demande de rendez-vous",
+    defaultPatient: "Patient",
+    alertTitleSingle: "condition médicale à considérer",
+    alertTitleMulti: "conditions médicales à considérer",
+    sectionPatientMessage: "Message du patient",
+    sectionCoordonnees: "Coordonnées",
+    labelEmail: "Courriel",
+    labelPhone: "Téléphone",
+    labelLanguage: "Langue préférée",
+    sectionMotifs: "Motifs secondaires",
+    sectionDisponibilites: "Disponibilités",
+    daysLabel: "Journées",
+    momentsLabel: "Moments",
+    contactPrefLabel: "Mode de contact préféré",
+    medicalProfile: "Profil médical",
+    declaredSingle: "condition déclarée",
+    declaredMulti: "conditions déclarées",
+    allergyDetails: "Détails allergies",
+    otherCondition: "Autre condition",
+    subjectPrefix: "[RDV]",
+  },
+  en: {
+    kickerUrgent: "Potentially urgent request",
+    kickerNormal: "New appointment request",
+    eyebrow: "Appointment request",
+    defaultPatient: "Patient",
+    alertTitleSingle: "medical condition to consider",
+    alertTitleMulti: "medical conditions to consider",
+    sectionPatientMessage: "Patient message",
+    sectionCoordonnees: "Contact details",
+    labelEmail: "Email",
+    labelPhone: "Phone",
+    labelLanguage: "Preferred language",
+    sectionMotifs: "Secondary reasons",
+    sectionDisponibilites: "Availability",
+    daysLabel: "Days",
+    momentsLabel: "Time of day",
+    contactPrefLabel: "Preferred contact method",
+    medicalProfile: "Medical profile",
+    declaredSingle: "declared condition",
+    declaredMulti: "declared conditions",
+    allergyDetails: "Allergy details",
+    otherCondition: "Other condition",
+    subjectPrefix: "[APPT]",
+  },
+} as const
+
 export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
   const d = payload.data
+  const lang = resolveLang(d)
+  const t = L[lang]
+  const typeLabels = TYPE_LABELS[lang]
   const firstName = getString(d, "firstName")
   const lastName = getString(d, "lastName")
   const phone = getString(d, "phone")
@@ -123,73 +262,74 @@ export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
   const typeDemandeOther = getString(d, "typeDemandeOther")
   const message = getString(d, "message")
 
-  const typeLabel = typeDemande === "autre" && typeDemandeOther ? typeDemandeOther : (TYPE_LABELS[typeDemande] || typeDemande)
+  const typeLabel = typeDemande === "autre" && typeDemandeOther ? typeDemandeOther : (typeLabels[typeDemande] || typeDemande)
   const langueLabel = language === "autre" && languageOther ? languageOther : language
   const isUrgent = URGENT_TYPES.has(typeDemande)
 
-  const conditionsItems = CONDITIONS_LIST.map((c) => ({ ...c, selected: isChecked(d, c.key) }))
+  const conditionsItems = CONDITIONS_LIST[lang].map((c) => ({ ...c, selected: isChecked(d, c.key) }))
   const conditionsCount = conditionsItems.filter((c) => c.selected).length
   const criticalCount = conditionsItems.filter((c) => c.selected && CRITICAL_CONDITIONS.includes(c.key)).length
 
-  const motifsItems = MOTIFS_LIST.map((m) => ({ ...m, selected: isChecked(d, m.key) }))
+  const motifsItems = MOTIFS_LIST[lang].map((m) => ({ ...m, selected: isChecked(d, m.key) }))
 
   return (
-    <EmailLayout preview={`${firstName} ${lastName} — ${typeLabel}`} tone={isUrgent ? "red" : "default"}>
-      <EmailHeader kicker={isUrgent ? "Demande potentiellement urgente" : "Nouvelle demande de rendez-vous"} />
+    <EmailLayout preview={`${firstName} ${lastName} — ${typeLabel}`} tone={isUrgent ? "red" : "default"} lang={lang}>
+      <EmailHeader kicker={isUrgent ? t.kickerUrgent : t.kickerNormal} />
 
       <Hero
-        eyebrow="Demande de rendez-vous"
-        name={`${firstName} ${lastName}`.trim() || "Patient"}
+        eyebrow={t.eyebrow}
+        name={`${firstName} ${lastName}`.trim() || t.defaultPatient}
         badge={{ label: typeLabel, tone: isUrgent ? "red" : "default" }}
-        timestamp={formatDate(payload.created_at)}
+        timestamp={formatDate(payload.created_at, lang)}
+        lang={lang}
       />
 
       {criticalCount > 0 && (
         <AlertBanner
-          title={`${criticalCount} condition${criticalCount > 1 ? "s" : ""} médicale${criticalCount > 1 ? "s" : ""} à considérer`}
+          title={`${criticalCount} ${criticalCount > 1 ? t.alertTitleMulti : t.alertTitleSingle}`}
           items={conditionsItems.filter((c) => c.selected && CRITICAL_CONDITIONS.includes(c.key)).map((c) => c.label)}
         />
       )}
 
       {message && (
         <>
-          <SectionTitle>Message du patient</SectionTitle>
+          <SectionTitle>{t.sectionPatientMessage}</SectionTitle>
           <LongTextBlock value={message} />
         </>
       )}
 
-      <SectionTitle>Coordonnées</SectionTitle>
+      <SectionTitle>{t.sectionCoordonnees}</SectionTitle>
       <Section>
-        <DetailRow label="Courriel" value={email} />
-        <DetailRow label="Téléphone" value={phone} />
-        <DetailRow label="Langue préférée" value={langueLabel} />
+        <DetailRow label={t.labelEmail} value={email} />
+        <DetailRow label={t.labelPhone} value={phone} />
+        <DetailRow label={t.labelLanguage} value={langueLabel} />
       </Section>
 
       {motifsItems.some((m) => m.selected) && (
         <>
-          <SectionTitle>Motifs secondaires</SectionTitle>
+          <SectionTitle>{t.sectionMotifs}</SectionTitle>
           <TagList items={motifsItems} alertItems={ALERTING_MOTIFS} />
         </>
       )}
 
-      <SectionTitle>Disponibilités</SectionTitle>
+      <SectionTitle>{t.sectionDisponibilites}</SectionTitle>
       <TagList
-        label="Journées"
-        items={JOURS_LIST.map((j) => ({ ...j, selected: isChecked(d, j.key) }))}
+        label={t.daysLabel}
+        items={JOURS_LIST[lang].map((j) => ({ ...j, selected: isChecked(d, j.key) }))}
       />
       <TagList
-        label="Moments"
-        items={MOMENTS_LIST.map((m) => ({ ...m, selected: isChecked(d, m.key) }))}
+        label={t.momentsLabel}
+        items={MOMENTS_LIST[lang].map((m) => ({ ...m, selected: isChecked(d, m.key) }))}
       />
       <TagList
-        label="Mode de contact préféré"
-        items={CONTACT_LIST.map((c) => ({ ...c, selected: isChecked(d, c.key) }))}
+        label={t.contactPrefLabel}
+        items={CONTACT_LIST[lang].map((c) => ({ ...c, selected: isChecked(d, c.key) }))}
       />
 
       {conditionsCount > 0 && (
         <>
           <SectionTitle accent={criticalCount > 0 ? "red" : "default"}>
-            Profil médical — {conditionsCount} condition{conditionsCount > 1 ? "s" : ""} déclarée{conditionsCount > 1 ? "s" : ""}
+            {t.medicalProfile} — {conditionsCount} {conditionsCount > 1 ? t.declaredMulti : t.declaredSingle}
           </SectionTitle>
           <TagList
             items={conditionsItems}
@@ -197,30 +337,33 @@ export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
             emptyText=""
           />
           {getString(d, "allergies_details") && (
-            <LongTextBlock label="Détails allergies" value={getString(d, "allergies_details")} />
+            <LongTextBlock label={t.allergyDetails} value={getString(d, "allergies_details")} />
           )}
           {getString(d, "other_condition_details") && (
-            <LongTextBlock label="Autre condition" value={getString(d, "other_condition_details")} />
+            <LongTextBlock label={t.otherCondition} value={getString(d, "other_condition_details")} />
           )}
         </>
       )}
 
-      <PhoneCallCard phone={phone} urgent={isUrgent} />
+      <PhoneCallCard phone={phone} urgent={isUrgent} lang={lang} />
     </EmailLayout>
   )
 }
 
 export const appointmentMeta = (payload: NetlifyPayload) => {
   const d = payload.data
+  const lang = resolveLang(d)
+  const t = L[lang]
+  const typeLabels = TYPE_LABELS[lang]
   const firstName = getString(d, "firstName")
   const lastName = getString(d, "lastName")
   const typeDemande = getString(d, "typeDemande")
   const typeDemandeOther = getString(d, "typeDemandeOther")
-  const typeLabel = typeDemande === "autre" && typeDemandeOther ? typeDemandeOther : (TYPE_LABELS[typeDemande] || typeDemande)
+  const typeLabel = typeDemande === "autre" && typeDemandeOther ? typeDemandeOther : (typeLabels[typeDemande] || typeDemande)
   const isUrgent = URGENT_TYPES.has(typeDemande)
   return {
     to: isUrgent ? "urgence@studiodefacto.ca" : "rendezvous@studiodefacto.ca",
-    subject: `${isUrgent ? "⚠ " : ""}[RDV] ${firstName} ${lastName} — ${typeLabel}`,
+    subject: `${isUrgent ? "⚠ " : ""}${t.subjectPrefix} ${firstName} ${lastName} — ${typeLabel}`,
     replyTo: getString(d, "email") || undefined,
     isUrgent,
   }

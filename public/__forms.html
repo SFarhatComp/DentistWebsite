@@ -9,6 +9,7 @@
 
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="name" />
       <input name="email" type="email" />
       <input name="phone" type="tel" />
@@ -21,6 +22,7 @@
     <!-- Cahier final: appointment form simplifié (§20A) -->
     <form name="appointment" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="firstName" />
       <input name="lastName" />
       <input name="phone" type="tel" />
@@ -94,6 +96,7 @@
 
     <form name="emergency" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="firstName" />
       <input name="lastName" />
       <input name="phone" />
@@ -109,6 +112,7 @@
     <!-- Brouillon 2: lab-professional kept for backwards compat (no new submissions expected) -->
     <form name="lab-professional" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="dentistName" />
       <input name="clinic" />
       <input name="email" type="email" />
@@ -125,6 +129,7 @@
     <!-- Cahier final: Partner onboarding (volume/fréquence retirés per §18.1) -->
     <form name="partner-onboarding" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="dentistName" />
       <input name="professionalTitle" />
       <input name="professionalTitleOther" />
@@ -163,6 +168,7 @@
     <!-- Cahier final: Referred case (téléphone patient OBLIGATOIRE, langue préférée, motifs secondaires) -->
     <form name="referred-case" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="referringProfessionalName" />
       <input name="clinicName" />
       <input name="clinicPhone" type="tel" />
@@ -204,6 +210,7 @@
     <!-- Cahier final: Lab prescription (type cases à cocher, matériau dropdown, terminologie corrigée) -->
     <form name="lab-prescription" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
       <input name="bot-field" />
+      <input name="lang" />
       <input name="prescribingProfessional" />
       <input name="clinicName" />
       <input name="phone" type="tel" />

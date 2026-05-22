@@ -51,6 +51,7 @@ export function EmergencyForm({ lang }: { lang: Locale }) {
       className="space-y-10"
     >
       <input type="hidden" name="form-name" value="emergency" />
+      <input type="hidden" name="lang" value={lang} />
       <HoneypotField />
 
       <div className="border-l-4 border-accent bg-accent/5 p-6">

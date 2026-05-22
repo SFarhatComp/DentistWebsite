@@ -85,6 +85,7 @@ export function ReferredCaseForm({ lang }: { lang: Locale }) {
       aria-label={t("referredCaseForm.ariaLabel")}
     >
       <input type="hidden" name="form-name" value="referred-case" />
+      <input type="hidden" name="lang" value={lang} />
       <HoneypotField />
 
       <div className="border-l-2 border-accent pl-6 space-y-3">
