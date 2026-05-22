@@ -149,3 +149,133 @@ collections:
       - { label: "Extrait", name: "excerpt", widget: "text", required: true }
       - { label: "Image de couverture", name: "coverImage", widget: "image", required: false }
       - { label: "Contenu", name: "body", widget: "markdown", required: true }
+
+  # ================================
+  # SOINS (EN) — mirror of soins_fr, content under /en/soins/[slug]
+  # ================================
+  - name: "soins_en"
+    label: "Care (EN)"
+    label_singular: "Service"
+    folder: "content/soins/en"
+    create: false
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    editor:
+      preview: false
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", required: true, hint: "Must match the FR slug (URLs are kept stable)" }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Short description", name: "shortDescription", widget: "text", required: true }
+      - { label: "Hero image", name: "heroImage", widget: "image", required: false }
+      - { label: "When to consult", name: "whenToConsult", widget: "list", required: false }
+      - { label: "Treatment steps", name: "treatmentSteps", widget: "list", required: false }
+      - { label: "Possible options", name: "options", widget: "list", required: false }
+      - { label: "Limits and risks", name: "limits", widget: "text", required: false }
+      - { label: "After treatment", name: "aftercare", widget: "text", required: false }
+      - label: "FAQ"
+        name: "faq"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+      - { label: "Related services (slugs)", name: "related", widget: "list", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
+
+  # ================================
+  # CASES (EN)
+  # ================================
+  - name: "cases_en"
+    label: "Cases (EN)"
+    label_singular: "Case"
+    folder: "content/cases/en"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    editor:
+      preview: false
+    sortable_fields: ["date", "title"]
+    view_groups:
+      - { label: "Featured", field: "featured" }
+      - { label: "Year", field: "date", pattern: '\d{4}' }
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", required: true,
+          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Must be lowercase with hyphens only"] }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Cover image", name: "coverImage", widget: "image", required: false }
+      - { label: "Treatment type", name: "treatmentType", widget: "string", required: true }
+      - { label: "Initial problem", name: "initialProblem", widget: "text", required: true }
+      - { label: "Objective", name: "objective", widget: "text", required: true }
+      - { label: "Appointment count", name: "appointmentCount", widget: "number", required: false }
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Image", name: "src", widget: "image" }
+          - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Type"
+            name: "type"
+            widget: "select"
+            options:
+              - { label: "Before", value: "before" }
+              - { label: "After", value: "after" }
+              - { label: "Normal", value: "normal" }
+            default: "normal"
+            required: false
+      - { label: "Legal disclaimer", name: "legalDisclaimer", widget: "text", required: true,
+          default: "Result specific to this patient. A consultation is necessary to evaluate options suitable to your situation." }
+      - { label: "Body", name: "body", widget: "markdown", required: true,
+          hint: "Include sections: ## Initial problem, ## Approach, ## Result" }
+
+  # ================================
+  # PATIENT RESOURCES (EN)
+  # ================================
+  - name: "ressources_en"
+    label: "Patient resources (EN)"
+    label_singular: "Resource"
+    folder: "content/ressources/en"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "First visit", value: "premiere-visite" }
+          - { label: "Post-operative", value: "post-op" }
+          - { label: "Hygiene", value: "hygiene" }
+          - { label: "Aligners", value: "aligneurs" }
+          - { label: "Prevention", value: "prevention" }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+
+  # ================================
+  # CLINICAL JOURNAL (EN)
+  # ================================
+  - name: "journal_en"
+    label: "Clinical journal (EN)"
+    label_singular: "Article"
+    folder: "content/journal/en"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", required: true }
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
+      - { label: "Category", name: "category", widget: "string", required: true }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
+      - { label: "Cover image", name: "coverImage", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
