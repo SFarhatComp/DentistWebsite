@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/home/hero-section"
 import { ManifestoSection } from "@/components/home/manifesto-section"
 import { PiliersSection } from "@/components/home/piliers-section"
 import { EvaluationCompleteSection } from "@/components/home/evaluation-complete-section"
+import { PraticienSection } from "@/components/home/praticien-section"
 import { StudioPreviewSection } from "@/components/home/studio-preview-section"
 import { CoordonneesSection } from "@/components/home/coordonnees-section"
 import { getTranslations } from "@/lib/i18n"
@@ -26,6 +27,7 @@ export default async function HomePage(props: { params: Promise<{ lang: string }
       <ManifestoSection lang={lang} />
       <PiliersSection lang={lang} />
       <EvaluationCompleteSection lang={lang} />
+      <PraticienSection lang={lang} />
       <StudioPreviewSection lang={lang} />
       <CoordonneesSection lang={lang} />
     </>
