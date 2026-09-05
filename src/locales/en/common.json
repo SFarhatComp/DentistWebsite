@@ -134,6 +134,17 @@
       "body": "The first step is to understand your situation. At De Facto, the first visit allows us to document, explain and plan care before making important decisions.",
       "cta": "Request a first visit"
     },
+    "praticien": {
+      "label": "The practitioner",
+      "title": "Dr Bader Ramdani",
+      "role": "General dentist, founder of De Facto Dental Studio",
+      "body": "Dr Bader Ramdani graduated in dental medicine from Université Laval in Quebec City in 2021. He practises general dentistry with a focus on diagnosis, planning and prevention, and founded De Facto Dental Studio to offer care where understanding comes before intervention.",
+      "credentials": [
+        "Doctor of Dental Medicine — Université Laval, Quebec City, 2021",
+        "Member of the Ordre des dentistes du Québec (ODQ)",
+        "Multidisciplinary general practice with an integrated digital laboratory"
+      ]
+    },
     "studioPreview": {
       "label": "The Studio",
       "title": "A dental studio designed to slow down, understand and plan better.",
