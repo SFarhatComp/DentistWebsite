@@ -47,7 +47,7 @@ export function LaboratoireSection({ lang }: { lang: Locale }) {
           <FadeIn direction="right">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/img/salle-1.webp"
+              src="/img/laboratoire-poste.webp"
               alt=""
               aria-hidden="true"
               loading="lazy"

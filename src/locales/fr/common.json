@@ -362,7 +362,56 @@
       ],
       "precisionLabel": "UNE PRÉCISION SUR LE MOT « STADE »",
       "precisionBody": "Dans le Parcours [de facto], un « stade » désigne une famille d'objectifs thérapeutiques. Il ne représente pas la gravité d'une maladie et ne signifie pas que tous les patients doivent atteindre le stade suivant. À ne pas confondre avec les stades d'une classification parodontale, d'un cancer, ou une gradation de gravité.",
-      "metaDescription": "Le Parcours [de facto] : cinq stades, du diagnostic au maintien. Studio Dentaire De Facto, Ahuntsic, Montréal."
+      "metaDescription": "Le Parcours [de facto] : cinq stades, du diagnostic au maintien. Studio Dentaire De Facto, Ahuntsic, Montréal.",
+      "checkpointsLabel": "LES CHECKPOINTS",
+      "checkpointsTitle": "Quatre questions avant de passer à la suite",
+      "optionsLabel": "PRÉSENTATION DES OPTIONS",
+      "optionsTitle": "Plusieurs chemins peuvent être raisonnables",
+      "optionsNote": "Chaque option est chiffrée par écrit avant tout engagement, avec ses risques et ses alternatives — y compris ceux de ne rien entreprendre.",
+      "checkpoints": [
+        {
+          "q": "Avons-nous suffisamment compris la situation ?",
+          "d": "Diagnostics documentés · pronostic posé · objectifs connus"
+        },
+        {
+          "q": "Les maladies actives sont-elles contrôlées ?",
+          "d": "Douleur et infection contrôlées · réponse parodontale vérifiée"
+        },
+        {
+          "q": "Les fondations sont-elles fiables ?",
+          "d": "Dent restaurable · tissus stabilisés · entretien réalisable"
+        },
+        {
+          "q": "Prêts pour une transformation globale ?",
+          "d": "Stabilité acquise · plan validé · risques expliqués"
+        }
+      ],
+      "options": [
+        {
+          "code": "A",
+          "titre": "Sourire",
+          "note": "Recommandé ou global",
+          "d": "Répond à l'ensemble des diagnostics prioritaires."
+        },
+        {
+          "code": "B",
+          "titre": "Fonctionnel",
+          "note": "Alternatif ou localisé",
+          "d": "Traite les diagnostics selon des objectifs plus ciblés."
+        },
+        {
+          "code": "C",
+          "titre": "Stabilité",
+          "note": "Stabilisation ou compromis",
+          "d": "Traite les priorités et réduit les risques immédiats."
+        },
+        {
+          "code": "—",
+          "titre": "Statu quo",
+          "note": "Reporter ou ne rien entreprendre",
+          "d": "Toujours présenté, sans jugement, avec son calendrier de surveillance."
+        }
+      ]
     },
     "soinsSection": {
       "title": "Les soins",
@@ -402,14 +451,9 @@
         "Membre de l'Ordre des dentistes du Québec",
         "Laboratoire numérique intégré, réservé aux cas traités au studio"
       ],
-      "visiteLabel": "LA PREMIÈRE VISITE",
-      "etapes": [
-        "Accueil et historique de santé",
-        "Examen complet et radiographies",
-        "Empreintes numériques au besoin",
-        "Explication de votre portrait clinique",
-        "Plan de soins priorisé, remis par écrit"
-      ]
+      "portraitLabel": "BREF PORTRAIT",
+      "portraitBody1": "Né à Montréal, le Dr Ramdani a grandi dans Saint-Michel puis dans Ahuntsic. Il a poursuivi ses études en médecine dentaire à l'Université Laval, à Québec, avant de revenir exercer dans le quartier où il a grandi.",
+      "portraitBody2": "Il a fondé Studio Dentaire De Facto pour pratiquer une dentisterie où le diagnostic précède le geste : comprendre la bouche dans son ensemble, expliquer ce qui s'y observe, et présenter des options plutôt qu'un forfait."
     },
     "faqSection": {
       "label": "QUESTIONS FRÉQUENTES",
@@ -429,7 +473,7 @@
         },
         {
           "q": "Quelles sont les heures d'ouverture ?",
-          "a": "Du lundi au mercredi, de 9 h à 18 h."
+          "a": "Du lundi au mercredi, de 10 h à 18 h."
         },
         {
           "q": "Que faire en cas d'urgence dentaire ?",
@@ -481,7 +525,7 @@
       "titleLine2": "Ahuntsic, Montréal",
       "telephoneLabel": "TÉLÉPHONE",
       "heuresLabel": "HEURES",
-      "heuresValue": "Lun. – mer. · 9 h à 18 h",
+      "heuresValue": "Lun. – mer. · 10 h à 18 h",
       "courrielLabel": "COURRIEL",
       "courrielValue": "info@studiodefacto.ca",
       "transportLabel": "TRANSPORT",
@@ -1009,121 +1053,6 @@
     "pageSubtitle": "Pour une demande d'urgence, utilisez le formulaire dédié sur la page Rendez-vous. Une page autonome est en préparation.",
     "metaDescription": "Pour une urgence dentaire à Ahuntsic — douleur, traumatisme, enflure, dent cassée. Utilisez le formulaire dédié sur la page Rendez-vous ou appelez la clinique."
   },
-  "appointmentForm": {
-    "ariaLabel": "Formulaire de demande de rendez-vous",
-    "introPrimary": "Vous n'avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.",
-    "introSecondary": "Une membre de l'équipe vous contactera pour confirmer les prochaines étapes. Pour une urgence sévère, utilisez plutôt le formulaire d'urgence dédié.",
-    "section1Title": "Identification",
-    "section2Title": "Coordonnées",
-    "section3Title": "Type de demande",
-    "section4Title": "Disponibilités",
-    "section5Title": "Mode de contact préféré",
-    "section6Title": "Profil médical (optionnel)",
-    "section7Title": "Consentements",
-    "firstName": "Prénom",
-    "lastName": "Nom",
-    "email": "Courriel",
-    "preferredLanguage": "Langue préférée",
-    "preferredLanguageOther": "Veuillez préciser la langue",
-    "typeDemande": "Type de demande principale",
-    "typeDemandeOther": "Veuillez préciser",
-    "motifsLabel": "Motifs secondaires (optionnel)",
-    "messageLabel": "Message ou précision (optionnel)",
-    "joursLabel": "Journée(s) préférée(s)",
-    "momentsLabel": "Moment(s) préféré(s)",
-    "medicalIntro": "Ces informations sont optionnelles et peuvent être remplies au moment du rendez-vous. Si vous préférez les transmettre à l'avance, cliquez pour développer cette section.",
-    "medicalShow": "Compléter le questionnaire médical maintenant",
-    "medicalHide": "Masquer le questionnaire médical",
-    "medicalQuestion": "Avez-vous déjà reçu un diagnostic ou êtes-vous suivi pour l'une des conditions suivantes ? (Cochez toutes celles qui s'appliquent)",
-    "conditionAllergies": "Allergies connues",
-    "conditionAutre": "Autre condition médicale",
-    "hasAllergiesCheckbox": "J'ai des allergies à préciser",
-    "allergiesDetailsLabel": "Allergies et réactions observées",
-    "hasOtherConditionCheckbox": "J'ai une autre condition médicale à préciser",
-    "otherConditionDetailsLabel": "Veuillez préciser",
-    "consentsIntro": "Chaque consentement est cochable individuellement. Les communications informatives (bloc 05) sont optionnelles et ne sont pas pré-cochées.",
-    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
-    "submitting": "Envoi en cours…",
-    "submit": "Envoyer ma demande",
-    "typesDemande": {
-      "premiere_visite": "Première visite / examen complet",
-      "nettoyage": "Nettoyage et suivi",
-      "consultation_ciblee": "Consultation ciblée",
-      "urgence": "Urgence dentaire",
-      "douleur": "Douleur",
-      "dent_cassee": "Dent cassée ou restauration fracturée",
-      "esthetique": "Esthétique",
-      "orthodontie": "Orthodontie / aligneurs",
-      "implant_couronne": "Implant / couronne / prothèse",
-      "laboratoire": "Laboratoire ou demande professionnelle",
-      "autre": "Autre"
-    },
-    "motifsSecondaires": {
-      "douleur": "Douleur",
-      "sensibilite": "Sensibilité",
-      "saignement_gencives": "Saignement des gencives",
-      "mauvaise_haleine": "Mauvaise haleine",
-      "dent_mobile": "Dent mobile",
-      "fracture": "Fracture",
-      "usure": "Usure dentaire",
-      "serrement_grincement": "Serrement ou grincement",
-      "esthetique": "Préoccupation esthétique",
-      "deuxieme_avis": "Deuxième avis",
-      "suivi_traitement": "Suivi de traitement existant",
-      "autre": "Autre"
-    },
-    "langues": {
-      "francais": "Français",
-      "anglais": "Anglais",
-      "francais_anglais": "Français ou anglais",
-      "autre": "Autre"
-    },
-    "jours": {
-      "lundi": "Lundi",
-      "mardi": "Mardi",
-      "mercredi": "Mercredi",
-      "jeudi": "Jeudi",
-      "vendredi": "Vendredi",
-      "asap": "Dès que possible",
-      "flexible": "Je suis flexible"
-    },
-    "moments": {
-      "matin": "Matin (9 h – 12 h)",
-      "midi": "Midi (12 h – 14 h)",
-      "apres_midi": "Après-midi (14 h – 18 h)",
-      "flexible": "Flexible"
-    },
-    "contactModes": {
-      "telephone": "Téléphone",
-      "courriel": "Courriel",
-      "sms": "SMS"
-    },
-    "medicalConditions": {
-      "hypertension": "Hypertension artérielle",
-      "cardiaque": "Maladie cardiaque",
-      "souffle_valvulaire": "Souffle cardiaque ou problème valvulaire",
-      "endocardite": "Antécédent d'endocardite",
-      "diabete": "Diabète",
-      "respiratoire": "Asthme ou maladie respiratoire",
-      "apnee_sommeil": "Apnée du sommeil",
-      "foie": "Maladie du foie",
-      "renale": "Maladie rénale",
-      "coagulation": "Trouble de coagulation ou saignements prolongés",
-      "anticoagulants": "Anticoagulants ou antiplaquettaires",
-      "epilepsie": "Épilepsie ou convulsions",
-      "neurologique": "Trouble neurologique",
-      "cancer": "Cancer actuel ou antécédent de cancer",
-      "radiotherapie": "Radiothérapie à la tête ou au cou",
-      "chimiotherapie": "Chimiothérapie ou immunothérapie",
-      "immunosuppression": "Immunosuppression",
-      "osteoporose": "Ostéoporose",
-      "bisphosphonates": "Prise actuelle ou passée de bisphosphonates / anti-résorptifs",
-      "thyroide": "Trouble thyroïdien",
-      "reflux": "Reflux gastrique important",
-      "anxiete": "Anxiété importante liée aux soins dentaires",
-      "grossesse": "Grossesse ou allaitement"
-    }
-  },
   "contact": {
     "label": "Contact",
     "title": "Nous joindre",
@@ -1136,11 +1065,11 @@
     "heures": "Heures d'ouverture",
     "horaireLabel": "Horaire",
     "horaireDays": "Lundi au mercredi",
-    "horaireHours": "9 h à 18 h",
+    "horaireHours": "10 h à 18 h",
     "phonePlaceholder": "514 863 7805",
     "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@studiodefacto.ca",
-    "hoursPlaceholder": "Lun. – mer. · 9 h à 18 h",
+    "hoursPlaceholder": "Lun. – mer. · 10 h à 18 h",
     "coordonneesHeading": "Coordonnées",
     "nousEcrireHeading": "Nous écrire",
     "demanderRdv": "Demander un rendez-vous",
@@ -1162,7 +1091,7 @@
       "formulaire": "Formulaire d'urgence"
     },
     "mapTitle": "Carte — Studio Dentaire De Facto",
-    "metaDescription": "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au mercredi, 9 h à 18 h.",
+    "metaDescription": "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au mercredi, 10 h à 18 h.",
     "phoneDisplay": "514 863 7805"
   },
   "consentGroup": {
@@ -1311,7 +1240,10 @@
     "ctaTitle": "Une question administrative ?",
     "ctaBody": "L'équipe peut vous accompagner dans la coordination avec votre assureur ou clarifier les modalités d'un traitement.",
     "ctaPrimary": "Poser une question administrative",
-    "ctaSecondary": "Demander un rendez-vous"
+    "ctaSecondary": "Demander un rendez-vous",
+    "financementLabel": "Financement",
+    "financementTitle": "Financement par un tiers",
+    "financementBody": "Des solutions de financement offertes par des tiers permettent d'étaler le coût de certains traitements. Les modalités et l'admissibilité se discutent avec notre équipe."
   },
   "confidentialite": {
     "label": "Conformité",
@@ -1633,7 +1565,7 @@
     "laboratoire": "Laboratoire",
     "rendezVous": "Prendre rendez-vous",
     "horaires": "Heures d'ouverture",
-    "horairesPlaceholder": "Lun. – mer. · 9 h à 18 h",
+    "horairesPlaceholder": "Lun. – mer. · 10 h à 18 h",
     "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste."
   },
   "professionnelsPage": {
@@ -2095,7 +2027,7 @@
     "s4": {
       "libelle": "DISPONIBILITÉS",
       "titre": "Quand êtes-vous disponible ?",
-      "sousTitre": "Le studio reçoit du lundi au mercredi, de 9 h à 18 h.",
+      "sousTitre": "Le studio reçoit du lundi au mercredi, de 10 h à 18 h.",
       "indice": "Choisissez au moins un jour et un moment.",
       "joursLibelle": "JOURS",
       "momentsLibelle": "MOMENTS",
@@ -2118,7 +2050,7 @@
         {
           "code": "matin",
           "label": "Matin",
-          "note": "9 h – 12 h"
+          "note": "10 h – 12 h"
         },
         {
           "code": "apres_midi",

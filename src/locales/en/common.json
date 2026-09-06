@@ -362,7 +362,56 @@
       ],
       "precisionLabel": "A NOTE ON THE WORD STAGE",
       "precisionBody": "In the [de facto] Pathway, a stage designates a family of therapeutic objectives. It does not represent the severity of a disease and does not mean that every patient must reach the next stage. Not to be confused with the stages of a periodontal classification, of a cancer, or with a severity grading.",
-      "metaDescription": "The [de facto] Pathway: five stages, from diagnosis to maintenance. De Facto Dental Studio, Ahuntsic, Montreal."
+      "metaDescription": "The [de facto] Pathway: five stages, from diagnosis to maintenance. De Facto Dental Studio, Ahuntsic, Montreal.",
+      "checkpointsLabel": "THE CHECKPOINTS",
+      "checkpointsTitle": "Four questions before moving on",
+      "optionsLabel": "PRESENTING THE OPTIONS",
+      "optionsTitle": "Several paths can be reasonable",
+      "optionsNote": "Every option is quoted in writing before any commitment, with its risks and its alternatives — including those of doing nothing.",
+      "checkpoints": [
+        {
+          "q": "Have we understood the situation well enough?",
+          "d": "Diagnoses documented · prognosis established · goals known"
+        },
+        {
+          "q": "Are active diseases under control?",
+          "d": "Pain and infection controlled · periodontal response verified"
+        },
+        {
+          "q": "Are the foundations reliable?",
+          "d": "Tooth restorable · tissues stabilised · upkeep achievable"
+        },
+        {
+          "q": "Ready for a global transformation?",
+          "d": "Stability achieved · plan approved · risks explained"
+        }
+      ],
+      "options": [
+        {
+          "code": "A",
+          "titre": "Smile",
+          "note": "Recommended or global",
+          "d": "Addresses all the priority diagnoses."
+        },
+        {
+          "code": "B",
+          "titre": "Functional",
+          "note": "Alternative or localised",
+          "d": "Treats the diagnoses against more targeted goals."
+        },
+        {
+          "code": "C",
+          "titre": "Stability",
+          "note": "Stabilisation or compromise",
+          "d": "Treats the priorities and reduces immediate risks."
+        },
+        {
+          "code": "—",
+          "titre": "Status quo",
+          "note": "Postpone or do nothing",
+          "d": "Always presented, without judgement, with its monitoring schedule."
+        }
+      ]
     },
     "soinsSection": {
       "title": "Care",
@@ -402,14 +451,9 @@
         "Member of the Ordre des dentistes du Québec",
         "Integrated digital laboratory, reserved for cases treated at the studio"
       ],
-      "visiteLabel": "THE FIRST VISIT",
-      "etapes": [
-        "Welcome and health history",
-        "Complete examination and radiographs",
-        "Digital impressions if needed",
-        "Explanation of your clinical picture",
-        "Prioritised care plan, provided in writing"
-      ]
+      "portraitLabel": "SHORT PORTRAIT",
+      "portraitBody1": "Born in Montreal, Dr Ramdani grew up in Saint-Michel and then in Ahuntsic. He studied dental medicine at Université Laval in Quebec City, before returning to practise in the neighbourhood where he grew up.",
+      "portraitBody2": "He founded De Facto Dental Studio to practise dentistry where diagnosis comes before intervention: understanding the mouth as a whole, explaining what is observed, and presenting options rather than a package."
     },
     "faqSection": {
       "label": "FREQUENTLY ASKED QUESTIONS",
@@ -429,7 +473,7 @@
         },
         {
           "q": "What are the opening hours?",
-          "a": "Monday to Wednesday, from 9 a.m. to 6 p.m."
+          "a": "Monday to Wednesday, from 10 a.m. to 6 p.m."
         },
         {
           "q": "What should I do in a dental emergency?",
@@ -481,7 +525,7 @@
       "titleLine2": "Ahuntsic, Montreal",
       "telephoneLabel": "PHONE",
       "heuresLabel": "HOURS",
-      "heuresValue": "Mon. – Wed. · 9 a.m. to 6 p.m.",
+      "heuresValue": "Mon. – Wed. · 10 a.m. to 6 p.m.",
       "courrielLabel": "EMAIL",
       "courrielValue": "info@studiodefacto.ca",
       "transportLabel": "TRANSIT",
@@ -1009,121 +1053,6 @@
     "pageSubtitle": "For an emergency request, use the dedicated form on the Appointment page. A standalone page is being prepared.",
     "metaDescription": "For a dental emergency in Ahuntsic — pain, trauma, swelling, broken tooth. Use the dedicated form on the Appointment page or call the clinic."
   },
-  "appointmentForm": {
-    "ariaLabel": "Appointment request form",
-    "introPrimary": "You don't need to know everything — simply describe your situation. This form helps us prepare for your visit.",
-    "introSecondary": "A member of our team will contact you to confirm the next steps. For a severe emergency, please use the dedicated emergency form instead.",
-    "section1Title": "Identification",
-    "section2Title": "Contact information",
-    "section3Title": "Reason for the appointment",
-    "section4Title": "Availability",
-    "section5Title": "Preferred contact method",
-    "section6Title": "Medical profile (optional)",
-    "section7Title": "Consents",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "preferredLanguage": "Preferred language",
-    "preferredLanguageOther": "Please specify the language",
-    "typeDemande": "Primary reason",
-    "typeDemandeOther": "Please specify",
-    "motifsLabel": "Additional reasons (optional)",
-    "messageLabel": "Message or details (optional)",
-    "joursLabel": "Preferred day(s)",
-    "momentsLabel": "Preferred time(s)",
-    "medicalIntro": "This information is optional and may also be completed at your appointment. If you prefer to share it in advance, click to expand this section.",
-    "medicalShow": "Complete the medical questionnaire now",
-    "medicalHide": "Hide the medical questionnaire",
-    "medicalQuestion": "Have you been diagnosed with or are you being followed for any of the following conditions? (Check all that apply)",
-    "conditionAllergies": "Known allergies",
-    "conditionAutre": "Other medical condition",
-    "hasAllergiesCheckbox": "I have allergies to specify",
-    "allergiesDetailsLabel": "Allergies and observed reactions",
-    "hasOtherConditionCheckbox": "I have another medical condition to specify",
-    "otherConditionDetailsLabel": "Please specify",
-    "consentsIntro": "Each consent is individually selectable. Informational communications (block 05) are optional and not pre-checked.",
-    "errorGeneric": "Something went wrong. Please try again or reach us by phone.",
-    "submitting": "Sending…",
-    "submit": "Send request",
-    "typesDemande": {
-      "premiere_visite": "First visit / complete examination",
-      "nettoyage": "Cleaning and follow-up",
-      "consultation_ciblee": "Targeted consultation",
-      "urgence": "Dental emergency",
-      "douleur": "Pain",
-      "dent_cassee": "Broken tooth or fractured restoration",
-      "esthetique": "Aesthetics",
-      "orthodontie": "Orthodontics / aligners",
-      "implant_couronne": "Implant / crown / prosthesis",
-      "laboratoire": "Laboratory or professional inquiry",
-      "autre": "Other"
-    },
-    "motifsSecondaires": {
-      "douleur": "Pain",
-      "sensibilite": "Sensitivity",
-      "saignement_gencives": "Bleeding gums",
-      "mauvaise_haleine": "Bad breath",
-      "dent_mobile": "Loose tooth",
-      "fracture": "Fracture",
-      "usure": "Tooth wear",
-      "serrement_grincement": "Clenching or grinding",
-      "esthetique": "Aesthetic concern",
-      "deuxieme_avis": "Second opinion",
-      "suivi_traitement": "Follow-up on existing treatment",
-      "autre": "Other"
-    },
-    "langues": {
-      "francais": "French",
-      "anglais": "English",
-      "francais_anglais": "French or English",
-      "autre": "Other"
-    },
-    "jours": {
-      "lundi": "Monday",
-      "mardi": "Tuesday",
-      "mercredi": "Wednesday",
-      "jeudi": "Thursday",
-      "vendredi": "Friday",
-      "asap": "As soon as possible",
-      "flexible": "I'm flexible"
-    },
-    "moments": {
-      "matin": "Morning (9 a.m. – 12 p.m.)",
-      "midi": "Midday (12 p.m. – 2 p.m.)",
-      "apres_midi": "Afternoon (2 p.m. – 6 p.m.)",
-      "flexible": "Flexible"
-    },
-    "contactModes": {
-      "telephone": "Phone",
-      "courriel": "Email",
-      "sms": "SMS"
-    },
-    "medicalConditions": {
-      "hypertension": "High blood pressure",
-      "cardiaque": "Cardiac condition",
-      "souffle_valvulaire": "Heart murmur or valvular problem",
-      "endocardite": "History of endocarditis",
-      "diabete": "Diabetes",
-      "respiratoire": "Asthma or respiratory disease",
-      "apnee_sommeil": "Sleep apnea",
-      "foie": "Liver disease",
-      "renale": "Kidney disease",
-      "coagulation": "Coagulation disorder or prolonged bleeding",
-      "anticoagulants": "Anticoagulants or antiplatelets",
-      "epilepsie": "Epilepsy or seizures",
-      "neurologique": "Neurological disorder",
-      "cancer": "Current or past cancer",
-      "radiotherapie": "Radiation therapy to the head or neck",
-      "chimiotherapie": "Chemotherapy or immunotherapy",
-      "immunosuppression": "Immunosuppression",
-      "osteoporose": "Osteoporosis",
-      "bisphosphonates": "Current or past use of bisphosphonates / anti-resorptives",
-      "thyroide": "Thyroid disorder",
-      "reflux": "Significant gastric reflux",
-      "anxiete": "Significant anxiety related to dental care",
-      "grossesse": "Pregnancy or breastfeeding"
-    }
-  },
   "contact": {
     "label": "Contact",
     "title": "Get in touch",
@@ -1136,11 +1065,11 @@
     "heures": "Hours",
     "horaireLabel": "Hours",
     "horaireDays": "Monday to Wednesday",
-    "horaireHours": "9 a.m. to 6 p.m.",
+    "horaireHours": "10 a.m. to 6 p.m.",
     "phonePlaceholder": "514 863 7805",
     "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@studiodefacto.ca",
-    "hoursPlaceholder": "Mon. – Wed. · 9 a.m. to 6 p.m.",
+    "hoursPlaceholder": "Mon. – Wed. · 10 a.m. to 6 p.m.",
     "coordonneesHeading": "Contact information",
     "nousEcrireHeading": "Write to us",
     "demanderRdv": "Book an appointment",
@@ -1162,7 +1091,7 @@
       "formulaire": "Emergency form"
     },
     "mapTitle": "Map — De Facto Dental Studio",
-    "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Wednesday, 9 a.m. to 6 p.m.",
+    "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Wednesday, 10 a.m. to 6 p.m.",
     "phoneDisplay": "514 863 7805"
   },
   "consentGroup": {
@@ -1311,7 +1240,10 @@
     "ctaTitle": "An administrative question?",
     "ctaBody": "Our team can help you coordinate with your insurer or clarify the terms of a treatment.",
     "ctaPrimary": "Ask an administrative question",
-    "ctaSecondary": "Request an appointment"
+    "ctaSecondary": "Request an appointment",
+    "financementLabel": "Financing",
+    "financementTitle": "Third-party financing",
+    "financementBody": "Financing solutions offered by third parties make it possible to spread the cost of certain treatments. Terms and eligibility are discussed with our team."
   },
   "confidentialite": {
     "label": "Compliance",
@@ -1633,7 +1565,7 @@
     "laboratoire": "Laboratory",
     "rendezVous": "Book an appointment",
     "horaires": "Hours",
-    "horairesPlaceholder": "Mon. – Wed. · 9 a.m. to 6 p.m.",
+    "horairesPlaceholder": "Mon. – Wed. · 10 a.m. to 6 p.m.",
     "mention": "Information on this site does not replace a clinical evaluation by a dentist."
   },
   "professionnelsPage": {
@@ -2095,7 +2027,7 @@
     "s4": {
       "libelle": "AVAILABILITY",
       "titre": "When are you available?",
-      "sousTitre": "The studio sees patients Monday to Wednesday, 9 a.m. to 6 p.m.",
+      "sousTitre": "The studio sees patients Monday to Wednesday, 10 a.m. to 6 p.m.",
       "indice": "Choose at least one day and one time of day.",
       "joursLibelle": "DAYS",
       "momentsLibelle": "TIME OF DAY",
@@ -2118,7 +2050,7 @@
         {
           "code": "matin",
           "label": "Morning",
-          "note": "9 a.m. – 12 p.m."
+          "note": "10 a.m. – 12 p.m."
         },
         {
           "code": "apres_midi",

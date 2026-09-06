@@ -1,64 +1,25 @@
-"use client"
-import { useEffect, useRef } from "react"
-import "leaflet/dist/leaflet.css"
-
-// Coordonnées exactes du studio — 728 rue Fleury Est, Montréal (OpenStreetMap).
-const STUDIO: [number, number] = [45.5560771, -73.6600516]
-
 /**
- * Carte du studio.
+ * Carte du studio — Google Maps.
  *
- * Montée côté client uniquement : Leaflet touche `window` à l'import.
- * Le rendu sombre vient d'un filtre appliqué au seul `.leaflet-tile-pane`,
- * pour que le marqueur rose reste hors du filtre (handoff §5).
+ * Embarquée par iframe sans clé d'API : la forme `?q=…&output=embed` est celle
+ * que Google expose publiquement. `loading="lazy"` évite de charger la carte
+ * tant qu'elle n'approche pas du viewport, ce qui compte sur l'accueil où elle
+ * se trouve tout en bas.
  *
- * L'attribution OpenStreetMap est une exigence de licence : ne jamais la retirer.
+ * L'adresse est en dur plutôt qu'issue des traductions : c'est la même dans les
+ * deux langues, et une coquille de traduction enverrait les patients ailleurs.
  */
-export function StudioMap({ label = "728 FLEURY E." }: { label?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
+const ADRESSE = "728 rue Fleury Est, Montréal, QC"
+const SRC = `https://www.google.com/maps?q=${encodeURIComponent(ADRESSE)}&output=embed`
 
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    let map: import("leaflet").Map | undefined
-    let cancelled = false
-
-    import("leaflet").then((L) => {
-      if (cancelled || !ref.current) return
-      map = L.map(el, {
-        center: STUDIO,
-        zoom: 16,
-        zoomControl: false,
-        scrollWheelZoom: false,
-        attributionControl: true,
-      })
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-        maxZoom: 19,
-      }).addTo(map)
-      L.marker(STUDIO, {
-        keyboard: false,
-        icon: L.divIcon({
-          className: "",
-          iconSize: [80, 46],
-          iconAnchor: [40, 46],
-          html: `<div class="df-pin"><b>${label}</b><i></i></div>`,
-        }),
-      }).addTo(map)
-    })
-
-    return () => {
-      cancelled = true
-      map?.remove()
-    }
-  }, [label])
-
+export function StudioMap({ title, className = "w-full h-full min-h-[380px]" }: { title: string; className?: string }) {
   return (
-    <div
-      ref={ref}
-      className="w-full h-full min-h-[380px] bg-surface-alt"
-      role="img"
-      aria-label="Carte — 728 rue Fleury Est, Ahuntsic, Montréal"
+    <iframe
+      src={SRC}
+      className={`${className} border-0`}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      title={title}
     />
   )
 }

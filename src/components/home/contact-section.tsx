@@ -63,7 +63,7 @@ export function ContactSection({ lang }: { lang: Locale }) {
           </FadeIn>
           <FadeIn direction="right">
             <div className="h-full min-h-[380px] border border-border">
-              <StudioMap />
+              <StudioMap title={t("contact.mapTitle")} />
             </div>
           </FadeIn>
         </div>

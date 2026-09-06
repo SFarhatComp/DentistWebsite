@@ -95,7 +95,7 @@ const MAP: Record<string, Record<string, { fr: string; en: string }>> = {
     mercredi: { fr: "Mercredi", en: "Wednesday" },
   },
   moments: {
-    matin: { fr: "Matin (9 h – 12 h)", en: "Morning (9 a.m. – 12 p.m.)" },
+    matin: { fr: "Matin (10 h – 12 h)", en: "Morning (10 a.m. – 12 p.m.)" },
     apres_midi: { fr: "Après-midi (12 h – 15 h)", en: "Afternoon (12 p.m. – 3 p.m.)" },
     fin_journee: { fr: "Fin de journée (15 h – 18 h)", en: "End of day (3 p.m. – 6 p.m.)" },
   },

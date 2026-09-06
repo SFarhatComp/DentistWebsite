@@ -5,16 +5,15 @@ import { getTranslationList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
 /**
- * Praticien + Première visite, deux colonnes séparées par un filet vertical.
+ * Le praticien : carte d'identité à gauche, bref portrait à droite.
  *
  * Le portrait du Dr Ramdani n'a pas encore été fourni : on garde un
- * `PlaceholderImage` jusque-là (handoff §4). Pour le remplacer, déposer la photo
- * dans `public/img/` et substituer le placeholder par une balise `img`.
+ * `PlaceholderImage` jusque-là. Pour le remplacer, déposer la photo dans
+ * `public/img/` et substituer le placeholder par une balise `img`.
  */
-export function PraticienVisiteSection({ lang }: { lang: Locale }) {
+export function PraticienSection({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
   const credentials = getTranslationList(lang, "home.praticienVisite.credentials")
-  const etapes = getTranslationList(lang, "home.praticienVisite.etapes")
 
   return (
     <section className="border-b border-border px-6 py-[76px] md:px-12">
@@ -43,21 +42,14 @@ export function PraticienVisiteSection({ lang }: { lang: Locale }) {
 
           <FadeIn direction="right" className="md:border-l md:border-border md:pl-14">
             <div className="text-[11px] tracking-[0.18em] text-accent">
-              {t("home.praticienVisite.visiteLabel")}
+              {t("home.praticienVisite.portraitLabel")}
             </div>
-            <ol className="mt-6">
-              {etapes.map((e, i) => (
-                <li
-                  key={e}
-                  className="grid grid-cols-[40px_1fr] gap-4 border-b border-border py-5 last:border-b-0"
-                >
-                  <span className="font-display text-lg tabular-nums text-accent" aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-[15px] leading-[1.6]">{e}</span>
-                </li>
-              ))}
-            </ol>
+            <p className="mt-6 text-[15px] leading-[1.7] text-muted-foreground">
+              {t("home.praticienVisite.portraitBody1")}
+            </p>
+            <p className="mt-5 text-[15px] leading-[1.7] text-muted-foreground">
+              {t("home.praticienVisite.portraitBody2")}
+            </p>
           </FadeIn>
         </div>
       </Container>

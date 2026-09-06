@@ -96,13 +96,21 @@ export default async function AssurancesPage(props: { params: Promise<{ lang: st
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={7} label={t("assurances.preauthLabel")} title={t("assurances.preauthTitle")}>
+              <NumberedSection number={7} label={t("assurances.financementLabel")} title={t("assurances.financementTitle")}>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  {t("assurances.financementBody")}
+                </p>
+              </NumberedSection>
+            </FadeIn>
+
+            <FadeIn>
+              <NumberedSection number={8} label={t("assurances.preauthLabel")} title={t("assurances.preauthTitle")}>
                 <BulletList items={preauth} />
               </NumberedSection>
             </FadeIn>
 
             <FadeIn>
-              <NumberedSection number={8} label={t("assurances.politiqueRdvLabel")} title={t("assurances.politiqueRdvTitle")}>
+              <NumberedSection number={9} label={t("assurances.politiqueRdvLabel")} title={t("assurances.politiqueRdvTitle")}>
                 <BulletList items={politiqueRdv} />
                 <p className="mt-6 text-base text-muted-foreground leading-relaxed italic">
                   {t("assurances.politiqueRdvNote")}

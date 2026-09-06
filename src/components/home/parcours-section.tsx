@@ -1,7 +1,7 @@
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
-import { getTranslationList, getTranslations } from "@/lib/i18n"
+import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
 /** Flèche de liaison entre deux niveaux du diagramme. Purement décorative. */
@@ -58,9 +58,27 @@ function Stade({
   )
 }
 
-export function ParcoursSection({ lang }: { lang: Locale }) {
+interface Checkpoint {
+  q: string
+  d: string
+}
+interface OptionSoin {
+  code: string
+  titre: string
+  note: string
+  d: string
+}
+
+/**
+ * @param detaille Ajoute les checkpoints et la présentation des options, tirés
+ *   du document *Parcours [de facto]*. Réservé à la page dédiée : sur l'accueil,
+ *   ces deux blocs alourdiraient une page déjà longue.
+ */
+export function ParcoursSection({ lang, detaille = false }: { lang: Locale; detaille?: boolean }) {
   const t = getTranslations(lang)
   const points = getTranslationList(lang, "home.parcoursSection.pasLigneDroitePoints")
+  const checkpoints = getTranslationObjectList<Checkpoint>(lang, "home.parcoursSection.checkpoints")
+  const options = getTranslationObjectList<OptionSoin>(lang, "home.parcoursSection.options")
 
   return (
     <section className="border-b border-border px-6 py-[76px] md:px-12">
@@ -162,6 +180,58 @@ export function ParcoursSection({ lang }: { lang: Locale }) {
             </div>
           </FadeIn>
         </div>
+
+        {detaille && (
+          <>
+            <FadeIn>
+              <div className="mt-16 border-t border-border pt-12">
+                <SectionLabel>{t("home.parcoursSection.checkpointsLabel")}</SectionLabel>
+                <h3 className="font-display text-2xl leading-[1.15] md:text-3xl">
+                  {t("home.parcoursSection.checkpointsTitle")}
+                </h3>
+                <ol className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+                  {checkpoints.map((c, i) => (
+                    <li key={c.q} className="grid grid-cols-[32px_1fr] gap-3">
+                      <span className="font-display text-lg tabular-nums text-accent" aria-hidden="true">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span>
+                        <span className="block text-[15px] leading-[1.4]">{c.q}</span>
+                        <span className="mt-1 block text-sm text-muted-foreground">{c.d}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </FadeIn>
+
+            <FadeIn>
+              <div className="mt-14 border-t border-border pt-12">
+                <SectionLabel>{t("home.parcoursSection.optionsLabel")}</SectionLabel>
+                <h3 className="font-display text-2xl leading-[1.15] md:text-3xl">
+                  {t("home.parcoursSection.optionsTitle")}
+                </h3>
+                <div className="mt-8 grid gap-[1px] bg-border sm:grid-cols-2 lg:grid-cols-4">
+                  {options.map((o) => (
+                    <div key={o.titre} className="bg-background px-5 py-6">
+                      <div className="font-display text-lg text-accent" aria-hidden="true">
+                        {o.code}
+                      </div>
+                      <div className="mt-2 font-display text-lg leading-[1.2]">{o.titre}</div>
+                      <div className="mt-1 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                        {o.note}
+                      </div>
+                      <p className="mt-3 text-sm leading-[1.55] text-muted-foreground">{o.d}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 max-w-[70ch] text-sm leading-[1.6] text-muted-foreground">
+                  {t("home.parcoursSection.optionsNote")}
+                </p>
+              </div>
+            </FadeIn>
+          </>
+        )}
       </Container>
     </section>
   )

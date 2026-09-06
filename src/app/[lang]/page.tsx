@@ -6,7 +6,7 @@ import { StudioSection } from "@/components/home/studio-section"
 import { LaboratoireSection } from "@/components/home/laboratoire-section"
 import { ParcoursSection } from "@/components/home/parcours-section"
 import { SoinsSection } from "@/components/home/soins-section"
-import { PraticienVisiteSection } from "@/components/home/praticien-visite-section"
+import { PraticienSection } from "@/components/home/praticien-section"
 import { FaqSection } from "@/components/home/faq-section"
 import { ContactSection } from "@/components/home/contact-section"
 import { getTranslations } from "@/lib/i18n"
@@ -34,7 +34,7 @@ export default async function HomePage(props: { params: Promise<{ lang: string }
       <LaboratoireSection lang={lang} />
       <ParcoursSection lang={lang} />
       <SoinsSection lang={lang} />
-      <PraticienVisiteSection lang={lang} />
+      <PraticienSection lang={lang} />
       <FaqSection lang={lang} />
       <ContactSection lang={lang} />
     </>

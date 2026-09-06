@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
 import { PageHero } from "@/components/shared/page-hero"
 import { Container } from "@/components/layout/container"
+import { StudioMap } from "@/components/shared/studio-map"
 import { ContactForm } from "@/components/forms/contact-form"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
@@ -168,13 +169,7 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
 
       {/* Carte */}
       <section>
-        <iframe
-          src="https://www.google.com/maps?q=728+rue+Fleury+Est,+Montréal,+QC&output=embed"
-          className="w-full h-[500px] border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title={t("contact.mapTitle")}
-        />
+        <StudioMap title={t("contact.mapTitle")} className="w-full h-[500px]" />
       </section>
     </>
   )
