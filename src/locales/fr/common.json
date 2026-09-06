@@ -1009,49 +1009,6 @@
     "pageSubtitle": "Pour une demande d'urgence, utilisez le formulaire dédié sur la page Rendez-vous. Une page autonome est en préparation.",
     "metaDescription": "Pour une urgence dentaire à Ahuntsic — douleur, traumatisme, enflure, dent cassée. Utilisez le formulaire dédié sur la page Rendez-vous ou appelez la clinique."
   },
-  "emergencyForm": {
-    "medicalWarningStrong": "Avertissement médical.",
-    "medicalWarning": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, ou un traumatisme majeur, rendez-vous immédiatement à l'urgence de l'hôpital le plus proche.",
-    "firstName": "Prénom",
-    "lastName": "Nom",
-    "email": "Courriel",
-    "dob": "Date de naissance",
-    "typesLabel": "Type d'urgence (sélectionnez tout ce qui s'applique) *",
-    "types": {
-      "douleur": "Douleur intense",
-      "enflure": "Enflure",
-      "abces": "Abcès",
-      "fracture": "Dent cassée",
-      "trauma": "Traumatisme",
-      "saignement": "Saignement",
-      "couronne": "Perte d'une couronne",
-      "restauration": "Perte d'une restauration",
-      "infection": "Infection suspectée",
-      "autre": "Autre"
-    },
-    "symptomsLabel": "Symptômes",
-    "symptoms": {
-      "sym_swelling": "Avez-vous de l'enflure ?",
-      "sym_fever": "Avez-vous de la fièvre ?",
-      "sym_swallow": "Avez-vous de la difficulté à avaler ?",
-      "sym_breathe": "Avez-vous de la difficulté à respirer ?",
-      "sym_night": "La douleur vous réveille-t-elle la nuit ?"
-    },
-    "yes": "Oui",
-    "no": "Non",
-    "symptomDuration": "Depuis combien de temps ?",
-    "photoLabel": "Photo (optionnel)",
-    "photoHelp": "JPG, PNG ou HEIC. Maximum 10 MB.",
-    "consentsLabel": "Consentements",
-    "consentEmergency": "Je comprends que pour une urgence médicale (difficulté à respirer, enflure importante, fièvre élevée, traumatisme sévère), je dois contacter les services d'urgence ou me présenter à l'hôpital.",
-    "consentContact": "J'autorise Studio Dentaire De Facto à me contacter rapidement concernant cette demande.",
-    "consentPrivacyPrefix": "J'ai pris connaissance de la ",
-    "consentPrivacyLink": "politique de confidentialité",
-    "consentPrivacySuffix": ".",
-    "error": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
-    "submitting": "Envoi en cours…",
-    "submit": "Envoyer ma demande d'urgence"
-  },
   "appointmentForm": {
     "ariaLabel": "Formulaire de demande de rendez-vous",
     "introPrimary": "Vous n'avez pas besoin de tout savoir : décrivez simplement votre situation. Ce formulaire nous aide à préparer votre visite.",
@@ -1225,10 +1182,6 @@
     "block5Title": "Communications informatives (optionnel)",
     "block5Description": "Cochez uniquement si vous souhaitez recevoir nos communications. Cette case n'est pas pré-cochée.",
     "consent_communications": "J'accepte de recevoir des communications informatives de la clinique."
-  },
-  "medicalEmergencyNotice": {
-    "body": "Si vous présentez une difficulté à respirer, une enflure importante du visage ou du cou, de la fièvre importante, un traumatisme sévère ou des signes généraux inquiétants, contactez les services d'urgence ou présentez-vous à l'hôpital.",
-    "callButton": "Appeler la clinique"
   },
   "fields": {
     "phoneLabel": "Téléphone",

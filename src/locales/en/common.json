@@ -1009,49 +1009,6 @@
     "pageSubtitle": "For an emergency request, use the dedicated form on the Appointment page. A standalone page is being prepared.",
     "metaDescription": "For a dental emergency in Ahuntsic — pain, trauma, swelling, broken tooth. Use the dedicated form on the Appointment page or call the clinic."
   },
-  "emergencyForm": {
-    "medicalWarningStrong": "Medical warning.",
-    "medicalWarning": "If you have significant swelling, fever, difficulty breathing or swallowing, or major trauma, go immediately to the emergency department of the nearest hospital.",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "dob": "Date of birth",
-    "typesLabel": "Type of emergency (select all that apply) *",
-    "types": {
-      "douleur": "Severe pain",
-      "enflure": "Swelling",
-      "abces": "Abscess",
-      "fracture": "Broken tooth",
-      "trauma": "Trauma",
-      "saignement": "Bleeding",
-      "couronne": "Lost crown",
-      "restauration": "Lost restoration",
-      "infection": "Suspected infection",
-      "autre": "Other"
-    },
-    "symptomsLabel": "Symptoms",
-    "symptoms": {
-      "sym_swelling": "Do you have swelling?",
-      "sym_fever": "Do you have a fever?",
-      "sym_swallow": "Do you have difficulty swallowing?",
-      "sym_breathe": "Do you have difficulty breathing?",
-      "sym_night": "Does the pain wake you at night?"
-    },
-    "yes": "Yes",
-    "no": "No",
-    "symptomDuration": "How long has this been happening?",
-    "photoLabel": "Photo (optional)",
-    "photoHelp": "JPG, PNG or HEIC. Maximum 10 MB.",
-    "consentsLabel": "Consents",
-    "consentEmergency": "I understand that for a medical emergency (difficulty breathing, major swelling, high fever, severe trauma), I must contact emergency services or go to a hospital.",
-    "consentContact": "I authorize De Facto Dental Studio to contact me quickly regarding this request.",
-    "consentPrivacyPrefix": "I have read the ",
-    "consentPrivacyLink": "privacy policy",
-    "consentPrivacySuffix": ".",
-    "error": "An error occurred. Please try again or contact us by phone.",
-    "submitting": "Sending…",
-    "submit": "Send my emergency request"
-  },
   "appointmentForm": {
     "ariaLabel": "Appointment request form",
     "introPrimary": "You don't need to know everything — simply describe your situation. This form helps us prepare for your visit.",
@@ -1225,10 +1182,6 @@
     "block5Title": "Informational communications (optional)",
     "block5Description": "Check only if you wish to receive our communications. This box is not pre-checked.",
     "consent_communications": "I agree to receive informational communications from the clinic."
-  },
-  "medicalEmergencyNotice": {
-    "body": "If you have difficulty breathing, significant swelling of the face or neck, high fever, severe trauma or other concerning signs, contact emergency services or go to the hospital.",
-    "callButton": "Call the clinic"
   },
   "fields": {
     "phoneLabel": "Phone",
