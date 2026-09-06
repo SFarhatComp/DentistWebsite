@@ -73,9 +73,31 @@ export function LaboratoireSection({ lang }: { lang: Locale }) {
         </FadeIn>
 
         <FadeIn>
-          <p className="mt-12 max-w-[64ch] font-display text-xl leading-[1.3] text-primary md:text-2xl">
-            {t("home.laboratoireSection.cloture")}
-          </p>
+          {/* La macro de couronne sert de fond : son noir se fond dans la palette,
+              et un dégradé latéral garde la citation lisible côté texte tout en
+              laissant la pièce visible à droite. */}
+          <div className="relative isolate mt-14 overflow-hidden border border-border">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/img/couronne-macro.webp"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+              style={{ objectPosition: "40% 55%" }}
+            />
+            <div
+              className="absolute inset-0"
+              aria-hidden="true"
+              style={{
+                background:
+                  "linear-gradient(90deg, hsl(var(--background) / .97) 0%, hsl(var(--background) / .88) 42%, hsl(var(--background) / .30) 100%)",
+              }}
+            />
+            <p className="relative max-w-[46ch] px-6 py-14 font-display text-xl leading-[1.3] text-primary md:px-12 md:py-16 md:text-2xl">
+              {t("home.laboratoireSection.cloture")}
+            </p>
+          </div>
         </FadeIn>
       </Container>
     </section>
