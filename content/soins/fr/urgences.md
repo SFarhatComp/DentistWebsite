@@ -21,7 +21,7 @@ options:
   - Drainage d'abcès
   - Rebondage de couronne décollée
   - Traitement de canal d'urgence
-limits: En cas de symptômes graves (enflure rapide, fièvre élevée, difficulté à respirer ou avaler, traumatisme majeur), contactez immédiatement les services d'urgence (911) ou rendez-vous à l'hôpital.
+limits: En cas de symptômes graves (enflure rapide, fièvre élevée, difficulté à respirer ou avaler, traumatisme majeur), rendez-vous immédiatement à l'urgence de l'hôpital le plus proche.
 aftercare: Médication prescrite au besoin. Suivi nécessaire pour traiter la cause sous-jacente, car le traitement d'urgence est rarement définitif.
 faq:
   - question: Comment vous joindre en urgence ?

@@ -19,7 +19,7 @@ export async function generateMetadata(props: { params: Promise<{ lang: string }
  *
  * Le questionnaire en 6 étapes remplace l'ancien couple sélecteur + formulaire
  * long (handoff §10). Le tri d'urgence se fait à l'étape 3, qui porte l'encadré
- * 911 et détermine la priorité de rappel inscrite au rapport de la réception.
+ * d'urgence et détermine la priorité de rappel inscrite au rapport de la réception.
  *
  * Pas de PageHero ici : le questionnaire porte son propre en-tête d'étape, et
  * un titre de page au-dessus dédoublerait la hiérarchie.

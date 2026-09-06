@@ -23,6 +23,7 @@ function Stade({
   labelColor,
   className,
   style,
+  dense = false,
   children,
 }: {
   label: string
@@ -30,14 +31,28 @@ function Stade({
   labelColor?: string
   className?: string
   style?: React.CSSProperties
+  /** Stade posé côte à côte avec un autre : resserré tant que la place manque. */
+  dense?: boolean
   children?: React.ReactNode
 }) {
   return (
-    <div className={`rounded-xl px-6 py-6 text-center ${className ?? ""}`} style={style}>
-      <div className="text-[11px] tracking-[0.18em]" style={labelColor ? { color: labelColor } : undefined}>
+    <div
+      className={`rounded-xl text-center ${dense ? "px-3 py-5 sm:px-6 sm:py-6" : "px-6 py-6"} ${className ?? ""}`}
+      style={style}
+    >
+      <div
+        className={`tracking-[0.18em] ${dense ? "text-[10px] sm:text-[11px]" : "text-[11px]"}`}
+        style={labelColor ? { color: labelColor } : undefined}
+      >
         {label}
       </div>
-      <div className="mt-2 font-display text-xl leading-[1.15] md:text-2xl">{title}</div>
+      <div
+        className={`mt-2 font-display leading-[1.15] ${
+          dense ? "text-base sm:text-xl md:text-2xl" : "text-xl md:text-2xl"
+        }`}
+      >
+        {title}
+      </div>
       {children}
     </div>
   )
@@ -87,8 +102,11 @@ export function ParcoursSection({ lang }: { lang: Locale }) {
             />
             <Fleche />
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            {/* Stades 2 et 4 sont des voies parallèles : ils restent côte à côte
+                jusque sur mobile, sinon l'empilement les fait lire comme une suite. */}
+            <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-4">
               <Stade
+                dense
                 label={t("home.parcoursSection.s2Label")}
                 title={t("home.parcoursSection.s2Title")}
                 labelColor="hsl(var(--accent))"
@@ -96,6 +114,7 @@ export function ParcoursSection({ lang }: { lang: Locale }) {
                 style={{ borderColor: "hsl(var(--accent))" }}
               />
               <Stade
+                dense
                 label={t("home.parcoursSection.s4Label")}
                 title={t("home.parcoursSection.s4Title")}
                 className="border text-muted-foreground"

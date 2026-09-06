@@ -16,7 +16,8 @@
     "realisations": "Cases",
     "cta": "Book an appointment",
     "appeler": "Call",
-    "parcours": "Care pathway"
+    "parcours": "Care pathway",
+    "assurances": "Insurance"
   },
   "common": {
     "enSavoirPlus": "Learn more",
@@ -1010,7 +1011,7 @@
   },
   "emergencyForm": {
     "medicalWarningStrong": "Medical warning.",
-    "medicalWarning": "If you have significant swelling, fever, difficulty breathing or swallowing, or major trauma, contact emergency services immediately (911) or go to the nearest hospital.",
+    "medicalWarning": "If you have significant swelling, fever, difficulty breathing or swallowing, or major trauma, go immediately to the emergency department of the nearest hospital.",
     "firstName": "First name",
     "lastName": "Last name",
     "email": "Email",
@@ -1261,7 +1262,7 @@
   "merci": {
     "label": "Confirmation",
     "title": "Thank you — your request has been received.",
-    "body": "Our team will contact you to confirm the next steps. In case of a medical emergency, contact emergency services (911).",
+    "body": "Our team will contact you to confirm the next steps. In case of a medical emergency, go immediately to the emergency department of the nearest hospital.",
     "backHome": "Back to home"
   },
   "faq": {
@@ -2127,7 +2128,7 @@
           "note": "We will call you back as a priority"
         }
       ],
-      "urgenceTitre": "CALL 911 OR GO TO THE EMERGENCY ROOM",
+      "urgenceTitre": "GO TO THE EMERGENCY ROOM IMMEDIATELY",
       "urgenceItems": [
         "difficulty breathing or swallowing",
         "swelling of the face or neck that is spreading quickly, or closing an eye",

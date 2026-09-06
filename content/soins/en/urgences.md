@@ -21,7 +21,7 @@ options:
   - Abscess drainage
   - Re-cementation of a dislodged crown
   - Emergency root canal treatment
-limits: In case of severe symptoms (rapid swelling, high fever, difficulty breathing or swallowing, major trauma), contact emergency services immediately (911) or go to the hospital.
+limits: In case of severe symptoms (rapid swelling, high fever, difficulty breathing or swallowing, major trauma), go immediately to the emergency department of the nearest hospital.
 aftercare: Medication prescribed as needed. Follow-up is required to address the underlying cause, as emergency treatment is rarely definitive.
 faq:
   - question: How can I reach you in an emergency?

@@ -23,6 +23,7 @@ export function Navbar({ lang }: { lang: Locale }) {
     { href: `/${lang}/parcours`, label: t("nav.parcours") },
     { href: `/${lang}/soins`, label: t("nav.soins") },
     { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
+    { href: `/${lang}/assurances-paiements`, label: t("nav.assurances") },
     { href: `/${lang}/contact`, label: t("nav.contact") },
   ]
 
@@ -49,7 +50,8 @@ export function Navbar({ lang }: { lang: Locale }) {
               className="h-12 w-auto md:h-14"
             />
           </Link>
-          <div className="hidden lg:flex items-center gap-6 xl:gap-7 flex-1 justify-center">
+          {/* Sept entrées : les espacements se resserrent avant que la barre ne déborde. */}
+          <div className="hidden xl:flex items-center gap-5 2xl:gap-7 flex-1 justify-center">
             {links.map((l) => {
               const isActive = pathname === l.href || pathname === `${l.href}/`
               return (
@@ -63,7 +65,7 @@ export function Navbar({ lang }: { lang: Locale }) {
               )
             })}
           </div>
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
+          <div className="hidden xl:flex items-center gap-4 shrink-0">
             <Link
               href={switchedPath}
               hrefLang={otherLang}
@@ -86,7 +88,7 @@ export function Navbar({ lang }: { lang: Locale }) {
               <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="xl:hidden flex items-center gap-2">
             <Link
               href={switchedPath}
               hrefLang={otherLang}
@@ -109,7 +111,7 @@ export function Navbar({ lang }: { lang: Locale }) {
         </nav>
       </Container>
       {open && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="xl:hidden border-t border-border bg-background">
           <Container>
             <div className="flex flex-col py-6 gap-5">
               {links.map((l) => (

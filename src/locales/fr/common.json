@@ -16,7 +16,8 @@
     "realisations": "Réalisations",
     "cta": "Prendre rendez-vous",
     "appeler": "Appeler",
-    "parcours": "Parcours"
+    "parcours": "Parcours",
+    "assurances": "Assurances"
   },
   "common": {
     "enSavoirPlus": "En savoir plus",
@@ -1010,7 +1011,7 @@
   },
   "emergencyForm": {
     "medicalWarningStrong": "Avertissement médical.",
-    "medicalWarning": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, ou un traumatisme majeur, contactez immédiatement les services d'urgence (911) ou rendez-vous à l'hôpital le plus proche.",
+    "medicalWarning": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, ou un traumatisme majeur, rendez-vous immédiatement à l'urgence de l'hôpital le plus proche.",
     "firstName": "Prénom",
     "lastName": "Nom",
     "email": "Courriel",
@@ -1261,7 +1262,7 @@
   "merci": {
     "label": "Confirmation",
     "title": "Merci, votre demande a été reçue.",
-    "body": "Notre équipe prendra contact avec vous afin de confirmer les prochaines étapes. En cas d'urgence médicale, contactez les services d'urgence (911).",
+    "body": "Notre équipe prendra contact avec vous afin de confirmer les prochaines étapes. En cas d'urgence médicale, rendez-vous immédiatement à l'urgence de l'hôpital le plus proche.",
     "backHome": "Retour à l'accueil"
   },
   "faq": {
@@ -2127,7 +2128,7 @@
           "note": "Nous vous rappelons en priorité"
         }
       ],
-      "urgenceTitre": "COMPOSEZ LE 911 OU RENDEZ-VOUS À L'URGENCE",
+      "urgenceTitre": "RENDEZ-VOUS IMMÉDIATEMENT À L'URGENCE",
       "urgenceItems": [
         "difficulté à respirer ou à avaler",
         "gonflement du visage ou du cou qui progresse rapidement, ou qui ferme un œil",
