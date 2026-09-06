@@ -98,7 +98,7 @@ export default async function PortfolioCliniquePage(props: { params: Promise<{ l
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div className="h-px flex-1 bg-border" />
-                    <span className="text-xs uppercase tracking-wider text-muted">À venir</span>
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground">À venir</span>
                   </div>
                   <PlaceholderImage aspect="video" label={cat.image} className="mb-5" />
                   <h3 className="font-display text-xl md:text-2xl text-foreground mb-3">{cat.title}</h3>

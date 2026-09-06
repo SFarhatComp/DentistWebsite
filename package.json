@@ -21,6 +21,7 @@
     "clsx": "2.1.1",
     "framer-motion": "11.18.2",
     "gray-matter": "4.0.3",
+    "leaflet": "1.9.4",
     "lucide-react": "0.468.0",
     "next": "16.2.6",
     "react": "19.2.6",
@@ -29,6 +30,7 @@
     "tailwind-merge": "2.6.1"
   },
   "devDependencies": {
+    "@types/leaflet": "1.9.22",
     "@types/node": "22.19.17",
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",

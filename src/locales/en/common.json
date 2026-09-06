@@ -1,5 +1,7 @@
 {
-  "site": { "name": "De Facto Dental Studio" },
+  "site": {
+    "name": "De Facto Dental Studio"
+  },
   "nav": {
     "accueil": "Home",
     "studio": "The Studio",
@@ -13,7 +15,8 @@
     "experience": "Patient experience",
     "realisations": "Cases",
     "cta": "Book an appointment",
-    "appeler": "Call"
+    "appeler": "Call",
+    "parcours": "Care pathway"
   },
   "common": {
     "enSavoirPlus": "Learn more",
@@ -25,12 +28,11 @@
     "metaTitle": "De Facto Dental Studio — Dentist in Ahuntsic, Montreal",
     "metaDescription": "Dental studio in Ahuntsic, Montreal. An approach grounded in time, clarity, precision and continuity. Understand before intervening.",
     "hero": {
-      "label": "Dental studio — Ahuntsic, Montreal",
-      "title": "A dental clinic for those who want to understand before they decide.",
-      "subtitle": "At De Facto Dental Studio, every examination is taken seriously. We document, explain, prioritize and plan your care so every decision is clear, tailored and considered.",
-      "ctaPrimary": "Start with a first visit",
-      "ctaSecondary": "Discover our approach",
-      "ctaTertiary": "Book an appointment"
+      "label": "DENTAL STUDIO — AHUNTSIC",
+      "title": "Understand before intervening.",
+      "subtitle": "Dr Bader Ramdani, general dentist. Documented examination, prioritised care plan, digital laboratory and dental technologist on site.",
+      "ctaPrimary": "Book an appointment",
+      "ctaSecondary": "See the studio"
     },
     "manifeste": {
       "label": "Manifesto",
@@ -66,13 +68,34 @@
       "title": "Selected clinical cases",
       "intro": "Selected cases will be presented with consent, clinical context and measured explanations to illustrate how we diagnose, plan and treat.",
       "items": {
-        "1": { "title": "Diagnostic chart", "alt": "fiche-diagnostic-de-facto.jpg" },
-        "2": { "title": "Phased plan", "alt": "plan-phases-de-facto.jpg" },
-        "3": { "title": "Annotated intraoral photos", "alt": "photos-intraorales-annotees-de-facto.jpg" },
-        "4": { "title": "3D model", "alt": "modele-3d-de-facto.jpg" },
-        "5": { "title": "Intraoral scan", "alt": "scan-intraoral-de-facto.jpg" },
-        "6": { "title": "Laboratory steps", "alt": "etapes-laboratoire-de-facto.jpg" },
-        "7": { "title": "Anonymized patient summary", "alt": "resume-patient-anonymise-de-facto.jpg" }
+        "1": {
+          "title": "Diagnostic chart",
+          "alt": "fiche-diagnostic-de-facto.jpg"
+        },
+        "2": {
+          "title": "Phased plan",
+          "alt": "plan-phases-de-facto.jpg"
+        },
+        "3": {
+          "title": "Annotated intraoral photos",
+          "alt": "photos-intraorales-annotees-de-facto.jpg"
+        },
+        "4": {
+          "title": "3D model",
+          "alt": "modele-3d-de-facto.jpg"
+        },
+        "5": {
+          "title": "Intraoral scan",
+          "alt": "scan-intraoral-de-facto.jpg"
+        },
+        "6": {
+          "title": "Laboratory steps",
+          "alt": "etapes-laboratoire-de-facto.jpg"
+        },
+        "7": {
+          "title": "Anonymized patient summary",
+          "alt": "resume-patient-anonymise-de-facto.jpg"
+        }
       }
     },
     "triad": {
@@ -121,13 +144,28 @@
       "label": "Patient journey",
       "title": "A structured experience, from first contact to follow-up",
       "body": "We have designed the patient experience so each step is clear, documented and understandable.",
-      "demande": { "title": "Appointment request", "body": "You share your information and the reason for the consultation." },
-      "examen": { "title": "Complete examination", "body": "Clinical evaluation, radiographs and photos as indicated." },
-      "plan": { "title": "Personalized plan", "body": "Presentation of options, priorities, sequence and estimate." },
-      "traitement": { "title": "Treatment and follow-up", "body": "Delivery, post-operative follow-ups and long-term maintenance." },
+      "demande": {
+        "title": "Appointment request",
+        "body": "You share your information and the reason for the consultation."
+      },
+      "examen": {
+        "title": "Complete examination",
+        "body": "Clinical evaluation, radiographs and photos as indicated."
+      },
+      "plan": {
+        "title": "Personalized plan",
+        "body": "Presentation of options, priorities, sequence and estimate."
+      },
+      "traitement": {
+        "title": "Treatment and follow-up",
+        "body": "Delivery, post-operative follow-ups and long-term maintenance."
+      },
       "cta": "See the first-visit walkthrough"
     },
-    "services": { "label": "Our care", "title": "Comprehensive care, planned to your needs" },
+    "services": {
+      "label": "Our care",
+      "title": "Comprehensive care, planned to your needs"
+    },
     "evaluationSection": {
       "label": "First step",
       "title": "Start with a complete evaluation",
@@ -166,13 +204,290 @@
     "realisations": {
       "label": "Cases",
       "title": "Treatments planned with care",
-      "case1": { "tag": "Aesthetic", "title": "Anterior restoration" },
-      "case2": { "tag": "Prosthesis", "title": "Zirconia crown" },
-      "case3": { "tag": "Orthodontics", "title": "Aligners — light alignment" },
+      "case1": {
+        "tag": "Aesthetic",
+        "title": "Anterior restoration"
+      },
+      "case2": {
+        "tag": "Prosthesis",
+        "title": "Zirconia crown"
+      },
+      "case3": {
+        "tag": "Orthodontics",
+        "title": "Aligners — light alignment"
+      },
       "cta": "View all cases"
     },
-    "cta": { "title": "Start with a complete evaluation", "body": "The first step is understanding your situation. Our team accompanies you through a clear, structured and personalized process.", "primary": "Request an appointment", "secondary": "Contact us" },
-    "coordonnees": { "label": "Find us", "title": "In the heart of Ahuntsic" }
+    "cta": {
+      "title": "Start with a complete evaluation",
+      "body": "The first step is understanding your situation. Our team accompanies you through a clear, structured and personalized process.",
+      "primary": "Request an appointment",
+      "secondary": "Contact us"
+    },
+    "coordonnees": {
+      "label": "Find us",
+      "title": "In the heart of Ahuntsic"
+    },
+    "urgence": {
+      "text": "Dental emergency — 514 863 7805"
+    },
+    "philosophie": {
+      "label": "THE DE FACTO PHILOSOPHY",
+      "title": "A logical order, from diagnosis through to maintenance.",
+      "piliers": [
+        {
+          "title": "Understand before treating.",
+          "body": "The right treatment follows from a clear diagnosis: its cause, its prognosis and the overall context of the mouth."
+        },
+        {
+          "title": "Stabilise before rebuilding.",
+          "body": "A mouth is not rebuilt on unstable foundations: active disease is brought under control first."
+        },
+        {
+          "title": "Preserve before replacing.",
+          "body": "Keep natural tissue where it can reasonably be kept — without saving everything at any cost, or replacing everything quickly."
+        },
+        {
+          "title": "Prevent to make it last.",
+          "body": "Prevention is an active part of treatment, present from the very first appointment — never a formality at the end of the process."
+        }
+      ]
+    },
+    "studioSection": {
+      "title": "728 rue Fleury Est, room by room",
+      "intro": "The operatories, the planning station and the laboratory are all under the same roof.",
+      "photos": [
+        {
+          "src": "attente",
+          "caption": "WAITING ROOM"
+        },
+        {
+          "src": "couloir",
+          "caption": "HALLWAY"
+        },
+        {
+          "src": "salle-2",
+          "caption": "OPERATORY 2 — HYGIENE"
+        },
+        {
+          "src": "cadcam",
+          "caption": "CAD-CAM"
+        },
+        {
+          "src": "laboratoire-droit",
+          "caption": "LABORATORY"
+        },
+        {
+          "src": "planification",
+          "caption": "PLANNING"
+        }
+      ]
+    },
+    "laboratoireSection": {
+      "label": "THE INTEGRATED LABORATORY",
+      "title": "From diagnosis to fabrication, under one eye",
+      "intro": "A complete dental laboratory, integrated into the clinic: restorations and appliances are designed, fabricated and adjusted on site — for full continuity between the clinical diagnosis and the delivered result.",
+      "blocs": [
+        {
+          "title": "Dental technologist on site",
+          "body": "The same hands follow your case from beginning to end of the fabrication of appliances and restorations — with no anonymous outsourcing."
+        },
+        {
+          "title": "Direct communication",
+          "body": "The dentist, the dental technologist and the patient discuss the same project without an intermediary: fewer back-and-forths, shade or shape adjustments made on site, and no instruction lost along the way."
+        },
+        {
+          "title": "Complete digital planning",
+          "body": "The workflow is entirely digital — optical impression, design, fabrication — and every project is archived: if something breaks, a restoration can be reproduced identically from the original file."
+        }
+      ],
+      "plateauLabel": "THE TECHNICAL PLATFORM",
+      "plateau": [
+        {
+          "categorie": "5-AXIS MILLING UNIT",
+          "materiel": "VHF E5",
+          "benefice": "Restorations that are more precise, better fitted and longer-lasting."
+        },
+        {
+          "categorie": "SINTERING FURNACE",
+          "materiel": "Programmat S2",
+          "benefice": "Strong, natural-looking crowns made on site rather than outsourced."
+        },
+        {
+          "categorie": "VACUUM CERAMIC FURNACE",
+          "materiel": "Programmat EP 5010",
+          "benefice": "A lifelike result, without flat shades or dull areas."
+        },
+        {
+          "categorie": "3D PRINTING",
+          "materiel": "Formlabs Form 4 Dental",
+          "benefice": "Accurate guards and temporaries, available quickly."
+        },
+        {
+          "categorie": "CAD DESIGN",
+          "materiel": "Exocad + Smile Design",
+          "benefice": "You see the result before it exists, and the file stays archived for any future work."
+        },
+        {
+          "categorie": "DOCUMENTATION",
+          "materiel": "Photo studio",
+          "benefice": "Colour reproduced faithfully, and full continuity if a touch-up is needed."
+        }
+      ],
+      "cloture": "Technology does not decide the treatment. It serves the diagnosis, the precision and the coherence of the clinical project."
+    },
+    "parcoursSection": {
+      "label": "THE DE FACTO CARE PATHWAY",
+      "title": "Five stages, one common thread.",
+      "intro": "The pathway reads from diagnosis towards rehabilitation, but it is neither mandatory nor strictly linear. You can leave it, return to it, or stop at a stage. Only one thing runs through it from end to end: prevention.",
+      "entree": "New patient",
+      "s0Label": "STAGE 0",
+      "s0Title": "Diagnosis",
+      "s1Label": "STAGE 1",
+      "s1Title": "Biological stabilisation",
+      "s2Label": "STAGE 2",
+      "s2Title": "Structure",
+      "s4Label": "STAGE 4",
+      "s4Title": "Rehabilitation",
+      "s3Label": "STAGE 3 · TRANSVERSAL",
+      "s3Title": "Maintenance",
+      "s3Note": "Prevention accompanies every stage, for life",
+      "pasLigneDroiteLabel": "WHY IT IS NOT A STRAIGHT LINE",
+      "pasLigneDroiteBody": "The pathway depends on each person's diagnoses, risks and goals. Depending on the situation, you move forward, you pause, or you return to an earlier stage.",
+      "pasLigneDroitePoints": [
+        "↳ Branches and possible exits after stages 1, 2 or 3",
+        "↻ Reassessment points that may send you back to an earlier stage",
+        "◎ A maintenance loop that continues over the long term"
+      ],
+      "precisionLabel": "A NOTE ON THE WORD STAGE",
+      "precisionBody": "In the [de facto] Pathway, a stage designates a family of therapeutic objectives. It does not represent the severity of a disease and does not mean that every patient must reach the next stage. Not to be confused with the stages of a periodontal classification, of a cancer, or with a severity grading.",
+      "metaDescription": "The [de facto] Pathway: five stages, from diagnosis to maintenance. De Facto Dental Studio, Ahuntsic, Montreal."
+    },
+    "soinsSection": {
+      "title": "Care",
+      "rangees": [
+        {
+          "categorie": "Examination and prevention",
+          "detail": "Complete examination · Non-surgical periodontal treatment"
+        },
+        {
+          "categorie": "Restoration",
+          "detail": "Indirect restoration on a natural tooth · Crown"
+        },
+        {
+          "categorie": "Endodontics",
+          "detail": "Root canal treatment"
+        },
+        {
+          "categorie": "Prosthetics",
+          "detail": "Partial and complete, fixed and removable · Crown and prosthesis on implant"
+        },
+        {
+          "categorie": "Orthodontics",
+          "detail": "Aligners, simple to moderate cases · Interceptive orthodontics"
+        },
+        {
+          "categorie": "Emergency",
+          "detail": "Dental emergency · Tooth extraction"
+        }
+      ]
+    },
+    "praticienVisite": {
+      "praticienLabel": "THE PRACTITIONER",
+      "nom": "Dr Bader Ramdani",
+      "role": "General dentist · Founder",
+      "credentials": [
+        "Doctor of Dental Medicine, Université Laval, 2021",
+        "Member of the Ordre des dentistes du Québec",
+        "Integrated digital laboratory, reserved for cases treated at the studio"
+      ],
+      "visiteLabel": "THE FIRST VISIT",
+      "etapes": [
+        "Welcome and health history",
+        "Complete examination and radiographs",
+        "Digital impressions if needed",
+        "Explanation of your clinical picture",
+        "Prioritised care plan, provided in writing"
+      ]
+    },
+    "faqSection": {
+      "label": "FREQUENTLY ASKED QUESTIONS",
+      "title": "The studio, in practice",
+      "colonne1": [
+        {
+          "q": "Do I need a referral for a first appointment?",
+          "a": "No. You can contact the studio directly, by phone, by email or with the online form."
+        },
+        {
+          "q": "Is the studio accepting new patients?",
+          "a": "Yes. The first meeting is a complete examination, which serves as the starting point for everything else."
+        },
+        {
+          "q": "How long does the first visit take?",
+          "a": "About 60 to 75 minutes, depending on the situation. That time covers the interview, the examination, the necessary images and the explanation of the clinical picture."
+        },
+        {
+          "q": "What are the opening hours?",
+          "a": "Monday to Wednesday, from 9 a.m. to 6 p.m."
+        },
+        {
+          "q": "What should I do in a dental emergency?",
+          "a": "Call the studio at 514 863 7805 during opening hours. We assess the situation and determine the appropriate timeframe."
+        },
+        {
+          "q": "How do I get to the studio?",
+          "a": "The studio is at 728 rue Fleury Est, in Ahuntsic. The Sauvé and Henri-Bourassa metro stations are nearby and street parking is available."
+        },
+        {
+          "q": "In French or in English?",
+          "a": "Appointments, explanations and the documents provided are available in French and in English."
+        }
+      ],
+      "colonne2": [
+        {
+          "q": "Is the laboratory really on site?",
+          "a": "Yes. Design and fabrication take place in the digital laboratory integrated into the studio, by the same dental technologist, from beginning to end."
+        },
+        {
+          "q": "Does the laboratory accept cases from other clinics?",
+          "a": "No. The laboratory is part of the studio and serves only the cases treated here."
+        },
+        {
+          "q": "Is the studio affiliated with a group of clinics?",
+          "a": "No. The studio is independent: no corporate affiliation, no commercial partnership, no imposed sales targets."
+        },
+        {
+          "q": "What do I receive after the examination?",
+          "a": "An explained clinical picture, a prioritised care plan provided in writing, the possible options and what happens if nothing is done."
+        },
+        {
+          "q": "Is my insurance accepted?",
+          "a": "Claims are submitted electronically to most insurers. A written estimate is provided before care begins."
+        },
+        {
+          "q": "Do you treat children?",
+          "a": "The studio practises general dentistry, including interceptive orthodontics in children."
+        },
+        {
+          "q": "Can I obtain my file or my radiographs?",
+          "a": "Yes. Your images and your file are provided on request, or sent to the professional of your choice."
+        }
+      ]
+    },
+    "contactSection": {
+      "label": "FIND US",
+      "titleLine1": "728 rue Fleury Est",
+      "titleLine2": "Ahuntsic, Montreal",
+      "telephoneLabel": "PHONE",
+      "heuresLabel": "HOURS",
+      "heuresValue": "Mon. – Wed. · 9 a.m. to 6 p.m.",
+      "courrielLabel": "EMAIL",
+      "courrielValue": "info@studiodefacto.ca",
+      "transportLabel": "TRANSIT",
+      "transportValue": "Sauvé and Henri-Bourassa metro",
+      "cta": "Book an appointment"
+    },
+    "avisClinique": "The information on this site does not replace a clinical evaluation."
   },
   "studio": {
     "metaDescription": "De Facto Dental Studio in Ahuntsic — why we exist, our clinical approach, the space, the technology and our quality commitments.",
@@ -200,15 +515,33 @@
       "body": "The studio environment was designed to create a calmer, clearer and more human experience. Each zone — reception, clinical room, laboratory and discussion area — supports the same idea: take the time to do things well."
     },
     "equipement": {
+      "1": {
+        "title": "Digital radiography",
+        "body": "Precise imaging with reduced exposure."
+      },
+      "2": {
+        "title": "Intraoral scanner",
+        "body": "Digital impressions without paste, more comfortable and precise."
+      },
+      "3": {
+        "title": "Clinical photography",
+        "body": "Comprehensive visual documentation for planning."
+      },
+      "4": {
+        "title": "3D printing",
+        "body": "Models, guides and provisional restorations produced on site."
+      },
+      "5": {
+        "title": "Digital design",
+        "body": "Visualization and planning of aesthetic and functional treatments."
+      },
+      "6": {
+        "title": "Integrated laboratory",
+        "body": "Direct coordination between clinic and fabrication."
+      },
       "label": "Equipment and technology",
       "title": "Technology in service of diagnosis",
-      "intro": "Technology is not used as an end in itself. It serves to better diagnose, better communicate, better plan and better verify outcomes.",
-      "1": { "title": "Digital radiography", "body": "Precise imaging with reduced exposure." },
-      "2": { "title": "Intraoral scanner", "body": "Digital impressions without paste, more comfortable and precise." },
-      "3": { "title": "Clinical photography", "body": "Comprehensive visual documentation for planning." },
-      "4": { "title": "3D printing", "body": "Models, guides and provisional restorations produced on site." },
-      "5": { "title": "Digital design", "body": "Visualization and planning of aesthetic and functional treatments." },
-      "6": { "title": "Integrated laboratory", "body": "Direct coordination between clinic and fabrication." }
+      "intro": "Technology is not used as an end in itself. It serves to better diagnose, better communicate, better plan and better verify outcomes."
     },
     "engagement": {
       "label": "Quality commitment",
@@ -226,20 +559,50 @@
       "body": "Each phase has a clear objective. The patient knows where they stand, why a recommendation is being made, and what their options are."
     },
     "phases": {
-      "1": { "title": "Before the appointment", "body": "You complete a request form, share the reason for the consultation, transmit your basic information and receive pre-visit instructions." },
-      "2": { "title": "Complete examination", "body": "Medical questionnaire, dental history, radiographs as indicated, periodontal examination, dental examination, intraoral photos, digital scan when applicable, and discussion of your concerns." },
-      "3": { "title": "Personalized plan", "body": "Presentation of needs, prioritization of treatments, possible options, risks of the status quo, ideal sequence, alternatives, financial estimate and coordination with insurance." },
-      "4": { "title": "Treatment and follow-up", "body": "Delivery according to priorities, post-operative follow-up, prevention, personalized recalls and long-term maintenance." }
+      "1": {
+        "title": "Before the appointment",
+        "body": "You complete a request form, share the reason for the consultation, transmit your basic information and receive pre-visit instructions."
+      },
+      "2": {
+        "title": "Complete examination",
+        "body": "Medical questionnaire, dental history, radiographs as indicated, periodontal examination, dental examination, intraoral photos, digital scan when applicable, and discussion of your concerns."
+      },
+      "3": {
+        "title": "Personalized plan",
+        "body": "Presentation of needs, prioritization of treatments, possible options, risks of the status quo, ideal sequence, alternatives, financial estimate and coordination with insurance."
+      },
+      "4": {
+        "title": "Treatment and follow-up",
+        "body": "Delivery according to priorities, post-operative follow-up, prevention, personalized recalls and long-term maintenance."
+      }
     },
     "difference": {
+      "1": {
+        "title": "More time to understand",
+        "body": "Every consultation is planned to allow a real conversation."
+      },
+      "2": {
+        "title": "More clarity in explanations",
+        "body": "Options are presented in accessible terms, with their limits."
+      },
+      "3": {
+        "title": "More precision in documentation",
+        "body": "Photos, scans and structured notes follow every step of the record."
+      },
+      "4": {
+        "title": "More clinic-laboratory cohesion",
+        "body": "Laboratory proximity improves communication and finishing."
+      },
+      "5": {
+        "title": "More prevention",
+        "body": "Identify risks before they become problems."
+      },
+      "6": {
+        "title": "More transparency in the options",
+        "body": "Clear estimates, alternatives named, shared decisions."
+      },
       "label": "What makes the experience different",
-      "title": "More time. More clarity. More precision.",
-      "1": { "title": "More time to understand", "body": "Every consultation is planned to allow a real conversation." },
-      "2": { "title": "More clarity in explanations", "body": "Options are presented in accessible terms, with their limits." },
-      "3": { "title": "More precision in documentation", "body": "Photos, scans and structured notes follow every step of the record." },
-      "4": { "title": "More clinic-laboratory cohesion", "body": "Laboratory proximity improves communication and finishing." },
-      "5": { "title": "More prevention", "body": "Identify risks before they become problems." },
-      "6": { "title": "More transparency in the options", "body": "Clear estimates, alternatives named, shared decisions." }
+      "title": "More time. More clarity. More precision."
     }
   },
   "services": {
@@ -268,16 +631,46 @@
       "labCta": "Integrated laboratory",
       "rdvCta": "Book an appointment"
     },
-    "examen-complet": { "title": "Complete examination and diagnosis", "short": "A structured first visit to understand your oral health." },
-    "prevention-hygiene": { "title": "Prevention and hygiene", "short": "Cleaning, evaluation and personalized advice." },
-    "dentisterie-operatoire": { "title": "Operative dentistry", "short": "Composites, restorations and conservative treatments." },
-    "esthetique-dentaire": { "title": "Aesthetic dentistry", "short": "Veneers, whitening and smile harmonization." },
-    "parodontie": { "title": "Periodontics", "short": "Gum evaluation, non-surgical debridement, soft-tissue grafts, bone grafts and surgical implant placement when indicated." },
-    "endodontie": { "title": "Endodontics", "short": "Root canal treatment and pain diagnosis." },
-    "couronnes-ponts": { "title": "Crowns and bridges", "short": "Indirect restorations in ceramic and zirconia." },
-    "implantologie": { "title": "Implantology", "short": "Crowns, bridges and prostheses on implants." },
-    "aligneurs": { "title": "Orthodontic aligners", "short": "Light to moderate alignment with clear aligners." },
-    "urgences": { "title": "Dental emergencies", "short": "Rapid evaluation for pain or trauma." }
+    "examen-complet": {
+      "title": "Complete examination and diagnosis",
+      "short": "A structured first visit to understand your oral health."
+    },
+    "prevention-hygiene": {
+      "title": "Prevention and hygiene",
+      "short": "Cleaning, evaluation and personalized advice."
+    },
+    "dentisterie-operatoire": {
+      "title": "Operative dentistry",
+      "short": "Composites, restorations and conservative treatments."
+    },
+    "esthetique-dentaire": {
+      "title": "Aesthetic dentistry",
+      "short": "Veneers, whitening and smile harmonization."
+    },
+    "parodontie": {
+      "title": "Periodontics",
+      "short": "Gum evaluation, non-surgical debridement, soft-tissue grafts, bone grafts and surgical implant placement when indicated."
+    },
+    "endodontie": {
+      "title": "Endodontics",
+      "short": "Root canal treatment and pain diagnosis."
+    },
+    "couronnes-ponts": {
+      "title": "Crowns and bridges",
+      "short": "Indirect restorations in ceramic and zirconia."
+    },
+    "implantologie": {
+      "title": "Implantology",
+      "short": "Crowns, bridges and prostheses on implants."
+    },
+    "aligneurs": {
+      "title": "Orthodontic aligners",
+      "short": "Light to moderate alignment with clear aligners."
+    },
+    "urgences": {
+      "title": "Dental emergencies",
+      "short": "Rapid evaluation for pain or trauma."
+    }
   },
   "servicePage": {
     "serviceLabel": "Service",
@@ -343,16 +736,40 @@
     "readCta": "Read",
     "accessCta": "Access",
     "essentielles": [
-      { "title": "New patients", "body": "Orientation path to prepare for your first encounter with the studio." },
-      { "title": "First visit", "body": "Two-appointment flow, duration, documents to bring." },
-      { "title": "Insurance and payments", "body": "Estimates, transmission to insurers, CDCP, RAMQ and appointment policy." },
-      { "title": "Frequently asked questions", "body": "Answers to the most common questions from new patients." },
-      { "title": "Privacy", "body": "How your personal and health information is collected, used and protected." },
-      { "title": "Dental emergency", "body": "What to do in case of pain, trauma or swelling." }
+      {
+        "title": "New patients",
+        "body": "Orientation path to prepare for your first encounter with the studio."
+      },
+      {
+        "title": "First visit",
+        "body": "Two-appointment flow, duration, documents to bring."
+      },
+      {
+        "title": "Insurance and payments",
+        "body": "Estimates, transmission to insurers, CDCP, RAMQ and appointment policy."
+      },
+      {
+        "title": "Frequently asked questions",
+        "body": "Answers to the most common questions from new patients."
+      },
+      {
+        "title": "Privacy",
+        "body": "How your personal and health information is collected, used and protected."
+      },
+      {
+        "title": "Dental emergency",
+        "body": "What to do in case of pain, trauma or swelling."
+      }
     ],
     "professionnels": [
-      { "title": "Professional space", "body": "For dentists and specialists — laboratory, partnership, prescription, referral." },
-      { "title": "Referral / Prescription", "body": "Refer a patient case or transmit a prescription to the laboratory." }
+      {
+        "title": "Professional space",
+        "body": "For dentists and specialists — laboratory, partnership, prescription, referral."
+      },
+      {
+        "title": "Referral / Prescription",
+        "body": "Refer a patient case or transmit a prescription to the laboratory."
+      }
     ]
   },
   "planTraitement": {
@@ -383,11 +800,31 @@
     "phasesLabel": "Phases",
     "phasesTitle": "Phases of the plan",
     "phases": [
-      { "num": "Phase 1", "title": "Stabilization", "body": "Address what must be controlled first: pain, infection, active lesions." },
-      { "num": "Phase 2", "title": "Necessary treatments", "body": "Restorations, conservative treatments and indicated care according to priorities." },
-      { "num": "Phase 3", "title": "Prevention and maintenance", "body": "Hygiene, periodontal follow-up, personalized advice and long-term maintenance." },
-      { "num": "Phase 4", "title": "Aesthetic options or optimizations", "body": "Once the foundation is stable, certain optimizations may be considered according to your goals." },
-      { "num": "Phase 5", "title": "Long-term follow-up", "body": "According to the clinical situation and the stability achieved." }
+      {
+        "num": "Phase 1",
+        "title": "Stabilization",
+        "body": "Address what must be controlled first: pain, infection, active lesions."
+      },
+      {
+        "num": "Phase 2",
+        "title": "Necessary treatments",
+        "body": "Restorations, conservative treatments and indicated care according to priorities."
+      },
+      {
+        "num": "Phase 3",
+        "title": "Prevention and maintenance",
+        "body": "Hygiene, periodontal follow-up, personalized advice and long-term maintenance."
+      },
+      {
+        "num": "Phase 4",
+        "title": "Aesthetic options or optimizations",
+        "body": "Once the foundation is stable, certain optimizations may be considered according to your goals."
+      },
+      {
+        "num": "Phase 5",
+        "title": "Long-term follow-up",
+        "body": "According to the clinical situation and the stability achieved."
+      }
     ],
     "choixLabel": "Choices",
     "choixTitle": "Ideal plan, alternatives and status quo",
@@ -740,12 +1177,12 @@
     "courriel": "Email",
     "heures": "Hours",
     "horaireLabel": "Hours",
-    "horaireDays": "Monday to Friday",
+    "horaireDays": "Monday to Wednesday",
     "horaireHours": "9 a.m. to 6 p.m.",
     "phonePlaceholder": "514 863 7805",
     "phoneTel": "+15148637805",
     "emailPlaceholder": "contact@studiodefacto.ca",
-    "hoursPlaceholder": "Mon.–Fri.: 9 a.m. to 6 p.m.",
+    "hoursPlaceholder": "Mon. – Wed. · 9 a.m. to 6 p.m.",
     "coordonneesHeading": "Contact information",
     "nousEcrireHeading": "Write to us",
     "demanderRdv": "Book an appointment",
@@ -767,7 +1204,8 @@
       "formulaire": "Emergency form"
     },
     "mapTitle": "Map — De Facto Dental Studio",
-    "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Friday, 9 a.m. to 6 p.m."
+    "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Wednesday, 9 a.m. to 6 p.m.",
+    "phoneDisplay": "514 863 7805"
   },
   "consentGroup": {
     "block1Title": "Required consents",
@@ -802,7 +1240,15 @@
     "courriel": "Email",
     "telephone": "Phone",
     "sujet": "Subject",
-    "sujetOptions": { "general": "General question", "rdv": "Appointment", "assurance": "Insurance", "urgence": "Emergency", "professionnel": "Professional inquiry", "laboratoire": "Laboratory", "autre": "Other" },
+    "sujetOptions": {
+      "general": "General question",
+      "rdv": "Appointment",
+      "assurance": "Insurance",
+      "urgence": "Emergency",
+      "professionnel": "Professional inquiry",
+      "laboratoire": "Laboratory",
+      "autre": "Other"
+    },
     "message": "Message",
     "envoyer": "Send",
     "envoi": "Sending…",
@@ -922,14 +1368,38 @@
     "intro": "Electronic communications may involve certain risks. Information transmitted by form, email or SMS should be limited to what is necessary for the request.",
     "lastUpdated": "Last updated: May 15, 2026.",
     "sections": [
-      { "title": "Information collected", "body": "We collect the information needed for your care: identification, contact details, medical and dental information relevant to the safety and quality of care." },
-      { "title": "Use of information", "body": "Your information is used to organize appointments, maintain the clinical record, deliver care, follow up and communicate as needed for your care." },
-      { "title": "Sharing of information", "body": "Your information is only shared when necessary for care, for a referral to another professional, for collaboration with the laboratory, or when required by law." },
-      { "title": "Security", "body": "Reasonable technical and organizational measures are in place to protect your information against loss, unauthorized access, modification or unintended disclosure." },
-      { "title": "Access and correction", "body": "You may request access to your information or correction of inaccurate details. An identity check may be required before processing the request." },
-      { "title": "Consent", "body": "Your consent is required to transmit certain information or documents (specialist referral, transmission to the laboratory, electronic communications). You may withdraw your consent for purposes not essential to care." },
-      { "title": "Electronic communication", "body": "Communications by email, SMS or web form may involve risks inherent to digital transit. The information transmitted should be limited to what is necessary for the request. For particularly sensitive information, an in-person or phone exchange may be preferable." },
-      { "title": "Person responsible for the protection of personal information", "body": "For any question regarding privacy, access to or correction of your personal information, or data security, you may contact the De Facto Dental Studio's person responsible for the protection of personal information by phone or email. De Facto Dental Studio operates under the laws applicable in Quebec and Canada, in particular the Act respecting the protection of personal information in the private sector (Law 25) and PIPEDA at the federal level." }
+      {
+        "title": "Information collected",
+        "body": "We collect the information needed for your care: identification, contact details, medical and dental information relevant to the safety and quality of care."
+      },
+      {
+        "title": "Use of information",
+        "body": "Your information is used to organize appointments, maintain the clinical record, deliver care, follow up and communicate as needed for your care."
+      },
+      {
+        "title": "Sharing of information",
+        "body": "Your information is only shared when necessary for care, for a referral to another professional, for collaboration with the laboratory, or when required by law."
+      },
+      {
+        "title": "Security",
+        "body": "Reasonable technical and organizational measures are in place to protect your information against loss, unauthorized access, modification or unintended disclosure."
+      },
+      {
+        "title": "Access and correction",
+        "body": "You may request access to your information or correction of inaccurate details. An identity check may be required before processing the request."
+      },
+      {
+        "title": "Consent",
+        "body": "Your consent is required to transmit certain information or documents (specialist referral, transmission to the laboratory, electronic communications). You may withdraw your consent for purposes not essential to care."
+      },
+      {
+        "title": "Electronic communication",
+        "body": "Communications by email, SMS or web form may involve risks inherent to digital transit. The information transmitted should be limited to what is necessary for the request. For particularly sensitive information, an in-person or phone exchange may be preferable."
+      },
+      {
+        "title": "Person responsible for the protection of personal information",
+        "body": "For any question regarding privacy, access to or correction of your personal information, or data security, you may contact the De Facto Dental Studio's person responsible for the protection of personal information by phone or email. De Facto Dental Studio operates under the laws applicable in Quebec and Canada, in particular the Act respecting the protection of personal information in the private sector (Law 25) and PIPEDA at the federal level."
+      }
     ]
   },
   "conditions": {
@@ -938,14 +1408,38 @@
     "subtitle": "Terms governing use of the De Facto Dental Studio website.",
     "metaTitle": "Terms of use",
     "sections": [
-      { "title": "Acceptance", "body": "Use of this website implies your acceptance of these terms. If you do not accept these terms, please do not use the site." },
-      { "title": "Nature of information", "body": "The information published on this site is provided for informational purposes only and does not constitute medical advice, diagnosis or prescription. A clinical consultation is always necessary to evaluate your situation." },
-      { "title": "Clinical results and before/after photos", "body": "The cases and photographs presented illustrate treated situations. Each patient is different: results vary according to the initial condition, habits, goals and biology of each person. No results are guaranteed." },
-      { "title": "Intellectual property", "body": "The site's content (text, images, trademarks, layout) belongs to De Facto Dental Studio or its partners. Any reproduction without authorization is prohibited." },
-      { "title": "Limitation of liability", "body": "De Facto Dental Studio strives to provide accurate, up-to-date information but cannot guarantee the absence of errors. The user remains responsible for their use of the information consulted." },
-      { "title": "External links", "body": "Some links may lead to third-party sites. The studio cannot be held responsible for the content or practices of those sites." },
-      { "title": "Applicable law", "body": "These terms are governed by the laws applicable in Quebec and Canada. Any dispute falls under the competent courts of the Montreal district." },
-      { "title": "Modifications", "body": "These terms may be modified at any time. The version in force is the one published on the site." }
+      {
+        "title": "Acceptance",
+        "body": "Use of this website implies your acceptance of these terms. If you do not accept these terms, please do not use the site."
+      },
+      {
+        "title": "Nature of information",
+        "body": "The information published on this site is provided for informational purposes only and does not constitute medical advice, diagnosis or prescription. A clinical consultation is always necessary to evaluate your situation."
+      },
+      {
+        "title": "Clinical results and before/after photos",
+        "body": "The cases and photographs presented illustrate treated situations. Each patient is different: results vary according to the initial condition, habits, goals and biology of each person. No results are guaranteed."
+      },
+      {
+        "title": "Intellectual property",
+        "body": "The site's content (text, images, trademarks, layout) belongs to De Facto Dental Studio or its partners. Any reproduction without authorization is prohibited."
+      },
+      {
+        "title": "Limitation of liability",
+        "body": "De Facto Dental Studio strives to provide accurate, up-to-date information but cannot guarantee the absence of errors. The user remains responsible for their use of the information consulted."
+      },
+      {
+        "title": "External links",
+        "body": "Some links may lead to third-party sites. The studio cannot be held responsible for the content or practices of those sites."
+      },
+      {
+        "title": "Applicable law",
+        "body": "These terms are governed by the laws applicable in Quebec and Canada. Any dispute falls under the competent courts of the Montreal district."
+      },
+      {
+        "title": "Modifications",
+        "body": "These terms may be modified at any time. The version in force is the one published on the site."
+      }
     ]
   },
   "laboratoire": {
@@ -979,8 +1473,6 @@
       "body3": "This measure aims to protect the relationship of trust between the referring professional, their patient and our laboratory."
     },
     "piliers": {
-      "label": "Laboratory pillars",
-      "title": "Four pillars",
       "1": {
         "title": "Constant communication",
         "body": "Direct communication with the professional and with the people who fabricate the appliances."
@@ -996,7 +1488,9 @@
       "4": {
         "title": "Technical and clinical supervision",
         "body": "A technician and a supervising dentist take part in verifying the important steps of production."
-      }
+      },
+      "label": "Laboratory pillars",
+      "title": "Four pillars"
     },
     "services": {
       "label": "Services",
@@ -1068,34 +1562,94 @@
       }
     },
     "equipements": {
+      "1": {
+        "name": "Intraoral scanner",
+        "role": "Digital capture of the arches and clinic-laboratory communication"
+      },
+      "2": {
+        "name": "Digital design software",
+        "role": "Planning and design of restorations and appliances"
+      },
+      "3": {
+        "name": "CAD/CAM milling",
+        "role": "Fabrication of selected restorations, models or appliances as indicated"
+      },
+      "4": {
+        "name": "Pressing furnace",
+        "role": "Pressing of selected ceramic restorations according to protocol"
+      },
+      "5": {
+        "name": "Crystallization / firing furnace",
+        "role": "Crystallization, characterization, glazing or finishing according to material"
+      },
+      "6": {
+        "name": "Formlabs Dental 3D printing",
+        "role": "Models, guides, retainers, occlusal splints, prototypes as indicated"
+      },
+      "7": {
+        "name": "Wash and post-curing",
+        "role": "Post-processing of printed parts following the manufacturer's protocols"
+      },
+      "8": {
+        "name": "Finishing and polishing",
+        "role": "Adjustment, finishing, characterization and final quality check"
+      },
+      "9": {
+        "name": "Photographic documentation",
+        "role": "Case communication, shade selection, follow-up and quality control"
+      },
       "label": "Equipment",
-      "title": "Equipment in use",
-      "1": { "name": "Intraoral scanner", "role": "Digital capture of the arches and clinic-laboratory communication" },
-      "2": { "name": "Digital design software", "role": "Planning and design of restorations and appliances" },
-      "3": { "name": "CAD/CAM milling", "role": "Fabrication of selected restorations, models or appliances as indicated" },
-      "4": { "name": "Pressing furnace", "role": "Pressing of selected ceramic restorations according to protocol" },
-      "5": { "name": "Crystallization / firing furnace", "role": "Crystallization, characterization, glazing or finishing according to material" },
-      "6": { "name": "Formlabs Dental 3D printing", "role": "Models, guides, retainers, occlusal splints, prototypes as indicated" },
-      "7": { "name": "Wash and post-curing", "role": "Post-processing of printed parts following the manufacturer's protocols" },
-      "8": { "name": "Finishing and polishing", "role": "Adjustment, finishing, characterization and final quality check" },
-      "9": { "name": "Photographic documentation", "role": "Case communication, shade selection, follow-up and quality control" }
+      "title": "Equipment in use"
     },
     "tracabilite": {
+      "1": {
+        "item": "Case code",
+        "desc": "Unique identifier"
+      },
+      "2": {
+        "item": "Reception date",
+        "desc": "Entry at the laboratory"
+      },
+      "3": {
+        "item": "Referring professional",
+        "desc": "Dentist or clinic that sent the case"
+      },
+      "4": {
+        "item": "Type of appliance or restoration",
+        "desc": "Crown, occlusal splint, model, tray, etc."
+      },
+      "5": {
+        "item": "Material used",
+        "desc": "Commercial name and family"
+      },
+      "6": {
+        "item": "Shade",
+        "desc": "If applicable"
+      },
+      "7": {
+        "item": "Digital file",
+        "desc": "STL, scan, photo, radiograph"
+      },
+      "8": {
+        "item": "Production steps",
+        "desc": "Reception, design, fabrication, finishing, control, delivery"
+      },
+      "9": {
+        "item": "Operator",
+        "desc": "Initials of the person responsible for each step"
+      },
+      "10": {
+        "item": "Quality control",
+        "desc": "Final verification before delivery"
+      },
+      "11": {
+        "item": "Technical notes",
+        "desc": "Particularities, limits, recommendations"
+      },
       "label": "Quality control",
       "title": "Production record and traceability",
       "intro1": "Each case can be accompanied by a traceability report specifying the materials used, the equipment, the technical limits and the relevant production steps.",
-      "intro2": "Every laboratory case is tied to an internal production sheet that documents the relevant steps:",
-      "1": { "item": "Case code", "desc": "Unique identifier" },
-      "2": { "item": "Reception date", "desc": "Entry at the laboratory" },
-      "3": { "item": "Referring professional", "desc": "Dentist or clinic that sent the case" },
-      "4": { "item": "Type of appliance or restoration", "desc": "Crown, occlusal splint, model, tray, etc." },
-      "5": { "item": "Material used", "desc": "Commercial name and family" },
-      "6": { "item": "Shade", "desc": "If applicable" },
-      "7": { "item": "Digital file", "desc": "STL, scan, photo, radiograph" },
-      "8": { "item": "Production steps", "desc": "Reception, design, fabrication, finishing, control, delivery" },
-      "9": { "item": "Operator", "desc": "Initials of the person responsible for each step" },
-      "10": { "item": "Quality control", "desc": "Final verification before delivery" },
-      "11": { "item": "Technical notes", "desc": "Particularities, limits, recommendations" }
+      "intro2": "Every laboratory case is tied to an internal production sheet that documents the relevant steps:"
     },
     "cta": {
       "label": "For dental professionals",
@@ -1125,7 +1679,7 @@
     "laboratoire": "Laboratory",
     "rendezVous": "Book an appointment",
     "horaires": "Hours",
-    "horairesPlaceholder": "Mon.–Fri.: 9 a.m. to 6 p.m.",
+    "horairesPlaceholder": "Mon. – Wed. · 9 a.m. to 6 p.m.",
     "mention": "Information on this site does not replace a clinical evaluation by a dentist."
   },
   "professionnelsPage": {
@@ -1146,10 +1700,22 @@
     "engagementLabel": "Commitment",
     "engagementTitle": "Our commitment to professionals",
     "engagementItems": [
-      { "title": "Communication", "body": "Direct communication with the people who fabricate your appliances." },
-      { "title": "Quality control", "body": "Each appliance is produced with materials and equipment recognized in the dental field, then reviewed by our technician and by the verifying dentist." },
-      { "title": "Transparency", "body": "Technical sheet and traceability of the materials and equipment used." },
-      { "title": "Rigour", "body": "Protocols established and supported by the scientific literature." }
+      {
+        "title": "Communication",
+        "body": "Direct communication with the people who fabricate your appliances."
+      },
+      {
+        "title": "Quality control",
+        "body": "Each appliance is produced with materials and equipment recognized in the dental field, then reviewed by our technician and by the verifying dentist."
+      },
+      {
+        "title": "Transparency",
+        "body": "Technical sheet and traceability of the materials and equipment used."
+      },
+      {
+        "title": "Rigour",
+        "body": "Protocols established and supported by the scientific literature."
+      }
     ]
   },
   "laboratoireSubRoutes": {

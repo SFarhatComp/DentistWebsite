@@ -1,65 +1,146 @@
-import Link from "next/link"
 import { Container } from "@/components/layout/container"
 import { FadeIn } from "@/components/motion/fade-in"
 import { SectionLabel } from "@/components/shared/section-label"
-import { getTranslations } from "@/lib/i18n"
+import { getTranslationList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
+
+/** Flèche de liaison entre deux niveaux du diagramme. Purement décorative. */
+function Fleche() {
+  return (
+    <div
+      className="py-2 text-center text-lg leading-none"
+      aria-hidden="true"
+      style={{ color: "hsl(var(--foreground) / .55)" }}
+    >
+      ↓
+    </div>
+  )
+}
+
+function Stade({
+  label,
+  title,
+  labelColor,
+  className,
+  style,
+  children,
+}: {
+  label: string
+  title: string
+  labelColor?: string
+  className?: string
+  style?: React.CSSProperties
+  children?: React.ReactNode
+}) {
+  return (
+    <div className={`rounded-xl px-6 py-6 text-center ${className ?? ""}`} style={style}>
+      <div className="text-[11px] tracking-[0.18em]" style={labelColor ? { color: labelColor } : undefined}>
+        {label}
+      </div>
+      <div className="mt-2 font-display text-xl leading-[1.15] md:text-2xl">{title}</div>
+      {children}
+    </div>
+  )
+}
 
 export function ParcoursSection({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
+  const points = getTranslationList(lang, "home.parcoursSection.pasLigneDroitePoints")
+
   return (
-    <section className="py-24 md:py-32">
-      <Container>
-        <FadeIn className="max-w-2xl mb-12">
-          <SectionLabel>{t("home.triad.label")}</SectionLabel>
-          <h2 className="font-display text-4xl md:text-5xl leading-[1.1] mb-6">
-            {t("home.triad.title")}
+    <section className="border-b border-border px-6 py-[76px] md:px-12">
+      <Container className="px-0">
+        <FadeIn>
+          <SectionLabel>{t("home.parcoursSection.label")}</SectionLabel>
+          <h2 className="font-display font-semibold text-3xl leading-[1.05] tracking-[-0.03em] md:text-[2.5rem]">
+            {t("home.parcoursSection.title")}
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {t("home.triad.body")}
+          <p className="mt-5 max-w-[68ch] text-[17px] leading-[1.6] text-muted-foreground">
+            {t("home.parcoursSection.intro")}
           </p>
         </FadeIn>
 
-        <div className="border-t border-border pt-16 mt-16">
-          <FadeIn className="max-w-2xl mb-12">
-            <SectionLabel>{t("home.deuxRdv.label")}</SectionLabel>
-            <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              {t("home.deuxRdv.title")}
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {t("home.deuxRdv.body")}
-            </p>
-          </FadeIn>
+        <FadeIn>
+          <div className="mx-auto mt-12 max-w-3xl rounded-[14px] border border-border p-6 md:p-10">
+            {/* Entrée dans le parcours */}
+            <div className="flex justify-center">
+              <span className="rounded-full bg-accent px-[30px] py-[14px] text-[15px] font-semibold text-accent-foreground">
+                {t("home.parcoursSection.entree")}
+              </span>
+            </div>
+            <Fleche />
 
-          <div className="grid gap-px bg-border md:grid-cols-2 border border-border">
-            <FadeIn className="bg-background">
-              <div className="p-8 md:p-10 h-full">
-                <div className="font-display text-2xl text-accent/70 tabular-nums mb-4">01</div>
-                <h3 className="font-display text-xl md:text-2xl mb-4 leading-tight">
-                  {t("home.deuxRdv.rdv1.title")}
-                </h3>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  {t("home.deuxRdv.rdv1.body")}
-                </p>
-              </div>
-            </FadeIn>
-            <FadeIn className="bg-background">
-              <div className="p-8 md:p-10 h-full">
-                <div className="font-display text-2xl text-accent/70 tabular-nums mb-4">02</div>
-                <h3 className="font-display text-xl md:text-2xl mb-4 leading-tight">
-                  {t("home.deuxRdv.rdv2.title")}
-                </h3>
-                <p className="text-base text-muted-foreground leading-relaxed">
-                  {t("home.deuxRdv.rdv2.body")}
-                </p>
-              </div>
-            </FadeIn>
+            <Stade
+              label={t("home.parcoursSection.s0Label")}
+              title={t("home.parcoursSection.s0Title")}
+              labelColor="hsl(var(--accent))"
+              className="border border-border bg-surface"
+            />
+            <Fleche />
+
+            {/* Stade 1 accentué : c'est le passage obligé du parcours. */}
+            <Stade
+              label={t("home.parcoursSection.s1Label")}
+              title={t("home.parcoursSection.s1Title")}
+              labelColor="#6B3648"
+              className="bg-primary text-primary-foreground"
+            />
+            <Fleche />
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Stade
+                label={t("home.parcoursSection.s2Label")}
+                title={t("home.parcoursSection.s2Title")}
+                labelColor="hsl(var(--accent))"
+                className="border"
+                style={{ borderColor: "hsl(var(--accent))" }}
+              />
+              <Stade
+                label={t("home.parcoursSection.s4Label")}
+                title={t("home.parcoursSection.s4Title")}
+                className="border text-muted-foreground"
+                style={{ borderColor: "hsl(var(--foreground) / .4)" }}
+              />
+            </div>
+            <Fleche />
+
+            <Stade
+              label={t("home.parcoursSection.s3Label")}
+              title={t("home.parcoursSection.s3Title")}
+              labelColor="hsl(var(--primary))"
+              className="border bg-surface"
+              style={{ borderColor: "hsl(var(--primary))" }}
+            >
+              <p className="mt-3 text-sm text-muted-foreground">{t("home.parcoursSection.s3Note")}</p>
+            </Stade>
           </div>
+        </FadeIn>
 
-          <FadeIn className="mt-12">
-            <Link href={`/${lang}/premiere-visite`} className="inline-flex items-center text-primary hover:underline text-sm">
-              Voir le déroulement détaillé →
-            </Link>
+        <div className="mt-14 grid gap-10 md:grid-cols-2 md:gap-14">
+          <FadeIn>
+            <div className="text-[11px] tracking-[0.18em] text-accent">
+              {t("home.parcoursSection.pasLigneDroiteLabel")}
+            </div>
+            <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
+              {t("home.parcoursSection.pasLigneDroiteBody")}
+            </p>
+            <ul className="mt-6 space-y-3">
+              {points.map((p) => (
+                <li key={p} className="text-sm leading-[1.6] text-foreground">
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </FadeIn>
+          <FadeIn direction="right">
+            <div className="border border-border bg-surface p-7">
+              <div className="text-[11px] tracking-[0.18em] text-accent">
+                {t("home.parcoursSection.precisionLabel")}
+              </div>
+              <p className="mt-4 text-sm leading-[1.6] text-muted-foreground">
+                {t("home.parcoursSection.precisionBody")}
+              </p>
+            </div>
           </FadeIn>
         </div>
       </Container>

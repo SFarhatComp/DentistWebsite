@@ -65,7 +65,7 @@ export default async function PremiereVisitePage(props: { params: Promise<{ lang
         <Container>
           <div className="grid gap-16 md:grid-cols-3">
             <aside className="md:sticky md:top-24 self-start">
-              <div className="label-sm text-muted mb-4">{t("premiereVisite.onThisPage")}</div>
+              <div className="label-sm text-muted-foreground mb-4">{t("premiereVisite.onThisPage")}</div>
               <ul className="text-sm space-y-2 text-muted-foreground">
                 <li><a href="#objectifs" className="hover:text-primary">{t("premiereVisite.tocObjectifs")}</a></li>
                 <li><a href="#duree" className="hover:text-primary">{t("premiereVisite.tocDuree")}</a></li>

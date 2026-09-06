@@ -13,19 +13,21 @@ export function Navbar({ lang }: { lang: Locale }) {
   const pathname = usePathname()
   const t = getTranslations(lang)
   const phoneTel = t("contact.phoneTel")
+  const phoneDisplay = t("contact.phoneDisplay")
 
+  // L'accueil n'est plus une entrée : le logo y mène. « Ressources » est retiré
+  // avec les pages correspondantes (handoff §2).
   const links = [
-    { href: `/${lang}`, label: t("nav.accueil") },
     { href: `/${lang}/le-studio`, label: t("nav.studio") },
-    { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
-    { href: `/${lang}/soins`, label: t("nav.soins") },
     { href: `/${lang}/laboratoire`, label: t("nav.laboratoire") },
-    { href: `/${lang}/ressources`, label: t("nav.ressources") },
+    { href: `/${lang}/parcours`, label: t("nav.parcours") },
+    { href: `/${lang}/soins`, label: t("nav.soins") },
+    { href: `/${lang}/premiere-visite`, label: t("nav.premiereVisite") },
     { href: `/${lang}/contact`, label: t("nav.contact") },
   ]
 
   // Construit l'URL équivalente dans l'autre langue en remplaçant le préfixe.
-  // Ex: /fr/laboratoire/prescription → /en/laboratoire/prescription
+  // Ex: /fr/laboratoire → /en/laboratoire
   const otherLang: Locale = lang === "fr" ? "en" : "fr"
   const switchedPath = pathname
     ? pathname.replace(/^\/(fr|en)(\/|$)/, `/${otherLang}$2`)
@@ -42,12 +44,12 @@ export function Navbar({ lang }: { lang: Locale }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo.svg"
+              src="/img/logo-cream.svg"
               alt="Studio Dentaire De Facto"
               className="h-12 w-auto md:h-14"
             />
           </Link>
-          <div className="hidden lg:flex items-center gap-5 xl:gap-7 flex-1 justify-center">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-7 flex-1 justify-center">
             {links.map((l) => {
               const isActive = pathname === l.href || pathname === `${l.href}/`
               return (
@@ -70,8 +72,18 @@ export function Navbar({ lang }: { lang: Locale }) {
             >
               {otherLang === "en" ? "EN" : "FR"}
             </Link>
-            <Link href={`/${lang}/rendez-vous`} className="inline-flex items-center bg-accent hover:bg-accent/90 text-accent-foreground px-5 py-2.5 text-sm font-medium tracking-wide transition-colors">
+            <a
+              href={`tel:${phoneTel}`}
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors whitespace-nowrap"
+            >
+              {phoneDisplay}
+            </a>
+            <Link
+              href={`/${lang}/rendez-vous`}
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground px-6 py-4 text-[15px] font-semibold transition-colors"
+            >
               {t("nav.cta")}
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className="lg:hidden flex items-center gap-2">
@@ -85,7 +97,7 @@ export function Navbar({ lang }: { lang: Locale }) {
             </Link>
             <a
               href={`tel:${phoneTel}`}
-              className="inline-flex items-center justify-center w-10 h-10 text-foreground hover:text-accent transition-colors"
+              className="inline-flex items-center justify-center w-10 h-10 text-foreground hover:text-primary transition-colors"
               aria-label={t("nav.appeler")}
             >
               <Phone className="h-5 w-5" />
@@ -108,9 +120,10 @@ export function Navbar({ lang }: { lang: Locale }) {
               <Link
                 href={`/${lang}/rendez-vous`}
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-5 py-3 text-sm font-medium tracking-wide transition-colors"
+                className="mt-2 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-primary-foreground px-6 py-4 text-[15px] font-semibold transition-colors"
               >
                 {t("nav.cta")}
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </Container>

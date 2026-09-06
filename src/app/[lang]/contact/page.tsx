@@ -44,7 +44,7 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
                 <div className="flex gap-4">
                   <MapPin className="h-5 w-5 text-accent shrink-0 mt-1" aria-hidden="true" />
                   <div>
-                    <div className="label-sm text-muted mb-1">{t("contact.adresse")}</div>
+                    <div className="label-sm text-muted-foreground mb-1">{t("contact.adresse")}</div>
                     <p className="text-lg text-foreground">
                       {t("contact.adresseValue")}<br />{t("contact.adresseCity")}
                     </p>
@@ -54,7 +54,7 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
                 <div className="flex gap-4">
                   <Phone className="h-5 w-5 text-accent shrink-0 mt-1" aria-hidden="true" />
                   <div>
-                    <div className="label-sm text-muted mb-1">{t("contact.telephone")}</div>
+                    <div className="label-sm text-muted-foreground mb-1">{t("contact.telephone")}</div>
                     <a href={`tel:${phoneTel}`} className="text-lg text-foreground hover:text-primary">
                       {phoneDisplay}
                     </a>
@@ -64,7 +64,7 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
                 <div className="flex gap-4">
                   <Mail className="h-5 w-5 text-accent shrink-0 mt-1" aria-hidden="true" />
                   <div>
-                    <div className="label-sm text-muted mb-1">{t("contact.courriel")}</div>
+                    <div className="label-sm text-muted-foreground mb-1">{t("contact.courriel")}</div>
                     <a href={`mailto:${email}`} className="text-lg text-foreground hover:text-primary">
                       {email}
                     </a>
@@ -74,7 +74,7 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
                 <div className="flex gap-4">
                   <Clock className="h-5 w-5 text-accent shrink-0 mt-1" aria-hidden="true" />
                   <div>
-                    <div className="label-sm text-muted mb-1">{t("contact.horaireLabel")}</div>
+                    <div className="label-sm text-muted-foreground mb-1">{t("contact.horaireLabel")}</div>
                     <ul className="text-base text-foreground space-y-1">
                       <li>
                         {t("contact.horaireDays")} : <span className="font-medium">{t("contact.horaireHours")}</span>

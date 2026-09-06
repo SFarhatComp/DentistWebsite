@@ -50,7 +50,7 @@ export function ServicePageTemplate({ service, lang }: { service: Service; lang:
         <Container>
           <div className="grid gap-16 md:grid-cols-3">
             <aside className="md:sticky md:top-24 self-start">
-              <div className="label-sm text-muted mb-4">{t("servicePage.onThisPage")}</div>
+              <div className="label-sm text-muted-foreground mb-4">{t("servicePage.onThisPage")}</div>
               <ul className="text-sm space-y-2 text-muted-foreground">
                 <li><a href="#consulter" className="hover:text-primary">{t("servicePage.consulterAnchor")}</a></li>
                 <li><a href="#deroulement" className="hover:text-primary">{t("servicePage.deroulementAnchor")}</a></li>

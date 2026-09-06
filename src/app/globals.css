@@ -4,33 +4,49 @@
 
 @layer base {
   :root {
-    /* Refined palette per 2026-05-08 client brief */
-    --background: 39 43% 93%;          /* #F5F0E6 cream */
-    --surface: 43 49% 96%;             /* #FAF7F0 light ivory */
-    --foreground: 0 6% 10%;            /* #1A1717 deep black */
-    --primary: 305 23% 18%;            /* #3A2438 aubergine */
-    --primary-hover: 305 30% 13%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 296 20% 30%;          /* #5A3D5C mauve */
-    --secondary-foreground: 0 0% 100%;
-    --accent: 25 65% 47%;              /* #C56A2A burnt orange */
-    --accent-foreground: 0 0% 100%;
-    --border: 38 30% 85%;
-    --muted: 30 7% 51%;                /* #8C837A warm gray */
-    --muted-foreground: 30 7% 38%;
-    --gold: 38 42% 60%;
+    /* Direction « Nuit » — palette tirée des murs réels du studio (refonte 2026-09) */
+    --background: 300.0 8.6% 6.9%;          /* #131013 fond de page */
+    --surface: 285.0 11.8% 13.3%;           /* #241E26 panneaux, cases alternées */
+    --surface-alt: 282.9 14.3% 9.6%;        /* #1A151C fond de la carte */
+    --foreground: 12.9 35.0% 92.2%;         /* #F2E7E4 texte courant */
+    --primary: 354.0 38.5% 84.7%;           /* #E7C9CC rose accent */
+    --primary-foreground: 300.0 8.6% 6.9%;  /* #131013 texte sur rose */
+    --primary-hover: 0 0% 100%;             /* #FFFFFF hover des CTA */
+    --accent: 32.5 51.3% 54.1%;             /* #C68F4E érable, micro-libellés */
+    --accent-foreground: 300.0 8.6% 6.9%;
+    --secondary: 285.0 11.8% 13.3%;
+    --secondary-foreground: 12.9 35.0% 92.2%;
+    --muted: 285.0 11.8% 13.3%;
+    --gold: 32.5 51.3% 54.1%;
+
+    /* Texte foncé posé sur les surfaces roses */
+    --on-primary: 330.0 12.2% 16.1%;        /* #2E2429 paragraphes */
+    --on-primary-muted: 340.0 32.6% 36.1%;  /* #7A3E52 micro-libellés, numéros */
+
+    /* Bande urgence */
+    --urgence: 312.0 16.1% 12.2%;           /* #241A22 */
+
+    /*
+     * --border et --muted-foreground sont --foreground avec alpha (voir handoff §1).
+     * L'alpha est appliqué dans tailwind.config.ts, pas ici : aucun modificateur
+     * d'opacité Tailwind n'est utilisé sur ces deux tokens dans le codebase.
+     * Seuil de contraste : ne jamais descendre sous .7 pour du texte sous 15 px.
+     */
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
   h1, h2, h3 { @apply font-display; }
   .display { @apply font-display; }
   .label-sm { @apply uppercase tracking-[0.2em] text-xs font-medium; }
+
   *:focus { outline: none; }
   *:focus-visible {
     outline: 2px solid hsl(var(--accent));
     outline-offset: 2px;
   }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -39,4 +55,36 @@
       scroll-behavior: auto !important;
     }
   }
+}
+
+/* Carte Leaflet — direction « Nuit » (handoff §5).
+   Le filtre ne porte que sur les tuiles : le marqueur garde son rose. */
+.leaflet-container {
+  background: hsl(var(--background));
+  font-family: var(--font-sans), "Space Grotesk", system-ui, sans-serif;
+}
+.leaflet-tile-pane {
+  filter: invert(1) hue-rotate(185deg) saturate(0.28) brightness(0.82) contrast(1.06);
+}
+.leaflet-control-attribution {
+  background: hsl(var(--background) / 0.82) !important;
+  color: hsl(var(--foreground) / 0.72) !important;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+}
+.leaflet-control-attribution a { color: hsl(var(--primary)) !important; }
+.df-pin { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.df-pin b {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font: 600 11px/1 var(--font-sans), "Space Grotesk", sans-serif;
+  letter-spacing: 0.12em;
+  padding: 7px 10px;
+  white-space: nowrap;
+}
+.df-pin i {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 0 5px hsl(var(--primary) / 0.24);
 }

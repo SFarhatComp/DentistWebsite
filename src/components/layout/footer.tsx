@@ -49,11 +49,6 @@ export function Footer({ lang }: { lang: Locale }) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${lang}/nouveaux-patients`} className="hover:text-primary">
-                  {t("footer.nouveauxPatients")}
-                </Link>
-              </li>
-              <li>
                 <Link href={`/${lang}/premiere-visite`} className="hover:text-primary">
                   {t("footer.premiereVisite")}
                 </Link>
@@ -87,11 +82,6 @@ export function Footer({ lang }: { lang: Locale }) {
               <li>
                 <Link href={`/${lang}/questions-frequentes`} className="hover:text-primary">
                   {t("footer.faq")}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${lang}/ressources`} className="hover:text-primary">
-                  {t("nav.ressources")}
                 </Link>
               </li>
               <li>

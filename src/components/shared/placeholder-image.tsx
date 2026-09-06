@@ -27,7 +27,7 @@ export function PlaceholderImage({ className, aspect = "video", label }: Placeho
         aria-hidden="true"
         style={{ backgroundImage: "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)", backgroundSize: "12px 12px" }}
       />
-      {label && <div className="absolute bottom-3 left-3 label-sm text-muted">{label}</div>}
+      {label && <div className="absolute bottom-3 left-3 label-sm text-muted-foreground">{label}</div>}
     </div>
   )
 }

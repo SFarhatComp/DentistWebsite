@@ -23,7 +23,7 @@ export function ParcoursPhasesSection({ lang }: { lang: Locale }) {
             return (
               <div key={p} className="grid gap-12 md:grid-cols-2 items-center border-t border-border pt-12">
                 <FadeIn direction={isEven ? "right" : "left"} className={isEven ? "md:order-2" : ""}>
-                  <div className="label-sm text-muted mb-4">Phase 0{i + 1}</div>
+                  <div className="label-sm text-muted-foreground mb-4">Phase 0{i + 1}</div>
                   <h3 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">{t(`experience.phases.${p}.title`)}</h3>
                   <p className="text-base text-muted-foreground leading-relaxed">{t(`experience.phases.${p}.body`)}</p>
                 </FadeIn>

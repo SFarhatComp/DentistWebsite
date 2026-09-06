@@ -1,5 +1,20 @@
 import type { Metadata } from "next"
+import { Familjen_Grotesk, Space_Grotesk } from "next/font/google"
 import "./globals.css"
+
+const familjenGrotesk = Familjen_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-display",
+  display: "swap",
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-sans",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: { default: "Studio Dentaire De Facto", template: "%s | Studio Dentaire De Facto" },
@@ -24,7 +39,7 @@ const jsonLd = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
       opens: "09:00",
       closes: "18:00",
     },
@@ -33,15 +48,8 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${familjenGrotesk.variable} ${spaceGrotesk.variable}`}>
       <head>
-        <meta name="x-deploy-marker" content="2026-09-06-praticien" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&display=swap"
-          rel="stylesheet"
-        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async />
       </head>

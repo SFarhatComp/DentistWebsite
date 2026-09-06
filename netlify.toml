@@ -55,3 +55,42 @@
   for = "/fr/*"
   [headers.values]
     Link = '''</en/>; rel="alternate"; hreflang="en", </fr/>; rel="alternate"; hreflang="fr"'''
+
+# Routes retirées lors de la refonte 2026-09 (handoff §2).
+# Redirigées plutôt que laissées en 404 : ces URL sont indexées et ont pu être
+# mises en favori. Le contenu laboratoire B2B disparaît, mais l'adresse mène
+# désormais à la page laboratoire conforme.
+[[redirects]]
+  from = "/:lang/laboratoire/professionnels"
+  to = "/:lang/laboratoire"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/laboratoire/partenaires"
+  to = "/:lang/laboratoire"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/laboratoire/prescription"
+  to = "/:lang/laboratoire"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/laboratoire/reference-clinique"
+  to = "/:lang/laboratoire"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/nouveaux-patients"
+  to = "/:lang/premiere-visite"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/ressources"
+  to = "/:lang/premiere-visite"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/ressources-patients"
+  to = "/:lang/premiere-visite"
+  status = 301
