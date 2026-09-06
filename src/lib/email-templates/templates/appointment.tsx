@@ -1,370 +1,365 @@
 import * as React from "react"
-import {
-  EmailLayout,
-  EmailHeader,
-  Hero,
-  SectionTitle,
-  DetailRow,
-  LongTextBlock,
-  PhoneCallCard,
-  TagList,
-  AlertBanner,
-  Section,
-} from "../components"
-import { formatDate, getString, isChecked, resolveLang } from "../theme"
+import { Body, Container, Head, Html, Preview, Section, Row, Column, Text } from "@react-email/components"
+import { formatDate, getString, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
 
-const TYPE_LABELS = {
-  fr: {
-    premiere_visite: "Première visite / examen complet",
-    nettoyage: "Nettoyage et suivi",
-    consultation_ciblee: "Consultation ciblée",
-    urgence: "Urgence dentaire",
-    douleur: "Douleur",
-    dent_cassee: "Dent cassée ou restauration fracturée",
-    esthetique: "Esthétique",
-    orthodontie: "Orthodontie / aligneurs",
-    implant_couronne: "Implant / couronne / prothèse",
-    laboratoire: "Laboratoire ou demande professionnelle",
-    autre: "Autre",
-  } as Record<string, string>,
-  en: {
-    premiere_visite: "First visit / full exam",
-    nettoyage: "Cleaning and follow-up",
-    consultation_ciblee: "Targeted consultation",
-    urgence: "Dental emergency",
-    douleur: "Pain",
-    dent_cassee: "Broken tooth or fractured restoration",
-    esthetique: "Aesthetics",
-    orthodontie: "Orthodontics / aligners",
-    implant_couronne: "Implant / crown / prosthesis",
-    laboratoire: "Laboratory or professional request",
-    autre: "Other",
-  } as Record<string, string>,
+/* --------------------------------------------------------------------------
+ * Rapport de demande de rendez-vous reçu à la réception (handoff §10).
+ *
+ * C'est la moitié utile du questionnaire : la réception doit pouvoir trier sans
+ * ouvrir le courriel (d'où la priorité dans l'objet), puis agir sans réfléchir
+ * (d'où la liste « à faire » générée depuis les réponses).
+ *
+ * Rendu sur papier clair, pensé pour être lu à l'écran comme imprimé.
+ * ----------------------------------------------------------------------- */
+
+const PAPIER = "#F2E7E4"
+const ENCRE = "#1A1A18"
+const ENCRE_DOUCE = "#5A544F"
+const FILET = "#D8CBC6"
+const PANNEAU = "#EDE4DA"
+
+type Lang = "fr" | "en"
+
+/** Priorité de rappel, dérivée de l'étape 3 du questionnaire. */
+const PRIORITE: Record<string, { fr: string; en: string; ton: string }> = {
+  aucune: { fr: "RAPPEL RÉGULIER", en: "REGULAR CALLBACK", ton: "#4B463F" },
+  progresse: { fr: "À RAPPELER SOUS 24 H", en: "CALL BACK WITHIN 24 H", ton: "#B5793D" },
+  aujourdhui: { fr: "PRIORITÉ — RAPPEL LE JOUR MÊME", en: "PRIORITY — SAME-DAY CALLBACK", ton: "#7A3E52" },
 }
-
-const URGENT_TYPES = new Set(["urgence", "douleur", "dent_cassee"])
-
-const MOTIFS_LIST = {
-  fr: [
-    { key: "motif_douleur", label: "Douleur" },
-    { key: "motif_sensibilite", label: "Sensibilité" },
-    { key: "motif_saignement_gencives", label: "Saignement des gencives" },
-    { key: "motif_mauvaise_haleine", label: "Mauvaise haleine" },
-    { key: "motif_dent_mobile", label: "Dent mobile" },
-    { key: "motif_fracture", label: "Fracture" },
-    { key: "motif_usure", label: "Usure dentaire" },
-    { key: "motif_serrement_grincement", label: "Serrement ou grincement" },
-    { key: "motif_esthetique", label: "Préoccupation esthétique" },
-    { key: "motif_deuxieme_avis", label: "Deuxième avis" },
-    { key: "motif_suivi_traitement", label: "Suivi de traitement existant" },
-    { key: "motif_autre", label: "Autre" },
-  ],
-  en: [
-    { key: "motif_douleur", label: "Pain" },
-    { key: "motif_sensibilite", label: "Sensitivity" },
-    { key: "motif_saignement_gencives", label: "Bleeding gums" },
-    { key: "motif_mauvaise_haleine", label: "Bad breath" },
-    { key: "motif_dent_mobile", label: "Loose tooth" },
-    { key: "motif_fracture", label: "Fracture" },
-    { key: "motif_usure", label: "Tooth wear" },
-    { key: "motif_serrement_grincement", label: "Clenching or grinding" },
-    { key: "motif_esthetique", label: "Aesthetic concern" },
-    { key: "motif_deuxieme_avis", label: "Second opinion" },
-    { key: "motif_suivi_traitement", label: "Follow-up on existing treatment" },
-    { key: "motif_autre", label: "Other" },
-  ],
-}
-
-const ALERTING_MOTIFS = ["motif_douleur", "motif_fracture", "motif_dent_mobile"]
-
-const JOURS_LIST = {
-  fr: [
-    { key: "jour_lundi", label: "Lundi" },
-    { key: "jour_mardi", label: "Mardi" },
-    { key: "jour_mercredi", label: "Mercredi" },
-    { key: "jour_jeudi", label: "Jeudi" },
-    { key: "jour_vendredi", label: "Vendredi" },
-    { key: "jour_asap", label: "Dès que possible" },
-    { key: "jour_flexible", label: "Flexible" },
-  ],
-  en: [
-    { key: "jour_lundi", label: "Monday" },
-    { key: "jour_mardi", label: "Tuesday" },
-    { key: "jour_mercredi", label: "Wednesday" },
-    { key: "jour_jeudi", label: "Thursday" },
-    { key: "jour_vendredi", label: "Friday" },
-    { key: "jour_asap", label: "As soon as possible" },
-    { key: "jour_flexible", label: "Flexible" },
-  ],
-}
-
-const MOMENTS_LIST = {
-  fr: [
-    { key: "moment_matin", label: "Matin (9h-12h)" },
-    { key: "moment_midi", label: "Midi (12h-14h)" },
-    { key: "moment_apres_midi", label: "Après-midi (14h-18h)" },
-    { key: "moment_flexible", label: "Flexible" },
-  ],
-  en: [
-    { key: "moment_matin", label: "Morning (9am-12pm)" },
-    { key: "moment_midi", label: "Midday (12pm-2pm)" },
-    { key: "moment_apres_midi", label: "Afternoon (2pm-6pm)" },
-    { key: "moment_flexible", label: "Flexible" },
-  ],
-}
-
-const CONTACT_LIST = {
-  fr: [
-    { key: "contact_telephone", label: "Téléphone" },
-    { key: "contact_courriel", label: "Courriel" },
-    { key: "contact_sms", label: "SMS" },
-  ],
-  en: [
-    { key: "contact_telephone", label: "Phone" },
-    { key: "contact_courriel", label: "Email" },
-    { key: "contact_sms", label: "SMS" },
-  ],
-}
-
-const CONDITIONS_LIST = {
-  fr: [
-    { key: "condition_hypertension", label: "Hypertension artérielle" },
-    { key: "condition_cardiaque", label: "Maladie cardiaque" },
-    { key: "condition_souffle_valvulaire", label: "Souffle / valvulaire" },
-    { key: "condition_endocardite", label: "Antécédent d'endocardite" },
-    { key: "condition_diabete", label: "Diabète" },
-    { key: "condition_respiratoire", label: "Asthme / respiratoire" },
-    { key: "condition_apnee_sommeil", label: "Apnée du sommeil" },
-    { key: "condition_foie", label: "Maladie du foie" },
-    { key: "condition_renale", label: "Maladie rénale" },
-    { key: "condition_coagulation", label: "Trouble de coagulation" },
-    { key: "condition_anticoagulants", label: "Anticoagulants / antiplaquettaires" },
-    { key: "condition_epilepsie", label: "Épilepsie ou convulsions" },
-    { key: "condition_neurologique", label: "Trouble neurologique" },
-    { key: "condition_cancer", label: "Cancer (actuel ou antécédent)" },
-    { key: "condition_radiotherapie", label: "Radiothérapie tête/cou" },
-    { key: "condition_chimiotherapie", label: "Chimio / immunothérapie" },
-    { key: "condition_immunosuppression", label: "Immunosuppression" },
-    { key: "condition_osteoporose", label: "Ostéoporose" },
-    { key: "condition_bisphosphonates", label: "Bisphosphonates" },
-    { key: "condition_thyroide", label: "Trouble thyroïdien" },
-    { key: "condition_reflux", label: "Reflux gastrique important" },
-    { key: "condition_anxiete", label: "Anxiété importante" },
-    { key: "condition_grossesse", label: "Grossesse / allaitement" },
-    { key: "condition_allergies", label: "Allergies connues" },
-    { key: "condition_autre", label: "Autre condition" },
-  ],
-  en: [
-    { key: "condition_hypertension", label: "High blood pressure" },
-    { key: "condition_cardiaque", label: "Heart disease" },
-    { key: "condition_souffle_valvulaire", label: "Murmur / valvular" },
-    { key: "condition_endocardite", label: "History of endocarditis" },
-    { key: "condition_diabete", label: "Diabetes" },
-    { key: "condition_respiratoire", label: "Asthma / respiratory" },
-    { key: "condition_apnee_sommeil", label: "Sleep apnea" },
-    { key: "condition_foie", label: "Liver disease" },
-    { key: "condition_renale", label: "Kidney disease" },
-    { key: "condition_coagulation", label: "Coagulation disorder" },
-    { key: "condition_anticoagulants", label: "Anticoagulants / antiplatelets" },
-    { key: "condition_epilepsie", label: "Epilepsy or seizures" },
-    { key: "condition_neurologique", label: "Neurological disorder" },
-    { key: "condition_cancer", label: "Cancer (current or past)" },
-    { key: "condition_radiotherapie", label: "Head/neck radiotherapy" },
-    { key: "condition_chimiotherapie", label: "Chemo / immunotherapy" },
-    { key: "condition_immunosuppression", label: "Immunosuppression" },
-    { key: "condition_osteoporose", label: "Osteoporosis" },
-    { key: "condition_bisphosphonates", label: "Bisphosphonates" },
-    { key: "condition_thyroide", label: "Thyroid disorder" },
-    { key: "condition_reflux", label: "Significant acid reflux" },
-    { key: "condition_anxiete", label: "Significant anxiety" },
-    { key: "condition_grossesse", label: "Pregnancy / breastfeeding" },
-    { key: "condition_allergies", label: "Known allergies" },
-    { key: "condition_autre", label: "Other condition" },
-  ],
-}
-
-const CRITICAL_CONDITIONS = [
-  "condition_cardiaque",
-  "condition_souffle_valvulaire",
-  "condition_endocardite",
-  "condition_anticoagulants",
-  "condition_coagulation",
-  "condition_immunosuppression",
-  "condition_bisphosphonates",
-  "condition_grossesse",
-  "condition_allergies",
-]
 
 const L = {
   fr: {
-    kickerUrgent: "Demande potentiellement urgente",
-    kickerNormal: "Nouvelle demande de rendez-vous",
-    eyebrow: "Demande de rendez-vous",
-    defaultPatient: "Patient",
-    alertTitleSingle: "condition médicale à considérer",
-    alertTitleMulti: "conditions médicales à considérer",
-    sectionPatientMessage: "Message du patient",
-    sectionCoordonnees: "Coordonnées",
-    labelEmail: "Courriel",
-    labelPhone: "Téléphone",
-    labelLanguage: "Langue préférée",
-    sectionMotifs: "Motifs secondaires",
-    sectionDisponibilites: "Disponibilités",
-    daysLabel: "Journées",
-    momentsLabel: "Moments",
-    contactPrefLabel: "Mode de contact préféré",
-    medicalProfile: "Profil médical",
-    declaredSingle: "condition déclarée",
-    declaredMulti: "conditions déclarées",
-    allergyDetails: "Détails allergies",
-    otherCondition: "Autre condition",
-    subjectPrefix: "[RDV]",
+    titre: "DEMANDE DE RENDEZ-VOUS",
+    nouveau: "Nouveau patient",
+    existant: "Patient du studio",
+    statut: "STATUT",
+    motif: "MOTIF DÉCLARÉ",
+    precisions: "PRÉCISIONS",
+    douleur: "DOULEUR",
+    duree: "DURÉE SUGGÉRÉE",
+    jours: "JOURS",
+    moments: "MOMENTS",
+    delai: "DÉLAI SOUHAITÉ",
+    assurance: "ASSURANCE",
+    telephone: "TÉLÉPHONE",
+    courriel: "COURRIEL",
+    naissance: "DATE DE NAISSANCE",
+    contact: "CONTACT PRÉFÉRÉ",
+    note: "NOTE DU PATIENT",
+    aFaire: "À FAIRE À LA RÉCEPTION",
+    recuLe: "Reçu le",
+    a: "à",
+    pied: "Formulaire du site · Aucune donnée clinique détaillée n'est collectée en ligne.",
+    sujet: "Demande de RDV",
+    min: "min",
+    nonPrecise: "Non précisé",
   },
   en: {
-    kickerUrgent: "Potentially urgent request",
-    kickerNormal: "New appointment request",
-    eyebrow: "Appointment request",
-    defaultPatient: "Patient",
-    alertTitleSingle: "medical condition to consider",
-    alertTitleMulti: "medical conditions to consider",
-    sectionPatientMessage: "Patient message",
-    sectionCoordonnees: "Contact details",
-    labelEmail: "Email",
-    labelPhone: "Phone",
-    labelLanguage: "Preferred language",
-    sectionMotifs: "Secondary reasons",
-    sectionDisponibilites: "Availability",
-    daysLabel: "Days",
-    momentsLabel: "Time of day",
-    contactPrefLabel: "Preferred contact method",
-    medicalProfile: "Medical profile",
-    declaredSingle: "declared condition",
-    declaredMulti: "declared conditions",
-    allergyDetails: "Allergy details",
-    otherCondition: "Other condition",
-    subjectPrefix: "[APPT]",
+    titre: "APPOINTMENT REQUEST",
+    nouveau: "New patient",
+    existant: "Studio patient",
+    statut: "STATUS",
+    motif: "STATED REASON",
+    precisions: "DETAILS",
+    douleur: "PAIN",
+    duree: "SUGGESTED DURATION",
+    jours: "DAYS",
+    moments: "TIME OF DAY",
+    delai: "PREFERRED TIMEFRAME",
+    assurance: "INSURANCE",
+    telephone: "PHONE",
+    courriel: "EMAIL",
+    naissance: "DATE OF BIRTH",
+    contact: "PREFERRED CONTACT",
+    note: "PATIENT NOTE",
+    aFaire: "FOR RECEPTION TO DO",
+    recuLe: "Received on",
+    a: "at",
+    pied: "Website form · No detailed clinical data is collected online.",
+    sujet: "Appointment request",
+    min: "min",
+    nonPrecise: "Not specified",
   },
-} as const
+}
+
+const MAP: Record<string, Record<string, { fr: string; en: string }>> = {
+  douleur: {
+    aucune: { fr: "Aucune douleur", en: "No pain" },
+    progresse: { fr: "Un inconfort qui progresse", en: "A discomfort that is getting worse" },
+    aujourdhui: { fr: "Douleur ou gonflement aujourd'hui", en: "Pain or swelling today" },
+  },
+  jours: {
+    lundi: { fr: "Lundi", en: "Monday" },
+    mardi: { fr: "Mardi", en: "Tuesday" },
+    mercredi: { fr: "Mercredi", en: "Wednesday" },
+  },
+  moments: {
+    matin: { fr: "Matin (9 h – 12 h)", en: "Morning (9 a.m. – 12 p.m.)" },
+    apres_midi: { fr: "Après-midi (12 h – 15 h)", en: "Afternoon (12 p.m. – 3 p.m.)" },
+    fin_journee: { fr: "Fin de journée (15 h – 18 h)", en: "End of day (3 p.m. – 6 p.m.)" },
+  },
+  delai: {
+    asap: { fr: "Dès que possible", en: "As soon as possible" },
+    deux_semaines: { fr: "Dans les deux semaines", en: "Within two weeks" },
+    mois: { fr: "Dans le mois", en: "Within the month" },
+  },
+  assurance: {
+    privee: { fr: "Assurance privée", en: "Private insurance" },
+    ramq: { fr: "RAMQ", en: "RAMQ" },
+    rcsd: { fr: "Régime canadien de soins dentaires (RCSD)", en: "Canadian Dental Care Plan (CDCP)" },
+    non: { fr: "Aucune — paiement direct", en: "None — direct payment" },
+    inconnu: { fr: "Ne sait pas", en: "Does not know" },
+  },
+  contact: {
+    telephone: { fr: "Téléphone", en: "Phone" },
+    courriel: { fr: "Courriel", en: "Email" },
+    texto: { fr: "Texto", en: "Text message" },
+  },
+}
+
+const label = (groupe: string, code: string, lang: Lang, repli: string) =>
+  MAP[groupe]?.[code]?.[lang] ?? (code || repli)
+
+const liste = (groupe: string, csv: string, lang: Lang, repli: string) => {
+  const codes = csv.split(",").map((c) => c.trim()).filter(Boolean)
+  return codes.length ? codes.map((c) => label(groupe, c, lang, c)).join(" · ") : repli
+}
+
+/**
+ * Liste d'actions générée depuis les réponses.
+ * Chaque ligne correspond à une règle du handoff §10 — l'ordre est celui du
+ * traitement à la réception, pas celui du formulaire.
+ */
+function actionsReception(d: Record<string, string | string[] | undefined>, lang: Lang): string[] {
+  const g = (k: string) => getString(d, k)
+  const statut = g("statut")
+  const assurance = g("assurance")
+  const assureur = g("assureur")
+  const duree = Number(g("dureeSuggeree")) || 45
+  const canal = label("contact", g("contactPreference"), lang, lang === "fr" ? "téléphone" : "phone").toLowerCase()
+  const fr = lang === "fr"
+  const out: string[] = []
+
+  out.push(
+    statut === "nouveau"
+      ? fr
+        ? "Ouvrir un dossier patient (nom, date de naissance, coordonnées ci-dessus)"
+        : "Open a patient file (name, date of birth, contact details above)"
+      : fr
+        ? "Retrouver le dossier existant et vérifier les coordonnées"
+        : "Find the existing file and check the contact details"
+  )
+  out.push(
+    fr
+      ? `Bloquer environ ${duree} min à l'agenda, selon le motif déclaré`
+      : `Block about ${duree} min in the schedule, according to the stated reason`
+  )
+  if (g("priorite") === "aujourdhui") {
+    out.push(
+      fr
+        ? "Rappeler aujourd'hui — douleur ou gonflement signalé"
+        : "Call back today — pain or swelling reported"
+    )
+  }
+  if (assurance === "privee") {
+    out.push(
+      fr
+        ? `Demander la carte d'assurance${assureur ? ` (${assureur})` : ""} avant le rendez-vous`
+        : `Ask for the insurance card${assureur ? ` (${assureur})` : ""} before the appointment`
+    )
+  }
+  if (assurance === "rcsd") {
+    out.push(
+      fr
+        ? "Vérifier l'admissibilité au Régime canadien de soins dentaires et noter le numéro de client"
+        : "Check eligibility for the Canadian Dental Care Plan and note the client number"
+    )
+  }
+  if (assurance === "ramq") {
+    out.push(
+      fr
+        ? "Valider la carte d'assurance maladie et l'admissibilité RAMQ"
+        : "Validate the health insurance card and RAMQ eligibility"
+    )
+  }
+  if (assurance === "inconnu") {
+    out.push(
+      fr ? "Vérifier la couverture avec le patient au téléphone" : "Check coverage with the patient by phone"
+    )
+  }
+  if (duree >= 75) {
+    out.push(
+      fr
+        ? "Prévoir le temps d'examen complet et les radiographies"
+        : "Allow time for the complete examination and radiographs"
+    )
+  }
+  out.push(
+    fr
+      ? `Confirmer par ${canal} et envoyer le rappel 48 h avant`
+      : `Confirm by ${canal} and send the reminder 48 h beforehand`
+  )
+  return out
+}
+
+/* -------------------------------------------------------------------------- */
+
+function Paire({ label: l, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <Column style={{ width: "50%", verticalAlign: "top", paddingRight: "12px", paddingBottom: "14px" }}>
+      <Text style={{ margin: "0 0 3px", fontSize: "10px", letterSpacing: "0.16em", color: ENCRE_DOUCE }}>
+        {l}
+      </Text>
+      <Text style={{ margin: 0, fontSize: "14px", lineHeight: "1.45", color: ENCRE }}>{value}</Text>
+    </Column>
+  )
+}
 
 export function AppointmentEmail({ payload }: { payload: NetlifyPayload }) {
   const d = payload.data
-  const lang = resolveLang(d)
+  const lang = resolveLang(d) as Lang
   const t = L[lang]
-  const typeLabels = TYPE_LABELS[lang]
-  const firstName = getString(d, "firstName")
-  const lastName = getString(d, "lastName")
-  const phone = getString(d, "phone")
-  const email = getString(d, "email")
-  const language = getString(d, "preferredLanguage")
-  const languageOther = getString(d, "preferredLanguageOther")
-  const typeDemande = getString(d, "typeDemande")
-  const typeDemandeOther = getString(d, "typeDemandeOther")
-  const message = getString(d, "message")
+  const g = (k: string) => getString(d, k)
 
-  const typeLabel = typeDemande === "autre" && typeDemandeOther ? typeDemandeOther : (typeLabels[typeDemande] || typeDemande)
-  const langueLabel = language === "autre" && languageOther ? languageOther : language
-  const isUrgent = URGENT_TYPES.has(typeDemande)
-
-  const conditionsItems = CONDITIONS_LIST[lang].map((c) => ({ ...c, selected: isChecked(d, c.key) }))
-  const conditionsCount = conditionsItems.filter((c) => c.selected).length
-  const criticalCount = conditionsItems.filter((c) => c.selected && CRITICAL_CONDITIONS.includes(c.key)).length
-
-  const motifsItems = MOTIFS_LIST[lang].map((m) => ({ ...m, selected: isChecked(d, m.key) }))
+  const prenom = g("firstName")
+  const nom = g("lastName")
+  const statut = g("statut") === "nouveau" ? t.nouveau : t.existant
+  const motifLabel = g("motifLabel") || g("motif") || t.nonPrecise
+  const prio = PRIORITE[g("priorite")] ?? PRIORITE.aucune
+  const duree = Number(g("dureeSuggeree")) || 45
+  const note = g("note")
+  const assurance = label("assurance", g("assurance"), lang, t.nonPrecise)
+  const assureur = g("assureur")
+  const police = g("police")
+  const assuranceComplete = [assurance, assureur, police && `n° ${police}`].filter(Boolean).join(" · ")
+  const actions = actionsReception(d, lang)
+  const recu = formatDate(payload.created_at, lang)
 
   return (
-    <EmailLayout preview={`${firstName} ${lastName} — ${typeLabel}`} tone={isUrgent ? "red" : "default"} lang={lang}>
-      <EmailHeader kicker={isUrgent ? t.kickerUrgent : t.kickerNormal} />
+    <Html lang={lang}>
+      <Head>
+        <meta name="color-scheme" content="light only" />
+        <meta name="supported-color-schemes" content="light" />
+      </Head>
+      <Preview>{`${prio[lang]} — ${prenom} ${nom} — ${motifLabel}`}</Preview>
+      <Body
+        style={{
+          backgroundColor: "#E4D8D4",
+          margin: 0,
+          padding: 0,
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif',
+        }}
+      >
+        <Container style={{ maxWidth: "640px", margin: "0 auto", padding: "24px 12px" }}>
+          <Container style={{ backgroundColor: PAPIER, padding: "28px 26px", color: ENCRE }}>
+            {/* En-tête : identité à gauche, priorité à droite */}
+            <Row>
+              <Column style={{ verticalAlign: "top" }}>
+                <Text style={{ margin: "0 0 6px", fontSize: "10px", letterSpacing: "0.2em", color: ENCRE_DOUCE }}>
+                  {t.titre}
+                </Text>
+                <Text style={{ margin: 0, fontSize: "26px", lineHeight: "1.15", fontWeight: 600, color: ENCRE }}>
+                  {prenom} {nom}
+                </Text>
+                <Text style={{ margin: "6px 0 0", fontSize: "13px", color: ENCRE_DOUCE }}>
+                  {statut} · {motifLabel}
+                </Text>
+              </Column>
+              <Column style={{ verticalAlign: "top", textAlign: "right", width: "210px" }}>
+                <Text
+                  style={{
+                    display: "inline-block",
+                    margin: 0,
+                    padding: "8px 12px",
+                    backgroundColor: prio.ton,
+                    color: "#FFFFFF",
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  {prio[lang]}
+                </Text>
+              </Column>
+            </Row>
 
-      <Hero
-        eyebrow={t.eyebrow}
-        name={`${firstName} ${lastName}`.trim() || t.defaultPatient}
-        badge={{ label: typeLabel, tone: isUrgent ? "red" : "default" }}
-        timestamp={formatDate(payload.created_at, lang)}
-        lang={lang}
-      />
+            <Section style={{ borderTop: `1px solid ${FILET}`, marginTop: "22px", paddingTop: "20px" }}>
+              <Row>
+                <Paire label={t.statut} value={statut} />
+                <Paire label={t.motif} value={motifLabel} />
+              </Row>
+              <Row>
+                <Paire label={t.precisions} value={g("precisions") || t.nonPrecise} />
+                <Paire label={t.douleur} value={label("douleur", g("douleur"), lang, t.nonPrecise)} />
+              </Row>
+              <Row>
+                <Paire label={t.duree} value={`${duree} ${t.min}`} />
+                <Paire label={t.delai} value={label("delai", g("delai"), lang, t.nonPrecise)} />
+              </Row>
+              <Row>
+                <Paire label={t.jours} value={liste("jours", g("jours"), lang, t.nonPrecise)} />
+                <Paire label={t.moments} value={liste("moments", g("moments"), lang, t.nonPrecise)} />
+              </Row>
+              <Row>
+                <Paire label={t.assurance} value={assuranceComplete} />
+                <Paire label={t.contact} value={label("contact", g("contactPreference"), lang, t.nonPrecise)} />
+              </Row>
+              <Row>
+                <Paire label={t.telephone} value={g("phone") || t.nonPrecise} />
+                <Paire label={t.courriel} value={g("email") || t.nonPrecise} />
+              </Row>
+              <Row>
+                <Paire label={t.naissance} value={g("birthdate") || t.nonPrecise} />
+                <Column style={{ width: "50%" }} />
+              </Row>
+            </Section>
 
-      {criticalCount > 0 && (
-        <AlertBanner
-          title={`${criticalCount} ${criticalCount > 1 ? t.alertTitleMulti : t.alertTitleSingle}`}
-          items={conditionsItems.filter((c) => c.selected && CRITICAL_CONDITIONS.includes(c.key)).map((c) => c.label)}
-        />
-      )}
+            {note && (
+              <Section style={{ borderTop: `1px solid ${FILET}`, paddingTop: "18px" }}>
+                <Text style={{ margin: "0 0 6px", fontSize: "10px", letterSpacing: "0.16em", color: ENCRE_DOUCE }}>
+                  {t.note}
+                </Text>
+                <Text style={{ margin: 0, fontSize: "14px", lineHeight: "1.6", color: ENCRE, whiteSpace: "pre-wrap" }}>
+                  {note}
+                </Text>
+              </Section>
+            )}
 
-      {message && (
-        <>
-          <SectionTitle>{t.sectionPatientMessage}</SectionTitle>
-          <LongTextBlock value={message} />
-        </>
-      )}
+            <Section style={{ marginTop: "22px", backgroundColor: PANNEAU, padding: "20px 20px 8px" }}>
+              <Text style={{ margin: "0 0 14px", fontSize: "10px", letterSpacing: "0.16em", fontWeight: 700, color: ENCRE }}>
+                {t.aFaire}
+              </Text>
+              {actions.map((a) => (
+                <Text key={a} style={{ margin: "0 0 10px", fontSize: "14px", lineHeight: "1.5", color: ENCRE }}>
+                  <span style={{ display: "inline-block", width: "18px", color: ENCRE_DOUCE }}>☐</span>
+                  {a}
+                </Text>
+              ))}
+            </Section>
 
-      <SectionTitle>{t.sectionCoordonnees}</SectionTitle>
-      <Section>
-        <DetailRow label={t.labelEmail} value={email} />
-        <DetailRow label={t.labelPhone} value={phone} />
-        <DetailRow label={t.labelLanguage} value={langueLabel} />
-      </Section>
-
-      {motifsItems.some((m) => m.selected) && (
-        <>
-          <SectionTitle>{t.sectionMotifs}</SectionTitle>
-          <TagList items={motifsItems} alertItems={ALERTING_MOTIFS} />
-        </>
-      )}
-
-      <SectionTitle>{t.sectionDisponibilites}</SectionTitle>
-      <TagList
-        label={t.daysLabel}
-        items={JOURS_LIST[lang].map((j) => ({ ...j, selected: isChecked(d, j.key) }))}
-      />
-      <TagList
-        label={t.momentsLabel}
-        items={MOMENTS_LIST[lang].map((m) => ({ ...m, selected: isChecked(d, m.key) }))}
-      />
-      <TagList
-        label={t.contactPrefLabel}
-        items={CONTACT_LIST[lang].map((c) => ({ ...c, selected: isChecked(d, c.key) }))}
-      />
-
-      {conditionsCount > 0 && (
-        <>
-          <SectionTitle accent={criticalCount > 0 ? "red" : "default"}>
-            {t.medicalProfile} — {conditionsCount} {conditionsCount > 1 ? t.declaredMulti : t.declaredSingle}
-          </SectionTitle>
-          <TagList
-            items={conditionsItems}
-            alertItems={CRITICAL_CONDITIONS}
-            emptyText=""
-          />
-          {getString(d, "allergies_details") && (
-            <LongTextBlock label={t.allergyDetails} value={getString(d, "allergies_details")} />
-          )}
-          {getString(d, "other_condition_details") && (
-            <LongTextBlock label={t.otherCondition} value={getString(d, "other_condition_details")} />
-          )}
-        </>
-      )}
-
-      <PhoneCallCard phone={phone} urgent={isUrgent} lang={lang} />
-    </EmailLayout>
+            <Text style={{ margin: "22px 0 0", fontSize: "11px", lineHeight: "1.5", color: ENCRE_DOUCE }}>
+              {t.recuLe} {recu} · {t.pied}
+            </Text>
+          </Container>
+        </Container>
+      </Body>
+    </Html>
   )
 }
 
 export const appointmentMeta = (payload: NetlifyPayload) => {
   const d = payload.data
-  const lang = resolveLang(d)
+  const lang = resolveLang(d) as Lang
   const t = L[lang]
-  const typeLabels = TYPE_LABELS[lang]
-  const firstName = getString(d, "firstName")
-  const lastName = getString(d, "lastName")
-  const typeDemande = getString(d, "typeDemande")
-  const typeDemandeOther = getString(d, "typeDemandeOther")
-  const typeLabel = typeDemande === "autre" && typeDemandeOther ? typeDemandeOther : (typeLabels[typeDemande] || typeDemande)
-  const isUrgent = URGENT_TYPES.has(typeDemande)
+  const prio = PRIORITE[getString(d, "priorite")] ?? PRIORITE.aucune
+  const jourMeme = getString(d, "priorite") === "aujourdhui"
+  const nom = `${getString(d, "firstName")} ${getString(d, "lastName")}`.trim()
   return {
-    to: isUrgent ? "urgence@studiodefacto.ca" : "rendezvous@studiodefacto.ca",
-    subject: `${isUrgent ? "⚠ " : ""}${t.subjectPrefix} ${firstName} ${lastName} — ${typeLabel}`,
+    // La priorité est dans l'objet pour que la réception trie sans ouvrir.
+    to: jourMeme ? "urgence@studiodefacto.ca" : "rendezvous@studiodefacto.ca",
+    subject: `[${prio[lang]}] ${t.sujet} — ${nom}`,
     replyTo: getString(d, "email") || undefined,
-    isUrgent,
+    isUrgent: jourMeme,
   }
 }

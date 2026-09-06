@@ -1999,5 +1999,274 @@
       "sms": "SMS",
       "en_personne": "In person"
     }
+  },
+  "appointmentWizard": {
+    "aide": "Need help?",
+    "duree": "About 2 minutes",
+    "etapeSur": "STEP {n} OF 6",
+    "retour": "← Back",
+    "continuer": "Continue",
+    "envoyer": "Send request",
+    "envoiEnCours": "Sending…",
+    "erreurEnvoi": "Sending failed. Try again, or call the studio at 514 863 7805.",
+    "s1": {
+      "libelle": "STATUS",
+      "titre": "Is this your first visit to the studio?",
+      "sousTitre": "This tells us whether to open a file or find yours.",
+      "indice": "Choose an answer to continue.",
+      "nouveau": "New patient",
+      "nouveauNote": "I have never been seen at the studio",
+      "existant": "Studio patient",
+      "existantNote": "I already have a file here"
+    },
+    "s2": {
+      "libelle": "REASON",
+      "titre": "What brings you in?",
+      "sousTitre": "One answer only. You will add details next.",
+      "indice": "Choose a reason, then at least one detail.",
+      "precisionsTitre": "Can you tell us more?",
+      "precisionsIndice": "Tick everything that applies.",
+      "noteLibelle": "IN A FEW WORDS (OPTIONAL)",
+      "notePlaceholder": "What you feel, since when, what you would like resolved…",
+      "motifs": [
+        {
+          "code": "examen",
+          "label": "Complete examination",
+          "note": "First visit or full check-up",
+          "duree": 75
+        },
+        {
+          "code": "nettoyage",
+          "label": "Cleaning and follow-up",
+          "note": "Hygiene, routine check",
+          "duree": 45
+        },
+        {
+          "code": "douleur",
+          "label": "Pain or a specific problem",
+          "note": "A tooth, a gum, a discomfort",
+          "duree": 30
+        },
+        {
+          "code": "en_cours",
+          "label": "Ongoing treatment to continue",
+          "note": "Continuation of a plan already started",
+          "duree": 60
+        },
+        {
+          "code": "deuxieme_avis",
+          "label": "Second opinion or treatment plan",
+          "note": "Understand the options before deciding",
+          "duree": 75
+        },
+        {
+          "code": "autre",
+          "label": "Another reason",
+          "note": "You will specify next",
+          "duree": 45
+        }
+      ],
+      "precisions": {
+        "examen": [
+          "No particular problem",
+          "I want a full check-up",
+          "I am changing dentist",
+          "Other"
+        ],
+        "nettoyage": [
+          "Regular cleaning",
+          "Bleeding gums",
+          "Stains or discolouration",
+          "Bad breath",
+          "Other"
+        ],
+        "douleur": [
+          "Sensitive to cold or heat",
+          "Pain when biting",
+          "Broken or cracked tooth",
+          "Swollen gum",
+          "Crown or filling came loose",
+          "Other"
+        ],
+        "en_cours": [
+          "Continuation of root canal treatment",
+          "Fitting of a crown or prosthesis",
+          "Adjustment of an appliance",
+          "Other"
+        ],
+        "deuxieme_avis": [
+          "Understand a plan proposed elsewhere",
+          "Compare the options",
+          "Know the priorities",
+          "Other"
+        ],
+        "autre": [
+          "Other"
+        ]
+      }
+    },
+    "s3": {
+      "libelle": "PAIN AND SAFETY",
+      "titre": "Are you in pain right now?",
+      "sousTitre": "This answer determines how quickly we call you back.",
+      "indice": "Choose an answer to continue.",
+      "options": [
+        {
+          "code": "aucune",
+          "label": "No, no pain",
+          "note": "Regular appointment"
+        },
+        {
+          "code": "progresse",
+          "label": "A discomfort that is getting worse",
+          "note": "Sensitive for a few days"
+        },
+        {
+          "code": "aujourdhui",
+          "label": "Pain or swelling today",
+          "note": "We will call you back as a priority"
+        }
+      ],
+      "urgenceTitre": "CALL 911 OR GO TO THE EMERGENCY ROOM",
+      "urgenceItems": [
+        "difficulty breathing or swallowing",
+        "swelling of the face or neck that is spreading quickly, or closing an eye",
+        "fever and chills accompanying a swelling",
+        "bleeding that does not stop after 20 minutes of continuous pressure",
+        "facial trauma with loss of consciousness, vomiting, or a jaw that no longer closes"
+      ],
+      "rappelTitre": "Better to call",
+      "rappelBody": "For pain or swelling on the same day, call the studio at 514 863 7805: we assess the situation right away. You can still finish this form."
+    },
+    "s4": {
+      "libelle": "AVAILABILITY",
+      "titre": "When are you available?",
+      "sousTitre": "The studio sees patients Monday to Wednesday, 9 a.m. to 6 p.m.",
+      "indice": "Choose at least one day and one time of day.",
+      "joursLibelle": "DAYS",
+      "momentsLibelle": "TIME OF DAY",
+      "delaiLibelle": "PREFERRED TIMEFRAME",
+      "jours": [
+        {
+          "code": "lundi",
+          "label": "Monday"
+        },
+        {
+          "code": "mardi",
+          "label": "Tuesday"
+        },
+        {
+          "code": "mercredi",
+          "label": "Wednesday"
+        }
+      ],
+      "moments": [
+        {
+          "code": "matin",
+          "label": "Morning",
+          "note": "9 a.m. – 12 p.m."
+        },
+        {
+          "code": "apres_midi",
+          "label": "Afternoon",
+          "note": "12 p.m. – 3 p.m."
+        },
+        {
+          "code": "fin_journee",
+          "label": "End of day",
+          "note": "3 p.m. – 6 p.m."
+        }
+      ],
+      "delais": [
+        {
+          "code": "asap",
+          "label": "As soon as possible"
+        },
+        {
+          "code": "deux_semaines",
+          "label": "Within two weeks"
+        },
+        {
+          "code": "mois",
+          "label": "Within the month"
+        }
+      ]
+    },
+    "s5": {
+      "libelle": "INSURANCE",
+      "titre": "Do you have dental coverage?",
+      "sousTitre": "No amount is requested here. A written estimate is provided before care begins.",
+      "indice": "Choose an answer to continue.",
+      "options": [
+        {
+          "code": "privee",
+          "label": "Yes, private insurance",
+          "note": "Employer or personal"
+        },
+        {
+          "code": "ramq",
+          "label": "RAMQ",
+          "note": "Quebec public coverage"
+        },
+        {
+          "code": "rcsd",
+          "label": "Canadian Dental Care Plan",
+          "note": "CDCP — federal coverage"
+        },
+        {
+          "code": "non",
+          "label": "No",
+          "note": "Direct payment"
+        },
+        {
+          "code": "inconnu",
+          "label": "I do not know",
+          "note": "We will check together"
+        }
+      ],
+      "assureurLibelle": "INSURER",
+      "assureurPlaceholder": "Sun Life, Manulife, Blue Cross…",
+      "policeLibelle": "POLICY NO. (OPTIONAL)"
+    },
+    "s6": {
+      "libelle": "CONTACT DETAILS",
+      "titre": "How can we reach you?",
+      "sousTitre": "We will call you back to set the time.",
+      "indice": "First name, last name, a valid phone number and consent are required.",
+      "prenom": "FIRST NAME",
+      "nom": "LAST NAME",
+      "telephone": "PHONE",
+      "courriel": "EMAIL",
+      "naissance": "DATE OF BIRTH",
+      "canalLibelle": "HOW SHOULD WE REACH YOU?",
+      "canaux": [
+        {
+          "code": "telephone",
+          "label": "Phone"
+        },
+        {
+          "code": "courriel",
+          "label": "Email"
+        },
+        {
+          "code": "texto",
+          "label": "Text message"
+        }
+      ],
+      "erreurTelephone": "Ten digits expected, for example 514 863 7805.",
+      "erreurNaissance": "Invalid date. Format DD / MM / YYYY.",
+      "erreurCourriel": "Incomplete address: the @ or the domain is missing.",
+      "consentement": "I authorise the studio to contact me about this request. No clinical information is transmitted through this form."
+    },
+    "confirmation": {
+      "titre": "Request sent",
+      "body": "Thank you {prenom}. We will call you at {telephone} to set the time.",
+      "avis": "This is not a confirmed appointment yet: we will call you back to set the time."
+    },
+    "priorites": {
+      "aucune": "REGULAR CALLBACK",
+      "progresse": "CALL BACK WITHIN 24 H",
+      "aujourdhui": "PRIORITY — SAME-DAY CALLBACK"
+    }
   }
 }

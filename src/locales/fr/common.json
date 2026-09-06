@@ -1999,5 +1999,274 @@
       "sms": "SMS",
       "en_personne": "En personne"
     }
+  },
+  "appointmentWizard": {
+    "aide": "Besoin d'aide ?",
+    "duree": "Environ 2 minutes",
+    "etapeSur": "ÉTAPE {n} SUR 6",
+    "retour": "← Retour",
+    "continuer": "Continuer",
+    "envoyer": "Envoyer la demande",
+    "envoiEnCours": "Envoi en cours…",
+    "erreurEnvoi": "L'envoi a échoué. Réessayez, ou appelez le studio au 514 863 7805.",
+    "s1": {
+      "libelle": "STATUT",
+      "titre": "Est-ce votre première visite au studio ?",
+      "sousTitre": "Cela nous indique s'il faut ouvrir un dossier ou retrouver le vôtre.",
+      "indice": "Choisissez une réponse pour continuer.",
+      "nouveau": "Nouveau patient",
+      "nouveauNote": "Je n'ai jamais été vu au studio",
+      "existant": "Patient du studio",
+      "existantNote": "J'ai déjà un dossier ici"
+    },
+    "s2": {
+      "libelle": "MOTIF",
+      "titre": "Qu'est-ce qui vous amène ?",
+      "sousTitre": "Une seule réponse. Vous préciserez juste après.",
+      "indice": "Choisissez un motif, puis au moins une précision.",
+      "precisionsTitre": "Pouvez-vous préciser ?",
+      "precisionsIndice": "Cochez ce qui s'applique.",
+      "noteLibelle": "EN QUELQUES MOTS (FACULTATIF)",
+      "notePlaceholder": "Ce que vous ressentez, depuis quand, ce que vous souhaitez régler…",
+      "motifs": [
+        {
+          "code": "examen",
+          "label": "Examen complet",
+          "note": "Première visite ou bilan complet",
+          "duree": 75
+        },
+        {
+          "code": "nettoyage",
+          "label": "Nettoyage et suivi",
+          "note": "Hygiène, contrôle de routine",
+          "duree": 45
+        },
+        {
+          "code": "douleur",
+          "label": "Douleur ou problème précis",
+          "note": "Une dent, une gencive, un inconfort",
+          "duree": 30
+        },
+        {
+          "code": "en_cours",
+          "label": "Traitement en cours à poursuivre",
+          "note": "Suite d'un plan déjà commencé",
+          "duree": 60
+        },
+        {
+          "code": "deuxieme_avis",
+          "label": "Deuxième avis ou plan de traitement",
+          "note": "Comprendre les options avant de décider",
+          "duree": 75
+        },
+        {
+          "code": "autre",
+          "label": "Autre raison",
+          "note": "Vous précisez ensuite",
+          "duree": 45
+        }
+      ],
+      "precisions": {
+        "examen": [
+          "Aucun problème particulier",
+          "Je veux un bilan complet",
+          "Je change de dentiste",
+          "Autre"
+        ],
+        "nettoyage": [
+          "Nettoyage régulier",
+          "Saignement des gencives",
+          "Taches ou coloration",
+          "Mauvaise haleine",
+          "Autre"
+        ],
+        "douleur": [
+          "Sensible au froid ou au chaud",
+          "Douleur en mordant",
+          "Dent cassée ou fissurée",
+          "Gencive enflée",
+          "Couronne ou plombage décollé",
+          "Autre"
+        ],
+        "en_cours": [
+          "Suite de traitement de canal",
+          "Pose de couronne ou de prothèse",
+          "Ajustement d'un appareil",
+          "Autre"
+        ],
+        "deuxieme_avis": [
+          "Comprendre un plan proposé ailleurs",
+          "Comparer les options",
+          "Connaître les priorités",
+          "Autre"
+        ],
+        "autre": [
+          "Autre"
+        ]
+      }
+    },
+    "s3": {
+      "libelle": "DOULEUR ET SÉCURITÉ",
+      "titre": "Avez-vous mal en ce moment ?",
+      "sousTitre": "Cette réponse détermine le délai de rappel.",
+      "indice": "Choisissez une réponse pour continuer.",
+      "options": [
+        {
+          "code": "aucune",
+          "label": "Non, aucune douleur",
+          "note": "Rendez-vous régulier"
+        },
+        {
+          "code": "progresse",
+          "label": "Un inconfort qui progresse",
+          "note": "Sensible depuis quelques jours"
+        },
+        {
+          "code": "aujourdhui",
+          "label": "Douleur ou gonflement aujourd'hui",
+          "note": "Nous vous rappelons en priorité"
+        }
+      ],
+      "urgenceTitre": "COMPOSEZ LE 911 OU RENDEZ-VOUS À L'URGENCE",
+      "urgenceItems": [
+        "difficulté à respirer ou à avaler",
+        "gonflement du visage ou du cou qui progresse rapidement, ou qui ferme un œil",
+        "fièvre et frissons accompagnant un gonflement",
+        "saignement qui ne s'arrête pas après 20 minutes de compression continue",
+        "traumatisme au visage avec perte de conscience, vomissements ou mâchoire qui ne se referme plus"
+      ],
+      "rappelTitre": "Mieux vaut téléphoner",
+      "rappelBody": "Pour une douleur ou un gonflement le jour même, appelez le studio au 514 863 7805 : nous évaluons la situation tout de suite. Vous pouvez tout de même terminer ce formulaire."
+    },
+    "s4": {
+      "libelle": "DISPONIBILITÉS",
+      "titre": "Quand êtes-vous disponible ?",
+      "sousTitre": "Le studio reçoit du lundi au mercredi, de 9 h à 18 h.",
+      "indice": "Choisissez au moins un jour et un moment.",
+      "joursLibelle": "JOURS",
+      "momentsLibelle": "MOMENTS",
+      "delaiLibelle": "DÉLAI SOUHAITÉ",
+      "jours": [
+        {
+          "code": "lundi",
+          "label": "Lundi"
+        },
+        {
+          "code": "mardi",
+          "label": "Mardi"
+        },
+        {
+          "code": "mercredi",
+          "label": "Mercredi"
+        }
+      ],
+      "moments": [
+        {
+          "code": "matin",
+          "label": "Matin",
+          "note": "9 h – 12 h"
+        },
+        {
+          "code": "apres_midi",
+          "label": "Après-midi",
+          "note": "12 h – 15 h"
+        },
+        {
+          "code": "fin_journee",
+          "label": "Fin de journée",
+          "note": "15 h – 18 h"
+        }
+      ],
+      "delais": [
+        {
+          "code": "asap",
+          "label": "Dès que possible"
+        },
+        {
+          "code": "deux_semaines",
+          "label": "Dans les deux semaines"
+        },
+        {
+          "code": "mois",
+          "label": "Dans le mois"
+        }
+      ]
+    },
+    "s5": {
+      "libelle": "ASSURANCE",
+      "titre": "Avez-vous une couverture dentaire ?",
+      "sousTitre": "Aucun montant n'est demandé ici. Une estimation écrite est remise avant les soins.",
+      "indice": "Choisissez une réponse pour continuer.",
+      "options": [
+        {
+          "code": "privee",
+          "label": "Oui, assurance privée",
+          "note": "Employeur ou personnelle"
+        },
+        {
+          "code": "ramq",
+          "label": "RAMQ",
+          "note": "Couverture publique du Québec"
+        },
+        {
+          "code": "rcsd",
+          "label": "Régime canadien de soins dentaires",
+          "note": "RCSD — couverture fédérale"
+        },
+        {
+          "code": "non",
+          "label": "Non",
+          "note": "Paiement direct"
+        },
+        {
+          "code": "inconnu",
+          "label": "Je ne sais pas",
+          "note": "Nous vérifierons ensemble"
+        }
+      ],
+      "assureurLibelle": "ASSUREUR",
+      "assureurPlaceholder": "Sun Life, Manuvie, Croix Bleue…",
+      "policeLibelle": "N° DE POLICE (FACULTATIF)"
+    },
+    "s6": {
+      "libelle": "COORDONNÉES",
+      "titre": "Comment vous joindre ?",
+      "sousTitre": "Nous vous rappelons pour fixer l'heure.",
+      "indice": "Prénom, nom, téléphone valide et consentement sont requis.",
+      "prenom": "PRÉNOM",
+      "nom": "NOM",
+      "telephone": "TÉLÉPHONE",
+      "courriel": "COURRIEL",
+      "naissance": "DATE DE NAISSANCE",
+      "canalLibelle": "ON VOUS JOINT COMMENT ?",
+      "canaux": [
+        {
+          "code": "telephone",
+          "label": "Téléphone"
+        },
+        {
+          "code": "courriel",
+          "label": "Courriel"
+        },
+        {
+          "code": "texto",
+          "label": "Texto"
+        }
+      ],
+      "erreurTelephone": "Dix chiffres attendus, par exemple 514 863 7805.",
+      "erreurNaissance": "Date invalide. Format JJ / MM / AAAA.",
+      "erreurCourriel": "Adresse incomplète : il manque le @ ou le domaine.",
+      "consentement": "J'autorise le studio à me contacter au sujet de cette demande. Aucune information clinique n'est transmise par ce formulaire."
+    },
+    "confirmation": {
+      "titre": "Demande envoyée",
+      "body": "Merci {prenom}. Nous vous rappelons au {telephone} pour fixer l'heure.",
+      "avis": "Ceci n'est pas encore un rendez-vous confirmé : nous vous rappelons pour fixer l'heure."
+    },
+    "priorites": {
+      "aucune": "RAPPEL RÉGULIER",
+      "progresse": "À RAPPELER SOUS 24 H",
+      "aujourdhui": "PRIORITÉ — RAPPEL LE JOUR MÊME"
+    }
   }
 }
