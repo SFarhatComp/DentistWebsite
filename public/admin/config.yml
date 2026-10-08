@@ -2,280 +2,67 @@ backend:
   name: git-gateway
   branch: main
 
-local_backend: true
+# Chaque modification passe par une demande de révision avant publication.
+publish_mode: editorial_workflow
 
-media_folder: public/uploads
-public_folder: /uploads
+media_folder: public/img
+public_folder: /img
 
 site_url: https://studiodefacto.ca
 display_url: https://studiodefacto.ca
+locale: fr
 
-publish_mode: editorial_workflow
-
-slug:
-  encoding: "ascii"
-  clean_accents: true
-  sanitize_replacement: "-"
-
+# Les fiches de services. Les autres pages vivent dans src/content/*.ts
+# (texte relu ligne par ligne pour la conformité au Code de déontologie).
 collections:
-
-  # ================================
-  # SOINS (FR) — content seeded by developer; dentist edits copy
-  # (renamed from "services" in Brouillon 2; folder also renamed)
-  # ================================
-  - name: "soins_fr"
-    label: "Soins (FR)"
-    label_singular: "Soin"
-    folder: "content/soins/fr"
-    create: false
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    editor:
-      preview: false
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Titre", name: "title", widget: "string", required: true }
-      - { label: "Description courte", name: "shortDescription", widget: "text", required: true }
-      - { label: "Image principale", name: "heroImage", widget: "image", required: false }
-      - { label: "Quand consulter", name: "whenToConsult", widget: "list", required: false }
-      - { label: "Étapes du traitement", name: "treatmentSteps", widget: "list", required: false }
-      - { label: "Options possibles", name: "options", widget: "list", required: false }
-      - { label: "Limites et risques", name: "limits", widget: "text", required: false }
-      - { label: "Après le traitement", name: "aftercare", widget: "text", required: false }
-      - label: "FAQ"
-        name: "faq"
-        widget: "list"
-        required: false
-        fields:
-          - { label: "Question", name: "question", widget: "string" }
-          - { label: "Réponse", name: "answer", widget: "text" }
-      - { label: "Soins liés (slugs)", name: "related", widget: "list", required: false }
-      - { label: "Contenu", name: "body", widget: "markdown", required: false }
-
-  # ================================
-  # CASES / RÉALISATIONS (FR)
-  # ================================
-  - name: "cases_fr"
-    label: "Réalisations (FR)"
-    label_singular: "Réalisation"
-    folder: "content/cases/fr"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    editor:
-      preview: false
-    sortable_fields: ["date", "title"]
-    view_groups:
-      - { label: "En vedette", field: "featured" }
-      - { label: "Année", field: "date", pattern: '\d{4}' }
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true,
-          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Doit être en minuscules avec des tirets uniquement"] }
-      - { label: "Titre", name: "title", widget: "string", required: true }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
-      - { label: "Étiquettes", name: "tags", widget: "list", required: false }
-      - { label: "Extrait", name: "excerpt", widget: "text", required: true }
-      - { label: "En vedette", name: "featured", widget: "boolean", default: false }
-      - { label: "Image de couverture", name: "coverImage", widget: "image", required: false }
-      - { label: "Type de traitement", name: "treatmentType", widget: "string", required: true }
-      - { label: "Problème initial", name: "initialProblem", widget: "text", required: true }
-      - { label: "Objectif", name: "objective", widget: "text", required: true }
-      - { label: "Nombre de rendez-vous", name: "appointmentCount", widget: "number", required: false }
-      - label: "Galerie"
-        name: "gallery"
-        widget: "list"
-        required: false
-        fields:
-          - { label: "Image", name: "src", widget: "image" }
-          - { label: "Légende", name: "caption", widget: "string" }
-          - label: "Type"
-            name: "type"
-            widget: "select"
-            options:
-              - { label: "Avant", value: "before" }
-              - { label: "Après", value: "after" }
-              - { label: "Normal", value: "normal" }
-            default: "normal"
-            required: false
-      - { label: "Mention légale", name: "legalDisclaimer", widget: "text", required: true,
-          default: "Résultat propre à ce patient. Une consultation est nécessaire pour évaluer les options adaptées à votre situation." }
-      - { label: "Contenu", name: "body", widget: "markdown", required: true,
-          hint: "Inclure les sections : ## Problème initial, ## Approche, ## Résultat" }
-
-  # ================================
-  # RESSOURCES PATIENTS (FR)
-  # ================================
-  - name: "ressources_fr"
-    label: "Ressources patients (FR)"
-    label_singular: "Ressource"
-    folder: "content/ressources/fr"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Titre", name: "title", widget: "string", required: true }
-      - label: "Catégorie"
-        name: "category"
-        widget: "select"
-        options:
-          - { label: "Première visite", value: "premiere-visite" }
-          - { label: "Post-opératoire", value: "post-op" }
-          - { label: "Hygiène", value: "hygiene" }
-          - { label: "Aligneurs", value: "aligneurs" }
-          - { label: "Prévention", value: "prevention" }
-      - { label: "Contenu", name: "body", widget: "markdown", required: true }
-
-  # ================================
-  # JOURNAL CLINIQUE (FR) — Phase 3
-  # ================================
-  - name: "journal_fr"
-    label: "Journal clinique (FR)"
-    label_singular: "Article"
-    folder: "content/journal/fr"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    sortable_fields: ["date", "title"]
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Titre", name: "title", widget: "string", required: true }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
-      - { label: "Catégorie", name: "category", widget: "string", required: true }
-      - { label: "Extrait", name: "excerpt", widget: "text", required: true }
-      - { label: "Image de couverture", name: "coverImage", widget: "image", required: false }
-      - { label: "Contenu", name: "body", widget: "markdown", required: true }
-
-  # ================================
-  # SOINS (EN) — mirror of soins_fr, content under /en/soins/[slug]
-  # ================================
-  - name: "soins_en"
-    label: "Care (EN)"
+  - name: "services_fr"
+    label: "Services (FR)"
     label_singular: "Service"
-    folder: "content/soins/en"
-    create: false
-    slug: "{{slug}}"
+    folder: "content/services/fr"
     extension: "md"
     format: "frontmatter"
-    editor:
-      preview: false
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true, hint: "Must match the FR slug (URLs are kept stable)" }
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Short description", name: "shortDescription", widget: "text", required: true }
-      - { label: "Hero image", name: "heroImage", widget: "image", required: false }
-      - { label: "When to consult", name: "whenToConsult", widget: "list", required: false }
-      - { label: "Treatment steps", name: "treatmentSteps", widget: "list", required: false }
-      - { label: "Possible options", name: "options", widget: "list", required: false }
-      - { label: "Limits and risks", name: "limits", widget: "text", required: false }
-      - { label: "After treatment", name: "aftercare", widget: "text", required: false }
-      - label: "FAQ"
+    create: false
+    delete: false
+    slug: "{{key}}"
+    identifier_field: "title"
+    fields: &service_fields
+      - { label: "Clé (ne pas modifier)", name: "key", widget: "string" }
+      - { label: "Adresse (slug)", name: "slug", widget: "string" }
+      - { label: "Famille", name: "family", widget: "select", options: ["prevenir", "reparer", "remplacer", "aligner"] }
+      - { label: "Photo (nom du fichier sans extension)", name: "image", widget: "string" }
+      - { label: "Nom du service (commence par « Service de … » au besoin)", name: "title", widget: "string" }
+      - { label: "Résumé pour la carte", name: "card", widget: "string" }
+      - { label: "Titre principal H1", name: "h1", widget: "string" }
+      - { label: "Titre Google (60 caractères au plus)", name: "seoTitle", widget: "string" }
+      - { label: "Description Google (155 caractères au plus)", name: "description", widget: "text" }
+      - { label: "Introduction", name: "intro", widget: "list" }
+      - { label: "Quand consulter", name: "whenToConsult", widget: "list" }
+      - { label: "Comment ça se passe", name: "steps", widget: "list" }
+      - { label: "Options", name: "options", widget: "text", required: false }
+      - { label: "Bon à savoir", name: "goodToKnow", widget: "text" }
+      - label: "Questions fréquentes"
         name: "faq"
         widget: "list"
-        required: false
         fields:
-          - { label: "Question", name: "question", widget: "string" }
-          - { label: "Answer", name: "answer", widget: "text" }
-      - { label: "Related services (slugs)", name: "related", widget: "list", required: false }
-      - { label: "Body", name: "body", widget: "markdown", required: false }
-
-  # ================================
-  # CASES (EN)
-  # ================================
-  - name: "cases_en"
-    label: "Cases (EN)"
-    label_singular: "Case"
-    folder: "content/cases/en"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    editor:
-      preview: false
-    sortable_fields: ["date", "title"]
-    view_groups:
-      - { label: "Featured", field: "featured" }
-      - { label: "Year", field: "date", pattern: '\d{4}' }
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true,
-          pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Must be lowercase with hyphens only"] }
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
-      - { label: "Featured", name: "featured", widget: "boolean", default: false }
-      - { label: "Cover image", name: "coverImage", widget: "image", required: false }
-      - { label: "Treatment type", name: "treatmentType", widget: "string", required: true }
-      - { label: "Initial problem", name: "initialProblem", widget: "text", required: true }
-      - { label: "Objective", name: "objective", widget: "text", required: true }
-      - { label: "Appointment count", name: "appointmentCount", widget: "number", required: false }
-      - label: "Gallery"
-        name: "gallery"
+          - { label: "Question", name: "q", widget: "string" }
+          - { label: "Réponse", name: "a", widget: "text" }
+      - { label: "Services liés (clés)", name: "related", widget: "list" }
+      - label: "Sources"
+        name: "sources"
         widget: "list"
         required: false
         fields:
-          - { label: "Image", name: "src", widget: "image" }
-          - { label: "Caption", name: "caption", widget: "string" }
-          - label: "Type"
-            name: "type"
-            widget: "select"
-            options:
-              - { label: "Before", value: "before" }
-              - { label: "After", value: "after" }
-              - { label: "Normal", value: "normal" }
-            default: "normal"
-            required: false
-      - { label: "Legal disclaimer", name: "legalDisclaimer", widget: "text", required: true,
-          default: "Result specific to this patient. A consultation is necessary to evaluate options suitable to your situation." }
-      - { label: "Body", name: "body", widget: "markdown", required: true,
-          hint: "Include sections: ## Initial problem, ## Approach, ## Result" }
+          - { label: "Titre", name: "label", widget: "string" }
+          - { label: "Lien", name: "url", widget: "string" }
 
-  # ================================
-  # PATIENT RESOURCES (EN)
-  # ================================
-  - name: "ressources_en"
-    label: "Patient resources (EN)"
-    label_singular: "Resource"
-    folder: "content/ressources/en"
-    create: true
-    slug: "{{slug}}"
+  - name: "services_en"
+    label: "Services (EN)"
+    label_singular: "Service"
+    folder: "content/services/en"
     extension: "md"
     format: "frontmatter"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options:
-          - { label: "First visit", value: "premiere-visite" }
-          - { label: "Post-operative", value: "post-op" }
-          - { label: "Hygiene", value: "hygiene" }
-          - { label: "Aligners", value: "aligneurs" }
-          - { label: "Prevention", value: "prevention" }
-      - { label: "Body", name: "body", widget: "markdown", required: true }
-
-  # ================================
-  # CLINICAL JOURNAL (EN)
-  # ================================
-  - name: "journal_en"
-    label: "Clinical journal (EN)"
-    label_singular: "Article"
-    folder: "content/journal/en"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    sortable_fields: ["date", "title"]
-    fields:
-      - { label: "Slug", name: "slug", widget: "string", required: true }
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, required: true }
-      - { label: "Category", name: "category", widget: "string", required: true }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: true }
-      - { label: "Cover image", name: "coverImage", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown", required: true }
+    create: false
+    delete: false
+    slug: "{{key}}"
+    identifier_field: "title"
+    fields: *service_fields

@@ -1,35 +1,28 @@
 import type { Config } from "tailwindcss"
 
+// Palette De Facto (cahier, lot 6) : aubergine, ivoire, mauve ; l'orange est
+// réservé au bouton principal (une seule couleur de bouton sur tout le site).
+// Contrastes vérifiés : texte blanc sur cta 5,1:1 ; aubergine sur ivoire 14,3:1 ;
+// mauve-ink sur ivoire 7,0:1.
 const config: Config = {
-  content: ["./src/**/*.{ts,tsx}", "./content/**/*.md"],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
-    container: { center: true, padding: "1.5rem", screens: { "2xl": "1280px" } },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          hover: "hsl(var(--primary-hover))",
-          foreground: "hsl(var(--primary-foreground))",
-          // Texte foncé posé sur une surface rose
-          on: "hsl(var(--on-primary))",
-          "on-muted": "hsl(var(--on-primary-muted))",
-        },
-        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
-        accent: { DEFAULT: "hsl(var(--accent))", foreground: "hsl(var(--accent-foreground))" },
-        surface: { DEFAULT: "hsl(var(--surface))", alt: "hsl(var(--surface-alt))" },
-        urgence: "hsl(var(--urgence))",
-        // --border et --muted-foreground sont --foreground avec alpha (handoff §1).
-        border: "hsl(var(--foreground) / 0.16)",
-        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--foreground) / 0.72)" },
-        gold: "hsl(var(--gold))",
+        aub: { DEFAULT: "#291B2E", deep: "#1B111F", soft: "#3A2940" },
+        ivory: { DEFAULT: "#F5F0E6", paper: "#FBF8F3", line: "#E4DCCD" },
+        mauve: { DEFAULT: "#A890AE", ink: "#5E4A63", mist: "#E9E1EA" },
+        cta: { DEFAULT: "#B3502C", hover: "#9A4425" },
       },
       fontFamily: {
-        display: ["var(--font-display)", "\"Familjen Grotesk\"", "system-ui", "sans-serif"],
-        sans: ["var(--font-sans)", "\"Space Grotesk\"", "system-ui", "sans-serif"],
+        display: ["\"Cormorant Garamond\"", "Georgia", "serif"],
+        sans: ["\"Inter Variable\"", "Inter", "system-ui", "sans-serif"],
       },
-      borderRadius: { lg: "0.5rem", md: "0.375rem", sm: "0.25rem" },
+      maxWidth: { frame: "1240px", prose: "68ch" },
+      transitionTimingFunction: {
+        expo: "cubic-bezier(.16,1,.3,1)",
+        soft: "cubic-bezier(.22,.65,.28,1)",
+      },
     },
   },
   plugins: [],

@@ -2,57 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Studio Dentaire De Facto — système visuel « La maison, en plan-séquence ».
+ * Grandes photos plein cadre, titres à empattement, panneaux en verre dépoli,
+ * motif des crochets [ ] de la signature. Aucune animation d'opacité au-dessus
+ * de la ligne de flottaison : le contenu reste lisible sans JavaScript (lot 4.5).
+ */
+
 @layer base {
   :root {
-    /* Direction « Nuit » — palette tirée des murs réels du studio (refonte 2026-09) */
-    --background: 300.0 8.6% 6.9%;          /* #131013 fond de page */
-    --surface: 285.0 11.8% 13.3%;           /* #241E26 panneaux, cases alternées */
-    --surface-alt: 282.9 14.3% 9.6%;        /* #1A151C fond de la carte */
-    --foreground: 12.9 35.0% 92.2%;         /* #F2E7E4 texte courant */
-    --primary: 354.0 38.5% 84.7%;           /* #E7C9CC rose accent */
-    --primary-foreground: 300.0 8.6% 6.9%;  /* #131013 texte sur rose */
-    --primary-hover: 0 0% 100%;             /* #FFFFFF hover des CTA */
-    --accent: 32.5 51.3% 54.1%;             /* #C68F4E érable, micro-libellés */
-    --accent-foreground: 300.0 8.6% 6.9%;
-    --secondary: 285.0 11.8% 13.3%;
-    --secondary-foreground: 12.9 35.0% 92.2%;
-    --muted: 285.0 11.8% 13.3%;
-    --gold: 32.5 51.3% 54.1%;
-
-    /* Texte foncé posé sur les surfaces roses */
-    --on-primary: 330.0 12.2% 16.1%;        /* #2E2429 paragraphes */
-    --on-primary-muted: 340.0 32.6% 36.1%;  /* #7A3E52 micro-libellés, numéros */
-
-    /* Bande urgence */
-    --urgence: 312.0 16.1% 12.2%;           /* #241A22 */
-
-    /*
-     * --border et --muted-foreground sont --foreground avec alpha (voir handoff §1).
-     * L'alpha est appliqué dans tailwind.config.ts, pas ici : aucun modificateur
-     * d'opacité Tailwind n'est utilisé sur ces deux tokens dans le codebase.
-     * Seuil de contraste : ne jamais descendre sous .7 pour du texte sous 15 px.
-     */
+    --aub: 41 27 46;
+    --ivory: 245 240 230;
+    --cta: 179 80 44;
+    --ease-expo: cubic-bezier(.16, 1, .3, 1);
+    --ease-soft: cubic-bezier(.22, .65, .28, 1);
+    --gutter: clamp(16px, 5vw, 56px);
+    --header-h: 76px;
   }
-
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 16px); scroll-padding-bottom: 96px; }
+  @media (min-width: 1024px) { html { scroll-padding-bottom: 0; } }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-ivory-paper text-aub font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3 { @apply font-display; }
-  .display { @apply font-display; }
-  .label-sm { @apply uppercase tracking-[0.2em] text-xs font-medium; }
+  h1, h2, h3 { @apply font-display; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+  /* Chiffres alignés : les chiffres elzéviriens de Cormorant font lire « 0 » comme « o ». */
+  h1, h2, h3, .font-display { font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
+  p { text-wrap: pretty; }
+  a { text-underline-offset: 3px; }
+  ::selection { background: #A890AE; color: #1B111F; }
+  :focus-visible { outline: 2px solid #B3502C; outline-offset: 3px; border-radius: 2px; }
+  [hidden] { display: none !important; }
+}
 
-  *:focus { outline: none; }
-  *:focus-visible {
-    outline: 2px solid hsl(var(--accent));
-    outline-offset: 2px;
+@layer components {
+  .frame { @apply mx-auto w-full max-w-frame; padding-inline: var(--gutter); }
+
+  .eyebrow {
+    @apply font-sans uppercase font-medium;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
+  }
+  .h-hero { font-size: clamp(44px, 8.4vw, 104px); line-height: 0.98; letter-spacing: -0.015em; }
+  .h-hero, .t-1, .t-2, .t-3 { @apply font-display; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+  .t-1 { font-size: clamp(38px, 5.6vw, 68px); line-height: 1.02; }
+  .t-2 { font-size: clamp(30px, 3.8vw, 46px); line-height: 1.08; }
+  .t-3 { font-size: clamp(22px, 2.2vw, 27px); line-height: 1.2; }
+  .lede { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; }
+
+  /* Un seul bouton principal sur tout le site (lot 6) */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[3px] font-medium no-underline;
+    min-height: 48px;
+    padding: 0 26px;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease, color .25s ease;
+  }
+  .btn-primary { @apply bg-cta text-white; }
+  .btn-primary:hover { @apply bg-cta-hover; transform: translateY(-1.5px); box-shadow: 0 10px 24px -10px rgba(27, 17, 31, .45); }
+  .btn-ghost-light { @apply text-white; box-shadow: inset 0 0 0 1px rgba(255,255,255,.55); }
+  .btn-ghost-light:hover { background: rgba(255,255,255,.12); }
+  .btn-ghost { @apply text-aub; box-shadow: inset 0 0 0 1px rgba(41,27,46,.35); }
+  .btn-ghost:hover { background: rgba(41,27,46,.06); }
+
+  .link-arrow { @apply inline-flex items-center gap-2 font-medium underline decoration-1 underline-offset-4; }
+  .link-arrow:hover { @apply text-cta; }
+
+  /* Verre dépoli, inspiré des panneaux du modèle cinématique */
+  .glass {
+    -webkit-backdrop-filter: blur(22px) saturate(.9);
+    backdrop-filter: blur(22px) saturate(.9);
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.08) 20px, rgba(255,255,255,0) 60px),
+      linear-gradient(180deg, rgba(27,17,31,.55), rgba(41,27,46,.62));
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,.14),
+      inset -1px 0 0 rgba(255,255,255,.1),
+      inset 0 1px 0 rgba(255,255,255,.12);
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
+  /* Motif des crochets de la signature [ de facto ] autour d'une photo */
+  .brackets { position: relative; }
+  .brackets::before, .brackets::after {
+    content: "";
+    position: absolute;
+    top: -10px; bottom: -10px;
+    width: 14px;
+    border: 1.5px solid currentColor;
+    pointer-events: none;
+  }
+  .brackets::before { left: -10px; border-right: 0; }
+  .brackets::after { right: -10px; border-left: 0; }
+
+  .rule { height: 1px; background: rgba(41,27,46,.16); }
+  .rule-light { height: 1px; background: rgba(255,255,255,.3); }
+
+  .prose-dfa p + p { margin-top: 1em; }
+  .prose-dfa a { @apply underline decoration-1 underline-offset-4; }
+  .prose-dfa a:hover { @apply text-cta; }
+}
+
+/* ——— Héros cinématique ——— */
+.hero-media img { animation: drift 28s var(--ease-soft) infinite alternate; transform-origin: 70% 60%; }
+@keyframes drift {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+}
+.hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(27,17,31,.88) 0%, rgba(27,17,31,.7) 38%, rgba(27,17,31,.25) 72%, rgba(27,17,31,.15) 100%),
+    linear-gradient(180deg, rgba(27,17,31,.55) 0%, rgba(27,17,31,0) 28%, rgba(27,17,31,0) 62%, rgba(27,17,31,.7) 100%);
+}
+@media (max-width: 767px) {
+  .hero-scrim {
+    background: linear-gradient(180deg, rgba(27,17,31,.7) 0%, rgba(27,17,31,.7) 40%, rgba(27,17,31,.88) 100%);
   }
 }
+
+/* Entrée du titre : masque qui se lève (transformation seulement, pas d'opacité) */
+.mask { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+.mask > span { display: block; animation: rise 1s var(--ease-expo) both; }
+.mask:nth-child(2) > span { animation-delay: .09s; }
+.mask:nth-child(3) > span { animation-delay: .18s; }
+@keyframes rise { from { transform: translate3d(0, 105%, 0); } to { transform: none; } }
+.slide-in { animation: slide 0.8s var(--ease-soft) both; }
+.slide-in.d1 { animation-delay: .25s; }
+.slide-in.d2 { animation-delay: .38s; }
+.slide-in.d3 { animation-delay: .5s; }
+@keyframes slide { from { transform: translate3d(0, 14px, 0); } to { transform: none; } }
+
+/* Apparition au défilement, sous la ligne de flottaison seulement, et seulement si le JS tourne */
+html.reveal-ready .reveal:not(.is-in) { opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity .7s var(--ease-soft), transform .7s var(--ease-soft); }
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal { transition: opacity .7s var(--ease-soft), transform .7s var(--ease-soft); }
+
+/* En-tête : transparent sur le héros, verre aubergine après défilement */
+.site-header[data-solid="true"] {
+  -webkit-backdrop-filter: blur(18px) saturate(.9);
+  backdrop-filter: blur(18px) saturate(.9);
+  background: rgba(27, 17, 31, .82);
+  box-shadow: 0 1px 0 rgba(255,255,255,.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  html.reveal-ready .reveal:not(.is-in) { opacity: 1; transform: none; }
+}
+
+/* Pellicule horizontale : barre de défilement discrète */
+.filmstrip { scrollbar-width: thin; scrollbar-color: rgba(41,27,46,.3) transparent; }
+.filmstrip:focus-visible { outline-offset: -2px; }

@@ -1,0 +1,70 @@
+{
+  "pages": {
+    "home": { "fr": "", "en": "" },
+    "firstVisit": { "fr": "premiere-visite", "en": "first-visit" },
+    "services": { "fr": "services", "en": "services" },
+    "method": { "fr": "methode-de-facto", "en": "de-facto-method" },
+    "lab": { "fr": "laboratoire-dentaire", "en": "dental-laboratory" },
+    "about": { "fr": "a-propos", "en": "about" },
+    "contact": { "fr": "contact", "en": "contact" },
+    "booking": { "fr": "rendez-vous", "en": "appointment" },
+    "faq": { "fr": "questions-frequentes", "en": "faq" },
+    "newPatient": { "fr": "nouveau-patient", "en": "new-patient" },
+    "dentures": { "fr": "prothese-dentaire-ahuntsic", "en": "dentures-ahuntsic" },
+    "emergencyLanding": { "fr": "urgence-dentaire-ahuntsic", "en": "emergency-dentist-ahuntsic" },
+    "emergency": { "fr": "services/urgence-dentaire", "en": "services/dental-emergency" },
+    "privacy": { "fr": "confidentialite", "en": "privacy" },
+    "terms": { "fr": "conditions-utilisation", "en": "terms" },
+    "accessibility": { "fr": "accessibilite", "en": "accessibility" },
+    "thanks": { "fr": "merci", "en": "thank-you" }
+  },
+  "services": {
+    "examen": { "fr": "examen-dentaire-complet", "en": "comprehensive-dental-exam" },
+    "nettoyage": { "fr": "nettoyage-dentaire-gencives", "en": "dental-cleaning-gum-care" },
+    "obturation": { "fr": "obturation-dentaire", "en": "dental-fillings" },
+    "couronne": { "fr": "couronne-pont-dentaire", "en": "dental-crowns-bridges" },
+    "partielle": { "fr": "prothese-partielle", "en": "partial-dentures" },
+    "complete": { "fr": "prothese-complete-dentier", "en": "complete-dentures" },
+    "sur-implants": { "fr": "prothese-sur-implants", "en": "implant-dentures" },
+    "implants": { "fr": "implants-dentaires", "en": "dental-implants" },
+    "reparation": { "fr": "reparation-prothese", "en": "denture-repair" },
+    "canal": { "fr": "traitement-de-canal", "en": "root-canal-treatment" },
+    "extraction": { "fr": "extraction-dentaire", "en": "tooth-extraction" },
+    "aligneurs": { "fr": "aligneurs-transparents", "en": "clear-aligners" },
+    "blanchiment": { "fr": "blanchiment-dentaire", "en": "teeth-whitening" },
+    "facettes": { "fr": "facettes-dentaires", "en": "dental-veneers" },
+    "gouttiere": { "fr": "gouttiere-bruxisme", "en": "night-guard-bruxism" },
+    "protecteur": { "fr": "protecteur-buccal-sportif", "en": "sports-mouthguard" },
+    "enfants": { "fr": "dentiste-enfants", "en": "children-dentist" },
+    "aines": { "fr": "soins-dentaires-aines", "en": "senior-dental-care" }
+  },
+  "legacy": {
+    "soins": {
+      "examen-complet": "examen",
+      "prevention-hygiene": "nettoyage",
+      "parodontie": "nettoyage",
+      "dentisterie-operatoire": "obturation",
+      "couronnes-ponts": "couronne",
+      "endodontie": "canal",
+      "implantologie": "implants",
+      "esthetique-dentaire": "facettes",
+      "aligneurs": "aligneurs"
+    },
+    "pages": {
+      "le-studio": "about",
+      "parcours": "method",
+      "experience-patient": "method",
+      "plan-traitement-visuel": "method",
+      "laboratoire": "lab",
+      "assurances-paiements": "firstVisit",
+      "politique-confidentialite": "privacy",
+      "urgence": "emergency",
+      "realisations": "home",
+      "portfolio-clinique": "home",
+      "nouveaux-patients": "firstVisit",
+      "ressources": "firstVisit",
+      "ressources-patients": "firstVisit",
+      "soins": "services"
+    }
+  }
+}
