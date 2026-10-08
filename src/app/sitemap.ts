@@ -1,29 +1,23 @@
 import type { MetadataRoute } from "next"
-import { getAllServices } from "@/lib/content"
+import { facts } from "@/lib/facts"
+import { href, pageKeys, serviceHref, serviceKeys, type PageKey } from "@/lib/routes"
 
-const BASE = "https://studiodefacto.ca"
+/** Pages FR et EN avec leurs équivalents (cahier 5.3). Hors sitemap : pages Ads (noindex) et /merci. */
+const EXCLUDED: PageKey[] = ["newPatient", "dentures", "emergencyLanding", "thanks"]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = [
-    "",
-    "/premiere-visite",
-    "/plan-traitement-visuel",
-    "/soins",
-    "/le-studio",
-    "/parcours",
-    "/laboratoire",
-    "/assurances-paiements",
-    "/questions-frequentes",
-    "/rendez-vous",
-    "/urgence",
-    "/contact",
-    "/confidentialite",
-    "/conditions-utilisation",
-  ]
-  const services = getAllServices("fr").map((s) => `/soins/${s.slug}`)
   const now = new Date()
-  return [...staticRoutes, ...services].map((p) => ({
-    url: `${BASE}/fr${p}`,
-    lastModified: now,
-  }))
+  const entry = (fr: string, en: string, priority: number): MetadataRoute.Sitemap =>
+    (["fr", "en"] as const).map((lang) => ({
+      url: `${facts.siteUrl}${lang === "fr" ? fr : en}`,
+      lastModified: now,
+      priority,
+      alternates: { languages: { "fr-CA": `${facts.siteUrl}${fr}`, "en-CA": `${facts.siteUrl}${en}` } },
+    }))
+  return [
+    ...pageKeys
+      .filter((k) => !EXCLUDED.includes(k))
+      .flatMap((k) => entry(href(k, "fr"), href(k, "en"), k === "home" ? 1 : 0.7)),
+    ...serviceKeys.flatMap((k) => entry(serviceHref(k, "fr"), serviceHref(k, "en"), 0.6)),
+  ]
 }

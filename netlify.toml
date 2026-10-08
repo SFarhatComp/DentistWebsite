@@ -1,96 +1,34 @@
 [build]
-  # `npm ci` enforces the package-lock.json EXACTLY — refuses to install
-  # if lockfile is missing/out of sync. Prevents drive-by version drift
-  # which is the main npm supply chain attack vector.
-  command = "npm ci && npm run build"
+  # `npm ci` installe exactement le package-lock.json (chaîne d'approvisionnement).
+  # `npm audit --omit=dev` fait échouer le build si une dépendance de production
+  # a une vulnérabilité élevée ou critique (cahier, lot 8.2).
+  command = "npm ci && npm audit --omit=dev --audit-level=high && npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
-  # Defense-in-depth: skip optional packages, keep installs predictable
-  NPM_FLAGS = "--no-audit --prefer-offline"
 
-# Netlify auto-detects Next.js and applies @netlify/plugin-nextjs.
-# No manual plugin config needed.
+# Netlify détecte Next.js et applique @netlify/plugin-nextjs.
+# Redirections, réécritures FR/EN et en-têtes de sécurité des pages : next.config.js.
 
-# Redirect root to default locale (French-first)
-[[redirects]]
-  from = "/"
-  to = "/fr/"
-  status = 302
-
-# Security headers
+# Administration Decap CMS : seule zone qui charge des scripts externes,
+# figés par version et vérifiés par empreinte (cahier, lot 8.8).
 [[headers]]
-  for = "/*"
+  for = "/admin/*"
   [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com https://*.netlify.app https://*.netlify.com; frame-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
     X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Cache static assets
-[[headers]]
-  for = "/uploads/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Referrer-Policy = "no-referrer"
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
 
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Netlify Identity redirect for admin
-[[redirects]]
-  from = "/admin/*"
-  to = "/admin/index.html"
-  status = 200
-
-# Language-specific hreflang headers
 [[headers]]
-  for = "/en/*"
+  for = "/img/*"
   [headers.values]
-    Link = '''</fr/>; rel="alternate"; hreflang="fr", </en/>; rel="alternate"; hreflang="en"'''
-
-[[headers]]
-  for = "/fr/*"
-  [headers.values]
-    Link = '''</en/>; rel="alternate"; hreflang="en", </fr/>; rel="alternate"; hreflang="fr"'''
-
-# Routes retirées lors de la refonte 2026-09 (handoff §2).
-# Redirigées plutôt que laissées en 404 : ces URL sont indexées et ont pu être
-# mises en favori. Le contenu laboratoire B2B disparaît, mais l'adresse mène
-# désormais à la page laboratoire conforme.
-[[redirects]]
-  from = "/:lang/laboratoire/professionnels"
-  to = "/:lang/laboratoire"
-  status = 301
-
-[[redirects]]
-  from = "/:lang/laboratoire/partenaires"
-  to = "/:lang/laboratoire"
-  status = 301
-
-[[redirects]]
-  from = "/:lang/laboratoire/prescription"
-  to = "/:lang/laboratoire"
-  status = 301
-
-[[redirects]]
-  from = "/:lang/laboratoire/reference-clinique"
-  to = "/:lang/laboratoire"
-  status = 301
-
-[[redirects]]
-  from = "/:lang/nouveaux-patients"
-  to = "/:lang/premiere-visite"
-  status = 301
-
-[[redirects]]
-  from = "/:lang/ressources"
-  to = "/:lang/premiere-visite"
-  status = 301
-
-[[redirects]]
-  from = "/:lang/ressources-patients"
-  to = "/:lang/premiere-visite"
-  status = 301
+    Cache-Control = "public, max-age=2592000"
