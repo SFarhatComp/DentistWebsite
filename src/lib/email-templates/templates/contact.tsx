@@ -11,6 +11,7 @@ import {
 } from "../components"
 import { formatDate, getString, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+import { DESTINATAIRE } from "../destinataire"
 
 const L = {
   fr: {
@@ -108,7 +109,7 @@ export const contactMeta = (payload: NetlifyPayload) => {
   const name = getString(payload.data, "name")
   const subject = getString(payload.data, "subject")
   return {
-    to: "contact@studiodefacto.ca",
+    to: DESTINATAIRE,
     subject: `${t.subjectPrefix} ${name || t.subjectNewRequest}`,
     replyTo: getString(payload.data, "email") || undefined,
     isUrgent: subject === "urgence",

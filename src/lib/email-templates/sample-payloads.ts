@@ -21,6 +21,22 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     },
   },
 
+  urgence: {
+    form_name: "urgence",
+    created_at: NOW,
+    data: {
+      lang: "fr",
+      nom: "Marie-Pier Lavoie",
+      telephone: "514 555 0142",
+      courriel: "mp.lavoie@example.com",
+      type: "enflure",
+      ou: "Joue",
+      depuis: "2 à 3 jours",
+      fievre: "Oui",
+      consentement: "oui",
+    },
+  },
+
   appointment: {
     form_name: "appointment",
     created_at: NOW,

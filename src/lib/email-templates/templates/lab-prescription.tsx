@@ -11,6 +11,7 @@ import {
 } from "../components"
 import { formatDate, getString, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+import { DESTINATAIRE } from "../destinataire"
 
 const APPAREIL_LABELS = {
   fr: {
@@ -255,7 +256,7 @@ export const labPrescriptionMeta = (payload: NetlifyPayload) => {
   const appareilLabel =
     appareilKey === "autres" && appareilOther ? appareilOther : appareilMap[appareilKey] || appareilKey
   return {
-    to: "laboratoire@studiodefacto.ca",
+    to: DESTINATAIRE,
     subject: `${t.subjectPrefix} ${patient} — ${appareilLabel} (${clinic})`,
     replyTo: getString(payload.data, "email") || undefined,
   }

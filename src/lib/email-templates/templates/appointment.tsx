@@ -2,6 +2,7 @@ import * as React from "react"
 import { Body, Container, Head, Html, Preview, Section, Row, Column, Text } from "@react-email/components"
 import { formatDate, getString, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+import { DESTINATAIRE } from "../destinataire"
 
 /* --------------------------------------------------------------------------
  * Rapport de demande de rendez-vous reçu à la réception (handoff §10).
@@ -357,7 +358,7 @@ export const appointmentMeta = (payload: NetlifyPayload) => {
   const nom = `${getString(d, "firstName")} ${getString(d, "lastName")}`.trim()
   return {
     // La priorité est dans l'objet pour que la réception trie sans ouvrir.
-    to: jourMeme ? "urgence@studiodefacto.ca" : "rendezvous@studiodefacto.ca",
+    to: DESTINATAIRE,
     subject: `[${prio[lang]}] ${t.sujet} — ${nom}`,
     replyTo: getString(d, "email") || undefined,
     isUrgent: jourMeme,

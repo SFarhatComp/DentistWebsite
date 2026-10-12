@@ -12,6 +12,7 @@ import {
 } from "../components"
 import { formatDate, getString, isChecked, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+import { DESTINATAIRE } from "../destinataire"
 
 const TITLE_LABELS = {
   fr: {
@@ -207,7 +208,7 @@ export const partnerOnboardingMeta = (payload: NetlifyPayload) => {
   const name = getString(payload.data, "dentistName")
   const clinic = getString(payload.data, "clinicName")
   return {
-    to: "laboratoire@studiodefacto.ca",
+    to: DESTINATAIRE,
     subject: `${t.subjectPrefix} ${name} — ${clinic}`,
     replyTo: getString(payload.data, "email") || undefined,
   }

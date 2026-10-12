@@ -13,6 +13,7 @@ import {
 } from "../components"
 import { formatDate, getString, isChecked, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+import { DESTINATAIRE } from "../destinataire"
 
 const REASON_LABELS = {
   fr: {
@@ -243,7 +244,7 @@ export const referredCaseMeta = (payload: NetlifyPayload) => {
   const patient = getString(payload.data, "patientName")
   const isUrgent = getString(payload.data, "urgency") === "oui"
   return {
-    to: "laboratoire@studiodefacto.ca",
+    to: DESTINATAIRE,
     subject: `${isUrgent ? "⚠ " : ""}${t.subjectPrefix} ${patient}`,
     replyTo: getString(payload.data, "email") || undefined,
     isUrgent,

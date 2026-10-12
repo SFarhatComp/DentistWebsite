@@ -13,6 +13,7 @@ import {
 } from "../components"
 import { formatDate, getString, isChecked, getYn, resolveLang } from "../theme"
 import type { NetlifyPayload } from "../types"
+import { DESTINATAIRE } from "../destinataire"
 
 const TYPES_LIST = {
   fr: [
@@ -168,7 +169,7 @@ export const emergencyMeta = (payload: NetlifyPayload) => {
   const firstName = getString(payload.data, "firstName")
   const lastName = getString(payload.data, "lastName")
   return {
-    to: "urgence@studiodefacto.ca",
+    to: DESTINATAIRE,
     subject: `${t.subjectPrefix} ${firstName} ${lastName}`.trim(),
     replyTo: getString(payload.data, "email") || undefined,
     isUrgent: true,
