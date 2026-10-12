@@ -183,5 +183,29 @@
       <input name="consent_patient_transmission" />
       <input name="consent_privacy" />
     </form>
-  </body>
+  
+    <!-- Demande d urgence v2 : le type conditionne les champs envoyes -->
+    <form name="urgence" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="lang" />
+      <input name="nom" />
+      <input name="telephone" />
+      <input name="courriel" type="email" />
+      <input name="type" />
+      <input name="ou" />
+      <input name="cote" />
+      <input name="intensite" />
+      <input name="depuis" />
+      <input name="declencheurs" />
+      <input name="quelleDent" />
+      <input name="mal" />
+      <input name="morceau" />
+      <input name="bord" />
+      <input name="fievre" />
+      <input name="protheseType" />
+      <input name="protheseProbleme" />
+      <textarea name="description"></textarea>
+      <input name="consentement" />
+    </form>
+</body>
 </html>

@@ -72,7 +72,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
           label={
             <>
               {t("contactForm.consentPrivacyPrefix")}
-              <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank">
+              <Link href={`/${lang}/confidentialite`} className="text-primary underline hover:no-underline" target="_blank" rel="noopener noreferrer">
                 {t("contactForm.consentPrivacyLink")}
               </Link>
               {t("contactForm.consentPrivacySuffix")}

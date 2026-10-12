@@ -4,46 +4,59 @@
 
 @layer base {
   :root {
-    /* Direction « Nuit » — palette tirée des murs réels du studio (refonte 2026-09) */
-    --background: 300.0 8.6% 6.9%;          /* #131013 fond de page */
-    --surface: 285.0 11.8% 13.3%;           /* #241E26 panneaux, cases alternées */
-    --surface-alt: 282.9 14.3% 9.6%;        /* #1A151C fond de la carte */
-    --foreground: 12.9 35.0% 92.2%;         /* #F2E7E4 texte courant */
-    --primary: 354.0 38.5% 84.7%;           /* #E7C9CC rose accent */
-    --primary-foreground: 300.0 8.6% 6.9%;  /* #131013 texte sur rose */
-    --primary-hover: 0 0% 100%;             /* #FFFFFF hover des CTA */
-    --accent: 32.5 51.3% 54.1%;             /* #C68F4E érable, micro-libellés */
-    --accent-foreground: 300.0 8.6% 6.9%;
-    --secondary: 285.0 11.8% 13.3%;
-    --secondary-foreground: 12.9 35.0% 92.2%;
-    --muted: 285.0 11.8% 13.3%;
-    --gold: 32.5 51.3% 54.1%;
+    /* Maquette « Site De Facto v2 » — octobre 2026.
+       Fond clair crème, encre prune, accent terracotta. */
+    --background: 37.5 50.0% 96.9%;         /* #FBF8F3 fond de page */
+    --surface: 40.0 42.9% 93.1%;            /* #F5F0E6 section alternée */
+    --surface-alt: 293.3 17.6% 90.0%;       /* #E9E1EA lavande clair */
+    --foreground: 284.2 26.0% 14.3%;        /* #291B2E encre principale */
+    --muted-foreground: 288.0 14.5% 33.9%;  /* #5E4A63 texte secondaire */
 
-    /* Texte foncé posé sur les surfaces roses */
-    --on-primary: 330.0 12.2% 16.1%;        /* #2E2429 paragraphes */
-    --on-primary-muted: 340.0 32.6% 36.1%;  /* #7A3E52 micro-libellés, numéros */
+    --primary: 16.0 60.5% 43.7%;            /* #B3502C terracotta */
+    --primary-hover: 15.7 64.2% 33.9%;      /* #8E3C1F */
+    --primary-foreground: 0 0% 100%;
+    --accent-pale: 18.2 65.1% 83.1%;        /* #F0C9B8 */
+    --accent-soft: 18.9 81.4% 91.6%;        /* #FBE3D8 */
 
-    /* Bande urgence */
-    --urgence: 312.0 16.1% 12.2%;           /* #241A22 */
+    /* Fonds sombres : héros, pied de page, encarts */
+    --plum-deep: 282.9 29.2% 9.4%;          /* #1B111F */
+    --plum: 284.3 21.9% 20.6%;              /* #3A2940 */
+    --plum-mid: 282.0 26.3% 14.9%;          /* #2A1C30 */
+    --plum-dark: 282.4 26.2% 12.7%;         /* #241829 */
 
-    /*
-     * --border et --muted-foreground sont --foreground avec alpha (voir handoff §1).
-     * L'alpha est appliqué dans tailwind.config.ts, pas ici : aucun modificateur
-     * d'opacité Tailwind n'est utilisé sur ces deux tokens dans le codebase.
-     * Seuil de contraste : ne jamais descendre sous .7 pour du texte sous 15 px.
-     */
+    --lavender: 288.0 15.6% 62.4%;          /* #A890AE */
+    --lavender-soft: 312.0 15.2% 93.5%;     /* #F1ECF0 */
+    --lavender-mist: 300.0 15.0% 92.2%;     /* #EEE8EE */
+
+    /* Dégradé du héros, repris tel quel de la maquette */
+    --hero: radial-gradient(110% 90% at 85% 15%, hsl(var(--plum)) 0%, hsl(var(--plum-deep)) 62%);
+
+    /* --border est --foreground à 12 % ; l'alpha est posé dans tailwind.config.ts */
   }
 
+  /* Corps a 17 px / 1.6, comme la maquette. Tailwind part de 16 px : sans cette
+     reprise, tout le texte non dimensionne explicitement arrive un pixel trop
+     petit, et l interligne avec. */
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    font-size: 17px;
+    line-height: 1.6;
   }
-  h1, h2, h3 { @apply font-display; }
-  .display { @apply font-display; }
-  .label-sm { @apply uppercase tracking-[0.2em] text-xs font-medium; }
+
+  /* Les titres portent des chiffres alignés : la maquette affiche beaucoup de
+     numéros d'étape en Cormorant, qui seraient sinon en chiffres elzéviriens. */
+  h1, h2, h3 {
+    @apply font-display;
+    font-variant-numeric: lining-nums;
+  }
+
+  .label-sm {
+    @apply uppercase tracking-[0.16em] text-[13px] font-medium;
+  }
 
   *:focus { outline: none; }
   *:focus-visible {
-    outline: 2px solid hsl(var(--accent));
+    outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
   }
 

@@ -1,43 +1,37 @@
-import Link from "next/link"
-import { PageHero } from "@/components/shared/page-hero"
-import { Container } from "@/components/layout/container"
-import { NumberedSection } from "@/components/shared/numbered-section"
-import { FadeIn } from "@/components/motion/fade-in"
-import { getTranslations, getTranslationList } from "@/lib/i18n"
 import type { Metadata } from "next"
+import Link from "next/link"
+import { HeroPage } from "@/components/v2/hero-page"
+import { Section, TitreSection } from "@/components/v2/section"
+import { CartesNumerotees, type CarteNumerotee } from "@/components/v2/cartes-numerotees"
+import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
+interface Etape {
+  num: string
+  titre: string
+  texte: string
+}
+interface Bloc {
+  titre: string
+  texte: string
+}
+
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const params = await props.params;
+  const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return {
-    title: t("premiereVisite.label"),
-    description: t("premiereVisite.metaDescription"),
-  }
+  return { title: { absolute: t("visite.metaTitre") }, description: t("visite.metaDescription") }
 }
 
-function NumberedList({ items }: { items: string[] }) {
+/** Liste à puces terracotta, reprise dans « Quoi apporter » et « Annulation ». */
+function ListePuces({ items }: { items: string[] }) {
   return (
-    <ol className="space-y-3">
-      {items.map((item, i) => (
-        <li key={item} className="flex gap-4 text-base text-foreground leading-relaxed">
-          <span className="font-display text-sm text-accent/70 tabular-nums shrink-0 pt-1 min-w-[2rem]">
-            {String(i + 1).padStart(2, "0")}
+    <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
+      {items.map((x) => (
+        <li key={x} className="flex gap-2.5 leading-relaxed text-foreground/85">
+          <span aria-hidden="true" className="shrink-0 text-primary">
+            —
           </span>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ol>
-  )
-}
-
-function BulletList({ items }: { items: string[] }) {
-  return (
-    <ul className="space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
-          <span className="text-accent shrink-0 mt-1">→</span>
-          <span>{item}</span>
+          <span>{x}</span>
         </li>
       ))}
     </ul>
@@ -45,102 +39,169 @@ function BulletList({ items }: { items: string[] }) {
 }
 
 export default async function PremiereVisitePage(props: { params: Promise<{ lang: string }> }) {
-  const params = await props.params;
+  const params = await props.params
   const lang = params.lang as Locale
   const t = getTranslations(lang)
-  const objectifs = getTranslationList(lang, "premiereVisite.objectifs")
-  const rdv1Etapes = getTranslationList(lang, "premiereVisite.rdv1Etapes")
-  const rdv2Inclus = getTranslationList(lang, "premiereVisite.rdv2Inclus")
-  const apporter = getTranslationList(lang, "premiereVisite.apporter")
+
+  const troisTemps = getTranslationObjectList<CarteNumerotee>(lang, "visite.troisTemps")
+  const commencer = getTranslationObjectList<CarteNumerotee>(lang, "visite.commencer")
+  const examen = getTranslationObjectList<Etape>(lang, "visite.examen")
+  const savoir = getTranslationObjectList<Bloc>(lang, "visite.savoir")
 
   return (
     <>
-      <PageHero
-        label={t("premiereVisite.label")}
-        title={t("premiereVisite.title")}
-        subtitle={t("premiereVisite.subtitle")}
+      <HeroPage
+        lang={lang}
+        surtitre={t("visite.surtitre")}
+        titre={t("visite.titre")}
+        intro={t("visite.intro")}
+        image="/v2/bureau.webp"
+        alt={t("visite.altHero")}
+        cta={t("nav.cta")}
+        hauteur={700}
       />
 
-      <section className="py-20 md:py-24">
-        <Container>
-          <div className="grid gap-16 md:grid-cols-3">
-            <aside className="md:sticky md:top-24 self-start">
-              <div className="label-sm text-muted-foreground mb-4">{t("premiereVisite.onThisPage")}</div>
-              <ul className="text-sm space-y-2 text-muted-foreground">
-                <li><a href="#objectifs" className="hover:text-primary">{t("premiereVisite.tocObjectifs")}</a></li>
-                <li><a href="#duree" className="hover:text-primary">{t("premiereVisite.tocDuree")}</a></li>
-                <li><a href="#rdv1" className="hover:text-primary">{t("premiereVisite.tocRdv1")}</a></li>
-                <li><a href="#rdv2" className="hover:text-primary">{t("premiereVisite.tocRdv2")}</a></li>
-                <li><a href="#apporter" className="hover:text-primary">{t("premiereVisite.tocApporter")}</a></li>
-              </ul>
-            </aside>
+      <Section fond="ivoire">
+        <TitreSection>{t("visite.troisTempsTitre")}</TitreSection>
+        <CartesNumerotees cartes={troisTemps} tete="chiffre" base={280} />
+      </Section>
 
-            <div className="md:col-span-2 space-y-20">
-              <FadeIn>
-                <NumberedSection number={1} id="objectifs" label={t("premiereVisite.tocObjectifs")} title={t("premiereVisite.objectifsTitle")}>
-                  <NumberedList items={objectifs} />
-                </NumberedSection>
-              </FadeIn>
+      <Section>
+        <TitreSection>{t("visite.commencerTitre")}</TitreSection>
+        <p className="mt-4 max-w-[60ch] text-[19px] leading-[1.6] text-foreground/80">
+          {t("visite.commencerIntro")}
+        </p>
+        {/* Ici la tête de carte porte une durée, pas un numéro d'étape. */}
+        <CartesNumerotees cartes={commencer} tete="etiquette" base={300} />
+      </Section>
 
-              <FadeIn>
-                <NumberedSection number={2} id="duree" label={t("premiereVisite.dureeLabel")} title={t("premiereVisite.dureeTitle")}>
-                  <p className="text-lg text-foreground leading-relaxed">
-                    {t("premiereVisite.dureeIntro")} <span className="font-medium">{t("premiereVisite.dureeValue")}</span>
-                  </p>
-                </NumberedSection>
-              </FadeIn>
+      {/* Les six temps de l'examen : liste numérotée en deux colonnes. */}
+      <Section fond="ivoire">
+        <TitreSection>{t("visite.examenTitre")}</TitreSection>
+        <ol className="m-0 mt-10 grid list-none gap-x-10 gap-y-7 p-0 md:grid-cols-2">
+          {examen.map((e) => (
+            <li key={e.num} className="grid grid-cols-[44px_1fr] gap-4 border-t border-border pt-5">
+              <span className="font-display text-[22px] leading-none text-primary" aria-hidden="true">
+                {e.num}
+              </span>
+              <span>
+                <span className="block font-medium">{e.titre}</span>
+                <span className="mt-1.5 block leading-relaxed text-foreground/80">{e.texte}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </Section>
 
-              <FadeIn>
-                <NumberedSection number={3} id="rdv1" label={t("premiereVisite.rdv1Label")} title={t("premiereVisite.rdv1Title")}>
-                  <NumberedList items={rdv1Etapes} />
-                </NumberedSection>
-              </FadeIn>
+      {/* « Quoi apporter » : deux blocs prune à texte blanc. Ce renversement de
+          contraste isole la seule section de la page qui demande une action
+          avant la visite. */}
+      <Section>
+        <TitreSection>{t("visite.apporterTitre")}</TitreSection>
+        <div className="mt-10 flex flex-wrap gap-10">
+          <div className="flex-[1_1_380px] rounded-sm bg-foreground p-9 text-white">
+            <h3 className="m-0 font-sans text-[13px] font-medium uppercase leading-[1.6] tracking-[0.16em] text-lavender">
+              {t("visite.apporterMinimumTitre")}
+            </h3>
+            <ul className="m-0 mt-5 flex list-none flex-col gap-3 p-0">
+              {getTranslationList(lang, "visite.apporterMinimum").map((x) => (
+                <li key={x} className="flex gap-2.5 leading-relaxed text-white/90">
+                  <span aria-hidden="true" className="shrink-0 text-primary-pale">
+                    —
+                  </span>
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex-[1_1_380px] rounded-sm bg-foreground p-9 text-white">
+            <h3 className="m-0 font-sans text-[13px] font-medium uppercase leading-[1.6] tracking-[0.16em] text-lavender">
+              {t("visite.apporterIdealementTitre")}
+            </h3>
+            <ul className="m-0 mt-5 flex list-none flex-col gap-3 p-0">
+              {getTranslationList(lang, "visite.apporterIdealement").map((x) => (
+                <li key={x} className="flex gap-2.5 leading-relaxed text-white/90">
+                  <span aria-hidden="true" className="shrink-0 text-primary-pale">
+                    ☐
+                  </span>
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-[15px] leading-relaxed text-white/70">{t("visite.apporterNote")}</p>
+          </div>
+        </div>
+      </Section>
 
-              <FadeIn>
-                <NumberedSection number={4} id="rdv2" label={t("premiereVisite.rdv2Label")} title={t("premiereVisite.rdv2Title")}>
-                  <p className="text-base text-muted-foreground leading-relaxed mb-8">
-                    {t("premiereVisite.rdv2Intro")}
-                  </p>
-                  <BulletList items={rdv2Inclus} />
-                </NumberedSection>
-              </FadeIn>
+      <Section fond="lavande">
+        <TitreSection>{t("visite.couvertureTitre")}</TitreSection>
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <p className="leading-relaxed">
+            {t("visite.couvertureRcsd")}{" "}
+            <a
+              href={t("liensExternes.rcsd")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary-hover underline-offset-4"
+            >
+              {t("visite.couvertureRcsdLien")}
+            </a>
+            .
+          </p>
+          <p className="leading-relaxed">
+            {t("visite.couvertureRamq")}{" "}
+            <a
+              href={t("liensExternes.ramq")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary-hover underline-offset-4"
+            >
+              {t("visite.couvertureRamqLien")}
+            </a>
+            .
+          </p>
+          <p className="leading-relaxed">{t("visite.couverturePrivees")}</p>
+          <p className="leading-relaxed">{t("visite.couverturePaiement")}</p>
+          <p className="leading-relaxed md:col-span-2">{t("visite.couvertureFinancement")}</p>
+        </div>
+        <p className="mt-8 border-t border-border pt-6 font-medium">{t("visite.couvertureNote")}</p>
+      </Section>
 
-              <FadeIn>
-                <NumberedSection number={5} id="apporter" label={t("premiereVisite.apporterLabel")} title={t("premiereVisite.apporterTitle")}>
-                  <BulletList items={apporter} />
-                </NumberedSection>
-              </FadeIn>
+      <Section>
+        <TitreSection>{t("visite.savoirTitre")}</TitreSection>
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          {savoir.map((b) => (
+            <div key={b.titre} className="border-t border-border pt-5">
+              <h3 className="font-medium">{b.titre}</h3>
+              <p className="mt-2 leading-relaxed text-foreground/80">{b.texte}</p>
+            </div>
+          ))}
+          <div className="border-t border-border pt-5">
+            <h3 className="font-medium">{t("visite.annulationTitre")}</h3>
+            <div className="mt-3">
+              <ListePuces items={getTranslationList(lang, "visite.annulation")} />
             </div>
           </div>
-        </Container>
-      </section>
+        </div>
+      </Section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
-        <Container>
-          <FadeIn className="max-w-2xl">
-            <h2 className="font-display text-3xl md:text-4xl leading-[1.1] mb-6">
-              {t("premiereVisite.ctaTitle")}
-            </h2>
-            <p className="text-lg opacity-80 mb-8 leading-relaxed">
-              {t("premiereVisite.ctaBody")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href={`/${lang}/rendez-vous`}
-                className="inline-flex items-center justify-center bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
-              >
-                {t("premiereVisite.ctaPrimary")}
-              </Link>
-              <Link
-                href={`/${lang}/contact`}
-                className="inline-flex items-center justify-center border border-primary-foreground/40 hover:border-primary-foreground hover:bg-primary-foreground/5 text-primary-foreground px-8 py-3.5 text-sm font-medium tracking-wide transition-colors"
-              >
-                {t("premiereVisite.ctaSecondary")}
-              </Link>
-            </div>
-          </FadeIn>
-        </Container>
-      </section>
+      <Section fond="prune">
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <TitreSection className="max-w-[20ch]">{t("visite.ctaTitre")}</TitreSection>
+          <p className="m-0 flex flex-wrap items-center gap-3">
+            <Link
+              href={`/${lang}/rendez-vous`}
+              className="inline-flex min-h-12 items-center justify-center rounded-sm bg-primary px-[26px] text-base font-medium text-primary-foreground no-underline transition-colors hover:bg-primary-hover"
+            >
+              {t("nav.cta")}
+            </Link>
+            <span className="text-white/70">{t("visite.ctaOu")}</span>
+            <a href={`tel:${t("contact.phoneTel")}`} className="font-medium text-white underline-offset-4">
+              {t("contact.phoneDisplay")}
+            </a>
+          </p>
+        </div>
+      </Section>
     </>
   )
 }

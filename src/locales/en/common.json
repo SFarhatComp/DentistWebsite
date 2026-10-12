@@ -5,9 +5,9 @@
   "nav": {
     "accueil": "Home",
     "studio": "The Studio",
-    "premiereVisite": "First Visit",
+    "premiereVisite": "First visit",
     "soins": "Care",
-    "services": "Care",
+    "services": "Services",
     "portfolioClinique": "Clinical portfolio",
     "laboratoire": "Laboratory",
     "ressources": "Resources",
@@ -16,8 +16,17 @@
     "realisations": "Cases",
     "cta": "Book an appointment",
     "appeler": "Call",
-    "parcours": "Care pathway",
-    "assurances": "Insurance"
+    "parcours": "The [de facto] pathway",
+    "assurances": "Insurance",
+    "atelier": "Workshop",
+    "aPropos": "About",
+    "faq": "FAQ",
+    "urgence": "Emergency",
+    "urgenceQuestion": "Emergency?",
+    "menu": "Menu",
+    "fermer": "Close menu",
+    "principale": "Main navigation",
+    "retourAccueil": "Studio Dentaire De Facto, home"
   },
   "common": {
     "enSavoirPlus": "Learn more",
@@ -1061,7 +1070,7 @@
     "adresseValue": "728 rue Fleury Est",
     "adresseCity": "Montreal, QC",
     "telephone": "Phone",
-    "courriel": "Email",
+    "courriel": "info@studiodefacto.ca",
     "heures": "Hours",
     "horaireLabel": "Hours",
     "horaireDays": "Monday to Wednesday",
@@ -1092,7 +1101,12 @@
     },
     "mapTitle": "Map — De Facto Dental Studio",
     "metaDescription": "De Facto Dental Studio — 728 rue Fleury Est, Ahuntsic, Montreal. Phone: 514 863 7805. Monday to Wednesday, 10 a.m. to 6 p.m.",
-    "phoneDisplay": "514 863 7805"
+    "phoneDisplay": "514 863-7805",
+    "adresseComplete": "728 rue Fleury Est, Montreal",
+    "heuresLundi": "Monday 10 a.m. to 6 p.m.",
+    "heuresMardi": "Tuesday 10 a.m. to 6 p.m.",
+    "heuresMercredi": "Wednesday 3 p.m. to 8 p.m.",
+    "heuresJeudiVendredi": "Thursday and Friday: coming soon"
   },
   "consentGroup": {
     "block1Title": "Required consents",
@@ -1552,7 +1566,7 @@
   "footer": {
     "tagline": "De Facto Dental Studio — considered dentistry in the heart of Ahuntsic, Montreal.",
     "coordonnees": "Contact",
-    "liens": "Patients",
+    "liens": "Links",
     "secondaires": "Information",
     "legal": "Legal",
     "nouveauxPatients": "New patients",
@@ -1566,7 +1580,15 @@
     "rendezVous": "Book an appointment",
     "horaires": "Hours",
     "horairesPlaceholder": "Mon. – Wed. · 10 a.m. to 6 p.m.",
-    "mention": "Information on this site does not replace a clinical evaluation by a dentist."
+    "mention": "Information on this site does not replace a clinical evaluation by a dentist.",
+    "signature1": "Nothing more.",
+    "signature2": "Nothing less.",
+    "nousJoindre": "Contact us",
+    "heures": "Hours",
+    "accessibilite": "Accessibility",
+    "raisonSociale": "Studio Dentaire De Facto · Dr Bader Ramdani, general dentist",
+    "responsableLoi25": "Privacy officer: Dr Bader Ramdani, general dentist · info@studiodefacto.ca · 514 863-7805",
+    "avisClinique": "The information on this site is general and does not replace a dental examination."
   },
   "professionnelsPage": {
     "heroLabel": "Professional space",
@@ -2154,5 +2176,846 @@
       "progresse": "CALL BACK WITHIN 24 H",
       "aujourdhui": "PRIORITY — SAME-DAY CALLBACK"
     }
+  },
+  "accueil": {
+    "hero": {
+      "surtitre": "[ Dentist in Ahuntsic ]",
+      "titre1": "Take your time.",
+      "titre2": "So do we.",
+      "intro": "An independent dental studio, where we take the time to listen to you. Dr Bader Ramdani, general dentist, and the studio team welcome you at 728 rue Fleury Est, in Montreal.",
+      "appeler": "Call 514 863-7805",
+      "altBureau": "The studio office, where we sit down to discuss the treatment plan",
+      "espaces": [
+        {
+          "num": "I",
+          "nom": "The office"
+        },
+        {
+          "num": "II",
+          "nom": "The operatories"
+        },
+        {
+          "num": "III",
+          "nom": "The workshop"
+        }
+      ]
+    },
+    "reservation": {
+      "motifLabel": "Reason",
+      "jourLabel": "Day",
+      "momentLabel": "Time of day",
+      "cta": "See available times",
+      "note": "Choose an available time, tell us what you need, then enter your contact details. Every appointment booked online must be confirmed by the studio within 24 hours.",
+      "motifs": [
+        "Complete examination (new patient)",
+        "Complete examination and cleaning",
+        "Dental emergency",
+        "Targeted consultation",
+        "Cleaning",
+        "Denture",
+        "Repair a tooth",
+        "Other"
+      ],
+      "jours": [
+        "No preference",
+        "Monday",
+        "Tuesday",
+        "Wednesday"
+      ],
+      "moments": [
+        "No preference",
+        "Morning",
+        "Afternoon",
+        "Evening (Wednesday only)"
+      ]
+    },
+    "espaces": {
+      "surtitre": "The studio, room by room",
+      "titre": "A studio in three spaces",
+      "lien": "Visit the studio →",
+      "liste": [
+        {
+          "num": "I.",
+          "nom": "The office.",
+          "texte": "We sit down at a table to talk about your health and your treatment plan. Not in the chair, and not in a rush.",
+          "alt": "The planning office, with its table and chairs"
+        },
+        {
+          "num": "II.",
+          "nom": "The operatories.",
+          "texte": "Two bright rooms, equipped for examination, prevention and treatment.",
+          "alt": "Operatory 1",
+          "alt2": "Operatory 2"
+        },
+        {
+          "num": "III.",
+          "nom": "The workshop.",
+          "texte": "The digital design room and the workshop, where crowns, dentures and guards are made.",
+          "alt": "The workshop bench, with its articulator"
+        }
+      ]
+    },
+    "carte": {
+      "surtitre": "Services",
+      "titre": "The care menu",
+      "intro": "The services of a general dentist, grouped into five families of care.",
+      "lien": "All services →",
+      "familles": [
+        {
+          "titre": "Examinations and consultations",
+          "soins": [
+            {
+              "nom": "Complete examination",
+              "slug": "examen-complet"
+            },
+            {
+              "nom": "Targeted consultation",
+              "slug": "consultation-ciblee"
+            },
+            {
+              "nom": "Periodontal examination",
+              "slug": "examen-parodontal"
+            },
+            {
+              "nom": "Orthodontic examination",
+              "slug": "examen-orthodontique"
+            },
+            {
+              "nom": "Prosthodontic examination",
+              "slug": "examen-prosthodontique"
+            }
+          ]
+        },
+        {
+          "titre": "Care of teeth and gums",
+          "soins": [
+            {
+              "nom": "Fillings",
+              "slug": "obturations"
+            },
+            {
+              "nom": "Root canal treatment",
+              "slug": "traitement-de-canal"
+            },
+            {
+              "nom": "Gum treatment",
+              "slug": "traitement-des-gencives"
+            },
+            {
+              "nom": "Extraction",
+              "slug": "extraction"
+            }
+          ]
+        },
+        {
+          "titre": "Crowns, bridges and dentures",
+          "soins": [
+            {
+              "nom": "Inlay, crown and bridge",
+              "slug": "incrustation-couronne-pont"
+            },
+            {
+              "nom": "Complete and partial dentures",
+              "slug": "protheses-completes-partielles"
+            },
+            {
+              "nom": "Single implant",
+              "slug": "implant-unitaire"
+            },
+            {
+              "nom": "Implant-supported dentures",
+              "slug": "protheses-sur-implants"
+            }
+          ]
+        },
+        {
+          "titre": "Prevention and follow-up",
+          "soins": [
+            {
+              "nom": "Cleaning and recall examination",
+              "slug": "nettoyage-examen-rappel"
+            },
+            {
+              "nom": "Fluoride tray",
+              "slug": "gouttiere-de-fluor"
+            },
+            {
+              "nom": "Custom mouthguard",
+              "slug": "protecteur-buccal"
+            },
+            {
+              "nom": "Occlusal splint (grinding and clenching)",
+              "slug": "plaque-occlusale"
+            }
+          ]
+        },
+        {
+          "titre": "Aesthetics",
+          "soins": [
+            {
+              "nom": "Veneers",
+              "slug": "facettes"
+            },
+            {
+              "nom": "Whitening",
+              "slug": "blanchiment"
+            },
+            {
+              "nom": "Clear aligners",
+              "slug": "aligneurs-transparents"
+            }
+          ]
+        }
+      ]
+    },
+    "metaTitre": "Dentist in Ahuntsic, Montreal | Studio Dentaire De Facto",
+    "metaDescription": "Independent dental studio in Ahuntsic. Dr Bader Ramdani, general dentist. Complete examination, same-day emergencies, prosthetics workshop on site."
+  },
+  "urgence": {
+    "bandeTitre": "Dental emergency",
+    "bandeTexte": "Pain, a broken tooth, swelling? A same-day appointment is possible during our hours. Call",
+    "bandeLien": "What to do in an emergency →",
+    "metaTitre": "Dental emergency in Ahuntsic | Studio Dentaire De Facto",
+    "metaDescription": "Dental emergency in Ahuntsic: pain, a broken tooth, swelling. A same-day appointment is possible during our hours. Emergency examination $61.",
+    "surtitre": "[ Emergency ]",
+    "titre": "Dental emergency in Ahuntsic",
+    "chapeau1": "Pain, a broken tooth, swelling? Call",
+    "chapeau2": "An emergency appointment is possible the same day, during our opening hours.",
+    "appeler": "Call 514 863-7805",
+    "motifsTitre": "Reasons for an emergency visit",
+    "motifs": [
+      "Pain",
+      "Fractured tooth",
+      "Swelling",
+      "Tooth knocked out",
+      "Crown or filling come loose",
+      "Broken denture",
+      "Bleeding"
+    ],
+    "fonctionneTitre": "How it works",
+    "fonctionne": [
+      "Call us, book online, or fill in the emergency request form below.",
+      "A receptionist calls you back to understand the situation and give you a time.",
+      "Come only after that phone confirmation. Without it, we cannot guarantee that a dentist will be available to see you."
+    ],
+    "fraisTitre": "The fees, in plain sight",
+    "frais": [
+      {
+        "libelle": "Emergency examination",
+        "montant": "$61"
+      },
+      {
+        "libelle": "Radiograph of the tooth (periapical, one image), if needed",
+        "montant": "$44"
+      }
+    ],
+    "fraisNote": "Regular price of a basic emergency appointment: $61 for the emergency examination, plus $44 if a radiograph of the tooth (periapical, one image) is needed. Depending on what is found, additional fees may apply for care given during the visit. We explain them before starting.",
+    "appelerTitre": "Situations to call about",
+    "appelerListe": [
+      "Severe dental pain, or pain that wakes you",
+      "A tooth broken, cracked or knocked out",
+      "Swelling of the gum or the face",
+      "A crown, filling or denture broken or come loose",
+      "Bleeding after an extraction"
+    ],
+    "appelerHeures": "Hours to reach the studio: Monday and Tuesday, 10 a.m. to 6 p.m.; Wednesday, 3 p.m. to 8 p.m.",
+    "horsHeuresTitre": "Outside our hours",
+    "horsHeuresTexte": "If you have signs of an infection spreading through the body (fever, chills, swelling of the face that is increasing, difficulty swallowing or breathing, extreme fatigue), go without delay to a hospital emergency department or call 911. For a health question, Info-Santé answers at 811.",
+    "formTitre": "Emergency request",
+    "formIntro": "The form is read during our opening hours. If the pain is severe, call instead.",
+    "obligatoire": "(required)",
+    "facultatif": "(optional)",
+    "champNom": "First and last name",
+    "champTelephone": "Phone",
+    "champCourriel": "Email",
+    "champType": "Type of situation",
+    "types": [
+      {
+        "code": "douleur",
+        "label": "Pain"
+      },
+      {
+        "code": "cassee",
+        "label": "Broken tooth"
+      },
+      {
+        "code": "enflure",
+        "label": "Swelling"
+      },
+      {
+        "code": "prothese",
+        "label": "Denture"
+      },
+      {
+        "code": "autre",
+        "label": "Other"
+      }
+    ],
+    "douleurOu": "Where?",
+    "douleurOuOptions": [
+      "Upper tooth",
+      "Lower tooth",
+      "I am not sure"
+    ],
+    "douleurCote": "Which side?",
+    "douleurCoteOptions": [
+      "Left",
+      "Right",
+      "Front"
+    ],
+    "douleurIntensite": "Intensity",
+    "douleurIntensiteOptions": [
+      "Mild",
+      "Moderate",
+      "Severe",
+      "Unbearable"
+    ],
+    "douleurDepuis": "Since when?",
+    "depuisOptions": [
+      "Today",
+      "2 to 3 days",
+      "More than a week"
+    ],
+    "douleurDeclencheursTitre": "The pain is triggered by:",
+    "douleurDeclencheurs": [
+      "Cold",
+      "Heat",
+      "Chewing",
+      "It is constant",
+      "It wakes me at night"
+    ],
+    "casseeQuelle": "Which tooth?",
+    "casseeQuelleOptions": [
+      "Front tooth",
+      "Back tooth"
+    ],
+    "casseeMal": "Are you in pain?",
+    "casseeMorceau": "Did you keep the piece?",
+    "casseeBord": "Does the edge cut your tongue or cheek?",
+    "ouiNon": [
+      "Yes",
+      "No"
+    ],
+    "enflureOu": "Where?",
+    "enflureOuOptions": [
+      "Gum",
+      "Cheek",
+      "Under the jaw"
+    ],
+    "enflureDepuis": "Since when?",
+    "enflureFievre": "Do you have a fever?",
+    "enflureAlerte": "Difficulty breathing, swallowing or opening your mouth? Go immediately to the hospital emergency department.",
+    "protheseType": "Type of denture",
+    "protheseTypeOptions": [
+      "Complete",
+      "Partial",
+      "On implants"
+    ],
+    "protheseProbleme": "The problem",
+    "protheseProblemeOptions": [
+      "Broken",
+      "Hurts the gum",
+      "No longer holds",
+      "Lost"
+    ],
+    "autreDescription": "Briefly describe the situation",
+    "consentement": "I understand that minimum fees apply to an emergency appointment, that additional fees may be added, and that I must wait for the confirmation call before coming in.",
+    "noteConfidentialite": "Your request is encrypted in your browser before it is sent; only the studio can read it. The information sent is used solely to handle your request.",
+    "lienConfidentialite": "Privacy policy",
+    "envoyer": "Send",
+    "envoiEnCours": "Sending…",
+    "erreurEnvoi": "Sending failed. Try again, or call the studio at 514 863-7805.",
+    "confirme": "Request received. A receptionist will call you back during our opening hours.",
+    "choisirType": "Choose the type of situation to continue.",
+    "faqTitre": "Frequently asked questions",
+    "faq": [
+      {
+        "question": "Do you see emergencies from people who are not patients of the studio?",
+        "answer": "Yes, subject to that day's availability."
+      },
+      {
+        "question": "Can you prescribe something over the phone?",
+        "answer": "No. An assessment is needed to know what to do."
+      }
+    ],
+    "liesTitre": "Related services"
+  },
+  "visite": {
+    "metaTitre": "First dental visit in Ahuntsic | Studio Dentaire De Facto",
+    "metaDescription": "Your first visit to Studio Dentaire De Facto: a complete oral health assessment, a written report, what to bring, coverage and payment.",
+    "surtitre": "[ First visit ]",
+    "titre": "Your first visit to the dentist, in Ahuntsic",
+    "intro": "A complete oral health assessment. We listen, we examine, we explain. You leave with a written summary and advice suited to you, with no obligation to proceed.",
+    "altHero": "The office where the written report is reviewed, seated at a table",
+    "troisTempsTitre": "In three stages",
+    "troisTemps": [
+      {
+        "num": "1",
+        "titre": "On arrival.",
+        "intro": "In the consultation office.",
+        "points": [
+          "Welcome",
+          "What brings you in",
+          "Review of your health"
+        ]
+      },
+      {
+        "num": "2",
+        "titre": "During the visit.",
+        "intro": "In the operatory.",
+        "points": [
+          "Examination of the teeth, gums and mouth",
+          "Radiographs and photographs as needed",
+          "30 min, 1 h or 1 h 30 depending on the appointment"
+        ]
+      },
+      {
+        "num": "3",
+        "titre": "On leaving.",
+        "intro": "Back to the office. The examination and how it is presented matter as much as the treatment.",
+        "points": [
+          "Written report and visuals",
+          "Recommendations for each tooth",
+          "Treatment plans suited to you"
+        ]
+      }
+    ],
+    "commencerTitre": "Three ways to start",
+    "commencerIntro": "Choose the appointment that matches what you need.",
+    "commencer": [
+      {
+        "num": "30 minutes",
+        "titre": "Targeted consultation.",
+        "intro": "For one specific question:",
+        "points": [
+          "Denture",
+          "Aesthetics",
+          "Second opinion",
+          "Emergency"
+        ],
+        "note": "No commitment. We answer your questions and point you to the right resources if needed."
+      },
+      {
+        "num": "About 1 hour",
+        "titre": "Complete examination.",
+        "intro": "We get to know your habits and your health.",
+        "points": [
+          "Questionnaires",
+          "Examination, radiographs and photographs",
+          "On-screen presentation, if your condition warrants it"
+        ]
+      },
+      {
+        "num": "About 1 h 30",
+        "titre": "Complete examination and cleaning.",
+        "intro": "The complete examination, followed by the cleaning.",
+        "points": [
+          "Advice and a review of hygiene and prevention",
+          "Referral to a specialist, if warranted",
+          "Recall interval based on your oral health",
+          "De Facto hygiene kit"
+        ]
+      },
+      {
+        "num": "If your case warrants it · 2nd appointment",
+        "titre": "The treatment plan, in the consultation office.",
+        "intro": "In the office, on screen: your written report and the treatment options. You decide what comes next."
+      }
+    ],
+    "examenTitre": "What happens during the examination, in six stages",
+    "examen": [
+      {
+        "num": "01",
+        "titre": "You tell us.",
+        "texte": "Why you came, what bothers you, what you would like."
+      },
+      {
+        "num": "02",
+        "titre": "Medical questionnaire and dental history.",
+        "texte": "Your medications, your medical conditions, your allergies. Several of them affect the mouth."
+      },
+      {
+        "num": "03",
+        "titre": "The examination of the mouth.",
+        "texte": "The teeth, the gums, the jaw, the tongue, the cheeks, the bite. We also note what is normal: that is your starting point."
+      },
+      {
+        "num": "04",
+        "titre": "The tools: radiographs and photographs.",
+        "texte": "Radiographs, photographs or a digital impression, only when they answer a question."
+      },
+      {
+        "num": "05",
+        "titre": "The summary.",
+        "texte": "What is active, what is stable, what can wait."
+      },
+      {
+        "num": "06",
+        "titre": "The treatment and prevention plan.",
+        "texte": "What we propose, in what order, and why."
+      }
+    ],
+    "apporterTitre": "What to bring",
+    "apporterMinimumTitre": "At a minimum",
+    "apporterMinimum": [
+      "Your health insurance card (RAMQ)",
+      "Your Canadian Dental Care Plan (CDCP) card, if you are enrolled",
+      "Your private dental insurance card, if applicable",
+      "The list of your medications (or the containers)",
+      "Any other useful health information: medical conditions, allergies, recent surgery"
+    ],
+    "apporterIdealementTitre": "Ideally",
+    "apporterIdealement": [
+      "Your previous dental file",
+      "Your dental radiographs taken less than 2 years ago",
+      "Your panoramic radiograph taken less than 5 years ago"
+    ],
+    "apporterNote": "Your previous radiographs can spare you new ones. You may ask your former clinic for a copy of your file; it is your right.",
+    "couvertureTitre": "Coverage and payment",
+    "couvertureRcsd": "CDCP: accepted. Bring your card. To find out whether you are eligible:",
+    "couvertureRcsdLien": "Canadian Dental Care Plan",
+    "couvertureRamq": "RAMQ: several services are covered for children under 10 and for recipients of a financial assistance programme who hold a claim booklet.",
+    "couvertureRamqLien": "See the services covered by RAMQ",
+    "couverturePrivees": "Private insurance: accepted.",
+    "couverturePaiement": "Payment: cash, debit or credit card.",
+    "couvertureFinancement": "Financing: offered by third parties — Accord D, Flexiti and others. We can point you to these resources.",
+    "couvertureNote": "Before any treatment, you receive a written estimate of the costs.",
+    "savoirTitre": "Good to know",
+    "savoir": [
+      {
+        "titre": "Access",
+        "texte": "The studio is on the 1st floor, with a staircase at the entrance. It is not wheelchair accessible. If stairs are difficult for you, call us before coming."
+      },
+      {
+        "titre": "Afraid of the dentist?",
+        "texte": "Tell us when you book. We explain each step before doing it, and you can ask for a break at any time."
+      },
+      {
+        "titre": "Health questionnaire",
+        "texte": "You fill it in at the studio, on arrival. Your answers go into your file. A secure online questionnaire will be offered later."
+      }
+    ],
+    "annulationTitre": "Cancellation",
+    "annulation": [
+      "Let us know at least 24 hours in advance, ideally 48 hours.",
+      "2nd missed appointment without notice: $50 fee.",
+      "3rd missed appointment without notice: $100 fee.",
+      "After several missed appointments, the studio may end the follow-up, with notice, and transfer your file to the clinic of your choice."
+    ],
+    "ctaTitre": "Ready for your first visit?",
+    "ctaOu": "or"
+  },
+  "liensExternes": {
+    "rcsd": "https://www.canada.ca/fr/services/prestations/dentaire/regime-soins-dentaires.html",
+    "ramq": "https://www.ramq.gouv.qc.ca/fr/citoyens/assurance-maladie/soins-dentaires",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Studio+Dentaire+De+Facto%2C+728+rue+Fleury+Est%2C+Montr%C3%A9al+QC+H2C+1P1"
+  },
+  "servicesPage": {
+    "metaTitre": "Dental services in Ahuntsic | Studio Dentaire De Facto",
+    "metaDescription": "The services of a general dentist in Ahuntsic: examinations, care of teeth and gums, crowns and dentures, prevention, aesthetics.",
+    "surtitre": "[ Services ]",
+    "titre": "Dental services in Ahuntsic",
+    "intro1": "Studio De Facto offers the services of a general dentist, grouped into five families of care.",
+    "intro2": "Every treatment begins with an examination and a clear explanation. Where needed, we refer you to a specialist.",
+    "raccourcis": [
+      {
+        "nom": "Examination",
+        "slug": "examen-complet"
+      },
+      {
+        "nom": "Cleaning",
+        "slug": "nettoyage-examen-rappel"
+      },
+      {
+        "nom": "Filling",
+        "slug": "obturations"
+      },
+      {
+        "nom": "Root canal",
+        "slug": "traitement-de-canal"
+      },
+      {
+        "nom": "Gums",
+        "slug": "traitement-des-gencives"
+      },
+      {
+        "nom": "Extraction",
+        "slug": "extraction"
+      },
+      {
+        "nom": "Crown",
+        "slug": "incrustation-couronne-pont"
+      },
+      {
+        "nom": "Bridge",
+        "slug": "incrustation-couronne-pont"
+      },
+      {
+        "nom": "Implant",
+        "slug": "implant-unitaire"
+      },
+      {
+        "nom": "Dentures",
+        "slug": "protheses-completes-partielles"
+      },
+      {
+        "nom": "Guards",
+        "slug": "plaque-occlusale"
+      },
+      {
+        "nom": "Whitening",
+        "slug": "blanchiment"
+      }
+    ],
+    "familles": [
+      {
+        "num": "01",
+        "titre": "Examinations and consultations",
+        "intro": "A complete picture of your mouth before any decision.",
+        "image": "/v2/bureau.webp",
+        "alt": "The consultation office",
+        "soins": [
+          {
+            "nom": "Complete examination",
+            "desc": "An assessment of about an hour and a written oral health report.",
+            "slug": "examen-complet"
+          },
+          {
+            "nom": "Targeted consultation",
+            "desc": "30 minutes for one specific question: a denture, aesthetics or a second opinion.",
+            "slug": "consultation-ciblee"
+          },
+          {
+            "nom": "Periodontal examination",
+            "desc": "A detailed assessment of the gums and of the bone that supports the teeth.",
+            "slug": "examen-parodontal"
+          },
+          {
+            "nom": "Orthodontic examination",
+            "desc": "An assessment of tooth position and of the bite.",
+            "slug": "examen-orthodontique"
+          },
+          {
+            "nom": "Prosthodontic examination",
+            "desc": "An assessment of crowns, bridges and dentures, or of teeth to be replaced.",
+            "slug": "examen-prosthodontique"
+          }
+        ]
+      },
+      {
+        "num": "02",
+        "titre": "Care of teeth and gums",
+        "intro": "Treating decay, infection and gum disease.",
+        "soins": [
+          {
+            "nom": "Gum treatment",
+            "desc": "Deep scaling and root planing to bring gum disease under control.",
+            "slug": "traitement-des-gencives"
+          },
+          {
+            "nom": "Root canal treatment",
+            "desc": "Treating an infected tooth in order to keep it.",
+            "slug": "traitement-de-canal"
+          },
+          {
+            "nom": "Extraction",
+            "desc": "When a tooth cannot be kept, wisdom teeth included.",
+            "slug": "extraction"
+          },
+          {
+            "nom": "Fillings",
+            "desc": "Bringing active decay under control before going further.",
+            "slug": "obturations"
+          }
+        ]
+      },
+      {
+        "num": "03",
+        "titre": "Crowns, bridges and dentures",
+        "intro": "Protecting a fragile tooth or replacing teeth, with pieces made in our workshop.",
+        "image": "/v2/atelier.webp",
+        "alt": "The workshop bench",
+        "soins": [
+          {
+            "nom": "Indirect restoration: inlay, crown, bridge",
+            "desc": "Made in the workshop to protect a fragile tooth or replace a missing one.",
+            "slug": "incrustation-couronne-pont"
+          },
+          {
+            "nom": "Complete and partial removable dentures",
+            "desc": "Replacing teeth with a removable appliance.",
+            "slug": "protheses-completes-partielles"
+          },
+          {
+            "nom": "Single implant",
+            "desc": "Replacing one tooth. A colleague places it surgically; we make the crown and follow up.",
+            "slug": "implant-unitaire"
+          },
+          {
+            "nom": "Implant-supported dentures",
+            "desc": "Stabilising a denture or replacing teeth on implants.",
+            "slug": "protheses-sur-implants"
+          }
+        ]
+      },
+      {
+        "num": "04",
+        "titre": "Prevention and follow-up",
+        "intro": "The cleaning, the follow-up and the appliances that protect your teeth. It starts at the very first appointment.",
+        "habitudes": [
+          "Regular examination",
+          "Toothbrush",
+          "Dental floss",
+          "Interdental brushes",
+          "Cheese after a meal",
+          "Fluoride tray"
+        ],
+        "soins": [
+          {
+            "nom": "Cleaning and recall examination",
+            "desc": "Scaling, polishing and examination, at an interval suited to your risk.",
+            "slug": "nettoyage-examen-rappel"
+          },
+          {
+            "nom": "Fluoride tray",
+            "desc": "Applying fluoride at home to strengthen enamel, if your decay risk warrants it. Made in the workshop.",
+            "slug": "gouttiere-de-fluor"
+          },
+          {
+            "nom": "Custom mouthguard",
+            "desc": "According to your sport, your trade or your hobby. Custom-made in the workshop.",
+            "slug": "protecteur-buccal"
+          },
+          {
+            "nom": "Occlusal splint",
+            "desc": "Protecting the teeth if you grind or clench. Made in the workshop.",
+            "slug": "plaque-occlusale"
+          }
+        ]
+      },
+      {
+        "num": "05",
+        "titre": "Aesthetics",
+        "intro": "Changing the shade, the shape or the position of the teeth, once the mouth is healthy.",
+        "soins": [
+          {
+            "nom": "Clear aligners",
+            "desc": "Straightening teeth with trays, for minor cases.",
+            "slug": "aligneurs-transparents"
+          },
+          {
+            "nom": "Veneers and other aesthetic treatments",
+            "desc": "Changing the shape or the shade of the front teeth.",
+            "slug": "facettes"
+          },
+          {
+            "nom": "Whitening",
+            "desc": "Lightening the shade of the teeth, in a supervised way.",
+            "slug": "blanchiment"
+          }
+        ]
+      }
+    ],
+    "ctaTitre1": "Understand better.",
+    "ctaTitre2": "Treat better.",
+    "ctaAppeler": "Call 514 863-7805"
+  },
+  "fiche": {
+    "filAriane": "Breadcrumb",
+    "accueil": "Home",
+    "quandConsulter": "When to consult",
+    "bonASavoir": "Good to know",
+    "commentCaSePasse": "How it works",
+    "options": "Options",
+    "limites": "Limits",
+    "apres": "After treatment",
+    "faq": "Frequently asked questions",
+    "servicesLies": "Related services",
+    "lienAtelier": "The workshop →",
+    "avis": "The information on this page is general. Only an examination can tell what suits your situation.",
+    "encadreSurtitre": "[ Studio Dentaire De Facto ]",
+    "encadreTitre": "An examination first",
+    "encadreTexte": "Every treatment begins with an examination and a clear explanation. You decide what comes next."
+  },
+  "apropos": {
+    "metaTitre": "About — Studio Dentaire De Facto",
+    "metaDescription": "An independent dental studio on Fleury Street East, in Ahuntsic. Dr Bader Ramdani, general dentist, with a denture workshop on site.",
+    "surtitre": "[ About ]",
+    "titre": "About Studio Dentaire De Facto",
+    "intro": "Studio Dentaire De Facto is an independent studio on Fleury Street East, in Ahuntsic. We are not part of any chain. We designed the place to take the time: an office to talk, bright rooms to treat, a workshop to build.",
+    "altHero": "The studio's facade at 728 Fleury Street East",
+    "pieces": {
+      "titre": "The studio, room by room",
+      "liste": [
+        {
+          "num": "01",
+          "nom": "The facade.",
+          "texte": "At 728 Fleury Street East, upstairs.",
+          "alt": "The studio's facade and entrance stairs"
+        },
+        {
+          "num": "02",
+          "nom": "The waiting room.",
+          "texte": "A living room rather than a waiting room, with coffee.",
+          "alt": "The waiting room, arranged as a living room"
+        },
+        {
+          "num": "03",
+          "nom": "The hallway.",
+          "texte": "The hallway leading to the rooms is a small art gallery.",
+          "alt": "The hallway and its artwork"
+        },
+        {
+          "num": "04",
+          "nom": "The office.",
+          "texte": "For the forms and for explaining the treatment plan, seated at the consultation desk.",
+          "alt": "The planning office"
+        },
+        {
+          "num": "05",
+          "nom": "Room 1.",
+          "texte": "A treatment room.",
+          "alt": "Treatment room 1"
+        },
+        {
+          "num": "06",
+          "nom": "Room 2.",
+          "texte": "A treatment room.",
+          "alt": "Treatment room 2"
+        },
+        {
+          "num": "07",
+          "nom": "The CAD-CAM room.",
+          "texte": "Where the pieces are designed on the computer.",
+          "alt": "The digital design room"
+        },
+        {
+          "num": "08",
+          "nom": "The workshop.",
+          "texte": "Where they are made.",
+          "alt": "The workshop bench, with articulator"
+        }
+      ]
+    },
+    "blocs": [
+      {
+        "titre": "The dentist",
+        "texte": "Dr Bader Ramdani, general dentist, born in Montreal. A 2021 doctor of dental medicine from Université Laval in Quebec City, he is a member of the Ordre des dentistes du Québec. He founded Studio De Facto in Ahuntsic, with a denture workshop on site, to give himself the time to examine, to explain and to treat. He sees patients in French and in English."
+      },
+      {
+        "titre": "The studio team",
+        "texte": "The studio team welcomes you, calls you back to confirm your appointments, helps you with your insurance and stays with you from one visit to the next."
+      },
+      {
+        "titre": "A written report, for you",
+        "texte": "Every complete examination ends with a written oral health report that you keep. It is the starting point for your decisions and your follow-up."
+      },
+      {
+        "titre": "In the community",
+        "texte": "The studio gives free oral health workshops with neighbourhood community organizations."
+      }
+    ],
+    "ctaTitre": "Come and see the studio.",
+    "ctaAppeler": "Call 514 863-7805"
   }
 }

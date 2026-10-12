@@ -7,7 +7,7 @@
     "studio": "Le Studio",
     "premiereVisite": "Première visite",
     "soins": "Soins",
-    "services": "Soins",
+    "services": "Services",
     "portfolioClinique": "Portfolio clinique",
     "laboratoire": "Laboratoire",
     "ressources": "Ressources",
@@ -16,8 +16,17 @@
     "realisations": "Réalisations",
     "cta": "Prendre rendez-vous",
     "appeler": "Appeler",
-    "parcours": "Parcours",
-    "assurances": "Assurances"
+    "parcours": "Le parcours [de facto]",
+    "assurances": "Assurances",
+    "atelier": "Atelier",
+    "aPropos": "À propos",
+    "faq": "FAQ",
+    "urgence": "Urgence",
+    "urgenceQuestion": "Urgence ?",
+    "menu": "Menu",
+    "fermer": "Fermer le menu",
+    "principale": "Navigation principale",
+    "retourAccueil": "Studio Dentaire De Facto, accueil"
   },
   "common": {
     "enSavoirPlus": "En savoir plus",
@@ -1061,7 +1070,7 @@
     "adresseValue": "728 rue Fleury Est",
     "adresseCity": "Montréal, QC",
     "telephone": "Téléphone",
-    "courriel": "Courriel",
+    "courriel": "info@studiodefacto.ca",
     "heures": "Heures d'ouverture",
     "horaireLabel": "Horaire",
     "horaireDays": "Lundi au mercredi",
@@ -1092,7 +1101,12 @@
     },
     "mapTitle": "Carte — Studio Dentaire De Facto",
     "metaDescription": "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au mercredi, 10 h à 18 h.",
-    "phoneDisplay": "514 863 7805"
+    "phoneDisplay": "514 863-7805",
+    "adresseComplete": "728, rue Fleury Est, Montréal",
+    "heuresLundi": "Lundi 10 h à 18 h",
+    "heuresMardi": "Mardi 10 h à 18 h",
+    "heuresMercredi": "Mercredi 15 h à 20 h",
+    "heuresJeudiVendredi": "Jeudi et vendredi : bientôt disponible"
   },
   "consentGroup": {
     "block1Title": "Consentements obligatoires",
@@ -1552,7 +1566,7 @@
   "footer": {
     "tagline": "Studio Dentaire De Facto — dentisterie réfléchie au cœur d'Ahuntsic, Montréal.",
     "coordonnees": "Coordonnées",
-    "liens": "Patients",
+    "liens": "Liens",
     "secondaires": "Informations",
     "legal": "Légal",
     "nouveauxPatients": "Nouveaux patients",
@@ -1566,7 +1580,15 @@
     "rendezVous": "Prendre rendez-vous",
     "horaires": "Heures d'ouverture",
     "horairesPlaceholder": "Lun. – mer. · 10 h à 18 h",
-    "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste."
+    "mention": "Les informations du site ne remplacent pas une évaluation clinique par un dentiste.",
+    "signature1": "Ni plus.",
+    "signature2": "Ni moins.",
+    "nousJoindre": "Nous joindre",
+    "heures": "Heures",
+    "accessibilite": "Accessibilité",
+    "raisonSociale": "Studio Dentaire De Facto · Dr Bader Ramdani, dentiste généraliste",
+    "responsableLoi25": "Responsable de la protection des renseignements personnels : Dr Bader Ramdani, dentiste généraliste · info@studiodefacto.ca · 514 863-7805",
+    "avisClinique": "L'information de ce site est générale et ne remplace pas un examen dentaire."
   },
   "professionnelsPage": {
     "heroLabel": "Espace professionnels",
@@ -2154,5 +2176,846 @@
       "progresse": "À RAPPELER SOUS 24 H",
       "aujourdhui": "PRIORITÉ — RAPPEL LE JOUR MÊME"
     }
+  },
+  "accueil": {
+    "hero": {
+      "surtitre": "[ Dentiste à Ahuntsic ]",
+      "titre1": "Prenez le temps.",
+      "titre2": "Nous aussi.",
+      "intro": "Un studio dentaire indépendant, où l'on prend le temps de vous écouter. Le Dr Bader Ramdani, dentiste généraliste, et l'équipe du studio vous accueillent au 728, rue Fleury Est, à Montréal.",
+      "appeler": "Appeler le 514 863-7805",
+      "altBureau": "Le bureau du studio, où l'on s'assoit pour parler du plan de traitement",
+      "espaces": [
+        {
+          "num": "I",
+          "nom": "Le bureau"
+        },
+        {
+          "num": "II",
+          "nom": "Les salles de soins"
+        },
+        {
+          "num": "III",
+          "nom": "L'atelier"
+        }
+      ]
+    },
+    "reservation": {
+      "motifLabel": "Motif",
+      "jourLabel": "Jour",
+      "momentLabel": "Moment",
+      "cta": "Voir les plages libres",
+      "note": "Choisissez une plage libre, précisez votre demande, puis entrez vos coordonnées. Tout rendez-vous pris en ligne doit être confirmé par le studio dans les 24 heures.",
+      "motifs": [
+        "Examen complet (nouveau patient)",
+        "Examen complet et nettoyage",
+        "Urgence dentaire",
+        "Consultation ciblée",
+        "Nettoyage",
+        "Prothèse",
+        "Réparer une dent",
+        "Autre"
+      ],
+      "jours": [
+        "Peu importe",
+        "Lundi",
+        "Mardi",
+        "Mercredi"
+      ],
+      "moments": [
+        "Peu importe",
+        "Matin",
+        "Après-midi",
+        "Soir (mercredi seulement)"
+      ]
+    },
+    "espaces": {
+      "surtitre": "Le studio, pièce par pièce",
+      "titre": "Un studio en trois espaces",
+      "lien": "Visiter le studio →",
+      "liste": [
+        {
+          "num": "I.",
+          "nom": "Le bureau.",
+          "texte": "On s'assoit à une table pour parler de votre santé et de votre plan de traitement. Pas dans le fauteuil, pas en vitesse.",
+          "alt": "Le bureau de planification, avec sa table et ses chaises"
+        },
+        {
+          "num": "II.",
+          "nom": "Les salles de soins.",
+          "texte": "Deux salles lumineuses, équipées pour l'examen, la prévention et les traitements.",
+          "alt": "La salle de soins 1",
+          "alt2": "La salle de soins 2"
+        },
+        {
+          "num": "III.",
+          "nom": "L'atelier.",
+          "texte": "La salle de conception numérique et l'atelier, où l'on fabrique couronnes, prothèses et gouttières.",
+          "alt": "Le poste de travail de l'atelier, avec articulateur"
+        }
+      ]
+    },
+    "carte": {
+      "surtitre": "Les services",
+      "titre": "La carte des soins",
+      "intro": "Les services d'un dentiste généraliste, regroupés en cinq familles de soins.",
+      "lien": "Tous les services →",
+      "familles": [
+        {
+          "titre": "Examens et consultations",
+          "soins": [
+            {
+              "nom": "Examen complet",
+              "slug": "examen-complet"
+            },
+            {
+              "nom": "Consultation ciblée",
+              "slug": "consultation-ciblee"
+            },
+            {
+              "nom": "Examen parodontal",
+              "slug": "examen-parodontal"
+            },
+            {
+              "nom": "Examen orthodontique",
+              "slug": "examen-orthodontique"
+            },
+            {
+              "nom": "Examen prosthodontique",
+              "slug": "examen-prosthodontique"
+            }
+          ]
+        },
+        {
+          "titre": "Soins des dents et des gencives",
+          "soins": [
+            {
+              "nom": "Obturations",
+              "slug": "obturations"
+            },
+            {
+              "nom": "Traitement de canal",
+              "slug": "traitement-de-canal"
+            },
+            {
+              "nom": "Traitement des gencives",
+              "slug": "traitement-des-gencives"
+            },
+            {
+              "nom": "Extraction",
+              "slug": "extraction"
+            }
+          ]
+        },
+        {
+          "titre": "Couronnes, ponts et prothèses",
+          "soins": [
+            {
+              "nom": "Incrustation, couronne et pont",
+              "slug": "incrustation-couronne-pont"
+            },
+            {
+              "nom": "Prothèses complètes et partielles",
+              "slug": "protheses-completes-partielles"
+            },
+            {
+              "nom": "Implant unitaire",
+              "slug": "implant-unitaire"
+            },
+            {
+              "nom": "Prothèses sur implants",
+              "slug": "protheses-sur-implants"
+            }
+          ]
+        },
+        {
+          "titre": "Prévention et suivi",
+          "soins": [
+            {
+              "nom": "Nettoyage et examen de rappel",
+              "slug": "nettoyage-examen-rappel"
+            },
+            {
+              "nom": "Gouttière de fluor",
+              "slug": "gouttiere-de-fluor"
+            },
+            {
+              "nom": "Protecteur buccal sur mesure",
+              "slug": "protecteur-buccal"
+            },
+            {
+              "nom": "Plaque occlusale (bruxisme et serrement)",
+              "slug": "plaque-occlusale"
+            }
+          ]
+        },
+        {
+          "titre": "Esthétique",
+          "soins": [
+            {
+              "nom": "Facettes",
+              "slug": "facettes"
+            },
+            {
+              "nom": "Blanchiment",
+              "slug": "blanchiment"
+            },
+            {
+              "nom": "Aligneurs transparents",
+              "slug": "aligneurs-transparents"
+            }
+          ]
+        }
+      ]
+    },
+    "metaTitre": "Dentiste à Ahuntsic, Montréal | Studio Dentaire De Facto",
+    "metaDescription": "Studio dentaire indépendant à Ahuntsic. Dr Bader Ramdani, dentiste généraliste. Examen complet, urgence le jour même, atelier de prothèses sur place."
+  },
+  "urgence": {
+    "bandeTitre": "Urgence dentaire",
+    "bandeTexte": "Douleur, dent cassée, enflure ? Rendez-vous possible le jour même pendant nos heures. Appelez le",
+    "bandeLien": "Que faire en cas d'urgence →",
+    "metaTitre": "Urgence dentaire à Ahuntsic | Studio Dentaire De Facto",
+    "metaDescription": "Urgence dentaire à Ahuntsic : douleur, dent cassée, enflure. Rendez-vous possible le jour même pendant nos heures. Examen d'urgence 61 $.",
+    "surtitre": "[ Urgence ]",
+    "titre": "Urgence dentaire à Ahuntsic",
+    "chapeau1": "Douleur, dent cassée, enflure ? Appelez le",
+    "chapeau2": "Un rendez-vous d'urgence est possible le jour même, pendant nos heures d'ouverture.",
+    "appeler": "Appeler le 514 863-7805",
+    "motifsTitre": "Motifs de consultation d'urgence",
+    "motifs": [
+      "Douleur",
+      "Dent fracturée",
+      "Enflure",
+      "Dent délogée après un coup",
+      "Couronne ou obturation décollée",
+      "Prothèse cassée",
+      "Saignement"
+    ],
+    "fonctionneTitre": "Comment ça fonctionne",
+    "fonctionne": [
+      "Appelez-nous, réservez en ligne ou remplissez le formulaire de demande d'urgence ci-dessous.",
+      "Une secrétaire vous rappelle pour comprendre la situation et vous donner une heure.",
+      "Venez seulement après cette confirmation téléphonique. Sans confirmation, nous ne pouvons pas garantir qu'un dentiste sera disponible pour vous recevoir."
+    ],
+    "fraisTitre": "Les frais, en toute transparence",
+    "frais": [
+      {
+        "libelle": "Examen d'urgence",
+        "montant": "61 $"
+      },
+      {
+        "libelle": "Radiographie de la dent (périapicale, un cliché), au besoin",
+        "montant": "44 $"
+      }
+    ],
+    "fraisNote": "Prix régulier d'un rendez-vous d'urgence de base : 61 $ pour l'examen d'urgence, plus 44 $ si une radiographie de la dent (périapicale, un cliché) est nécessaire. Selon ce que l'on trouve, des frais supplémentaires peuvent s'ajouter pour les soins faits pendant la visite. On vous les explique avant de commencer.",
+    "appelerTitre": "Situations pour lesquelles appeler",
+    "appelerListe": [
+      "Douleur dentaire forte ou qui vous réveille",
+      "Dent cassée, fêlée ou délogée après un coup",
+      "Enflure de la gencive ou du visage",
+      "Couronne, obturation ou prothèse cassée ou décollée",
+      "Saignement après une extraction"
+    ],
+    "appelerHeures": "Heures pour joindre le studio : lundi et mardi, 10 h à 18 h ; mercredi, 15 h à 20 h.",
+    "horsHeuresTitre": "Hors de nos heures",
+    "horsHeuresTexte": "Si vous avez des signes d'une infection qui se répand dans le corps (fièvre, frissons, enflure du visage qui augmente, difficulté à avaler ou à respirer, grande fatigue), rendez-vous sans attendre à l'urgence d'un hôpital ou composez le 911. Pour une question de santé, Info-Santé répond au 811.",
+    "formTitre": "Demande d'urgence",
+    "formIntro": "Le formulaire est lu pendant nos heures d'ouverture. Si la douleur est forte, appelez plutôt.",
+    "obligatoire": "(obligatoire)",
+    "facultatif": "(facultatif)",
+    "champNom": "Prénom et nom",
+    "champTelephone": "Téléphone",
+    "champCourriel": "Courriel",
+    "champType": "Type de situation",
+    "types": [
+      {
+        "code": "douleur",
+        "label": "Douleur"
+      },
+      {
+        "code": "cassee",
+        "label": "Dent cassée"
+      },
+      {
+        "code": "enflure",
+        "label": "Enflure"
+      },
+      {
+        "code": "prothese",
+        "label": "Prothèse"
+      },
+      {
+        "code": "autre",
+        "label": "Autre"
+      }
+    ],
+    "douleurOu": "Où ?",
+    "douleurOuOptions": [
+      "Dent du haut",
+      "Dent du bas",
+      "Je ne sais pas"
+    ],
+    "douleurCote": "Quel côté ?",
+    "douleurCoteOptions": [
+      "Gauche",
+      "Droite",
+      "Devant"
+    ],
+    "douleurIntensite": "Intensité",
+    "douleurIntensiteOptions": [
+      "Légère",
+      "Modérée",
+      "Forte",
+      "Insupportable"
+    ],
+    "douleurDepuis": "Depuis quand ?",
+    "depuisOptions": [
+      "Aujourd'hui",
+      "2 à 3 jours",
+      "Plus d'une semaine"
+    ],
+    "douleurDeclencheursTitre": "La douleur est déclenchée par :",
+    "douleurDeclencheurs": [
+      "Le froid",
+      "Le chaud",
+      "La mastication",
+      "Elle est constante",
+      "Elle me réveille la nuit"
+    ],
+    "casseeQuelle": "Quelle dent ?",
+    "casseeQuelleOptions": [
+      "Dent avant",
+      "Dent arrière"
+    ],
+    "casseeMal": "Avez-vous mal ?",
+    "casseeMorceau": "Avez-vous gardé le morceau ?",
+    "casseeBord": "Le bord coupe-t-il la langue ou la joue ?",
+    "ouiNon": [
+      "Oui",
+      "Non"
+    ],
+    "enflureOu": "Où ?",
+    "enflureOuOptions": [
+      "Gencive",
+      "Joue",
+      "Sous la mâchoire"
+    ],
+    "enflureDepuis": "Depuis quand ?",
+    "enflureFievre": "Avez-vous de la fièvre ?",
+    "enflureAlerte": "Difficulté à respirer, à avaler ou à ouvrir la bouche ? Rendez-vous immédiatement à l'urgence de l'hôpital.",
+    "protheseType": "Type de prothèse",
+    "protheseTypeOptions": [
+      "Complète",
+      "Partielle",
+      "Sur implants"
+    ],
+    "protheseProbleme": "Le problème",
+    "protheseProblemeOptions": [
+      "Cassée",
+      "Blesse la gencive",
+      "Ne tient plus",
+      "Perdue"
+    ],
+    "autreDescription": "Décrivez brièvement la situation",
+    "consentement": "Je comprends que des frais minimaux s'appliquent à un rendez-vous d'urgence, que des frais supplémentaires peuvent s'ajouter, et que je dois attendre l'appel de confirmation avant de me présenter.",
+    "noteConfidentialite": "Votre demande est chiffrée dans votre navigateur avant l'envoi ; seul le studio peut la lire. Les renseignements transmis servent uniquement à traiter votre demande.",
+    "lienConfidentialite": "Politique de confidentialité",
+    "envoyer": "Envoyer",
+    "envoiEnCours": "Envoi en cours…",
+    "erreurEnvoi": "L'envoi a échoué. Réessayez, ou appelez le studio au 514 863-7805.",
+    "confirme": "Demande reçue. Une secrétaire vous rappelle pendant nos heures d'ouverture.",
+    "choisirType": "Choisissez le type de situation pour continuer.",
+    "faqTitre": "Questions fréquentes",
+    "faq": [
+      {
+        "question": "Recevez-vous les urgences de personnes qui ne sont pas patientes du studio ?",
+        "answer": "Oui, selon nos disponibilités du jour."
+      },
+      {
+        "question": "Pouvez-vous me prescrire quelque chose au téléphone ?",
+        "answer": "Non. Une évaluation est nécessaire pour savoir quoi faire."
+      }
+    ],
+    "liesTitre": "Services liés"
+  },
+  "visite": {
+    "metaTitre": "Première visite chez le dentiste à Ahuntsic | Studio Dentaire De Facto",
+    "metaDescription": "Votre première visite au Studio Dentaire De Facto : bilan bucco-dentaire complet, rapport écrit, quoi apporter, couverture et paiement.",
+    "surtitre": "[ Première visite ]",
+    "titre": "Votre première visite chez le dentiste, à Ahuntsic",
+    "intro": "Un bilan bucco-dentaire complet. On vous écoute, on examine, on explique. Vous repartez avec un résumé écrit et des conseils adaptés, sans obligation de traitement.",
+    "altHero": "Le bureau où l'on revoit le rapport écrit, assis à une table",
+    "troisTempsTitre": "En trois temps",
+    "troisTemps": [
+      {
+        "num": "1",
+        "titre": "À l'arrivée.",
+        "intro": "Au bureau de consultation.",
+        "points": [
+          "Accueil",
+          "Ce qui vous amène",
+          "Revue de votre santé"
+        ]
+      },
+      {
+        "num": "2",
+        "titre": "Pendant la visite.",
+        "intro": "En salle de soins.",
+        "points": [
+          "Examen des dents, des gencives et de la bouche",
+          "Radiographies et photos au besoin",
+          "30 min, 1 h ou 1 h 30 selon le rendez-vous"
+        ]
+      },
+      {
+        "num": "3",
+        "titre": "Au départ.",
+        "intro": "Retour au bureau. L'examen et sa présentation comptent autant que les traitements.",
+        "points": [
+          "Rapport écrit et visuels",
+          "Recommandations pour chaque dent",
+          "Plans de traitement adaptés"
+        ]
+      }
+    ],
+    "commencerTitre": "Trois façons de commencer",
+    "commencerIntro": "Choisissez le rendez-vous qui correspond à votre besoin.",
+    "commencer": [
+      {
+        "num": "30 minutes",
+        "titre": "Consultation ciblée.",
+        "intro": "Pour un aspect spécifique :",
+        "points": [
+          "Prothèse",
+          "Esthétique",
+          "Deuxième avis",
+          "Urgence"
+        ],
+        "note": "Sans engagement. On répond à vos questions et on vous dirige vers les bonnes ressources au besoin."
+      },
+      {
+        "num": "Environ 1 heure",
+        "titre": "Examen complet.",
+        "intro": "On apprend à connaître vos habitudes et votre santé.",
+        "points": [
+          "Questionnaires",
+          "Examen, radiographies et photos",
+          "Présentation à l'écran, si votre condition le justifie"
+        ]
+      },
+      {
+        "num": "Environ 1 h 30",
+        "titre": "Examen complet et nettoyage.",
+        "intro": "L'examen complet, suivi du nettoyage.",
+        "points": [
+          "Conseils et revue d'hygiène et de prévention",
+          "Référence au spécialiste, si justifié",
+          "Rappel selon votre condition bucco-dentaire",
+          "Trousse d'hygiène De Facto"
+        ]
+      },
+      {
+        "num": "Si votre cas le justifie · 2e rendez-vous",
+        "titre": "Le plan de traitement, au bureau de consultation.",
+        "intro": "Au bureau, à l'écran : votre rapport écrit et les options de traitement. Vous décidez de la suite."
+      }
+    ],
+    "examenTitre": "Ce qui se passe pendant l'examen, en six temps",
+    "examen": [
+      {
+        "num": "01",
+        "titre": "Vous nous racontez.",
+        "texte": "Pourquoi vous venez, ce qui vous dérange, ce que vous souhaitez."
+      },
+      {
+        "num": "02",
+        "titre": "Questionnaire médical et histoire dentaire.",
+        "texte": "Vos médicaments, vos conditions médicales, vos allergies. Plusieurs ont un effet sur la bouche."
+      },
+      {
+        "num": "03",
+        "titre": "L'examen de la bouche.",
+        "texte": "Les dents, les gencives, la mâchoire, la langue, les joues, l'occlusion. On note aussi ce qui est normal : c'est votre point de départ."
+      },
+      {
+        "num": "04",
+        "titre": "Les outils : radiographies et photographies.",
+        "texte": "Radiographies, photos ou empreinte numérique, seulement quand ils apportent une réponse."
+      },
+      {
+        "num": "05",
+        "titre": "La synthèse.",
+        "texte": "Ce qui est actif, ce qui est stable, ce qui peut attendre."
+      },
+      {
+        "num": "06",
+        "titre": "Le plan de traitement et de prévention.",
+        "texte": "Ce qu'on vous propose, dans quel ordre, et pourquoi."
+      }
+    ],
+    "apporterTitre": "Quoi apporter",
+    "apporterMinimumTitre": "Au minimum",
+    "apporterMinimum": [
+      "Votre carte d'assurance maladie (RAMQ)",
+      "Votre carte du Régime canadien de soins dentaires (RCSD), si vous êtes inscrit",
+      "Votre carte d'assurance dentaire privée, s'il y a lieu",
+      "La liste de vos médicaments (ou les contenants)",
+      "Toute autre information de santé utile : conditions médicales, allergies, chirurgies récentes"
+    ],
+    "apporterIdealementTitre": "Idéalement",
+    "apporterIdealement": [
+      "Votre ancien dossier dentaire",
+      "Vos radiographies dentaires de moins de 2 ans",
+      "Votre radiographie panoramique de moins de 5 ans"
+    ],
+    "apporterNote": "Vos anciennes radiographies peuvent éviter d'en reprendre. Vous pouvez demander une copie de votre dossier à votre ancienne clinique ; c'est votre droit.",
+    "couvertureTitre": "Couverture et paiement",
+    "couvertureRcsd": "RCSD : accepté. Apportez votre carte. Pour savoir si vous êtes admissible :",
+    "couvertureRcsdLien": "Régime canadien de soins dentaires",
+    "couvertureRamq": "RAMQ : plusieurs services sont couverts pour les enfants de moins de 10 ans et pour les prestataires d'un programme d'aide financière qui ont un carnet de réclamation.",
+    "couvertureRamqLien": "Voir les services couverts par la RAMQ",
+    "couverturePrivees": "Assurances privées : acceptées.",
+    "couverturePaiement": "Paiement : comptant, débit ou carte de crédit.",
+    "couvertureFinancement": "Financement : offert par des tiers : Accord D, Flexiti et autres. Nous pouvons vous orienter vers ces ressources.",
+    "couvertureNote": "Avant tout traitement, vous recevez une estimation écrite des coûts.",
+    "savoirTitre": "Bon à savoir",
+    "savoir": [
+      {
+        "titre": "Accès",
+        "texte": "Le studio est au 1er étage, avec un escalier à l'entrée. Il n'est pas accessible en fauteuil roulant. Si vous avez de la difficulté avec les marches, appelez-nous avant de venir."
+      },
+      {
+        "titre": "Vous avez peur du dentiste ?",
+        "texte": "Dites-le-nous en réservant. On explique chaque geste avant de le faire, et vous pouvez demander une pause en tout temps."
+      },
+      {
+        "titre": "Questionnaire de santé",
+        "texte": "Vous le remplissez au studio, à votre arrivée. Vos réponses sont versées à votre dossier. Un questionnaire en ligne sécurisé sera offert plus tard."
+      }
+    ],
+    "annulationTitre": "Annulation",
+    "annulation": [
+      "Avisez-nous au moins 24 heures à l'avance, idéalement 48 heures.",
+      "2e rendez-vous manqué sans avis : frais de 50 $.",
+      "3e rendez-vous manqué sans avis : frais de 100 $.",
+      "Après plusieurs rendez-vous manqués, le studio peut mettre fin au suivi, avec un préavis, et transmettre votre dossier à la clinique de votre choix."
+    ],
+    "ctaTitre": "Prêt pour votre première visite ?",
+    "ctaOu": "ou"
+  },
+  "liensExternes": {
+    "rcsd": "https://www.canada.ca/fr/services/prestations/dentaire/regime-soins-dentaires.html",
+    "ramq": "https://www.ramq.gouv.qc.ca/fr/citoyens/assurance-maladie/soins-dentaires",
+    "maps": "https://www.google.com/maps/search/?api=1&query=Studio+Dentaire+De+Facto%2C+728+rue+Fleury+Est%2C+Montr%C3%A9al+QC+H2C+1P1"
+  },
+  "servicesPage": {
+    "metaTitre": "Services dentaires à Ahuntsic | Studio Dentaire De Facto",
+    "metaDescription": "Les services d'un dentiste généraliste à Ahuntsic : examens, soins des dents et des gencives, couronnes et prothèses, prévention, esthétique.",
+    "surtitre": "[ Services ]",
+    "titre": "Services dentaires à Ahuntsic",
+    "intro1": "Le Studio De Facto offre les services d'un dentiste généraliste, regroupés en cinq familles de soins.",
+    "intro2": "Chaque traitement commence par un examen et une explication claire. Au besoin, nous vous dirigeons vers un spécialiste.",
+    "raccourcis": [
+      {
+        "nom": "Examen",
+        "slug": "examen-complet"
+      },
+      {
+        "nom": "Nettoyage",
+        "slug": "nettoyage-examen-rappel"
+      },
+      {
+        "nom": "Obturation",
+        "slug": "obturations"
+      },
+      {
+        "nom": "Traitement de canal",
+        "slug": "traitement-de-canal"
+      },
+      {
+        "nom": "Gencives",
+        "slug": "traitement-des-gencives"
+      },
+      {
+        "nom": "Extraction",
+        "slug": "extraction"
+      },
+      {
+        "nom": "Couronne",
+        "slug": "incrustation-couronne-pont"
+      },
+      {
+        "nom": "Pont",
+        "slug": "incrustation-couronne-pont"
+      },
+      {
+        "nom": "Implant",
+        "slug": "implant-unitaire"
+      },
+      {
+        "nom": "Prothèses",
+        "slug": "protheses-completes-partielles"
+      },
+      {
+        "nom": "Gouttières",
+        "slug": "plaque-occlusale"
+      },
+      {
+        "nom": "Blanchiment",
+        "slug": "blanchiment"
+      }
+    ],
+    "familles": [
+      {
+        "num": "01",
+        "titre": "Examens et consultations",
+        "intro": "Un portrait complet de votre bouche avant toute décision.",
+        "image": "/v2/bureau.webp",
+        "alt": "Le bureau de consultation",
+        "soins": [
+          {
+            "nom": "Examen complet",
+            "desc": "Un bilan d'environ une heure et un rapport bucco-dentaire écrit.",
+            "slug": "examen-complet"
+          },
+          {
+            "nom": "Consultation ciblée",
+            "desc": "30 minutes pour un aspect spécifique : prothèse, esthétique ou deuxième avis.",
+            "slug": "consultation-ciblee"
+          },
+          {
+            "nom": "Examen parodontal",
+            "desc": "L'évaluation détaillée des gencives et de l'os qui supporte les dents.",
+            "slug": "examen-parodontal"
+          },
+          {
+            "nom": "Examen orthodontique",
+            "desc": "L'évaluation de la position des dents et de l'occlusion.",
+            "slug": "examen-orthodontique"
+          },
+          {
+            "nom": "Examen prosthodontique",
+            "desc": "L'évaluation des couronnes, ponts et prothèses, ou des dents à remplacer.",
+            "slug": "examen-prosthodontique"
+          }
+        ]
+      },
+      {
+        "num": "02",
+        "titre": "Soins des dents et des gencives",
+        "intro": "Soigner la carie, l'infection et les maladies des gencives.",
+        "soins": [
+          {
+            "nom": "Traitement des gencives",
+            "desc": "Détartrage en profondeur et surfaçage pour contrôler une maladie des gencives.",
+            "slug": "traitement-des-gencives"
+          },
+          {
+            "nom": "Traitement de canal",
+            "desc": "Soigner une dent infectée pour la conserver.",
+            "slug": "traitement-de-canal"
+          },
+          {
+            "nom": "Extraction",
+            "desc": "Quand une dent ne peut pas être conservée, y compris les dents de sagesse.",
+            "slug": "extraction"
+          },
+          {
+            "nom": "Obturations",
+            "desc": "Contrôler les caries actives avant d'aller plus loin.",
+            "slug": "obturations"
+          }
+        ]
+      },
+      {
+        "num": "03",
+        "titre": "Couronnes, ponts et prothèses",
+        "intro": "Protéger une dent fragile ou remplacer des dents, avec des pièces fabriquées à notre atelier.",
+        "image": "/v2/atelier.webp",
+        "alt": "Le poste de travail de l'atelier",
+        "soins": [
+          {
+            "nom": "Restauration indirecte : incrustation, couronne, pont",
+            "desc": "Fabriquée à l'atelier pour protéger une dent fragile ou remplacer une dent absente.",
+            "slug": "incrustation-couronne-pont"
+          },
+          {
+            "nom": "Prothèses amovibles complètes et partielles",
+            "desc": "Remplacer des dents avec un appareil amovible.",
+            "slug": "protheses-completes-partielles"
+          },
+          {
+            "nom": "Implant unitaire",
+            "desc": "Remplacer une dent. Un collègue fait la pose chirurgicale ; nous faisons la couronne et le suivi.",
+            "slug": "implant-unitaire"
+          },
+          {
+            "nom": "Prothèses sur implants",
+            "desc": "Stabiliser un dentier ou remplacer des dents sur implants.",
+            "slug": "protheses-sur-implants"
+          }
+        ]
+      },
+      {
+        "num": "04",
+        "titre": "Prévention et suivi",
+        "intro": "Le nettoyage, le suivi et les appareils qui protègent vos dents. Commence dès le premier rendez-vous.",
+        "habitudes": [
+          "Examen régulier",
+          "Brosse à dents",
+          "Soie dentaire",
+          "Brossettes",
+          "Fromage après le repas",
+          "Gouttière de fluor"
+        ],
+        "soins": [
+          {
+            "nom": "Nettoyage et examen de rappel",
+            "desc": "Détartrage, polissage et examen, à un intervalle adapté à votre risque.",
+            "slug": "nettoyage-examen-rappel"
+          },
+          {
+            "nom": "Gouttière de fluor",
+            "desc": "Appliquer le fluor à la maison pour renforcer l'émail, si votre risque de carie le justifie. Fabriquée à l'atelier.",
+            "slug": "gouttiere-de-fluor"
+          },
+          {
+            "nom": "Protecteur buccal sur mesure",
+            "desc": "Selon votre sport, votre métier ou votre hobby. Fait sur mesure à l'atelier.",
+            "slug": "protecteur-buccal"
+          },
+          {
+            "nom": "Plaque occlusale",
+            "desc": "Protéger les dents si vous grincez ou serrez les dents. Fabriquée à l'atelier.",
+            "slug": "plaque-occlusale"
+          }
+        ]
+      },
+      {
+        "num": "05",
+        "titre": "Esthétique",
+        "intro": "Changer la teinte, la forme ou la position des dents, une fois la bouche saine.",
+        "soins": [
+          {
+            "nom": "Aligneurs transparents",
+            "desc": "Redresser les dents avec des gouttières, pour les cas mineurs.",
+            "slug": "aligneurs-transparents"
+          },
+          {
+            "nom": "Facettes et autres traitements esthétiques",
+            "desc": "Changer la forme ou la teinte des dents avant.",
+            "slug": "facettes"
+          },
+          {
+            "nom": "Blanchiment",
+            "desc": "Éclaircir la teinte des dents, de façon encadrée.",
+            "slug": "blanchiment"
+          }
+        ]
+      }
+    ],
+    "ctaTitre1": "Bien comprendre.",
+    "ctaTitre2": "Mieux soigner.",
+    "ctaAppeler": "Appeler 514 863-7805"
+  },
+  "fiche": {
+    "filAriane": "Fil d'Ariane",
+    "accueil": "Accueil",
+    "quandConsulter": "Quand consulter",
+    "bonASavoir": "Bon à savoir",
+    "commentCaSePasse": "Comment ça se passe",
+    "options": "Options",
+    "limites": "Limites",
+    "apres": "Après le traitement",
+    "faq": "Questions fréquentes",
+    "servicesLies": "Services liés",
+    "lienAtelier": "L'atelier →",
+    "avis": "L'information de cette page est générale. Seul un examen permet de savoir ce qui convient à votre situation.",
+    "encadreSurtitre": "[ Studio Dentaire De Facto ]",
+    "encadreTitre": "Un examen d'abord",
+    "encadreTexte": "Chaque traitement commence par un examen et une explication claire. Vous décidez ensuite."
+  },
+  "apropos": {
+    "metaTitre": "À propos — Studio Dentaire De Facto",
+    "metaDescription": "Studio dentaire indépendant sur la rue Fleury Est, dans Ahuntsic. Dr Bader Ramdani, dentiste généraliste, et un atelier de prothèses sur place.",
+    "surtitre": "[ À propos ]",
+    "titre": "À propos du Studio Dentaire De Facto",
+    "intro": "Le Studio Dentaire De Facto est un studio indépendant, sur la rue Fleury Est, dans Ahuntsic. Nous ne faisons partie d'aucune chaîne. Nous avons conçu le lieu pour prendre le temps : un bureau pour parler, des salles lumineuses pour soigner, un atelier pour fabriquer.",
+    "altHero": "La façade du studio au 728, rue Fleury Est",
+    "pieces": {
+      "titre": "Le studio, pièce par pièce",
+      "liste": [
+        {
+          "num": "01",
+          "nom": "La façade.",
+          "texte": "Au 728, rue Fleury Est, à l'étage.",
+          "alt": "La façade et l'escalier d'entrée du studio"
+        },
+        {
+          "num": "02",
+          "nom": "La salle d'attente.",
+          "texte": "Un salon plutôt qu'une salle d'attente, avec un café.",
+          "alt": "La salle d'attente aménagée comme un salon"
+        },
+        {
+          "num": "03",
+          "nom": "Le couloir.",
+          "texte": "Le couloir qui mène aux salles est une petite galerie d'art.",
+          "alt": "Le couloir et ses œuvres d'art"
+        },
+        {
+          "num": "04",
+          "nom": "Le bureau.",
+          "texte": "Pour les questionnaires et l'explication du plan de traitement, assis au bureau de consultation.",
+          "alt": "Le bureau de planification"
+        },
+        {
+          "num": "05",
+          "nom": "Salle 1.",
+          "texte": "Une salle de soins.",
+          "alt": "La salle de soins 1"
+        },
+        {
+          "num": "06",
+          "nom": "Salle 2.",
+          "texte": "Une salle de soins.",
+          "alt": "La salle de soins 2"
+        },
+        {
+          "num": "07",
+          "nom": "La salle CAD-CAM.",
+          "texte": "Où l'on conçoit les pièces à l'ordinateur.",
+          "alt": "La salle de conception numérique"
+        },
+        {
+          "num": "08",
+          "nom": "L'atelier.",
+          "texte": "Où on les fabrique.",
+          "alt": "Le poste de travail de l'atelier, avec articulateur"
+        }
+      ]
+    },
+    "blocs": [
+      {
+        "titre": "Le dentiste",
+        "texte": "Dr Bader Ramdani, dentiste généraliste, né à Montréal. Diplômé en médecine dentaire de l'Université Laval, à Québec, en 2021, il est membre de l'Ordre des dentistes du Québec. Il fonde le Studio De Facto à Ahuntsic, avec un atelier de prothèses sur place, pour se donner le temps d'examiner, d'expliquer et de soigner. Il reçoit ses patients en français et en anglais."
+      },
+      {
+        "titre": "L'équipe du studio",
+        "texte": "L'équipe du studio vous accueille, vous rappelle pour confirmer vos rendez-vous, vous aide avec vos assurances et vous accompagne d'une visite à l'autre."
+      },
+      {
+        "titre": "Un rapport écrit, pour vous",
+        "texte": "Chaque examen complet se termine par un rapport bucco-dentaire écrit, que vous gardez. Il sert de point de départ à vos décisions et à votre suivi."
+      },
+      {
+        "titre": "Dans la communauté",
+        "texte": "Le studio donne des ateliers gratuits de santé buccodentaire avec des organismes du quartier."
+      }
+    ],
+    "ctaTitre": "Venez voir le studio.",
+    "ctaAppeler": "Appeler 514 863-7805"
   }
 }

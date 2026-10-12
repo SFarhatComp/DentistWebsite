@@ -21,7 +21,7 @@ function resolveDir(collection: string, lang: Locale): string {
 }
 
 export function getAllServices(lang: Locale): Service[] {
-  const dir = resolveDir("soins", lang)
+  const dir = resolveDir("services", lang)
   return readDir(dir).map((file) => {
     const raw = fs.readFileSync(path.join(dir, file), "utf-8")
     const { data, content } = matter(raw)
@@ -32,7 +32,7 @@ export function getAllServices(lang: Locale): Service[] {
 export function getService(lang: Locale, slug: string): Service | null {
   // Essaie d'abord la langue demandée, sinon fallback sur FR pour ce slug.
   for (const tryLang of [lang, "fr"] as const) {
-    const file = path.join(ROOT, "soins", tryLang, `${slug}.md`)
+    const file = path.join(ROOT, "services", tryLang, `${slug}.md`)
     if (fs.existsSync(file)) {
       const { data, content } = matter(fs.readFileSync(file, "utf-8"))
       return { ...(data as ServiceFrontmatter), content }
