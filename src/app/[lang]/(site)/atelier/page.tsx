@@ -116,8 +116,8 @@ export default async function AtelierPage(props: { params: Promise<{ lang: strin
       </section>
 
       <section className="bg-background">
-        <div className="mx-auto flex max-w-page flex-wrap gap-16 px-[clamp(16px,5vw,56px)] py-24">
-          <div className="flex-[1_1_440px]">
+        <div className="mx-auto max-w-page px-[clamp(16px,5vw,56px)] py-24">
+          <div className="max-w-[72ch]">
             <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
               {t("atelier.fabriqueTitre")}
             </h2>
@@ -176,9 +176,16 @@ export default async function AtelierPage(props: { params: Promise<{ lang: strin
             </div>
           </div>
 
-          <div className="flex flex-[1_1_440px] flex-col gap-10">
-            {photos.map((p, i) => (
-              <figure key={p.num} className="m-0">
+        </div>
+      </section>
+
+      {/* Les trois photos ont leur propre section : la maquette les sort de la
+          colonne de texte pour qu'elles puissent respirer sur toute la largeur. */}
+      <section className="bg-surface">
+        <ul className="mx-auto flex max-w-page list-none gap-6 overflow-x-auto px-[clamp(16px,5vw,56px)] py-24">
+          {photos.map((p, i) => (
+            <li key={p.num} className="flex-[0_0_340px]">
+              <figure className="m-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={PHOTOS[i]}
@@ -186,14 +193,14 @@ export default async function AtelierPage(props: { params: Promise<{ lang: strin
                   loading="lazy"
                   className="block aspect-[3/4] w-full rounded-[2px] object-cover"
                 />
-                <figcaption className="mt-3 flex gap-4">
+                <figcaption className="mt-4 flex gap-4">
                   <span className="font-display text-[22px] leading-none text-muted-foreground">{p.num}</span>
                   <span className="text-base text-foreground/75">{p.texte}</span>
                 </figcaption>
               </figure>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <BandeCta lang={lang} titre={t("atelier.ctaTitre")} />

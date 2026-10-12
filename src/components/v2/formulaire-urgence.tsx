@@ -238,7 +238,7 @@ export function FormulaireUrgence({ lang }: { lang: Locale }) {
         </label>
       )}
 
-      <label className="flex flex-[1_1_100%] cursor-pointer gap-3 leading-relaxed">
+      <label className="flex flex-[1_1_100%] cursor-pointer items-start gap-3 text-base leading-[1.4]">
         <input
           type="checkbox"
           className="mt-1 h-4 w-4 shrink-0 accent-[hsl(var(--primary))]"

@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { HeroAccueil } from "@/components/v2/hero-accueil"
 import { EspacesSection } from "@/components/v2/espaces-section"
 import { CarteSoinsSection } from "@/components/v2/carte-soins-section"
-import { BandeUrgence } from "@/components/v2/bande-urgence"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -28,7 +27,6 @@ export default async function AccueilPage(props: { params: Promise<{ lang: strin
       <HeroAccueil lang={lang} />
       <EspacesSection lang={lang} />
       <CarteSoinsSection lang={lang} />
-      <BandeUrgence lang={lang} />
     </>
   )
 }

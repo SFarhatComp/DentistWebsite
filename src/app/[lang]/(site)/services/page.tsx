@@ -156,10 +156,11 @@ export default async function ServicesPage(props: { params: Promise<{ lang: stri
               </div>
             </div>
           ))}
+
+          {/* Dernier élément de la colonne, à 80 px des familles comme le reste. */}
+          <BandeUrgence lang={lang} />
         </div>
       </section>
-
-      <BandeUrgence lang={lang} />
 
       <section className="bg-surface">
         <div className="mx-auto max-w-page px-[clamp(16px,5vw,56px)] py-24">

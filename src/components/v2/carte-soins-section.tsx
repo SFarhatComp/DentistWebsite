@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { BandeUrgence } from "@/components/v2/bande-urgence"
 import { getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -62,6 +63,12 @@ export function CarteSoinsSection({ lang }: { lang: Locale }) {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* La maquette range la bande d'urgence dans cette section, sous la
+            carte des soins : elle accompagne la liste, elle ne la coupe pas. */}
+        <div className="mt-20">
+          <BandeUrgence lang={lang} />
         </div>
       </div>
     </section>

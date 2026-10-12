@@ -74,16 +74,17 @@ export default async function FicheServicePage(props: {
           </p>
 
           {s.variantes && s.variantes.length > 0 && (
-            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            <div className="mt-10 grid w-full max-w-[480px] grid-cols-3 gap-px overflow-hidden rounded-sm bg-white/[0.18]">
               {s.variantes.map((v, i) => {
                 const Icone = ICONES_VARIANTES[i]
                 return (
-                  <div key={v.nom} className="flex gap-3.5 border-t border-white/20 pt-5">
+                  <div
+                    key={v.nom}
+                    className="flex flex-col items-center gap-3 bg-plum-dark px-4 py-6 text-center"
+                  >
                     {Icone && <Icone taille={28} className="shrink-0 text-primary-pale" />}
-                    <span>
-                      <span className="block font-medium">{v.nom}</span>
-                      <span className="mt-1 block text-[15px] text-white/75">{v.desc}</span>
-                    </span>
+                    <span className="font-display text-[24px] leading-[1.1]">{v.nom}</span>
+                    <span className="text-[15px] text-white/75">{v.desc}</span>
                   </div>
                 )
               })}

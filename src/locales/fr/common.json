@@ -2704,7 +2704,33 @@
       "Après plusieurs rendez-vous manqués, le studio peut mettre fin au suivi, avec un préavis, et transmettre votre dossier à la clinique de votre choix."
     ],
     "ctaTitre": "Prêt pour votre première visite ?",
-    "ctaOu": "ou"
+    "ctaOu": "ou",
+    "reperes": [
+      {
+        "num": "01",
+        "texte": "Communication"
+      },
+      {
+        "num": "02",
+        "texte": "Questionnaire médical et histoire dentaire"
+      },
+      {
+        "num": "03",
+        "texte": "L'examen"
+      },
+      {
+        "num": "04",
+        "texte": "Outils : radiographies, photographies"
+      },
+      {
+        "num": "05",
+        "texte": "Synthèse"
+      },
+      {
+        "num": "06",
+        "texte": "Plan de traitement et de prévention"
+      }
+    ]
   },
   "liensExternes": {
     "rcsd": "https://www.canada.ca/fr/services/prestations/dentaire/regime-soins-dentaires.html",

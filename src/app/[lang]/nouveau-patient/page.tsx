@@ -156,7 +156,7 @@ export default async function NouveauPatientPage(props: { params: Promise<{ lang
         </div>
       </section>
 
-      <section className="bg-plum-dark text-white">
+      <section className="bg-foreground text-white">
         <div className="mx-auto flex max-w-page flex-wrap gap-12 px-[clamp(16px,5vw,56px)] py-20">
           <div className="flex-[1_1_300px]">
             <p className="m-0 text-[13px] font-medium uppercase leading-[1.6] tracking-[0.16em] text-lavender">
@@ -171,25 +171,28 @@ export default async function NouveauPatientPage(props: { params: Promise<{ lang
             <p className="mt-4 text-white/85">{t("nouveauPatient.couvertures")}</p>
           </div>
 
-          <div className="flex-[1.4_1_380px]">
-            <p className="m-0 text-[13px] font-medium uppercase leading-[1.6] tracking-[0.16em] text-lavender">
-              {t("nouveauPatient.faqTitre")}
-            </p>
-            <div className="mt-4 border-t border-white/20">
-              {faq.map((x) => (
-                <details key={x.q} className="border-b border-white/20">
-                  <summary className="cursor-pointer py-4 font-medium">{x.q}</summary>
-                  <p className="m-0 pb-5 pr-6 text-white/85">{x.r}</p>
-                </details>
-              ))}
-            </div>
-            <Link
-              href={`/${lang}/faq`}
-              className="mt-5 inline-block text-lavender underline-offset-4 hover:text-white hover:underline"
-            >
-              {t("nouveauPatient.faqLien")}
-            </Link>
+        </div>
+      </section>
+
+      <section className="bg-background text-foreground">
+        <div className="mx-auto max-w-page px-[clamp(16px,5vw,56px)] py-20">
+          <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
+            {t("nouveauPatient.faqTitre")}
+          </h2>
+          <div className="mt-6 max-w-[72ch] border-t border-foreground/15">
+            {faq.map((x) => (
+              <details key={x.q} className="border-b border-foreground/15">
+                <summary className="cursor-pointer py-5 text-lg font-medium">{x.q}</summary>
+                <p className="m-0 pb-6 pr-10 text-foreground/85">{x.r}</p>
+              </details>
+            ))}
           </div>
+          <Link
+            href={`/${lang}/faq`}
+            className="mt-6 inline-block text-primary underline-offset-4 hover:underline"
+          >
+            {t("nouveauPatient.faqLien")}
+          </Link>
         </div>
       </section>
 
