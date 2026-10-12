@@ -24,7 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/nouveau-patient",
     "/confidentialite",
     "/conditions-utilisation",
-    "/accessibilite",
+    // Pas de page « accessibilite » : la maquette place ce texte dans la
+    // page contact, et le pied de page y renvoie par une ancre.
   ]
   const services = getAllServices("fr").map((s) => `/services/${s.slug}`)
   const now = new Date()

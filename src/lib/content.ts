@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
-import type { Service, ServiceFrontmatter, Case, CaseFrontmatter, Locale } from "@/types"
+import type { Service, ServiceFrontmatter, Locale } from "@/types"
 
 const ROOT = path.join(process.cwd(), "content")
 
@@ -41,15 +41,4 @@ export function getService(lang: Locale, slug: string): Service | null {
   return null
 }
 
-export function getAllCases(lang: Locale): Case[] {
-  const dir = resolveDir("cases", lang)
-  return readDir(dir).map((file) => {
-    const raw = fs.readFileSync(path.join(dir, file), "utf-8")
-    const { data, content } = matter(raw)
-    return { ...(data as CaseFrontmatter), content }
-  }).sort((a, b) => b.date.localeCompare(a.date))
-}
 
-export function getFeaturedCases(lang: Locale, limit = 3): Case[] {
-  return getAllCases(lang).filter((c) => c.featured).slice(0, limit)
-}

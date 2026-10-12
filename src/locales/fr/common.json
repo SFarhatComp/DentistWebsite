@@ -32,7 +32,8 @@
     "enSavoirPlus": "En savoir plus",
     "lire": "Lire",
     "voir": "Voir",
-    "retour": "Retour"
+    "retour": "Retour",
+    "appeler": "Appeler 514 863-7805"
   },
   "home": {
     "metaTitle": "Studio Dentaire De Facto — Dentiste Ahuntsic, Montréal",
@@ -3017,5 +3018,600 @@
     ],
     "ctaTitre": "Venez voir le studio.",
     "ctaAppeler": "Appeler 514 863-7805"
+  },
+  "parcours": {
+    "metaTitre": "Le parcours De Facto — comprendre avant de traiter",
+    "metaDescription": "Un parcours en cinq stades, de l'examen complet au suivi. Un stade est une famille d'objectifs de soins, pas un niveau de gravité.",
+    "surtitre": "[ Le parcours ]",
+    "titre": "Le parcours De Facto : comprendre avant de traiter",
+    "intro": "Un patient averti en vaut deux. Notre but n'est pas que vous acceptiez un traitement, mais que vous compreniez votre bouche. Bien informé, vous décidez mieux, et pour vous-même.",
+    "schema": {
+      "titre": "Un parcours en cinq stades",
+      "intro": "Un stade De Facto est une famille d'objectifs de soins, pas un niveau de gravité. Personne n'a à passer par tous : vous définissez vos objectifs de soins.",
+      "depart": "Nouveau patient",
+      "direct": "Direct",
+      "stades": [
+        {
+          "etiquette": "Stade 0",
+          "nom": "Comprendre"
+        },
+        {
+          "etiquette": "Stade 1",
+          "nom": "Stabiliser"
+        },
+        {
+          "etiquette": "Stade 2",
+          "nom": "Restaurer la fonction des dents",
+          "texte": "Réparer localement, dans le cadre actuel de votre bouche."
+        },
+        {
+          "etiquette": "Stade 4",
+          "nom": "Réhabiliter la fonction et l'esthétique",
+          "texte": "Modifier des paramètres globaux : occlusion, dimension verticale, alignement."
+        },
+        {
+          "etiquette": "Stade 3",
+          "nom": "Maintenir et prévenir"
+        }
+      ]
+    },
+    "detail": [
+      {
+        "etiquette": "Stade 0",
+        "titre": "Comprendre",
+        "texte": "L'examen complet et, au besoin, des examens complémentaires. On établit le portrait de départ."
+      },
+      {
+        "etiquette": "Stade 1",
+        "titre": "Stabiliser",
+        "texte": "On contrôle d'abord les infections et l'inflammation : caries actives, gencives malades, dents infectées."
+      },
+      {
+        "etiquette": "Stade 2",
+        "titre": "Restaurer la fonction des dents",
+        "texte": "Réparer localement, dans le cadre actuel de votre bouche."
+      },
+      {
+        "etiquette": "Stade 3",
+        "titre": "Maintenir et prévenir",
+        "texte": "La prévention et le suivi. Ce stade commence dès le premier rendez-vous et ne se termine jamais."
+      },
+      {
+        "etiquette": "Stade 4",
+        "titre": "Réhabiliter la fonction et l'esthétique",
+        "texte": "Une transformation qui nécessite de modifier des paramètres globaux en bouche : occlusion, dimension verticale d'occlusion, alignement des dents, etc."
+      }
+    ],
+    "note": "Le stade 4 n'est ni obligatoire, ni supérieur au stade 2. Une urgence se traite à part, à tout moment.",
+    "savoirTitre": "Ce que vous saurez à la fin de l'examen",
+    "savoir": [
+      {
+        "titre": "Le constat",
+        "texte": "ce qui va bien, et ce qui ne va pas."
+      },
+      {
+        "titre": "Les priorités",
+        "texte": "ce qui est urgent, ce qui peut attendre, ce qui est facultatif."
+      },
+      {
+        "titre": "Les options",
+        "texte": "les pronostics, les avantages, les limites et leurs coûts."
+      },
+      {
+        "titre": "L'éducation dentaire",
+        "texte": "des conseils d'hygiène et de prévention, que vous poursuiviez ou non un traitement."
+      }
+    ],
+    "savoirNote": "Le plan vous est expliqué au bureau, jamais sur la chaise dentaire. Vous recevez un résumé écrit de votre condition.",
+    "ctaTitre": "Commencez par le stade 0."
+  },
+  "atelier": {
+    "metaTitre": "Atelier — une technologue dentaire au sein même du studio",
+    "metaDescription": "Couronnes, prothèses et gouttières conçues et fabriquées sur place, à Ahuntsic. Essais et ajustements au studio.",
+    "surtitre": "[ Atelier ]",
+    "titre": "Une technologue dentaire au sein même du studio",
+    "intro": "Couronnes, prothèses et gouttières, conçues et fabriquées sur place. Essais et ajustements au studio.",
+    "legendeHero": "La salle de conception numérique (CAD-CAM)",
+    "altHero": "La salle de conception numérique (CAD-CAM)",
+    "pieces": [
+      "Implant",
+      "Couronne",
+      "Pont",
+      "Facette",
+      "Prothèse partielle amovible",
+      "Prothèse complète",
+      "Gouttière"
+    ],
+    "changeTitre": "Ce que cela change pour vous",
+    "change": [
+      {
+        "titre": "Une technologue dentaire peut vous voir en personne.",
+        "texte": "Teinte, forme et sourire vérifiés directement en bouche."
+      },
+      {
+        "titre": "La fabrication est faite de A à Z ici.",
+        "texte": "Sauf le squelette de métal des prothèses partielles."
+      },
+      {
+        "titre": "Une seule personne fabrique. Une seule personne supervise.",
+        "texte": "Elle fabrique votre pièce du début à la fin. Le Dr Ramdani supervise chaque étape."
+      }
+    ],
+    "fabriqueTitre": "Ce que nous fabriquons ici",
+    "fabrique": [
+      {
+        "famille": "Restaurations",
+        "items": [
+          {
+            "texte": "Couronnes et ponts, sur dent naturelle et sur implant"
+          },
+          {
+            "texte": "Restaurations indirectes :",
+            "sous": [
+              "porcelaine feldspathique",
+              "disilicate de lithium (e.max pressé)",
+              "zircone 3Y et 4Y"
+            ]
+          },
+          {
+            "texte": "Facettes en céramique"
+          },
+          {
+            "texte": "Facettes et restaurations indirectes temporaires imprimées en résine"
+          }
+        ]
+      },
+      {
+        "famille": "Prothèses",
+        "items": [
+          {
+            "texte": "Prothèses complètes et partielles (le squelette de métal des partielles est fait à l'externe)"
+          },
+          {
+            "texte": "Porte-empreintes individuels (PEI) imprimés"
+          }
+        ]
+      },
+      {
+        "famille": "Gouttières et plaques",
+        "items": [
+          {
+            "texte": "Plaques occlusales pour le bruxisme et le serrement dentaire"
+          },
+          {
+            "texte": "Gouttières de fluor et de blanchiment"
+          }
+        ]
+      },
+      {
+        "famille": "Planification",
+        "items": [
+          {
+            "texte": "Cirage diagnostique"
+          },
+          {
+            "texte": "Guides chirurgicaux pour la mise en place d'implants"
+          }
+        ]
+      }
+    ],
+    "equipementTitre": "L'équipement",
+    "equipement": [
+      {
+        "role": "Scanner intra-oral",
+        "nom": "Dexis 3800"
+      },
+      {
+        "role": "Conception",
+        "nom": "Exocad"
+      },
+      {
+        "role": "Impression 3D",
+        "nom": "Formlabs"
+      },
+      {
+        "role": "Fraiseuse",
+        "nom": "VHF E5"
+      },
+      {
+        "role": "Fours et presse",
+        "nom": "Ivoclar"
+      }
+    ],
+    "equipementNote": "À l'externe : numérisation des empreintes conventionnelles et squelettes de métal.",
+    "equipeTitre": "L'équipe de l'atelier",
+    "equipeTexte": "L'atelier se compose du Dr Ramdani, dentiste généraliste et fondateur du studio [de facto], et d'une technologue dentaire, Amira Thameur, diplômée depuis 2022 et membre de l'Ordre des technologues en prothèses et appareils dentaires du Québec. Le Dr Ramdani planifie et supervise chaque pièce ; Amira Thameur la fabrique et la finit à la main.",
+    "photos": [
+      {
+        "num": "01",
+        "texte": "La salle de conception numérique"
+      },
+      {
+        "num": "02",
+        "texte": "La station d'impression de vos appareils et modèles"
+      },
+      {
+        "num": "03",
+        "texte": "Le poste de travail où se fait la personnalisation de vos appareils et de vos restaurations"
+      }
+    ],
+    "ctaTitre": "Une couronne ou une prothèse à faire ? Commencez par un examen."
+  },
+  "contactPage": {
+    "metaTitre": "Contact — nous joindre et venir au studio",
+    "metaDescription": "728, rue Fleury Est, Montréal. Heures, autobus, métro et stationnement pour venir au Studio Dentaire De Facto, dans Ahuntsic.",
+    "surtitre": "[ Contact ]",
+    "titre": "Nous joindre et venir au studio",
+    "intro": "Tout ce qui sert le jour du rendez-vous : adresse, heures, autobus, métro et stationnement.",
+    "coordonneesTitre": "Coordonnées",
+    "coordonnees": [
+      {
+        "role": "Adresse",
+        "valeur": "728, rue Fleury Est, Montréal (Québec) H2C 1P1",
+        "precision": "1er étage"
+      },
+      {
+        "role": "Téléphone",
+        "valeur": "514 863-7805"
+      },
+      {
+        "role": "Courriel",
+        "valeur": "info@studiodefacto.ca"
+      }
+    ],
+    "heuresTitre": "Heures",
+    "heures": [
+      {
+        "jour": "Lundi",
+        "valeur": "10 h à 18 h"
+      },
+      {
+        "jour": "Mardi",
+        "valeur": "10 h à 18 h"
+      },
+      {
+        "jour": "Mercredi",
+        "valeur": "15 h à 20 h"
+      },
+      {
+        "jour": "Jeudi au dimanche",
+        "valeur": "Fermé"
+      }
+    ],
+    "heuresNote": "Fermé les jours fériés.",
+    "carteBouton": "Afficher la carte",
+    "carteItineraire": "Itinéraire dans Google Maps",
+    "carteTitreCadre": "Carte du 728, rue Fleury Est, Montréal",
+    "carteNote": "La carte est fournie par Google, qui dépose des témoins. Elle se charge seulement si vous cliquez sur « Afficher la carte ».",
+    "venirTitre": "Venir au studio",
+    "venir": [
+      {
+        "mode": "En autobus",
+        "texte": "La ligne 140 Fleury s'arrête en face du studio. Elle relie la station de métro Sauvé et dessert la rue Fleury jusqu'à Montréal-Nord."
+      },
+      {
+        "mode": "En métro",
+        "texte": "Stations Sauvé et Henri-Bourassa (ligne orange)."
+      },
+      {
+        "mode": "En voiture",
+        "texte": "À environ 10 minutes des autoroutes 15 et 40."
+      },
+      {
+        "mode": "Stationnement",
+        "texte": "Dans la rue, et stationnement privé à l'arrière du bâtiment, avec entrée par la rue Saint-Hubert."
+      }
+    ],
+    "quartiersTitre": "Depuis votre quartier",
+    "quartiers": [
+      {
+        "nom": "Ahuntsic",
+        "texte": "sur la rue Fleury Est, à deux pas des commerces de la promenade Fleury."
+      },
+      {
+        "nom": "Montréal-Nord",
+        "texte": "la ligne 140 suit la rue Fleury jusqu'au studio."
+      },
+      {
+        "nom": "Villeray",
+        "texte": "par la ligne orange jusqu'à Sauvé, puis la ligne 140."
+      },
+      {
+        "nom": "Saint-Michel",
+        "texte": "par le boulevard Saint-Michel jusqu'à la rue Fleury, où passe la ligne 140."
+      },
+      {
+        "nom": "Cartierville",
+        "texte": "par le boulevard Henri-Bourassa ou l'autoroute 15."
+      },
+      {
+        "nom": "Sud de Laval (Pont-Viau, Laval-des-Rapides)",
+        "texte": "par la ligne orange jusqu'à Henri-Bourassa, ou par l'autoroute 15 ou le pont Viau."
+      }
+    ],
+    "accessibiliteTitre": "Accessibilité",
+    "accessibiliteTexte": "Le studio est au 1er étage. Un escalier mène à l'entrée. Le studio n'est pas accessible en fauteuil roulant. Appelez-nous si les marches vous posent problème : nous vous aiderons à trouver une solution.",
+    "ecrireTitre": "Écrivez-nous"
+  },
+  "faqPage": {
+    "metaTitre": "Questions fréquentes — Studio Dentaire De Facto",
+    "metaDescription": "Rendez-vous, couverture et coûts, soins, accès : les questions qu'un nouveau patient nous pose le plus souvent.",
+    "surtitre": "[ Questions fréquentes ]",
+    "titre": "Questions fréquentes",
+    "introAvant": "Les questions qu'un nouveau patient nous pose le plus souvent. Vous n'y trouvez pas la vôtre ? Appelez le ",
+    "introApres": ".",
+    "groupes": [
+      {
+        "titre": "Rendez-vous",
+        "questions": [
+          {
+            "q": "Acceptez-vous les nouveaux patients ?",
+            "r": "Oui. {lien} ou appelez le 514 863-7805.",
+            "lien": {
+              "texte": "Réservez en ligne",
+              "vers": "rendez-vous"
+            }
+          },
+          {
+            "q": "Combien de temps dure le premier rendez-vous ?",
+            "r": "Une consultation ciblée dure 30 minutes, un examen complet environ une heure, et un examen complet avec nettoyage environ 1 h 30. Pour un cas complexe, un 2e rendez-vous au bureau de consultation sert à revoir le plan de traitement."
+          },
+          {
+            "q": "Êtes-vous ouverts le soir ou la fin de semaine ?",
+            "r": "Pour l'instant, le mercredi jusqu'à 20 h ; le studio est fermé du jeudi au dimanche. Le Dr Ramdani prévoit d'ouvrir le studio à temps plein : de nouvelles plages horaires sont à venir."
+          },
+          {
+            "q": "Comment annuler ou déplacer un rendez-vous ?",
+            "r": "Appelez le 514 863-7805 au moins 24 heures à l'avance, idéalement 48 heures. Des frais s'appliquent à partir du 2e rendez-vous manqué sans avis."
+          }
+        ]
+      },
+      {
+        "titre": "Couverture et coûts",
+        "questions": [
+          {
+            "q": "Acceptez-vous le Régime canadien de soins dentaires (RCSD) ?",
+            "r": "Oui. Apportez votre carte à la première visite."
+          },
+          {
+            "q": "La RAMQ couvre-t-elle les soins dentaires ?",
+            "r": "Pour les enfants de moins de 10 ans et les prestataires d'un programme d'aide financière avec carnet de réclamation, plusieurs services sont couverts."
+          },
+          {
+            "q": "Acceptez-vous mon assurance privée ?",
+            "r": "Oui. Apportez votre carte d'assurance."
+          },
+          {
+            "q": "Quels modes de paiement acceptez-vous ?",
+            "r": "Comptant, débit et carte de crédit."
+          },
+          {
+            "q": "Saurai-je le prix avant un traitement ?",
+            "r": "Oui. Vous recevez une estimation écrite avant de commencer, et vous décidez."
+          }
+        ]
+      },
+      {
+        "titre": "Soins",
+        "questions": [
+          {
+            "q": "J'ai peur du dentiste. Que faites-vous ?",
+            "r": "On explique chaque geste avant de le faire, et vous pouvez demander une pause en tout temps. Dites-le-nous en réservant."
+          },
+          {
+            "q": "Est-ce que je serai obligé de faire un traitement après l'examen ?",
+            "r": "Non. Vous recevez l'information et les options, y compris ce qui arrive si l'on ne fait rien."
+          },
+          {
+            "q": "Faites-vous les implants ?",
+            "r": "Le Dr Ramdani ne fait pas la phase chirurgicale. Il pourra vous référer à un collègue, au sein du studio ou à l'externe, pour la pose de l'implant. Nous faisons ensuite la couronne ou la prothèse, et le suivi. {lien}.",
+            "lien": {
+              "texte": "Implant unitaire",
+              "vers": "services/implant-unitaire"
+            }
+          },
+          {
+            "q": "Recevez-vous les urgences ?",
+            "r": "Oui, le jour même si possible, pendant nos heures. Appelez d'abord ; ne vous présentez pas sans confirmation. {lien}.",
+            "lien": {
+              "texte": "Urgence dentaire",
+              "vers": "urgence"
+            }
+          }
+        ]
+      },
+      {
+        "titre": "Accès",
+        "questions": [
+          {
+            "q": "Y a-t-il du stationnement ?",
+            "r": "Oui : dans la rue, et un stationnement privé à l'arrière du bâtiment, avec entrée par la rue Saint-Hubert."
+          },
+          {
+            "q": "Le studio est-il accessible en fauteuil roulant ?",
+            "r": "Non. Il est au 1er étage, avec un escalier à l'entrée."
+          }
+        ]
+      }
+    ],
+    "carte": {
+      "surtitre": "[ Studio Dentaire De Facto ]",
+      "titre": "Un examen d'abord",
+      "texte": "Chaque traitement commence par un examen et une explication claire. Vous décidez ensuite.",
+      "adresse": "728, rue Fleury Est, Montréal",
+      "heures": [
+        "Lundi 10 h à 18 h",
+        "Mardi 10 h à 18 h",
+        "Mercredi 15 h à 20 h",
+        "Jeudi et vendredi : bientôt disponible"
+      ]
+    }
+  },
+  "rdv": {
+    "metaTitre": "Prendre rendez-vous — Studio Dentaire De Facto",
+    "metaDescription": "Réservez une plage en ligne, ou laissez vos coordonnées et le studio vous rappelle. Confirmation dans les 24 heures.",
+    "surtitre": "[ Rendez-vous ]",
+    "titre": "Prendre rendez-vous au Studio De Facto",
+    "introAvant": "Choisissez une plage libre, précisez votre demande, puis entrez vos coordonnées. Le studio confirme chaque rendez-vous dans les 24 heures. Vous préférez parler à quelqu'un ? Appelez le ",
+    "introApres": ".",
+    "horaireTitre": "L'horaire en ligne",
+    "horaireTexte": "L'horaire est synchronisé avec l'agenda du studio : seules les plages réellement libres s'affichent. Le studio confirme ensuite votre rendez-vous.",
+    "cadreTitre": "Horaire de réservation du Studio Dentaire De Facto",
+    "noteGoogle": "Google héberge les nom, téléphone et courriel saisis dans l'horaire, à l'extérieur du Québec. Voir notre",
+    "noteGoogleLien": "politique de confidentialité",
+    "bientotTitre": "La réservation en ligne arrive",
+    "bientotTexte": "En attendant, laissez vos coordonnées dans le formulaire ci-contre et le studio vous rappelle pendant ses heures d'ouverture, ou appelez-nous directement.",
+    "rappelTitre": "Vous préférez qu'on vous rappelle ?",
+    "rappelTexte": "Laissez vos coordonnées et vos préférences. Le studio vous rappelle pendant ses heures d'ouverture pour fixer l'heure.",
+    "champNom": "Prénom et nom",
+    "champTelephone": "Téléphone",
+    "champCourriel": "Courriel (facultatif)",
+    "champPremiereVisite": "Première visite au studio ?",
+    "champCouverture": "Couverture",
+    "champMotif": "Motif",
+    "champJour": "Jour souhaité",
+    "champMoment": "Moment souhaité",
+    "oui": "Oui",
+    "non": "Non",
+    "couvertures": [
+      "RCSD",
+      "RAMQ",
+      "Assurance privée",
+      "Aucune",
+      "Je ne sais pas"
+    ],
+    "motifs": [
+      "Examen complet (nouveau patient)",
+      "Examen complet et nettoyage",
+      "Urgence dentaire",
+      "Consultation ciblée",
+      "Nettoyage",
+      "Prothèse",
+      "Réparer une dent",
+      "Autre"
+    ],
+    "jours": [
+      "Peu importe",
+      "Lundi",
+      "Mardi",
+      "Mercredi"
+    ],
+    "moments": [
+      "Peu importe",
+      "Matin",
+      "Après-midi",
+      "Soir (mercredi seulement)"
+    ],
+    "noteFormulaire": "Ne décrivez pas votre état de santé ici ; nous en parlerons lors de l'appel. Les renseignements transmis servent uniquement à traiter votre demande.",
+    "noteFormulaireLien": "Politique de confidentialité",
+    "envoyer": "Envoyer ma demande",
+    "envoiEnCours": "Envoi…",
+    "erreur": "L'envoi a échoué. Réessayez, ou appelez le 514 863-7805.",
+    "urgenceAvant": "Pour une urgence, réservez en ligne ou appelez le ",
+    "urgenceApres": " pour une réponse plus rapide.",
+    "dureesTitre": "Les motifs et leur durée",
+    "dureesColonnes": [
+      "Motif",
+      "Durée",
+      "En ligne"
+    ],
+    "durees": [
+      {
+        "motif": "Examen complet (nouveau patient)",
+        "duree": "60 min",
+        "enLigne": "Oui"
+      },
+      {
+        "motif": "Examen complet et nettoyage (nouveau patient)",
+        "duree": "90 min",
+        "enLigne": "Oui"
+      },
+      {
+        "motif": "Nettoyage (patient du studio)",
+        "duree": "60 min",
+        "enLigne": "Oui"
+      },
+      {
+        "motif": "Consultation ciblée (prothèse, esthétique, deuxième avis)",
+        "duree": "30 min",
+        "enLigne": "Oui"
+      },
+      {
+        "motif": "Urgence",
+        "duree": "30 min",
+        "enLigne": "Oui"
+      },
+      {
+        "motif": "Réparer une dent ou une prothèse",
+        "duree": "Selon le cas",
+        "enLigne": "Oui"
+      }
+    ],
+    "dureesNoteAvant": "Tout rendez-vous pris en ligne doit être confirmé par le studio dans les 24 heures. Pour annuler ou déplacer : ",
+    "dureesNoteApres": ".",
+    "adresse": "728, rue Fleury Est, Montréal · 1er étage",
+    "heures": [
+      "Lundi 10 h à 18 h",
+      "Mardi 10 h à 18 h",
+      "Mercredi 15 h à 20 h",
+      "Jeudi et vendredi : bientôt disponible"
+    ]
+  },
+  "nouveauPatient": {
+    "metaTitre": "Dentiste à Ahuntsic qui accepte les nouveaux patients",
+    "metaDescription": "Examen complet d'environ une heure, rapport écrit et explication claire de vos options. Offre d'ouverture pour les nouveaux patients adultes.",
+    "titre": "Dentiste à Ahuntsic qui accepte les nouveaux patients",
+    "intro": "Un examen complet d'environ une heure, un rapport écrit et une explication claire de vos options. Vous décidez de la suite.",
+    "atouts": [
+      "Examen d'environ une heure",
+      "Rapport écrit remis",
+      "Atelier dans le studio"
+    ],
+    "ctaPrincipal": "Voir les plages libres",
+    "offreTitre": "Offre d'ouverture pour les nouveaux patients adultes",
+    "prixRegulierEtiquette": "Prix régulier",
+    "prixRegulier": "513 $",
+    "prixOuvertureEtiquette": "Prix d'ouverture",
+    "prixOuverture": "289 $",
+    "offreCondition": "Pour les 100 premiers adultes, jusqu'au 1er janvier 2027.",
+    "comprendTitre": "Comprend",
+    "comprend": [
+      "Examen complet (197 $)",
+      "Radiographie panoramique (110 $)",
+      "Polissage (81 $)",
+      "Détartrage de 30 minutes (125 $)",
+      "Rapport écrit"
+    ],
+    "comprendNote": "En deux visites. Les radiographies intrabuccales sont comprises dans le prix de l'examen complet.",
+    "comprendPlus": "Offert en plus : l'examen complet des gencives et, au besoin, des couronnes, ponts ou prothèses (prix régulier de 148 $ chacun).",
+    "comprendPasTitre": "Ne comprend pas",
+    "comprendPas": "Le détartrage au-delà de 30 minutes et les traitements recommandés après le bilan.",
+    "pratiqueTitre": "Infos pratiques",
+    "adresse": "728, rue Fleury Est, Montréal",
+    "heures": [
+      "Lundi 10 h à 18 h",
+      "Mardi 10 h à 18 h",
+      "Mercredi 15 h à 20 h",
+      "Jeudi et vendredi : bientôt disponible"
+    ],
+    "couvertures": "RCSD, RAMQ et assurances privées acceptés",
+    "faqTitre": "Questions fréquentes",
+    "faq": [
+      {
+        "q": "Acceptez-vous les nouveaux patients ?",
+        "r": "Oui. Réservez en ligne ou appelez le 514 863-7805."
+      },
+      {
+        "q": "Combien de temps dure le premier rendez-vous ?",
+        "r": "Une consultation ciblée dure 30 minutes, un examen complet environ une heure, et un examen complet avec nettoyage environ 1 h 30. Pour un cas complexe, un 2e rendez-vous au bureau de consultation sert à revoir le plan de traitement."
+      }
+    ],
+    "faqLien": "En savoir plus →",
+    "piedMentions": "Studio Dentaire De Facto · Dr Bader Ramdani, dentiste généraliste",
+    "piedResponsable": "Responsable de la protection des renseignements personnels : Dr Bader Ramdani, dentiste généraliste · info@studiodefacto.ca · 514 863-7805",
+    "piedAvis": "L'information de ce site est générale et ne remplace pas un examen dentaire.",
+    "piedConfidentialite": "Confidentialité",
+    "piedConditions": "Conditions d'utilisation",
+    "piedAccessibilite": "Accessibilité"
   }
 }

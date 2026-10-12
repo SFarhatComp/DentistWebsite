@@ -5,8 +5,19 @@
     <title>Forms</title>
   </head>
   <body>
-    <!-- Hidden form templates so Netlify can detect and register them at build time. -->
+    <!--
+      Declarations des formulaires pour Netlify.
 
+      Netlify lit ce fichier au deploiement pour savoir quels formulaires
+      existent et quels champs enregistrer. Un champ envoye mais absent d'ici
+      est perdu sans erreur : la soumission arrive, le champ manque.
+
+      Trois formulaires, un par page qui en porte un. Les formulaires du
+      laboratoire et du portail professionnel de l'ancien site ont ete retires
+      en meme temps que leurs pages.
+    -->
+
+    <!-- Page contact : ecrivez-nous -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
       <input name="lang" />
@@ -19,177 +30,26 @@
       <input name="consent_privacy" />
     </form>
 
-    <!-- Refonte 2026-09 : questionnaire de rendez-vous en 6 etapes (handoff §10) -->
-    <form name="appointment" netlify netlify-honeypot="bot-field" hidden>
+    <!-- Page rendez-vous : demande de rappel, en complement de l'horaire en ligne -->
+    <form name="rappel" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
       <input name="lang" />
-      <input name="statut" />
+      <input name="nom" />
+      <input name="telephone" type="tel" />
+      <input name="courriel" type="email" />
+      <input name="premiereVisite" />
+      <input name="couverture" />
       <input name="motif" />
-      <input name="motifLabel" />
-      <input name="precisions" />
-      <textarea name="note"></textarea>
-      <input name="douleur" />
-      <input name="priorite" />
-      <input name="dureeSuggeree" />
-      <input name="jours" />
-      <input name="moments" />
-      <input name="delai" />
-      <input name="assurance" />
-      <input name="assureur" />
-      <input name="police" />
-      <input name="firstName" />
-      <input name="lastName" />
-      <input name="phone" type="tel" />
-      <input name="email" type="email" />
-      <input name="birthdate" />
-      <input name="contactPreference" />
-      <input name="consent" />
+      <input name="jour" />
+      <input name="moment" />
     </form>
 
-    <form name="emergency" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-      <input name="bot-field" />
-      <input name="lang" />
-      <input name="firstName" />
-      <input name="lastName" />
-      <input name="phone" />
-      <input name="email" />
-      <input name="dob" />
-      <input name="symptomDuration" />
-      <input type="file" name="photo" />
-      <input name="consent_emergency" />
-      <input name="consent_contact" />
-      <input name="consent_privacy" />
-    </form>
-
-    <!-- Brouillon 2: lab-professional kept for backwards compat (no new submissions expected) -->
-    <form name="lab-professional" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-      <input name="bot-field" />
-      <input name="lang" />
-      <input name="dentistName" />
-      <input name="clinic" />
-      <input name="email" type="email" />
-      <input name="phone" type="tel" />
-      <input name="caseType" />
-      <input name="material" />
-      <textarea name="comments"></textarea>
-      <input type="file" name="stlFile" />
-      <input type="file" name="photos" />
-      <input name="consent_contact" />
-      <input name="consent_privacy" />
-    </form>
-
-    <!-- Cahier final: Partner onboarding (volume/fréquence retirés per §18.1) -->
-    <form name="partner-onboarding" netlify netlify-honeypot="bot-field" hidden>
-      <input name="bot-field" />
-      <input name="lang" />
-      <input name="dentistName" />
-      <input name="professionalTitle" />
-      <input name="professionalTitleOther" />
-      <input name="clinicName" />
-      <input name="clinicAddress" />
-      <input name="phone" type="tel" />
-      <input name="email" type="email" />
-      <input name="collaboration_lab_regulier" />
-      <input name="collaboration_lab_occasionnel" />
-      <input name="collaboration_cas_esthetiques" />
-      <input name="collaboration_consultation" />
-      <input name="collaboration_reference_clinique" />
-      <input name="collaboration_autre" />
-      <input name="service_orthodontie" />
-      <input name="service_prostho_amovible" />
-      <input name="service_prostho_fixe" />
-      <input name="service_plaques_occlusales" />
-      <input name="service_gouttieres" />
-      <input name="service_wax_up" />
-      <input name="service_prise_teinte" />
-      <input name="service_esthetique" />
-      <input name="service_reparations" />
-      <input name="service_emax" />
-      <input name="service_zircone" />
-      <input name="service_impression_3d" />
-      <input name="service_autre" />
-      <input name="contact_telephone" />
-      <input name="contact_courriel" />
-      <input name="contact_sms" />
-      <input name="contact_en_personne" />
-      <textarea name="message"></textarea>
-      <input name="consent_contact" />
-      <input name="consent_privacy" />
-    </form>
-
-    <!-- Cahier final: Referred case (téléphone patient OBLIGATOIRE, langue préférée, motifs secondaires) -->
-    <form name="referred-case" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-      <input name="bot-field" />
-      <input name="lang" />
-      <input name="referringProfessionalName" />
-      <input name="clinicName" />
-      <input name="clinicPhone" type="tel" />
-      <input name="email" type="email" />
-      <input name="patientName" />
-      <input name="patientDob" />
-      <input name="patientPhone" type="tel" />
-      <input name="patientEmail" type="email" />
-      <input name="patientLanguage" />
-      <input name="patientLanguageOther" />
-      <input name="referralMainReason" />
-      <input name="referralMainReasonOther" />
-      <input name="motif_secondaire_douleur" />
-      <input name="motif_secondaire_sensibilite" />
-      <input name="motif_secondaire_saignement_gencives" />
-      <input name="motif_secondaire_dent_mobile" />
-      <input name="motif_secondaire_fracture" />
-      <input name="motif_secondaire_usure" />
-      <input name="motif_secondaire_esthetique" />
-      <input name="motif_secondaire_infection" />
-      <input name="motif_secondaire_autre" />
-      <input name="urgency" />
-      <textarea name="clinicalSummary"></textarea>
-      <textarea name="previousTreatments"></textarea>
-      <input name="doc_photos" />
-      <input name="doc_radiographies" />
-      <input name="doc_stl_scan" />
-      <input name="doc_plan_traitement" />
-      <input name="doc_notes_cliniques" />
-      <input name="doc_autre" />
-      <input type="file" name="photos" />
-      <input type="file" name="radiographs" />
-      <input type="file" name="stlFiles" />
-      <input name="consent_patient_informed" />
-      <input name="consent_transmission" />
-      <input name="consent_privacy" />
-    </form>
-
-    <!-- Cahier final: Lab prescription (type cases à cocher, matériau dropdown, terminologie corrigée) -->
-    <form name="lab-prescription" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
-      <input name="bot-field" />
-      <input name="lang" />
-      <input name="prescribingProfessional" />
-      <input name="clinicName" />
-      <input name="phone" type="tel" />
-      <input name="email" type="email" />
-      <input name="patientName" />
-      <input name="appareil" />
-      <input name="appareilOtherText" />
-      <input name="subOption" />
-      <input name="arcade" />
-      <input name="teeth" />
-      <input name="material" />
-      <input name="lamination" />
-      <textarea name="colorIndications"></textarea>
-      <textarea name="clinicalInstructions"></textarea>
-      <input type="file" name="stlFiles" />
-      <input type="file" name="photos" />
-      <input type="file" name="radiographs" />
-      <input name="consent_patient_transmission" />
-      <input name="consent_privacy" />
-    </form>
-  
-    <!-- Demande d urgence v2 : le type conditionne les champs envoyes -->
+    <!-- Page urgence : le type de situation conditionne les champs envoyes -->
     <form name="urgence" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />
       <input name="lang" />
       <input name="nom" />
-      <input name="telephone" />
+      <input name="telephone" type="tel" />
       <input name="courriel" type="email" />
       <input name="type" />
       <input name="ou" />
@@ -207,5 +67,5 @@
       <textarea name="description"></textarea>
       <input name="consentement" />
     </form>
-</body>
+  </body>
 </html>

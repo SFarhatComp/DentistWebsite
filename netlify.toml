@@ -56,28 +56,76 @@
   [headers.values]
     Link = '''</en/>; rel="alternate"; hreflang="en", </fr/>; rel="alternate"; hreflang="fr"'''
 
-# Routes retirées lors de la refonte 2026-09 (handoff §2).
-# Redirigées plutôt que laissées en 404 : ces URL sont indexées et ont pu être
-# mises en favori. Le contenu laboratoire B2B disparaît, mais l'adresse mène
-# désormais à la page laboratoire conforme.
+# Anciennes adresses, redirigees vers leur equivalent de la refonte v2.
+#
+# Le site n'est pas encore reference par Google, mais une adresse a pu etre
+# mise en favori ou partagee. Une redirection coute moins cher qu'une 404, et
+# ces regles disparaitront d'elles-memes le jour ou plus personne ne les suit.
+#
+# Toutes pointent vers une page qui existe : les anciennes regles menaient a
+# /laboratoire, supprimee par la refonte, donc a une 404 apres redirection.
+
+# L'atelier a remplace la page laboratoire et ses sous-pages B2B.
 [[redirects]]
-  from = "/:lang/laboratoire/professionnels"
-  to = "/:lang/laboratoire"
+  from = "/:lang/laboratoire"
+  to = "/:lang/atelier"
   status = 301
 
 [[redirects]]
-  from = "/:lang/laboratoire/partenaires"
-  to = "/:lang/laboratoire"
+  from = "/:lang/laboratoire/*"
+  to = "/:lang/atelier"
+  status = 301
+
+# Les soins sont devenus les services.
+[[redirects]]
+  from = "/:lang/soins"
+  to = "/:lang/services"
   status = 301
 
 [[redirects]]
-  from = "/:lang/laboratoire/prescription"
-  to = "/:lang/laboratoire"
+  from = "/:lang/soins/*"
+  to = "/:lang/services"
+  status = 301
+
+# Le studio, l'experience patient et les realisations sont repris ailleurs.
+[[redirects]]
+  from = "/:lang/le-studio"
+  to = "/:lang/a-propos"
   status = 301
 
 [[redirects]]
-  from = "/:lang/laboratoire/reference-clinique"
-  to = "/:lang/laboratoire"
+  from = "/:lang/experience-patient"
+  to = "/:lang/parcours"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/plan-traitement-visuel"
+  to = "/:lang/parcours"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/realisations"
+  to = "/:lang/services"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/portfolio-clinique"
+  to = "/:lang/services"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/questions-frequentes"
+  to = "/:lang/faq"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/politique-confidentialite"
+  to = "/:lang/confidentialite"
+  status = 301
+
+[[redirects]]
+  from = "/:lang/assurances-paiements"
+  to = "/:lang/premiere-visite"
   status = 301
 
 [[redirects]]

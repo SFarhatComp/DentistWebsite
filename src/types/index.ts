@@ -29,21 +29,5 @@ export interface ServiceFrontmatter {
   aRelire?: boolean
 }
 
-export interface CaseFrontmatter {
-  slug: string
-  title: string
-  date: string
-  tags: string[]
-  excerpt: string
-  featured: boolean
-  coverImage?: string
-  treatmentType: string
-  initialProblem: string
-  objective: string
-  appointmentCount?: number
-  gallery: { src: string; caption: string; type?: "before" | "after" | "normal" }[]
-  legalDisclaimer: string
-}
 
-export interface Case extends CaseFrontmatter { content: string }
 export interface Service extends ServiceFrontmatter { content: string }

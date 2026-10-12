@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Inter } from "next/font/google"
+import { Cormorant_Garamond, Inter, League_Spartan } from "next/font/google"
 import "./globals.css"
 
 const cormorant = Cormorant_Garamond({
@@ -14,6 +14,16 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-sans",
+  display: "swap",
+})
+
+/* La maquette ne se sert de League Spartan qu'aux cinq etiquettes « Stade N »
+   du schema du parcours. C'est peu, mais ces etiquettes sont la legende du
+   diagramme : en Inter elles se confondent avec le texte courant. */
+const leagueSpartan = League_Spartan({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-etiquette",
   display: "swap",
 })
 
@@ -59,7 +69,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="fr" className={`${cormorant.variable} ${inter.variable} ${leagueSpartan.variable}`}>
       <head>
         {/* Les chevrons sont echappes : sans cela, une valeur contenant
             </script> fermerait la balise et sortirait du bloc JSON-LD. Toutes

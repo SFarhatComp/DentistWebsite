@@ -2,13 +2,20 @@ import { cn } from "@/lib/utils"
 import { getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
-// Base styles. `[&:user-invalid]:border-red-500` triggers AFTER the user
-// has interacted with the field (vs `:invalid` which fires immediately on
-// page load for empty required fields).
-const inputClass = "w-full border bg-background px-4 py-3 text-base focus:outline-none transition-colors [&:user-invalid]:border-red-500 [&:user-invalid]:bg-red-50/30"
-const inputClassNormal = "border-border focus:border-primary"
+// Styles de base des champs, repris de la maquette v2 : hauteur de 48 px,
+// coins de 3 px, fond blanc — et non le fond creme de la page, pour que la
+// zone a remplir se distingue du papier — texte a 17 px comme le corps.
+//
+// `[&:user-invalid]` se declenche APRES que la personne a touche au champ,
+// la ou `:invalid` colorerait en rouge des l'ouverture de la page tous les
+// champs obligatoires encore vides.
+const inputClass =
+  "w-full rounded-sm border bg-white px-3.5 text-[17px] transition-colors focus:outline-none [&:user-invalid]:border-red-500 [&:user-invalid]:bg-red-50/30"
+/** Hauteur fixe pour les champs d'une ligne ; les zones de texte s'en passent. */
+const inputHauteur = "h-12"
+const inputClassNormal = "border-foreground/25 focus:border-primary"
 const inputClassError = "border-red-500 focus:border-red-600 bg-red-50/30"
-const labelClass = "label-sm text-foreground block mb-2"
+const labelClass = "block mb-1.5 text-foreground"
 
 function ErrorMessage({ id, message }: { id: string; message?: string }) {
   if (!message) return null
@@ -54,7 +61,7 @@ export function Field({
         defaultValue={defaultValue}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
-        className={cn(inputClass, error ? inputClassError : inputClassNormal)}
+        className={cn(inputClass, inputHauteur, error ? inputClassError : inputClassNormal)}
       />
       <ErrorMessage id={errorId} message={error} />
     </div>
@@ -112,7 +119,7 @@ export function PhoneField({
         title={t("fields.phoneTitle")}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : `${name}-help`}
-        className={cn(inputClass, error ? inputClassError : inputClassNormal)}
+        className={cn(inputClass, inputHauteur, error ? inputClassError : inputClassNormal)}
       />
       <p id={`${name}-help`} className="mt-2 text-xs text-muted-foreground">
         {t("fields.phoneHelp")}
@@ -154,7 +161,7 @@ export function TextareaField({
         rows={rows}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
-        className={cn(inputClass, error ? inputClassError : inputClassNormal)}
+        className={cn(inputClass, "py-3", error ? inputClassError : inputClassNormal)}
       />
       <ErrorMessage id={errorId} message={error} />
     </div>
@@ -195,7 +202,7 @@ export function SelectField({
         onChange={onChange ? (e) => onChange(e.target.value) : undefined}
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
-        className={cn(inputClass, error ? inputClassError : inputClassNormal)}
+        className={cn(inputClass, inputHauteur, error ? inputClassError : inputClassNormal)}
       >
         <option value="">—</option>
         {options.map((o) => (

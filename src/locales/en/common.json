@@ -32,7 +32,8 @@
     "enSavoirPlus": "Learn more",
     "lire": "Read",
     "voir": "View",
-    "retour": "Back"
+    "retour": "Back",
+    "appeler": "Call 514 863-7805"
   },
   "home": {
     "metaTitle": "De Facto Dental Studio — Dentist in Ahuntsic, Montreal",
@@ -3017,5 +3018,600 @@
     ],
     "ctaTitre": "Come and see the studio.",
     "ctaAppeler": "Call 514 863-7805"
+  },
+  "parcours": {
+    "metaTitre": "The De Facto path — understanding before treating",
+    "metaDescription": "A path in five stages, from the complete examination to follow-up. A stage is a family of care objectives, not a level of severity.",
+    "surtitre": "[ The path ]",
+    "titre": "The De Facto path: understanding before treating",
+    "intro": "A well-informed patient is worth two. Our goal is not that you accept a treatment, but that you understand your mouth. Well informed, you decide better, and for yourself.",
+    "schema": {
+      "titre": "A path in five stages",
+      "intro": "A De Facto stage is a family of care objectives, not a level of severity. No one has to go through them all: you define your care objectives.",
+      "depart": "New patient",
+      "direct": "Direct",
+      "stades": [
+        {
+          "etiquette": "Stage 0",
+          "nom": "Understand"
+        },
+        {
+          "etiquette": "Stage 1",
+          "nom": "Stabilize"
+        },
+        {
+          "etiquette": "Stage 2",
+          "nom": "Restore the function of the teeth",
+          "texte": "Repair locally, within the current framework of your mouth."
+        },
+        {
+          "etiquette": "Stage 4",
+          "nom": "Rehabilitate function and appearance",
+          "texte": "Change global parameters: occlusion, vertical dimension, alignment."
+        },
+        {
+          "etiquette": "Stage 3",
+          "nom": "Maintain and prevent"
+        }
+      ]
+    },
+    "detail": [
+      {
+        "etiquette": "Stage 0",
+        "titre": "Understand",
+        "texte": "The complete examination and, if needed, further examinations. We establish the starting picture."
+      },
+      {
+        "etiquette": "Stage 1",
+        "titre": "Stabilize",
+        "texte": "We first control infection and inflammation: active decay, diseased gums, infected teeth."
+      },
+      {
+        "etiquette": "Stage 2",
+        "titre": "Restore the function of the teeth",
+        "texte": "Repair locally, within the current framework of your mouth."
+      },
+      {
+        "etiquette": "Stage 3",
+        "titre": "Maintain and prevent",
+        "texte": "Prevention and follow-up. This stage begins at the very first appointment and never ends."
+      },
+      {
+        "etiquette": "Stage 4",
+        "titre": "Rehabilitate function and appearance",
+        "texte": "A transformation that requires changing global parameters in the mouth: occlusion, vertical dimension of occlusion, alignment of the teeth, and so on."
+      }
+    ],
+    "note": "Stage 4 is neither mandatory nor superior to stage 2. An emergency is treated separately, at any time.",
+    "savoirTitre": "What you will know at the end of the examination",
+    "savoir": [
+      {
+        "titre": "The findings",
+        "texte": "what is going well, and what is not."
+      },
+      {
+        "titre": "The priorities",
+        "texte": "what is urgent, what can wait, what is optional."
+      },
+      {
+        "titre": "The options",
+        "texte": "the prognoses, the benefits, the limits and their costs."
+      },
+      {
+        "titre": "Dental education",
+        "texte": "advice on hygiene and prevention, whether or not you go ahead with treatment."
+      }
+    ],
+    "savoirNote": "The plan is explained to you at the desk, never in the dental chair. You receive a written summary of your condition.",
+    "ctaTitre": "Start with stage 0."
+  },
+  "atelier": {
+    "metaTitre": "Workshop — a dental technologist within the studio itself",
+    "metaDescription": "Crowns, dentures and guards designed and made on site, in Ahuntsic. Try-ins and adjustments at the studio.",
+    "surtitre": "[ Workshop ]",
+    "titre": "A dental technologist within the studio itself",
+    "intro": "Crowns, dentures and guards, designed and made on site. Try-ins and adjustments at the studio.",
+    "legendeHero": "The digital design room (CAD-CAM)",
+    "altHero": "The digital design room (CAD-CAM)",
+    "pieces": [
+      "Implant",
+      "Crown",
+      "Bridge",
+      "Veneer",
+      "Removable partial denture",
+      "Complete denture",
+      "Guard"
+    ],
+    "changeTitre": "What this changes for you",
+    "change": [
+      {
+        "titre": "A dental technologist can see you in person.",
+        "texte": "Shade, shape and smile checked directly in the mouth."
+      },
+      {
+        "titre": "The making is done from start to finish here.",
+        "texte": "Except the metal framework of partial dentures."
+      },
+      {
+        "titre": "One person makes it. One person supervises.",
+        "texte": "She makes your piece from beginning to end. Dr Ramdani supervises every step."
+      }
+    ],
+    "fabriqueTitre": "What we make here",
+    "fabrique": [
+      {
+        "famille": "Restorations",
+        "items": [
+          {
+            "texte": "Crowns and bridges, on natural teeth and on implants"
+          },
+          {
+            "texte": "Indirect restorations:",
+            "sous": [
+              "feldspathic porcelain",
+              "lithium disilicate (pressed e.max)",
+              "3Y and 4Y zirconia"
+            ]
+          },
+          {
+            "texte": "Ceramic veneers"
+          },
+          {
+            "texte": "Temporary veneers and indirect restorations printed in resin"
+          }
+        ]
+      },
+      {
+        "famille": "Dentures",
+        "items": [
+          {
+            "texte": "Complete and partial dentures (the metal framework of partials is made externally)"
+          },
+          {
+            "texte": "Printed custom impression trays"
+          }
+        ]
+      },
+      {
+        "famille": "Guards and plates",
+        "items": [
+          {
+            "texte": "Occlusal plates for bruxism and clenching"
+          },
+          {
+            "texte": "Fluoride and whitening trays"
+          }
+        ]
+      },
+      {
+        "famille": "Planning",
+        "items": [
+          {
+            "texte": "Diagnostic wax-up"
+          },
+          {
+            "texte": "Surgical guides for implant placement"
+          }
+        ]
+      }
+    ],
+    "equipementTitre": "The equipment",
+    "equipement": [
+      {
+        "role": "Intra-oral scanner",
+        "nom": "Dexis 3800"
+      },
+      {
+        "role": "Design",
+        "nom": "Exocad"
+      },
+      {
+        "role": "3D printing",
+        "nom": "Formlabs"
+      },
+      {
+        "role": "Milling machine",
+        "nom": "VHF E5"
+      },
+      {
+        "role": "Furnaces and press",
+        "nom": "Ivoclar"
+      }
+    ],
+    "equipementNote": "Externally: digitizing of conventional impressions and metal frameworks.",
+    "equipeTitre": "The workshop team",
+    "equipeTexte": "The workshop is made up of Dr Ramdani, general dentist and founder of studio [de facto], and a dental technologist, Amira Thameur, who graduated in 2022 and is a member of the Ordre des technologues en prothèses et appareils dentaires du Québec. Dr Ramdani plans and supervises every piece; Amira Thameur makes it and finishes it by hand.",
+    "photos": [
+      {
+        "num": "01",
+        "texte": "The digital design room"
+      },
+      {
+        "num": "02",
+        "texte": "The printing station for your appliances and models"
+      },
+      {
+        "num": "03",
+        "texte": "The bench where your appliances and restorations are personalized"
+      }
+    ],
+    "ctaTitre": "A crown or a denture to make? Start with an examination."
+  },
+  "contactPage": {
+    "metaTitre": "Contact — reaching us and coming to the studio",
+    "metaDescription": "728 Fleury Street East, Montreal. Hours, bus, metro and parking to come to Studio Dentaire De Facto, in Ahuntsic.",
+    "surtitre": "[ Contact ]",
+    "titre": "Reaching us and coming to the studio",
+    "intro": "Everything useful on the day of the appointment: address, hours, bus, metro and parking.",
+    "coordonneesTitre": "Contact details",
+    "coordonnees": [
+      {
+        "role": "Address",
+        "valeur": "728 Fleury Street East, Montreal, Quebec H2C 1P1",
+        "precision": "2nd floor"
+      },
+      {
+        "role": "Phone",
+        "valeur": "514 863-7805"
+      },
+      {
+        "role": "Email",
+        "valeur": "info@studiodefacto.ca"
+      }
+    ],
+    "heuresTitre": "Hours",
+    "heures": [
+      {
+        "jour": "Monday",
+        "valeur": "10 a.m. to 6 p.m."
+      },
+      {
+        "jour": "Tuesday",
+        "valeur": "10 a.m. to 6 p.m."
+      },
+      {
+        "jour": "Wednesday",
+        "valeur": "3 p.m. to 8 p.m."
+      },
+      {
+        "jour": "Thursday to Sunday",
+        "valeur": "Closed"
+      }
+    ],
+    "heuresNote": "Closed on public holidays.",
+    "carteBouton": "Show the map",
+    "carteItineraire": "Directions in Google Maps",
+    "carteTitreCadre": "Map of 728 Fleury Street East, Montreal",
+    "carteNote": "The map is provided by Google, which sets cookies. It loads only if you click on « Show the map ».",
+    "venirTitre": "Coming to the studio",
+    "venir": [
+      {
+        "mode": "By bus",
+        "texte": "The 140 Fleury line stops across from the studio. It connects to Sauvé metro station and serves Fleury Street up to Montréal-Nord."
+      },
+      {
+        "mode": "By metro",
+        "texte": "Sauvé and Henri-Bourassa stations (orange line)."
+      },
+      {
+        "mode": "By car",
+        "texte": "About 10 minutes from highways 15 and 40."
+      },
+      {
+        "mode": "Parking",
+        "texte": "On the street, and private parking behind the building, with entry from Saint-Hubert Street."
+      }
+    ],
+    "quartiersTitre": "From your neighbourhood",
+    "quartiers": [
+      {
+        "nom": "Ahuntsic",
+        "texte": "on Fleury Street East, steps from the shops of promenade Fleury."
+      },
+      {
+        "nom": "Montréal-Nord",
+        "texte": "the 140 line follows Fleury Street right to the studio."
+      },
+      {
+        "nom": "Villeray",
+        "texte": "the orange line to Sauvé, then the 140."
+      },
+      {
+        "nom": "Saint-Michel",
+        "texte": "along Saint-Michel Boulevard to Fleury Street, where the 140 runs."
+      },
+      {
+        "nom": "Cartierville",
+        "texte": "along Henri-Bourassa Boulevard or highway 15."
+      },
+      {
+        "nom": "South Laval (Pont-Viau, Laval-des-Rapides)",
+        "texte": "the orange line to Henri-Bourassa, or highway 15 or the Viau bridge."
+      }
+    ],
+    "accessibiliteTitre": "Accessibility",
+    "accessibiliteTexte": "The studio is one floor up. A staircase leads to the entrance. The studio is not wheelchair accessible. Call us if the steps are a problem for you: we will help you find a solution.",
+    "ecrireTitre": "Write to us"
+  },
+  "faqPage": {
+    "metaTitre": "Frequently asked questions — Studio Dentaire De Facto",
+    "metaDescription": "Appointments, coverage and costs, care, access: the questions new patients ask us most often.",
+    "surtitre": "[ Frequently asked questions ]",
+    "titre": "Frequently asked questions",
+    "introAvant": "The questions new patients ask us most often. Can't find yours? Call ",
+    "introApres": ".",
+    "groupes": [
+      {
+        "titre": "Appointments",
+        "questions": [
+          {
+            "q": "Are you accepting new patients?",
+            "r": "Yes. {lien} or call 514 863-7805.",
+            "lien": {
+              "texte": "Book online",
+              "vers": "rendez-vous"
+            }
+          },
+          {
+            "q": "How long does the first appointment take?",
+            "r": "A focused consultation takes 30 minutes, a complete examination about an hour, and a complete examination with cleaning about an hour and a half. For a complex case, a second appointment at the consultation desk is used to go over the treatment plan."
+          },
+          {
+            "q": "Are you open evenings or weekends?",
+            "r": "For now, Wednesday until 8 p.m.; the studio is closed Thursday through Sunday. Dr Ramdani plans to open the studio full time: new hours are coming."
+          },
+          {
+            "q": "How do I cancel or move an appointment?",
+            "r": "Call 514 863-7805 at least 24 hours ahead, ideally 48. Fees apply from the second appointment missed without notice."
+          }
+        ]
+      },
+      {
+        "titre": "Coverage and costs",
+        "questions": [
+          {
+            "q": "Do you accept the Canadian Dental Care Plan (CDCP)?",
+            "r": "Yes. Bring your card to the first visit."
+          },
+          {
+            "q": "Does RAMQ cover dental care?",
+            "r": "For children under 10 and recipients of a financial assistance program with a claim booklet, several services are covered."
+          },
+          {
+            "q": "Do you accept my private insurance?",
+            "r": "Yes. Bring your insurance card."
+          },
+          {
+            "q": "What methods of payment do you accept?",
+            "r": "Cash, debit and credit card."
+          },
+          {
+            "q": "Will I know the price before a treatment?",
+            "r": "Yes. You receive a written estimate before we begin, and you decide."
+          }
+        ]
+      },
+      {
+        "titre": "Care",
+        "questions": [
+          {
+            "q": "I am afraid of the dentist. What do you do?",
+            "r": "We explain every step before doing it, and you can ask for a break at any time. Tell us when you book."
+          },
+          {
+            "q": "Will I be obliged to have treatment after the examination?",
+            "r": "No. You receive the information and the options, including what happens if nothing is done."
+          },
+          {
+            "q": "Do you place implants?",
+            "r": "Dr Ramdani does not perform the surgical phase. He can refer you to a colleague, within the studio or outside it, to place the implant. We then make the crown or the denture, and handle the follow-up. {lien}.",
+            "lien": {
+              "texte": "Single implant",
+              "vers": "services/implant-unitaire"
+            }
+          },
+          {
+            "q": "Do you see emergencies?",
+            "r": "Yes, the same day if possible, during our hours. Call first; do not come without confirmation. {lien}.",
+            "lien": {
+              "texte": "Dental emergency",
+              "vers": "urgence"
+            }
+          }
+        ]
+      },
+      {
+        "titre": "Access",
+        "questions": [
+          {
+            "q": "Is there parking?",
+            "r": "Yes: on the street, and private parking behind the building, with entry from Saint-Hubert Street."
+          },
+          {
+            "q": "Is the studio wheelchair accessible?",
+            "r": "No. It is one floor up, with a staircase at the entrance."
+          }
+        ]
+      }
+    ],
+    "carte": {
+      "surtitre": "[ Studio Dentaire De Facto ]",
+      "titre": "An examination first",
+      "texte": "Every treatment begins with an examination and a clear explanation. You decide afterwards.",
+      "adresse": "728 Fleury Street East, Montreal",
+      "heures": [
+        "Monday 10 a.m. to 6 p.m.",
+        "Tuesday 10 a.m. to 6 p.m.",
+        "Wednesday 3 p.m. to 8 p.m.",
+        "Thursday and Friday: coming soon"
+      ]
+    }
+  },
+  "rdv": {
+    "metaTitre": "Book an appointment — Studio Dentaire De Facto",
+    "metaDescription": "Book a slot online, or leave your details and the studio calls you back. Confirmation within 24 hours.",
+    "surtitre": "[ Appointment ]",
+    "titre": "Book an appointment at Studio De Facto",
+    "introAvant": "Choose a free slot, specify your request, then enter your details. The studio confirms every appointment within 24 hours. Would you rather speak to someone? Call ",
+    "introApres": ".",
+    "horaireTitre": "The online schedule",
+    "horaireTexte": "The schedule is synchronized with the studio's calendar: only genuinely free slots appear. The studio then confirms your appointment.",
+    "cadreTitre": "Booking schedule for Studio Dentaire De Facto",
+    "noteGoogle": "Google hosts the name, phone and email entered in the schedule, outside Quebec. See our",
+    "noteGoogleLien": "privacy policy",
+    "bientotTitre": "Online booking is coming",
+    "bientotTexte": "In the meantime, leave your details in the form alongside and the studio will call you back during opening hours, or call us directly.",
+    "rappelTitre": "Would you rather we called you?",
+    "rappelTexte": "Leave your details and your preferences. The studio calls you back during opening hours to set the time.",
+    "champNom": "First and last name",
+    "champTelephone": "Phone",
+    "champCourriel": "Email (optional)",
+    "champPremiereVisite": "First visit to the studio?",
+    "champCouverture": "Coverage",
+    "champMotif": "Reason",
+    "champJour": "Preferred day",
+    "champMoment": "Preferred time of day",
+    "oui": "Yes",
+    "non": "No",
+    "couvertures": [
+      "CDCP",
+      "RAMQ",
+      "Private insurance",
+      "None",
+      "I do not know"
+    ],
+    "motifs": [
+      "Complete examination (new patient)",
+      "Complete examination and cleaning",
+      "Dental emergency",
+      "Focused consultation",
+      "Cleaning",
+      "Denture",
+      "Repair a tooth",
+      "Other"
+    ],
+    "jours": [
+      "No preference",
+      "Monday",
+      "Tuesday",
+      "Wednesday"
+    ],
+    "moments": [
+      "No preference",
+      "Morning",
+      "Afternoon",
+      "Evening (Wednesday only)"
+    ],
+    "noteFormulaire": "Do not describe your health condition here; we will discuss it on the call. The information you send is used only to handle your request.",
+    "noteFormulaireLien": "Privacy policy",
+    "envoyer": "Send my request",
+    "envoiEnCours": "Sending…",
+    "erreur": "Sending failed. Try again, or call 514 863-7805.",
+    "urgenceAvant": "For an emergency, book online or call ",
+    "urgenceApres": " for a faster answer.",
+    "dureesTitre": "Reasons and their duration",
+    "dureesColonnes": [
+      "Reason",
+      "Duration",
+      "Online"
+    ],
+    "durees": [
+      {
+        "motif": "Complete examination (new patient)",
+        "duree": "60 min",
+        "enLigne": "Yes"
+      },
+      {
+        "motif": "Complete examination and cleaning (new patient)",
+        "duree": "90 min",
+        "enLigne": "Yes"
+      },
+      {
+        "motif": "Cleaning (studio patient)",
+        "duree": "60 min",
+        "enLigne": "Yes"
+      },
+      {
+        "motif": "Focused consultation (denture, aesthetics, second opinion)",
+        "duree": "30 min",
+        "enLigne": "Yes"
+      },
+      {
+        "motif": "Emergency",
+        "duree": "30 min",
+        "enLigne": "Yes"
+      },
+      {
+        "motif": "Repair a tooth or a denture",
+        "duree": "Depends on the case",
+        "enLigne": "Yes"
+      }
+    ],
+    "dureesNoteAvant": "Every appointment booked online must be confirmed by the studio within 24 hours. To cancel or move it: ",
+    "dureesNoteApres": ".",
+    "adresse": "728 Fleury Street East, Montreal · 2nd floor",
+    "heures": [
+      "Monday 10 a.m. to 6 p.m.",
+      "Tuesday 10 a.m. to 6 p.m.",
+      "Wednesday 3 p.m. to 8 p.m.",
+      "Thursday and Friday: coming soon"
+    ]
+  },
+  "nouveauPatient": {
+    "metaTitre": "Dentist in Ahuntsic accepting new patients",
+    "metaDescription": "A complete examination of about an hour, a written report and a clear explanation of your options. Opening offer for new adult patients.",
+    "titre": "Dentist in Ahuntsic accepting new patients",
+    "intro": "A complete examination of about an hour, a written report and a clear explanation of your options. You decide what comes next.",
+    "atouts": [
+      "Examination of about an hour",
+      "Written report given to you",
+      "Workshop inside the studio"
+    ],
+    "ctaPrincipal": "See the free slots",
+    "offreTitre": "Opening offer for new adult patients",
+    "prixRegulierEtiquette": "Regular price",
+    "prixRegulier": "$513",
+    "prixOuvertureEtiquette": "Opening price",
+    "prixOuverture": "$289",
+    "offreCondition": "For the first 100 adults, until January 1, 2027.",
+    "comprendTitre": "Includes",
+    "comprend": [
+      "Complete examination ($197)",
+      "Panoramic radiograph ($110)",
+      "Polishing ($81)",
+      "30 minutes of scaling ($125)",
+      "Written report"
+    ],
+    "comprendNote": "Over two visits. Intraoral radiographs are included in the price of the complete examination.",
+    "comprendPlus": "Also offered: the complete examination of the gums and, if needed, of crowns, bridges or dentures (regular price $148 each).",
+    "comprendPasTitre": "Does not include",
+    "comprendPas": "Scaling beyond 30 minutes and the treatments recommended after the assessment.",
+    "pratiqueTitre": "Practical information",
+    "adresse": "728 Fleury Street East, Montreal",
+    "heures": [
+      "Monday 10 a.m. to 6 p.m.",
+      "Tuesday 10 a.m. to 6 p.m.",
+      "Wednesday 3 p.m. to 8 p.m.",
+      "Thursday and Friday: coming soon"
+    ],
+    "couvertures": "CDCP, RAMQ and private insurance accepted",
+    "faqTitre": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Are you accepting new patients?",
+        "r": "Yes. Book online or call 514 863-7805."
+      },
+      {
+        "q": "How long does the first appointment take?",
+        "r": "A focused consultation takes 30 minutes, a complete examination about an hour, and a complete examination with cleaning about an hour and a half. For a complex case, a second appointment at the consultation desk is used to go over the treatment plan."
+      }
+    ],
+    "faqLien": "Learn more →",
+    "piedMentions": "Studio Dentaire De Facto · Dr Bader Ramdani, general dentist",
+    "piedResponsable": "Officer responsible for the protection of personal information: Dr Bader Ramdani, general dentist · info@studiodefacto.ca · 514 863-7805",
+    "piedAvis": "The information on this site is general and does not replace a dental examination.",
+    "piedConfidentialite": "Privacy",
+    "piedConditions": "Terms of use",
+    "piedAccessibilite": "Accessibility"
   }
 }

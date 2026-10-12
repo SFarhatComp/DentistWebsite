@@ -64,6 +64,7 @@ const config: Config = {
         gold: "hsl(var(--primary))",
       },
       fontFamily: {
+        etiquette: ["var(--font-etiquette)", "\"League Spartan\"", "Inter", "sans-serif"],
         display: ["var(--font-display)", '"Cormorant Garamond"', "Georgia", "serif"],
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
       },

@@ -23,7 +23,10 @@ export function Footer({ lang }: { lang: Locale }) {
     { href: `/${lang}/faq`, label: t("nav.faq") },
     { href: `/${lang}/confidentialite`, label: t("footer.confidentialite") },
     { href: `/${lang}/conditions-utilisation`, label: t("footer.conditions") },
-    { href: `/${lang}/accessibilite`, label: t("footer.accessibilite") },
+    // La maquette place le texte d'accessibilite dans la page contact, pas
+    // sur une page a elle. Le lien y mene donc par une ancre, plutot que de
+    // pointer vers une page qui n'existe pas.
+    { href: `/${lang}/contact#accessibilite`, label: t("footer.accessibilite") },
   ]
 
   return (
