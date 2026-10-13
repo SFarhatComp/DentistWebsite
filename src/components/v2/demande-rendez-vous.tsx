@@ -43,7 +43,6 @@ export function DemandeRendezVous({ lang }: { lang: Locale }) {
   const [motif, setMotif] = useState(motifs[0] ?? "")
   const [creneau, setCreneau] = useState<Plage | null>(null)
   const [jours, setJours] = useState<Jour[]>([])
-  const [source, setSource] = useState<"agenda" | "horaires" | null>(null)
   const [chargement, setChargement] = useState(false)
   // On ne montre que les premieres dates : la liste complete couvre trois
   // semaines, et une page de boutons decourage plus qu'elle n'aide.
@@ -78,7 +77,6 @@ export function DemandeRendezVous({ lang }: { lang: Locale }) {
       .then((d) => {
         if (!vivant) return
         setJours(d.jours ?? [])
-        setSource(d.source ?? null)
       })
       .catch(() => vivant && setErreur(t("rdv.erreurPlages")))
       .finally(() => vivant && setChargement(false))
@@ -231,12 +229,6 @@ export function DemandeRendezVous({ lang }: { lang: Locale }) {
         >
           ← {t("rdv.retourQuestions")}
         </button>
-
-        {source === "horaires" && (
-          <p className="mt-5 rounded-sm border-l-2 border-primary bg-surface py-4 pl-5 pr-4 text-[15px] text-foreground/85">
-            {t("rdv.avisHorairesSeuls")}
-          </p>
-        )}
 
         {chargement && <p className="mt-6 text-foreground/70">{t("rdv.chargementPlages")}</p>}
         {erreur && !chargement && (

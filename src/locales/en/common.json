@@ -1911,7 +1911,7 @@
     "introAvant": "Choose a free slot and leave your details: your request reaches the studio, which calls you back to confirm, within 24 hours. Would you rather speak to someone right away? Call ",
     "introApres": ".",
     "horaireTitre": "Request an appointment",
-    "horaireTexte": "Two steps: your answers, then the choice of a slot. The schedule is the studio's own — only genuinely free slots appear.",
+    "horaireTexte": "Two steps: your answers, then the choice of a slot. The studio confirms the exact time when it calls you back.",
     "rappelTitre": "Would you rather we called you?",
     "rappelTexte": "Leave your details and your preferences. The studio calls you back during opening hours to set the time.",
     "champNom": "First and last name",
@@ -2021,7 +2021,6 @@
     "chargementPlages": "Looking for free slots…",
     "aucunePlage": "No free slot for this reason in the coming weeks. Call 514 863-7805 and we will find a solution.",
     "erreurPlages": "The slots cannot be shown right now. Please call 514 863-7805.",
-    "avisHorairesSeuls": "These slots are our opening hours; they do not yet take existing appointments into account. The studio will confirm the exact time when it calls you back.",
     "recapTitre": "Your request",
     "recapNote": "The studio calls you back within 24 hours to confirm. The slot is not reserved until that call has taken place.",
     "plusDeDates": "See more dates"

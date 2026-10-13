@@ -1911,7 +1911,7 @@
     "introAvant": "Choisissez une plage libre et laissez vos coordonnées : votre demande arrive au studio, qui vous rappelle pour confirmer, dans les 24 heures. Vous préférez parler à quelqu'un tout de suite ? Appelez le ",
     "introApres": ".",
     "horaireTitre": "Demander un rendez-vous",
-    "horaireTexte": "Deux étapes : vos réponses, puis le choix d'une plage. L'horaire est celui du studio — seules les plages réellement libres s'affichent.",
+    "horaireTexte": "Deux étapes : vos réponses, puis le choix d'une plage. Le studio confirme l'heure exacte en vous rappelant.",
     "rappelTitre": "Vous préférez qu'on vous rappelle ?",
     "rappelTexte": "Laissez vos coordonnées et vos préférences. Le studio vous rappelle pendant ses heures d'ouverture pour fixer l'heure.",
     "champNom": "Prénom et nom",
@@ -2021,7 +2021,6 @@
     "chargementPlages": "Recherche des plages libres…",
     "aucunePlage": "Aucune plage libre pour ce motif dans les prochaines semaines. Appelez le 514 863-7805 : on trouvera une solution.",
     "erreurPlages": "Impossible d'afficher les plages pour l'instant. Appelez le 514 863-7805.",
-    "avisHorairesSeuls": "Ces plages sont nos heures d'ouverture ; elles ne tiennent pas encore compte des rendez-vous déjà pris. Le studio confirmera l'heure exacte en vous rappelant.",
     "recapTitre": "Votre demande",
     "recapNote": "Le studio vous rappelle dans les 24 heures pour confirmer. La plage n'est pas réservée tant que cet appel n'a pas eu lieu.",
     "plusDeDates": "Voir d’autres dates"
