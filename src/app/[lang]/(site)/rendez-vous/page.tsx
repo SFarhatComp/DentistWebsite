@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { HeroPage } from "@/components/v2/hero-page"
-import { Suspense } from "react"
 import { DemandeRendezVous } from "@/components/v2/demande-rendez-vous"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import { metaPage } from "@/lib/metadonnees"
@@ -60,11 +59,7 @@ export default async function RendezVousPage(props: { params: Promise<{ lang: st
             </div>
 
             <div className="mt-10">
-              {/* useSearchParams exige une frontiere de suspense : sans elle,
-                  toute la page basculerait en rendu dynamique. */}
-              <Suspense fallback={null}>
-                <DemandeRendezVous lang={lang} />
-              </Suspense>
+              <DemandeRendezVous lang={lang} />
             </div>
           </div>
 

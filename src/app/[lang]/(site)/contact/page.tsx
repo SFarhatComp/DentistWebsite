@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { HeroPage } from "@/components/v2/hero-page"
 import { CarteGoogle } from "@/components/v2/carte-google"
 import * as Ic from "@/components/v2/icones"
-import { Suspense } from "react"
 import { ContactForm } from "@/components/forms/contact-form"
 import { FormulaireRappel } from "@/components/v2/formulaire-rappel"
 import { getTranslationObjectList, getTranslations } from "@/lib/i18n"
@@ -189,9 +188,7 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
             </h2>
             <p className="mt-4 max-w-[52ch] text-foreground/85">{t("contactPage.rappelTexte")}</p>
             <div className="mt-8">
-              <Suspense fallback={null}>
-                <FormulaireRappel lang={lang} />
-              </Suspense>
+              <FormulaireRappel lang={lang} />
             </div>
             <p className="mt-5 text-[15px] text-foreground/75">
               {t("contactPage.rappelUrgenceAvant")}

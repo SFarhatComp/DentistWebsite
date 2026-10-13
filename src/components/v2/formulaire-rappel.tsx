@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { getTranslationList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
@@ -20,17 +19,29 @@ import type { Locale } from "@/types"
  */
 export function FormulaireRappel({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
-  const params = useSearchParams()
 
   const motifs = getTranslationList(lang, "rdv.motifs")
   const couvertures = getTranslationList(lang, "rdv.couvertures")
   const jours = getTranslationList(lang, "rdv.jours")
   const moments = getTranslationList(lang, "rdv.moments")
 
-  const depuisUrl = (cle: string, liste: string[]) => {
-    const v = params.get(cle)
-    return v && liste.includes(v) ? v : liste[0] ?? ""
-  }
+  const [prereglages, setPrereglages] = useState<Record<string, string>>({})
+  // On lit la chaine de requete apres l'affichage plutot qu'avec
+  // useSearchParams : ce dernier force le rendu cote client, et le formulaire
+  // — qui est tout l'objet de la page — disparaissait du HTML servi, donc de
+  // ce que voit un moteur de recherche. Le prereglage arrive une fraction de
+  // seconde plus tard, ce qui ne se voit pas.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search)
+    const out: Record<string, string> = {}
+    for (const [cle, liste] of [["motif", motifs], ["jour", jours], ["moment", moments]] as const) {
+      const v = q.get(cle)
+      if (v && liste.includes(v)) out[cle] = v
+    }
+    setPrereglages(out)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const depuisUrl = (cle: string, liste: string[]) => prereglages[cle] ?? liste[0] ?? ""
 
   const [envoi, setEnvoi] = useState(false)
   const [erreur, setErreur] = useState(false)
@@ -109,7 +120,7 @@ export function FormulaireRappel({ lang }: { lang: Locale }) {
 
       <label className="flex-[1_1_100%]">
         <span className={etiquette}>{t("rdv.champMotif")}</span>
-        <select name="motif" required defaultValue={depuisUrl("motif", motifs)} className={champ}>
+        <select name="motif" required value={depuisUrl("motif", motifs)} onChange={(e) => setPrereglages((p) => ({ ...p, motif: e.target.value }))} className={champ}>
           {motifs.map((m) => (
             <option key={m}>{m}</option>
           ))}
@@ -118,7 +129,7 @@ export function FormulaireRappel({ lang }: { lang: Locale }) {
 
       <label className="flex-[1_1_240px]">
         <span className={etiquette}>{t("rdv.champJour")}</span>
-        <select name="jour" defaultValue={depuisUrl("jour", jours)} className={champ}>
+        <select name="jour" value={depuisUrl("jour", jours)} onChange={(e) => setPrereglages((p) => ({ ...p, jour: e.target.value }))} className={champ}>
           {jours.map((j) => (
             <option key={j}>{j}</option>
           ))}
@@ -127,7 +138,7 @@ export function FormulaireRappel({ lang }: { lang: Locale }) {
 
       <label className="flex-[1_1_240px]">
         <span className={etiquette}>{t("rdv.champMoment")}</span>
-        <select name="moment" defaultValue={depuisUrl("moment", moments)} className={champ}>
+        <select name="moment" value={depuisUrl("moment", moments)} onChange={(e) => setPrereglages((p) => ({ ...p, moment: e.target.value }))} className={champ}>
           {moments.map((m) => (
             <option key={m}>{m}</option>
           ))}

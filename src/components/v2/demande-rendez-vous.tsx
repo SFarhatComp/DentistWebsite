@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { useSearchParams } from "next/navigation"
 import { getTranslationList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -36,18 +35,12 @@ interface Jour {
 
 export function DemandeRendezVous({ lang }: { lang: Locale }) {
   const t = getTranslations(lang)
-  const params = useSearchParams()
 
   const motifs = getTranslationList(lang, "rdv.motifs")
   const couvertures = getTranslationList(lang, "rdv.couvertures")
 
-  const depuisUrl = (cle: string, liste: string[]) => {
-    const v = params.get(cle)
-    return v && liste.includes(v) ? v : liste[0] ?? ""
-  }
-
   const [etape, setEtape] = useState<1 | 2>(1)
-  const [motif, setMotif] = useState(depuisUrl("motif", motifs))
+  const [motif, setMotif] = useState(motifs[0] ?? "")
   const [creneau, setCreneau] = useState<Plage | null>(null)
   const [jours, setJours] = useState<Jour[]>([])
   const [source, setSource] = useState<"agenda" | "horaires" | null>(null)
@@ -62,6 +55,16 @@ export function DemandeRendezVous({ lang }: { lang: Locale }) {
   useEffect(() => {
     setCreneau(null)
   }, [motif])
+
+  // On lit la chaine de requete apres l'affichage plutot qu'avec
+  // useSearchParams : ce dernier force le rendu cote client, et le formulaire
+  // — qui est tout l'objet de la page — disparaissait du HTML servi, donc de
+  // ce que voit un moteur de recherche. Le prereglage arrive une fraction de
+  // seconde plus tard, ce qui ne se voit pas.
+  useEffect(() => {
+    const v = new URLSearchParams(window.location.search).get("motif")
+    if (v && motifs.includes(v)) setMotif(v)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (etape !== 2) return
