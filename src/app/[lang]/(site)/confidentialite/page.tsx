@@ -1,6 +1,7 @@
 import { HeroPage } from "@/components/v2/hero-page"
 import { getTranslations, getTranslationObjectList } from "@/lib/i18n"
 import type { Metadata } from "next"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Section {
@@ -11,7 +12,7 @@ interface Section {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("confidentialite.title") }, description: t("confidentialite.subtitle") }
+  return metaPage(params.lang as Locale, "/confidentialite", { titre: t("confidentialite.title"), description: t("confidentialite.subtitle") })
 }
 
 export default async function ConfidentialitePage(props: { params: Promise<{ lang: string }> }) {

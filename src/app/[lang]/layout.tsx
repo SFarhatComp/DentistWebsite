@@ -27,6 +27,18 @@ export async function generateMetadata(props: { params: Promise<{ lang: string }
   const siteName = t("site.name")
   return {
     title: { default: siteName, template: `%s | ${siteName}` },
+    // Next remplace le champ « alternates » du gabarit racine au lieu de le
+    // completer : les langues doivent donc etre redeclarees ici, sinon les
+    // balises hreflang disparaissent de toutes les pages.
+    alternates: {
+      // Canonique relative : Next la resout contre l'adresse de la page en
+      // cours. Sans elle, /fr et /fr/ — ou une adresse suivie de parametres —
+      // passent pour deux pages, et Google repartit les signaux entre elles.
+      canonical: "./",
+      // « x-default » dit quelle version servir a qui n'est ni francophone ni
+      // anglophone declare ; sans elle, Google choisit au hasard.
+      languages: { fr: "/fr", en: "/en", "x-default": "/fr" },
+    },
   }
 }
 

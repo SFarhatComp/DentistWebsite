@@ -6,6 +6,7 @@ import { getAllServices, getService } from "@/lib/content"
 import { getTranslations } from "@/lib/i18n"
 import { i18n } from "@/lib/i18n-config"
 import * as Ic from "@/components/v2/icones"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 export function generateStaticParams() {
@@ -20,7 +21,15 @@ export async function generateMetadata(props: {
   const { lang, slug } = await props.params
   const s = getService(lang as Locale, slug)
   if (!s) return {}
-  return { title: s.title, description: s.shortDescription }
+  // Le titre passe par le gabarit du site (« … | Studio Dentaire [de facto] »),
+  // d'ou le titre nu plutot qu'absolu.
+  return {
+    ...metaPage(lang as Locale, `/services/${slug}`, {
+      titre: s.title,
+      description: s.shortDescription,
+    }),
+    title: s.title,
+  }
 }
 
 const ICONES_VARIANTES = [Ic.Icone31, Ic.Icone32, Ic.Icone33]

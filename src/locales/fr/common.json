@@ -1731,10 +1731,9 @@
       }
     ],
     "heuresNote": "Fermé les jours fériés.",
-    "carteBouton": "Afficher la carte",
     "carteItineraire": "Itinéraire dans Google Maps",
     "carteTitreCadre": "Carte du 728, rue Fleury Est, Montréal",
-    "carteNote": "La carte est fournie par Google, qui dépose des témoins. Elle se charge seulement si vous cliquez sur « Afficher la carte ».",
+    "carteNote": "La carte est fournie par Google, qui dépose des témoins sur votre appareil.",
     "venirTitre": "Venir au studio",
     "venir": [
       {
@@ -1911,13 +1910,8 @@
     "titre": "Demander un rendez-vous au Studio [de facto]",
     "introAvant": "Choisissez une plage libre et laissez vos coordonnées : votre demande arrive au studio, qui vous rappelle pour confirmer, dans les 24 heures. Vous préférez parler à quelqu'un tout de suite ? Appelez le ",
     "introApres": ".",
-    "horaireTitre": "Demander une plage en ligne",
-    "horaireTexte": "L'horaire est synchronisé avec l'agenda du studio : seules les plages réellement libres s'affichent.",
-    "cadreTitre": "Horaire de réservation du Studio Dentaire [de facto]",
-    "noteGoogle": "Google héberge les nom, téléphone et courriel saisis dans l'horaire, à l'extérieur du Québec. Voir notre",
-    "noteGoogleLien": "politique de confidentialité",
-    "bientotTitre": "La réservation en ligne arrive",
-    "bientotTexte": "En attendant, laissez vos coordonnées dans le formulaire ci-contre et le studio vous rappelle pendant ses heures d'ouverture, ou appelez-nous directement.",
+    "horaireTitre": "Demander un rendez-vous",
+    "horaireTexte": "Deux étapes : vos réponses, puis le choix d'une plage. L'horaire est celui du studio — seules les plages réellement libres s'affichent.",
     "rappelTitre": "Vous préférez qu'on vous rappelle ?",
     "rappelTexte": "Laissez vos coordonnées et vos préférences. Le studio vous rappelle pendant ses heures d'ouverture pour fixer l'heure.",
     "champNom": "Prénom et nom",
@@ -2014,8 +2008,23 @@
       "Jeudi et vendredi : bientôt disponible"
     ],
     "avisTitre": "Une demande, pas encore un rendez-vous",
-    "avisTexte": "La plage que vous choisissez est retenue le temps que le studio vous rappelle. Votre rendez-vous n'est confirmé qu'après cet appel, pendant lequel on valide le motif, la durée et votre couverture.",
-    "rappelLien": "Demander un rappel"
+    "avisTexte": "La plage que vous choisissez est transmise au studio, qui vous rappelle pour confirmer. C'est pendant cet appel qu'on valide le motif, la durée et votre couverture.",
+    "rappelLien": "Demander un rappel",
+    "etape1": "Votre demande",
+    "etape2": "Choisir une plage",
+    "versCreneaux": "Voir les plages libres",
+    "retourQuestions": "Revenir aux questions",
+    "champDouleur": "Avez-vous mal en ce moment ?",
+    "douleurLegere": "Oui, c'est supportable",
+    "douleurForte": "Oui, c'est difficile",
+    "champPrecisions": "Autre chose à nous signaler ? (facultatif)",
+    "chargementPlages": "Recherche des plages libres…",
+    "aucunePlage": "Aucune plage libre pour ce motif dans les prochaines semaines. Appelez le 514 863-7805 : on trouvera une solution.",
+    "erreurPlages": "Impossible d'afficher les plages pour l'instant. Appelez le 514 863-7805.",
+    "avisHorairesSeuls": "Ces plages sont nos heures d'ouverture ; elles ne tiennent pas encore compte des rendez-vous déjà pris. Le studio confirmera l'heure exacte en vous rappelant.",
+    "recapTitre": "Votre demande",
+    "recapNote": "Le studio vous rappelle dans les 24 heures pour confirmer. La plage n'est pas réservée tant que cet appel n'a pas eu lieu.",
+    "plusDeDates": "Voir d’autres dates"
   },
   "nouveauPatient": {
     "metaTitre": "Dentiste à Ahuntsic qui accepte les nouveaux patients",

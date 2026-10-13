@@ -21,6 +21,24 @@ export const samplePayloads: Record<string, NetlifyPayload> = {
     },
   },
 
+  "rendez-vous": {
+    form_name: "rendez-vous",
+    created_at: new Date().toISOString(),
+    data: {
+      lang: "fr",
+      nom: "Camille Bouchard",
+      telephone: "514 555 0142",
+      courriel: "camille.bouchard@example.com",
+      premiereVisite: "Oui",
+      motif: "Examen complet (nouveau patient)",
+      couverture: "RCSD",
+      douleur: "Oui, c'est supportable",
+      precisions: "Je préfère le matin si possible.",
+      creneau: "2026-10-20T14:00:00.000Z",
+      creneauFin: "2026-10-20T15:15:00.000Z",
+      creneauLibelle: "mardi 20 octobre à 10 h 00",
+    },
+  },
   rappel: {
     form_name: "rappel",
     created_at: new Date().toISOString(),

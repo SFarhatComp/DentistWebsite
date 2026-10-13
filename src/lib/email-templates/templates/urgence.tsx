@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Body, Container, Head, Html, Preview, Section, Row, Column, Text } from "@react-email/components"
 import { formatDate, getString, resolveLang } from "../theme"
-import { DESTINATAIRE } from "../destinataire"
+import { DESTINATAIRE_RENDEZ_VOUS } from "../destinataire"
 import type { NetlifyPayload } from "../types"
 
 /* --------------------------------------------------------------------------
@@ -278,7 +278,7 @@ export const urgenceMeta = (payload: NetlifyPayload) => {
   const p = priorite(d, lang)
   const typeLabel = TYPES[getString(d, "type")]?.[lang] ?? getString(d, "type")
   return {
-    to: DESTINATAIRE,
+    to: DESTINATAIRE_RENDEZ_VOUS,
     subject: `[${p.label}] ${t.sujet} — ${getString(d, "nom")} — ${typeLabel}`,
     replyTo: getString(d, "courriel") || undefined,
     isUrgent: p.ton === "#7A3E52",

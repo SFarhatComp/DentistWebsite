@@ -44,6 +44,23 @@
       <input name="moment" />
     </form>
 
+    <!-- Page rendez-vous : demande en deux etapes, questions puis creneau -->
+    <form name="rendez-vous" netlify netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="lang" />
+      <input name="nom" />
+      <input name="telephone" type="tel" />
+      <input name="courriel" type="email" />
+      <input name="premiereVisite" />
+      <input name="motif" />
+      <input name="couverture" />
+      <input name="douleur" />
+      <textarea name="precisions"></textarea>
+      <input name="creneau" />
+      <input name="creneauFin" />
+      <input name="creneauLibelle" />
+    </form>
+
     <!-- Page urgence : le type de situation conditionne les champs envoyes -->
     <form name="urgence" netlify netlify-honeypot="bot-field" hidden>
       <input name="bot-field" />

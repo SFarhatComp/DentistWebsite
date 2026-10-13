@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Body, Container, Head, Html, Preview, Section, Row, Column, Text } from "@react-email/components"
 import { formatDate, getString, resolveLang } from "../theme"
-import { DESTINATAIRE } from "../destinataire"
+import { DESTINATAIRE_RENDEZ_VOUS } from "../destinataire"
 import type { NetlifyPayload } from "../types"
 
 /* --------------------------------------------------------------------------
@@ -166,7 +166,7 @@ export const rappelMeta = (payload: NetlifyPayload) => {
   const lang = resolveLang(d) as Lang
   const t = L[lang]
   return {
-    to: DESTINATAIRE,
+    to: DESTINATAIRE_RENDEZ_VOUS,
     subject: `[${t.sujet}] ${getString(d, "nom")} — ${getString(d, "motif")}`,
     replyTo: getString(d, "courriel") || undefined,
   }

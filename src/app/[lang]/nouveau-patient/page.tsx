@@ -3,6 +3,7 @@ import Link from "next/link"
 import { GrilleFilets, CaseFilets } from "@/components/v2/grille-filets"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import { i18n } from "@/lib/i18n-config"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Question {
@@ -17,7 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("nouveauPatient.metaTitre") }, description: t("nouveauPatient.metaDescription") }
+  return metaPage(params.lang as Locale, "/nouveau-patient", { titre: t("nouveauPatient.metaTitre"), description: t("nouveauPatient.metaDescription") })
 }
 
 /* --------------------------------------------------------------------------

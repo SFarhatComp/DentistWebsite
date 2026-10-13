@@ -1,12 +1,13 @@
 import Link from "next/link"
 import { getTranslations } from "@/lib/i18n"
 import type { Metadata } from "next"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("merci.title") }, robots: { index: false, follow: false } }
+  return metaPage(params.lang as Locale, "/merci", { titre: t("merci.title"), indexable: false })
 }
 
 /**

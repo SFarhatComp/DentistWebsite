@@ -4,6 +4,7 @@ import { SchemaParcours } from "@/components/v2/schema-parcours"
 import { GrilleFilets, CaseFilets } from "@/components/v2/grille-filets"
 import { BandeCta } from "@/components/v2/bande-cta"
 import { getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Detail {
@@ -19,7 +20,7 @@ interface Savoir {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("parcours.metaTitre") }, description: t("parcours.metaDescription") }
+  return metaPage(params.lang as Locale, "/parcours", { titre: t("parcours.metaTitre"), description: t("parcours.metaDescription") })
 }
 
 export default async function ParcoursPage(props: { params: Promise<{ lang: string }> }) {

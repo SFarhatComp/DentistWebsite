@@ -5,6 +5,7 @@
 
 import { render } from "@react-email/render"
 import { ContactEmail, contactMeta } from "./templates/contact"
+import { RendezVousEmail, rendezVousMeta } from "./templates/rendez-vous"
 import { RappelEmail, rappelMeta } from "./templates/rappel"
 import { UrgenceEmail, urgenceMeta } from "./templates/urgence"
 import type { NetlifyPayload, EmailMeta } from "./types"
@@ -28,6 +29,10 @@ export async function renderTemplate(payload: NetlifyPayload): Promise<RenderedE
     // Formulaire d urgence de la v2 : nom de formulaire distinct de l ancien
     // « emergency », qui reste branche le temps que les caches des visiteurs
     // expirent.
+    case "rendez-vous":
+      element = RendezVousEmail({ payload })
+      meta = rendezVousMeta(payload)
+      break
     case "rappel":
       element = RappelEmail({ payload })
       meta = rappelMeta(payload)

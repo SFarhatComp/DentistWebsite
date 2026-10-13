@@ -3,6 +3,7 @@ import { HeroPage } from "@/components/v2/hero-page"
 import { BandeCta } from "@/components/v2/bande-cta"
 import { PiecesSection } from "@/components/v2/pieces-section"
 import { getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Bloc {
@@ -13,7 +14,7 @@ interface Bloc {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("apropos.metaTitre") }, description: t("apropos.metaDescription") }
+  return metaPage(params.lang as Locale, "/a-propos", { titre: t("apropos.metaTitre"), description: t("apropos.metaDescription") })
 }
 
 export default async function AProposPage(props: { params: Promise<{ lang: string }> }) {

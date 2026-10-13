@@ -3,15 +3,13 @@ import { HeroAccueil } from "@/components/v2/hero-accueil"
 import { EspacesSection } from "@/components/v2/espaces-section"
 import { CarteSoinsSection } from "@/components/v2/carte-soins-section"
 import { getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return {
-    title: { absolute: t("accueil.metaTitre") },
-    description: t("accueil.metaDescription"),
-  }
+  return metaPage(params.lang as Locale, "", { titre: t("accueil.metaTitre"), description: t("accueil.metaDescription") })
 }
 
 /**

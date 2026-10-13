@@ -5,6 +5,7 @@ import { Section, TitreSection } from "@/components/v2/section"
 import { CartesNumerotees, type CarteNumerotee } from "@/components/v2/cartes-numerotees"
 import * as Ic from "@/components/v2/icones"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Etape {
@@ -27,7 +28,7 @@ const REPERES = [Ic.Icone02, Ic.Icone03, Ic.Icone04, Ic.Icone05, Ic.Icone06, Ic.
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("visite.metaTitre") }, description: t("visite.metaDescription") }
+  return metaPage(params.lang as Locale, "/premiere-visite", { titre: t("visite.metaTitre"), description: t("visite.metaDescription") })
 }
 
 /** Liste à puces terracotta, reprise dans « Quoi apporter » et « Annulation ». */

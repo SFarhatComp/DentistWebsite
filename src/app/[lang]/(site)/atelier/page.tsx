@@ -3,6 +3,7 @@ import { GrilleFilets, CaseFilets } from "@/components/v2/grille-filets"
 import { BandeCta } from "@/components/v2/bande-cta"
 import * as Ic from "@/components/v2/icones"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Change {
@@ -35,7 +36,7 @@ const PHOTOS = ["/v2/conception.webp", "/v2/impression-3d.webp", "/v2/atelier.we
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("atelier.metaTitre") }, description: t("atelier.metaDescription") }
+  return metaPage(params.lang as Locale, "/atelier", { titre: t("atelier.metaTitre"), description: t("atelier.metaDescription") })
 }
 
 export default async function AtelierPage(props: { params: Promise<{ lang: string }> }) {

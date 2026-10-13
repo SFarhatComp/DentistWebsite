@@ -1,8 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { HeroPage } from "@/components/v2/hero-page"
-import { PlanningGoogle } from "@/components/v2/planning-google"
+import { Suspense } from "react"
+import { DemandeRendezVous } from "@/components/v2/demande-rendez-vous"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Duree {
@@ -14,7 +16,7 @@ interface Duree {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("rdv.metaTitre") }, description: t("rdv.metaDescription") }
+  return metaPage(params.lang as Locale, "/rendez-vous", { titre: t("rdv.metaTitre"), description: t("rdv.metaDescription") })
 }
 
 export default async function RendezVousPage(props: { params: Promise<{ lang: string }> }) {
@@ -57,8 +59,12 @@ export default async function RendezVousPage(props: { params: Promise<{ lang: st
               <p className="mt-2 text-foreground/85">{t("rdv.avisTexte")}</p>
             </div>
 
-            <div className="mt-8">
-              <PlanningGoogle lang={lang} />
+            <div className="mt-10">
+              {/* useSearchParams exige une frontiere de suspense : sans elle,
+                  toute la page basculerait en rendu dynamique. */}
+              <Suspense fallback={null}>
+                <DemandeRendezVous lang={lang} />
+              </Suspense>
             </div>
           </div>
 

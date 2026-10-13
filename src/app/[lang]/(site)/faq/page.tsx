@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { HeroPage } from "@/components/v2/hero-page"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Question {
@@ -17,7 +18,7 @@ interface Groupe {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("faqPage.metaTitre") }, description: t("faqPage.metaDescription") }
+  return metaPage(params.lang as Locale, "/faq", { titre: t("faqPage.metaTitre"), description: t("faqPage.metaDescription") })
 }
 
 export default async function FaqPage(props: { params: Promise<{ lang: string }> }) {

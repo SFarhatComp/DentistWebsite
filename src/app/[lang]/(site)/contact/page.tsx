@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import { HeroPage } from "@/components/v2/hero-page"
 import { CarteGoogle } from "@/components/v2/carte-google"
-import { GrilleFilets, CaseFilets } from "@/components/v2/grille-filets"
+import * as Ic from "@/components/v2/icones"
 import { Suspense } from "react"
 import { ContactForm } from "@/components/forms/contact-form"
 import { FormulaireRappel } from "@/components/v2/formulaire-rappel"
 import { getTranslationObjectList, getTranslations } from "@/lib/i18n"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Coordonnee {
@@ -26,10 +27,13 @@ interface Quartier {
   texte: string
 }
 
+/** Autobus, métro, voiture, stationnement — dans l'ordre de la maquette. */
+const TRANSPORTS = [Ic.Icone48, Ic.Icone49, Ic.Icone50, Ic.Icone51]
+
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("contactPage.metaTitre") }, description: t("contactPage.metaDescription") }
+  return metaPage(params.lang as Locale, "/contact", { titre: t("contactPage.metaTitre"), description: t("contactPage.metaDescription") })
 }
 
 export default async function ContactPage(props: { params: Promise<{ lang: string }> }) {
@@ -101,7 +105,6 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
 
           <div className="flex-[1.1_1_440px]">
             <CarteGoogle
-              bouton={t("contactPage.carteBouton")}
               note={t("contactPage.carteNote")}
               itineraire={t("contactPage.carteItineraire")}
               titreCadre={t("contactPage.carteTitreCadre")}
@@ -115,14 +118,22 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
           <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
             {t("contactPage.venirTitre")}
           </h2>
-          <GrilleFilets className="mt-10">
-            {venir.map((v) => (
-              <CaseFilets key={v.mode} base={260} fond="bg-surface">
-                <h3 className="m-0 font-display text-[27px] font-semibold leading-[1.2]">{v.mode}</h3>
-                <p className="mt-3 text-foreground/85">{v.texte}</p>
-              </CaseFilets>
-            ))}
-          </GrilleFilets>
+          <div className="mt-8 flex flex-col gap-5">
+            {venir.map((v, i) => {
+              const Icone = TRANSPORTS[i]
+              return (
+                <div key={v.mode} className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
+                  <strong className="flex min-w-[13ch] items-center gap-3 font-medium">
+                    <span className="flex shrink-0 self-center text-muted-foreground" aria-hidden="true">
+                      {Icone ? <Icone taille={28} /> : null}
+                    </span>
+                    {v.mode}
+                  </strong>
+                  <span className="flex-[1_1_260px] text-foreground/85">{v.texte}</span>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </section>
 

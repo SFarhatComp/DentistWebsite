@@ -4,6 +4,7 @@ import { FormulaireUrgence } from "@/components/v2/formulaire-urgence"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import { getAllServices } from "@/lib/content"
 import * as Ic from "@/components/v2/icones"
+import { metaPage } from "@/lib/metadonnees"
 import type { Locale } from "@/types"
 
 interface Frais {
@@ -18,7 +19,7 @@ interface QA {
 export async function generateMetadata(props: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const params = await props.params
   const t = getTranslations(params.lang as Locale)
-  return { title: { absolute: t("urgence.metaTitre") }, description: t("urgence.metaDescription") }
+  return metaPage(params.lang as Locale, "/urgence", { titre: t("urgence.metaTitre"), description: t("urgence.metaDescription") })
 }
 
 /** Icônes des sept motifs d'urgence, dans l'ordre de la maquette. */
