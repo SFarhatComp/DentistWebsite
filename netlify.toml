@@ -10,6 +10,17 @@
   # Defense-in-depth: skip optional packages, keep installs predictable
   NPM_FLAGS = "--no-audit --prefer-offline"
 
+  # Le planning de rendez-vous Google, affiche dans /rendez-vous.
+  #
+  # Il est ici plutot que dans les variables du tableau de bord Netlify : ce
+  # n'est pas un secret — le lien se retrouve dans le code source de la page,
+  # c'est sa raison d'etre — et le garder versionne permet de voir quand il a
+  # change, et de revenir en arriere.
+  #
+  # Pour le remplacer : Google Agenda > Pages de reservation > Partager >
+  # Integrer. La marche a suivre complete est dans docs/rendez-vous-google.md.
+  NEXT_PUBLIC_GOOGLE_RDV_URL = "https://calendar.google.com/appointments/schedules/AcZssZ0x0Po4d20TBGp5_9yh0X_TME4RBFpD0H9ECMwVawluBbAPPIMx-CuZTt8K8FV1Zbwce__CerKX"
+
 # Netlify auto-detects Next.js and applies @netlify/plugin-nextjs.
 # No manual plugin config needed.
 
