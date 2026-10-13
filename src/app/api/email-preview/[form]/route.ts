@@ -31,7 +31,7 @@ function renderIndex(): string {
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Email Preview — Studio De Facto</title>
+  <title>Email Preview — Studio [de facto]</title>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 48px; max-width: 600px; margin: 0 auto; background: #FAF7F0; color: #1A1717; }
     h1 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; margin: 0 0 24px 0; color: #3A2438; }

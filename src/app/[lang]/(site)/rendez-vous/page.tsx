@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
-import { Suspense } from "react"
+import Link from "next/link"
 import { HeroPage } from "@/components/v2/hero-page"
 import { PlanningGoogle } from "@/components/v2/planning-google"
-import { FormulaireRappel } from "@/components/v2/formulaire-rappel"
 import { getTranslationList, getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -35,16 +34,11 @@ export default async function RendezVousPage(props: { params: Promise<{ lang: st
 
   return (
     <>
-      <HeroPage
-        lang={lang}
-        surtitre={t("rdv.surtitre")}
-        titre={t("rdv.titre")}
-        hauteur={600}
-      />
+      <HeroPage lang={lang} surtitre={t("rdv.surtitre")} titre={t("rdv.titre")} hauteur={600} />
 
       <section className="bg-background">
         <div className="mx-auto flex max-w-page flex-wrap items-start gap-[72px] px-[clamp(16px,5vw,56px)] py-24">
-          <div className="flex-[1.15_1_480px]">
+          <div className="min-w-0 flex-[1.15_1_480px]">
             <p className="m-0 max-w-[68ch] text-[clamp(17px,1.5vw,20px)] leading-[1.55] text-foreground/85">
               {t("rdv.introAvant")}
               {tel}
@@ -56,30 +50,20 @@ export default async function RendezVousPage(props: { params: Promise<{ lang: st
             </h2>
             <p className="mt-4 max-w-[68ch] text-foreground/85">{t("rdv.horaireTexte")}</p>
 
+            {/* L'avis est juste au-dessus du calendrier, et non en bas de page :
+                c'est là que se forme l'attente d'un rendez-vous ferme. */}
+            <div className="mt-8 rounded-sm border-l-2 border-primary bg-surface py-5 pl-6 pr-5">
+              <p className="m-0 font-display text-[22px] font-semibold leading-[1.2]">{t("rdv.avisTitre")}</p>
+              <p className="mt-2 text-foreground/85">{t("rdv.avisTexte")}</p>
+            </div>
+
             <div className="mt-8">
               <PlanningGoogle lang={lang} />
             </div>
           </div>
 
-          <div className="flex flex-[0.85_1_340px] flex-col gap-10">
+          <div className="flex min-w-0 flex-[0.85_1_340px] flex-col gap-10">
             <div>
-              <h2 className="m-0 font-display text-[27px] font-semibold leading-[1.2]">{t("rdv.rappelTitre")}</h2>
-              <p className="mt-3 text-foreground/85">{t("rdv.rappelTexte")}</p>
-              <div className="mt-6">
-                {/* useSearchParams exige une frontiere de suspense : sans elle,
-                    toute la page bascule en rendu dynamique. */}
-                <Suspense fallback={null}>
-                  <FormulaireRappel lang={lang} />
-                </Suspense>
-              </div>
-              <p className="mt-5 text-[15px] text-foreground/75">
-                {t("rdv.urgenceAvant")}
-                {tel}
-                {t("rdv.urgenceApres")}
-              </p>
-            </div>
-
-            <div className="border-t border-foreground/15 pt-6">
               <h2 className="m-0 font-display text-[27px] font-semibold leading-[1.2]">{t("rdv.dureesTitre")}</h2>
               <table className="mt-5 w-full border-collapse text-left">
                 <thead>
@@ -114,6 +98,27 @@ export default async function RendezVousPage(props: { params: Promise<{ lang: st
                 {tel}
                 {t("rdv.dureesNoteApres")}
               </p>
+            </div>
+
+            {/* La demande de rappel vit désormais dans la page contact : on y
+                renvoie plutôt que de dupliquer le formulaire. */}
+            <div className="border-t border-foreground/15 pt-6">
+              <h2 className="m-0 font-display text-[27px] font-semibold leading-[1.2]">{t("rdv.rappelTitre")}</h2>
+              <p className="mt-3 text-foreground/85">{t("rdv.rappelTexte")}</p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href={`/${lang}/contact#rappel`}
+                  className="inline-flex min-h-12 items-center justify-center rounded-sm bg-primary px-[26px] text-base font-medium text-primary-foreground no-underline transition-colors hover:bg-primary-hover"
+                >
+                  {t("rdv.rappelLien")}
+                </Link>
+                <a
+                  href="tel:+15148637805"
+                  className="inline-flex min-h-12 items-center justify-center rounded-sm px-[26px] text-base font-medium text-foreground no-underline shadow-[inset_0_0_0_1px_hsl(var(--foreground)/0.35)] transition-colors hover:bg-foreground/5"
+                >
+                  {t("common.appeler")}
+                </a>
+              </div>
             </div>
 
             <div className="border-t border-foreground/15 pt-6 text-[15px] text-foreground/75">

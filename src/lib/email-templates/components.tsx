@@ -99,7 +99,7 @@ export function EmailHeader({ kicker }: { kicker?: string }) {
           margin: 0,
         }}
       >
-        Studio Dentaire De Facto
+        Studio Dentaire [de facto]
       </Text>
       {kicker && (
         <Text
@@ -709,7 +709,7 @@ export function EmailFooter({ lang = "fr" }: { lang?: EmailLang } = {}) {
           lineHeight: 1.6,
         }}
       >
-        Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic
+        Studio Dentaire [de facto] — 728 rue Fleury Est, Ahuntsic
       </Text>
       <Text
         style={{

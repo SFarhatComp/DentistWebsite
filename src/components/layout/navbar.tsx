@@ -61,7 +61,7 @@ export function Navbar({ lang }: { lang: Locale }) {
       <div className="mx-auto flex h-[68px] max-w-page items-center justify-between gap-6 px-[clamp(16px,5vw,56px)]">
         <Link href={`/${lang}`} aria-label={t("nav.retourAccueil")} className="flex shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/v2/logo.svg" alt="Studio Dentaire De Facto" className="block h-[50px] w-auto" />
+          <img src="/v2/logo.svg" alt="Studio Dentaire [de facto]" className="block h-10 w-auto nav:h-[50px]" />
         </Link>
 
         <nav aria-label={t("nav.principale")} className="hidden items-center gap-[22px] text-[15px] nav:flex">
@@ -82,20 +82,35 @@ export function Navbar({ lang }: { lang: Locale }) {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        {/* Sur un téléphone, les trois éléments de la rangée ne tiennent pas
+            côte à côte : l'appel à l'action poussait le bouton « Menu » hors de
+            l'écran, donc hors d'atteinte. Le libellé raccourcit sous le point
+            de rupture — « Rendez-vous » plutôt que « Prendre rendez-vous » —
+            et le bouton Menu ne se réduit jamais. */}
+        <div className="flex shrink-0 items-center gap-2">
           <Link
             href={`/${lang}/rendez-vous`}
-            className="inline-flex min-h-[44px] items-center justify-center whitespace-nowrap rounded-sm bg-primary px-[22px] text-[15px] font-medium text-primary-foreground no-underline transition-colors hover:bg-primary-hover"
+            className="inline-flex min-h-[44px] items-center justify-center whitespace-nowrap rounded-sm bg-primary px-3 text-sm font-medium text-primary-foreground no-underline transition-colors hover:bg-primary-hover nav:px-[22px] nav:text-[15px]"
           >
-            {t("nav.cta")}
+            <span className="nav:hidden">{t("nav.ctaCourt")}</span>
+            <span className="hidden nav:inline">{t("nav.cta")}</span>
           </Link>
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex min-h-[44px] items-center px-2.5 text-sm uppercase tracking-[0.14em] text-white nav:hidden"
+            className="inline-flex min-h-[44px] shrink-0 items-center gap-2 px-1.5 text-sm uppercase tracking-[0.14em] text-white nav:hidden"
             aria-expanded={open}
           >
-            {t("nav.menu")}
+            <span aria-hidden="true" className="flex flex-col gap-[5px]">
+              <span className="block h-[2px] w-5 bg-current" />
+              <span className="block h-[2px] w-5 bg-current" />
+              <span className="block h-[2px] w-5 bg-current" />
+            </span>
+            {/* Sous 360 px — vieux iPhone SE et quelques Android — il ne reste
+                plus la place du mot : les trois barres suffisent, et le nom
+                passe en étiquette lue par les lecteurs d'écran. */}
+            <span className="max-[359px]:hidden">{t("nav.menu")}</span>
+            <span className="sr-only min-[360px]:hidden">{t("nav.menu")}</span>
           </button>
         </div>
       </div>

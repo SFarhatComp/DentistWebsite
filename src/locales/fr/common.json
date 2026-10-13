@@ -1,6 +1,6 @@
 {
   "site": {
-    "name": "De Facto Studio Dentaire"
+    "name": "[de facto] Studio Dentaire"
   },
   "nav": {
     "accueil": "Accueil",
@@ -26,7 +26,8 @@
     "menu": "Menu",
     "fermer": "Fermer le menu",
     "principale": "Navigation principale",
-    "retourAccueil": "Studio Dentaire De Facto, accueil"
+    "retourAccueil": "Studio Dentaire [de facto], accueil",
+    "ctaCourt": "Rendez-vous"
   },
   "common": {
     "enSavoirPlus": "En savoir plus",
@@ -35,637 +36,12 @@
     "retour": "Retour",
     "appeler": "Appeler 514 863-7805"
   },
-  "home": {
-    "metaTitle": "Studio Dentaire De Facto — Dentiste Ahuntsic, Montréal",
-    "metaDescription": "Studio dentaire à Ahuntsic, Montréal. Une approche fondée sur le temps, la clarté, la justesse et la continuité. Comprendre avant d'intervenir.",
-    "hero": {
-      "label": "STUDIO DENTAIRE — AHUNTSIC",
-      "title": "Comprendre avant d'intervenir.",
-      "subtitle": "Dr Bader Ramdani, dentiste généraliste et fondateur de [de facto]. Formé à l'Université Laval, il oriente sa pratique vers le diagnostic, la planification et la prévention, appuyé par un laboratoire numérique intégré au studio.",
-      "ctaPrimary": "Prendre rendez-vous",
-      "ctaSecondary": "Voir le studio"
-    },
-    "manifeste": {
-      "label": "Manifeste",
-      "title": "Manifeste De Facto",
-      "lines": {
-        "1": "Nous croyons qu'un bon traitement commence par une bonne compréhension.",
-        "2": "Qu'un patient bien informé prend de meilleures décisions.",
-        "3": "Que la prévention mérite autant d'attention que la réparation.",
-        "4": "Que la rigueur n'est pas un luxe, mais une responsabilité clinique.",
-        "5": "Et que la confiance se bâtit par la clarté.",
-        "6": "De Facto est un studio dentaire fondé sur une idée simple : prendre le temps de comprendre avant d'intervenir."
-      }
-    },
-    "approche": {
-      "label": "Approche",
-      "title": "Une approche structurée, mesurée",
-      "body": "De Facto privilégie une approche structurée : comprendre la situation, identifier les priorités, expliquer les options et planifier les soins avec mesure. L'objectif n'est pas d'accumuler les traitements, mais de proposer une séquence cohérente, adaptée à la réalité clinique et personnelle du patient."
-    },
-    "difference": {
-      "label": "Approche",
-      "title": "Ce qui rend l'approche différente",
-      "items": {
-        "1": "Un examen complet avant les décisions importantes.",
-        "2": "Une documentation clinique claire.",
-        "3": "Un plan de traitement expliqué par phases.",
-        "4": "Un laboratoire intégré pour mieux contrôler certains détails.",
-        "5": "Une approche conservatrice et réfléchie.",
-        "6": "Une coordination avec des spécialistes lorsque nécessaire."
-      }
-    },
-    "portfolio": {
-      "label": "Portfolio clinique",
-      "title": "Des cas cliniques sélectionnés",
-      "intro": "Des cas sélectionnés seront présentés avec consentement, contexte clinique et explications sobres afin d'illustrer notre manière de diagnostiquer, planifier et traiter.",
-      "items": {
-        "1": {
-          "title": "Fiche de diagnostic",
-          "alt": "fiche-diagnostic-de-facto.jpg"
-        },
-        "2": {
-          "title": "Plan par phases",
-          "alt": "plan-phases-de-facto.jpg"
-        },
-        "3": {
-          "title": "Photos intraorales annotées",
-          "alt": "photos-intraorales-annotees-de-facto.jpg"
-        },
-        "4": {
-          "title": "Modèle 3D",
-          "alt": "modele-3d-de-facto.jpg"
-        },
-        "5": {
-          "title": "Scan intraoral",
-          "alt": "scan-intraoral-de-facto.jpg"
-        },
-        "6": {
-          "title": "Étapes laboratoire",
-          "alt": "etapes-laboratoire-de-facto.jpg"
-        },
-        "7": {
-          "title": "Résumé patient anonymisé",
-          "alt": "resume-patient-anonymise-de-facto.jpg"
-        }
-      }
-    },
-    "triad": {
-      "label": "Lecture globale du risque",
-      "title": "Une lecture globale du risque",
-      "body": "Lors de l'examen complet, nous analysons le patient selon une logique globale : risque carieux, santé parodontale, habitudes, fonction et contexte personnel. Cette lecture permet d'établir un portrait plus juste et d'adapter la fréquence de suivi, les priorités et la prévention."
-    },
-    "deuxRdv": {
-      "label": "Examen et présentation",
-      "title": "Une expérience structurée en deux temps",
-      "body": "Dans les situations qui le justifient, l'examen et la présentation du plan sont séparés afin de permettre une analyse plus complète et une discussion plus claire.",
-      "rdv1": {
-        "title": "Rendez-vous 1 — Collecte de données",
-        "body": "Examen complet, photos, radiographies selon indication, scan, discussion initiale."
-      },
-      "rdv2": {
-        "title": "Rendez-vous 2 — Portrait buccodentaire",
-        "body": "Présentation du portrait buccodentaire et plan de traitement lorsque nécessaire."
-      }
-    },
-    "piliers": {
-      "label": "Les piliers De Facto",
-      "title": "Une approche fondée sur le temps, la clarté, la justesse et la continuité.",
-      "temps": {
-        "title": "Le temps",
-        "phrase": "Comprendre avant d'intervenir.",
-        "body": "Un bon traitement commence par une compréhension complète de la situation."
-      },
-      "clarte": {
-        "title": "La clarté",
-        "phrase": "Rendre visible ce qui compte.",
-        "body": "Les images, les modèles et les explications transforment l'examen en portrait clair."
-      },
-      "justesse": {
-        "title": "La justesse",
-        "phrase": "Planifier avec mesure.",
-        "body": "Les soins sont priorisés, expliqués et adaptés à votre réalité."
-      },
-      "continuite": {
-        "title": "La continuité",
-        "phrase": "Soigner dans une vision d'ensemble.",
-        "body": "Chaque étape relie le diagnostic, le traitement, le laboratoire et le suivi."
-      }
-    },
-    "parcours": {
-      "label": "Parcours patient",
-      "title": "Une expérience structurée du premier contact au suivi",
-      "body": "Nous avons conçu l'expérience patient pour que chaque étape soit claire, documentée et compréhensible.",
-      "demande": {
-        "title": "Demande de rendez-vous",
-        "body": "Vous transmettez vos informations et la raison de la consultation."
-      },
-      "examen": {
-        "title": "Examen complet",
-        "body": "Évaluation clinique, radiographies et photos selon indication."
-      },
-      "plan": {
-        "title": "Plan personnalisé",
-        "body": "Présentation des options, priorités, séquence et estimation."
-      },
-      "traitement": {
-        "title": "Traitement et suivi",
-        "body": "Réalisation, suivis post-opératoires et entretien à long terme."
-      },
-      "cta": "Voir le déroulement de la première visite"
-    },
-    "services": {
-      "label": "Nos soins",
-      "title": "Des soins complets, planifiés selon vos besoins"
-    },
-    "evaluationSection": {
-      "label": "Première étape",
-      "title": "Commencer par une évaluation complète",
-      "body": "La première étape est de comprendre votre situation. Chez De Facto, la première visite permet de documenter, expliquer et planifier les soins avant de prendre des décisions importantes.",
-      "cta": "Demander une première visite"
-    },
-    "praticien": {
-      "label": "Le praticien",
-      "title": "Dr Bader Ramdani",
-      "role": "Dentiste généraliste, fondateur du Studio Dentaire De Facto",
-      "body": "Diplômé en médecine dentaire de l'Université Laval à Québec en 2021, le Dr Bader Ramdani exerce une dentisterie généraliste centrée sur le diagnostic, la planification et la prévention. Il a fondé Studio Dentaire De Facto pour offrir des soins où l'on prend le temps de comprendre avant d'intervenir.",
-      "credentials": [
-        "Doctorat en médecine dentaire — Université Laval, Québec, 2021",
-        "Membre de l'Ordre des dentistes du Québec (ODQ)",
-        "Pratique généraliste multidisciplinaire, avec laboratoire numérique intégré"
-      ]
-    },
-    "studioPreview": {
-      "label": "Le Studio",
-      "title": "Un studio dentaire conçu pour ralentir, comprendre et mieux planifier.",
-      "body": "L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement.",
-      "cta": "Découvrir le studio"
-    },
-    "laboratoire": {
-      "label": "Laboratoire intégré",
-      "title": "Un laboratoire dentaire intégré au service de la précision",
-      "body": "La présence d'un laboratoire au sein du studio permet une communication directe entre la clinique, le technicien et le dentiste responsable. Certains ajustements, réparations ou confections peuvent ainsi être réalisés plus efficacement, selon les besoins et les indications.",
-      "items": {
-        "1": "Technicien dentaire sur place",
-        "2": "Réparations rapides selon les cas",
-        "3": "Confection express selon les besoins",
-        "4": "Communication directe entre clinique et laboratoire",
-        "5": "Services aussi offerts aux dentistes et spécialistes externes"
-      }
-    },
-    "realisations": {
-      "label": "Réalisations",
-      "title": "Des traitements planifiés avec soin",
-      "case1": {
-        "tag": "Esthétique",
-        "title": "Restauration antérieure"
-      },
-      "case2": {
-        "tag": "Prothèse",
-        "title": "Couronne en zircone"
-      },
-      "case3": {
-        "tag": "Orthodontie",
-        "title": "Aligneurs — alignement léger"
-      },
-      "cta": "Voir toutes les réalisations"
-    },
-    "cta": {
-      "title": "Commencer par une évaluation complète",
-      "body": "La première étape est de comprendre votre situation. Notre équipe vous accompagne dans une démarche claire, structurée et personnalisée.",
-      "primary": "Demander un rendez-vous",
-      "secondary": "Nous contacter"
-    },
-    "coordonnees": {
-      "label": "Nous trouver",
-      "title": "Au cœur d'Ahuntsic"
-    },
-    "urgence": {
-      "text": "Urgence dentaire — 514 863 7805"
-    },
-    "philosophie": {
-      "label": "LA PHILOSOPHIE DE FACTO",
-      "title": "Un ordre logique, du diagnostic jusqu'au maintien.",
-      "piliers": [
-        {
-          "title": "Comprendre avant de traiter.",
-          "body": "Le bon traitement découle d'un diagnostic clair : sa cause, son pronostic et le contexte général de la bouche."
-        },
-        {
-          "title": "Stabiliser avant de reconstruire.",
-          "body": "On ne reconstruit pas une bouche sur des fondations instables : la maladie active se contrôle d'abord."
-        },
-        {
-          "title": "Préserver avant de remplacer.",
-          "body": "Conserver les tissus naturels lorsqu'ils peuvent l'être raisonnablement — sans « tout sauver à tout prix » ni « tout remplacer rapidement »."
-        },
-        {
-          "title": "Prévenir pour faire durer.",
-          "body": "La prévention est une composante active du traitement, présente dès le premier rendez-vous — jamais une simple formalité de fin de parcours."
-        }
-      ]
-    },
-    "studioSection": {
-      "title": "728 rue Fleury Est, pièce par pièce",
-      "intro": "Les salles de soins, le poste de planification et le laboratoire se trouvent sous le même toit.",
-      "photos": [
-        {
-          "src": "attente",
-          "caption": "SALLE D'ATTENTE"
-        },
-        {
-          "src": "couloir",
-          "caption": "COULOIR"
-        },
-        {
-          "src": "salle-1",
-          "caption": "SALLE DE SOINS"
-        },
-        {
-          "src": "cadcam",
-          "caption": "CAD-CAM"
-        },
-        {
-          "src": "laboratoire-cure",
-          "caption": "LABORATOIRE"
-        },
-        {
-          "src": "planification",
-          "caption": "PLANIFICATION"
-        }
-      ]
-    },
-    "laboratoireSection": {
-      "label": "LE LABORATOIRE INTÉGRÉ",
-      "title": "Du diagnostic à la réalisation, sous un même regard",
-      "intro": "Un laboratoire dentaire complet, intégré à la clinique : la conception, la fabrication et l'ajustement des restaurations et des appareils se font sur place — pour une continuité totale entre le diagnostic clinique et le résultat livré.",
-      "blocs": [
-        {
-          "title": "Technologue dentaire sur place",
-          "body": "Les mêmes mains suivent votre cas du début à la fin de la fabrication des appareils et des restaurations — sans sous-traitance anonyme."
-        },
-        {
-          "title": "Communication directe",
-          "body": "Le dentiste, la technologue dentaire et le patient échangent autour du même projet, sans intermédiaire : moins d'allers-retours, des ajustements de teinte ou de forme faits sur place, aucune consigne perdue en chemin."
-        },
-        {
-          "title": "Planification numérique complète",
-          "body": "Le flux est entièrement numérique — empreinte optique, conception, fabrication — et chaque projet est archivé : en cas de casse, une restauration peut être reproduite à l'identique à partir du fichier d'origine."
-        }
-      ],
-      "plateauLabel": "LE PLATEAU TECHNIQUE",
-      "plateau": [
-        {
-          "categorie": "FRAISEUSE 5 AXES",
-          "materiel": "VHF E5",
-          "benefice": "Des restaurations plus précises, mieux ajustées et plus durables."
-        },
-        {
-          "categorie": "FOUR DE FRITTAGE",
-          "materiel": "Programmat S2",
-          "benefice": "Des couronnes résistantes et naturelles, faites sur place plutôt que sous-traitées."
-        },
-        {
-          "categorie": "FOUR CÉRAMIQUE SOUS VIDE",
-          "materiel": "Programmat EP 5010",
-          "benefice": "Un rendu vivant, sans teinte plate ni zones ternes."
-        },
-        {
-          "categorie": "IMPRESSION 3D",
-          "materiel": "Formlabs Form 4 Dental",
-          "benefice": "Des gouttières et provisoires exacts, disponibles rapidement."
-        },
-        {
-          "categorie": "CONCEPTION CAO",
-          "materiel": "Exocad + Smile Design",
-          "benefice": "Vous voyez le résultat avant qu'il existe, et le fichier reste archivé pour toute reprise."
-        },
-        {
-          "categorie": "DOCUMENTATION",
-          "materiel": "Studio photo",
-          "benefice": "Une couleur reproduite fidèlement et une continuité parfaite si une retouche s'impose."
-        }
-      ],
-      "cloture": "La technologie ne décide pas du traitement. Elle sert le diagnostic, la précision et la cohérence du projet clinique."
-    },
-    "parcoursSection": {
-      "label": "LE PARCOURS DE FACTO",
-      "title": "Cinq stades, un seul fil conducteur.",
-      "intro": "Le parcours se lit du diagnostic vers la réhabilitation, mais il n'est ni obligatoire ni strictement linéaire. On peut le quitter, y revenir ou s'arrêter à un stade. Une seule chose l'accompagne d'un bout à l'autre : la prévention.",
-      "entree": "Nouveau patient",
-      "s0Label": "STADE 0",
-      "s0Title": "Diagnostic",
-      "s1Label": "STADE 1",
-      "s1Title": "Stabilisation biologique",
-      "s2Label": "STADE 2",
-      "s2Title": "Structure",
-      "s4Label": "STADE 4",
-      "s4Title": "Réhabilitation",
-      "s3Label": "STADE 3 · TRANSVERSAL",
-      "s3Title": "Maintien",
-      "s3Note": "La prévention accompagne chaque stade, à vie",
-      "pasLigneDroiteLabel": "POURQUOI CE N'EST PAS UNE LIGNE DROITE",
-      "pasLigneDroiteBody": "Le parcours dépend des diagnostics, des risques et des objectifs de chaque personne. Selon la situation, on avance, on s'arrête, ou on revient à un stade antérieur.",
-      "pasLigneDroitePoints": [
-        "↳ Des embranchements et des sorties possibles après les stades 1, 2 ou 3",
-        "↻ Des points de réévaluation qui peuvent renvoyer à un stade précédent",
-        "◎ Une boucle de maintien qui se poursuit à long terme"
-      ],
-      "precisionLabel": "UNE PRÉCISION SUR LE MOT « STADE »",
-      "precisionBody": "Dans le Parcours [de facto], un « stade » désigne une famille d'objectifs thérapeutiques. Il ne représente pas la gravité d'une maladie et ne signifie pas que tous les patients doivent atteindre le stade suivant. À ne pas confondre avec les stades d'une classification parodontale, d'un cancer, ou une gradation de gravité.",
-      "metaDescription": "Le Parcours [de facto] : cinq stades, du diagnostic au maintien. Studio Dentaire De Facto, Ahuntsic, Montréal.",
-      "checkpointsLabel": "LES CHECKPOINTS",
-      "checkpointsTitle": "Quatre questions avant de passer à la suite",
-      "optionsLabel": "PRÉSENTATION DES OPTIONS",
-      "optionsTitle": "Plusieurs chemins peuvent être raisonnables",
-      "optionsNote": "Chaque option est chiffrée par écrit avant tout engagement, avec ses risques et ses alternatives — y compris ceux de ne rien entreprendre.",
-      "checkpoints": [
-        {
-          "q": "Avons-nous suffisamment compris la situation ?",
-          "d": "Diagnostics documentés · pronostic posé · objectifs connus"
-        },
-        {
-          "q": "Les maladies actives sont-elles contrôlées ?",
-          "d": "Douleur et infection contrôlées · réponse parodontale vérifiée"
-        },
-        {
-          "q": "Les fondations sont-elles fiables ?",
-          "d": "Dent restaurable · tissus stabilisés · entretien réalisable"
-        },
-        {
-          "q": "Prêts pour une transformation globale ?",
-          "d": "Stabilité acquise · plan validé · risques expliqués"
-        }
-      ],
-      "options": [
-        {
-          "code": "A",
-          "titre": "Sourire",
-          "note": "Recommandé ou global",
-          "d": "Répond à l'ensemble des diagnostics prioritaires."
-        },
-        {
-          "code": "B",
-          "titre": "Fonctionnel",
-          "note": "Alternatif ou localisé",
-          "d": "Traite les diagnostics selon des objectifs plus ciblés."
-        },
-        {
-          "code": "C",
-          "titre": "Stabilité",
-          "note": "Stabilisation ou compromis",
-          "d": "Traite les priorités et réduit les risques immédiats."
-        },
-        {
-          "code": "—",
-          "titre": "Statu quo",
-          "note": "Reporter ou ne rien entreprendre",
-          "d": "Toujours présenté, sans jugement, avec son calendrier de surveillance."
-        }
-      ]
-    },
-    "soinsSection": {
-      "title": "Les soins",
-      "rangees": [
-        {
-          "categorie": "Examen et prévention",
-          "detail": "Examen complet · Traitements parodontaux non chirurgicaux"
-        },
-        {
-          "categorie": "Restauration",
-          "detail": "Restauration indirecte sur dent naturelle · Couronne"
-        },
-        {
-          "categorie": "Endodontie",
-          "detail": "Traitement de canal"
-        },
-        {
-          "categorie": "Prothèses",
-          "detail": "Partielles et complètes, fixes et amovibles · Couronne et prothèse sur implant"
-        },
-        {
-          "categorie": "Orthodontie",
-          "detail": "Aligneurs, cas simples à modérés · Orthodontie interceptive"
-        },
-        {
-          "categorie": "Urgence",
-          "detail": "Urgence dentaire · Extraction dentaire"
-        }
-      ]
-    },
-    "praticienVisite": {
-      "praticienLabel": "LE PRATICIEN",
-      "nom": "Dr Bader Ramdani",
-      "role": "Dentiste généraliste · Fondateur",
-      "credentials": [
-        "Doctorat en médecine dentaire, Université Laval, 2021",
-        "Membre de l'Ordre des dentistes du Québec",
-        "Laboratoire numérique intégré, réservé aux cas traités au studio"
-      ],
-      "portraitLabel": "BREF PORTRAIT",
-      "portraitBody1": "Né à Montréal, le Dr Ramdani a grandi dans Saint-Michel puis dans Ahuntsic. Il a poursuivi ses études en médecine dentaire à l'Université Laval, à Québec, avant de revenir exercer dans le quartier où il a grandi.",
-      "portraitBody2": "Il a fondé Studio Dentaire De Facto pour pratiquer une dentisterie où le diagnostic précède le geste : comprendre la bouche dans son ensemble, expliquer ce qui s'y observe, et présenter des options plutôt qu'un forfait."
-    },
-    "faqSection": {
-      "label": "QUESTIONS FRÉQUENTES",
-      "title": "Le studio, en pratique",
-      "colonne1": [
-        {
-          "q": "Faut-il une référence pour un premier rendez-vous ?",
-          "a": "Non. Vous pouvez contacter le studio directement, par téléphone, par courriel ou avec le formulaire en ligne."
-        },
-        {
-          "q": "Le studio accepte-t-il de nouveaux patients ?",
-          "a": "Oui. La première rencontre est un examen complet, qui sert de point de départ à tout le reste."
-        },
-        {
-          "q": "Combien de temps dure la première visite ?",
-          "a": "Environ 60 à 75 minutes, selon la situation. Ce temps couvre l'entrevue, l'examen, les images nécessaires et l'explication du portrait clinique."
-        },
-        {
-          "q": "Quelles sont les heures d'ouverture ?",
-          "a": "Du lundi au mercredi, de 10 h à 18 h."
-        },
-        {
-          "q": "Que faire en cas d'urgence dentaire ?",
-          "a": "Appelez le studio au 514 863 7805 pendant les heures d'ouverture. Nous évaluons la situation et déterminons le délai approprié."
-        },
-        {
-          "q": "Comment se rendre au studio ?",
-          "a": "Le studio est au 728 rue Fleury Est, dans Ahuntsic. Les stations de métro Sauvé et Henri-Bourassa sont à proximité et du stationnement sur rue est disponible."
-        },
-        {
-          "q": "En français ou en anglais ?",
-          "a": "Les rendez-vous, les explications et les documents remis sont offerts en français et en anglais."
-        }
-      ],
-      "colonne2": [
-        {
-          "q": "Le laboratoire est-il vraiment sur place ?",
-          "a": "Oui. La conception et la fabrication se font dans le laboratoire numérique intégré au studio, par la même technologue dentaire, du début à la fin."
-        },
-        {
-          "q": "Le laboratoire accepte-t-il des cas d'autres cliniques ?",
-          "a": "Non. Le laboratoire fait partie du studio et sert uniquement aux cas traités ici."
-        },
-        {
-          "q": "Le studio est-il affilié à un groupe de cliniques ?",
-          "a": "Non. Le studio est indépendant : aucune affiliation corporative, aucun partenariat commercial, aucun objectif de vente imposé."
-        },
-        {
-          "q": "Que reçoit-on après l'examen ?",
-          "a": "Un portrait clinique expliqué, un plan de soins priorisé remis par écrit, les options possibles et ce qui arrive si l'on ne fait rien."
-        },
-        {
-          "q": "Mes assurances sont-elles acceptées ?",
-          "a": "Les réclamations sont transmises électroniquement à la plupart des assureurs. Une estimation écrite est remise avant d'entreprendre les soins."
-        },
-        {
-          "q": "Traitez-vous les enfants ?",
-          "a": "Le studio pratique une dentisterie généraliste, incluant l'orthodontie interceptive chez l'enfant."
-        },
-        {
-          "q": "Puis-je obtenir mon dossier ou mes radiographies ?",
-          "a": "Oui. Vos images et votre dossier vous sont transmis sur demande, ou envoyés au professionnel de votre choix."
-        }
-      ]
-    },
-    "contactSection": {
-      "label": "NOUS TROUVER",
-      "titleLine1": "728 rue Fleury Est",
-      "titleLine2": "Ahuntsic, Montréal",
-      "telephoneLabel": "TÉLÉPHONE",
-      "heuresLabel": "HEURES",
-      "heuresValue": "Lun. – mer. · 10 h à 18 h",
-      "courrielLabel": "COURRIEL",
-      "courrielValue": "info@studiodefacto.ca",
-      "transportLabel": "TRANSPORT",
-      "transportValue": "Métro Sauvé et Henri-Bourassa",
-      "cta": "Prendre rendez-vous"
-    },
-    "avisClinique": "Les informations du site ne remplacent pas une évaluation clinique."
-  },
-  "studio": {
-    "metaDescription": "Studio Dentaire De Facto à Ahuntsic — pourquoi nous existons, notre approche clinique, l'espace, la technologie et nos engagements qualité.",
-    "intro": {
-      "label": "Le Studio",
-      "title": "Un studio dentaire conçu pour ralentir, comprendre et mieux planifier.",
-      "body": "Studio Dentaire De Facto a été conçu pour offrir une expérience plus calme, plus structurée et plus personnalisée. L'espace, l'approche clinique et les outils numériques sont réunis pour créer une continuité entre l'analyse, la décision et le traitement."
-    },
-    "pourquoi": {
-      "label": "Pourquoi De Facto existe",
-      "title": "La volonté du Dr Ramdani",
-      "body": "Studio Dentaire De Facto est né de la volonté du Dr Ramdani de créer un lieu de soins différent : un environnement calme, précis et apaisant, où le patient peut être écouté, compris et accompagné avec clarté.",
-      "body2": "L'objectif n'est pas seulement de traiter une dent ou de répondre à un symptôme. L'objectif est de prendre le temps de comprendre la situation complète du patient, d'expliquer les observations, de planifier les soins avec discernement et de poser les bonnes priorités.",
-      "body3": "Chez De Facto, le temps, l'écoute, la justesse et la continuité ne sont pas des détails. Ce sont les conditions nécessaires à des soins mieux compris, mieux planifiés et plus durables.",
-      "body4": "Le studio a été conçu pour remettre la relation clinique au centre de l'expérience : un lieu où la technologie soutient le jugement du dentiste sans le remplacer, et où chaque décision est prise avec mesure."
-    },
-    "philosophie": {
-      "label": "Philosophie clinique",
-      "title": "Comprendre avant d'intervenir",
-      "body": "Notre philosophie repose sur une idée simple : chaque traitement doit s'inscrire dans une compréhension globale du patient. Avant d'intervenir, nous cherchons à comprendre les risques, les priorités, les attentes et les limites propres à chaque situation."
-    },
-    "espace": {
-      "label": "L'espace",
-      "title": "Un espace pensé pour ralentir le rythme",
-      "body": "L'environnement du studio a été pensé pour créer une expérience plus calme, plus claire et plus humaine. Chaque zone — accueil, salle clinique, laboratoire et espace de discussion — soutient une même idée : prendre le temps de bien faire."
-    },
-    "equipement": {
-      "1": {
-        "title": "Radiographie numérique",
-        "body": "Imagerie précise avec une exposition réduite."
-      },
-      "2": {
-        "title": "Scanner intraoral",
-        "body": "Empreintes numériques sans pâte, plus confortables et précises."
-      },
-      "3": {
-        "title": "Photographie clinique",
-        "body": "Documentation visuelle complète pour la planification."
-      },
-      "4": {
-        "title": "Impression 3D",
-        "body": "Modèles, guides et temporaires fabriqués sur place."
-      },
-      "5": {
-        "title": "Conception numérique",
-        "body": "Visualisation et planification des traitements esthétiques et fonctionnels."
-      },
-      "6": {
-        "title": "Laboratoire intégré",
-        "body": "Coordination directe entre clinique et fabrication."
-      },
-      "label": "Équipement et technologie",
-      "title": "La technologie au service du diagnostic",
-      "intro": "La technologie n'est pas utilisée comme une fin en soi. Elle sert à mieux diagnostiquer, mieux communiquer, mieux planifier et mieux contrôler les résultats."
-    },
-    "engagement": {
-      "label": "Engagement qualité",
-      "title": "Une qualité qui se construit dans chaque décision",
-      "body": "Notre engagement repose sur la rigueur des protocoles, la traçabilité des matériaux, la qualité des communications cliniques et la révision attentive des étapes importantes. La qualité ne se limite pas au résultat final : elle se construit dans chaque décision."
-    }
-  },
-  "experience": {
-    "label": "Expérience patient",
-    "heroTitle": "Une première visite conçue pour comprendre l'ensemble de votre situation",
-    "heroSubtitle": "Le parcours patient est conçu pour que chaque étape soit claire, documentée et compréhensible.",
-    "parcours": {
-      "label": "Le parcours en 4 phases",
-      "title": "Du premier contact au suivi",
-      "body": "Chaque phase a un objectif précis. Le patient sait où il en est, pourquoi une recommandation est faite, et quelles sont ses options."
-    },
-    "phases": {
-      "1": {
-        "title": "Avant le rendez-vous",
-        "body": "Vous remplissez un formulaire de demande, indiquez la raison de la consultation, transmettez vos informations de base et recevez les instructions avant la visite."
-      },
-      "2": {
-        "title": "Examen complet",
-        "body": "Questionnaire médical, historique dentaire, radiographies selon indication, examen parodontal, examen des dents, photos intra-orales, scan numérique selon le cas, et discussion des préoccupations."
-      },
-      "3": {
-        "title": "Plan personnalisé",
-        "body": "Présentation des besoins, priorisation des traitements, options possibles, risques du statu quo, séquence idéale, alternatives, estimation financière et coordination avec les assurances."
-      },
-      "4": {
-        "title": "Traitement et suivi",
-        "body": "Réalisation selon les priorités, suivis post-opératoires, prévention, rappels personnalisés et entretien à long terme."
-      }
-    },
-    "difference": {
-      "1": {
-        "title": "Plus de temps pour comprendre",
-        "body": "Chaque consultation est planifiée pour permettre une discussion réelle."
-      },
-      "2": {
-        "title": "Plus de clarté dans les explications",
-        "body": "Les options sont présentées en termes accessibles, avec leurs limites."
-      },
-      "3": {
-        "title": "Plus de précision dans la documentation",
-        "body": "Photos, scans et notes structurées suivent chaque étape du dossier."
-      },
-      "4": {
-        "title": "Plus de cohérence clinique-laboratoire",
-        "body": "La proximité du laboratoire améliore la communication et la finition."
-      },
-      "5": {
-        "title": "Plus de prévention",
-        "body": "Identifier les risques avant qu'ils deviennent des problèmes."
-      },
-      "6": {
-        "title": "Plus de transparence dans les options",
-        "body": "Estimations claires, alternatives nommées, décisions partagées."
-      },
-      "label": "Ce qui rend l'expérience différente",
-      "title": "Plus de temps. Plus de clarté. Plus de précision."
-    }
-  },
   "services": {
     "label": "Soins",
     "pageTitle": "Des soins dentaires complets, planifiés selon vos besoins",
     "pageSubtitle": "Les traitements proposés au studio sont intégrés dans une vision globale.",
     "metaTitle": "Soins dentaires à Ahuntsic",
-    "metaDescription": "Examen complet, prévention, restaurations, parodontie, couronnes, endodontie, implantologie, aligneurs, esthétique et urgences — tous les soins proposés par Studio Dentaire De Facto à Ahuntsic, Montréal.",
+    "metaDescription": "Examen complet, prévention, restaurations, parodontie, couronnes, endodontie, implantologie, aligneurs, esthétique et urgences — tous les soins proposés par Studio Dentaire [de facto] à Ahuntsic, Montréal.",
     "essentiels": {
       "label": "Soins essentiels",
       "title": "Soins essentiels"
@@ -727,248 +103,11 @@
       "short": "Évaluation rapide en cas de douleur ou traumatisme."
     }
   },
-  "servicePage": {
-    "serviceLabel": "Service",
-    "onThisPage": "Sur cette page",
-    "consulterAnchor": "Quand consulter",
-    "deroulementAnchor": "Déroulement",
-    "optionsAnchor": "Options",
-    "limitesAnchor": "Limites",
-    "specialistesAnchor": "Spécialistes",
-    "apresAnchor": "Après le traitement",
-    "faqAnchor": "Questions fréquentes",
-    "consulterLabel": "Quand consulter",
-    "consulterTitle": "Indications",
-    "deroulementLabel": "Déroulement",
-    "deroulementTitle": "Étapes du traitement",
-    "optionsLabel": "Options",
-    "optionsTitle": "Variantes possibles",
-    "limitesLabel": "Limites et risques",
-    "specialistesLabel": "Collaboration avec les spécialistes",
-    "specialistesBody": "Lorsque la situation dépasse le champ de traitement indiqué au studio, nous coordonnons la référence vers un spécialiste approprié. Certains traitements peuvent nécessiter une expertise spécialisée ou une prise en charge interdisciplinaire — dans ces situations, nous privilégions une référence claire, documentée et coordonnée.",
-    "apresLabel": "Après le traitement",
-    "apresTitle": "Suivi et soins",
-    "faqLabel": "FAQ",
-    "faqTitle": "Questions fréquentes",
-    "ctaTitle": "Demander une consultation",
-    "ctaBody": "Une évaluation personnalisée est nécessaire pour confirmer les options adaptées à votre situation.",
-    "ctaButton": "Prendre rendez-vous",
-    "relatedLabel": "Services liés",
-    "relatedTitle": "Vous pourriez aussi être intéressé par"
-  },
-  "patientNeeds": {
-    "label": "Vous consultez parce que…",
-    "title": "Trouver le bon point de départ",
-    "body": "Choisissez ce qui correspond le mieux à votre situation actuelle. Une évaluation clinique reste nécessaire pour confirmer l'approche adaptée.",
-    "needs": [
-      "J'ai mal",
-      "J'ai une dent cassée",
-      "Je veux un examen complet",
-      "Je veux améliorer mon sourire",
-      "Je veux remplacer une dent",
-      "Je veux aligner mes dents",
-      "Mes gencives saignent",
-      "Je veux comprendre un plan de traitement",
-      "J'ai besoin d'une urgence"
-    ]
-  },
-  "realisationsPage": {
-    "label": "Bientôt",
-    "title": "Réalisations cliniques",
-    "subtitle": "Cette section présentera des cas traités au studio. Elle sera publiée après une révision clinique et le consentement des patients concernés.",
-    "metaTitle": "Réalisations"
-  },
-  "ressources": {
-    "label": "Ressources",
-    "title": "Ressources",
-    "subtitle": "Documentation et parcours d'orientation pour préparer votre visite et comprendre votre dossier.",
-    "metaTitle": "Ressources",
-    "metaDescription": "Centre de ressources pour les patients de Studio Dentaire De Facto : première visite, assurances, confidentialité et questions fréquentes.",
-    "patientsLabel": "Patients",
-    "patientsTitle": "Pour préparer votre visite",
-    "proLabel": "Professionnels",
-    "proTitle": "Pour les dentistes et spécialistes",
-    "readCta": "Lire",
-    "accessCta": "Accéder",
-    "essentielles": [
-      {
-        "title": "Nouveaux patients",
-        "body": "Parcours d'orientation pour préparer votre première rencontre avec le studio."
-      },
-      {
-        "title": "Première visite",
-        "body": "Déroulement en deux rendez-vous, durée, documents à apporter."
-      },
-      {
-        "title": "Assurances et paiements",
-        "body": "Estimations, transmission aux assureurs, RCSD, RAMQ et politique de rendez-vous."
-      },
-      {
-        "title": "Questions fréquentes",
-        "body": "Réponses aux interrogations les plus courantes des nouveaux patients."
-      },
-      {
-        "title": "Confidentialité",
-        "body": "Comment vos renseignements personnels et de santé sont recueillis, utilisés et protégés."
-      },
-      {
-        "title": "Urgence dentaire",
-        "body": "Quoi faire en cas de douleur, traumatisme ou enflure."
-      }
-    ],
-    "professionnels": [
-      {
-        "title": "Espace professionnels",
-        "body": "Pour dentistes et spécialistes — laboratoire, partenariat, prescription, référence."
-      },
-      {
-        "title": "Référence / Prescription",
-        "body": "Référer un cas patient ou transmettre une prescription au laboratoire."
-      }
-    ]
-  },
-  "planTraitement": {
-    "label": "Plan de traitement",
-    "title": "Un plan clair avant de commencer.",
-    "subtitle": "Pour certains cas, une simple explication en fin de rendez-vous ne suffit pas. Lorsque la situation demande une réflexion plus complète, nous pouvons présenter le plan de traitement dans un rendez-vous dédié, à l'aide de photos, radiographies, modèles, scans et documents visuels.",
-    "metaTitle": "Présentation du plan de traitement",
-    "metaDescription": "Pour les cas complexes, De Facto présente le plan de traitement dans un rendez-vous dédié — avec photos, radiographies, modèles, scans et documents visuels.",
-    "pourquoiLabel": "Pourquoi",
-    "pourquoiTitle": "Pourquoi on ne décide pas tout en 5 minutes",
-    "pourquoiBody": "Certaines décisions dentaires ont des implications biologiques, fonctionnelles, esthétiques et financières. Prendre le temps de les expliquer permet de mieux comprendre les priorités, les alternatives et la séquence de traitement.",
-    "contenuLabel": "Contenu",
-    "contenuTitle": "Ce qui peut être présenté",
-    "peutEtrePresente": [
-      "Photos intraorales",
-      "Radiographies expliquées",
-      "Scan ou modèle imprimé",
-      "Observations cliniques",
-      "Problèmes prioritaires",
-      "Éléments stables",
-      "Éléments à surveiller",
-      "Options de traitement",
-      "Alternatives",
-      "Risques du statu quo",
-      "Estimation financière",
-      "Séquence dans le temps"
-    ],
-    "phasesLabel": "Phases",
-    "phasesTitle": "Les phases du plan",
-    "phases": [
-      {
-        "num": "Phase 1",
-        "title": "Stabilisation",
-        "body": "Maîtriser ce qui doit l'être avant tout : douleur, infection, lésions actives."
-      },
-      {
-        "num": "Phase 2",
-        "title": "Traitements nécessaires",
-        "body": "Restaurations, traitements conservateurs et soins indiqués selon les priorités."
-      },
-      {
-        "num": "Phase 3",
-        "title": "Prévention et maintien",
-        "body": "Hygiène, suivi parodontal, conseils personnalisés et entretien à long terme."
-      },
-      {
-        "num": "Phase 4",
-        "title": "Options esthétiques ou optimisations",
-        "body": "Lorsque la base est stable, certaines optimisations peuvent être envisagées selon vos objectifs."
-      },
-      {
-        "num": "Phase 5",
-        "title": "Suivi à long terme",
-        "body": "Selon la situation clinique et la stabilité atteinte."
-      }
-    ],
-    "choixLabel": "Choix",
-    "choixTitle": "Plan idéal, alternatives et statu quo",
-    "idealAlternatives": [
-      "Le plan idéal lorsque pertinent",
-      "Les alternatives raisonnables",
-      "Les limites de chaque option",
-      "Les conséquences possibles de ne pas traiter",
-      "La possibilité de séquencer dans le temps"
-    ],
-    "remisLabel": "Remis",
-    "remisTitle": "Documents remis au patient",
-    "remisIntro": "Selon la situation, le patient peut recevoir des documents concrets pour relire, comparer, réfléchir et poser ses questions.",
-    "documentsRemis": [
-      "Résumé personnalisé de santé buccodentaire",
-      "Plan de traitement par phases",
-      "Estimation",
-      "Instructions postopératoires",
-      "Fiche éducative",
-      "Documents d'assurance",
-      "Référence spécialiste",
-      "Photos ou explications visuelles",
-      "Recommandations de suivi"
-    ],
-    "ctaTitle": "Comprendre avant de décider",
-    "ctaBody": "Une évaluation complète est nécessaire pour déterminer si un rendez-vous de présentation du plan est indiqué dans votre cas.",
-    "ctaPrimary": "Demander une première visite",
-    "ctaSecondary": "Comprendre notre approche"
-  },
-  "nouveauxPatients": {
-    "label": "Nouveaux patients",
-    "title": "Nouveaux patients",
-    "subtitle": "Tout ce qu'il faut savoir avant votre première visite chez Studio Dentaire De Facto.",
-    "metaDescription": "Tout ce qu'il faut savoir avant votre première visite chez Studio Dentaire De Facto : préparation, documents, assurances, urgences et prochaines étapes.",
-    "welcomeLabel": "Bienvenue",
-    "welcomeTitle": "Bienvenue chez De Facto",
-    "welcomeBody": "Si c'est votre première visite, voici un parcours d'orientation pour préparer votre rendez-vous, comprendre ce qui vous attend et savoir où trouver l'information dont vous avez besoin. Notre équipe reste joignable pour toute question avant, pendant ou après votre visite.",
-    "cards": {
-      "premiereVisite": {
-        "title": "Première visite",
-        "body": "Découvrez ce qui est inclus, la durée approximative, les documents à apporter et ce que vous recevrez après l'examen.",
-        "cta": "Voir le déroulement"
-      },
-      "documents": {
-        "title": "Documents à préparer",
-        "body": "Carte d'assurance maladie, informations d'assurance dentaire, liste de médicaments, radiographies récentes et appareils dentaires si applicable.",
-        "cta": "Voir la liste complète"
-      },
-      "assurances": {
-        "title": "Assurances et paiements",
-        "body": "Comprendre comment fonctionnent les estimations, la transmission aux assureurs, le RCSD, la RAMQ et la responsabilité du patient.",
-        "cta": "Modalités administratives"
-      },
-      "urgence": {
-        "title": "Urgence ou rendez-vous régulier ?",
-        "body": "Pour une douleur, une enflure ou un traumatisme, suivez le parcours d'urgence. Pour une première rencontre, demandez un rendez-vous régulier.",
-        "cta": "Voir les urgences"
-      },
-      "plan": {
-        "title": "Plan de traitement",
-        "body": "Pour les cas complexes, un rendez-vous dédié peut être organisé pour présenter le plan avec photos, scans, modèles et documents.",
-        "cta": "Comprendre la présentation"
-      },
-      "faq": {
-        "title": "Questions fréquentes",
-        "body": "Réponses aux questions les plus courantes sur l'examen, les enfants, les aligneurs, les références aux spécialistes et plus.",
-        "cta": "Lire la FAQ"
-      },
-      "studio": {
-        "title": "Le Studio",
-        "body": "Notre approche, notre philosophie clinique et la raison d'être de De Facto.",
-        "cta": "Découvrir le studio"
-      },
-      "contact": {
-        "title": "Contact et accès",
-        "body": "Adresse, téléphone, courriel, transit, stationnement et accessibilité.",
-        "cta": "Coordonnées"
-      }
-    },
-    "ctaTitle": "Prêt pour votre première visite ?",
-    "ctaBody": "Notre équipe vous contactera pour préparer votre dossier et confirmer les prochaines étapes.",
-    "ctaPrimary": "Demander une première visite",
-    "ctaCall": "Nous appeler — 514 863 7805"
-  },
   "premiereVisite": {
     "label": "Première visite",
     "title": "Une expérience structurée en deux temps",
-    "subtitle": "S'il ne s'agit pas d'une consultation ciblée ou d'une urgence spécifique, De Facto souhaite structurer l'expérience de tout nouveau patient en débutant par un rendez-vous d'examen complet.",
-    "metaDescription": "Une expérience structurée en deux temps : collecte de données puis présentation du portrait buccodentaire. Studio Dentaire De Facto à Ahuntsic, Montréal.",
+    "subtitle": "S'il ne s'agit pas d'une consultation ciblée ou d'une urgence spécifique, [de facto] souhaite structurer l'expérience de tout nouveau patient en débutant par un rendez-vous d'examen complet.",
+    "metaDescription": "Une expérience structurée en deux temps : collecte de données puis présentation du portrait buccodentaire. Studio Dentaire [de facto] à Ahuntsic, Montréal.",
     "onThisPage": "Sur cette page",
     "tocObjectifs": "Objectifs",
     "tocDuree": "Durée",
@@ -1032,37 +171,6 @@
     "ctaPrimary": "Demander une première visite",
     "ctaSecondary": "Poser une question à l'équipe"
   },
-  "appointment": {
-    "label": "Rendez-vous",
-    "title": "Demander un rendez-vous",
-    "subtitle": "Deux parcours sont disponibles : une demande de rendez-vous régulière, et un parcours d'urgence dentaire. Choisissez celui qui correspond à votre situation.",
-    "metaDescription": "Demande de rendez-vous régulier ou parcours d'urgence — Studio Dentaire De Facto, Ahuntsic, Montréal. Téléphone : 514 863 7805.",
-    "formIntro": "Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier.",
-    "emergencyCta": "J'ai une urgence dentaire",
-    "otherQuestions": "Pour toute autre question administrative, consultez notre page",
-    "or": " ou notre ",
-    "contactLink": "Contact",
-    "faqLink": "FAQ",
-    "toggle": {
-      "principal": "Parcours principal",
-      "secondaire": "Parcours secondaire",
-      "cardRegulierTitle": "Demander un rendez-vous régulier",
-      "cardRegulierBody": "Première visite, examen, suivi, traitement planifié.",
-      "cardUrgenceTitle": "J'ai une urgence dentaire",
-      "cardUrgenceBody": "Douleur, traumatisme, enflure, dent cassée.",
-      "sectionRegulierTitle": "Demande de rendez-vous",
-      "sectionRegulierBody": "Remplissez ce formulaire pour que notre équipe puisse préparer votre dossier. Les informations transmises restent confidentielles.",
-      "sectionUrgenceTitle": "Urgence dentaire",
-      "sectionUrgenceBody": "Pour une réponse rapide, remplissez ce formulaire. Notre équipe vous contactera au plus tôt."
-    }
-  },
-  "emergency": {
-    "label": "Urgence",
-    "title": "Urgence dentaire",
-    "subtitle": "Si vous présentez une enflure importante, de la fièvre, une difficulté à respirer ou à avaler, contactez immédiatement les services d'urgence.",
-    "pageSubtitle": "Pour une demande d'urgence, utilisez le formulaire dédié sur la page Rendez-vous. Une page autonome est en préparation.",
-    "metaDescription": "Pour une urgence dentaire à Ahuntsic — douleur, traumatisme, enflure, dent cassée. Utilisez le formulaire dédié sur la page Rendez-vous ou appelez la clinique."
-  },
   "contact": {
     "label": "Contact",
     "title": "Nous joindre",
@@ -1100,8 +208,8 @@
       "appeler": "Appeler la clinique",
       "formulaire": "Formulaire d'urgence"
     },
-    "mapTitle": "Carte — Studio Dentaire De Facto",
-    "metaDescription": "Studio Dentaire De Facto — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au mercredi, 10 h à 18 h.",
+    "mapTitle": "Carte — Studio Dentaire [de facto]",
+    "metaDescription": "Studio Dentaire [de facto] — 728 rue Fleury Est, Ahuntsic, Montréal. Téléphone : 514 863 7805. Lundi au mercredi, 10 h à 18 h.",
     "phoneDisplay": "514 863-7805",
     "adresseComplete": "728, rue Fleury Est, Montréal",
     "heuresLundi": "Lundi 10 h à 18 h",
@@ -1112,7 +220,7 @@
   "consentGroup": {
     "block1Title": "Consentements obligatoires",
     "consent_no_replace": "Je comprends que ce formulaire ne remplace pas une consultation dentaire.",
-    "consent_contact": "J'autorise Studio Dentaire De Facto à me contacter concernant ma demande.",
+    "consent_contact": "J'autorise Studio Dentaire [de facto] à me contacter concernant ma demande.",
     "consent_no_confirmation": "Je comprends que l'envoi d'un formulaire ne confirme pas automatiquement un rendez-vous.",
     "block2Title": "Communications cliniques",
     "consent_use": "J'accepte que mes renseignements soient utilisés pour traiter ma demande de rendez-vous et préparer mon dossier.",
@@ -1150,7 +258,7 @@
     "message": "Message",
     "envoyer": "Envoyer",
     "envoi": "Envoi…",
-    "consentContact": "J'autorise Studio Dentaire De Facto à me contacter concernant ma demande.",
+    "consentContact": "J'autorise Studio Dentaire [de facto] à me contacter concernant ma demande.",
     "consentPrivacyPrefix": "J'ai pris connaissance de la ",
     "consentPrivacyLink": "politique de confidentialité",
     "consentPrivacySuffix": ".",
@@ -1162,110 +270,12 @@
     "body": "Notre équipe prendra contact avec vous afin de confirmer les prochaines étapes. En cas d'urgence médicale, rendez-vous immédiatement à l'urgence de l'hôpital le plus proche.",
     "backHome": "Retour à l'accueil"
   },
-  "faq": {
-    "metaTitle": "Questions fréquentes",
-    "metaDescription": "Réponses aux questions fréquentes sur les premières visites, examens, assurances, références aux spécialistes et autres aspects pratiques chez Studio Dentaire De Facto.",
-    "label": "Ressources",
-    "title": "Questions fréquentes",
-    "subtitle": "Réponses aux interrogations les plus courantes. Pour toute autre question, l'équipe est joignable directement.",
-    "q1": "Est-ce que je peux venir seulement pour une urgence ?",
-    "a1": "Oui, les urgences peuvent être évaluées selon les disponibilités. L'objectif d'un rendez-vous d'urgence est d'évaluer la situation, soulager lorsque possible et déterminer les prochaines étapes. Un examen complet peut être recommandé par la suite selon le contexte.",
-    "q2": "Est-ce que l'examen complet est obligatoire pour un nouveau patient ?",
-    "a2": "Pour établir une relation clinique structurée et proposer des soins adaptés, un examen complet est généralement recommandé pour les nouveaux patients. Certaines urgences peuvent toutefois nécessiter une évaluation ciblée d'abord.",
-    "q3": "Combien de temps dure la première visite ?",
-    "a3": "Pour un examen complet seul, prévoir généralement 30 à 45 minutes. Si un nettoyage est combiné au même rendez-vous, prévoir au moins 1 h 15, selon la situation clinique.",
-    "q4": "Est-ce que le nettoyage est inclus ?",
-    "a4": "Pas automatiquement. Le nettoyage peut être réalisé lors d'un rendez-vous combiné ou séparé selon le temps disponible, l'état des gencives, la quantité de dépôts et les besoins cliniques.",
-    "q5": "Est-ce que vous prenez les assurances ?",
-    "a5": "Nous pouvons vous accompagner dans la transmission de certaines informations ou estimations selon les systèmes disponibles. La couverture, les limites et les soldes non remboursés demeurent toutefois la responsabilité du patient.",
-    "q6": "Est-ce que vous traitez les enfants ?",
-    "a6": "Certains soins peuvent être offerts aux enfants selon l'âge, la coopération et la situation clinique. Lorsque nécessaire, une référence appropriée peut être recommandée.",
-    "q7": "Est-ce que vous offrez les aligneurs ?",
-    "a7": "Oui, certains cas d'alignement peuvent être évalués. Lorsque la situation dépasse les indications appropriées, une référence en orthodontie peut être recommandée.",
-    "q8": "Est-ce que vous faites les traitements de canal ?",
-    "a8": "Certains traitements endodontiques peuvent être évalués ou réalisés selon la situation. Les cas complexes peuvent être référés à un spécialiste en endodontie.",
-    "q9": "Est-ce que vous référez aux spécialistes ?",
-    "a9": "Oui. Lorsque la situation dépasse le champ de traitement indiqué au studio, nous coordonnons la référence vers un spécialiste approprié.",
-    "q10": "Est-ce que je recevrai un plan de traitement ?",
-    "a10": "Selon la situation, un plan peut être discuté immédiatement ou présenté lors d'un rendez-vous distinct appelé portrait buccodentaire.",
-    "q11": "Est-ce que je peux envoyer mes radiographies ?",
-    "a11": "Oui, si vous avez des radiographies récentes ou des documents pertinents, ils peuvent être transmis à l'équipe avant ou après la prise de rendez-vous.",
-    "ctaTitle": "Une autre question ?",
-    "ctaBody": "Notre équipe répond aux demandes par téléphone ou par formulaire de contact.",
-    "ctaPrimary": "Nous contacter",
-    "ctaSecondary": "Demander un rendez-vous"
-  },
-  "assurances": {
-    "metaTitle": "Assurances et paiements",
-    "metaDescription": "Informations sur les estimations, assurances dentaires, préautorisations, paiements et responsabilité du patient chez Studio Dentaire De Facto.",
-    "label": "Administratif",
-    "title": "Assurances et paiements",
-    "subtitle": "Comprendre comment fonctionnent les estimations, les assurances, les préautorisations et la responsabilité du patient.",
-    "roleLabel": "Rôle",
-    "roleTitle": "Comprendre le rôle de l'assurance",
-    "roleBody": "L'assurance dentaire est une entente entre le patient et son assureur. Nous pouvons vous aider à transmettre certaines informations ou estimations, mais la confirmation finale de la couverture, des limites et des soldes demeure la responsabilité du patient.",
-    "estimationsLabel": "Estimations",
-    "estimationsTitle": "Estimations",
-    "estimations": [
-      "Une estimation n'est pas une garantie de paiement",
-      "La réponse de l'assureur peut varier",
-      "Les franchises, maximums annuels, exclusions et fréquences peuvent influencer le remboursement",
-      "Le solde non couvert demeure payable par le patient"
-    ],
-    "priveeLabel": "Privée",
-    "priveeTitle": "Assurance privée",
-    "privee": [
-      "Transmission possible selon les systèmes disponibles",
-      "Coordination avec la secrétaire",
-      "Importance de fournir les bons renseignements"
-    ],
-    "rcsdLabel": "RCSD",
-    "rcsdTitle": "Programme fédéral / RCSD",
-    "rcsdBody1": "Certains patients peuvent être admissibles au Régime canadien de soins dentaires (RCSD) selon les critères du programme.",
-    "rcsdBody2": "L'équipe peut aider à vérifier les renseignements administratifs disponibles. Les règles du programme peuvent varier selon le traitement, la couverture et les autorisations requises. Nous ne pouvons pas garantir d'avance la prise en charge d'un acte clinique.",
-    "ramqLabel": "RAMQ",
-    "ramqTitle": "RAMQ si applicable",
-    "ramqBody": "Certains services dentaires peuvent être couverts par la RAMQ dans des contextes précis (par exemple certains soins pour enfants ou bénéficiaires d'aide de dernier recours). Plusieurs traitements dentaires ne sont toutefois pas couverts par le régime public.",
-    "paiementLabel": "Paiement",
-    "paiementTitle": "Paiement direct ou remboursement",
-    "paiement": [
-      "Paiement par le patient puis remboursement",
-      "Transmission électronique possible selon l'assureur",
-      "Solde à acquitter",
-      "Dépôt ou paiement requis selon le traitement si applicable"
-    ],
-    "preauthLabel": "Préautorisation",
-    "preauthTitle": "Préautorisations",
-    "preauth": [
-      "Utile pour certains traitements",
-      "Pas une garantie absolue",
-      "Peut prendre du temps",
-      "Peut nécessiter radiographies, codes, plans ou justification"
-    ],
-    "politiqueRdvLabel": "Politique RDV",
-    "politiqueRdvTitle": "Politique de rendez-vous",
-    "politiqueRdv": [
-      "Annulation",
-      "Retard",
-      "Rendez-vous manqué",
-      "Frais de rendez-vous manqué si applicable",
-      "Respect du temps clinique"
-    ],
-    "politiqueRdvNote": "Les politiques précises seront communiquées au moment de la prise de rendez-vous ou avant les traitements concernés.",
-    "ctaTitle": "Une question administrative ?",
-    "ctaBody": "L'équipe peut vous accompagner dans la coordination avec votre assureur ou clarifier les modalités d'un traitement.",
-    "ctaPrimary": "Poser une question administrative",
-    "ctaSecondary": "Demander un rendez-vous",
-    "financementLabel": "Financement",
-    "financementTitle": "Financement par un tiers",
-    "financementBody": "Des solutions de financement offertes par des tiers permettent d'étaler le coût de certains traitements. Les modalités et l'admissibilité se discutent avec notre équipe."
-  },
   "confidentialite": {
     "label": "Conformité",
     "title": "Confidentialité et renseignements personnels",
-    "subtitle": "Comment Studio Dentaire De Facto recueille, utilise et protège vos renseignements personnels et de santé.",
+    "subtitle": "Comment Studio Dentaire [de facto] recueille, utilise et protège vos renseignements personnels et de santé.",
     "metaTitle": "Confidentialité et renseignements personnels",
-    "metaDescription": "Comment Studio Dentaire De Facto recueille, utilise et protège vos renseignements personnels et de santé. Politique simple et adaptée au contexte dentaire.",
+    "metaDescription": "Comment Studio Dentaire [de facto] recueille, utilise et protège vos renseignements personnels et de santé. Politique simple et adaptée au contexte dentaire.",
     "intro": "Les communications électroniques peuvent comporter certains risques. Les informations transmises par formulaire, courriel ou SMS doivent être limitées aux renseignements nécessaires à la demande.",
     "lastUpdated": "Dernière mise à jour : 15 mai 2026.",
     "sections": [
@@ -1299,14 +309,14 @@
       },
       {
         "title": "Responsable de la protection des renseignements personnels",
-        "body": "Pour toute question relative à la confidentialité, à l'accès, à la correction de vos renseignements personnels ou à la sécurité des données, vous pouvez contacter le responsable de la protection des renseignements personnels du Studio Dentaire De Facto par téléphone ou par courriel. Studio Dentaire De Facto opère dans le cadre des lois applicables au Québec et au Canada, notamment la Loi sur la protection des renseignements personnels dans le secteur privé (Loi 25) et la LPRPDE au niveau fédéral."
+        "body": "Pour toute question relative à la confidentialité, à l'accès, à la correction de vos renseignements personnels ou à la sécurité des données, vous pouvez contacter le responsable de la protection des renseignements personnels du Studio Dentaire [de facto] par téléphone ou par courriel. Studio Dentaire [de facto] opère dans le cadre des lois applicables au Québec et au Canada, notamment la Loi sur la protection des renseignements personnels dans le secteur privé (Loi 25) et la LPRPDE au niveau fédéral."
       }
     ]
   },
   "conditions": {
     "label": "Conditions",
     "title": "Conditions d'utilisation",
-    "subtitle": "Conditions encadrant l'utilisation du site web de De Facto Studio Dentaire.",
+    "subtitle": "Conditions encadrant l'utilisation du site web de [de facto] Studio Dentaire.",
     "metaTitle": "Conditions d'utilisation",
     "sections": [
       {
@@ -1323,11 +333,11 @@
       },
       {
         "title": "Propriété intellectuelle",
-        "body": "Le contenu du site (textes, images, marques, mise en page) appartient à De Facto Studio Dentaire ou à ses partenaires. Toute reproduction sans autorisation est interdite."
+        "body": "Le contenu du site (textes, images, marques, mise en page) appartient à [de facto] Studio Dentaire ou à ses partenaires. Toute reproduction sans autorisation est interdite."
       },
       {
         "title": "Limitation de responsabilité",
-        "body": "De Facto Studio Dentaire s'efforce de fournir des informations exactes et à jour, mais ne peut garantir l'absence d'erreurs. L'utilisateur reste responsable de l'usage qu'il fait des informations consultées."
+        "body": "[de facto] Studio Dentaire s'efforce de fournir des informations exactes et à jour, mais ne peut garantir l'absence d'erreurs. L'utilisateur reste responsable de l'usage qu'il fait des informations consultées."
       },
       {
         "title": "Liens externes",
@@ -1348,9 +358,9 @@
     "metaDescription": "Un laboratoire dentaire intégré, ouvert aux professionnels. Communication directe, traçabilité, non-sollicitation.",
     "heroLabel": "Laboratoire",
     "heroTitle": "Un laboratoire dentaire intégré, ouvert aux professionnels.",
-    "intro1": "Le laboratoire De Facto accompagne les dentistes et spécialistes qui souhaitent collaborer avec une équipe attentive à la communication, à la précision et à la traçabilité.",
+    "intro1": "Le laboratoire [de facto] accompagne les dentistes et spécialistes qui souhaitent collaborer avec une équipe attentive à la communication, à la précision et à la traçabilité.",
     "intro2": "Notre objectif est de soutenir le travail clinique du professionnel, sans jamais remplacer sa relation avec son patient.",
-    "intro3": "Nous respectons pleinement nos collègues référents. Aucun patient adressé au laboratoire pour un service technique ne sera sollicité pour devenir patient du Studio Dentaire De Facto.",
+    "intro3": "Nous respectons pleinement nos collègues référents. Aucun patient adressé au laboratoire pour un service technique ne sera sollicité pour devenir patient du Studio Dentaire [de facto].",
     "paths": {
       "patientTitle": "Je suis un patient",
       "patientBody": "Comprendre comment le laboratoire intégré soutient mes soins.",
@@ -1369,8 +379,8 @@
     "engagement": {
       "label": "Engagement envers les référents",
       "title": "Respect de la relation professionnel-patient",
-      "body1": "Lorsqu'un patient est dirigé vers De Facto pour une prise de teinte, une documentation photographique ou un service lié au laboratoire, il demeure le patient du professionnel référent.",
-      "body2": "Afin d'éviter toute ambiguïté, De Facto peut fournir une déclaration de non-inscription du patient au Studio Dentaire De Facto pour une période déterminée, lorsque la situation le justifie.",
+      "body1": "Lorsqu'un patient est dirigé vers [de facto] pour une prise de teinte, une documentation photographique ou un service lié au laboratoire, il demeure le patient du professionnel référent.",
+      "body2": "Afin d'éviter toute ambiguïté, [de facto] peut fournir une déclaration de non-inscription du patient au Studio Dentaire [de facto] pour une période déterminée, lorsque la situation le justifie.",
       "body3": "Cette mesure vise à protéger la relation de confiance entre le professionnel référent, son patient et notre laboratoire."
     },
     "piliers": {
@@ -1565,7 +575,7 @@
     }
   },
   "footer": {
-    "tagline": "Studio Dentaire De Facto — dentisterie réfléchie au cœur d'Ahuntsic, Montréal.",
+    "tagline": "Studio Dentaire [de facto] — dentisterie réfléchie au cœur d'Ahuntsic, Montréal.",
     "coordonnees": "Coordonnées",
     "liens": "Liens",
     "secondaires": "Informations",
@@ -1587,596 +597,9 @@
     "nousJoindre": "Nous joindre",
     "heures": "Heures",
     "accessibilite": "Accessibilité",
-    "raisonSociale": "Studio Dentaire De Facto · Dr Bader Ramdani, dentiste généraliste",
+    "raisonSociale": "Studio Dentaire [de facto] · Dr Bader Ramdani, dentiste généraliste",
     "responsableLoi25": "Responsable de la protection des renseignements personnels : Dr Bader Ramdani, dentiste généraliste · info@studiodefacto.ca · 514 863-7805",
     "avisClinique": "L'information de ce site est générale et ne remplace pas un examen dentaire."
-  },
-  "professionnelsPage": {
-    "heroLabel": "Espace professionnels",
-    "heroTitle": "Espace professionnels",
-    "heroSubtitle": "Un laboratoire intégré pensé pour une communication clinique claire et des restaurations planifiées avec précision.",
-    "toggleSectionLabel": "Que souhaitez-vous faire ?",
-    "toggleSectionTitle": "Sélectionnez une démarche",
-    "toggleSectionBody": "Cliquez sur une carte pour afficher le formulaire correspondant directement sur cette page.",
-    "premierContactLabel": "Premier contact",
-    "premierContactTitle": "Avant de débuter une collaboration",
-    "premierContactBody1": "Avant de débuter une collaboration, nous souhaitons échanger directement avec vous afin de mieux comprendre votre pratique, vos besoins et les types d'appareils ou restaurations que vous souhaitez confier au laboratoire.",
-    "premierContactBody2": "Ce premier contact peut se faire en personne, par téléphone ou par formulaire.",
-    "rencontreLabel": "Rencontre",
-    "rencontreTitle": "Une rencontre pour clarifier les attentes",
-    "rencontreBody1": "La rencontre vise à établir un lien de confiance, clarifier les attentes, expliquer les protocoles de communication et présenter la manière dont les cas sont reçus, produits, vérifiés et livrés.",
-    "rencontreBody2": "La technicienne de laboratoire est impliquée dans chaque étape du processus de confection des appareils du studio.",
-    "engagementLabel": "Engagement",
-    "engagementTitle": "Notre engagement envers les professionnels",
-    "engagementItems": [
-      {
-        "title": "Communication",
-        "body": "Communication directe avec les personnes qui confectionnent vos appareils."
-      },
-      {
-        "title": "Contrôle de qualité",
-        "body": "Chaque appareil est produit avec des matériaux et équipements reconnus dans le domaine dentaire, puis révisé par notre technicienne et par le dentiste-vérificateur."
-      },
-      {
-        "title": "Transparence",
-        "body": "Fiche technique et traçabilité des matériaux et équipements utilisés."
-      },
-      {
-        "title": "Rigueur",
-        "body": "Protocoles établis et soutenus par la littérature scientifique."
-      }
-    ]
-  },
-  "laboratoireSubRoutes": {
-    "prescriptionMetaTitle": "Transmettre une prescription au laboratoire",
-    "prescriptionMetaDescription": "Formulaire de prescription au laboratoire De Facto pour dentistes et spécialistes. Transmission de fichiers STL, photos, radiographies et instructions cliniques.",
-    "partenairesMetaTitle": "Devenir notre partenaire de soin",
-    "partenairesMetaDescription": "Premier contact pour dentistes et spécialistes souhaitant collaborer avec le laboratoire intégré De Facto. Formulaire de partenariat professionnel.",
-    "referenceMetaTitle": "Référer un patient",
-    "referenceMetaDescription": "Formulaire de référence clinique pour dentistes et spécialistes. Permet de référer un patient au Studio Dentaire De Facto avec photos, radiographies et contexte clinique.",
-    "backToLab": "← Retour au laboratoire intégré",
-    "partenaireHeroLabel": "Devenir partenaire",
-    "partenaireHeroTitle": "Devenir notre partenaire de soin",
-    "partenaireHeroSubtitle": "Avant de débuter une collaboration, nous souhaitons échanger directement avec vous afin de mieux comprendre votre pratique, vos besoins et les types d'appareils ou restaurations que vous souhaitez confier au laboratoire.",
-    "partenairePremierContactLabel": "Premier contact",
-    "partenairePremierContactTitle": "Trois manières d'entrer en contact",
-    "partenairePremierContactBody": "Ce premier contact peut se faire en personne, par téléphone ou par formulaire. Choisissez ce qui vous convient le mieux.",
-    "callButton": "Nous appeler",
-    "rencontreLabel": "Rencontre",
-    "rencontreTitle": "La rencontre avec notre équipe",
-    "rencontreBody1": "La rencontre vise à établir un lien de confiance, clarifier les attentes, expliquer les protocoles de communication et présenter la manière dont les cas sont reçus, produits, vérifiés et livrés.",
-    "rencontreBody2": "La technicienne de laboratoire est impliquée dans chaque étape du processus de confection des appareils du studio.",
-    "returnToProfessionnels": "← Retour à l'espace professionnels",
-    "referenceHeroLabel": "Référence clinique",
-    "referenceHeroTitle": "Référer un patient",
-    "referenceHeroSubtitle": "Référer un patient au Studio Dentaire De Facto pour évaluation, traitement ou service technique. Le patient demeure sous votre responsabilité clinique lorsque applicable.",
-    "professionnelsMetaTitle": "Espace professionnels — Laboratoire",
-    "professionnelsMetaDescription": "Espace dédié aux dentistes et spécialistes. Devenir partenaire, transmettre une prescription, référer un cas. Communication directe avec le laboratoire intégré De Facto."
-  },
-  "professionnelsToggle": {
-    "card1Title": "Devenir partenaire de soin",
-    "card1Description": "Premier contact pour discuter d'une collaboration.",
-    "card2Title": "Transmettre une prescription",
-    "card2Description": "Prescription d'appareil ou de restauration avec fichiers STL.",
-    "card3Title": "Référer un cas",
-    "card3Description": "Référer un patient pour prise de teinte, réparation ou service technique.",
-    "partenaireLabel": "Partenariat professionnel",
-    "partenaireHeading": "Devenir partenaire de soin",
-    "partenaireBody": "Avant de débuter une collaboration, nous souhaitons échanger directement avec vous afin de mieux comprendre votre pratique et les types d'appareils que vous souhaitez confier au laboratoire.",
-    "prescriptionLabel": "Prescription laboratoire",
-    "prescriptionHeading": "Transmettre une prescription",
-    "prescriptionBody": "Permettre la prescription d'un appareil ou d'une restauration et la transmission de fichiers STL, radiographies, photos ou documents cliniques.",
-    "referenceLabel": "Référence clinique",
-    "referenceHeading": "Référer un cas",
-    "referenceBody": "Référer un patient pour prise de teinte, réparation ou service technique. Le patient demeure le vôtre.",
-    "formHeading": "Formulaire",
-    "chooseTitle": "Choisissez votre démarche",
-    "partenaireBoxBody": "Cette page est destinée au premier contact, mais vous pouvez aussi transmettre une prescription ou référer un cas directement.",
-    "prescriptionBoxBody": "Vous pouvez aussi devenir partenaire ou référer un cas directement depuis cette page.",
-    "referenceBoxBody": "Vous pouvez aussi devenir partenaire ou transmettre une prescription depuis cette page."
-  },
-  "labPrescriptionForm": {
-    "ariaLabel": "Formulaire de prescription au laboratoire",
-    "intro": "Prescription d'un appareil ou d'une restauration. Les champs s'adaptent selon le type d'appareil choisi.",
-    "section1Title": "Professionnel",
-    "section2Title": "Patient",
-    "section3Title": "Appareil dentaire",
-    "section3Intro": "Choisissez le type d'appareil prescrit.",
-    "section4Title": "Type",
-    "section4IntroPrefix": "Précisez le type pour : ",
-    "section5Title": "Arcade et dents",
-    "section6Title": "Couleur",
-    "section7Title": "Matériau souhaité",
-    "section8Title": "Instructions cliniques",
-    "section9Title": "Fichiers",
-    "section10Title": "Consentement",
-    "prescribingProfessional": "Nom du professionnel",
-    "clinicName": "Clinique",
-    "email": "Courriel",
-    "patientName": "Nom ou code patient",
-    "appareilOtherText": "Veuillez préciser l'appareil",
-    "arcadeLabel": "Arcade concernée",
-    "teethLabel": "Numéros des dents",
-    "colorIndicationsLabel": "Indications de couleur, teinte et maquillage personnalisé souhaité",
-    "colorIndicationsPlaceholder": "Ex : A2 cervical, A1 incisal, caractérisations bleutées en incisal, maquillage discret.",
-    "temporaryRestorationNote": "Restauration temporaire : seule la résine est offerte.",
-    "laminationLabel": "Lamination de porcelaine souhaitée",
-    "yes": "Oui",
-    "no": "Non",
-    "clinicalInstructionsLabel": "Instructions cliniques, particularités, exigences",
-    "stlFilesLabel": "STL / scan",
-    "stlFilesHelp": "STL, OBJ, PLY ou ZIP. Maximum 25 MB par fichier.",
-    "photosLabel": "Photos cliniques",
-    "photosHelp": "JPG, PNG ou HEIC.",
-    "radiographsLabel": "Radiographies",
-    "radiographsHelp": "JPG, PNG ou PDF.",
-    "consentPatientTransmission": "Je confirme que le patient a consenti à la transmission des renseignements nécessaires.",
-    "consentPrivacyBefore": "J'ai pris connaissance de la ",
-    "consentPrivacyLink": "politique de confidentialité",
-    "consentPrivacyAfter": ".",
-    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
-    "submit": "Transmettre la prescription",
-    "submitting": "Envoi en cours…",
-    "toothPickerInstruction": "Cliquez sur les dents concernées (notation FDI)",
-    "toothPickerSelected": "Sélectionnées :",
-    "toothPickerNone": "aucune",
-    "toothPickerAriaUpper": "Arcade supérieure droite",
-    "toothPickerAriaLower": "Arcade inférieure droite",
-    "appareils": {
-      "couronne": "Couronne",
-      "pont": "Pont",
-      "incrustation": "Incrustation",
-      "facette": "Facette",
-      "prothese_amovible_complete": "Prothèse dentaire amovible complète",
-      "guide_chirurgical": "Guide chirurgical",
-      "plaque_occlusale": "Plaque occlusale",
-      "porte_empreinte": "Porte-empreinte personnalisé",
-      "gouttiere_retention": "Gouttière de rétention",
-      "gouttiere_blanchiment": "Gouttière de blanchiment",
-      "essix": "Essix",
-      "wax_up": "Wax-up diagnostique",
-      "reparation": "Réparation",
-      "autres": "Autres"
-    },
-    "subOptions": {
-      "temporaire": "Temporaire",
-      "permanente": "Permanente",
-      "immediat": "Immédiat",
-      "permanent": "Permanent",
-      "rigide": "Rigide",
-      "flexible": "Flexible",
-      "avec_dent_postiche": "Avec dent postiche",
-      "sans_dent_postiche": "Sans dent postiche"
-    },
-    "materials": {
-      "porcelaine_feldspathique": "Porcelaine feldspathique",
-      "emax_presse": "E.max pressé",
-      "zircone_3y": "Zircone 3Y",
-      "zircone_multicouche": "Zircone multi-couche",
-      "resine": "Résine",
-      "lt_clear": "LT Clear (rigide)",
-      "lt_comfort": "LT Comfort (flexible)"
-    },
-    "arcades": {
-      "superieure": "Supérieure",
-      "inferieure": "Inférieure",
-      "les_deux": "Les deux"
-    }
-  },
-  "referredCaseForm": {
-    "ariaLabel": "Formulaire de référence d'un patient",
-    "intro": "Référer un patient au Studio Dentaire De Facto pour évaluation, traitement ou service technique. Le patient reste sous votre responsabilité clinique.",
-    "section1Title": "Professionnel référent",
-    "section2Title": "Patient",
-    "section3Title": "Référence",
-    "section4Title": "Fichiers",
-    "section5Title": "Consentements",
-    "referringProfessionalName": "Nom du professionnel",
-    "clinicName": "Clinique",
-    "clinicPhone": "Téléphone de la clinique",
-    "email": "Courriel",
-    "patientName": "Nom complet du patient",
-    "patientDob": "Date de naissance",
-    "patientPhone": "Téléphone du patient",
-    "patientEmail": "Courriel du patient",
-    "patientLanguage": "Langue préférée",
-    "patientLanguageOther": "Veuillez préciser la langue",
-    "referralMainReason": "Motif principal",
-    "referralMainReasonOther": "Veuillez préciser le motif principal",
-    "motifsSecondairesLabel": "Motifs secondaires (optionnel)",
-    "urgencyLabel": "Urgence",
-    "yes": "Oui",
-    "no": "Non",
-    "clinicalSummary": "Résumé clinique",
-    "previousTreatments": "Traitements déjà réalisés",
-    "documentsTransmisLabel": "Documents transmis",
-    "photosLabel": "Photos cliniques",
-    "photosHelp": "JPG, PNG ou HEIC. Maximum 10 MB par photo.",
-    "radiographsLabel": "Radiographies",
-    "radiographsHelp": "JPG, PNG ou PDF.",
-    "stlFilesLabel": "STL / scan (optionnel)",
-    "stlFilesHelp": "STL, OBJ, PLY ou ZIP.",
-    "consentPatientInformed": "Le patient a été informé de cette référence.",
-    "consentTransmission": "J'autorise la transmission des documents et renseignements pertinents au Studio Dentaire De Facto.",
-    "consentPrivacyBefore": "J'ai pris connaissance de la ",
-    "consentPrivacyLink": "politique de confidentialité",
-    "consentPrivacyAfter": ".",
-    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
-    "submit": "Transmettre la référence",
-    "submitting": "Envoi en cours…",
-    "langues": {
-      "francais": "Français",
-      "anglais": "Anglais",
-      "francais_anglais": "Français ou anglais",
-      "autre": "Autre"
-    },
-    "motifsPrincipaux": {
-      "evaluation_complete": "Évaluation complète",
-      "douleur": "Douleur",
-      "esthetique": "Préoccupation esthétique",
-      "endodontie": "Endodontie",
-      "parodontie": "Parodontie / greffe",
-      "implantologie": "Implantologie",
-      "prosthodontie": "Prosthodontie / restauration complexe",
-      "deuxieme_avis": "Deuxième avis",
-      "laboratoire": "Service de laboratoire (teinte, réparation)",
-      "autre": "Autre"
-    },
-    "motifsSecondaires": {
-      "douleur": "Douleur",
-      "sensibilite": "Sensibilité",
-      "saignement_gencives": "Saignement des gencives",
-      "dent_mobile": "Dent mobile",
-      "fracture": "Fracture",
-      "usure": "Usure dentaire",
-      "esthetique": "Préoccupation esthétique",
-      "infection": "Infection suspectée",
-      "autre": "Autre"
-    },
-    "documentsTransmis": {
-      "photos": "Photos",
-      "radiographies": "Radiographies",
-      "stl_scan": "STL / scan",
-      "plan_traitement": "Plan de traitement existant",
-      "notes_cliniques": "Notes cliniques",
-      "autre": "Autre"
-    }
-  },
-  "partnerOnboardingForm": {
-    "ariaLabel": "Formulaire de partenariat professionnel",
-    "intro": "Ce formulaire est destiné aux dentistes et spécialistes qui souhaitent discuter d'une collaboration avec notre laboratoire intégré.",
-    "section1Title": "Identification professionnelle",
-    "section2Title": "Type de collaboration recherchée",
-    "section2Intro": "Cochez ce qui s'applique.",
-    "section3Title": "Services d'intérêt",
-    "section3Intro": "Cochez ce qui vous intéresse.",
-    "section4Title": "Préférence de contact",
-    "section5Title": "Message ou contexte de la demande",
-    "section6Title": "Consentement",
-    "dentistName": "Nom du professionnel",
-    "professionalTitle": "Titre professionnel",
-    "professionalTitleOther": "Veuillez préciser votre titre",
-    "clinicName": "Nom de la clinique",
-    "clinicAddress": "Adresse de la clinique",
-    "email": "Courriel",
-    "messageLabel": "Précisions, besoins spécifiques, contexte",
-    "consentContact": "J'autorise Studio Dentaire De Facto à me contacter concernant cette demande de collaboration.",
-    "consentPrivacyBefore": "J'ai pris connaissance de la ",
-    "consentPrivacyLink": "politique de confidentialité",
-    "consentPrivacyAfter": ".",
-    "errorGeneric": "Une erreur est survenue. Veuillez réessayer ou nous joindre par téléphone.",
-    "submit": "Transmettre la demande",
-    "submitting": "Envoi en cours…",
-    "professionalTitles": {
-      "dentiste_generaliste": "Dentiste généraliste",
-      "prosthodontiste": "Prosthodontiste",
-      "orthodontiste": "Orthodontiste",
-      "parodontiste": "Parodontiste",
-      "endodontiste": "Endodontiste",
-      "chirurgien_maxillo_facial": "Chirurgien maxillo-facial",
-      "denturologiste": "Denturologiste",
-      "hygieniste_dentaire": "Hygiéniste dentaire",
-      "gestionnaire_clinique": "Gestionnaire de clinique",
-      "autre": "Autre"
-    },
-    "collaborationTypes": {
-      "lab_regulier": "Cas de laboratoire réguliers",
-      "lab_occasionnel": "Cas de laboratoire occasionnels",
-      "cas_esthetiques": "Cas esthétiques complexes",
-      "consultation": "Consultations cliniques",
-      "reference_clinique": "Références cliniques",
-      "autre": "Autre"
-    },
-    "services": {
-      "orthodontie": "Orthodontie",
-      "prostho_amovible": "Prosthodontie amovible",
-      "prostho_fixe": "Prosthodontie fixe",
-      "plaques_occlusales": "Plaques occlusales",
-      "gouttieres": "Gouttières",
-      "wax_up": "Wax-up",
-      "prise_teinte": "Prise de teinte",
-      "esthetique": "Cas esthétiques",
-      "reparations": "Réparations",
-      "emax": "E.max pressé ou usiné",
-      "zircone": "Zircone",
-      "impression_3d": "Impression 3D / Formlabs",
-      "autre": "Autre"
-    },
-    "contactPrefs": {
-      "telephone": "Téléphone",
-      "courriel": "Courriel",
-      "sms": "SMS",
-      "en_personne": "En personne"
-    }
-  },
-  "appointmentWizard": {
-    "aide": "Besoin d'aide ?",
-    "duree": "Environ 2 minutes",
-    "etapeSur": "ÉTAPE {n} SUR 6",
-    "retour": "← Retour",
-    "continuer": "Continuer",
-    "envoyer": "Envoyer la demande",
-    "envoiEnCours": "Envoi en cours…",
-    "erreurEnvoi": "L'envoi a échoué. Réessayez, ou appelez le studio au 514 863 7805.",
-    "s1": {
-      "libelle": "STATUT",
-      "titre": "Est-ce votre première visite au studio ?",
-      "sousTitre": "Cela nous indique s'il faut ouvrir un dossier ou retrouver le vôtre.",
-      "indice": "Choisissez une réponse pour continuer.",
-      "nouveau": "Nouveau patient",
-      "nouveauNote": "Je n'ai jamais été vu au studio",
-      "existant": "Patient du studio",
-      "existantNote": "J'ai déjà un dossier ici"
-    },
-    "s2": {
-      "libelle": "MOTIF",
-      "titre": "Qu'est-ce qui vous amène ?",
-      "sousTitre": "Une seule réponse. Vous préciserez juste après.",
-      "indice": "Choisissez un motif, puis au moins une précision.",
-      "precisionsTitre": "Pouvez-vous préciser ?",
-      "precisionsIndice": "Cochez ce qui s'applique.",
-      "noteLibelle": "EN QUELQUES MOTS (FACULTATIF)",
-      "notePlaceholder": "Ce que vous ressentez, depuis quand, ce que vous souhaitez régler…",
-      "motifs": [
-        {
-          "code": "examen",
-          "label": "Examen complet",
-          "note": "Première visite ou bilan complet",
-          "duree": 75
-        },
-        {
-          "code": "nettoyage",
-          "label": "Nettoyage et suivi",
-          "note": "Hygiène, contrôle de routine",
-          "duree": 45
-        },
-        {
-          "code": "douleur",
-          "label": "Douleur ou problème précis",
-          "note": "Une dent, une gencive, un inconfort",
-          "duree": 30
-        },
-        {
-          "code": "en_cours",
-          "label": "Traitement en cours à poursuivre",
-          "note": "Suite d'un plan déjà commencé",
-          "duree": 60
-        },
-        {
-          "code": "deuxieme_avis",
-          "label": "Deuxième avis ou plan de traitement",
-          "note": "Comprendre les options avant de décider",
-          "duree": 75
-        },
-        {
-          "code": "autre",
-          "label": "Autre raison",
-          "note": "Vous précisez ensuite",
-          "duree": 45
-        }
-      ],
-      "precisions": {
-        "examen": [
-          "Aucun problème particulier",
-          "Je veux un bilan complet",
-          "Je change de dentiste",
-          "Autre"
-        ],
-        "nettoyage": [
-          "Nettoyage régulier",
-          "Saignement des gencives",
-          "Taches ou coloration",
-          "Mauvaise haleine",
-          "Autre"
-        ],
-        "douleur": [
-          "Sensible au froid ou au chaud",
-          "Douleur en mordant",
-          "Dent cassée ou fissurée",
-          "Gencive enflée",
-          "Couronne ou plombage décollé",
-          "Autre"
-        ],
-        "en_cours": [
-          "Suite de traitement de canal",
-          "Pose de couronne ou de prothèse",
-          "Ajustement d'un appareil",
-          "Autre"
-        ],
-        "deuxieme_avis": [
-          "Comprendre un plan proposé ailleurs",
-          "Comparer les options",
-          "Connaître les priorités",
-          "Autre"
-        ],
-        "autre": [
-          "Autre"
-        ]
-      }
-    },
-    "s3": {
-      "libelle": "DOULEUR ET SÉCURITÉ",
-      "titre": "Avez-vous mal en ce moment ?",
-      "sousTitre": "Cette réponse détermine le délai de rappel.",
-      "indice": "Choisissez une réponse pour continuer.",
-      "options": [
-        {
-          "code": "aucune",
-          "label": "Non, aucune douleur",
-          "note": "Rendez-vous régulier"
-        },
-        {
-          "code": "progresse",
-          "label": "Un inconfort qui progresse",
-          "note": "Sensible depuis quelques jours"
-        },
-        {
-          "code": "aujourdhui",
-          "label": "Douleur ou gonflement aujourd'hui",
-          "note": "Nous vous rappelons en priorité"
-        }
-      ],
-      "urgenceTitre": "RENDEZ-VOUS IMMÉDIATEMENT À L'URGENCE",
-      "urgenceItems": [
-        "difficulté à respirer ou à avaler",
-        "gonflement du visage ou du cou qui progresse rapidement, ou qui ferme un œil",
-        "fièvre et frissons accompagnant un gonflement",
-        "saignement qui ne s'arrête pas après 20 minutes de compression continue",
-        "traumatisme au visage avec perte de conscience, vomissements ou mâchoire qui ne se referme plus"
-      ],
-      "rappelTitre": "Mieux vaut téléphoner",
-      "rappelBody": "Pour une douleur ou un gonflement le jour même, appelez le studio au 514 863 7805 : nous évaluons la situation tout de suite. Vous pouvez tout de même terminer ce formulaire."
-    },
-    "s4": {
-      "libelle": "DISPONIBILITÉS",
-      "titre": "Quand êtes-vous disponible ?",
-      "sousTitre": "Le studio reçoit du lundi au mercredi, de 10 h à 18 h.",
-      "indice": "Choisissez au moins un jour et un moment.",
-      "joursLibelle": "JOURS",
-      "momentsLibelle": "MOMENTS",
-      "delaiLibelle": "DÉLAI SOUHAITÉ",
-      "jours": [
-        {
-          "code": "lundi",
-          "label": "Lundi"
-        },
-        {
-          "code": "mardi",
-          "label": "Mardi"
-        },
-        {
-          "code": "mercredi",
-          "label": "Mercredi"
-        }
-      ],
-      "moments": [
-        {
-          "code": "matin",
-          "label": "Matin",
-          "note": "10 h – 12 h"
-        },
-        {
-          "code": "apres_midi",
-          "label": "Après-midi",
-          "note": "12 h – 15 h"
-        },
-        {
-          "code": "fin_journee",
-          "label": "Fin de journée",
-          "note": "15 h – 18 h"
-        }
-      ],
-      "delais": [
-        {
-          "code": "asap",
-          "label": "Dès que possible"
-        },
-        {
-          "code": "deux_semaines",
-          "label": "Dans les deux semaines"
-        },
-        {
-          "code": "mois",
-          "label": "Dans le mois"
-        }
-      ]
-    },
-    "s5": {
-      "libelle": "ASSURANCE",
-      "titre": "Avez-vous une couverture dentaire ?",
-      "sousTitre": "Aucun montant n'est demandé ici. Une estimation écrite est remise avant les soins.",
-      "indice": "Choisissez une réponse pour continuer.",
-      "options": [
-        {
-          "code": "privee",
-          "label": "Oui, assurance privée",
-          "note": "Employeur ou personnelle"
-        },
-        {
-          "code": "ramq",
-          "label": "RAMQ",
-          "note": "Couverture publique du Québec"
-        },
-        {
-          "code": "rcsd",
-          "label": "Régime canadien de soins dentaires",
-          "note": "RCSD — couverture fédérale"
-        },
-        {
-          "code": "non",
-          "label": "Non",
-          "note": "Paiement direct"
-        },
-        {
-          "code": "inconnu",
-          "label": "Je ne sais pas",
-          "note": "Nous vérifierons ensemble"
-        }
-      ],
-      "assureurLibelle": "ASSUREUR",
-      "assureurPlaceholder": "Sun Life, Manuvie, Croix Bleue…",
-      "policeLibelle": "N° DE POLICE (FACULTATIF)"
-    },
-    "s6": {
-      "libelle": "COORDONNÉES",
-      "titre": "Comment vous joindre ?",
-      "sousTitre": "Nous vous rappelons pour fixer l'heure.",
-      "indice": "Prénom, nom, téléphone valide et consentement sont requis.",
-      "prenom": "PRÉNOM",
-      "nom": "NOM",
-      "telephone": "TÉLÉPHONE",
-      "courriel": "COURRIEL",
-      "naissance": "DATE DE NAISSANCE",
-      "canalLibelle": "ON VOUS JOINT COMMENT ?",
-      "canaux": [
-        {
-          "code": "telephone",
-          "label": "Téléphone"
-        },
-        {
-          "code": "courriel",
-          "label": "Courriel"
-        },
-        {
-          "code": "texto",
-          "label": "Texto"
-        }
-      ],
-      "erreurTelephone": "Dix chiffres attendus, par exemple 514 863 7805.",
-      "erreurNaissance": "Date invalide. Format JJ / MM / AAAA.",
-      "erreurCourriel": "Adresse incomplète : il manque le @ ou le domaine.",
-      "consentement": "J'autorise le studio à me contacter au sujet de cette demande. Aucune information clinique n'est transmise par ce formulaire."
-    },
-    "confirmation": {
-      "titre": "Demande envoyée",
-      "body": "Merci {prenom}. Nous vous rappelons au {telephone} pour fixer l'heure.",
-      "avis": "Ceci n'est pas encore un rendez-vous confirmé : nous vous rappelons pour fixer l'heure."
-    },
-    "priorites": {
-      "aucune": "RAPPEL RÉGULIER",
-      "progresse": "À RAPPELER SOUS 24 H",
-      "aujourdhui": "PRIORITÉ — RAPPEL LE JOUR MÊME"
-    }
   },
   "accueil": {
     "hero": {
@@ -2369,14 +792,14 @@
         }
       ]
     },
-    "metaTitre": "Dentiste à Ahuntsic, Montréal | Studio Dentaire De Facto",
+    "metaTitre": "Dentiste à Ahuntsic, Montréal | Studio Dentaire [de facto]",
     "metaDescription": "Studio dentaire indépendant à Ahuntsic. Dr Bader Ramdani, dentiste généraliste. Examen complet, urgence le jour même, atelier de prothèses sur place."
   },
   "urgence": {
     "bandeTitre": "Urgence dentaire",
     "bandeTexte": "Douleur, dent cassée, enflure ? Rendez-vous possible le jour même pendant nos heures. Appelez le",
     "bandeLien": "Que faire en cas d'urgence →",
-    "metaTitre": "Urgence dentaire à Ahuntsic | Studio Dentaire De Facto",
+    "metaTitre": "Urgence dentaire à Ahuntsic | Studio Dentaire [de facto]",
     "metaDescription": "Urgence dentaire à Ahuntsic : douleur, dent cassée, enflure. Rendez-vous possible le jour même pendant nos heures. Examen d'urgence 61 $.",
     "surtitre": "[ Urgence ]",
     "titre": "Urgence dentaire à Ahuntsic",
@@ -2542,8 +965,8 @@
     "liesTitre": "Services liés"
   },
   "visite": {
-    "metaTitre": "Première visite chez le dentiste à Ahuntsic | Studio Dentaire De Facto",
-    "metaDescription": "Votre première visite au Studio Dentaire De Facto : bilan bucco-dentaire complet, rapport écrit, quoi apporter, couverture et paiement.",
+    "metaTitre": "Première visite chez le dentiste à Ahuntsic | Studio Dentaire [de facto]",
+    "metaDescription": "Votre première visite au Studio Dentaire [de facto] : bilan bucco-dentaire complet, rapport écrit, quoi apporter, couverture et paiement.",
     "surtitre": "[ Première visite ]",
     "titre": "Votre première visite chez le dentiste, à Ahuntsic",
     "intro": "Un bilan bucco-dentaire complet. On vous écoute, on examine, on explique. Vous repartez avec un résumé écrit et des conseils adaptés, sans obligation de traitement.",
@@ -2614,7 +1037,7 @@
           "Conseils et revue d'hygiène et de prévention",
           "Référence au spécialiste, si justifié",
           "Rappel selon votre condition bucco-dentaire",
-          "Trousse d'hygiène De Facto"
+          "Trousse d'hygiène [de facto]"
         ]
       },
       {
@@ -2738,11 +1161,11 @@
     "maps": "https://www.google.com/maps/search/?api=1&query=Studio+Dentaire+De+Facto%2C+728+rue+Fleury+Est%2C+Montr%C3%A9al+QC+H2C+1P1"
   },
   "servicesPage": {
-    "metaTitre": "Services dentaires à Ahuntsic | Studio Dentaire De Facto",
+    "metaTitre": "Services dentaires à Ahuntsic | Studio Dentaire [de facto]",
     "metaDescription": "Les services d'un dentiste généraliste à Ahuntsic : examens, soins des dents et des gencives, couronnes et prothèses, prévention, esthétique.",
     "surtitre": "[ Services ]",
     "titre": "Services dentaires à Ahuntsic",
-    "intro1": "Le Studio De Facto offre les services d'un dentiste généraliste, regroupés en cinq familles de soins.",
+    "intro1": "Le Studio [de facto] offre les services d'un dentiste généraliste, regroupés en cinq familles de soins.",
     "intro2": "Chaque traitement commence par un examen et une explication claire. Au besoin, nous vous dirigeons vers un spécialiste.",
     "raccourcis": [
       {
@@ -2960,16 +1383,16 @@
     "servicesLies": "Services liés",
     "lienAtelier": "L'atelier →",
     "avis": "L'information de cette page est générale. Seul un examen permet de savoir ce qui convient à votre situation.",
-    "encadreSurtitre": "[ Studio Dentaire De Facto ]",
+    "encadreSurtitre": "[ Studio Dentaire [de facto] ]",
     "encadreTitre": "Un examen d'abord",
     "encadreTexte": "Chaque traitement commence par un examen et une explication claire. Vous décidez ensuite."
   },
   "apropos": {
-    "metaTitre": "À propos — Studio Dentaire De Facto",
+    "metaTitre": "À propos — Studio Dentaire [de facto]",
     "metaDescription": "Studio dentaire indépendant sur la rue Fleury Est, dans Ahuntsic. Dr Bader Ramdani, dentiste généraliste, et un atelier de prothèses sur place.",
     "surtitre": "[ À propos ]",
-    "titre": "À propos du Studio Dentaire De Facto",
-    "intro": "Le Studio Dentaire De Facto est un studio indépendant, sur la rue Fleury Est, dans Ahuntsic. Nous ne faisons partie d'aucune chaîne. Nous avons conçu le lieu pour prendre le temps : un bureau pour parler, des salles lumineuses pour soigner, un atelier pour fabriquer.",
+    "titre": "À propos du Studio Dentaire [de facto]",
+    "intro": "Le Studio Dentaire [de facto] est un studio indépendant, sur la rue Fleury Est, dans Ahuntsic. Nous ne faisons partie d'aucune chaîne. Nous avons conçu le lieu pour prendre le temps : un bureau pour parler, des salles lumineuses pour soigner, un atelier pour fabriquer.",
     "altHero": "La façade du studio au 728, rue Fleury Est",
     "pieces": {
       "titre": "Le studio, pièce par pièce",
@@ -3027,7 +1450,7 @@
     "blocs": [
       {
         "titre": "Le dentiste",
-        "texte": "Dr Bader Ramdani, dentiste généraliste, né à Montréal. Diplômé en médecine dentaire de l'Université Laval, à Québec, en 2021, il est membre de l'Ordre des dentistes du Québec. Il fonde le Studio De Facto à Ahuntsic, avec un atelier de prothèses sur place, pour se donner le temps d'examiner, d'expliquer et de soigner. Il reçoit ses patients en français et en anglais."
+        "texte": "Dr Bader Ramdani, dentiste généraliste, né à Montréal. Diplômé en médecine dentaire de l'Université Laval, à Québec, en 2021, il est membre de l'Ordre des dentistes du Québec. Il fonde le Studio [de facto] à Ahuntsic, avec un atelier de prothèses sur place, pour se donner le temps d'examiner, d'expliquer et de soigner. Il reçoit ses patients en français et en anglais."
       },
       {
         "titre": "L'équipe du studio",
@@ -3046,14 +1469,14 @@
     "ctaAppeler": "Appeler 514 863-7805"
   },
   "parcours": {
-    "metaTitre": "Le parcours De Facto — comprendre avant de traiter",
+    "metaTitre": "Le parcours [de facto] — comprendre avant de traiter",
     "metaDescription": "Un parcours en cinq stades, de l'examen complet au suivi. Un stade est une famille d'objectifs de soins, pas un niveau de gravité.",
     "surtitre": "[ Le parcours ]",
-    "titre": "Le parcours De Facto : comprendre avant de traiter",
+    "titre": "Le parcours [de facto] : comprendre avant de traiter",
     "intro": "Un patient averti en vaut deux. Notre but n'est pas que vous acceptiez un traitement, mais que vous compreniez votre bouche. Bien informé, vous décidez mieux, et pour vous-même.",
     "schema": {
       "titre": "Un parcours en cinq stades",
-      "intro": "Un stade De Facto est une famille d'objectifs de soins, pas un niveau de gravité. Personne n'a à passer par tous : vous définissez vos objectifs de soins.",
+      "intro": "Un stade [de facto] est une famille d'objectifs de soins, pas un niveau de gravité. Personne n'a à passer par tous : vous définissez vos objectifs de soins.",
       "depart": "Nouveau patient",
       "direct": "Direct",
       "stades": [
@@ -3136,7 +1559,7 @@
     "metaDescription": "Couronnes, prothèses et gouttières conçues et fabriquées sur place, à Ahuntsic. Essais et ajustements au studio.",
     "surtitre": "[ Atelier ]",
     "titre": "Une technologue dentaire au sein même du studio",
-    "intro": "Couronnes, prothèses et gouttières, conçues et fabriquées sur place. Essais et ajustements au studio.",
+    "intro": "Couronnes, prothèses et gouttières, conçues et fabriquées sur place. Essais et ajustements au studio, sans passer par un laboratoire extérieur.",
     "legendeHero": "La salle de conception numérique (CAD-CAM)",
     "altHero": "La salle de conception numérique (CAD-CAM)",
     "pieces": [
@@ -3152,15 +1575,15 @@
     "change": [
       {
         "titre": "Une technologue dentaire peut vous voir en personne.",
-        "texte": "Teinte, forme et sourire vérifiés directement en bouche."
+        "texte": "Teinte, forme et sourire vérifiés directement en bouche. Quand la couleur d'une dent est difficile à assortir, elle vient la regarder à la lumière du studio plutôt que de travailler d'après une photo."
       },
       {
         "titre": "La fabrication est faite de A à Z ici.",
-        "texte": "Sauf le squelette de métal des prothèses partielles."
+        "texte": "Sauf le squelette de métal des prothèses partielles. Une retouche se fait souvent pendant que vous attendez, au lieu d'un deuxième rendez-vous une semaine plus tard."
       },
       {
         "titre": "Une seule personne fabrique. Une seule personne supervise.",
-        "texte": "Elle fabrique votre pièce du début à la fin. Le Dr Ramdani supervise chaque étape."
+        "texte": "Elle fabrique votre pièce du début à la fin. Le Dr Ramdani supervise chaque étape. S'il y a une question sur votre cas, elle se règle entre deux pièces, pas par courriel entre deux établissements."
       }
     ],
     "fabriqueTitre": "Ce que nous fabriquons ici",
@@ -3246,7 +1669,7 @@
     ],
     "equipementNote": "À l'externe : numérisation des empreintes conventionnelles et squelettes de métal.",
     "equipeTitre": "L'équipe de l'atelier",
-    "equipeTexte": "L'atelier se compose du Dr Ramdani, dentiste généraliste et fondateur du studio [de facto], et d'une technologue dentaire, Amira Thameur, diplômée depuis 2022 et membre de l'Ordre des technologues en prothèses et appareils dentaires du Québec. Le Dr Ramdani planifie et supervise chaque pièce ; Amira Thameur la fabrique et la finit à la main.",
+    "equipeTexte": "L'atelier se compose du Dr Ramdani, dentiste généraliste et fondateur du studio [de facto], et d'une technologue dentaire, Amira Thameur, diplômée depuis 2022 et membre de l'Ordre des technologues en prothèses et appareils dentaires du Québec. Le Dr Ramdani planifie et supervise chaque pièce ; Amira Thameur la fabrique et la finit à la main. La finition à la main est ce qui distingue une pièce correcte d'une pièce qu'on oublie de remarquer : c'est le dernier dixième de millimètre, et aucune machine ne le fait à votre place.",
     "photos": [
       {
         "num": "01",
@@ -3261,11 +1684,14 @@
         "texte": "Le poste de travail où se fait la personnalisation de vos appareils et de vos restaurations"
       }
     ],
-    "ctaTitre": "Une couronne ou une prothèse à faire ? Commencez par un examen."
+    "ctaTitre": "Une couronne ou une prothèse à faire ? Commencez par un examen.",
+    "changeIntro": "Dans la plupart des cabinets, l'empreinte part chez un laboratoire qui ne verra jamais votre bouche. Ici, la personne qui fabrique votre pièce travaille à quelques mètres de la salle de soins.",
+    "fabriqueIntro": "La liste est volontairement précise : vous pouvez ainsi savoir, avant de commencer, ce qui se fait ici et ce qui part à l'externe.",
+    "photosIntro": "L'atelier occupe trois postes, à la suite les uns des autres."
   },
   "contactPage": {
     "metaTitre": "Contact — nous joindre et venir au studio",
-    "metaDescription": "728, rue Fleury Est, Montréal. Heures, autobus, métro et stationnement pour venir au Studio Dentaire De Facto, dans Ahuntsic.",
+    "metaDescription": "728, rue Fleury Est, Montréal. Heures, autobus, métro et stationnement pour venir au Studio Dentaire [de facto], dans Ahuntsic.",
     "surtitre": "[ Contact ]",
     "titre": "Nous joindre et venir au studio",
     "intro": "Tout ce qui sert le jour du rendez-vous : adresse, heures, autobus, métro et stationnement.",
@@ -3357,10 +1783,15 @@
     ],
     "accessibiliteTitre": "Accessibilité",
     "accessibiliteTexte": "Le studio est au 1er étage. Un escalier mène à l'entrée. Le studio n'est pas accessible en fauteuil roulant. Appelez-nous si les marches vous posent problème : nous vous aiderons à trouver une solution.",
-    "ecrireTitre": "Écrivez-nous"
+    "ecrireTitre": "Écrivez-nous",
+    "ecrireTexte": "Pour une question, les assurances, une copie de dossier ou toute autre demande qui n'est pas un rendez-vous.",
+    "rappelTitre": "Vous préférez qu'on vous rappelle ?",
+    "rappelTexte": "Laissez vos coordonnées et vos préférences. Le studio vous rappelle pendant ses heures d'ouverture pour fixer l'heure.",
+    "rappelUrgenceAvant": "Pour une urgence, appelez le ",
+    "rappelUrgenceApres": " : vous aurez une réponse plus rapide."
   },
   "faqPage": {
-    "metaTitre": "Questions fréquentes — Studio Dentaire De Facto",
+    "metaTitre": "Questions fréquentes — Studio Dentaire [de facto]",
     "metaDescription": "Rendez-vous, couverture et coûts, soins, accès : les questions qu'un nouveau patient nous pose le plus souvent.",
     "surtitre": "[ Questions fréquentes ]",
     "titre": "Questions fréquentes",
@@ -3461,7 +1892,7 @@
       }
     ],
     "carte": {
-      "surtitre": "[ Studio Dentaire De Facto ]",
+      "surtitre": "[ Studio Dentaire [de facto] ]",
       "titre": "Un examen d'abord",
       "texte": "Chaque traitement commence par un examen et une explication claire. Vous décidez ensuite.",
       "adresse": "728, rue Fleury Est, Montréal",
@@ -3474,15 +1905,15 @@
     }
   },
   "rdv": {
-    "metaTitre": "Prendre rendez-vous — Studio Dentaire De Facto",
+    "metaTitre": "Prendre rendez-vous — Studio Dentaire [de facto]",
     "metaDescription": "Réservez une plage en ligne, ou laissez vos coordonnées et le studio vous rappelle. Confirmation dans les 24 heures.",
     "surtitre": "[ Rendez-vous ]",
-    "titre": "Prendre rendez-vous au Studio De Facto",
-    "introAvant": "Choisissez une plage libre, précisez votre demande, puis entrez vos coordonnées. Le studio confirme chaque rendez-vous dans les 24 heures. Vous préférez parler à quelqu'un ? Appelez le ",
+    "titre": "Demander un rendez-vous au Studio [de facto]",
+    "introAvant": "Choisissez une plage libre et laissez vos coordonnées : votre demande arrive au studio, qui vous rappelle pour confirmer, dans les 24 heures. Vous préférez parler à quelqu'un tout de suite ? Appelez le ",
     "introApres": ".",
-    "horaireTitre": "L'horaire en ligne",
-    "horaireTexte": "L'horaire est synchronisé avec l'agenda du studio : seules les plages réellement libres s'affichent. Le studio confirme ensuite votre rendez-vous.",
-    "cadreTitre": "Horaire de réservation du Studio Dentaire De Facto",
+    "horaireTitre": "Demander une plage en ligne",
+    "horaireTexte": "L'horaire est synchronisé avec l'agenda du studio : seules les plages réellement libres s'affichent.",
+    "cadreTitre": "Horaire de réservation du Studio Dentaire [de facto]",
     "noteGoogle": "Google héberge les nom, téléphone et courriel saisis dans l'horaire, à l'extérieur du Québec. Voir notre",
     "noteGoogleLien": "politique de confidentialité",
     "bientotTitre": "La réservation en ligne arrive",
@@ -3573,7 +2004,7 @@
         "enLigne": "Oui"
       }
     ],
-    "dureesNoteAvant": "Tout rendez-vous pris en ligne doit être confirmé par le studio dans les 24 heures. Pour annuler ou déplacer : ",
+    "dureesNoteAvant": "Toute plage demandée en ligne est confirmée par le studio dans les 24 heures. Pour annuler ou déplacer : ",
     "dureesNoteApres": ".",
     "adresse": "728, rue Fleury Est, Montréal · 1er étage",
     "heures": [
@@ -3581,7 +2012,10 @@
       "Mardi 10 h à 18 h",
       "Mercredi 15 h à 20 h",
       "Jeudi et vendredi : bientôt disponible"
-    ]
+    ],
+    "avisTitre": "Une demande, pas encore un rendez-vous",
+    "avisTexte": "La plage que vous choisissez est retenue le temps que le studio vous rappelle. Votre rendez-vous n'est confirmé qu'après cet appel, pendant lequel on valide le motif, la durée et votre couverture.",
+    "rappelLien": "Demander un rappel"
   },
   "nouveauPatient": {
     "metaTitre": "Dentiste à Ahuntsic qui accepte les nouveaux patients",
@@ -3633,7 +2067,7 @@
       }
     ],
     "faqLien": "En savoir plus →",
-    "piedMentions": "Studio Dentaire De Facto · Dr Bader Ramdani, dentiste généraliste",
+    "piedMentions": "Studio Dentaire [de facto] · Dr Bader Ramdani, dentiste généraliste",
     "piedResponsable": "Responsable de la protection des renseignements personnels : Dr Bader Ramdani, dentiste généraliste · info@studiodefacto.ca · 514 863-7805",
     "piedAvis": "L'information de ce site est générale et ne remplace pas un examen dentaire.",
     "piedConfidentialite": "Confidentialité",

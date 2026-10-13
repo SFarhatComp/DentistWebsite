@@ -81,7 +81,10 @@ export default async function FaqPage(props: { params: Promise<{ lang: string }>
             ))}
           </div>
 
-          <aside className="relative flex-[1_1_300px] overflow-hidden rounded-sm bg-plum-deep p-8 text-white">
+          {/* Collante : la colonne des questions fait plus du double de sa
+              hauteur, et une carte figée en haut laissait un millier de
+              pixels de vide en dessous. */}
+          <aside className="relative flex-[1_1_300px] overflow-hidden rounded-sm bg-plum-deep p-8 text-white lg:sticky lg:top-28">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/v2/couloir.webp"

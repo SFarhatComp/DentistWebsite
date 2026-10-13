@@ -70,7 +70,19 @@ const config: Config = {
       },
       // La maquette n'utilise qu'un seul rayon : 3 px.
       borderRadius: { lg: "3px", md: "3px", sm: "3px" },
-      maxWidth: { page: "1240px" },
+      /* Largeur du contenu.
+       *
+       * La maquette fixe 1240 px, mais elle est elle-meme cadree dans une page
+       * de 1440 px : ses 1240 px y laissent 100 px de marge, ce qui est juste.
+       * Sur un ecran de 1920, les memes 1240 px laissent 340 px de chaque cote
+       * et le contenu flotte au milieu.
+       *
+       * Le clamp garde donc 1240 px jusqu'a 1442 px de fenetre — la largeur de
+       * reference de la maquette, ou rien ne bouge — puis laisse le contenu
+       * grandir avec l'ecran, sans depasser 1600 px. Les blocs de texte ont
+       * leur propre largeur maximale en caracteres, la lecture ne s'allonge
+       * donc pas : ce sont les grilles et les images qui occupent la place. */
+      maxWidth: { page: "clamp(1240px, 86vw, 1600px)" },
       // La maquette replie la navigation en bouton « Menu » sous 1200 px.
       screens: { nav: "1200px" },
       backgroundImage: { hero: "var(--hero)" },

@@ -2,7 +2,9 @@ import type { Metadata } from "next"
 import { HeroPage } from "@/components/v2/hero-page"
 import { CarteGoogle } from "@/components/v2/carte-google"
 import { GrilleFilets, CaseFilets } from "@/components/v2/grille-filets"
+import { Suspense } from "react"
 import { ContactForm } from "@/components/forms/contact-form"
+import { FormulaireRappel } from "@/components/v2/formulaire-rappel"
 import { getTranslationObjectList, getTranslations } from "@/lib/i18n"
 import type { Locale } from "@/types"
 
@@ -155,13 +157,38 @@ export default async function ContactPage(props: { params: Promise<{ lang: strin
         </div>
       </section>
 
+      {/* Deux formulaires côte à côte : écrire au studio, ou demander qu'on
+          rappelle pour un rendez-vous. Ils se partagent la largeur, ce qui
+          évite la colonne de vide que laissait un formulaire seul. */}
       <section className="bg-background">
-        <div className="mx-auto max-w-page px-[clamp(16px,5vw,56px)] py-24">
-          <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
-            {t("contactPage.ecrireTitre")}
-          </h2>
-          <div className="mt-8 max-w-[760px]">
-            <ContactForm lang={lang} />
+        <div className="mx-auto flex max-w-page flex-wrap items-start gap-x-16 gap-y-20 px-[clamp(16px,5vw,56px)] py-24">
+          <div className="min-w-0 flex-[1_1_420px]">
+            <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
+              {t("contactPage.ecrireTitre")}
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-foreground/85">{t("contactPage.ecrireTexte")}</p>
+            <div className="mt-8">
+              <ContactForm lang={lang} />
+            </div>
+          </div>
+
+          <div id="rappel" className="min-w-0 flex-[1_1_420px] scroll-mt-28">
+            <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
+              {t("contactPage.rappelTitre")}
+            </h2>
+            <p className="mt-4 max-w-[52ch] text-foreground/85">{t("contactPage.rappelTexte")}</p>
+            <div className="mt-8">
+              <Suspense fallback={null}>
+                <FormulaireRappel lang={lang} />
+              </Suspense>
+            </div>
+            <p className="mt-5 text-[15px] text-foreground/75">
+              {t("contactPage.rappelUrgenceAvant")}
+              <a href="tel:+15148637805" className="text-primary no-underline hover:underline">
+                514 863-7805
+              </a>
+              {t("contactPage.rappelUrgenceApres")}
+            </p>
           </div>
         </div>
       </section>

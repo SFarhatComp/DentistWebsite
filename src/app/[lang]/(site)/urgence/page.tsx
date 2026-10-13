@@ -147,11 +147,13 @@ export default async function UrgencePage(props: { params: Promise<{ lang: strin
 
       <section className="bg-lavender-soft">
         <div className="mx-auto max-w-page px-[clamp(16px,5vw,56px)] py-[72px]">
-          <div className="max-w-[70ch] border-l-4 border-primary pl-6">
-            <h2 className="m-0 font-display text-[27px] font-semibold leading-[1.2]">
+          <div className="flex flex-wrap items-start gap-x-14 gap-y-4 rounded-sm border-l-4 border-primary bg-background py-7 pl-7 pr-7">
+            <h2 className="m-0 flex-[0_1_18ch] font-display text-[27px] font-semibold leading-[1.2]">
               {t("urgence.horsHeuresTitre")}
             </h2>
-            <p className="mt-3 text-[18px] leading-relaxed">{t("urgence.horsHeuresTexte")}</p>
+            <p className="m-0 max-w-[62ch] flex-[1_1_380px] text-[18px] leading-relaxed">
+              {t("urgence.horsHeuresTexte")}
+            </p>
           </div>
         </div>
       </section>

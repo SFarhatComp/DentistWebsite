@@ -62,7 +62,7 @@ export function Footer({ lang }: { lang: Locale }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/v2/logo.svg"
-                alt="Studio Dentaire De Facto"
+                alt="Studio Dentaire [de facto]"
                 className="block h-[clamp(84px,9vw,120px)] w-auto max-w-full self-start"
               />
               <p className="m-0 font-display text-[clamp(32px,3.4vw,44px)] leading-[1.05]">

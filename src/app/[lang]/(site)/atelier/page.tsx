@@ -104,6 +104,9 @@ export default async function AtelierPage(props: { params: Promise<{ lang: strin
           <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
             {t("atelier.changeTitre")}
           </h2>
+          <p className="mt-4 max-w-[68ch] text-[clamp(17px,1.5vw,20px)] leading-[1.55] text-foreground/85">
+            {t("atelier.changeIntro")}
+          </p>
           <GrilleFilets className="mt-10">
             {change.map((c) => (
               <CaseFilets key={c.titre} base={300} className="p-9">
@@ -121,6 +124,7 @@ export default async function AtelierPage(props: { params: Promise<{ lang: strin
             <h2 className="m-0 font-display text-[clamp(30px,3.8vw,46px)] font-semibold leading-[1.08]">
               {t("atelier.fabriqueTitre")}
             </h2>
+            <p className="mt-4 text-foreground/85">{t("atelier.fabriqueIntro")}</p>
 
             {fabrique.map((f) => (
               <div key={f.famille} className="mt-7">
@@ -182,7 +186,12 @@ export default async function AtelierPage(props: { params: Promise<{ lang: strin
       {/* Les trois photos ont leur propre section : la maquette les sort de la
           colonne de texte pour qu'elles puissent respirer sur toute la largeur. */}
       <section className="bg-surface">
-        <ul className="mx-auto flex max-w-page list-none gap-6 overflow-x-auto px-[clamp(16px,5vw,56px)] py-24">
+        <div className="mx-auto max-w-page px-[clamp(16px,5vw,56px)] pb-6 pt-24">
+          <p className="m-0 max-w-[68ch] text-[clamp(17px,1.5vw,20px)] leading-[1.55] text-foreground/85">
+            {t("atelier.photosIntro")}
+          </p>
+        </div>
+        <ul className="mx-auto flex max-w-page list-none gap-6 overflow-x-auto px-[clamp(16px,5vw,56px)] pb-24 pt-4">
           {photos.map((p, i) => (
             <li key={p.num} className="flex-[0_0_340px]">
               <figure className="m-0">

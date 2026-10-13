@@ -28,7 +28,7 @@ const leagueSpartan = League_Spartan({
 })
 
 export const metadata: Metadata = {
-  title: { default: "Studio Dentaire De Facto", template: "%s | Studio Dentaire De Facto" },
+  title: { default: "Studio Dentaire [de facto]", template: "%s | Studio Dentaire [de facto]" },
   description:
     "Studio dentaire indépendant à Ahuntsic, Montréal. Dr Bader Ramdani, dentiste généraliste. Atelier de prothèses sur place.",
   metadataBase: new URL("https://studiodefacto.ca"),
@@ -38,6 +38,10 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
+  // La raison sociale, sans crochets : ce champ sert a Google et aux
+  // annuaires pour identifier l'entreprise, et doit correspondre au nom
+  // sous lequel le studio est enregistre. La marque crochetee est partout
+  // ailleurs, ou elle s'adresse a un lecteur.
   name: "Studio Dentaire De Facto",
   address: {
     "@type": "PostalAddress",
