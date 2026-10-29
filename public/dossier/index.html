@@ -1647,9 +1647,10 @@ function dxRows(a,i){
     const dx = isEndo(a)
       ? selHTML(`data-act="tdx" data-f="dx" ${at} aria-label="Diagnostic pulpaire"`, DX_PULP_L, t.dx, "Diagnostic pulpaire…") + selHTML(`data-act="tdx" data-f="dx2" ${at} aria-label="Diagnostic périapical"`, DX_APIC_L, t.dx2, "Diagnostic périapical…")
       : selHTML(`data-act="tdx" data-f="dx" ${at} aria-label="Diagnostic"`, dxList(a), t.dx, "Diagnostic…");
-    const rec = selHTML(`data-act="tdx" data-f="rec" ${at} aria-label="Traitement recommandé"`, recOptions(a,t), t.rec, "Traitement recommandé…");
-    const why = t.rec && t.rec!==CAN[a.cid].nom ? `<label class="lab sm why">Pourquoi un autre traitement est fait${selHTML(`data-act="tdx" data-f="why" ${at} aria-label="Raison"`, WHY, t.why, "Raison…")}</label>` : "";
-    return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}</label><label class="lab sm">Traitement recommandé${rec}</label>${why}</div>`; }).join("")+`</div>`;
+    const rec = selHTML(`data-act="tdx" data-f="rec" ${at} aria-label="Traitement idéal"`, recOptions(a,t), t.rec, "Traitement idéal…");
+    const why = t.rec && t.rec!==CAN[a.cid].nom ? `<label class="lab sm why">Raison du traitement de compromis${selHTML(`data-act="tdx" data-f="why" ${at} aria-label="Raison"`, WHY, t.why, "Raison…")}</label>` : "";
+    const pro = selHTML(`data-act="tdx" data-f="pro" ${at} aria-label="Pronostic"`, PRONOSTIC, t.pro, "Pronostic…");
+    return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}</label><label class="lab sm">Traitement idéal${rec}</label>${why}<label class="lab sm">Pronostic${pro}</label></div>`; }).join("")+`</div>`;
 }
 function consHTML(a,i){
   const C=a.cons, nEl=C.el.length;
@@ -1799,8 +1800,10 @@ function buildNote(style){
     if(pr) L.push("Précision : "+pr+(P?"":(/[.!?]$/.test(pr)?"":".")));
     if(!L.length) return;
     out.push("", "\u0001"+(sec||precId||"")); out.push(title);
-    if(PARA){ const para=L.filter(x=>x!=="").map(x=>x.replace(/^\d+\. /,"").trim()).join(" ").replace(/ :\s+(?=\S)/g," : ").replace(/\s+/g," "); out.push(para); }
-    else L.forEach(x=>out.push(x));
+    if(PARA){ const G=[[]]; L.forEach(x=>{ if(x===""||x.startsWith("\u0004")){ if(G.at(-1).length) G.push([]); if(x) { G.at(-1).push(x); G.push([]); } } else G.at(-1).push(x); });
+      G.filter(g=>g.length).forEach((g,j)=>{ if(g[0].startsWith("\u0004")){ if(j) out.push(""); out.push(g[0].slice(1)); return; }
+        out.push(g.map(x=>x.replace(/^\d+\. /,"").trim()).join(" ").replace(/ :\s+(?=\S)/g," : ").replace(/\s+/g," ")); }); }
+    else L.forEach(x=>out.push(x.startsWith("\u0004")?x.slice(1):x));
     out.push("\u0002"); return;
   };
   out.push("\u0001seance"); out.push(T().l+" — "+(S.meta.date||"date ?")+(S.meta.dateC&&S.meta.dateC!==S.meta.date?" (consignée le "+S.meta.dateC+")":""));
@@ -1849,24 +1852,31 @@ function buildNote(style){
     }
     if(S.type==="postop") block("Suivi post-opératoire", suiviLines(), "suivi");
 
+    { const D=[], AXL=AX(), many=AXL.length>1;
+      AXL.forEach((a,i)=>{ const c=CAN[a.cid]; const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
+        if(i) D.push("§"); if(many) D.push(`\u0004Traitement ${i+1} : ${c.nom.toLowerCase()}${where?" — "+where:""}`);
+        (a.teeth.length?a.teeth:[a]).forEach(t=>{ const dx=[t.dx,t.dx2].filter(Boolean).join(" ; ");
+          D.push((a.teeth.length?"Diagnostic "+t.d+" : ":"Diagnostic : ")+(dx||"à préciser")+".");
+          if(t.rec) D.push("Traitement idéal : "+t.rec.toLowerCase()+".");
+          if(t.rec && t.rec!==c.nom) D.push("Traitement de compromis choisi par le patient : "+c.nom.toLowerCase()+(t.why?" (raison : "+t.why+")":"")+" ; risques du traitement de compromis expliqués.");
+          if(t.pro) D.push("Pronostic : "+t.pro+"."); });
+        const C=a.cons; if(!C) return; const refused = C.mode==="refus du patient";
+        D.push(refused ? "Traitement refusé par le patient après explications"+(C.q?" ; "+C.q:"")+"." : "Consentement "+C.mode+(C.q?" ; "+C.q:"")+".");
+        const lst=(t,arr)=>{ if(!arr||!arr.length) return; D.push(t+" :"); arr.forEach((x,j)=>D.push(x+(j<arr.length-1?" ;":"."))); };
+        lst("Éléments expliqués", C.el); lst("Risques et complications expliqués", C.rk); lst("Honoraires et protection", C.fr);
+        if(refused){ if(C.rf.length) D.push("Raison du refus : "+frList(C.rf)+"."); if(C.ri.length) D.push(cap(frList(C.ri))+"."); } });
+      block("Diagnostic et consentement", D, "", "actes"); }
     const A=S.anesth;
     if(A.aucune && AX().length) block("Anesthésie", ["Aucune anesthésie."], "anesth");
     else if(A.rows.length && needsAnesth()) block("Anesthésie", [A.topique?(P?"Topique : benzocaïne 20 %":"Anesthésie topique à la benzocaïne 20 %."):"",
       ...A.rows.map(r=>{ const ag=ANESTH_AGENTS.find(a=>a.l===r.agent); const n=parseFloat(String(r.carp).replace(",",".")); const ml = ag&&n?" ("+fmtN(Math.round(ag.ml*n*10)/10)+" mL)":"";
         return P ? cap(`${r.agent} × ${r.carp||"?"} carpule(s)${ml} — ${r.tech}${r.site?" "+r.site:""}`) : cap(`${r.tech}${r.site?" ("+r.site+")":""} : ${r.agent}, ${r.carp||"?"} carpule${n>1?"s":""}${ml}.`); }),
       A.aspiration?(P?"Aspiration négative":"Aspiration négative."):""], "anesth");
-    AX().forEach((a,i)=>{ const c=CAN[a.cid]; const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
-      const L=[]; (a.teeth.length?a.teeth:[a]).forEach(t=>{ const dx=[t.dx,t.dx2].filter(Boolean).join(" ; "); if(!dx&&!t.rec) return;
-        L.push((a.teeth.length?"Diagnostic "+t.d+" : ":"Diagnostic : ")+(dx||"à préciser")+(t.rec?" ; traitement recommandé : "+t.rec.toLowerCase():"")+".");
-        if(t.rec && t.rec!==c.nom) L.push("Option alternative choisie par le patient : "+c.nom.toLowerCase()+(t.why?" (raison : "+t.why+")":"")+" ; risques de l'option alternative expliqués."); });
-      const refused = a.cons && a.cons.mode==="refus du patient";
-      if(a.cons){ const C=a.cons; L.push(refused ? "Traitement refusé par le patient après explications"+(C.q?" ; "+C.q:"")+"." : "Consentement "+C.mode+(C.q?" ; "+C.q:"")+".");
-        const lst=(t,arr)=>{ if(!arr||!arr.length) return; L.push(t+" :"); arr.forEach((x,j)=>L.push(x+(j<arr.length-1?" ;":"."))); };
-        lst("Éléments expliqués", C.el); lst("Risques et complications expliqués", C.rk); lst("Honoraires et protection", C.fr);
-        if(C.mode==="refus du patient"){ if(C.rf.length) L.push("Raison du refus : "+frList(C.rf)+"."); if(C.ri.length) L.push(cap(frList(C.ri))+"."); } }
-      L.push("§"); let k=0; (refused?[]:steps(a)).forEach(f=>{ const v=valOf(f,a.v[f.id]); if(v){ k++; L.push(k+". "+(P?f.l+" : "+v:narr(f,v))); } });
-      if(!k && !refused && !(S.prec[a.uid]||"").trim()) L.push("Aucune étape consignée.");
-      block(P?`Tx ${i+1} — ${c.nom}${where?" — "+where:""}`:`Traitement ${i+1} : ${c.nom.toLowerCase()}${where?" — "+where:""}`, L, a.uid, "actes"); });
+    AX().forEach((a,i)=>{ const c=CAN[a.cid]; if(a.cons && a.cons.mode==="refus du patient") return;
+      const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
+      const L=[]; let k=0; steps(a).forEach(f=>{ const v=valOf(f,a.v[f.id]); if(v){ k++; L.push(k+". "+narr(f,v)); } });
+      if(!k && !(S.prec[a.uid]||"").trim()) L.push("Aucune étape consignée.");
+      block(`Traitement ${i+1} : ${c.nom.toLowerCase()}${where?" — "+where:""}`, L, a.uid, "actes"); });
     const fin = [...(showPostop()?postUsed().map(k=>POSTOP[k].t):[]), ...linesFor(finDefs(0),cleanFin(0),style), ...(T().noOrd?[]:medLines(P)), ...(!T().noOrd&&(S.ord.meds?.c||[]).length?linesFor([F_ORDCHK],S.ord,style):[]), ...linesFor(finDefs(1),cleanFin(1),style)];
     block("Fin de séance", fin, "fin");
   }
@@ -1929,7 +1939,7 @@ function checks(){
     S.rx.forEach((x,i)=>{ if(!rxHasObs(x)) r("interprétation du cliché "+(i+1)); });
     S.tests.forEach(x=>{ if(!TESTS.some(t=>x[t.id])) r("résultat des tests de la dent "+x.d); });
     AX().forEach((a,i)=>{ const C=a.cons; if(!C) return; if(C.mode!=="refus du patient" && C.el.length<CONS_EL.length) r(`Tx ${i+1} : éléments du consentement incomplets`); if(C.mode==="refus du patient" && !C.rf.length) r(`Tx ${i+1} : raison du refus`);
-      (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison de l'option alternative`); }); });
+      (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison du traitement de compromis`); if(!t.pro) r(`Tx ${i+1} : pronostic${a.teeth.length?" de la "+t.d:""}`); }); });
     if(needsAnesth() && !S.anesth.aucune){ if(!S.anesth.rows.length) r("anesthésie (agent, concentration, quantité)"); S.anesth.rows.forEach((x,i)=>{ if(!x.carp) r("quantité de l'injection "+(i+1)); }); }
     AX().forEach((a,i)=>{ const c=CAN[a.cid];
       if(needTeeth(a)) r(`Tx ${i+1} : ${c.dents==="arcade"?"arcade":"dent(s)"}`);
@@ -2343,5 +2353,3 @@ document.addEventListener("input", e=>{ const t=e.target; if(!t.dataset.cfg || t
   if(t.dataset.cfg==="lex"){ CFG.lex=t.value.split("\n").map(x=>x.trim()).filter(Boolean); LEXP.length=0; CFG.lex.forEach(x=>LEXP.push({e:[x,"","","","Lexique personnel","terme","","","",1], k:norm(x), a:"", s:""})); }
   saveCfg(); });
 </script>
-</body>
-</html>
