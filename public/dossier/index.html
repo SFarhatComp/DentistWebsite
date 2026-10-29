@@ -688,36 +688,46 @@ const F_SIGN = [
 /* ---------- Suivis selon le traitement ---------- */
 const SUIVI_TX = {
   chir:{l:"extraction ou chirurgie", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["cicatrisation normale", "alvéolite sèche (ostéite alvéolaire)", "alvéolite suppurée", "infection postopératoire", "hématome", "paresthésie", "communication bucco-sinusale", "séquestre osseux", "fragment radiculaire résiduel"], d:["cicatrisation normale"], req:true, n:"Diagnostic : {v}."},
     {id:"saignement", l:"Saignement", t:"one", o:["aucun","léger suintement","persistant"], d:["aucun"], n:"Saignement : {v}."},
     {id:"enflure", l:"Enflure", t:"one", o:["aucune","légère","en diminution","en augmentation"], d:["aucune"], n:"Enflure : {v}."},
     {id:"engourdissement", l:"Engourdissement", t:"one", o:["aucun","résolu","persistant (lèvre, menton ou langue)"], d:["aucun"], n:"Engourdissement : {v}."},
-    {id:"cicatrisation", l:"Cicatrisation (en clinique)", t:"multi", o:["normale","alvéole avec caillot","alvéolite sèche","infection du site","sutures en place","sutures retirées"], d:["normale"], n:"Cicatrisation : {v}."}]},
+    {id:"cicatrisation", l:"Cicatrisation (en clinique)", t:"multi", o:["normale","alvéole avec caillot","alvéole vide, os exposé","débris alimentaires dans l'alvéole","suppuration","sutures en place","sutures retirées"], d:["normale"], n:"Cicatrisation : {v}."}]},
   greffe:{l:"greffe", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["greffe intégrée, cicatrisation normale", "nécrose partielle du greffon", "échec de la greffe", "infection du site"], d:["greffe intégrée, cicatrisation normale"], req:true, n:"Diagnostic : {v}."},
     {id:"greffon", l:"Greffon", t:"one", o:["stable et rosé","pâle mais stable","nécrose partielle","perte du greffon"], d:["stable et rosé"], n:"Greffon : {v}."},
     {id:"donneur", l:"Site donneur", t:"one", o:["cicatrisation normale","douleur","saignement"], d:["cicatrisation normale"], n:"Site donneur : {v}."}]},
   endo:{l:"endodontie", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["évolution normale", "douleur postopératoire attendue", "exacerbation postopératoire (flare-up)", "parodontite apicale symptomatique", "abcès apical aigu", "fracture verticale suspectée"], d:["évolution normale"], req:true, n:"Diagnostic : {v}."},
     {id:"mastication", l:"Douleur à la mastication", t:"one", o:["aucune","légère","importante"], d:["aucune"], n:"Douleur à la mastication : {v}."},
     {id:"provisoire", l:"Obturation provisoire", t:"one", o:["intacte","usée","perdue"], d:["intacte"], n:"Obturation provisoire {v}."},
     {id:"enflure", l:"Enflure", t:"one", o:["aucune","présente"], d:["aucune"], n:"Enflure : {v}."}]},
   resto:{l:"restauration", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["évolution normale", "sensibilité postopératoire", "pulpite réversible", "pulpite irréversible", "occlusion haute", "fracture de la restauration"], d:["évolution normale"], req:true, n:"Diagnostic : {v}."},
     {id:"sensibilite", l:"Sensibilité", t:"one", o:["aucune","au froid, en diminution","au froid, persistante","à la mastication"], d:["aucune"], n:"Sensibilité : {v}."},
     {id:"occlusion", l:"Occlusion", t:"one", o:["confortable","haute, ajustée","haute, à ajuster"], d:["confortable"], n:"Occlusion : {v}."}]},
   ppf:{l:"couronne ou pont", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["évolution normale", "gingivite marginale", "sensibilité de la dent pilier", "décollement du provisoire", "fracture du provisoire"], d:["évolution normale"], req:true, n:"Diagnostic : {v}."},
     {id:"provisoire", l:"Provisoire ou pièce", t:"one", o:["en place et confortable","décollé, recollé","fracturé"], d:["en place et confortable"], n:"{v}."},
     {id:"gencive", l:"Gencive", t:"one", o:["saine","irritée","en guérison"], d:["saine"], n:"Gencive {v}."}]},
   pa:{l:"prothèse amovible", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["adaptation normale", "ulcère traumatique", "stomatite prothétique", "rétention insuffisante"], d:["adaptation normale"], req:true, n:"Diagnostic : {v}."},
     {id:"pression", l:"Zones de pression", t:"multi", o:["aucune","zone irritée soulagée","ulcère traumatique"], d:["aucune"], n:"Zones de pression : {v}."},
     {id:"fonction", l:"Fonction", t:"multi", o:["mastication adéquate","parole adéquate","rétention adéquate","rétention insuffisante"], d:["mastication adéquate","parole adéquate","rétention adéquate"], n:"Fonction : {v}."}]},
   aligneurs:{l:"aligneurs", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["progression conforme", "perte d'ajustement de l'aligneur", "attache décollée", "irritation des tissus mous"], d:["progression conforme"], req:true, n:"Diagnostic : {v}."},
     {id:"ajustement", l:"Ajustement", t:"one", o:["aligneur bien ajusté","aligneur qui ne s'ajuste pas"], d:["aligneur bien ajusté"], n:"{v}."},
     {id:"attaches", l:"Attaches", t:"one", o:["intactes","décollée"], d:["intactes"], n:"Attaches {v}."}]},
   biopsie:{l:"biopsie", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["cicatrisation normale", "cicatrisation retardée", "infection du site"], d:["cicatrisation normale"], req:true, n:"Diagnostic : {v}."},
     {id:"site", l:"Site", t:"one", o:["cicatrisation normale","retardée"], d:["cicatrisation normale"], n:"Site de biopsie : {v}."},
     {id:"resultat", l:"Résultat de pathologie", t:"one", o:["résultat reçu et expliqué au patient","résultat en attente","référence selon le résultat"], n:"{v}."}]},
   implant:{l:"couronne sur implant", f:[
+    {id:"dx", l:"Diagnostic", t:"one", o:["tissus péri-implantaires sains", "mucosite péri-implantaire", "péri-implantite", "dévissage de la vis"], d:["tissus péri-implantaires sains"], req:true, n:"Diagnostic : {v}."},
     {id:"tissus", l:"Tissus péri-implantaires", t:"one", o:["sains","saignement au sondage","suppuration"], d:["sains"], n:"Tissus péri-implantaires {v}."},
     {id:"vis", l:"Vis et couronne", t:"one", o:["stables","vis desserrée, resserrée au couple recommandé"], d:["stables"], n:"Vis et couronne {v}."}]}
 };
+Object.values(SUIVI_TX).forEach(v=>{ const i=v.f.findIndex(f=>f.id==="dx"); if(i>=0) v.f.push(v.f.splice(i,1)[0]); });
 const F_SUIVI_GEN = [
   {id:"joint", l:"Personne jointe", t:"one", o:["patient joint","parent ou tuteur joint","message laissé","aucune réponse"], req:true, tel:true, n:"{v}."},
   {id:"douleur", l:"Douleur (0-10)", t:"one", o:["0","1","2","3","4","5","6","7","8","9","10"], d:["0"], n:"Douleur rapportée : {v}/10."},
@@ -737,6 +747,7 @@ const F_MANQUE = [
 const POSTOP = {
   exo:{l:"Extraction", t:"Instructions post-opératoires données (extraction) : mordre sur la gaze 30 à 45 minutes ; ne pas cracher, ni rincer vigoureusement, ni utiliser de paille, ni fumer pendant 24 à 48 h ; éviter l'effort physique intense pendant 24 h ; appliquer de la glace 15 minutes aux heures le premier jour en cas d'enflure ; alimentation molle et tiède, mastiquer du côté opposé ; à partir du lendemain, rinçages doux à l'eau salée tiède après les repas ; brossage normal en évitant le site ; un léger suintement est normal les premières 24 h ; en cas de saignement, mordre une gaze humide ou un sachet de thé 30 minutes ; analgésiques selon les recommandations ; rappeler la clinique si saignement persistant, douleur croissante après 3 jours, fièvre, enflure qui augmente ou difficulté à avaler ou à respirer."},
   chir:{l:"Chirurgie ou greffe", t:"Instructions post-opératoires données (chirurgie ou greffe) : ne pas tirer la lèvre ni la joue pour regarder le site ; ne pas brosser ni passer la soie sur le site opéré jusqu'au retrait des sutures ou à l'avis du dentiste ; rinçage à la chlorhexidine 0,12 % selon l'ordonnance, sans rincer à l'eau ensuite ; glace 15 minutes aux heures le premier jour ; alimentation molle, froide ou tiède, du côté opposé ; ne pas fumer ; éviter l'effort intense 48 h ; porter la plaque palatine si remise ; analgésiques selon les recommandations ; rendez-vous de contrôle et de retrait des sutures prévu ; rappeler la clinique en cas de saignement persistant, de douleur croissante, de fièvre ou de perte du pansement ou de la greffe."},
+  alveolite:{l:"Alvéolite", t:"Instructions post-opératoires données (alvéolite) : ne pas retirer le pansement placé dans l'alvéole ; ne pas cracher, ni rincer vigoureusement, ni utiliser de paille, ni fumer ; rinçages doux à l'eau salée tiède après les repas à partir du lendemain ; alimentation molle, mastiquer du côté opposé ; analgésiques selon les recommandations ; un goût d'eugénol (clou de girofle) est normal ; revenir à la clinique pour la réévaluation prévue ; rappeler la clinique si la douleur ne diminue pas dans les 24 h, en cas de fièvre ou d'enflure qui augmente."},
   biopsie:{l:"Biopsie", t:"Instructions post-opératoires données (biopsie) : éviter les aliments épicés, acides ou croquants quelques jours ; ne pas toucher le site avec la langue ou les doigts ; rinçages doux à l'eau salée tiède dès le lendemain ; analgésiques selon les recommandations ; le résultat de l'analyse sera communiqué dès réception, habituellement en 2 à 3 semaines ; rappeler la clinique en cas de saignement persistant, d'enflure ou de fièvre."},
   endo:{l:"Endodontie", t:"Instructions post-opératoires données (endodontie) : une sensibilité à la mastication est possible pendant quelques jours ; éviter de mastiquer sur la dent tant que la restauration définitive n'est pas en place, car elle est plus fragile et peut se fracturer ; analgésiques selon les recommandations ; si une obturation provisoire est en place, une légère usure est normale, rappeler si elle tombe ; une couronne ou un recouvrement cuspidien peut être recommandé ; rappeler la clinique en cas d'enflure, de douleur intense ou croissante, ou de fièvre."},
   resto:{l:"Restauration", t:"Instructions post-opératoires données (restauration) : attendre la fin de l'anesthésie avant de manger pour éviter de se mordre la lèvre, la joue ou la langue ; une sensibilité au froid ou à la mastication est possible quelques jours ; rappeler la clinique si la sensibilité persiste au-delà de 2 semaines, si la morsure semble haute ou en cas de douleur spontanée."},
@@ -870,6 +881,14 @@ const CANEVAS = [
    {id:"fixation", l:"Fixation et envoi", t:"multi", o:["spécimen fixé dans le formol 10 %","requête de pathologie remplie","spécimen envoyé au laboratoire de pathologie"], d:["spécimen fixé dans le formol 10 %","requête de pathologie remplie"], req:true, n:"{v}."},
    {...SUT, d:["Vicryl 4-0","points simples"]}, POINTS, HEMO,
    {id:"suivi", l:"Communication du résultat", t:"one", o:["rendez-vous de résultat fixé","appel prévu à la réception du résultat"], req:true, n:"{v}."}
+ ]},
+ {id:"alveolite", nom:"Débridement d'alvéolite", g:"Chirurgie", dents:"dent", anesth:true, urg:true, postop:"alveolite", etapes:[
+   {id:"verif", l:"Anesthésie vérifiée", t:"one", o:["anesthésie confirmée avant l'intervention","sans anesthésie, à la demande du patient"], d:["anesthésie confirmée avant l'intervention"], n:"{v}."},
+   {id:"curetage", l:"Curetage", t:"multi", o:["curetage doux de l'alvéole","retrait des débris et du caillot nécrotique","retrait de l'ancien pansement"], d:["curetage doux de l'alvéole","retrait des débris et du caillot nécrotique"], req:true, n:"{v}."},
+   {id:"irrigation", l:"Irrigation", t:"multi", o:["irrigation à la chlorhexidine 0,12 %","irrigation saline"], d:["irrigation à la chlorhexidine 0,12 %"], req:true, n:"{v}."},
+   {id:"pansement", l:"Pansement alvéolaire", t:"one", o:["Gelfoam imbibé d'eugénol placé dans l'alvéole","Alvogyl placé dans l'alvéole","aucun pansement"], d:["Gelfoam imbibé d'eugénol placé dans l'alvéole"], req:true, n:"{v}."},
+   {id:"controle", l:"Contrôle", t:"multi", o:["soulagement de la douleur constaté avant le départ","aucun fragment résiduel visible"], d:["soulagement de la douleur constaté avant le départ"], n:"{v}."},
+   {id:"retour", l:"Retour", t:"one", o:["réévaluation et changement de pansement dans 2 à 3 jours","réévaluation au besoin"], d:["réévaluation et changement de pansement dans 2 à 3 jours"], n:"{v}."}
  ]},
  {id:"sutures", nom:"Retrait de sutures", g:"Chirurgie", dents:"site", anesth:false, etapes:[
    {id:"site", l:"Site", t:"one", o:["site d'extraction","site de chirurgie parodontale","site de greffe","site donneur palatin","site de biopsie"], req:true, n:"Site : {v}."},
@@ -1119,6 +1138,10 @@ const VARIANTS = {
     {id:"sagesse", nom:"Dent de sagesse incluse", set:{indication:["dent de sagesse incluse"], incision:["incision sulculaire (enveloppe)","incision verticale de décharge"], lambeau:["lambeau de pleine épaisseur (mucopériosté)"], osteotomie:["ostéotomie à la fraise chirurgicale sous irrigation saline"], odontosection:["odontosection couronne-racines"], elevation:["élévateur 301","élévateurs de Cryer"], avulsion:["racines retirées à l'élévateur"], debridement:["curetage","régularisation osseuse à la lime à os","irrigation saline abondante","inspection : aucun fragment résiduel"], sutures:["chromic gut 3-0","points simples"]}},
     {id:"multi", nom:"Molaire avec odontosection", set:{indication:["carie non restaurable"], incision:["incision sulculaire (enveloppe)"], lambeau:["lambeau de pleine épaisseur (mucopériosté)"], osteotomie:["aucune ostéotomie"], odontosection:["odontosection des racines"], elevation:["élévateur 301","élévateur 34S"], avulsion:["racines retirées à l'élévateur"], debridement:["curetage","irrigation saline abondante","inspection : aucun fragment résiduel"], sutures:["chromic gut 3-0","points simples"]}}
   ],
+  alveolite:[
+    {id:"premier", nom:"Premier débridement", set:{}},
+    {id:"change", nom:"Changement de pansement", set:{curetage:["retrait de l'ancien pansement","curetage doux de l'alvéole"], irrigation:["irrigation à la chlorhexidine 0,12 %"], retour:["réévaluation au besoin"]}}
+  ],
   biopsie:[
     {id:"exc", nom:"Biopsie excisionnelle", set:{type:["biopsie excisionnelle"], taille:["5-10 mm"], fixation:["spécimen fixé dans le formol 10 %","requête de pathologie remplie","spécimen envoyé au laboratoire de pathologie"], suivi:["rendez-vous de résultat fixé"]}},
     {id:"inc", nom:"Biopsie incisionnelle", set:{type:["biopsie incisionnelle"], taille:["< 5 mm"], fixation:["spécimen fixé dans le formol 10 %","requête de pathologie remplie","spécimen envoyé au laboratoire de pathologie"], suivi:["rendez-vous de résultat fixé"]}}
@@ -1185,6 +1208,7 @@ const RISQUES = {
   resto:["sensibilité postopératoire","atteinte pulpaire pouvant nécessiter un traitement de canal","fracture ou décollement de la restauration","carie récurrente","ajustement occlusal possible"],
   endo:["douleur ou sensibilité postopératoire","échec pouvant nécessiter un retraitement ou une chirurgie","fracture d'instrument","perforation","fracture de la dent : recouvrement cuspidien recommandé","dépassement de matériau","anatomie complexe pouvant nécessiter une référence"],
   exo:["saignement","enflure et ecchymose","douleur","alvéolite sèche","infection","fracture de racine (fragment laissé ou retiré chirurgicalement)","communication bucco-sinusale (dent maxillaire postérieure)","atteinte temporaire ou permanente du nerf (lèvre, menton, langue)","dommage aux dents voisines","limitation d'ouverture"],
+  alveolite:["douleur persistante nécessitant d'autres changements de pansement","goût ou odeur d'eugénol","irritation locale par le pansement","retard de cicatrisation","infection"],
   biopsie:["saignement","douleur","cicatrice","résultat non concluant nécessitant une nouvelle biopsie","atteinte nerveuse selon le site"],
   greffe:["douleur au site donneur","saignement palatin","échec ou perte partielle du greffon","récession résiduelle","reprise possible"],
   ppf:["sensibilité","atteinte pulpaire pouvant nécessiter un traitement de canal","décollement ou fracture de la pièce","teinte légèrement différente","inflammation gingivale","décollement du provisoire","récession exposant la limite"],
@@ -1194,7 +1218,7 @@ const RISQUES = {
   blanchiment:["sensibilité","irritation gingivale","résultat variable","les restaurations ne changent pas de couleur","retour partiel de la teinte"],
   gouttiere:["inconfort","salivation accrue","changement occlusal possible","fracture de la gouttière"]
 };
-const CAN_RISK = {composite:"resto",amalgame:"resto",temporaire:"resto",endo_urg:"endo",endo_s1:"endo",endo_obt:"endo",endo_1rdv:"endo",exo_simple:"exo",exo_chir:"exo",biopsie:"biopsie",gal:"greffe",gtc:"greffe",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",interceptif:"ortho",contention:"ortho",blanchiment:"blanchiment",gouttiere:"gouttiere"};
+const CAN_RISK = {composite:"resto",amalgame:"resto",temporaire:"resto",endo_urg:"endo",endo_s1:"endo",endo_obt:"endo",endo_1rdv:"endo",exo_simple:"exo",exo_chir:"exo",alveolite:"alveolite",biopsie:"biopsie",gal:"greffe",gtc:"greffe",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",interceptif:"ortho",contention:"ortho",blanchiment:"blanchiment",gouttiere:"gouttiere"};
 </script>
 <script>/* ============================================================
    MOTEUR v2 — un objet de séance (S), deux rendus de note.
@@ -1293,6 +1317,7 @@ const steps = a => CAN[a.cid].etapes.filter(f=>condOk(f,a) && f.id!=="dxconf");
 const DXA = {
   resto:["carie amélaire (ICDAS 3)","carie dentinaire (ICDAS 4)","carie dentinaire étendue (ICDAS 5)","carie profonde (ICDAS 6)","carie radiculaire","carie récurrente","carie secondaire sous restauration","fracture de l'émail","attrition","érosion","abfraction","anomalie de forme","restauration défectueuse","restauration fracturée","fracture de cuspide","lésion cervicale non carieuse","hypersensibilité dentinaire","puits et fissures à risque","esthétique"],
   exo:["carie non restaurable","dent non restaurable","dent nécrosée","échec endodontique","résorption radiculaire","parodontite avancée","mobilité avancée","infection récurrente","fracture radiculaire","dent fendue","dent incluse","dent surnuméraire","péricoronarite","raison orthodontique","dent temporaire en rétention prolongée"],
+  alveolite:["alvéolite sèche (ostéite alvéolaire)","alvéolite suppurée","infection postopératoire"],
   paro:["récession gingivale","gencive kératinisée insuffisante"],
   ppf:["dent traitée de canal à recouvrir","restauration étendue","fracture de cuspide","dent fêlée","usure","esthétique","édentement"],
   implant:["édentement unitaire restauré par implant"],
@@ -1301,10 +1326,10 @@ const DXA = {
   autre:["bruxisme","dysfonction temporo-mandibulaire","contact prématuré","restauration haute","dyschromie","lésion des tissus mous à diagnostiquer","contrôle post-opératoire","douleur","infection"]
 };
 const DX_PULP_L = [...DX_PULP.slice(1), "dent déjà traitée, retraitement indiqué"], DX_APIC_L = DX_APIC.slice(1);
-const CAN_DX = {composite:"resto",amalgame:"resto",temporaire:"resto",scellant:"resto",desensib:"resto",exo_simple:"exo",exo_chir:"exo",gal:"paro",gtc:"paro",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",contention:"ortho",interceptif:"ortho"};
+const CAN_DX = {composite:"resto",amalgame:"resto",temporaire:"resto",scellant:"resto",desensib:"resto",exo_simple:"exo",exo_chir:"exo",alveolite:"alveolite",gal:"paro",gtc:"paro",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",contention:"ortho",interceptif:"ortho"};
 const isEndo = a => /^endo_/.test(a.cid);
 const dxList = a => DXA[CAN_DX[a.cid]||"autre"];
-const VDX = {composite:{cl1:"carie dentinaire (ICDAS 4)",cl2:"carie dentinaire (ICDAS 4)",ant:"carie dentinaire (ICDAS 4)",cl5:"lésion cervicale non carieuse",rempl:"restauration défectueuse"},amalgame:{cl1:"carie dentinaire (ICDAS 4)",cl2:"carie dentinaire (ICDAS 4)"},temporaire:{sedatif:"carie profonde (ICDAS 6)",preendo:"carie profonde (ICDAS 6)",stab:"carie dentinaire étendue (ICDAS 5)"},scellant:{resine:"puits et fissures à risque",cvi:"puits et fissures à risque"},desensib:{vernis:"hypersensibilité dentinaire",gluma:"hypersensibilité dentinaire"},exo_simple:{carie:"carie non restaurable",paro:"parodontite avancée",temp:"dent temporaire en rétention prolongée",ortho:"raison orthodontique"},exo_chir:{racine:"carie non restaurable",sagesse:"dent incluse",multi:"carie non restaurable"},gal:{std:"gencive kératinisée insuffisante"},gtc:{tunnel:"récession gingivale",lambeau:"récession gingivale"},ppf_prep:{zirc:"dent traitée de canal à recouvrir",emax:"restauration étendue",pont:"édentement"},ppf_ins:{zirc:"dent traitée de canal à recouvrir",emax:"restauration étendue"},onlay_prep:{emax:"fracture de cuspide"},onlay_coll:{emax:"fracture de cuspide"},facette_prep:{emax:"esthétique"},facette_coll:{emax:"esthétique"}};
+const VDX = {composite:{cl1:"carie dentinaire (ICDAS 4)",cl2:"carie dentinaire (ICDAS 4)",ant:"carie dentinaire (ICDAS 4)",cl5:"lésion cervicale non carieuse",rempl:"restauration défectueuse"},amalgame:{cl1:"carie dentinaire (ICDAS 4)",cl2:"carie dentinaire (ICDAS 4)"},temporaire:{sedatif:"carie profonde (ICDAS 6)",preendo:"carie profonde (ICDAS 6)",stab:"carie dentinaire étendue (ICDAS 5)"},scellant:{resine:"puits et fissures à risque",cvi:"puits et fissures à risque"},desensib:{vernis:"hypersensibilité dentinaire",gluma:"hypersensibilité dentinaire"},exo_simple:{carie:"carie non restaurable",paro:"parodontite avancée",temp:"dent temporaire en rétention prolongée",ortho:"raison orthodontique"},alveolite:{premier:"alvéolite sèche (ostéite alvéolaire)",change:"alvéolite sèche (ostéite alvéolaire)"},exo_chir:{racine:"carie non restaurable",sagesse:"dent incluse",multi:"carie non restaurable"},gal:{std:"gencive kératinisée insuffisante"},gtc:{tunnel:"récession gingivale",lambeau:"récession gingivale"},ppf_prep:{zirc:"dent traitée de canal à recouvrir",emax:"restauration étendue",pont:"édentement"},ppf_ins:{zirc:"dent traitée de canal à recouvrir",emax:"restauration étendue"},onlay_prep:{emax:"fracture de cuspide"},onlay_coll:{emax:"fracture de cuspide"},facette_prep:{emax:"esthétique"},facette_coll:{emax:"esthétique"}};
 function dxDefault(a){ if(isEndo(a)){ const dc=(variantsOf(a.cid).find(v=>v.id===a.vid)?.set.dxconf)||[]; return {dx:dc.find(x=>DX_PULP_L.includes(x))||"", dx2:dc.find(x=>DX_APIC_L.includes(x))||""}; }
   return {dx:(VDX[a.cid]||{})[a.vid] || dxList(a)[0] || "", dx2:""}; }
 function recOptions(a, t){
@@ -1917,6 +1942,7 @@ function checks(){
   if(!S.meta.date) r("date de la séance");
   if(S.meta.dateC!==S.meta.date) reqs(F_DELAI, S.meta.delai);
   if(S.type==="suivi"){ reqs([F_SUIVITX],S.suivi.f); reqs(F_SUIVI_GEN,S.suivi.g); }
+  if(S.type==="suivi"||S.type==="postop") suiviKeys().forEach(k=>reqs(SUIVI_TX[k].f.filter(f=>f.id==="dx"), S.suivi.sub[k]||{}, "Suivi "+SUIVI_TX[k].l+" : "));
   else if(S.type==="manque"){ reqs(F_MANQUE,S.manque); }
   else {
     reqs(F_QMR.slice(0,1), S.qmr);
@@ -1950,6 +1976,8 @@ function checks(){
     if(needsAnesth() && !S.post.length) r("instructions post-opératoires");
   }
   if(!valOf(F_SIGN[0], S.sign.verifie)) r("signature du dentiste");
+  if(S.type==="suivi"||S.type==="postop"){ const ab=suiviKeys().filter(k=>{ const v=(S.suivi.sub[k]||{}).dx?.c||[]; const f=SUIVI_TX[k].f.find(x=>x.id==="dx"); return v.length && f && v[0]!==f.o[0]; });
+    if(ab.length && ((S.suivi.g.conduite?.c)||[]).includes("évolution normale, aucune intervention")) L.push({lvl:"warn", msg:"Diagnostic anormal au suivi, mais la conduite indique « évolution normale, aucune intervention »."}); }
   vocab().forEach(m=>L.push({lvl:"voc", msg:m}));
   return L;
 }
@@ -2030,6 +2058,10 @@ document.addEventListener("click", e=>{
     const o=getP(b.dataset.chip), v=b.dataset.v;
     const mt=b.dataset.chip.match(/^actes\.(\d+)\.v\.(\w+)$/); if(mt) S.actes[+mt[1]].touched[mt[2]]=true; else S.ui.touched[b.dataset.chip]=true;
     o.c = b.dataset.mode==="one" ? (o.c.includes(v)?[]:[v]) : (o.c.includes(v)?o.c.filter(x=>x!==v):o.c.concat(v));
+    if(b.dataset.chip==="suivi.sub.chir.dx"){ const ch=S.suivi.sub.chir||{}, v=(ch.dx?.c||[])[0]||"", ci=fv(ch,"cicatrisation");
+      const map={"cicatrisation normale":["normale"],"alvéolite sèche (ostéite alvéolaire)":["alvéole vide, os exposé"],"alvéolite suppurée":["suppuration"],"infection postopératoire":["suppuration"]};
+      ci.c = map[v] ? [...map[v]] : ci.c.filter(x=>x!=="normale");
+      const co=fv(S.suivi.g,"conduite"); if(v!=="cicatrisation normale") co.c=co.c.filter(x=>x!=="évolution normale, aucune intervention"); }
     if(b.dataset.chip==="fin.remis" || b.dataset.chip==="ord.meds"){ const r=fv(S.fin,"remis"); if((S.ord.meds?.c||[]).length && !r.c.includes("ordonnance")) r.c.push("ordonnance"); }
     renderForm(); return;
   }
