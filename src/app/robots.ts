@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/__forms.html"],
+        disallow: ["/admin", "/__forms.html", "/dossier"],
       },
     ],
     sitemap: "https://studiodefacto.ca/sitemap.xml",
