@@ -620,6 +620,12 @@ body[data-final="1"] .allconf{display:none}
 
 .qinline .chip::before{display:none!important}
 .qinline .chip{border-radius:999px!important;padding:5px 12px!important;display:inline-flex!important}
+
+.piliers{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding:10px;border-radius:16px;background:var(--sunk)}
+.dxrow.pil .locn{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+.dxrow .chip:not(.on){background:var(--sunk)}
+.dxrow.pil .lab .chips{flex-direction:row}
 </style>
 
 <div class="shell">
@@ -1255,8 +1261,10 @@ const CANEVAS = [
    {id:"teinte", l:"Teinte (VITA)", t:"multi", o:VITA, n:"Teinte : {v}."},
    {id:"cle", l:"Avant la préparation", t:"multi", o:["clé en silicone pour le provisoire","numérisation initiale"], n:"{v}."},
    {id:"materiau", l:"Matériau prévu", t:"one", o:["zircone","IPS e.max","métal-céramique","or"], req:true, n:"Matériau prévu : {v}."},
-   {id:"reconstitution", l:"Reconstitution", t:"one", o:["reconstitution existante adéquate","reconstitution composite faite","aucune requise"], n:"{v}."},
-   {id:"preparation", l:"Préparation", t:"multi", o:["limite en congé","limite en épaulement","limite juxtagingivale","limite intrasulculaire","réduction vérifiée à la clé"], req:true, n:"Préparation : {v}."},
+   {id:"explo", l:"Exploration du pilier", t:"multi", o:["structure dentaire saine, aucune carie résiduelle","restauration existante retirée","carie résiduelle retirée","fêlure observée"], d:["structure dentaire saine, aucune carie résiduelle"], req:true, n:"Exploration du pilier : {v}."},
+   {id:"reconstitution", l:"Reconstitution", t:"one", o:["reconstitution existante adéquate","réfection de la restauration précédente : reconstitution composite faite","aucune requise"], n:"{v}."},
+   {id:"preparation", l:"Préparation", t:"multi", o:["limite en chanfrein","limite en épaulement","limite en congé","limite juxtagingivale","limite intrasulculaire","limite sous-gingivale","réduction vérifiée à la clé"], req:true, n:"Préparation : {v}."},
+   {id:"subg", l:"Limite sous-gingivale", t:"one", cond:"subg", o:["élévation de la ligne de finition (DME) faite","élongation coronaire faite au préalable","aucune, limite accessible"], req:true, n:"Limite sous-gingivale : {v}."},
    {id:"deflexion", l:"Déflexion gingivale", t:"multi", o:["fil rétracteur 00 (déflexion horizontale)","fil rétracteur 1 (déflexion verticale)","fil rétracteur 000","fil rétracteur 0","Hemodent","Expasyl"], d:["fil rétracteur 00 (déflexion horizontale)","fil rétracteur 1 (déflexion verticale)","Hemodent"], n:"Déflexion gingivale : {v}."},
    {id:"empreinte", l:"Empreinte", t:"one", o:["numérique (scanner intraoral)","analogique : VPS basse viscosité et viscosité moyenne"], req:true, n:"Empreinte {v}."},
    {id:"occlusal", l:"Enregistrement occlusal", t:"one", o:["numérique","silicone d'occlusion"], n:"Enregistrement occlusal {v}."},
@@ -1491,15 +1499,15 @@ const VARIANTS = {
   gtc:[ {id:"tunnel", nom:"Technique du tunnel", set:{technique:["tunnel"], preparation:["surfaçage radiculaire"], prelevement:["incision unique","greffon désépithélialisé"], dimensions:["environ 15 × 6 mm"]}},
         {id:"lambeau", nom:"Lambeau déplacé coronairement", set:{technique:["lambeau déplacé coronairement"], preparation:["surfaçage radiculaire"], prelevement:["incision unique","greffon désépithélialisé"], dimensions:["environ 15 × 6 mm"]}} ],
   ppf_prep:[
-    {id:"zirc", nom:"Couronne postérieure (limite en congé)", set:{cle:["clé en silicone pour le provisoire"], reconstitution:["reconstitution existante adéquate"], preparation:["limite en congé","limite juxtagingivale","réduction vérifiée à la clé"], empreinte:["numérique (scanner intraoral)"], occlusal:["numérique"], provisoire:["Protemp","scellé au ciment provisoire sans eugénol"], labo:["laboratoire intégré De Facto"]}},
-    {id:"emax", nom:"Couronne antérieure (limite en épaulement)", set:{cle:["clé en silicone pour le provisoire"], reconstitution:["reconstitution existante adéquate"], preparation:["limite en épaulement","limite juxtagingivale","réduction vérifiée à la clé"], empreinte:["numérique (scanner intraoral)"], occlusal:["numérique"], provisoire:["Protemp","scellé au ciment provisoire sans eugénol"], labo:["laboratoire intégré De Facto"]}}
+    {id:"zirc", nom:"Couronne postérieure zircone (limite en chanfrein)", set:{cle:["clé en silicone pour le provisoire"], reconstitution:["reconstitution existante adéquate"], explo:["structure dentaire saine, aucune carie résiduelle"], preparation:["limite en chanfrein","limite juxtagingivale","réduction vérifiée à la clé"], empreinte:["numérique (scanner intraoral)"], occlusal:["numérique"], provisoire:["Protemp","scellé au ciment provisoire sans eugénol"], labo:["laboratoire intégré De Facto"]}},
+    {id:"emax", nom:"Couronne antérieure e.max (limite en épaulement)", set:{cle:["clé en silicone pour le provisoire"], reconstitution:["reconstitution existante adéquate"], explo:["structure dentaire saine, aucune carie résiduelle"], preparation:["limite en épaulement","limite juxtagingivale","réduction vérifiée à la clé"], empreinte:["numérique (scanner intraoral)"], occlusal:["numérique"], provisoire:["Protemp","scellé au ciment provisoire sans eugénol"], labo:["laboratoire intégré De Facto"]}}
   ],
   ppf_ins:[
     {id:"zirc", nom:"Zircone, ciment auto-adhésif", set:{essayage:["adaptation marginale vérifiée","contacts proximaux vérifiés","occlusion vérifiée","teinte acceptée par le patient"], surface_piece:["sablage + apprêt MDP (zircone)"], ciment:["ciment résine auto-adhésif"], exces:["photopolymérisation flash","excès retirés","soie passée aux contacts"]}},
     {id:"emax", nom:"e.max collée", set:{essayage:["adaptation marginale vérifiée","contacts proximaux vérifiés","occlusion vérifiée","teinte acceptée par le patient"], surface_piece:["acide fluorhydrique + silane (e.max)"], isolation:["digue"], ciment:["ciment résine adhésif"], exces:["photopolymérisation flash","excès retirés","soie passée aux contacts"]}}
   ],
   pont_prep:[
-    {id:"pont", nom:"Pont (limites en congé)", set:{cle:["clé en silicone pour le provisoire"], reconstitution:["reconstitution existante adéquate"], preparation:["limite en congé","limite juxtagingivale","réduction vérifiée à la clé"], empreinte:["numérique (scanner intraoral)"], occlusal:["numérique"], provisoire:["Protemp","scellé au ciment provisoire sans eugénol"], labo:["laboratoire intégré De Facto"]}}
+    {id:"pont", nom:"Pont (limites en chanfrein)", set:{cle:["clé en silicone pour le provisoire"], reconstitution:["reconstitution existante adéquate"], explo:["structure dentaire saine, aucune carie résiduelle"], preparation:["limite en chanfrein","limite juxtagingivale","réduction vérifiée à la clé"], empreinte:["numérique (scanner intraoral)"], occlusal:["numérique"], provisoire:["Protemp","scellé au ciment provisoire sans eugénol"], labo:["laboratoire intégré De Facto"]}}
   ],
   pont_ins:[
     {id:"zirc", nom:"Pont zircone, ciment auto-adhésif", set:{essayage:["adaptation marginale vérifiée","contacts proximaux vérifiés","occlusion vérifiée","teinte acceptée par le patient"], surface_piece:["sablage + apprêt MDP (zircone)"], ciment:["ciment résine auto-adhésif"], exces:["photopolymérisation flash","excès retirés","soie passée aux contacts"]}}
@@ -1557,6 +1565,7 @@ const RISQUES = {
   biopsie:["saignement","douleur","cicatrice","résultat non concluant nécessitant une nouvelle biopsie","atteinte nerveuse selon le site"],
   greffe:["douleur au site donneur","saignement palatin","échec ou perte partielle du greffon","récession résiduelle","reprise possible"],
   ppf:["sensibilité","atteinte pulpaire pouvant nécessiter un traitement de canal","décollement ou fracture de la pièce","teinte légèrement différente","inflammation gingivale","décollement du provisoire","récession exposant la limite"],
+  pont:["sensibilité des piliers","atteinte pulpaire d'un pilier pouvant nécessiter un traitement de canal","décollement ou fracture du pont","carie d'un pilier","difficulté d'hygiène sous le pontique","inflammation gingivale","teinte légèrement différente"],
   implant:["dévissage","fracture de la céramique","péri-implantite","impaction alimentaire","échec de l'implant"],
   pa:["période d'adaptation","zones de pression","difficulté initiale de parole et de mastication","résorption osseuse nécessitant un regarnissage","fracture de la prothèse"],
   ortho:["inconfort","résorption radiculaire","récidive sans contention","décalcification si hygiène insuffisante","traitement prolongé si port insuffisant","attaches décollées"],
@@ -1574,6 +1583,8 @@ const PJ = {
   implant:["os suffisant","tissus kératinisés adéquats","tabagisme","diabète contrôlé","parafonction (bruxisme)"],
   pa:["crête favorable","crête résorbée","dents piliers saines","dents piliers compromises","salive adéquate","xérostomie"],
   ortho:["bonne coopération du patient","encombrement léger","encombrement modéré","croissance terminée"],
+  pont:["espace édenté court","crête édentée favorable","crête édentée résorbée","piliers favorables","piliers compromis","parafonction (bruxisme)","hygiène adéquate","hygiène déficiente"],
+  pilier:["support parodontal sain","perte osseuse","ratio couronne-racine favorable","ratio couronne-racine limite","dent vitale","dent traitée de canal","restauration étendue","structure dentaire suffisante","mobilité","parallélisme acceptable entre les piliers","portée du pontique courte","portée du pontique longue"],
   gen:["hygiène adéquate","hygiène déficiente","bonne coopération du patient","état de santé favorable","tabagisme","parafonction (bruxisme)"]
 };
 /* Bénéfices et conséquences du non-traitement, énumérés au consentement (à valider) */
@@ -1584,6 +1595,7 @@ const BENEFICES = {
   alveolite:["soulagement de la douleur","favoriser la cicatrisation de l'alvéole"],
   biopsie:["diagnostic précis de la lésion","orientation du traitement"],
   greffe:["recouvrement ou épaississement de la gencive","protection contre la progression de la récession","diminution de la sensibilité"],
+  pont:["remplacement fixe de la dent manquante","prévention du déplacement des dents voisines","restauration de la mastication et de l'esthétique"],
   ppf:["protection de la dent contre la fracture","restauration de la forme, de la fonction et de l'esthétique"],
   implant:["remplacement fixe de la dent manquante","restauration de la fonction masticatoire"],
   pa:["remplacement des dents manquantes","amélioration de la mastication, de la parole et de l'esthétique"],
@@ -1599,13 +1611,14 @@ const NONTX = {
   biopsie:["retard du diagnostic","progression possible d'une lésion"],
   greffe:["progression de la récession","sensibilité","carie radiculaire"],
   ppf:["fracture de la dent","infiltration et carie","perte de la dent"],
+  pont:["déplacement des dents voisines","extrusion de la dent antagoniste","perte osseuse au site édenté","mastication réduite"],
   implant:["déplacement des dents voisines","perte osseuse au site édenté","mastication réduite"],
   pa:["déplacement des dents restantes","mastication réduite","surcharge des dents restantes"],
   ortho:["persistance de la malocclusion","usure et difficulté d'hygiène"],
   blanchiment:["aucune conséquence sur la santé buccodentaire"],
   gouttiere:["usure des dents","fractures","douleur musculaire ou articulaire"]
 };
-const CAN_RISK = {composite:"resto",amalgame:"resto",temporaire:"resto",endo_urg:"endo",endo_s1:"endo",endo_obt:"endo",endo_1rdv:"endo",exo_simple:"exo",exo_chir:"exo",alveolite:"alveolite",biopsie:"biopsie",pont_prep:"ppf",pont_ins:"ppf",gal:"greffe",gtc:"greffe",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",interceptif:"ortho",contention:"ortho",blanchiment:"blanchiment",gouttiere:"gouttiere"};
+const CAN_RISK = {composite:"resto",amalgame:"resto",temporaire:"resto",endo_urg:"endo",endo_s1:"endo",endo_obt:"endo",endo_1rdv:"endo",exo_simple:"exo",exo_chir:"exo",alveolite:"alveolite",biopsie:"biopsie",pont_prep:"pont",pont_ins:"pont",gal:"greffe",gtc:"greffe",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",interceptif:"ortho",contention:"ortho",blanchiment:"blanchiment",gouttiere:"gouttiere"};
 </script>
 <script>/* ============================================================
    MOTEUR v2 — un objet de séance (S), deux rendus de note.
@@ -1628,6 +1641,10 @@ F_SIGN[0].o = [CFG.dentiste];
 function applyRot(){ const R=CFG.endoRot||{sys:"EndoSequence", sz:["015","020","025","030"]};
   CANEVAS.forEach(c=>c.etapes.forEach(f=>{ if(f.rot){ f.o=[...R.sz]; f.d=[...R.sz]; f.l="Limes mécanisées ("+R.sys+")"; f.n="Limes mécanisées "+R.sys+" : {v}."; } })); }
 applyRot();
+/* Laboratoires dentaires : liste modifiable dans les réglages */
+const LABS_DEF = ["laboratoire intégré De Facto","laboratoire externe"];
+function applyLabs(){ const L=(CFG.labs&&CFG.labs.length)?CFG.labs:LABS_DEF; CANEVAS.forEach(c=>c.etapes.forEach(f=>{ if(f.id==="labo"){ const chair=f.o.includes("au fauteuil"); f.o=[...(chair?["au fauteuil"]:[]), ...L]; } })); }
+applyLabs();
 function variantsOf(cid){
   const ov = CFG.vars[cid]||{};
   return [...(VARIANTS[cid]||[]).map(v=>({...v, set:{...v.set, ...(ov[v.id]||{})}})), ...(CFG.custom[cid]||[])];
@@ -1701,7 +1718,7 @@ const refus = () => (S.consent.mode?.c||[]).includes("refus du patient");
 const consentDefs = () => F_CONSENT.filter(f=>!["refus","refusinfo"].includes(f.id) || refus());
 const showConsent = () => AX().length>0;
 const allowActes = () => !T().noActes;
-const condOk = (f, a) => !f.cond || (f.cond==="maxpost" && a.teeth.some(t=>{ const q=Math.floor(t.d/10), n=t.d%10; return [1,2,5,6].includes(q) && n>=4; }));
+const condOk = (f, a) => !f.cond || (f.cond==="maxpost" && a.teeth.some(t=>{ const q=Math.floor(t.d/10), n=t.d%10; return [1,2,5,6].includes(q) && n>=4; })) || (f.cond==="subg" && (a.v.preparation?.c||[]).includes("limite sous-gingivale"));
 const steps = a => CAN[a.cid].etapes.filter(f=>condOk(f,a) && f.id!=="dxconf");
 /* ---------- Diagnostic par dent et traitement recommandé, dans chaque traitement — À VALIDER ---------- */
 const DXA = {
@@ -1744,16 +1761,19 @@ const CARP_TX = {composite:"1",amalgame:"1",temporaire:"1",endo_urg:"2",endo_s1:
 const carpN = v => parseFloat(String(v||"0").replace(",","."))||0;
 function autoAnesth(){
   const A=S.anesth; if(A.man || A.aucune) return;
-  const rows=[], add=(tech,site,carp)=>{ const r=rows.find(x=>x.tech===tech && x.site===site); if(r){ if(carpN(carp)>carpN(r.carp)) r.carp=carp; } else rows.push({agent:A.agent||ANESTH_AGENTS[1].l, carp, tech, site, auto:true}); };
+  const rows=[], ag=A.agent||ANESTH_AGENTS[1].l;
+  const put=(tech,site,carp,key)=>{ const r=rows.find(x=>x.key===key); if(r){ if(carpN(carp)>carpN(r.carp)) r.carp=carp; if(!r.sites.includes(site)) r.sites.push(site); } else rows.push({agent:ag, carp, tech, sites:[site], key, auto:true}); };
   AXD().filter(a=>CAN[a.cid].anesth).forEach(a=>{ const cp=CARP_TX[a.cid]||"1";
-    (a.teeth.length?a.teeth:[]).forEach(t=>{ const d=String(t.d), tech=techFor(d), n=+d.slice(-1), up=upper(d);
-      if(/Spix/.test(tech)){ const side=[4,8].includes(+d[0])?"droite":"gauche"; const prev=rows.find(x=>/Spix/.test(x.tech) && x.side===side); if(prev){ if(carpN(cp)>carpN(prev.carp)) prev.carp=cp; } else { rows.push({agent:A.agent||ANESTH_AGENTS[1].l, carp:cp, tech, site:d, side, auto:true}); } }
-      else add(tech, d, cp);
-      if(/^exo_/.test(a.cid) && up) add("infiltration palatine", d, "0,5");
-      if(/^exo_/.test(a.cid) && !up && n>=6) add("bloc long buccal", d, "0,5");
-      if(a.cid==="gal"||a.cid==="gtc") add(up&&n<=3 ? "bloc nasopalatin (papille incisive)" : "bloc grand palatin", "palais (site donneur)", "0,5"); });
+    const T=(isPont(a)?pilTeeth(a):a.teeth).map(t=>String(t.d));
+    /* une injection par bloc (côté) ou par quadrant d'infiltration, la dose du traitement s'applique au groupe */
+    T.forEach(d=>{ const tech=techFor(d), q=d[0], n=+d.slice(-1), up=upper(d);
+      if(/Spix/.test(tech)) put(tech, d, cp, "spix"+([4,8].includes(+q)?"D":"G"));
+      else put(tech, d, cp, "inf"+q+a.uid);
+      if(/^exo_/.test(a.cid) && up) put("infiltration palatine", d, "0,5", "pal"+q+a.uid);
+      if(/^exo_/.test(a.cid) && !up && n>=6) put("bloc long buccal", d, "0,5", "lb"+q);
+      if(a.cid==="gal"||a.cid==="gtc") put(up&&n<=3 ? "bloc nasopalatin (papille incisive)" : "bloc grand palatin", "palais (site donneur)", "0,5", "gp"); });
   });
-  A.rows = rows.map(({side,...r})=>r);
+  A.rows = rows.map(r=>({agent:r.agent, carp:r.carp, tech:r.tech, site: r.sites.length>1 ? r.sites.join(", ") : r.sites[0], auto:true}));
 }
 function techFor(d){ d=+d; const n=d%10; return (!upper(d) && n>=4) ? "bloc alvéolaire inférieur (Spix)" : "infiltration vestibulaire"; }
 
@@ -2089,7 +2109,7 @@ function sAnesth(){
   if(!A.aucune) b += `<button type="button" class="chip${A.topique?" on":""}" data-act="tog" data-p="anesth.topique">Topique : benzocaïne 20 %</button><button type="button" class="chip${A.aspiration?" on":""}" data-act="tog" data-p="anesth.aspiration">Aspiration négative</button>`;
   b += `</div>`;
   if(!A.aucune){
-    const sites = siteOptions();
+    const sites = [...new Set([...A.rows.map(r=>r.site).filter(Boolean), ...siteOptions()])];
     b += A.rows.map((r,i)=>{ const ag=ANESTH_AGENTS.find(a=>a.l===r.agent); const n=parseFloat(String(r.carp).replace(",",".")); const ml = ag&&n ? fmtN(Math.round(ag.ml*n*10)/10)+" mL" : "";
       return `<div class="card"><div class="cardh"><span class="anum">Injection ${i+1}</span><span class="mlc">${ml}</span><button type="button" class="x" data-act="rm" data-k="anesth.rows" data-i="${i}" aria-label="Retirer">×</button></div>
         <div class="row2"><label class="lab sm">Agent<select data-set="anesth.rows.${i}.agent">${ANESTH_AGENTS.map(a=>`<option${r.agent===a.l?" selected":""}>${a.l}</option>`).join("")}</select></label>
@@ -2112,8 +2132,20 @@ const pjList = cid => PJ[CAN_RISK[cid]] || PJ.gen;
 function pjBox(opts, cur, attrs){ return `<details class="cat dd pj"><summary>Justification clinique <span class="cnt">${cur.length}</span></summary><div class="chips list">${opts.map(o=>`<button type="button" class="chip${cur.includes(o)?" on":""}" ${attrs} data-v="${esc(o)}" aria-pressed="${cur.includes(o)}">${esc(o)}</button>`).join("")}</div></details>`; }
 const pjTxt = (p, pj) => p + (pj&&pj.length ? " ("+pj.join(", ")+")" : "");
 function selHTML(attrs, opts, val, ph){ return `<select ${attrs}>${ph?`<option value="">${esc(ph)}</option>`:""}${opts.map(o=>`<option${o===val?" selected":""}>${esc(o)}</option>`).join("")}</select>`; }
+/* Pont : le diagnostic porte sur la dent manquante (pontique) ; les piliers sont évalués à part */
+const isPont = a => /^pont_/.test(a.cid);
+const PIL_ETAT = ["dent saine","restauration existante","restauration étendue","dent traitée de canal","couronne existante","carie"];
+function pontRoles(a){ const T=a.teeth; T.forEach((t,k)=>{ if(!t.rolem) t.role = T.length>=3 ? ((k===0||k===T.length-1)?"pilier":"pontique") : (k===0?"pilier":"pontique"); }); }
+const dxTeeth = a => { if(!a.teeth.length) return [a]; if(!isPont(a)) return a.teeth; pontRoles(a); return a.teeth.filter(t=>t.role==="pontique"); };
+const pilTeeth = a => { if(!isPont(a)) return []; pontRoles(a); return a.teeth.filter(t=>t.role==="pilier"); };
+function pilierHTML(a,i){ const P=pilTeeth(a); if(!isPont(a)||!a.teeth.length) return "";
+  return `<div class="piliers"><div class="flab"><span>Évaluation des dents piliers</span></div>${a.teeth.map((t,k)=>{ const at=`data-i="${i}" data-k="${k}"`; const roleC=["pilier","pontique"].map(r=>`<button type="button" class="chip sq w${t.role===r?" on":""}" data-act="prole" ${at} data-v="${r}">${r}</button>`).join("");
+    if(t.role!=="pilier") return `<div class="dxrow pil"><span class="locn">Dent ${esc(t.d)} <span class="grp">${roleC}</span></span></div>`;
+    return `<div class="dxrow pil"><span class="locn">Dent ${esc(t.d)} <span class="grp">${roleC}</span></span>
+      <div class="lab sm">État du pilier<div class="chips">${PIL_ETAT.map(e=>`<button type="button" class="chip${(t.etat||[]).includes(e)?" on":""}" data-act="petat" ${at} data-v="${esc(e)}">${esc(e)}</button>`).join("")}</div></div>
+      <label class="lab sm">Pronostic du pilier${selHTML(`data-act="tdx" data-f="pro" ${at} aria-label="Pronostic du pilier"`, PRONOSTIC, t.pro, "Pronostic…")}${pjBox(PJ.pilier, t.pj||[], `data-act="pjt" ${at}`)}</label></div>`; }).join("")}</div>`; }
 function dxRows(a,i){
-  const per = a.teeth.length ? a.teeth.map((t,k)=>({t, k, lab:"Dent "+t.d})) : [{t:a, k:-1, lab:"Diagnostic"}];
+  const per = a.teeth.length ? dxTeeth(a).map(t=>({t, k:a.teeth.indexOf(t), lab:"Dent "+t.d+(isPont(a)?" (dent manquante)":"")})) : [{t:a, k:-1, lab:"Diagnostic"}];
   if(!a.teeth.length && (CAN[a.cid].dents==="surf"||CAN[a.cid].dents==="dent")) return "";
   return `<div class="dxrows">`+per.map(({t,k,lab})=>{ const at=`data-i="${i}" data-k="${k}"`;
     const dx = isEndo(a)
@@ -2123,11 +2155,11 @@ function dxRows(a,i){
     const rec = selHTML(`data-act="tdx" data-f="rec" ${at} aria-label="Traitement idéal"`, recOptions(a,t), t.rec, "Traitement idéal…");
     const why = t.rec && t.rec!==CAN[a.cid].nom ? `<label class="lab sm why">Raison du traitement de compromis${selHTML(`data-act="tdx" data-f="why" ${at} aria-label="Raison"`, WHY, t.why, "Raison…")}</label>` : "";
     const pro = selHTML(`data-act="tdx" data-f="pro" ${at} aria-label="Pronostic"`, PRONOSTIC, t.pro, "Pronostic…") + pjBox(pjList(a.cid), t.pj||[], `data-act="pjt" data-i="${i}" data-k="${k}"`);
-    return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}${okb}</label><label class="lab sm">Traitement idéal${rec}</label>${why}<label class="lab sm">Pronostic${pro}</label></div>`; }).join("")+`</div>`;
+    return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}${okb}</label><label class="lab sm">Traitement idéal${rec}</label>${why}<label class="lab sm">Pronostic${pro}</label></div>`; }).join("")+pilierHTML(a,i)+`</div>`;
 }
 const FR_SHORT = {"estimé des honoraires remis":"estimé remis","estimé des honoraires signé par le patient":"estimé signé","avisé des frais non couverts par l'assurance":"frais non couverts par l'assurance expliqués","prédétermination offerte":"prédétermination offerte","avisé que le plan peut changer en cours de traitement et qu'un nouveau consentement sera demandé":"plan modifiable avec nouveau consentement au besoin","délai de réflexion offert":"délai de réflexion offert","possibilité de référence à un spécialiste offerte":"référence à un spécialiste offerte"};
 function frLine(arr){ if(!arr||!arr.length) return ""; let L=arr.map(x=>FR_SHORT[x]||x); if(L.includes("estimé remis")&&L.includes("estimé signé")) L=["estimé des honoraires remis et signé", ...L.filter(x=>x!=="estimé remis"&&x!=="estimé signé")]; else L=L.map(x=>x==="estimé remis"?"estimé des honoraires remis":x==="estimé signé"?"estimé des honoraires signé":x); return "Honoraires et protection : "+L.join(" ; ")+"."; }
-const ALT_BY = {exo:["Traitement de canal et restauration, si la dent est récupérable","Référence à un spécialiste"], alveolite:["Rinçages et analgésiques seulement"], endo:["Extraction simple","Référence à un spécialiste"]};
+const ALT_BY = {pont:["Implant (référence)","Prothèse partielle"], exo:["Traitement de canal et restauration, si la dent est récupérable","Référence à un spécialiste"], alveolite:["Rinçages et analgésiques seulement"], endo:["Extraction simple","Référence à un spécialiste"]};
 const altKey = x => x.toLowerCase().replace(/ — (préparation|mise en bouche)$/,"").replace(/ \/ pont$/,"");
 const altUniq = L => { const seen=new Set(); return L.filter(x=>{ const k=altKey(x); if(seen.has(k)) return false; seen.add(k); return true; }); };
 function altPool(a){ const t=(a.teeth[0]||a), me=altKey(CAN[a.cid].nom); return altUniq(recOptions(a,t).filter(x=>altKey(x)!==me && !/^Observer|^Statu quo/.test(x))); }
@@ -2164,7 +2196,7 @@ function acteCard(a,i){
 /* Onglet propre : diagnostic, traitement idéal, pronostic et consentement de chaque traitement */
 function sDxTx(){
   let miss=0; const b = S.actes.map((a,i)=>{ const c=CAN[a.cid]; if(!AX().includes(a)) return "";
-    (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx||!t.dxok) miss++; if(!t.pro) miss++; if(t.rec&&t.rec!==c.nom&&!t.why) miss++; });
+    pilTeeth(a).forEach(t=>{ if(!t.pro) miss++; }); dxTeeth(a).forEach(t=>{ if(!t.dx||!t.dxok) miss++; if(!t.pro) miss++; if(t.rec&&t.rec!==c.nom&&!t.why) miss++; });
     const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
     return `<article class="acte dxcard" id="dxc-${a.uid}"><header class="ah"><span class="anum">Tx ${i+1}</span><h3>${esc(c.nom)}${where?" — "+esc(where):""}</h3></header>${(c.dents==="surf"||c.dents==="dent")&&!a.teeth.length?`<p class="hint">Choisis d'abord la dent dans Traitements.</p>`:dxRows(a,i)}${consHTML(a,i)}</article>`; }).join("");
   return section("dxtx","Diagnostic et consentement", b, miss?{cls:"todo",t:miss+" à préciser"}:{cls:"done",t:"complet"}, true);
@@ -2375,16 +2407,17 @@ function buildNote(style){
     { const D=[], AXL=AX(), many=AXL.length>1;
       AXL.forEach((a,i)=>{ const c=CAN[a.cid]; const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
         if(i) D.push("§"); if(many) D.push(`\u0004Traitement ${i+1} : ${c.nom.toLowerCase()}${where?" — "+where:""}`);
-        (a.teeth.length?a.teeth:[a]).forEach(t=>{ const dx=[t.dx,t.dx2].filter(Boolean).join(" ; ");
+        dxTeeth(a).forEach(t=>{ const dx=[t.dx,t.dx2].filter(Boolean).join(" ; ");
           D.push((a.teeth.length?"Diagnostic "+t.d+" : ":"Diagnostic : ")+(dx&&t.dxok?dx:dx?"à confirmer":"à préciser")+".");
           if(t.rec) D.push("Traitement idéal : "+t.rec.toLowerCase()+".");
           if(t.rec && t.rec!==c.nom) D.push("Traitement de compromis choisi par le patient : "+c.nom.toLowerCase()+(t.why?" (raison : "+t.why+")":"")+" ; risques du traitement de compromis expliqués.");
           if(t.pro) D.push("Pronostic : "+pjTxt(t.pro, t.pj)+"."); });
+        if(pilTeeth(a).length){ D.push("Évaluation des dents piliers :"); pilTeeth(a).forEach((t,j,L)=>D.push(t.d+" : "+[...(t.etat||[])].join(", ")+((t.etat||[]).length?" ; ":"")+"pronostic "+(t.pro?pjTxt(t.pro,t.pj):"à préciser")+(j<L.length-1?" ;":"."))); }
         const C=a.cons; if(!C) return; consFill(a); const refused = C.mode==="refus du patient";
         D.push(refused ? "Traitement refusé par le patient après explications"+(C.q?" ; "+C.q:"")+"." : "Consentement "+C.mode+(C.q?" ; "+C.q:"")+".");
         const lst=(t,arr)=>{ if(!arr||!arr.length) return; D.push(t+" :"); arr.forEach((x,j)=>D.push(x+(j<arr.length-1?" ;":"."))); };
         const TT=(a.teeth.length?a.teeth:[a]), alts=(C.alt||[]).map(x=>x.toLowerCase());
-        const pro=TT.filter(t=>t.pro).map(t=>(a.teeth.length&&TT.length>1?t.d+" : ":"")+t.pro);
+        const pro=[...dxTeeth(a), ...pilTeeth(a)].filter(t=>t.pro).map(t=>(isPont(a)?t.d+(t.role==="pilier"?" (pilier)":" (pontique)")+" : ":"")+(a.teeth.length&&TT.length>1&&!isPont(a)?t.d+" : ":"")+t.pro);
         const EL=[["diagnostic et nature du traitement",c.nom.toLowerCase()],["bénéfices",frList(C.bn||[])],["risques et effets secondaires",frList(C.rk||[])],["solutions de rechange",frList([...alts,"abstention"])],["conséquences du non-traitement",frList(C.nt||[])],["pronostic",pro.join(", ")||"à préciser"]];
         D.push("Éléments expliqués :"); EL.forEach(([k,v],j)=>D.push(cap(k)+" : "+v+(j<EL.length-1?" ;":".")));
         if(C.fr.length) D.push(frLine(C.fr));
@@ -2466,7 +2499,8 @@ function checks(){
     if(isConsult() && T().plan) S.plan.forEach((x,i)=>{ if(x.cid && !x.pro) r("pronostic de l'acte "+(i+1)+" du plan"); });
     S.tests.forEach(x=>{ if(!TESTS.some(t=>x[t.id])) r("résultat des tests de la dent "+x.d); });
     AX().forEach((a,i)=>{ const C=a.cons; if(!C) return; if(C.mode==="refus du patient" && !C.rf.length) r(`Tx ${i+1} : raison du refus`);
-      (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); else if(!t.dxok) r(`Tx ${i+1} : confirmer le diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison du traitement de compromis`); if(!t.pro) r(`Tx ${i+1} : pronostic${a.teeth.length?" de la "+t.d:""}`); }); });
+      pilTeeth(a).forEach(t=>{ if(!t.pro) r(`Tx ${i+1} : pronostic du pilier ${t.d}`); });
+      dxTeeth(a).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); else if(!t.dxok) r(`Tx ${i+1} : confirmer le diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison du traitement de compromis`); if(!t.pro) r(`Tx ${i+1} : pronostic${a.teeth.length?" de la "+t.d:""}`); }); });
     if(needsAnesth() && !S.anesth.aucune){ if(!S.anesth.rows.length) r("anesthésie (agent, concentration, quantité)"); S.anesth.rows.forEach((x,i)=>{ if(!x.carp) r("quantité de l'injection "+(i+1)); }); }
     AX().forEach((a,i)=>{ const c=CAN[a.cid];
       if(needTeeth(a)) r(`Tx ${i+1} : ${c.dents==="arcade"?"arcade":"dent(s)"}`);
@@ -2636,6 +2670,8 @@ document.addEventListener("click", e=>{
     case "plse": S.plan[i].se=+b.dataset.v; S.plan[i].auto=false; break;
     case "rxq": { const r=S.rx[i], q=r.q[b.dataset.k][b.dataset.o], g=b.dataset.g, v=b.dataset.v; q[g]=q[g]||[]; q[g] = q[g].includes(v) ? q[g].filter(x=>x!==v) : (g==="v"&&v==="adéquate" ? ["adéquate"] : q[g].filter(x=>!(g==="v"&&x==="adéquate")).concat(v)); break; }
     case "panoc": { const p=S.rx[i].pano[b.dataset.k], v=b.dataset.v; p.s = p.s.includes(v) ? p.s.filter(x=>x!==v) : (v==="bilatéral"?["bilatéral"]:p.s.filter(x=>x!=="bilatéral").concat(v)); break; }
+    case "prole": { const t=S.actes[i].teeth[+b.dataset.k]; t.role=b.dataset.v; t.rolem=true; break; }
+    case "petat": { const t=S.actes[i].teeth[+b.dataset.k], v=b.dataset.v; t.etat=t.etat||[]; t.etat = t.etat.includes(v)?t.etat.filter(x=>x!==v):t.etat.concat(v); break; }
     case "pjt": { const a=S.actes[i], k=+b.dataset.k, tt=k<0?a:a.teeth[k], v=b.dataset.v; tt.pj=tt.pj||[]; tt.pj = tt.pj.includes(v)?tt.pj.filter(x=>x!==v):tt.pj.concat(v); break; }
     case "pjp": { const r=S.plan[i], v=b.dataset.v; r.pj=r.pj||[]; r.pj = r.pj.includes(v)?r.pj.filter(x=>x!==v):r.pj.concat(v); break; }
     case "loadex": loadEx(+b.dataset.i); return;
@@ -2903,6 +2939,9 @@ function renderSettings(){
      ${stepsHTML}
      <div class="chips"><button type="button" class="mini" data-act="cfgreset">Rétablir l'original de cette sélection</button>${cur && String(cur.id).startsWith("u")?`<button type="button" class="mini" data-act="cfgdelvar">Supprimer ce sous-canevas</button>`:""}</div>
    </div></section>
+   <section class="sec"><header class="sh"><h2>Laboratoires dentaires</h2></header><div class="sb">
+     <label class="lab">Un laboratoire par ligne ; ils apparaissent dans l'étape « Laboratoire » des couronnes, ponts, onlays et facettes<textarea class="txt" rows="4" data-cfg="labs">${esc(((CFG.labs&&CFG.labs.length)?CFG.labs:LABS_DEF).join("\n"))}</textarea></label>
+   </div></section>
    <section class="sec"><header class="sh"><h2>Ordonnances favorites</h2></header><div class="sb"><p class="hint">Les favoris apparaissent en premier dans l'ordonnance.</p>
      ${medsAll.map(([cat,list])=>`<details class="cat"><summary>${esc(cat)}</summary><div class="chips list">${list.map(m=>`<button type="button" class="chip${CFG.favMeds.includes(m)?" on":""}" data-act="cfgfav" data-v="${esc(m)}">${CFG.favMeds.includes(m)?"★ ":""}${esc(m)}</button>`).join("")}</div></details>`).join("")}
    </div></section>
@@ -2939,6 +2978,7 @@ document.addEventListener("input", e=>{ const t=e.target; if(!t.dataset.cfg || t
   if(t.dataset.cfg==="dentiste"){ CFG.dentiste=t.value; F_SIGN[0].o=[t.value]; if(S.sign.verifie?.c?.length) S.sign.verifie.c=[t.value]; }
   if(t.dataset.cfg==="rotsys"||t.dataset.cfg==="rotsz"){ CFG.endoRot = CFG.endoRot || {sys:"EndoSequence", sz:["015","020","025","030"]};
     if(t.dataset.cfg==="rotsys") CFG.endoRot.sys=t.value.trim()||"EndoSequence"; else { const z=t.value.split(/[,;]/).map(x=>x.trim()).filter(Boolean); if(z.length) CFG.endoRot.sz=z; } applyRot(); }
+  if(t.dataset.cfg==="labs"){ CFG.labs=t.value.split("\n").map(x=>x.trim()).filter(Boolean); applyLabs(); }
   if(t.dataset.cfg==="lex"){ CFG.lex=t.value.split("\n").map(x=>x.trim()).filter(Boolean); LEXP.length=0; CFG.lex.forEach(x=>LEXP.push({e:[x,"","","","Lexique personnel","terme","","","",1], k:norm(x), a:"", s:""})); }
   saveCfg(); });
 
@@ -2988,7 +3028,9 @@ var EXAMPLES = [
  {t:"Extraction simple", d:"Traitement · 26 non restaurable, anesthésie palatine", f:()=>{ exStart("traitement"); exTx("exo_simple","carie",["26"],{dx:"dent non restaurable", pj:["accès facile","proximité du sinus maxillaire"]}); }},
  {t:"Endodontie en un rendez-vous", d:"Traitement · 14, 2 canaux, longueurs saisies", f:()=>{ exStart("traitement"); const a=exTx("endo_1rdv","std",["14"],{pj:["anatomie canalaire simple","dent restaurable"]}); a.v.pc={m:{B:{lt:21.5,cal:"30"},P:{lt:21,cal:"30"}}}; }},
  {t:"Couronne postérieure", d:"Traitement · préparation 36, pronostic réservé justifié", f:()=>{ exStart("traitement"); exTx("ppf_prep","zirc",["36"],{dx:"dent traitée de canal à recouvrir", pro:"réservé", pj:["effet de virole limité","dent traitée de canal"], set:{materiau:["zircone"]}}); }},
- {t:"Pont 14-16", d:"Traitement · préparation d'un pont de 3 unités", f:()=>{ exStart("traitement"); exTx("pont_prep","pont",["14","15","16"],{dx:"édentement", pj:["support parodontal sain","ratio couronne-racine favorable"], set:{materiau:["zircone"]}}); }},
+ {t:"Pont 14-16", d:"Traitement · préparation d'un pont de 3 unités", f:()=>{ exStart("traitement"); const a=exTx("pont_prep","pont",["14","15","16"],{dx:"édentement", set:{materiau:["zircone"]}}); pontRoles(a);
+   a.teeth[0].etat=["restauration existante"]; a.teeth[0].pj=["support parodontal sain","ratio couronne-racine favorable","dent vitale"];
+   a.teeth[2].etat=["dent traitée de canal","restauration étendue"]; a.teeth[2].pro="réservé"; a.teeth[2].pj=["dent traitée de canal","portée du pontique courte"]; }},
  {t:"Urgence : pulpite", d:"Urgence · tests, radiographie, pulpectomie 36, plan endo et onlay", f:()=>{ exStart("urgence");
    S.plainte={motif:{t:"ça m'élance en bas à gauche depuis trois jours, ça me réveille la nuit"}, caractere:C(["spontanée","pulsatile","nocturne"]), declencheurs:C(["froid","mastication"]), intensite:C("8"), medication:C("ibuprofène"), infection:C("aucun")};
    S.ui.opt.tests=true; S.tests=[{d:"36",tem:false,froid:"+ prolongé",percussion:"+",palpation:"−",mobilite:"0",sondage:"≤ 3 mm"},{d:"35",tem:true,froid:"+",percussion:"−",palpation:"−",mobilite:"0",sondage:"≤ 3 mm"}];
