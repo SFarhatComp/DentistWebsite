@@ -551,6 +551,37 @@ details.js{border-radius:var(--r-md)}
   .mobbar #mnext{background:#F4F4F6;color:#18181B}
   .mobbar button:disabled{opacity:.35}
 }
+
+/* ---- v4.7 : flow ---- */
+.quick{display:flex;gap:8px;flex-wrap:wrap}
+.qk{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:999px;padding:8px 14px;font-size:.84rem}
+.qk .qkl{font-weight:700}
+.qk .qke{color:var(--muted);font-size:.78rem;text-decoration:underline;text-underline-offset:2px}
+.qk.on{outline:1.5px solid var(--fg)}
+.topacts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.allconf{margin-left:auto;border-style:solid}
+.conf.sm{padding:5px 12px;font-size:.78rem;margin-left:8px}
+.chip.xp{margin-left:auto;font-weight:600}
+.freq{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.ftile{display:flex;align-items:center;gap:10px;border:0;background:var(--sunk);border-radius:16px;padding:14px;font-weight:600;font-size:.88rem;text-align:left;transition:background .15s,transform .1s}
+.ftile span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--fg);color:var(--surface);flex:none;font-size:1rem}
+.ftile:hover{background:var(--line)}
+.ftile:active{transform:scale(.98)}
+select.pre{color:var(--muted);background:var(--sunk)}
+.chip.dxok{align-self:flex-start;margin-top:4px;background:var(--fg);color:var(--surface);font-weight:600;font-size:.78rem;padding:5px 12px}
+mark.man{background:color-mix(in srgb,#F5C84B 35%,transparent);color:inherit;border-radius:3px}
+.seg.on.N.pre{background:var(--line)!important;color:var(--muted)!important}
+.etable.pano.pre select{color:var(--muted)}
+.nfrow{display:flex;gap:8px;flex-wrap:wrap}
+#noteclose{margin-left:4px}
+.notefab{display:none}
+@media (min-width:761px){
+  body[data-note="closed"]:not([data-screen="home"]):not([data-screen="settings"]) .wrap{grid-template-columns:minmax(0,1fr)}
+  body[data-note="closed"] .side{display:none}
+  body[data-note="closed"]:not([data-screen="home"]):not([data-screen="settings"]) .notefab{display:inline-flex;position:fixed;right:28px;bottom:28px;z-index:7;align-items:center;gap:8px;border:0;background:var(--fg);color:var(--surface);border-radius:999px;padding:14px 22px;font-weight:600;box-shadow:0 14px 40px rgba(0,0,0,.25)}
+  .notefab #fabcount{opacity:.7;font-weight:500;font-size:.82rem}
+}
+@media (max-width:760px){ #noteclose{display:none} }
 </style>
 
 <div class="shell">
@@ -583,14 +614,14 @@ details.js{border-radius:var(--r-md)}
   <main id="form" aria-label="Formulaire de séance"></main>
   <aside class="side" aria-label="Note générée">
     <div class="notebox">
-      <div class="nh"><h2>Note clinique</h2>
+      <div class="nh"><h2>Note clinique</h2><button type="button" class="tb ic sq" id="noteclose" aria-label="Replier la note" title="Replier la note">›</button>
         <div class="segsw" role="group" aria-label="Style"><button type="button" id="stP">Pragmatique</button><button type="button" id="stN">Narratif</button></div>
       </div>
-      <div id="editbar" class="editbar" hidden>Note modifiée à la main : le formulaire ne la change plus. <button type="button" class="linkbtn" id="regen">Régénérer la note</button></div>
+      <div id="editbar" class="editbar" hidden>Tes ajouts à la main sont conservés (surlignés) et le reste suit le formulaire. <button type="button" class="linkbtn" id="regen">Annuler mes modifications</button></div>
       <div id="note" contenteditable="true" spellcheck="true" aria-label="Note clinique, modifiable"></div>
       <div class="nf">
         <button type="button" class="primary" id="copy">Copier la note <span class="kbd">Ctrl+C</span></button>
-        <button type="button" class="mini" id="savetpl">Enregistrer comme modèle</button>
+        <div class="nfrow"><button type="button" class="mini" id="share" hidden>Envoyer (Partager)</button><button type="button" class="mini" id="savetpl">Enregistrer comme modèle</button></div>
         <div id="tplform" class="row2" hidden><input class="txt" type="text" id="tplname" placeholder="Nom du modèle"><button type="button" class="mini" id="tplok">Enregistrer</button></div>
         <div id="copymsg" role="status"></div>
         <textarea id="fallback" hidden readonly aria-label="Note à copier"></textarea>
@@ -603,6 +634,7 @@ details.js{border-radius:var(--r-md)}
 </div>
 </div>
 
+<button type="button" id="notefab" class="notefab">Voir la note <span id="fabcount"></span></button>
 <div class="mobbar"><button type="button" id="mprev" aria-label="Section précédente">‹ Préc.</button><button type="button" id="viewF" class="on">Formulaire</button><button type="button" id="viewN">Note <span id="mobcount"></span></button><button type="button" id="mnext" class="pri" aria-label="Section suivante">Suiv. ›</button></div>
 <div id="ac" hidden></div>
 <aside id="lexdrawer" hidden aria-label="Lexique dentaire">
@@ -915,7 +947,7 @@ const ANESTH_AGENTS = [
   {l:"mépivacaïne 3 % sans vasoconstricteur", ml:1.8},
   {l:"prilocaïne 4 % sans vasoconstricteur", ml:1.8}
 ];
-const ANESTH_TECH = ["infiltration vestibulaire","infiltration palatine","hot spot palatin","bloc grand palatin","bloc nasopalatin (papille incisive)","infiltration linguale","bloc alvéolaire inférieur","bloc lingual","bloc long buccal","bloc mentonnier","bloc alvéolaire supérieur postérieur","bloc infra-orbitaire","intraligamentaire","intrapulpaire"];
+const ANESTH_TECH = ["infiltration vestibulaire","infiltration palatine","hot spot palatin","bloc grand palatin","bloc nasopalatin (papille incisive)","infiltration linguale","bloc alvéolaire inférieur (Spix)","bloc lingual","bloc long buccal","bloc mentonnier","bloc alvéolaire supérieur postérieur","bloc infra-orbitaire","intraligamentaire","intrapulpaire"];
 const CARPULES = ["0,25","0,5","1","1,5","2","2,5","3","4"];
 
 /* ---------- Ordonnances (posologies adultes usuelles — À VALIDER) ---------- */
@@ -1550,7 +1582,7 @@ function blank(){
   return { type:"traitement", style:CFG.style||"prag", meta:{date:today(), dateC:today(), f:{}, delai:{}},
     qmr:{}, plainte:{}, pedia:{}, perio:{f:{}, t:{}}, cible:{f:{}, sub:{}}, eeo:{}, eio:{}, psr:{},
     tests:[], rx:[], dx:[], dxg:{}, opts:[], justif:{}, consent:{},
-    anesth:{aucune:false, topique:false, aspiration:true, rows:[]}, actes:[], post:[], fin:{}, ord:{}, sign:{},
+    anesth:{aucune:false, topique:false, aspiration:true, rows:[]}, actes:[], post:[], fin:{}, ord:{}, sign:{verifie:{c:[CFG.dentiste]}}, conf:{},
     suivi:{f:{}, sub:{}, g:{}}, manque:{}, plan:[], prec:{}, derog:"", prim:false, ui:{q:{}, prec:{}, step:0, refus:false, touched:{}, opt:{}, view:"home", edited:false, dirty:false}, exemple:false };
 }
 let S = blank(); boot(S);
@@ -1609,13 +1641,13 @@ const condOk = (f, a) => !f.cond || (f.cond==="maxpost" && a.teeth.some(t=>{ con
 const steps = a => CAN[a.cid].etapes.filter(f=>condOk(f,a) && f.id!=="dxconf");
 /* ---------- Diagnostic par dent et traitement recommandé, dans chaque traitement — À VALIDER ---------- */
 const DXA = {
-  resto:["carie amélaire (ICDAS 3)","carie dentinaire (ICDAS 4)","carie dentinaire étendue (ICDAS 5)","carie profonde (ICDAS 6)","carie radiculaire","carie récurrente","carie secondaire sous restauration","fracture de l'émail","attrition","érosion","abfraction","anomalie de forme","restauration défectueuse","restauration fracturée","fracture de cuspide","lésion cervicale non carieuse","hypersensibilité dentinaire","puits et fissures à risque","esthétique"],
-  exo:["carie non restaurable","dent non restaurable","dent nécrosée","échec endodontique","résorption radiculaire","parodontite avancée","mobilité avancée","infection récurrente","fracture radiculaire","dent fendue","dent incluse","dent surnuméraire","péricoronarite","raison orthodontique","dent temporaire en rétention prolongée"],
+  resto:["carie amélaire (ICDAS 3)","carie dentinaire (ICDAS 4)","carie dentinaire étendue (ICDAS 5)","carie profonde (ICDAS 6)","carie radiculaire","carie récurrente","carie secondaire sous restauration","fracture de l'émail","attrition","érosion","abfraction","anomalie de forme","restauration défectueuse","restauration fracturée","fracture de cuspide","lésion cervicale non carieuse","hypersensibilité dentinaire","puits et fissures à risque","esthétique","fêlure","infiltration marginale","usure","hypominéralisation (HMI)","diastème"],
+  exo:["carie non restaurable","dent non restaurable","dent nécrosée","échec endodontique","résorption radiculaire","parodontite avancée","mobilité avancée","infection récurrente","fracture radiculaire","dent fendue","dent incluse","dent surnuméraire","péricoronarite","raison orthodontique","dent temporaire en rétention prolongée","dent de sagesse symptomatique","dent incluse avec atteinte de la dent voisine","kyste associé à la dent","fracture coronaire non restaurable"],
   alveolite:["alvéolite sèche (ostéite alvéolaire)","alvéolite suppurée","infection postopératoire"],
-  paro:["récession gingivale","gencive kératinisée insuffisante"],
-  ppf:["dent traitée de canal à recouvrir","restauration étendue","fracture de cuspide","dent fêlée","usure","esthétique","édentement"],
+  paro:["récession gingivale","gencive kératinisée insuffisante","frein aberrant","gencive mince à risque de récession"],
+  ppf:["dent traitée de canal à recouvrir","restauration étendue","fracture de cuspide","dent fêlée","usure","esthétique","édentement","restauration défectueuse étendue","fracture coronaire","remplacement d'une couronne défectueuse","dent traitée de canal postérieure"],
   implant:["édentement unitaire restauré par implant"],
-  pa:["édentement partiel","édentement complet","prothèse fracturée","prothèse mal adaptée"],
+  pa:["édentement partiel","édentement complet","prothèse fracturée","prothèse mal adaptée","résorption de la crête sous la prothèse","ulcère traumatique"],
   ortho:["malocclusion avec encombrement","articulé croisé","maintien de l'espace","fin de traitement orthodontique"],
   autre:["bruxisme","dysfonction temporo-mandibulaire","contact prématuré","restauration haute","dyschromie","lésion des tissus mous à diagnostiquer","contrôle post-opératoire","douleur","infection"]
 };
@@ -1643,7 +1675,23 @@ function consDefault(cid){ const w=CONS_ECRIT_FIX(cid);
   const k=CAN_RISK[cid]; return {rk:[...(RISQUES[k]||[])], bn:[...(BENEFICES[k]||[])], nt:[...(NONTX[k]||[])], mode: w?"écrit et signé":"obtenu verbalement", el:[...CONS_EL], fr:[...CONS_FR], q:"questions répondues", rf:[], ri:[]}; }
 const upper = d => [1,2,5,6].includes(Math.floor(+d/10));
 function canalsFor(d){ d=+d; const n=d%10; if(d>50) return ["canal unique"]; if(upper(d)) return n>=6?["MB","DB","P"]: n===4?["B","P"]:["canal unique"]; return n>=6?["MB","ML","D"]:["canal unique"]; }
-function techFor(d){ d=+d; const n=d%10; return (!upper(d) && n>=4) ? "bloc alvéolaire inférieur" : "infiltration vestibulaire"; }
+/* Anesthésie déduite des dents et des traitements (tant que je n'y touche pas) — à valider */
+const CARP_TX = {composite:"1",amalgame:"1",temporaire:"1",endo_urg:"2",endo_s1:"2",endo_obt:"1",endo_1rdv:"2",exo_simple:"2",exo_chir:"3",alveolite:"1",biopsie:"1",gal:"1",gtc:"2",ppf_prep:"2",onlay_prep:"1",facette_prep:"2"};
+const carpN = v => parseFloat(String(v||"0").replace(",","."))||0;
+function autoAnesth(){
+  const A=S.anesth; if(A.man || A.aucune) return;
+  const rows=[], add=(tech,site,carp)=>{ const r=rows.find(x=>x.tech===tech && x.site===site); if(r){ if(carpN(carp)>carpN(r.carp)) r.carp=carp; } else rows.push({agent:A.agent||ANESTH_AGENTS[1].l, carp, tech, site, auto:true}); };
+  AXD().filter(a=>CAN[a.cid].anesth).forEach(a=>{ const cp=CARP_TX[a.cid]||"1";
+    (a.teeth.length?a.teeth:[]).forEach(t=>{ const d=String(t.d), tech=techFor(d), n=+d.slice(-1), up=upper(d);
+      if(/Spix/.test(tech)){ const side=[4,8].includes(+d[0])?"droite":"gauche"; const prev=rows.find(x=>/Spix/.test(x.tech) && x.side===side); if(prev){ if(carpN(cp)>carpN(prev.carp)) prev.carp=cp; } else { rows.push({agent:A.agent||ANESTH_AGENTS[1].l, carp:cp, tech, site:d, side, auto:true}); } }
+      else add(tech, d, cp);
+      if(/^exo_/.test(a.cid) && up) add("infiltration palatine", d, "0,5");
+      if(/^exo_/.test(a.cid) && !up && n>=6) add("bloc long buccal", d, "0,5");
+      if(a.cid==="gal"||a.cid==="gtc") add(up&&n<=3 ? "bloc nasopalatin (papille incisive)" : "bloc grand palatin", "palais (site donneur)", "0,5"); });
+  });
+  A.rows = rows.map(({side,...r})=>r);
+}
+function techFor(d){ d=+d; const n=d%10; return (!upper(d) && n>=4) ? "bloc alvéolaire inférieur (Spix)" : "infiltration vestibulaire"; }
 
 /* ============================================================
    RENDU
@@ -1741,7 +1789,7 @@ function examTable(key, list){
   const o = S[key];
   return `<div class="etools"><button type="button" class="mini" data-act="eall" data-k="${key}">Tout le reste dans les limites de la normale</button></div><div class="etable">`+list.map(s=>{
     const v = o[s]||{s:"",c:[]};
-    const pre = !S.ui.touched[key+"."+s];
+    const pre = !S.ui.touched[key+"."+s] && !(S.conf||{}).examens;
     const seg = [["N","Normal"],["A","Anormal"],["NE","Non examiné"]].map(([k,l])=>`<button type="button" class="seg${v.s===k?" on "+k+(pre&&k==="N"?" pre":""):""}" data-act="estate" data-k="${key}" data-s="${esc(s)}" data-v="${k}" aria-pressed="${v.s===k}">${l}</button>`).join("");
     const an = v.s==="A" ? `<div class="chips anom">${[...(ANOM[s]||[]),...ANOM_GEN.filter(x=>!(ANOM[s]||[]).includes(x))].map(a=>`<button type="button" class="chip${v.c.includes(a)?" on":""}" data-act="anom" data-k="${key}" data-s="${esc(s)}" data-v="${esc(a)}" aria-pressed="${v.c.includes(a)}">${esc(a)}</button>`).join("")}</div>` : "";
     const warn = v.s==="A" && !v.c.length ? `<div class="inwarn">Choisis l'anomalie observée, sinon la note écrira « anomalie à préciser ».</div>` : "";
@@ -1814,10 +1862,11 @@ function rxQualHTML(r,i,k){
 function rxObsTxt(r,k,o){ const q=((r.q||{})[k]||{})[o]; if(!q) return o; return o+(q.v&&q.v.length?" : "+frList(q.v):"")+(q.s&&q.s.length?" ("+q.s.join(", ")+")":""); }
 function panoInit(r){ r.pano=r.pano||{}; PANO.forEach(p=>{ r.pano[p.id]=r.pano[p.id]||{o:p.o[0], s:[]}; }); }
 function panoHTML(r,i){ panoInit(r);
-  return `<div class="flab sm">Structures anatomiques</div><div class="etable pano">`+PANO.map(p=>{ const v=r.pano[p.id], nl=v.o===p.o[0];
+  return `<div class="flab sm">Structures anatomiques ${r.panoOk?"":`<button type="button" class="conf sm" data-act="panook" data-i="${i}">✓ Structures conformes</button>`}</div><div class="etable pano${r.panoOk?"":" pre"}">`+PANO.map(p=>{ const v=r.pano[p.id], nl=v.o===p.o[0];
     return `<div class="erow"><span class="ename">${esc(p.l)}</span><select data-set="rx.${i}.pano.${p.id}.o" aria-label="${esc(p.l)}">${p.o.map(o=>`<option${v.o===o?" selected":""}>${esc(o)}</option>`).join("")}</select>${p.cote&&!nl?`<span class="grp">${PANO_COTE.map(c=>`<button type="button" class="chip sq w${v.s.includes(c)?" on":""}" data-act="panoc" data-i="${i}" data-k="${p.id}" data-v="${c}" aria-pressed="${v.s.includes(c)}">${c}</button>`).join("")}</span>`:""}</div>`; }).join("")+`</div>`; }
 function panoLines(r){ if(r.type!=="panoramique") return []; panoInit(r);
-  return ["Structures anatomiques :", ...PANO.map((p,j)=>{ const v=r.pano[p.id]; return p.l+" : "+v.o+(v.s.length&&v.o!==p.o[0]?" ("+v.s.join(", ")+")":"")+(j<PANO.length-1?" ;":"."); })]; }
+  const L=PANO.filter(p=>r.panoOk || r.pano[p.id].o!==p.o[0]); if(!L.length) return [];
+  return ["Structures anatomiques :", ...L.map((p,j)=>{ const v=r.pano[p.id]; return p.l+" : "+v.o+(v.s.length&&v.o!==p.o[0]?" ("+v.s.join(", ")+")":"")+(j<L.length-1?" ;":"."); })]; }
 function locHTML(r,i){
   const items = r.o.c.filter(c=>LOC_KIND[c]); if(!items.length) return "";
   r.loc = r.loc || {};
@@ -1879,7 +1928,8 @@ function remisOk(o){
   const hasMeds=(S.ord.meds?.c||[]).length>0 && !T().noOrd;
   return ({ "plan de traitement écrit": S.plan.some(r=>r.cid), "estimé des honoraires": S.plan.some(r=>r.cid)||AX().length>0,
     "instructions post-opératoires écrites": showPostop(), "copie du formulaire de consentement": AX().some(x=>x.cons&&x.cons.mode==="écrit et signé"),
-    "ordonnance": hasMeds, "lettre de référence": (S.fin.reference?.c||[]).length>0 })[o] ?? true;
+    "ordonnance": hasMeds, "lettre de référence": (S.fin.reference?.c||[]).length>0,
+    "conseils de prévention écrits": AXD().some(a=>/^(exo_|ppf_|pa|implant_|endo_)/.test(a.cid)) })[o] ?? true;
 }
 function medQtyHTML(){
   const m = S.ord.meds?.c||[]; if(!m.length) return "";
@@ -1977,7 +2027,7 @@ function sAnesth(){
         <label class="lab sm">Technique<select data-set="anesth.rows.${i}.tech">${ANESTH_TECH.map(v=>`<option${r.tech===v?" selected":""}>${v}</option>`).join("")}</select></label>
         <label class="lab sm">Dent ou site<select data-set="anesth.rows.${i}.site"><option value="">—</option>${sites.map(v=>`<option${r.site===v?" selected":""}>${esc(v)}</option>`).join("")}</select></label></div>
         <div class="flab sm">Carpules</div><div class="chips">${CARPULES.map(c=>`<button type="button" class="chip sq${r.carp===c?" on":""}" data-act="carp" data-i="${i}" data-v="${c}" aria-pressed="${r.carp===c}">${c}</button>`).join("")}</div></div>`; }).join("");
-    b += `<button type="button" class="mini" data-act="add" data-k="anesth.rows">+ Ajouter une injection</button>`;
+    b += `<div class="chips"><button type="button" class="mini" data-act="add" data-k="anesth.rows">+ Ajouter une injection</button>${A.man?`<button type="button" class="mini" data-act="anauto">Revenir à l'anesthésie déduite des dents</button>`:""}</div>`;
   }
   const ok = A.aucune || (A.rows.length && A.rows.every(r=>r.agent&&r.carp));
   return {b, ok};
@@ -1996,28 +2046,33 @@ function dxRows(a,i){
   return `<div class="dxrows">`+per.map(({t,k,lab})=>{ const at=`data-i="${i}" data-k="${k}"`;
     const dx = isEndo(a)
       ? selHTML(`data-act="tdx" data-f="dx" ${at} aria-label="Diagnostic pulpaire"`, DX_PULP_L, t.dx, "Diagnostic pulpaire…") + selHTML(`data-act="tdx" data-f="dx2" ${at} aria-label="Diagnostic périapical"`, DX_APIC_L, t.dx2, "Diagnostic périapical…")
-      : selHTML(`data-act="tdx" data-f="dx" ${at} aria-label="Diagnostic"`, dxList(a), t.dx, "Diagnostic…");
+      : selHTML(`data-act="tdx" data-f="dx" ${at} aria-label="Diagnostic"${t.dx&&!t.dxok?' class="pre"':""}`, dxList(a), t.dx, "Diagnostic…");
+    const okb = (t.dx||t.dx2) && !t.dxok ? `<button type="button" class="chip dxok" data-act="dxok" data-i="${i}" data-k="${k}">✓ Confirmer le diagnostic</button>` : "";
     const rec = selHTML(`data-act="tdx" data-f="rec" ${at} aria-label="Traitement idéal"`, recOptions(a,t), t.rec, "Traitement idéal…");
     const why = t.rec && t.rec!==CAN[a.cid].nom ? `<label class="lab sm why">Raison du traitement de compromis${selHTML(`data-act="tdx" data-f="why" ${at} aria-label="Raison"`, WHY, t.why, "Raison…")}</label>` : "";
     const pro = selHTML(`data-act="tdx" data-f="pro" ${at} aria-label="Pronostic"`, PRONOSTIC, t.pro, "Pronostic…");
-    return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}</label><label class="lab sm">Traitement idéal${rec}</label>${why}<label class="lab sm">Pronostic${pro}</label></div>`; }).join("")+`</div>`;
+    return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}${okb}</label><label class="lab sm">Traitement idéal${rec}</label>${why}<label class="lab sm">Pronostic${pro}</label></div>`; }).join("")+`</div>`;
 }
-function consFill(a){ const C=a.cons, K=CAN_RISK[a.cid]; if(!C) return; if(!C.bn) C.bn=[...(BENEFICES[K]||[])]; if(!C.nt) C.nt=[...(NONTX[K]||[])]; if(!C.rk) C.rk=[...(RISQUES[K]||[])]; }
+const FR_SHORT = {"estimé des honoraires remis":"estimé remis","estimé des honoraires signé par le patient":"estimé signé","avisé des frais non couverts par l'assurance":"frais non couverts par l'assurance expliqués","prédétermination offerte":"prédétermination offerte","avisé que le plan peut changer en cours de traitement et qu'un nouveau consentement sera demandé":"plan modifiable avec nouveau consentement au besoin","délai de réflexion offert":"délai de réflexion offert","possibilité de référence à un spécialiste offerte":"référence à un spécialiste offerte"};
+function frLine(arr){ if(!arr||!arr.length) return ""; let L=arr.map(x=>FR_SHORT[x]||x); if(L.includes("estimé remis")&&L.includes("estimé signé")) L=["estimé des honoraires remis et signé", ...L.filter(x=>x!=="estimé remis"&&x!=="estimé signé")]; else L=L.map(x=>x==="estimé remis"?"estimé des honoraires remis":x==="estimé signé"?"estimé des honoraires signé":x); return "Honoraires et protection : "+L.join(" ; ")+"."; }
+const ALT_BY = {exo:["Traitement de canal et restauration, si la dent est récupérable","Référence à un spécialiste"], alveolite:["Rinçages et analgésiques seulement"], endo:["Extraction simple","Référence à un spécialiste"]};
+function altDefault(a){ const K=CAN_RISK[a.cid]; if(ALT_BY[K]) return [...ALT_BY[K]]; const t=(a.teeth[0]||a); return recOptions(a,t).filter(x=>x!==CAN[a.cid].nom && !/^Observer|^Statu quo/.test(x)).slice(0,3); }
+function consFill(a){ const C=a.cons, K=CAN_RISK[a.cid]; if(!C) return; if(!C.bn) C.bn=[...(BENEFICES[K]||[])]; if(!C.nt) C.nt=[...(NONTX[K]||[])]; if(!C.rk) C.rk=[...(RISQUES[K]||[])]; if(!C.altm) C.alt=altDefault(a); }
 function consHTML(a,i){
   const C=a.cons, K=CAN_RISK[a.cid]; C.el=[...CONS_EL]; consFill(a);
   const box=(key,opts,title)=>`<details class="cat dd"><summary>${esc(title)} <span class="cnt">${C[key].length}/${opts.length}</span></summary><div class="chips list">${opts.map(o=>`<button type="button" class="chip${C[key].includes(o)?" on":""}" data-act="cons" data-i="${i}" data-k="${key}" data-v="${esc(o)}" aria-pressed="${C[key].includes(o)}">${esc(o)}</button>`).join("")}</div></details>`;
   const ref = C.mode==="refus du patient";
   return `<div class="consbox"><div class="flab"><span>Consentement</span><span class="hint">tous les éléments expliqués sont inscrits d'office</span></div>
     <div class="row2">${selHTML(`data-act="consmode" data-i="${i}" aria-label="Consentement"`, ["obtenu verbalement","écrit et signé","refus du patient"], C.mode)}${selHTML(`data-act="consq" data-i="${i}" aria-label="Questions du patient"`, ["questions répondues","aucune question"], C.q)}</div>
-    ${(BENEFICES[K]||[]).length?box("bn",BENEFICES[K],"Bénéfices"):""}${(RISQUES[K]||[]).length?box("rk",RISQUES[K],"Risques et effets secondaires"):""}${(NONTX[K]||[]).length?box("nt",NONTX[K],"Conséquences du non-traitement"):""}${box("fr",CONS_FR,"Honoraires et protection")}
+    ${(BENEFICES[K]||[]).length?box("bn",BENEFICES[K],"Bénéfices"):""}${(RISQUES[K]||[]).length?box("rk",RISQUES[K],"Risques et effets secondaires"):""}${box("alt",[...new Set([...C.alt, ...recOptions(a,a.teeth[0]||a).filter(x=>x!==CAN[a.cid].nom && !/^Observer|^Statu quo/.test(x))])],"Solutions de rechange expliquées")}${(NONTX[K]||[]).length?box("nt",NONTX[K],"Conséquences du non-traitement"):""}${box("fr",CONS_FR,"Honoraires et protection")}
     ${ref?box("rf",CONS_RF,"Raison du refus")+box("ri",CONS_RI,"Après le refus")+`<button type="button" class="mini" data-act="refusform" data-i="${i}">${S.ui.refusI===i?"Masquer":"Générer"} le formulaire de refus à signer</button>${S.ui.refusI===i?`<textarea class="txt refusta" readonly rows="16" id="refusta">${esc(refusText(a))}</textarea><button type="button" class="mini" data-act="copyrefus" data-i="${i}">Copier le formulaire</button><span id="refusmsg" class="hint"></span>`:""}`:""}
   </div>`;
 }
 function acteCard(a,i){
   const c = CAN[a.cid], st = steps(a);
-  let h = `<article class="acte" id="acte-${a.uid}"><header class="ah"><span class="anum">Tx ${i+1}</span><h3>${esc(c.nom)}</h3><button type="button" class="x" data-act="rmacte" data-i="${i}" aria-label="Retirer ce traitement">×</button></header>${variantChips(a,i)}`;
-  if(c.dents==="surf"||c.dents==="dent"){ h += picker(`actes.${i}.teeth`, a.teeth, a.uid) + toothRows(`actes.${i}.teeth`, a.teeth, c.dents==="surf", !!c.black); a.teeth.forEach(t=>initToothDx(a,t)); h += dxRows(a,i); }
-  else { if(c.dents==="arcade") h += `<div class="chips">${["maxillaire","mandibule","les deux arcades"].map(v=>`<button type="button" class="chip${a.arc===v?" on":""}" data-act="arc" data-i="${i}" data-v="${v}" aria-pressed="${a.arc===v}">${v}</button>`).join("")}</div>`;
+  let h = `<article class="acte" id="acte-${a.uid}"><header class="ah"><span class="anum">Tx ${i+1}</span><h3>${esc(c.nom)}</h3><button type="button" class="x" data-act="rmacte" data-i="${i}" aria-label="Retirer ce traitement">×</button></header>`;
+  if(c.dents==="surf"||c.dents==="dent"){ h += picker(`actes.${i}.teeth`, a.teeth, a.uid) + toothRows(`actes.${i}.teeth`, a.teeth, c.dents==="surf", !!c.black) + (a.teeth.length?variantChips(a,i):`<p class="hint">Choisis la ou les dents : le sous-canevas sera proposé selon la dent.</p>`); a.teeth.forEach(t=>initToothDx(a,t)); h += dxRows(a,i); }
+  else { h += variantChips(a,i); if(c.dents==="arcade") h += `<div class="chips">${["maxillaire","mandibule","les deux arcades"].map(v=>`<button type="button" class="chip${a.arc===v?" on":""}" data-act="arc" data-i="${i}" data-v="${v}" aria-pressed="${a.arc===v}">${v}</button>`).join("")}</div>`;
     initActeDx(a); h += dxRows(a,i); }
   h += consHTML(a,i);
   if(a.open){
@@ -2034,7 +2089,9 @@ function acteCard(a,i){
 function sActes(){
   const groups = T().urg ? [["Urgence", CANEVAS.filter(c=>c.urg)], ...GROUPES.map(g=>[g, CANEVAS.filter(c=>c.g===g)])] : GROUPES.map(g=>[g, CANEVAS.filter(c=>c.g===g)]);
   const q = (S.ui.actq||"").trim();
-  let b = anesthBox() + `${needsAnesth()?"<h3>Traitements</h3>":""}<input class="txt" type="search" id="actq" value="${esc(S.ui.actq||"")}" placeholder="Chercher un traitement (ex. compo, exo, canal, couronne)" autocomplete="off">`;
+  CFG.freq=CFG.freq||{}; const FDEF=["composite","temporaire","endo_urg","exo_simple","endo_s1","endo_obt","ppf_prep","desensib"];
+  const fq=[...new Set([...Object.keys(CFG.freq).filter(k=>CAN[k]).sort((x,y)=>CFG.freq[y]-CFG.freq[x]), ...FDEF.filter(k=>CAN[k])])].slice(0,8);
+  let b = anesthBox() + `${needsAnesth()?"<h3>Traitements</h3>":""}<div class="freq">${fq.map(k=>`<button type="button" class="ftile" data-act="addacte" data-v="${k}"><span>+</span>${esc(CAN[k].nom)}</button>`).join("")}</div><input class="txt" type="search" id="actq" value="${esc(S.ui.actq||"")}" placeholder="Chercher un traitement (ex. compo, exo, canal, couronne)" autocomplete="off">`;
   if(q.length>=2){ const nq=norm(q); const hits=[]; CANEVAS.forEach(c=>variantsOf(c.id).forEach(v=>{ if(norm(c.nom+" "+v.nom+" "+c.g).includes(nq)) hits.push([c,v]); }));
     b += `<div class="chips list">${hits.slice(0,24).map(([c,v])=>`<button type="button" class="chip add" data-act="addacte" data-v="${c.id}" data-var="${v.id}">+ ${esc(c.nom)} · ${esc(v.nom)}</button>`).join("")||`<span class="hint">Aucun traitement trouvé.</span>`}</div>`; }
   b += `<div class="addpick">${groups.map(([g,items],gi)=>{ if(!items.length) return "";
@@ -2076,12 +2133,14 @@ function optOn(k){ return !!S.ui.opt[k] || (k==="tests"&&S.tests.length>0) || (k
 function optAvail(){ if(!isConsult()) return []; return Object.keys(OPTS).filter(k=>!optOn(k) && !(k==="tests"&&T().noTests) && !(k==="plan"&&!T().plan)); }
 const PREFILLED = ["seance","qmr","examens","actes","consent","anesth","suivi"];
 const MIC = `<button type="button" class="mic" disabled title="Dictée par section : arrive à l'étape 2" aria-label="Dictée (à venir)"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z"/></svg></button>`;
+const qmrSkip = () => !S.ui.showQmr && (S.qmr.statut?.c||[])[0]==="révisé, aucun changement";
+const isExpress = () => !!CFG.express && S.type==="traitement";
 function sectionsList(){
-  const P = [sSeance()];
+  const P = S.ui.showSeance ? [sSeance()] : [];
   if(S.type==="suivi") P.push(sSuivi());
   else if(S.type==="manque") P.push(sManque());
   else {
-    P.push(sQMR());
+    if(!qmrSkip()) P.push(sQMR());
     if(isConsult()){
       P.push(sPlainte());
       if(T().cible) P.push(sCibles());
@@ -2115,28 +2174,34 @@ function railSync(){ const v=S.ui.view; document.querySelectorAll(".ritem").forE
   const h=$("#hello"); if(h) h.textContent="Bonjour, "+(CFG.dentiste||"Docteur")+" !";
   const sh=$("#subhello"); if(sh) sh.textContent = v==="home" ? "Quelle séance veux-tu consigner ?" : v==="settings" ? "Réglages" : (T().l+" · section "+((S.ui.step||0)+1));
   if(v!=="form"){ const sn=$("#stepnav"); if(sn) sn.innerHTML=""; S.ui.prevRendered=null; } }
+function quickStrip(){
+  const d=S.meta.date||"", g=(S.meta.f.genre?.c||[])[0]||"patient";
+  let h=`<div class="quick"><button type="button" class="qk${S.ui.showSeance?" on":""}" data-act="showsec" data-v="seance"><span class="qkl">Séance</span>${esc(d)} · ${esc(g)} <span class="qke">${S.ui.showSeance?"replier":"modifier"}</span></button>`;
+  if(S.type!=="suivi" && S.type!=="manque") h+=`<button type="button" class="qk${qmrSkip()?"":" on"}" data-act="showsec" data-v="qmr"><span class="qkl">Histoire médicale</span>${esc((S.qmr.statut?.c||[])[0]||"à faire")} <span class="qke">${qmrSkip()?"modifier":"replier"}</span></button>`;
+  return h+`</div>`; }
 function renderForm(){
   document.body.dataset.screen = S.ui.view; railSync(); setTimeout(railSync,0); if(S.fin) remisAuto();
   if(S.ui.view==="home"){ $("#form").innerHTML = renderHome(); renderNote(); return; }
   if(S.ui.view==="settings"){ $("#form").innerHTML = renderSettings(); renderNote(); return; }
+  autoAnesth(); S.conf=S.conf||{};
   const secs = sectionsList();
   S.ui.step = Math.max(0, Math.min(S.ui.step, secs.length-1));
   const meta = secs.map(h=>({ id:(h.match(/id="sec-([^"]+)"/)||[])[1]||"", title:(h.match(/<h2>(.*?)<\/h2>/)||[])[1]||"", cls:(h.match(/class="sstat (\w+)"/)||[])[1]||"opt" }));
   if(S.ui.step===S.ui.lastStep && S.ui.curSec){ const k=meta.findIndex(m=>m.id===S.ui.curSec); if(k>=0) S.ui.step=k; }
   S.ui.step = Math.max(0, Math.min(S.ui.step, secs.length-1)); S.ui.lastStep = S.ui.step;
-  S.ui.curSec = meta[S.ui.step]?.id || "";
+  S.ui.curSec = meta[S.ui.step]?.id || ""; S.ui.metaIds = meta.map(m=>m.id);
   const adds = optAvail().map(k=>`<button type="button" class="wz add" data-act="addopt" data-v="${k}">+ ${OPTS[k]}</button>`).join("");
   const nav = `<nav class="wiz" aria-label="Sections">${meta.map((m,i)=>`<button type="button" class="wz ${m.cls}${i===S.ui.step?" cur":""}" data-act="step" data-v="${i}"><span class="wn">${m.cls==="done"?"✓":i+1}</span><span class="wt">${m.title}</span></button>`).join("")}${adds}</nav>`;
   const prev = S.ui.step>0, next = S.ui.step<secs.length-1;
-  let cur = secs[S.ui.step].replace("</h2>", "</h2>"+MIC);
-  if(PREFILLED.includes(S.ui.curSec) && next) cur = cur.replace('<div class="sb">', `<div class="sb"><button type="button" class="conf" data-act="step" data-v="${S.ui.step+1}">✓ Conforme, suivant</button>`);
-  const foot = `<div class="wfoot"><button type="button" class="wbtn" data-act="step" data-v="${S.ui.step-1}" ${prev?"":"disabled"}>‹ Précédent</button><span class="wpos">${S.ui.step+1} / ${secs.length}</span>${next?`<button type="button" class="wbtn pri" data-act="step" data-v="${S.ui.step+1}">Suivant ›</button>`:`<button type="button" class="wbtn pri" data-act="gonote">Voir la note</button>`}</div>`;
+  const tops = (id,i,last) => `<div class="topacts">${PREFILLED.includes(id)&&!last?`<button type="button" class="conf" data-act="step" data-conf="${id}" data-v="${i+1}">✓ Conforme, suivant</button>`:""}<button type="button" class="mini allconf" data-act="allconf">Tout est conforme, aller à la note</button></div>`;
+  let cur = isExpress() ? secs.map((h,i)=>h.replace('<div class="sb">', '<div class="sb">'+(i===0?tops("",i,true):""))).join("") : secs[S.ui.step].replace("</h2>", "</h2>"+MIC).replace('<div class="sb">', '<div class="sb">'+tops(S.ui.curSec, S.ui.step, !next));
+  const foot = isExpress() ? `<div class="wfoot"><span></span><button type="button" class="wbtn pri" data-act="gonote">Voir la note</button></div>` : `<div class="wfoot"><button type="button" class="wbtn" data-act="step" data-v="${S.ui.step-1}" ${prev?"":"disabled"}>‹ Précédent</button><span class="wpos">${S.ui.step+1} / ${secs.length}</span>${next?`<button type="button" class="wbtn pri" data-act="step" data-v="${S.ui.step+1}">Suivant ›</button>`:`<button type="button" class="wbtn pri" data-act="gonote">Voir la note</button>`}</div>`;
   const dir = S.ui.prevRendered==null ? "" : (S.ui.step>S.ui.prevRendered ? "goR" : S.ui.step<S.ui.prevRendered ? "goL" : "");
   if(dir) cur = cur.replace('<section class="sec"', `<section class="sec ${dir}"`);
   S.ui.prevRendered = S.ui.step;
   const prog = `<div class="wprog" aria-hidden="true"><i style="width:${Math.round((S.ui.step+1)/secs.length*100)}%"></i></div>`;
   const sn=$("#stepnav"); if(sn) sn.innerHTML = nav;
-  $("#form").innerHTML = (S.exemple?`<div class="banner">Exemple fictif chargé pour montrer le fonctionnement. « Nouvelle note » efface tout.</div>`:"") + `<div class="ftype"><span>${esc(T().l)}</span><button type="button" class="linkbtn" data-act="home">Changer de type</button></div>` + nav + prog + cur + foot;
+  $("#form").innerHTML = (S.exemple?`<div class="banner">Exemple fictif chargé pour montrer le fonctionnement. « Nouvelle note » efface tout.</div>`:"") + `<div class="ftype"><span>${esc(T().l)}</span><button type="button" class="linkbtn" data-act="home">Changer de type</button>${S.type==="traitement"?`<button type="button" class="chip xp${CFG.express?" on":""}" data-act="express" aria-pressed="${!!CFG.express}">Mode express</button>`:""}</div>` + quickStrip() + (isExpress()?"":nav + prog) + cur + foot;
   { const c=$("#form > .wiz .wz.cur"); if(c && c.parentElement.scrollWidth>c.parentElement.clientWidth) c.parentElement.scrollTo({left:c.offsetLeft-c.parentElement.clientWidth/2+c.offsetWidth/2, behavior:"smooth"}); }
   { const c=$("#stepnav .wz.cur"); if(c){ const p=$("#stepnav"); if(c.offsetTop<p.scrollTop || c.offsetTop>p.scrollTop+p.clientHeight-40) p.scrollTo({top:c.offsetTop-p.clientHeight/3, behavior:"smooth"}); } }
   $("#mprev").disabled = !prev; $("#mnext").textContent = next ? "Suiv. ›" : "Note ›";
@@ -2152,7 +2217,7 @@ function angleTxt(){ const A=S.angle||{}; if(!A.d&&!A.g) return ""; if(A.d===A.g
 function examLines(key, list, title, P){
   const o=S[key], L=[];
   list.forEach(st=>{ const v=o[st]; const ang = key==="eio" && st==="Occlusion" ? angleTxt() : "";
-    if(!v||!v.s){ if(ang) L.push(st+" : "+ang+"."); return; }
+    if(!v||!v.s || (v.s==="N" && !(S.conf||{}).examens && !S.ui.touched[key+"."+st])){ if(ang) L.push(st+" : "+ang+"."); return; }
     const txt = v.s==="N" ? (P?"DLN":"dans les limites de la normalité") : v.s==="A" ? (frList(v.c)||"anomalie à préciser") : "non examiné";
     L.push((P?"  ":"")+st+" : "+txt+(ang?" ; "+ang:"")+(P?"":".")); });
   return L.length ? [title+" :", ...L, "§"] : [];
@@ -2213,7 +2278,7 @@ function buildNote(style){
       const ol = S.opts.filter(r=>r.nom);
       const optL = ol.length ? [(P?"Options :":"Options présentées :"), ...ol.map((r,i)=>(P?"  ":"")+(i+1)+") "+r.nom+(r.pro?" — pronostic "+r.pro:"")+(r.ret?" (retenue)":"")+(i<ol.length-1?" ;":(P?"":"."))), "§"] : [];
       planSync(); const planL = S.plan.filter(r=>r.cid).sort((a,b)=>(a.se||1)-(b.se||1)).map(r=>(P?"S"+(r.se||1)+" : ":"Séance "+(r.se||1)+" : ")+planName(r.cid)+(r.teeth.length?" — "+r.teeth.map(t=>toothTxt(t,false)).join(", "):"")+(r.pro?" ; pronostic "+r.pro:"")+(P?"":"."));
-      if(planL.length){ const fr=S.planFr||CONS_FR; if(fr.length){ planL.push("§","Honoraires et protection :"); fr.forEach((x,j)=>planL.push(x+(j<fr.length-1?" ;":"."))); } }
+      if(planL.length){ const fr=S.planFr||CONS_FR; if(fr.length) planL.push("§", frLine(fr)); }
       block("Diagnostic et options", [...dl, "§", ...(T().risque?linesFor([F_RISQUE],S.dxg,style):[]), ...linesFor(F_DXG.filter(f=>!["stade","grade","etendue"].includes(f.id)||(S.dxg.paro?.c||[]).includes("parodontite")),S.dxg,style), "§", ...optL, ...linesFor(F_JUSTIF,S.justif,style)], "dx");
       if(T().plan) block("Plan de traitement", planL, "plan");
     }
@@ -2223,18 +2288,18 @@ function buildNote(style){
       AXL.forEach((a,i)=>{ const c=CAN[a.cid]; const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
         if(i) D.push("§"); if(many) D.push(`\u0004Traitement ${i+1} : ${c.nom.toLowerCase()}${where?" — "+where:""}`);
         (a.teeth.length?a.teeth:[a]).forEach(t=>{ const dx=[t.dx,t.dx2].filter(Boolean).join(" ; ");
-          D.push((a.teeth.length?"Diagnostic "+t.d+" : ":"Diagnostic : ")+(dx||"à préciser")+".");
+          D.push((a.teeth.length?"Diagnostic "+t.d+" : ":"Diagnostic : ")+(dx&&t.dxok?dx:dx?"à confirmer":"à préciser")+".");
           if(t.rec) D.push("Traitement idéal : "+t.rec.toLowerCase()+".");
           if(t.rec && t.rec!==c.nom) D.push("Traitement de compromis choisi par le patient : "+c.nom.toLowerCase()+(t.why?" (raison : "+t.why+")":"")+" ; risques du traitement de compromis expliqués.");
           if(t.pro) D.push("Pronostic : "+t.pro+"."); });
         const C=a.cons; if(!C) return; consFill(a); const refused = C.mode==="refus du patient";
         D.push(refused ? "Traitement refusé par le patient après explications"+(C.q?" ; "+C.q:"")+"." : "Consentement "+C.mode+(C.q?" ; "+C.q:"")+".");
         const lst=(t,arr)=>{ if(!arr||!arr.length) return; D.push(t+" :"); arr.forEach((x,j)=>D.push(x+(j<arr.length-1?" ;":"."))); };
-        const TT=(a.teeth.length?a.teeth:[a]), alts=[...new Set(TT.flatMap(t=>recOptions(a,t)))].filter(x=>x!==c.nom).map(x=>x.toLowerCase());
+        const TT=(a.teeth.length?a.teeth:[a]), alts=(C.alt||[]).map(x=>x.toLowerCase());
         const pro=TT.filter(t=>t.pro).map(t=>(a.teeth.length&&TT.length>1?t.d+" : ":"")+t.pro);
-        const EL=[["diagnostic",""],["nature du traitement",c.nom.toLowerCase()],["bénéfices",frList(C.bn||[])],["risques et effets secondaires",frList(C.rk||[])],["solutions de rechange, y compris l'abstention",frList(alts)],["conséquences du non-traitement",frList(C.nt||[])],["pronostic",pro.join(", ")],["honoraires estimés",""]];
-        D.push("Éléments expliqués :"); EL.forEach(([k,v],j)=>D.push(cap(k)+(v?" : "+v:"")+(j<EL.length-1?" ;":".")));
-        lst("Honoraires et protection", C.fr);
+        const EL=[["diagnostic et nature du traitement",c.nom.toLowerCase()],["bénéfices",frList(C.bn||[])],["risques et effets secondaires",frList(C.rk||[])],["solutions de rechange",frList([...alts,"abstention"])],["conséquences du non-traitement",frList(C.nt||[])],["pronostic",pro.join(", ")||"à préciser"]];
+        D.push("Éléments expliqués :"); EL.forEach(([k,v],j)=>D.push(cap(k)+" : "+v+(j<EL.length-1?" ;":".")));
+        if(C.fr.length) D.push(frLine(C.fr));
         if(refused){ if(C.rf.length) D.push("Raison du refus : "+frList(C.rf)+"."); if(C.ri.length) D.push(cap(frList(C.ri))+"."); } });
       block("Diagnostic et consentement", D, "", "actes"); }
     const A=S.anesth;
@@ -2308,11 +2373,12 @@ function checks(){
       if(ol.some(x=>x.ret)) reqs(F_JUSTIF, S.justif); }
     }
     if(S.type==="postop") reqs([F_SUIVITX],S.suivi.f);
-    S.rx.forEach((x,i)=>{ if(!rxHasObs(x)) r("interprétation du cliché "+(i+1)); });
+    S.rx.forEach((x,i)=>{ if(!rxHasObs(x)) r("interprétation du cliché "+(i+1)); if(x.type==="panoramique" && !x.panoOk) r("structures de la panoramique à confirmer (cliché "+(i+1)+")"); });
+    if(isConsult() && !(S.conf||{}).examens && [...EEO.map(s=>["eeo",s]),...EIO.map(s=>["eio",s])].some(([k,s])=>S[k][s]?.s==="N" && !S.ui.touched[k+"."+s])) r("examens préremplis à confirmer (« Conforme »)");
     if(isConsult() && T().plan) S.plan.forEach((x,i)=>{ if(x.cid && !x.pro) r("pronostic de l'acte "+(i+1)+" du plan"); });
     S.tests.forEach(x=>{ if(!TESTS.some(t=>x[t.id])) r("résultat des tests de la dent "+x.d); });
     AX().forEach((a,i)=>{ const C=a.cons; if(!C) return; if(C.mode==="refus du patient" && !C.rf.length) r(`Tx ${i+1} : raison du refus`);
-      (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison du traitement de compromis`); if(!t.pro) r(`Tx ${i+1} : pronostic${a.teeth.length?" de la "+t.d:""}`); }); });
+      (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); else if(!t.dxok) r(`Tx ${i+1} : confirmer le diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison du traitement de compromis`); if(!t.pro) r(`Tx ${i+1} : pronostic${a.teeth.length?" de la "+t.d:""}`); }); });
     if(needsAnesth() && !S.anesth.aucune){ if(!S.anesth.rows.length) r("anesthésie (agent, concentration, quantité)"); S.anesth.rows.forEach((x,i)=>{ if(!x.carp) r("quantité de l'injection "+(i+1)); }); }
     AX().forEach((a,i)=>{ const c=CAN[a.cid];
       if(needTeeth(a)) r(`Tx ${i+1} : ${c.dents==="arcade"?"arcade":"dent(s)"}`);
@@ -2338,12 +2404,33 @@ function vocab(){
   return res;
 }
 const stripMarks = t => t.replace(/\u0001[^\u0003]*\u0003/g,"").replace(/\u0002/g,"").replace(/\n{3,}/g,"\n\n").trim();
-function noteText(){ return S.ui.edited ? $("#note").innerText.trim() : stripMarks(buildNote(S.style)); }
-function noteHTML(t){ return esc(t).replace(/\u0001([^\u0003]*)\u0003/g,(m,id)=>`<span class="nseg${id&&id===S.ui.curSec?" hl":""}" data-sec="${esc(id)}">`).replace(/\u0002/g,"</span>"); }
+/* Ajouts manuels conservés : on compare la note modifiée à la note générée, ligne par ligne */
+const plainL = l => l.replace(/\u0001[^\u0003]*\u0003/g,"").replace(/\u0002/g,"").trim();
+function lcsPairs(A,B){ const n=A.length, m=B.length, T=Array.from({length:n+1},()=>new Uint16Array(m+1));
+  for(let i=n-1;i>=0;i--) for(let j=m-1;j>=0;j--) T[i][j] = A[i]===B[j] ? T[i+1][j+1]+1 : Math.max(T[i+1][j],T[i][j+1]);
+  const P=[]; let i=0,j=0; while(i<n&&j<m){ if(A[i]===B[j]){ P.push([i,j]); i++; j++; } else if(T[i+1][j]>=T[i][j+1]) i++; else j++; } return P; }
+function captureEdits(){
+  const G=stripMarks(buildNote(S.style)).split("\n").map(x=>x.trim()).filter(Boolean);
+  const E=$("#note").innerText.split("\n").map(x=>x.trim()).filter(Boolean);
+  const P=lcsPairs(G,E), mg=new Set(P.map(p=>p[0])), me=new Map(P.map(p=>[p[1],p[0]]));
+  const add=[]; let anchor=""; E.forEach((l,j)=>{ if(me.has(j)) anchor=G[me.get(j)]; else add.push({a:anchor, t:l}); });
+  const del=G.filter((l,i)=>!mg.has(i));
+  S.noteEd = (add.length||del.length) ? {add, del} : null;
+}
+function applyEdits(txt){ const E=S.noteEd; if(!E) return txt;
+  let L=txt.split("\n"); const del=new Set(E.del);
+  L=L.map(l=>{ const p=plainL(l); return p && del.has(p) ? (l.match(/^\u0001[^\u0003]*\u0003/)||[""])[0]+((/\u0002$/.test(l))?"\u0002":"") : l; });
+  const groups={}; E.add.forEach(x=>(groups[x.a]=groups[x.a]||[]).push(x.t));
+  Object.entries(groups).forEach(([a,ts])=>{ let k = a ? L.findIndex(l=>plainL(l)===a) : 0; const ins = ts.map(t=>"\u0004"+t);
+    if(k<0) L.push(...ins); else { const l=L[k]; if(/\u0002$/.test(l)){ L[k]=l.slice(0,-1); L.splice(k+1,0,...ins.slice(0,-1),ins.at(-1)+"\u0002"); } else L.splice(k+1,0,...ins); } });
+  return L.join("\n");
+}
+function noteText(){ return S.ui.editing ? $("#note").innerText.trim() : stripMarks(applyEdits(buildNote(S.style))).replace(/\u0004/g,""); }
+function noteHTML(t){ return esc(t).replace(/\u0004([^\n\u0002]*)/g,'<mark class="man">$1</mark>').replace(/\u0001([^\u0003]*)\u0003/g,(m,id)=>`<span class="nseg${id&&id===S.ui.curSec?" hl":""}" data-sec="${esc(id)}">`).replace(/\u0002/g,"</span>"); }
 function renderNote(){
-  if(!S.ui.edited){ const nb=$("#note"); nb.innerHTML = noteHTML(buildNote(S.style));
+  if(!S.ui.editing){ const nb=$("#note"); nb.innerHTML = noteHTML(applyEdits(buildNote(S.style)));
     const h=nb.querySelector(".hl"); if(h){ const top=h.offsetTop-nb.offsetTop; if(top<nb.scrollTop || top>nb.scrollTop+nb.clientHeight-40) nb.scrollTop=Math.max(0,top-12); } }
-  $("#editbar").hidden = !S.ui.edited;
+  $("#editbar").hidden = !S.noteEd;
   $("#stP").classList.toggle("on", S.style==="prag"); $("#stN").classList.toggle("on", S.style==="narr");
   const C=checks(), R=C.filter(c=>c.lvl==="req"), V=C.filter(c=>c.lvl==="voc"), W=C.filter(c=>c.lvl==="warn");
   if(!(document.activeElement && document.activeElement.id==="derog")){
@@ -2354,6 +2441,7 @@ function renderNote(){
       (V.length ? `<div class="chk voc"><strong>Vocabulaire</strong><ul>${V.map(c=>`<li>${esc(c.msg)}</li>`).join("")}</ul></div>` : "");
   }
   $("#mobcount").textContent = R.length ? R.length+" manquant"+(R.length>1?"s":"") : "complète";
+  { const f=$("#fabcount"); if(f) f.textContent = R.length ? R.length+" manquant"+(R.length>1?"s":"") : "complète"; }
   $("#json").textContent = JSON.stringify({...S, ui:undefined}, null, 2);
 }
 
@@ -2377,12 +2465,19 @@ const RX_ALT_EXO="ibuprofène 400 mg et acétaminophène 500 mg en alternance au
 function davierFor(d, vid){ if(vid==="racine") return "davier à racines"; const n=+String(d).slice(-1), q=+String(d)[0];
   const molar = (q<=4 && n>=6) || (q>=5 && n>=4); if(!molar) return "davier 74"; return upper(d) ? "davier 150" : "davier 151"; }
 function clampFor(d){ const n=+String(d).slice(-1), q=+String(d)[0]; if(n<=3) return "212"; if(q>=5) return "W2A"; return n<=5 ? "W2" : "W8A"; }
+/* Sous-canevas proposé selon la dent et les surfaces (tant que je ne l'ai pas choisi) */
+function suggestVariant(a){ const T=a.teeth; if(!T.length) return null; const ids=variantsOf(a.cid).map(v=>v.id), has=x=>ids.includes(x)?x:null, t=T[0], ant=isAnt(t.d), prim=+String(t.d)[0]>=5;
+  if(a.cid==="composite"||a.cid==="amalgame"){ const b=t.b||""; if(b==="V") return has("cl5"); if(ant||b==="III"||b==="IV") return has("ant")||has("cl1"); if(b==="I"||b==="VI") return has("cl1"); if(b==="II") return has("cl2"); return ant?has("ant"):has("cl2"); }
+  if(a.cid==="exo_simple" && prim) return has("temp");
+  if(a.cid==="ppf_prep"||a.cid==="ppf_ins"){ if(T.length>=3) return has("pont"); return ant?has("emax"):has("zirc"); }
+  return null; }
+function afterTeeth(a){ if(!a || a.vm) return; const v=suggestVariant(a); if(v && v!==a.vid){ applyVariant(a,v); a.teeth.forEach(t=>{ if(!t.dxm){ delete t.dx; t.dxok=false; } initToothDx(a,t); }); } }
 function autoByTooth(a){
   const d = a.teeth[0]?.d; if(!d) return;
   if(a.v.crampon && !a.touched.crampon) a.v.crampon.c=[clampFor(d)];
-  if(a.cid==="exo_simple" && !a.touched.avulsion) a.v.avulsion.c=[davierFor(d, a.vid)];
+  if(a.cid==="exo_simple" && !a.touched.avulsion) a.v.avulsion.c=[...new Set(a.teeth.map(t=>davierFor(t.d, a.vid)))];
   if(a.v.acces && CAN[a.cid].etapes.find(f=>f.id==="acces" && f.o.includes("MB")) && !a.touched.acces) a.v.acces.c=canalsFor(d);
-  if(CAN[a.cid].anesth){ const row=S.anesth.rows.find(r=>!r.site); if(row){ row.site=String(d); row.tech=techFor(d); } }
+
 }
 function addRow(k){
   if(k==="rx") S.rx.push({type:"périapicale", teeth:[], obsBy:{}});
@@ -2436,15 +2531,15 @@ document.addEventListener("click", e=>{
         if(!S.plainte.motif?.t && (S.type==="examen"||S.type==="rappel")) S.plainte.motif={t:S.type==="examen"?"examen de routine":"rappel"}; }
       if(isConsult() && !S.opts.length) S.opts=[{nom:"",pro:"",ret:false},{nom:"Observer",pro:"",ret:false},{nom:"Statu quo (aucun traitement)",pro:"",ret:false}];
       break;
-    case "addacte": { const n=newActe(b.dataset.v, b.dataset.var), c=CAN[n.cid]; S.actes.push(n); S.ui.actq="";
+    case "addacte": { const n=newActe(b.dataset.v, b.dataset.var), c=CAN[n.cid]; CFG.freq=CFG.freq||{}; CFG.freq[n.cid]=(CFG.freq[n.cid]||0)+1; saveCfg(); if(b.dataset.var) n.vm=true; S.actes.push(n); S.ui.actq="";
       if(c.anesth && S.anesth.aucune===false && !S.anesth.rows.length){ /* ligne créée plus bas */ }
-      if(c.anesth && !S.anesth.rows.length && !S.anesth.aucune) addRow("anesth.rows");
+
       if(c.postop && !S.post.includes(c.postop)){ S.post.push(c.postop); const r=fv(S.fin,"remis"); if(!r.c.includes("instructions post-opératoires écrites")) r.c.push("instructions post-opératoires écrites"); }
       if(c.anesth){ const s=fv(S.fin,"suivi"); if(!s.c.length) s.c=["suivi téléphonique prévu dans 24 à 48 h"]; }
       if(/^exo_/.test(n.cid) && !T().noOrd){ const m=fv(S.ord,"meds"), alt=RX_ALT_EXO; if(!m.c.includes(alt)){ m.c.push(alt); const r=fv(S.fin,"remis"); if(!r.c.includes("ordonnance")) r.c.push("ordonnance"); } }
       renderForm(); const el=document.getElementById("acte-"+n.uid); if(el) el.scrollIntoView({behavior:reduced()?"auto":"smooth", block:"start"}); return; }
     case "rmacte": S.actes.splice(i,1); break;
-    case "variant": applyVariant(S.actes[i], b.dataset.v); break;
+    case "variant": { const a=S.actes[i]; a.vm=true; applyVariant(a, b.dataset.v); a.teeth.forEach(t=>{ if(!t.dxm){ delete t.dx; t.dxok=false; } initToothDx(a,t); }); break; }
     case "openacte": S.actes[i].open=!S.actes[i].open; break;
     case "lt": { const o=getP(b.dataset.p), v=o.m[b.dataset.k]; v.lt = v.lt==null ? 20 : Math.min(35, Math.max(8, v.lt + parseFloat(b.dataset.d))); break; }
     case "cal": { const v=getP(b.dataset.p).m[b.dataset.k]; v.cal = v.cal===b.dataset.v ? "" : b.dataset.v; break; }
@@ -2454,22 +2549,27 @@ document.addEventListener("click", e=>{
     case "rxq": { const r=S.rx[i], q=r.q[b.dataset.k][b.dataset.o], g=b.dataset.g, v=b.dataset.v; q[g] = q[g].includes(v) ? q[g].filter(x=>x!==v) : (g==="v"&&v==="adéquate" ? ["adéquate"] : q[g].filter(x=>!(g==="v"&&x==="adéquate")).concat(v)); break; }
     case "panoc": { const p=S.rx[i].pano[b.dataset.k], v=b.dataset.v; p.s = p.s.includes(v) ? p.s.filter(x=>x!==v) : (v==="bilatéral"?["bilatéral"]:p.s.filter(x=>x!=="bilatéral").concat(v)); break; }
     case "planfr": { const v=b.dataset.v; S.planFr = S.planFr || [...CONS_FR]; S.planFr = S.planFr.includes(v) ? S.planFr.filter(x=>x!==v) : S.planFr.concat(v); break; }
-    case "step": S.ui.step=+b.dataset.v; renderForm(); window.scrollTo({top:0, behavior:"smooth"}); return;
-    case "gonote": $("#viewN").click(); return;
+    case "step": if(b.dataset.conf) S.conf[b.dataset.conf]=true; if(isExpress()){ const id=(b.closest("#stepnav,.wiz")&&S.ui.metaIds)?S.ui.metaIds[+b.dataset.v]:null; const el=id&&document.getElementById("sec-"+id); if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); return; } } S.ui.step=+b.dataset.v; renderForm(); window.scrollTo({top:0, behavior:"smooth"}); return;
+    case "gonote": openNote(); return;
+    case "allconf": S.conf.examens=true; S.rx.forEach(r=>r.panoOk=true); renderForm(); openNote(); return;
+    case "express": CFG.express=!CFG.express; saveCfg(); break;
+    case "showsec": { const k=b.dataset.v; if(k==="seance") S.ui.showSeance=!S.ui.showSeance; else S.ui.showQmr=qmrSkip(); S.ui.curSec=k; break; }
+    case "panook": S.rx[i].panoOk=true; break;
+    case "dxok": { const a=S.actes[i], k=+b.dataset.k, tt=k<0?a:a.teeth[k]; tt.dxok=true; break; }
     case "refusform": S.ui.refusI = S.ui.refusI===i ? -1 : i; break;
-    case "cons": { const C=S.actes[i].cons, k=b.dataset.k, v=b.dataset.v; C[k] = C[k].includes(v)? C[k].filter(x=>x!==v) : C[k].concat(v); break; }
+    case "cons": { const C=S.actes[i].cons, k=b.dataset.k, v=b.dataset.v; if(k==="alt") C.altm=true; C[k] = C[k].includes(v)? C[k].filter(x=>x!==v) : C[k].concat(v); break; }
     case "copyrefus": { const t=refusText(S.actes[i]); const m=$("#refusmsg"); try{ navigator.clipboard.writeText(t).then(()=>m.textContent="Formulaire copié.",()=>{ $("#refusta").select(); m.textContent="Copie bloquée : fais Ctrl+C."; }); }catch(_){ $("#refusta").select(); } return; }
     case "quad": S.ui.q[b.dataset.k]=+b.dataset.v; break;
     case "tooth": { { const pm=b.dataset.p.match(/^plan\.(\d+)\.teeth$/); if(pm && S.plan[+pm[1]].of) S.plan[+pm[1]].tm=true; } const list=getP(b.dataset.p), d=b.dataset.d, j=list.findIndex(t=>String(t.d)===d);
       if(j>=0) list.splice(j,1); else { list.push(newToothItem(b.dataset.p, d)); list.sort((x,y)=>toothOrder(x.d)-toothOrder(y.d)); }
-      const ma=b.dataset.p.match(/^actes\.(\d+)\.teeth$/); if(ma){ const ac=S.actes[+ma[1]]; ac.teeth.forEach(t=>initToothDx(ac,t)); autoByTooth(ac); }
+      const ma=b.dataset.p.match(/^actes\.(\d+)\.teeth$/); if(ma){ const ac=S.actes[+ma[1]]; ac.teeth.forEach(t=>initToothDx(ac,t)); afterTeeth(ac); autoByTooth(ac); }
       const mp=b.dataset.p.match(/^plan\.(\d+)\.teeth$/); if(mp) S.plan[+mp[1]].auto=false; break; }
     case "surf": { const t=getP(b.dataset.p)[i], v=b.dataset.v; t.s = t.s.includes(v)? t.s.filter(x=>x!==v) : t.s.concat(v);
-      const ord=isAnt(t.d)?SURF_ANT:SURF_POST; t.s.sort((x,y)=>ord.indexOf(x)-ord.indexOf(y)); if(!t.bm) t.b=deduceBlack(t.d,t.s); break; }
+      const ord=isAnt(t.d)?SURF_ANT:SURF_POST; t.s.sort((x,y)=>ord.indexOf(x)-ord.indexOf(y)); if(!t.bm) t.b=deduceBlack(t.d,t.s); { const ma=b.dataset.p.match(/^actes\.(\d+)\.teeth$/); if(ma) afterTeeth(S.actes[+ma[1]]); } break; }
     case "black": { const t=getP(b.dataset.p)[i]; if(t.b===b.dataset.v){ t.bm=false; t.b=deduceBlack(t.d,t.s); } else { t.b=b.dataset.v; t.bm=true; } break; }
     case "arc": S.actes[i].arc = S.actes[i].arc===b.dataset.v ? "" : b.dataset.v; break;
-    case "add": addRow(b.dataset.k); break;
-    case "rm": getP(b.dataset.k).splice(i,1); break;
+    case "add": if(b.dataset.k==="anesth.rows") S.anesth.man=true; addRow(b.dataset.k); break;
+    case "rm": if(b.dataset.k==="anesth.rows") S.anesth.man=true; getP(b.dataset.k).splice(i,1); break;
     case "rxtype": { const r=S.rx[i]; r.type=b.dataset.v; const ok=new Set(RX_TYPECATS[r.type].flatMap(c=>(r.type==="photographie"?PHOTO_CAT:RX_CAT)[c])); Object.values(r.obsBy||{}).forEach(o=>o.c=o.c.filter(x=>ok.has(x))); break; }
     case "rxk": S.ui.q["rxk"+i]=b.dataset.v; break;
     case "dxadd": { const d=b.dataset.v; if(!S.dx.some(t=>String(t.d)===d)){ S.dx.push(newToothItem("dx",d)); S.dx.sort((x,y)=>toothOrder(x.d)-toothOrder(y.d)); } break; }
@@ -2481,11 +2581,12 @@ document.addEventListener("click", e=>{
     case "retenue": S.opts.forEach((o,j)=>o.ret = j===i ? !o.ret : false); autoPlan(); break;
     case "estate": { const o=S[b.dataset.k], s=b.dataset.s; S.ui.touched[b.dataset.k+"."+s]=true; o[s]=o[s]||{s:"",c:[]}; o[s].s = o[s].s===b.dataset.v ? "" : b.dataset.v; break; }
     case "anom": { const o=S[b.dataset.k][b.dataset.s], v=b.dataset.v; o.c = o.c.includes(v)? o.c.filter(x=>x!==v) : o.c.concat(v); break; }
-    case "eall": { const k=b.dataset.k; (k==="eeo"?EEO:EIO).forEach(s=>{ if(!S[k][s]||!S[k][s].s) S[k][s]={s:"N",c:[]}; }); break; }
+    case "eall": { S.conf.examens=true;  const k=b.dataset.k; (k==="eeo"?EEO:EIO).forEach(s=>{ if(!S[k][s]||!S[k][s].s) S[k][s]={s:"N",c:[]}; }); break; }
     case "allchips": { const f=F_CONSENT.find(x=>x.id===b.dataset.f); const o=getP(b.dataset.p); o.c = o.c.length===f.o.length ? [] : [...f.o]; break; }
     case "postop": { const v=b.dataset.v; S.ui.postMan=S.ui.postMan||[]; if(!S.post.includes(v)) S.ui.postMan.push(v); else S.ui.postMan=S.ui.postMan.filter(x=>x!==v); S.post = S.post.includes(v)? S.post.filter(x=>x!==v) : S.post.concat(v);
       const r=fv(S.fin,"remis"); if(S.post.length && !r.c.includes("instructions post-opératoires écrites")) r.c.push("instructions post-opératoires écrites"); break; }
-    case "carp": S.anesth.rows[i].carp = S.anesth.rows[i].carp===b.dataset.v ? "" : b.dataset.v; break;
+    case "anauto": S.anesth.man=false; break;
+    case "carp": S.anesth.man=true; S.anesth.rows[i].carp = S.anesth.rows[i].carp===b.dataset.v ? "" : b.dataset.v; break;
     case "tog": setPath(b.dataset.p, !getP(b.dataset.p)); break;
     case "num": { const o=getP(b.dataset.p), f=findField(b.dataset.p)||{}; const st=f.step||1, mn=f.min??0, mx=f.max??999;
       o.n = o.n==null ? (f.min??1) : Math.min(mx, Math.max(mn, o.n + st*(+b.dataset.d))); break; }
@@ -2499,7 +2600,7 @@ document.addEventListener("click", e=>{
 function findField(path){ const m=path.match(/^actes\.(\d+)\.v\.(\w+)$/); if(!m) return null; return CAN[S.actes[+m[1]].cid].etapes.find(f=>f.id===m[2]); }
 document.addEventListener("input", e=>{
   const t=e.target;
-  if(t.id==="note"){ S.ui.edited=true; $("#editbar").hidden=false; return; }
+  if(t.id==="note"){ S.ui.editing=true; return; }
   if(t.id==="actq"){ S.ui.actq=t.value; const pos=t.selectionStart; renderForm(); const n=$("#actq"); if(n){ n.focus(); n.setSelectionRange(pos,pos); } return; }
   if(t.id==="tplname"||t.dataset.cfg) return;
   if(S.ui.view==="form") S.ui.dirty=true;
@@ -2514,11 +2615,13 @@ document.addEventListener("input", e=>{
 document.addEventListener("change", e=>{
   const t=e.target;
   if(t.dataset.setb){ setPath(t.dataset.setb, t.checked); renderForm(); return; }
-  if(t.dataset.act==="tdx"){ const a=S.actes[+t.dataset.i], k=+t.dataset.k, tt = k<0 ? a : a.teeth[k]; tt[t.dataset.f]=t.value; if(t.dataset.f==="dx" && /retraitement indiqué/.test(t.value) && !tt.recm) tt.rec="Référence à un spécialiste"; if(t.dataset.f==="rec") tt.recm=true; if(t.dataset.f==="dx"||t.dataset.f==="dx2"){ tt.dxm=true; if(k<0) a.dxm=true; } S.ui.dirty=true; renderForm(); return; }
+  if(t.dataset.act==="tdx"){ const a=S.actes[+t.dataset.i], k=+t.dataset.k, tt = k<0 ? a : a.teeth[k]; tt[t.dataset.f]=t.value; if(t.dataset.f==="dx"||t.dataset.f==="dx2") tt.dxok=true; if(t.dataset.f==="dx" && /retraitement indiqué/.test(t.value) && !tt.recm) tt.rec="Référence à un spécialiste"; if(t.dataset.f==="rec") tt.recm=true; if(t.dataset.f==="dx"||t.dataset.f==="dx2"){ tt.dxm=true; if(k<0) a.dxm=true; } S.ui.dirty=true; renderForm(); return; }
   if(t.dataset.act==="mcat"){ S.ui.mcat=t.value; renderForm(); return; }
   if(t.dataset.act==="mpick"){ if(t.value){ S.plainte.motif={t:t.value}; S.ui.dirty=true; } renderForm(); return; }
   if(t.dataset.act==="consmode"){ S.actes[+t.dataset.i].cons.mode=t.value; S.ui.dirty=true; renderForm(); return; }
   if(t.dataset.act==="consq"){ S.actes[+t.dataset.i].cons.q=t.value; S.ui.dirty=true; renderForm(); return; }
+  if(t.dataset.set && /^anesth\.rows\.\d+\.agent$/.test(t.dataset.set)){ S.anesth.agent=t.value; S.anesth.rows.forEach(r=>r.agent=t.value); renderForm(); return; }
+  if(t.dataset.set && /^anesth\.rows\./.test(t.dataset.set)) S.anesth.man=true;
   if(t.dataset.set){ setPath(t.dataset.set, t.value); const pm=t.dataset.set.match(/^plan\.(\d+)\.(\w+)/); if(pm){ const r=S.plan[+pm[1]]; r.auto=false; if(pm[2]==="cid") planPair(+pm[1]); if(pm[2]==="pro" && r.of) r.pm=true; } renderForm(); }
 });
 let rt; const renderSoon = () => { clearTimeout(rt); rt=setTimeout(renderNote,120); };
@@ -2526,17 +2629,17 @@ let rt; const renderSoon = () => { clearTimeout(rt); rt=setTimeout(renderNote,12
 /* ---------- Note : style, copie, nouvelle note ---------- */
 $("#stP").onclick=()=>{ S.style="prag"; renderNote(); };
 $("#stN").onclick=()=>{ S.style="narr"; renderNote(); };
-function copyText(txt){
+function copyText(txt, miss=0){
   const ok=()=>{ if(S.exemple){ $("#copymsg").textContent="Note copiée (exemple, rien n'est effacé)."; return; }
     const last=S; clearDraft(); const st=CFG.style; S=blank(); boot(S); S.style=st; S.ui.lastCopied=last; S.ui.view="home"; $("#note").contentEditable="true";
-    renderForm(); window.scrollTo(0,0); $("#copymsg").textContent="Note copiée. Colle-la dans le dossier."; setTimeout(()=>$("#copymsg").textContent="",5000); };
+    renderForm(); window.scrollTo(0,0); $("#copymsg").textContent = miss ? `Note copiée malgré ${miss} élément${miss>1?"s":""} manquant${miss>1?"s":""}. Colle-la dans le dossier.` : "Note copiée. Colle-la dans le dossier."; setTimeout(()=>$("#copymsg").textContent="",6000); };
   const fall=()=>{ const ta=$("#fallback"); ta.hidden=false; ta.value=txt; ta.focus(); ta.select(); $("#copymsg").textContent="Copie bloquée par le navigateur : le texte est sélectionné, fais Ctrl+C (ou Copier)."; };
   try{ navigator.clipboard.writeText(txt).then(ok,fall); }catch(_){ fall(); }
 }
 $("#copy").onclick=()=>{
   const R=checks().filter(c=>c.lvl==="req");
-  if(R.length && !S.derog.trim()){ $("#copymsg").innerHTML=`Il manque ${R.length} élément${R.length>1?"s":""}. Inscris un motif dans le contrôle, ou <button type="button" class="linkbtn" id="force">copier quand même</button>.`; $("#force").onclick=()=>copyText(noteText()); return; }
-  copyText(noteText());
+  if(S.ui.editing){ captureEdits(); S.ui.editing=false; }
+  copyText(noteText(), S.derog.trim()?0:R.length);
 };
 $("#new").onclick=()=>{
   const b=$("#new");
@@ -2607,7 +2710,7 @@ function loadExample(){
   S.opts=[{nom:"Traitement de canal puis recouvrement cuspidien",pro:"bon",ret:true},{nom:"Extraction simple",pro:"bon",ret:false},{nom:"Observer",pro:"défavorable",ret:false},{nom:"Statu quo (aucun traitement)",pro:"défavorable",ret:false}];
   S.justif.justif={c:["dent restaurable","souhait du patient de conserver la dent"]}; S.justif.ecart={c:["perte d'une dent restaurable","risque d'aggravation (observer ou statu quo)"]};
   S.consent.mode={c:["obtenu verbalement"]}; S.consent.elements={c:[...F_CONSENT[1].o]}; S.consent.frais={c:["estimé des honoraires remis","avisé des frais non couverts par l'assurance"]}; S.consent.questions={c:["questions répondues"]};
-  S.anesth.topique=true; S.anesth.rows=[{agent:ANESTH_AGENTS[1].l,carp:"1",tech:"bloc alvéolaire inférieur",site:"36"},{agent:ANESTH_AGENTS[1].l,carp:"0,5",tech:"bloc long buccal",site:"36"}];
+  S.anesth.topique=true; S.anesth.rows=[{agent:ANESTH_AGENTS[1].l,carp:"1",tech:"bloc alvéolaire inférieur (Spix)",site:"36"},{agent:ANESTH_AGENTS[1].l,carp:"0,5",tech:"bloc long buccal",site:"36"}];
   const a=newActe("endo_urg","pulpectomie"); a.teeth=[{d:"36",s:[],b:"",bm:false}];
   a.teeth.forEach(t=>initToothDx(a,t)); S.ui.q[a.uid]=3; S.actes=[a]; S.post=["endo"];
   S.plan=[{se:1,cid:"endo_s1",teeth:[{d:"36"}]},{se:2,cid:"endo_obt",teeth:[{d:"36"}]},{se:3,cid:"onlay_prep",teeth:[{d:"36"}]}];
@@ -2626,7 +2729,9 @@ if((location.protocol==="https:"||location.hostname==="localhost") && "serviceWo
 /* ============================================================
    NOTE MODIFIÉE À LA MAIN, MODÈLES, TAILLE DU TEXTE, CLAVIER
    ============================================================ */
-$("#regen").onclick=()=>{ S.ui.edited=false; renderNote(); };
+$("#regen").onclick=()=>{ S.noteEd=null; S.ui.editing=false; renderNote(); };
+$("#note").addEventListener("focus", ()=>{ S.ui.editing=true; });
+$("#note").addEventListener("blur", ()=>{ if(S.ui.editing){ captureEdits(); S.ui.editing=false; renderNote(); saveDraftSoon(); } });
 $("#savetpl").onclick=()=>{ const f=$("#tplform"); f.hidden=!f.hidden; if(!f.hidden){ $("#tplname").value = (S.actes.map(a=>CAN[a.cid].nom).join(" + ")||T().l); $("#tplname").focus(); } };
 $("#tplok").onclick=()=>{ const n=$("#tplname").value.trim(); if(!n) return; const d=JSON.parse(JSON.stringify(S)); d.ui={}; d.exemple=false;
   d.meta.delai={}; CFG.tpl.push({name:n, type:S.type, data:d}); saveCfg(); $("#tplform").hidden=true; $("#copymsg").textContent="Modèle « "+n+" » enregistré. Il apparaît à l'accueil."; };
@@ -2744,6 +2849,14 @@ document.addEventListener("input", e=>{ const t=e.target; if(!t.dataset.cfg || t
   if(t.dataset.cfg==="lex"){ CFG.lex=t.value.split("\n").map(x=>x.trim()).filter(Boolean); LEXP.length=0; CFG.lex.forEach(x=>LEXP.push({e:[x,"","","","Lexique personnel","terme","","","",1], k:norm(x), a:"", s:""})); }
   saveCfg(); });
 
+/* ---------- Note repliable sur ordinateur ---------- */
+function setNote(open){ CFG.noteOpen=open; saveCfg(); document.body.dataset.note = open ? "open" : "closed"; }
+function openNote(){ if(window.matchMedia("(max-width:760px)").matches) $("#viewN").click(); else { setNote(true); setTimeout(()=>{ const n=$(".side"); if(n) n.scrollIntoView({behavior:"smooth", block:"start"}); },30); } }
+document.body.dataset.note = CFG.noteOpen ? "open" : "closed";
+$("#notefab").onclick=()=>openNote();
+$("#noteclose").onclick=()=>setNote(false);
+$("#share").hidden = !navigator.share;
+$("#share").onclick=()=>{ if(S.ui.editing){ captureEdits(); S.ui.editing=false; } navigator.share({title:"Note clinique", text:noteText()}).catch(()=>{}); };
 /* ---------- Navigation fluide : barre latérale, balayage, raccourcis ---------- */
 document.addEventListener("click", e=>{ const b=e.target.closest("[data-proxy]"); if(b){ const t=$("#"+b.dataset.proxy); if(t) t.click(); } });
 function goStep(d){ if(S.ui.view!=="form") return; const n=sectionsList().length, k=S.ui.step+d; if(k<0||k>=n) return; S.ui.step=k; renderForm(); window.scrollTo({top:0, behavior:"smooth"}); }
