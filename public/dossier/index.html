@@ -626,6 +626,29 @@ body[data-final="1"] .allconf{display:none}
 
 .dxrow .chip:not(.on){background:var(--sunk)}
 .dxrow.pil .lab .chips{flex-direction:row}
+
+/* ---- dictée ---- */
+.mic.on{cursor:pointer;background:var(--fg);color:var(--surface);border-color:var(--fg);opacity:1}
+.dictbox{display:flex;flex-direction:column;gap:10px;background:var(--sunk);border-radius:18px;padding:14px}
+.dtop{display:flex;align-items:center;gap:10px}
+.dtop .x{margin-left:auto}
+.dmic{border:0;border-radius:999px;background:var(--fg);color:var(--surface);padding:12px 20px;font-weight:700;font-size:.95rem}
+.dmic.live{background:var(--warn);color:#fff;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--warn) 45%,transparent)}50%{box-shadow:0 0 0 10px transparent}}
+.dstat{font-size:.84rem;color:var(--muted)}
+.dtext{min-height:96px;font-size:.95rem!important;background:var(--surface)!important}
+.dint{font-size:.84rem;color:var(--muted);font-style:italic;min-height:1em}
+.dsum{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:color-mix(in srgb,#F5C84B 22%,var(--surface));border-radius:14px;padding:10px 14px;font-size:.88rem}
+.erow.dict,tr.dict td{background:color-mix(in srgb,#F5C84B 26%,transparent)!important}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(10,10,12,.45);display:grid;place-items:center;padding:16px}
+.mbox{background:var(--surface);color:var(--fg);border-radius:24px;padding:22px;max-width:460px;width:100%;display:flex;flex-direction:column;gap:12px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.mbox h2{margin:0;font:700 1.25rem var(--display)}
+.xcode{font:700 2.4rem/1 var(--mono);letter-spacing:.12em;text-align:center;padding:14px;border-radius:16px;background:var(--sunk)}
+.xin{font:600 1.4rem var(--mono)!important;letter-spacing:.2em;text-align:center}
+.chip.xsend{font-weight:600}
+.chip.xsend.ml{margin-left:auto}
+.recv{display:flex;justify-content:flex-end}
+@media (prefers-reduced-motion:reduce){.dmic.live{animation:none}}
 </style>
 
 <div class="shell">
@@ -678,6 +701,7 @@ body[data-final="1"] .allconf{display:none}
 </div>
 </div>
 
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true"><div class="mbox" id="mbox"></div></div>
 <button type="button" id="notefab" class="notefab">Voir la note <span id="fabcount"></span></button>
 <div class="mobbar"><button type="button" id="mprev" aria-label="Section précédente">‹ Préc.</button><button type="button" id="viewF" class="on">Formulaire</button><button type="button" id="viewN">Note <span id="mobcount"></span></button><button type="button" id="mnext" class="pri" aria-label="Section suivante">Suiv. ›</button></div>
 <div id="ac" hidden></div>
@@ -1621,6 +1645,174 @@ const NONTX = {
 const CAN_RISK = {composite:"resto",amalgame:"resto",temporaire:"resto",endo_urg:"endo",endo_s1:"endo",endo_obt:"endo",endo_1rdv:"endo",exo_simple:"exo",exo_chir:"exo",alveolite:"alveolite",biopsie:"biopsie",pont_prep:"pont",pont_ins:"pont",gal:"greffe",gtc:"greffe",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",interceptif:"ortho",contention:"ortho",blanchiment:"blanchiment",gouttiere:"gouttiere"};
 </script>
 <script>/* ============================================================
+   DICTÉE — analyse déterministe (aucune IA) du texte dicté
+   Entrée : texte brut (reconnaissance vocale de l'iPhone ou dictée du clavier).
+   Sortie : un « patch » (liste de constats) que l'app applique puis surligne.
+   Règle : ce qui n'est pas compris n'est jamais deviné ; il est renvoyé
+   dans « reste » et versé dans la précision de la section.
+   ============================================================ */
+const DICT = (() => {
+  const strip = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const NUMW = {"zero":0,"un":1,"une":1,"deux":2,"trois":3,"quatre":4,"cinq":5,"six":6,"sept":7,"huit":8,"neuf":9,"dix":10,"onze":11,"douze":12,"treize":13,"quatorze":14,"quinze":15,"seize":16,
+    "dix-sept":17,"dix-huit":18,"dix-neuf":19,"vingt":20,"vingt et un":21,"vingt-et-un":21,"vingt-deux":22,"vingt-trois":23,"vingt-quatre":24,"vingt-cinq":25,"vingt-six":26,"vingt-sept":27,"vingt-huit":28,
+    "trente":30,"trente et un":31,"trente-et-un":31,"trente-deux":32,"trente-trois":33,"trente-quatre":34,"trente-cinq":35,"trente-six":36,"trente-sept":37,"trente-huit":38,
+    "quarante":40,"quarante et un":41,"quarante-et-un":41,"quarante-deux":42,"quarante-trois":43,"quarante-quatre":44,"quarante-cinq":45,"quarante-six":46,"quarante-sept":47,"quarante-huit":48};
+  /* Texte normalisé : minuscules, sans accents, nombres en chiffres, ponctuation conservée comme séparateur « | » */
+  function norm(t){
+    let s = strip(String(t||"").toLowerCase()).replace(/[’']/g," ").replace(/\b(\d+),(\d+)\b/g,"$1.$2");
+    s = s.replace(/[.;!?\n]+/g," | ").replace(/,/g," , ").replace(/[«»"():]/g," ");
+    const keys = Object.keys(NUMW).sort((a,b)=>b.length-a.length);
+    keys.forEach(k=>{ s = s.replace(new RegExp("(^|[\\s|,])"+k.replace(/-/g,"[- ]")+"(?=$|[\\s|,])","g"), "$1"+NUMW[k]); });
+    s = s.replace(/\b(\d)\s*-\s*(\d)\b/g,"$1 $2").replace(/\s+/g," ").trim();
+    return s;
+  }
+  const NEG = /\b(pas d|pas de|aucun|aucune|absence d|absence de|sans|ni)\s*$/;
+  const has = (seg, phrase) => { const p=" "+strip(phrase.toLowerCase()).replace(/[’'()]/g," ").replace(/\s+/g," ").trim()+" "; const i=(" "+seg+" ").indexOf(p); return i; };
+  /* une option est « dite » si son libellé entier apparaît, ou tous ses mots significatifs */
+  const STOP = new Set(["de","du","des","la","le","les","et","a","au","aux","en","d","l","sur","par","avec","pour","une","un"]);
+  function optHit(seg, opt){
+    const i = has(seg, opt); if(i>=0) return {pos:i};
+    const short = opt.replace(/\s*\(.*\)\s*/,"").trim(); if(short!==opt){ const j=has(seg, short); if(j>=0) return {pos:j}; const inner=(opt.match(/\(([^)]*)\)/)||[])[1]; if(inner){ const k=has(seg, inner); if(k>=0) return {pos:k}; } }
+    const words = strip(opt.toLowerCase()).replace(/[()’',]/g," ").split(/\s+/).filter(w=>w.length>=4 && !STOP.has(w));
+    if(!words.length) return null;
+    const S2 = " "+seg+" "; let first=-1;
+    for(const w of words){ const stem = w.length>6 ? w.slice(0,w.length-2) : w; const j=S2.indexOf(" "+stem); if(j<0) return null; if(first<0||j<first) first=j; }
+    return {pos:first};
+  }
+  const negated = (seg, pos) => NEG.test(seg.slice(Math.max(0,pos-14), pos).trim());
+
+  /* ---------- EXAMEN EXTRA- ET INTRA-ORAL ---------- */
+  const SYN = {
+    "Visage et symétrie":["visage","symetrie","asymetrie faciale"],
+    "Peau":["peau","cutane"],
+    "ATM":["atm","articulation temporo","temporo mandibulaire","temporomandibulaire","articulations"],
+    "Muscles masticateurs":["muscles masticateurs","muscles","masseter","masseters","temporaux"],
+    "Ganglions lymphatiques":["ganglions","ganglion","adenopathie","adenopathies","chaines ganglionnaires"],
+    "Glandes parotides et sous-maxillaires":["parotides","parotide","sous maxillaire","sous-maxillaire","sous maxillaires","sous-maxillaires"],
+    "Lèvres (vermillon)":["levres","levre","vermillon"],
+    "Muqueuse labiale":["muqueuse labiale","muqueuses labiales"],
+    "Commissures labiales":["commissures","commissure"],
+    "Freins labiaux et lingual":["freins","frein"],
+    "Vestibules":["vestibules","vestibule"],
+    "Muqueuse jugale":["muqueuse jugale","muqueuses jugales","joues","joue"],
+    "Dos de la langue":["dos de la langue","dos de langue","langue"],
+    "Bords latéraux de la langue":["bords lateraux de la langue","bord lateral de la langue","bords lateraux","bord lateral","bords de la langue","bord de la langue"],
+    "Face ventrale de la langue":["face ventrale de la langue","face ventrale","ventre de la langue"],
+    "Plancher buccal":["plancher buccal","plancher de la bouche","plancher"],
+    "Glandes salivaires et salive":["glandes salivaires","salive","debit salivaire"],
+    "Palais dur":["palais dur"],
+    "Palais mou et luette":["palais mou","luette"],
+    "Oropharynx et amygdales":["oropharynx","amygdales","amygdale","gorge"],
+    "Crêtes alvéolaires":["cretes alveolaires","crete alveolaire","cretes","crete"],
+    "Gencive":["gencives","gencive","gingival","gingivale"],
+    "Occlusion":["occlusion"],
+    "Hygiène (plaque, tartre)":["hygiene","plaque","tartre"]
+  };
+  const ALL_EX = [...EEO.map(s=>["eeo",s]), ...EIO.map(s=>["eio",s])];
+  const NORMAL = /\b(normal|normale|normaux|normales|rien a signaler|r a s|ras|sain|saine|sains|saines|dln|dans les limites|sans particularite|ok)\b/;
+  const NONEX = /\b(non examine|non examinee|non examines|pas examine|pas examinee|pas vu|pas evalue|non evalue)\b/;
+  const ANORM = /\b(anormal|anormale|anomalie)\b/;
+  function parseExam(text){
+    const s = norm(text), out = {set:[], angle:{}, psr:null, allNormal:null, reste:[]};
+    /* repérer chaque structure nommée et découper le texte entre deux structures */
+    const hits = [];
+    ALL_EX.forEach(([k,st])=>{ const syns=[...SYN[st]].sort((a,b)=>b.length-a.length);
+      syns.forEach(sy=>{ let from=0, p; const S2=" "+s+" "; const needle=" "+sy+" ";
+        while((p=S2.indexOf(needle,from))>=0){ hits.push({k, st, pos:p, len:sy.length}); from=p+1; } }); });
+    /* garder le plus long synonyme quand deux se chevauchent (« bords lateraux de la langue » avant « langue ») */
+    hits.sort((a,b)=>a.pos-b.pos || b.len-a.len);
+    const kept=[]; hits.forEach(h=>{ const last=kept[kept.length-1]; if(last && h.pos < last.pos+last.len+1) return; if(last && last.st===h.st) return; /* même structure redite : un seul segment */ kept.push(h); });
+    const ordered = kept;
+    /* phrases globales */
+    if(/\b(tout|tous|toutes|le reste|reste)\b[^|]*\b(normal|normaux|normale|normales|dans les limites|sain|sains)\b/.test(s) || /\bexamen[^|]*\b(normal|dans les limites)\b/.test(s)) out.allNormal = "tout";
+    else { if(/\bextra[- ]?oral[^|]*\b(normal|dans les limites)/.test(s)) out.allNormal="eeo"; if(/\bintra[- ]?oral[^|]*\b(normal|dans les limites)/.test(s)) out.allNormal = out.allNormal==="eeo" ? "tout" : "eio"; }
+    ordered.forEach((h,j)=>{
+      const end = j<ordered.length-1 ? ordered[j+1].pos : s.length+1;
+      let seg = (" "+s+" ").slice(h.pos+h.len+1, end).replace(/^[\s,|]+/,"").split("|")[0].trim();
+      const opts = [...(ANOM[h.st]||[]), ...ANOM_GEN.filter(x=>!(ANOM[h.st]||[]).includes(x))];
+      /* le nom de la structure fait partie du constat (« langue geographique », « plaque generalisee ») */
+      const segFull = (" "+s+" ").slice(h.pos, end).replace(/\|/g," ");
+      let found = []; opts.forEach(o=>{ const m=optHit(" "+segFull+" ", o); if(m && !negated(" "+segFull+" ", m.pos)) found.push(o); });
+      found = found.filter(o=>!found.some(x=>x!==o && x.includes(o)));
+      let st = "";
+      const before = (" "+s+" ").slice(Math.max(0,h.pos-16), h.pos+1);
+      if(NEG.test(before.trim()) && !found.length) st="N"; /* « pas d'adénopathie », « aucune lésion » */
+      else if(NONEX.test(seg)) st="NE";
+      else if(found.length) st="A";
+      else if(ANORM.test(seg)) st="A";
+      else if(NORMAL.test(seg) || /\b(pas d|pas de|aucun|aucune|absence)\b/.test(seg)) st="N";
+      if(!st && h.st==="Occlusion" && /classe/.test(seg)) st="";
+      if(st) out.set.push({k:h.k, st:h.st, s:st, c:found});
+      if(st==="A" && !found.length && seg) out.reste.push(h.st+" : "+seg);
+    });
+    /* classe d'Angle : « classe 1 a droite », « classe 2 division 1 a gauche », « classe 1 bilaterale » */
+    const re = /classe (1|2|3|i|ii|iii)( division (1|2|i|ii))?( (a )?(droite|gauche|bilaterale|bilateral|des deux cotes|de chaque cote))?/g; let m;
+    const roman = {"1":"I","2":"II","3":"III","i":"I","ii":"II","iii":"III"};
+    while((m=re.exec(s))){ const c = "classe "+roman[m[1]]+(m[3]?" division "+(m[3]==="ii"?"2":m[3]==="i"?"1":m[3]):"");
+      const lab = c.replace("classe II division","classe II division");
+      const side = m[6]||"bilaterale"; if(/droite/.test(side)) out.angle.d=lab; else if(/gauche/.test(side)) out.angle.g=lab; else { out.angle.d=lab; out.angle.g=lab; } }
+    /* PSR : « PSR 2 2 3 3 2 2 » (étoile = « etoile ») */
+    const pm = s.match(/\bpsr\b((?:\s+(?:[0-4]|etoile|x|\*)){6})/);
+    if(pm) out.psr = pm[1].trim().split(/\s+/).map(v=>v==="etoile"?"*":v==="x"?"X":v);
+    return out;
+  }
+
+  /* ---------- CHARTING PARODONTAL 6 SITES ---------- */
+  const FDI = new Set([...[1,2,3,4].flatMap(q=>QUADS[q]).map(String), ...[5,6,7,8].flatMap(q=>(QUADS[q]||[])).map(String)]);
+  const SITE_W = [["mesio vestibulaire","MV"],["mesio-vestibulaire","MV"],["mesiovestibulaire","MV"],["mesial vestibulaire","MV"],["disto vestibulaire","DV"],["disto-vestibulaire","DV"],["distovestibulaire","DV"],["distal vestibulaire","DV"],
+    ["mesio lingual","ML"],["mesio-lingual","ML"],["mesio palatin","ML"],["mesio-palatin","ML"],["mesial lingual","ML"],["mesial palatin","ML"],["disto lingual","DL"],["disto-lingual","DL"],["disto palatin","DL"],["disto-palatin","DL"],["distal lingual","DL"],["distal palatin","DL"],
+    ["vestibulaire","V"],["buccal","V"],["lingual","L"],["linguale","L"],["palatin","L"],["palatine","L"]];
+  const FACE_V = /^(vestibulaire|vestibulaires|buccal|buccale|v|vestibulo)$/, FACE_L = /^(lingual|linguale|palatin|palatine|palatal|l|p)$/;
+  function sitesIn(str){ const out=[]; let s2=" "+str+" "; SITE_W.forEach(([w,k])=>{ const n=" "+w+" "; if(s2.includes(n)){ out.push(k); s2=s2.split(n).join(" # "); } }); return out; }
+  /* ordre des 3 valeurs par face : "affiche" = D, centre, M (comme le tableau) ; "arcade" = suit le sens de l'arcade */
+  function order(d, face, mode){ const base = face==="V" ? ["DV","V","MV"] : ["DL","L","ML"]; if(mode!=="arcade") return base; const q=+String(d)[0]; return (q===2||q===3||q===6||q===7) ? [...base].reverse() : base; }
+  function parsePerio(text, opts={}){
+    const mode = opts.ordre || "affiche";
+    const s = norm(text).replace(/\bdent numero\b/g,"dent");
+    const tk = s.split(" ").filter(Boolean);
+    const out = {teeth:{}, fields:{}, reste:[]};
+    let cur=null, face=null, buf=[], lastFace=null, lastSix=false, unread=[];
+    const T = d => out.teeth[d] = out.teeth[d] || {pd:{}, bop:[], mob:null, furc:null, abs:null};
+    const flush = () => { if(!cur||!buf.length){ buf=[]; return; } const t=T(cur);
+      lastSix=false;
+      if(face){ order(cur,face,mode).forEach((k,i)=>{ if(buf[i]!=null) t.pd[k]=String(buf[i]); }); lastFace=face; }
+      else if(buf.length>=6){ order(cur,"V",mode).forEach((k,i)=>t.pd[k]=String(buf[i])); order(cur,"L",mode).forEach((k,i)=>t.pd[k]=String(buf[i+3])); lastFace="L"; lastSix=true; }
+      else if(buf.length===3){ const f = lastFace==="V" ? "L" : "V"; order(cur,f,mode).forEach((k,i)=>t.pd[k]=String(buf[i])); lastFace=f; }
+      else unread.push("dent "+cur+" : "+buf.join(" "));
+      buf=[]; face=null; };
+    const isTooth = (w, i) => /* une dent : numéro FDI valide en tête de phrase, après « dent », ou quand les valeurs de la dent précédente sont complètes */ FDI.has(w) && (tk[i-1]==="dent" || tk[i-1]==="|" || tk[i-1]==="," || i===0 || buf.length===0 && face===null || buf.length>=3 || /^(absente|absent|manquante|manquant|extraite|vestibulaire|lingual|palatin|buccal|mobilite|furcation|saignement)$/.test(tk[i+1]||""));
+    for(let i=0;i<tk.length;i++){ let w=tk[i];
+      if(w==="dent"||w==="|"||w===",") { if(w==="|"){ flush(); } continue; }
+      /* « un six » épelé après « dent » */
+      if(tk[i-1]==="dent" && /^[1-8]$/.test(w) && /^[1-8]$/.test(tk[i+1]||"") && FDI.has(w+tk[i+1])){ w=w+tk[i+1]; i++; }
+      if(isTooth(w,i) && (tk[i-1]==="dent" || !cur || buf.length===0 || buf.length>=3)){ flush(); cur=w; face=null; lastFace=null; continue; }
+      if(!cur) continue;
+      if(/^(absente|absent|manquante|manquant|extraite)$/.test(w)){ flush(); T(cur).abs=true; continue; }
+      if(FACE_V.test(w)){ flush(); face="V"; continue; }
+      if(FACE_L.test(w)){ flush(); face="L"; continue; }
+      if(w==="tout"||w==="partout"){ if(tk[i+1]==="a" && /^\d+$/.test(tk[i+2]||"")){ const v=tk[i+2]; const t=T(cur); [...order(cur,"V",mode),...order(cur,"L",mode)].forEach(k=>t.pd[k]=v); i+=2; continue; } }
+      if(/^saignements?$/.test(w)){ flush(); let j=i+1, seg=[]; while(j<tk.length && !/^(\||mobilite|furcation|dent)$/.test(tk[j]) && !(FDI.has(tk[j]) && seg.length)) { seg.push(tk[j]); j++; }
+        const str=seg.join(" "); let sites = /partout|tous|toutes|generalise/.test(str) ? ["DV","V","MV","DL","L","ML"] : sitesIn(str);
+        if(!sites.length) sites = lastSix ? ["DV","V","MV","DL","L","ML"] : lastFace==="L" ? ["DL","L","ML"] : lastFace==="V" ? ["DV","V","MV"] : ["DV","V","MV","DL","L","ML"];
+        const t=T(cur); sites.forEach(k=>{ if(!t.bop.includes(k)) t.bop.push(k); }); i=j-1; continue; }
+      if(/^mobilite$/.test(w) && /^[0-3]$/.test(tk[i+1]||"")){ flush(); T(cur).mob=tk[i+1]; i++; continue; }
+      if(/^furcations?$/.test(w)){ flush(); let j=i+1; if(tk[j]==="classe"||tk[j]==="grade") j++; const v=(tk[j]||"").replace("iii","3").replace("ii","2").replace(/^i$/,"1"); if(/^[0-3]$/.test(v)){ T(cur).furc = v==="0" ? "" : ["","I","II","III"][+v]; i=j; } continue; }
+      if(/^\d{1,2}$/.test(w) && +w<=15){ buf.push(+w); if(face && buf.length===3) flush(); else if(!face && buf.length===6) flush(); continue; }
+    }
+    flush();
+    /* champs généraux : plaque, tartre, facteurs de risque */
+    const clauses = s.split(/[|,]/).map(x=>" "+x.trim()+" ");
+    const KEY = {plaque:/ plaque /, tartre:/ tartre /, bopg:/ saignement (global|generalise|au sondage)| bop /};
+    F_PERIO.forEach(f=>{ if(!f.o) return; const scope = KEY[f.id] ? clauses.filter(c=>KEY[f.id].test(c)) : [" "+s+" "];
+      const hit=f.o.filter(o=>o!=="aucun" && scope.some(c=>{ const m=optHit(c, o); return m && !negated(c, m.pos); }));
+      if(!hit.length) return; if(f.t==="one"){ /* le plus long libellé reconnu gagne */ out.fields[f.id]=[hit.sort((a,b)=>b.length-a.length)[0]]; } else out.fields[f.id]=hit; });
+    out.reste = unread;
+    return out;
+  }
+  return {norm, parseExam, parsePerio};
+})();
+</script>
+<script>/* ============================================================
    MOTEUR v2 — un objet de séance (S), deux rendus de note.
    Tout se remplit par clics ; une précision libre à la fin de
    chaque grande section. Rien n'est conservé hors de la page.
@@ -1878,7 +2070,7 @@ function examTable(key, list){
     const an = v.s==="A" ? `<div class="chips anom">${[...(ANOM[s]||[]),...ANOM_GEN.filter(x=>!(ANOM[s]||[]).includes(x))].map(a=>`<button type="button" class="chip${v.c.includes(a)?" on":""}" data-act="anom" data-k="${key}" data-s="${esc(s)}" data-v="${esc(a)}" aria-pressed="${v.c.includes(a)}">${esc(a)}</button>`).join("")}</div>` : "";
     const warn = v.s==="A" && !v.c.length ? `<div class="inwarn">Choisis l'anomalie observée, sinon la note écrira « anomalie à préciser ».</div>` : "";
     const ang = key==="eio" && s==="Occlusion" ? (S.angle=S.angle||{}, `<div class="angle"><span class="mutelab">Classe d'Angle</span>${[["d","Droite"],["g","Gauche"]].map(([k,l])=>`<label class="lab sm">${l}<select data-set="angle.${k}"><option value="">—</option>${ANGLE.map(c=>`<option${S.angle[k]===c?" selected":""}>${c}</option>`).join("")}</select></label>`).join("")}</div>`) : "";
-    return `<div class="erow"><span class="ename">${esc(s)}</span><span class="segs">${seg}</span>${ang}${an}${warn}</div>`;
+    return `<div class="erow${(S.ui.dmark||{})[key+"."+s]?" dict":""}"><span class="ename">${esc(s)}</span><span class="segs">${seg}</span>${ang}${an}${warn}</div>`;
   }).join("")+`</div>`;
 }
 function sExamens(){
@@ -1899,7 +2091,7 @@ function sPerio(){
   const q = S.ui.q.perio || 1, quads=[1,2,3,4];
   const row = d => { const t = S.perio.c[d] = S.perio.c[d] || {pd:{}, bop:{}, mob:"", furc:"", abs:false};
     const cells = sites => sites.map(k=>`<span class="pdc"><input class="pd" type="text" inputmode="numeric" maxlength="2" data-pd="${d}.${k}" value="${esc(t.pd[k]||"")}" aria-label="${d} ${k}" ${t.abs?"disabled":""}><button type="button" class="bop${t.bop[k]?" on":""}" data-act="bop" data-d="${d}" data-k="${k}" aria-label="Saignement ${d} ${k}" aria-pressed="${!!t.bop[k]}" ${t.abs?"disabled":""}></button></span>`).join("");
-    return `<tr class="${t.abs?"abs":""}"><td class="mono">${d}</td><td><button type="button" class="chip sq${t.abs?" on":""}" data-act="pabs" data-d="${d}">X</button></td><td class="pdg">${cells(SITES_V)}</td><td class="pdg">${cells(SITES_L)}</td>
+    return `<tr class="${t.abs?"abs":""}${(S.ui.dmark||{})["perio."+d]?" dict":""}"><td class="mono">${d}</td><td><button type="button" class="chip sq${t.abs?" on":""}" data-act="pabs" data-d="${d}">X</button></td><td class="pdg">${cells(SITES_V)}</td><td class="pdg">${cells(SITES_L)}</td>
       <td><select data-set="perio.c.${d}.mob" ${t.abs?"disabled":""}>${["","0","1","2","3"].map(v=>`<option${t.mob===v?" selected":""}>${v}</option>`).join("")}</select></td>
       <td><select data-set="perio.c.${d}.furc" ${t.abs?"disabled":""}>${["","I","II","III"].map(v=>`<option${t.furc===v?" selected":""}>${v}</option>`).join("")}</select></td></tr>`; };
   const st = perioStats();
@@ -2285,7 +2477,7 @@ function renderHome(){
     return `<button type="button" class="tile${arm?" arm":""}" data-act="pick" data-v="${t.id}"><span class="tl">${esc(t.l)}</span><span class="td">${arm?"Changer de type ? Ce qui est rempli est gardé. Touche pour confirmer.":esc(DESC[t.id]||"")}</span></button>`; }).join("");
   const tpl = CFG.tpl.length ? `<h2 class="hh">Mes modèles</h2><div class="tiles">${CFG.tpl.map((m,i)=>`<button type="button" class="tile tpl" data-act="tpl" data-i="${i}"><span class="tl">${esc(m.name)}</span><span class="td">${esc(TYP[m.type]?.l||"")}</span></button>`).join("")}</div>` : "";
   const exs = `<details class="cat big exlist" id="exlist"${S.ui.exOpen?" open":""}><summary>Exemples de test (${(EXAMPLES||[]).length}), du plus simple au plus complexe</summary><div class="exgrid">${(EXAMPLES||[]).map((e,i)=>`<button type="button" class="extile" data-act="loadex" data-i="${i}"><span class="exn">${i+1}</span><span class="tl">${esc(e.t)}</span><span class="td">${esc(e.d)}</span></button>`).join("")}</div></details>`;
-  return `<div class="home">${copied}${draft}${cur}<h2 class="hh">Nouvelle note</h2><div class="tiles">${tiles}</div>${tpl}${exs}</div>`;
+  return `<div class="home">${copied}${draft}${cur}<div class="recv"><button type="button" class="mini" data-act="xrecv">Recevoir une séance de l'iPhone</button></div><h2 class="hh">Nouvelle note</h2><div class="tiles">${tiles}</div>${tpl}${exs}</div>`;
 }
 function railSync(){ const v=S.ui.view; document.querySelectorAll(".ritem").forEach(b=>b.classList.toggle("on", (b.id==="r-home"&&v==="home")||(b.id==="r-set"&&v==="settings")));
   const h=$("#hello"); if(h) h.textContent="Bonjour, "+(CFG.dentiste||"Docteur")+" !";
@@ -2313,14 +2505,14 @@ function renderForm(){
   const nav = `<nav class="wiz" aria-label="Sections">${meta.map((m,i)=>`<button type="button" class="wz ${m.cls}${i===S.ui.step?" cur":""}" data-act="step" data-v="${i}"><span class="wn">${m.cls==="done"?"✓":i+1}</span><span class="wt">${m.title}</span></button>`).join("")}${adds}</nav>`;
   const prev = S.ui.step>0, next = S.ui.step<secs.length-1;
   const tops = (id,i,last) => `<div class="topacts">${PREFILLED.includes(id)&&!last?`<button type="button" class="conf" data-act="step" data-conf="${id}" data-v="${i+1}">✓ Conforme, suivant</button>`:""}${id==="notef"?"":`<button type="button" class="mini allconf" data-act="allconf">Tout est conforme, aller à la note</button>`}</div>`;
-  let cur = isExpress() ? secs.map((h,i)=>h.replace('<div class="sb">', '<div class="sb">'+(i===0?tops("",i,true):""))).join("") : secs[S.ui.step].replace("</h2>", "</h2>"+MIC).replace('<div class="sb">', '<div class="sb">'+tops(S.ui.curSec, S.ui.step, !next));
+  let cur = isExpress() ? secs.map((h,i)=>h.replace('<div class="sb">', '<div class="sb">'+(i===0?tops("",i,true):""))).join("") : secs[S.ui.step].replace("</h2>", "</h2>"+micBtn(S.ui.curSec)).replace('<div class="sb">', '<div class="sb">'+tops(S.ui.curSec, S.ui.step, !next)+(S.ui.dopen===S.ui.curSec?dictBox(S.ui.curSec):"")+dictMarks(S.ui.curSec));
   const foot = isExpress() ? `<div class="wfoot"><span></span><button type="button" class="wbtn pri" data-act="gonote">Voir la note</button></div>` : `<div class="wfoot"><button type="button" class="wbtn" data-act="step" data-v="${S.ui.step-1}" ${prev?"":"disabled"}>‹ Précédent</button><span class="wpos">${S.ui.step+1} / ${secs.length}</span>${next?`<button type="button" class="wbtn pri" data-act="step" data-v="${S.ui.step+1}">Suivant ›</button>`:(S.ui.curSec==="notef"?`<button type="button" class="wbtn pri" data-act="copynote">Copier la note</button>`:`<button type="button" class="wbtn pri" data-act="gonote">Voir la note</button>`)}</div>`;
   const dir = S.ui.prevRendered==null ? "" : (S.ui.step>S.ui.prevRendered ? "goR" : S.ui.step<S.ui.prevRendered ? "goL" : "");
   if(dir) cur = cur.replace('<section class="sec"', `<section class="sec ${dir}"`);
   S.ui.prevRendered = S.ui.step;
   const prog = `<div class="wprog" aria-hidden="true"><i style="width:${Math.round((S.ui.step+1)/secs.length*100)}%"></i></div>`;
   const sn=$("#stepnav"); if(sn) sn.innerHTML = nav;
-  $("#form").innerHTML = (S.exemple?`<div class="banner">${S.exNum?`Exemple de test ${S.exNum} : ${esc(EXAMPLES[S.exNum-1].t)}. `:"Exemple fictif. "}Données fictives ; « Nouvelle note » efface tout.</div>`:"") + `<div class="ftype"><span>${esc(T().l)}</span><button type="button" class="linkbtn" data-act="home">Changer de type</button>${S.type==="traitement"?`<button type="button" class="chip xp${CFG.express?" on":""}" data-act="express" aria-pressed="${!!CFG.express}">Mode express</button>`:""}</div>` + quickStrip() + (isExpress()?"":nav + prog) + cur + foot;
+  $("#form").innerHTML = (S.exemple?`<div class="banner">${S.exNum?`Exemple de test ${S.exNum} : ${esc(EXAMPLES[S.exNum-1].t)}. `:"Exemple fictif. "}Données fictives ; « Nouvelle note » efface tout.</div>`:"") + `<div class="ftype"><span>${esc(T().l)}</span><button type="button" class="linkbtn" data-act="home">Changer de type</button>${S.type==="traitement"?`<button type="button" class="chip xp${CFG.express?" on":""}" data-act="express" aria-pressed="${!!CFG.express}">Mode express</button>`:""}<button type="button" class="chip xsend${S.type==="traitement"?"":" ml"}" data-act="xsend">Envoyer à l'ordinateur</button></div>` + quickStrip() + (isExpress()?"":nav + prog) + cur + foot;
   { const c=$("#form > .wiz .wz.cur"); if(c && c.parentElement.scrollWidth>c.parentElement.clientWidth) c.parentElement.scrollTo({left:c.offsetLeft-c.parentElement.clientWidth/2+c.offsetWidth/2, behavior:"smooth"}); }
   { const c=$("#stepnav .wz.cur"); if(c){ const p=$("#stepnav"); if(c.offsetTop<p.scrollTop || c.offsetTop>p.scrollTop+p.clientHeight-40) p.scrollTo({top:c.offsetTop-p.clientHeight/3, behavior:"smooth"}); } }
   if(S.ui.curSec==="notef"){ const sl=$("#noteslot"); if(sl){ sl.append($(".notebox"), $("#checks")); document.body.dataset.final="1"; if(document.body.dataset.view==="note") $("#viewF").click(); } }
@@ -2513,6 +2705,7 @@ function checks(){
   if(!valOf(F_SIGN[0], S.sign.verifie)) r("signature du dentiste");
   if(S.type==="suivi"||S.type==="postop"){ const ab=suiviKeys().filter(k=>{ const v=(S.suivi.sub[k]||{}).dx?.c||[]; const f=SUIVI_TX[k].f.find(x=>x.id==="dx"); return v.length && f && v[0]!==f.o[0]; });
     if(ab.length && ((S.suivi.g.conduite?.c)||[]).includes("évolution normale, aucune intervention")) L.push({lvl:"warn", msg:"Diagnostic anormal au suivi, mais la conduite indique « évolution normale, aucune intervention »."}); }
+  if(Object.keys(S.ui.dmark||{}).length) r("dictée à confirmer ("+[...new Set(Object.values(S.ui.dmark))].map(x=>DICT_SECS[x]||x).join(", ")+")");
   vocab().forEach(m=>L.push({lvl:"voc", msg:m}));
   return L;
 }
@@ -2675,6 +2868,12 @@ document.addEventListener("click", e=>{
     case "pjt": { const a=S.actes[i], k=+b.dataset.k, tt=k<0?a:a.teeth[k], v=b.dataset.v; tt.pj=tt.pj||[]; tt.pj = tt.pj.includes(v)?tt.pj.filter(x=>x!==v):tt.pj.concat(v); break; }
     case "pjp": { const r=S.plan[i], v=b.dataset.v; r.pj=r.pj||[]; r.pj = r.pj.includes(v)?r.pj.filter(x=>x!==v):r.pj.concat(v); break; }
     case "loadex": loadEx(+b.dataset.i); return;
+    case "dopen": S.ui.dopen = S.ui.dopen===b.dataset.v ? "" : b.dataset.v; break;
+    case "dclose": S.ui.dopen=""; if(RECON){ RECON=false; try{REC.stop();}catch(_){} } break;
+    case "dstart": dictStart(b.dataset.v); return;
+    case "dapply": if(RECON){ RECON=false; try{REC.stop();}catch(_){} } dictApply(b.dataset.v); break;
+    case "dclear": S.ui.dtext[b.dataset.v]=""; break;
+    case "dconfirm": dictConfirm(b.dataset.v); break;
     case "copynote": $("#copy").click(); return;
     case "planfr": { const v=b.dataset.v; S.planFr = S.planFr || [...CONS_FR]; S.planFr = S.planFr.includes(v) ? S.planFr.filter(x=>x!==v) : S.planFr.concat(v); break; }
     case "step": if(b.dataset.conf) S.conf[b.dataset.conf]=true; if(isExpress()){ const id=(b.closest("#stepnav,.wiz")&&S.ui.metaIds)?S.ui.metaIds[+b.dataset.v]:null; const el=id&&document.getElementById("sec-"+id); if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); return; } } S.ui.step=+b.dataset.v; renderForm(); window.scrollTo({top:0, behavior:"smooth"}); return;
@@ -2759,7 +2958,8 @@ let rt; const renderSoon = () => { clearTimeout(rt); rt=setTimeout(renderNote,12
 $("#stP").onclick=()=>{ S.style="prag"; renderNote(); };
 $("#stN").onclick=()=>{ S.style="narr"; renderNote(); };
 function copyText(txt, miss=0){
-  const ok=()=>{ if(S.exemple){ $("#copymsg").textContent="Note copiée (exemple, rien n'est effacé)."; return; }
+  const ok=()=>{ try{ if(window.parent!==window) window.parent.postMessage({type:"defacto:note", text:txt, type_seance:S.type, date:S.meta.date}, "*"); }catch(_){}
+    if(S.exemple){ $("#copymsg").textContent="Note copiée (exemple, rien n'est effacé)."; return; }
     const last=S; clearDraft(); const st=CFG.style; S=blank(); boot(S); S.style=st; S.ui.lastCopied=last; S.ui.view="home"; $("#note").contentEditable="true";
     renderForm(); window.scrollTo(0,0); $("#copymsg").textContent = miss ? `Note copiée malgré ${miss} élément${miss>1?"s":""} manquant${miss>1?"s":""}. Colle-la dans le dossier.` : "Note copiée. Colle-la dans le dossier."; setTimeout(()=>$("#copymsg").textContent="",6000); };
   const fall=()=>{ const ta=$("#fallback"); ta.hidden=false; ta.value=txt; ta.focus(); ta.select(); $("#copymsg").textContent="Copie bloquée par le navigateur : le texte est sélectionné, fais Ctrl+C (ou Copier)."; };
@@ -2926,6 +3126,7 @@ function renderSettings(){
   return `<div class="settings">
    <section class="sec"><header class="sh"><h2>Profil</h2></header><div class="sb">
      <label class="lab">Nom du dentiste pour la signature<input class="txt" type="text" data-cfg="dentiste" value="${esc(CFG.dentiste)}"></label>
+     <label class="lab sm">Charting dicté : ordre des 3 valeurs par face<select data-act="cfgordre"><option value="affiche"${(CFG.perioOrdre||"affiche")==="affiche"?" selected":""}>Distal, centre, mésial (comme le tableau)</option><option value="arcade"${CFG.perioOrdre==="arcade"?" selected":""}>Suivre le sens de l'arcade (mésial d'abord aux quadrants 2 et 3)</option></select></label>
      <div class="row2"><label class="lab sm">Système de limes mécanisées<input class="txt" type="text" data-cfg="rotsys" value="${esc((CFG.endoRot||{}).sys||"EndoSequence")}"></label>
        <label class="lab sm">Calibres par défaut (séparés par des virgules)<input class="txt" type="text" data-cfg="rotsz" value="${esc(((CFG.endoRot||{}).sz||["015","020","025","030"]).join(", "))}"></label></div>
      <div class="field"><div class="flab"><span>Style de note par défaut</span></div><div class="chips">${[["prag","Pragmatique"],["narr","Narratif"]].map(([k,l])=>`<button type="button" class="chip${CFG.style===k?" on":""}" data-act="cfgstyle" data-v="${k}">${l}</button>`).join("")}</div></div>
@@ -2973,7 +3174,7 @@ document.addEventListener("click", e=>{
   else return;
   saveCfg(); renderForm();
 }, true);
-document.addEventListener("change", e=>{ const t=e.target; if(t.dataset.act==="cfgcid"){ S.ui.setCid=t.value; S.ui.setVid="__base"; saveCfg(); renderForm(); } });
+document.addEventListener("change", e=>{ const t=e.target; if(t.dataset.act==="cfgordre"){ CFG.perioOrdre=t.value; saveCfg(); return; } if(t.dataset.act==="cfgcid"){ S.ui.setCid=t.value; S.ui.setVid="__base"; saveCfg(); renderForm(); } });
 document.addEventListener("input", e=>{ const t=e.target; if(!t.dataset.cfg || t.dataset.cfg==="x") return;
   if(t.dataset.cfg==="dentiste"){ CFG.dentiste=t.value; F_SIGN[0].o=[t.value]; if(S.sign.verifie?.c?.length) S.sign.verifie.c=[t.value]; }
   if(t.dataset.cfg==="rotsys"||t.dataset.cfg==="rotsz"){ CFG.endoRot = CFG.endoRot || {sys:"EndoSequence", sz:["015","020","025","030"]};
@@ -3099,4 +3300,135 @@ var EXAMPLES = [
 ];
 function loadEx(i){ EXAMPLES[i].f(); S.exNum=i+1; S.ui.view="form"; S.ui.step=0; S.ui.lastStep=-1; S.ui.curSec=""; renderForm(); window.scrollTo(0,0); }
 if(S.ui.view==="home") renderForm();
+
+/* ============================================================
+   DICTÉE PAR SECTION (examen et charting) — reconnaissance de l'appareil
+   Sur iPhone : reconnaissance vocale de Safari quand elle est offerte ;
+   sinon, le micro du clavier iOS écrit dans la boîte et l'analyse est la même.
+   ============================================================ */
+const DICT_SECS = {examens:"examen", perio:"charting"};
+const ASR = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+let REC = null, RECON = false;
+function micBtn(id){ if(!DICT_SECS[id]) return `<button type="button" class="mic" disabled title="La dictée arrive bientôt pour cette section" aria-label="Dictée (à venir)">${MIC_SVG}</button>`;
+  return `<button type="button" class="mic on" data-act="dopen" data-v="${id}" title="Dicter cette section" aria-label="Dicter cette section">${MIC_SVG}</button>`; }
+const MIC_SVG = `<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2Z"/></svg>`;
+const DICT_EX = {
+  examens:"« Extra-oral tout normal. Gencive gingivite généralisée, plaque généralisée, tartre sous-gingival. Langue géographique. Occlusion classe 1 à droite, classe 2 division 1 à gauche. Le reste est normal. PSR 2 2 3 3 2 2. »",
+  perio:"« Dent 16 vestibulaire 3 2 4, palatin 3 3 5, saignement mésio-vestibulaire, mobilité 1, furcation 2. Dent 17 absente. 15 : 2 2 3, 2 2 2. Plaque généralisée, tartre sous-gingival. »"
+};
+function dictBox(id){ S.ui.dtext=S.ui.dtext||{}; const live = RECON && S.ui.dsec===id;
+  const can = !!ASR;
+  return `<div class="dictbox"><div class="dtop"><button type="button" class="dmic${live?" live":""}" data-act="dstart" data-v="${id}">${live?"■ Arrêter":"● Dicter"}</button>
+    <span class="dstat" id="dstat">${live?"J'écoute… (dis « De Facto, remplir » pour appliquer)":can?"Touche « Dicter », ou le micro du clavier.":"Touche la boîte, puis le micro du clavier pour dicter."}</span>
+    <button type="button" class="x" data-act="dclose" aria-label="Fermer la dictée">×</button></div>
+    <textarea class="txt dtext" id="dtext" data-dsec="${id}" rows="4" placeholder="Le texte dicté s'affiche ici. Tu peux le corriger avant de remplir.">${esc(S.ui.dtext[id]||"")}</textarea><div class="dint" id="dint"></div>
+    <div class="chips"><button type="button" class="conf" data-act="dapply" data-v="${id}">Remplir le formulaire</button><button type="button" class="mini" data-act="dclear" data-v="${id}">Effacer le texte</button></div>
+    <details class="cat"><summary>Exemple de phrase</summary><p class="hint">${DICT_EX[id]}</p></details></div>`; }
+function dictMarks(id){ const m=S.ui.dmark||{}; const n=Object.keys(m).filter(k=>m[k]===id).length; if(!n) return "";
+  return `<div class="dsum"><span>${n} élément${n>1?"s":""} rempli${n>1?"s":""} par la dictée, surligné${n>1?"s":""}. Vérifie, puis confirme.</span><button type="button" class="conf" data-act="dconfirm" data-v="${id}">✓ Confirmer la dictée</button></div>`; }
+function dictApply(id){ const txt=(S.ui.dtext||{})[id]||""; if(!txt.trim()) return; S.ui.dmark=S.ui.dmark||{}; const mark=k=>S.ui.dmark[k]=id; S.conf=S.conf||{};
+  if(id==="examens"){ const r=DICT.parseExam(txt);
+    const done=new Set(r.set.map(x=>x.k+"."+x.st));
+    if(r.allNormal){ [["eeo",EEO],["eio",EIO]].forEach(([k,L])=>{ if(r.allNormal!=="tout" && r.allNormal!==k) return; L.forEach(st=>{ if(done.has(k+"."+st)) return; const cur=S[k][st]; if(cur && cur.s==="A" && S.ui.touched[k+"."+st]) return; S[k][st]={s:"N",c:[]}; S.ui.touched[k+"."+st]=true; mark(k+"."+st); }); }); S.conf.examens = true; }
+    r.set.forEach(x=>{ S[x.k][x.st]={s:x.s, c:[...x.c]}; S.ui.touched[x.k+"."+x.st]=true; mark(x.k+"."+x.st); });
+    if(r.angle.d||r.angle.g){ S.angle=S.angle||{}; if(r.angle.d) S.angle.d=r.angle.d; if(r.angle.g) S.angle.g=r.angle.g; mark("angle"); }
+    if(r.psr){ r.psr.forEach((v,i)=>S.psr[i]=v); mark("psr"); }
+    if(r.reste.length) S.prec.examens = [S.prec.examens, ...r.reste].filter(Boolean).join(" ; ");
+    S.ui.dlast={sec:id, n:r.set.length+(r.allNormal?1:0)+(r.psr?1:0)+(r.angle.d||r.angle.g?1:0)};
+  }
+  if(id==="perio"){ const r=DICT.parsePerio(txt,{ordre:CFG.perioOrdre||"affiche"}); S.perio.c=S.perio.c||{};
+    Object.entries(r.teeth).forEach(([d,v])=>{ const t=S.perio.c[d]=S.perio.c[d]||{pd:{},bop:{},mob:"",furc:"",abs:false};
+      Object.assign(t.pd, v.pd); v.bop.forEach(k=>t.bop[k]=true); if(v.mob!=null) t.mob=v.mob; if(v.furc!=null) t.furc=v.furc; if(v.abs) t.abs=true; mark("perio."+d); });
+    Object.entries(r.fields).forEach(([k,v])=>{ S.perio.f[k]={c:v}; mark("perio.f."+k); });
+    const first=Object.keys(r.teeth)[0]; if(first) S.ui.q.perio=+first[0]>4?+first[0]-4:+first[0];
+    if(r.reste.length) S.prec.perio = [S.prec.perio, ...r.reste].filter(Boolean).join(" ; ");
+    S.ui.dlast={sec:id, n:Object.keys(r.teeth).length};
+  }
+  S.ui.dtext[id]=""; S.ui.dirty=true;
+}
+function dictStart(id){
+  if(!ASR){ const t=$("#dtext"); if(t){ t.focus(); } return; }
+  if(RECON){ RECON=false; try{ REC && REC.stop(); }catch(e){} renderForm(); return; }
+  S.ui.dsec=id; RECON=true; REC=new ASR(); REC.lang="fr-CA"; REC.continuous=true; REC.interimResults=true;
+  REC.onresult = e => { let fin="", inter=""; for(let i=e.resultIndex;i<e.results.length;i++){ const r=e.results[i]; if(r.isFinal) fin+=r[0].transcript+" "; else inter+=r[0].transcript; }
+    if(fin){ /* commandes : « De Facto, remplir / suivant / arrête » */
+      const m=fin.toLowerCase().match(/de ?facto[ ,.]*(remplir|applique[rz]?|suivant|section suivante|arr[eê]te[rz]?|stop|confirme[rz]?)/);
+      const clean=fin.replace(/de ?facto[ ,.]*(remplir|applique[rz]?|suivant|section suivante|arr[eê]te[rz]?|stop|confirme[rz]?)[ .]*/ig,"");
+      S.ui.dtext[S.ui.dsec]=((S.ui.dtext[S.ui.dsec]||"")+" "+clean).trim(); const ta=$("#dtext"); if(ta) ta.value=S.ui.dtext[S.ui.dsec];
+      if(m){ const c=m[1]; if(/^(remplir|appliqu)/.test(c)){ dictApply(S.ui.dsec); renderForm(); } else if(/suivant/.test(c)){ RECON=false; try{REC.stop();}catch(_){} goStep(1); } else if(/^confirm/.test(c)){ dictConfirm(S.ui.dsec); renderForm(); } else { RECON=false; try{REC.stop();}catch(_){} renderForm(); } } }
+    const di=$("#dint"); if(di) di.textContent=inter; };
+  REC.onerror = e => { const st=$("#dstat"); if(st) st.textContent = e.error==="not-allowed"||e.error==="service-not-allowed" ? "Micro refusé : autorise le micro pour ce site dans les réglages, ou utilise le micro du clavier." : "Reconnaissance interrompue ("+e.error+"). Le micro du clavier fonctionne aussi."; if(e.error==="not-allowed"||e.error==="service-not-allowed") RECON=false; };
+  REC.onend = () => { if(RECON){ try{ REC.start(); }catch(e){ RECON=false; renderForm(); } } };
+  try{ REC.start(); }catch(e){ RECON=false; }
+  renderForm();
+}
+function dictConfirm(id){ const m=S.ui.dmark||{}; Object.keys(m).forEach(k=>{ if(m[k]===id) delete m[k]; }); }
+document.addEventListener("input", e=>{ const t=e.target; if(t.id==="dtext"){ S.ui.dtext=S.ui.dtext||{}; S.ui.dtext[t.dataset.dsec]=t.value; } });
+
+/* ============================================================
+   TRANSFERT iPhone → ordinateur : lien chiffré + code à 6 chiffres
+   La séance voyage dans le fragment du lien (après #), jamais envoyé au serveur ;
+   elle est chiffrée (AES-GCM, clé dérivée du code) et compressée.
+   ============================================================ */
+const b64u = {enc: u8 => btoa(String.fromCharCode(...u8)).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,""),
+  dec: s => Uint8Array.from(atob(s.replace(/-/g,"+").replace(/_/g,"/")+"===".slice((s.length+3)%4)), c=>c.charCodeAt(0))};
+async function zipBytes(u8, inflate){ const C = inflate ? window.DecompressionStream : window.CompressionStream; if(!C) return null;
+  const st=new Blob([u8]).stream().pipeThrough(new C("deflate-raw")); return new Uint8Array(await new Response(st).arrayBuffer()); }
+async function xferKey(code, salt){ const km=await crypto.subtle.importKey("raw", new TextEncoder().encode(code), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey({name:"PBKDF2", salt, iterations:250000, hash:"SHA-256"}, km, {name:"AES-GCM", length:256}, false, ["encrypt","decrypt"]); }
+function xferBase(){ const h=location.host; if(location.protocol==="https:" && /dossier/.test(location.pathname) && !/claude|anthropic/.test(h)) return location.origin+location.pathname; return CFG.xferBase || "https://studiodefacto.ca/dossier/index.html"; }
+async function xferMake(){
+  const data={v:1, S:{...S, ui:undefined, exemple:false}}; let raw=new TextEncoder().encode(JSON.stringify(data));
+  const z=await zipBytes(raw,false); const pkt = z ? new Uint8Array([1,...z]) : new Uint8Array([0,...raw]);
+  const code=String(crypto.getRandomValues(new Uint32Array(1))[0]%1000000).padStart(6,"0");
+  const salt=crypto.getRandomValues(new Uint8Array(16)), iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM", iv}, await xferKey(code,salt), pkt));
+  const tok="1."+b64u.enc(salt)+"."+b64u.enc(iv)+"."+b64u.enc(ct);
+  return {code, link:xferBase()+"#t="+tok, size:tok.length};
+}
+async function xferRead(tok, code){
+  const p=tok.replace(/^.*#t=/,"").trim().split("."); if(p[0]!=="1"||p.length!==4) throw new Error("lien invalide");
+  const pkt=new Uint8Array(await crypto.subtle.decrypt({name:"AES-GCM", iv:b64u.dec(p[2])}, await xferKey(code, b64u.dec(p[1])), b64u.dec(p[3])));
+  const body = pkt[0]===1 ? await zipBytes(pkt.slice(1), true) : pkt.slice(1); if(!body) throw new Error("décompression impossible sur ce navigateur");
+  const d=JSON.parse(new TextDecoder().decode(body)); if(!d||!d.S) throw new Error("contenu invalide"); return d.S;
+}
+function modal(html){ const m=$("#modal"); $("#mbox").innerHTML=html; m.hidden=false; }
+function modalClose(){ $("#modal").hidden=true; $("#mbox").innerHTML=""; }
+async function xferSend(){
+  if(!window.crypto||!crypto.subtle){ modal(`<h2>Transfert impossible</h2><p>Le chiffrement exige une page sécurisée (https). Ouvre l'app installée depuis studiodefacto.ca.</p><button type="button" class="wbtn" data-act="mclose">Fermer</button>`); return; }
+  modal(`<p>Préparation du transfert…</p>`);
+  try{ const r=await xferMake(); S.ui.lastXfer=r;
+    modal(`<h2>Envoyer à l'ordinateur</h2><p class="hint">1. Envoie-toi ce lien (courriel ou Messages). 2. Ouvre-le sur l'ordinateur. 3. Entre ce code, qui n'est pas dans le lien :</p>
+      <div class="xcode">${r.code.slice(0,3)} ${r.code.slice(3)}</div>
+      <div class="chips">${navigator.share?`<button type="button" class="wbtn pri" data-act="xshare">Partager le lien</button>`:""}<button type="button" class="wbtn" data-act="xcopy">Copier le lien</button><button type="button" class="wbtn" data-act="mclose">Fermer</button></div>
+      <p class="hint" id="xmsg">La séance est chiffrée ; sans le code, le lien est illisible. Garde cette fenêtre ouverte jusqu'à la réception.</p>`);
+  }catch(e){ modal(`<h2>Transfert impossible</h2><p>${esc(e.message)}</p><button type="button" class="wbtn" data-act="mclose">Fermer</button>`); }
+}
+function xferAsk(tok){ modal(`<h2>Recevoir une séance</h2>${tok?`<input type="hidden" id="xtok" value="${esc(tok)}">`:`<label class="lab">Lien reçu<textarea class="txt" id="xtok" rows="3" placeholder="Colle ici le lien reçu de l'iPhone"></textarea></label>`}
+  <label class="lab">Code à 6 chiffres affiché sur l'iPhone<input class="txt xin" id="xcode" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="000 000"></label>
+  <div class="chips"><button type="button" class="wbtn pri" data-act="xopen">Ouvrir la séance</button><button type="button" class="wbtn" data-act="mclose">Annuler</button></div><p class="hint" id="xmsg"></p>`); setTimeout(()=>{ const c=$("#xcode"); if(c) c.focus(); },50); }
+async function xferOpen(){ const tok=($("#xtok")||{}).value||"", code=(($("#xcode")||{}).value||"").replace(/\D/g,"");
+  if(code.length!==6){ $("#xmsg").textContent="Le code a 6 chiffres."; return; }
+  let s2; try{ s2=await xferRead(tok, code); }
+  catch(e){ const m=$("#xmsg"); if(m) m.textContent = /OperationError|decrypt/i.test(String(e&&e.name)+e) ? "Code incorrect ou lien incomplet." : "Impossible d'ouvrir : "+(e.message||e); return; }
+  if(isDirty()) saveDraft(); const st=S.style; S=s2; S.ui={view:"form", step:0, q:{}, opt:{}, touched:{}}; S.style=S.style||st; boot2(); modalClose();
+  try{ history.replaceState(null,"",location.pathname+location.search); }catch(_){} renderForm(); window.scrollTo(0,0); }
+function boot2(){ S.conf=S.conf||{}; S.prec=S.prec||{}; S.ui = {...blank().ui, ...S.ui, view:"form", step:0, dirty:true}; }
+document.addEventListener("click", async e=>{ const b=e.target.closest("[data-act]"); if(!b) return; const a=b.dataset.act;
+  if(a==="mclose"){ modalClose(); }
+  if(a==="xshare" && S.ui.lastXfer){ try{ await navigator.share({title:"Séance De Facto", text:"Ouvre ce lien sur l'ordinateur, puis entre le code affiché sur l'iPhone.", url:S.ui.lastXfer.link}); }catch(_){} }
+  if(a==="xcopy" && S.ui.lastXfer){ try{ await navigator.clipboard.writeText(S.ui.lastXfer.link); $("#xmsg").textContent="Lien copié."; }catch(_){ $("#xmsg").textContent="Copie bloquée ; utilise Partager."; } }
+  if(a==="xopen") xferOpen();
+  if(a==="xsend") xferSend();
+  if(a==="xrecv") xferAsk("");
+});
+if(/^#t=/.test(location.hash)) setTimeout(()=>xferAsk(location.hash.slice(3)), 60);
+
+/* Intégration : si l'app est affichée dans une autre (cadre), elle échange avec elle par messages */
+window.addEventListener("message", e=>{ if(e.source!==window.parent || window.parent===window) return; const d=e.data||{};
+  if(d.type==="defacto:load" && d.session){ S=d.session; S.ui={view:"form", step:0, q:{}, opt:{}, touched:{}}; boot2(); renderForm(); }
+  if(d.type==="defacto:get") window.parent.postMessage({type:"defacto:session", session:{...S, ui:undefined}, note:noteText()}, e.origin||"*"); });
+
+/* Branchement d'une autre reconnaissance vocale (ex. faster-whisper du poste LAB) : le texte reconnu passe par le même analyseur */
+window.dfDictate = (sec, text, apply=true) => { if(!DICT_SECS[sec]) return false; S.ui.dtext=S.ui.dtext||{}; S.ui.dtext[sec]=((S.ui.dtext[sec]||"")+" "+text).trim(); S.ui.dopen=sec; if(apply) dictApply(sec); renderForm(); return true; };
 </script>
