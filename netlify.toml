@@ -51,6 +51,29 @@
   to = "/admin/index.html"
   status = 200
 
+# App de tenue de dossier (PWA statique dans public/dossier).
+# Sans ces regles, /dossier tomberait dans la route dynamique [lang].
+[[redirects]]
+  from = "/dossier"
+  to = "/dossier/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/dossier/"
+  to = "/dossier/index.html"
+  status = 301
+
+# Pas d'indexation, et le service worker doit toujours etre relu.
+[[headers]]
+  for = "/dossier/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/dossier/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
 # Language-specific hreflang headers
 [[headers]]
   for = "/en/*"
