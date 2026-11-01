@@ -436,6 +436,18 @@ const F_QMR = [
 ];
 
 /* ---------- Plainte ---------- */
+/* Bibliothèque de 40 motifs fréquents, classés par type */
+const MOTIFS = {
+  "Douleur":["j'ai mal à une dent","j'ai mal quand je mâche","j'ai mal au froid","j'ai mal au chaud","la douleur me réveille la nuit","j'ai mal depuis plusieurs jours et ça empire","j'ai mal à la mâchoire"],
+  "Enflure ou infection":["j'ai la joue enflée","j'ai un bouton sur la gencive","j'ai un mauvais goût dans la bouche","j'ai mal à la gencive autour de ma dent de sagesse"],
+  "Dent cassée ou traumatisme":["j'ai cassé une dent","un morceau de dent est tombé","je me suis frappé une dent","ma dent bouge"],
+  "Restauration ou prothèse":["mon plombage est tombé","ma couronne est tombée","ma couronne bouge","mon dentier me blesse","mon dentier ne tient plus","mon appareil est brisé"],
+  "Sensibilité":["mes dents sont sensibles","j'ai une dent sensible au sucré","mes dents sont sensibles depuis le blanchiment"],
+  "Gencives":["mes gencives saignent","mes gencives reculent","j'ai mauvaise haleine"],
+  "Examen et prévention":["je veux un examen et un nettoyage","je n'ai pas vu de dentiste depuis longtemps","je suis nouveau patient","je veux faire vérifier mes dents avant un traitement médical"],
+  "Esthétique":["je veux des dents plus blanches","je n'aime pas mon sourire","mes dents sont croches","j'ai une tache sur une dent"],
+  "Autre":["j'ai une lésion dans la bouche","je serre ou grince des dents","je veux un deuxième avis"]
+};
 const F_PLAINTE = [
   {id:"motif", l:"Motif dans les mots du patient", t:"text", qf:["examen de routine","rappel","« j'ai mal »","« j'ai cassé une dent »"], req:true, n:"Motif de consultation (dans les mots du patient) : « {v} »."},
   {id:"caractere", l:"Caractère de la douleur", t:"multi", o:["aucune douleur","spontanée","provoquée","pulsatile","lancinante","sourde","irradiée","nocturne","persistante après le stimulus"], n:"Douleur : {v}."},
@@ -592,7 +604,7 @@ const TESTS = [
 /* ---------- Imagerie : observations par catégorie, propres à chaque type ---------- */
 const RX_TYPES = ["périapicale","interproximale","panoramique","CBCT","photographie"];
 const RX_CAT = {
-  "Carie et restaurations":["carie amélaire","carie dentinaire","carie atteignant la pulpe","carie secondaire sous restauration","carie radiculaire","restauration débordante","restauration défectueuse","récidive sous la restauration","couronne en place","pont en place","implant en place"],
+  "Carie et restaurations":["carie RA1 (moitié externe de l'émail)","carie RA2 (moitié interne de l'émail)","carie RA3 (tiers externe de la dentine)","carie RB4 (tiers moyen de la dentine)","carie RC5 (tiers interne de la dentine)","carie RC6 (atteinte pulpaire)","carie secondaire sous restauration","carie radiculaire","restauration défectueuse","couronne en place","pont en place","implant en place"],
   "Pulpe et canaux":["chambre pulpaire normale","pulpolithe","canal calcifié","résorption interne","traitement de canal en place","obturation canalaire adéquate","obturation canalaire courte","obturation canalaire en dépassement","tenon radiculaire","instrument séparé"],
   "Périapex":["périapex normal","élargissement du LPD","radioclarté périapicale","ostéite condensante","résorption externe apicale","hypercémentose"],
   "Parodonte":["crête osseuse normale","perte osseuse horizontale légère","perte osseuse horizontale modérée","perte osseuse horizontale sévère","perte osseuse verticale","atteinte de furcation","tartre sous-gingival","lésion endo-parodontale suspectée"],
@@ -600,6 +612,30 @@ const RX_CAT = {
   "Os et structures anatomiques":["sinus maxillaire normal","épaississement de la muqueuse sinusale","foramen mentonnier","canal mandibulaire","torus","condyles symétriques","os trabéculaire normal"],
   "Lésions":["lésion radioclaire uniloculaire","lésion radioclaire multiloculaire","lésion radio-opaque","lésion mixte","calcification des tissus mous"]
 };
+/* Précisions d'une observation radiologique : faces (s) et sous-choix (v) */
+const RX_FACES = ["M","D"];
+const RX_QUAL = {
+  "restauration défectueuse":{v:["joint ouvert","surcontour","débordement de matériau","contact ouvert"], s:RX_FACES},
+  "couronne en place":{v:["adéquate","joint ouvert","surcontour","sous-contour","excès de ciment"], s:RX_FACES},
+  "carie secondaire sous restauration":{s:RX_FACES}, "carie radiculaire":{s:RX_FACES},
+  "perte osseuse verticale":{s:RX_FACES}
+};
+Object.keys({"carie RA1 (moitié externe de l'émail)":1,"carie RA2 (moitié interne de l'émail)":1,"carie RA3 (tiers externe de la dentine)":1,"carie RB4 (tiers moyen de la dentine)":1,"carie RC5 (tiers interne de la dentine)":1,"carie RC6 (atteinte pulpaire)":1}).forEach(k=>RX_QUAL[k]={s:RX_FACES});
+/* Structures anatomiques de la panoramique : observation par structure, côté quand pertinent */
+const PANO = [
+  {id:"sinus", l:"Sinus maxillaires", cote:true, o:["normaux","épaississement de la muqueuse","opacification","niveau hydro-aérique","pseudo-kyste de rétention","pneumatisation marquée","racine en contact avec le plancher sinusal"]},
+  {id:"nasal", l:"Fosses nasales et septum", o:["normaux","déviation du septum","hypertrophie des cornets"]},
+  {id:"condyles", l:"Condyles mandibulaires", cote:true, o:["normaux et symétriques","aplatissement","érosion","ostéophyte","asymétrie","hypoplasie"]},
+  {id:"coronoide", l:"Apophyses coronoïdes", cote:true, o:["normales","hyperplasie"]},
+  {id:"canal", l:"Canal mandibulaire", cote:true, o:["visible et continu","proximité avec les racines d'une dent de sagesse","interruption de la corticale","non visible"]},
+  {id:"foramen", l:"Foramen mentonnier", cote:true, o:["visible, normal","non visible","proximité d'une lésion"]},
+  {id:"corticale", l:"Corticale mandibulaire inférieure", o:["épaisseur normale","amincie","érosion"]},
+  {id:"trabec", l:"Os trabéculaire", o:["normal","raréfié","sclérose diffuse","ostéite condensante localisée"]},
+  {id:"styloide", l:"Processus styloïdes", cote:true, o:["normaux","allongés ou calcifiés"]},
+  {id:"cou", l:"Tissus mous du cou", cote:true, o:["aucune calcification","calcification carotidienne suspectée, référence médicale","sialolithe suspecté","amygdalolithe"]},
+  {id:"hyoide", l:"Os hyoïde", o:["normal","non évaluable"]}
+];
+const PANO_COTE = ["droite","gauche","bilatéral"];
 const PHOTO_CAT = {
   "Dents":["teinte notée","fêlure visible","fracture","usure","carie visible","restauration défectueuse","colorations"],
   "Tissus":["gingivite","récession","lésion des tissus mous","fistule"],
@@ -608,7 +644,7 @@ const PHOTO_CAT = {
 const RX_TYPECATS = {
   "périapicale":["Carie et restaurations","Pulpe et canaux","Périapex","Parodonte","Dents et éruption","Lésions"],
   "interproximale":["Carie et restaurations","Parodonte"],
-  "panoramique":["Carie et restaurations","Parodonte","Dents et éruption","Os et structures anatomiques","Lésions","Périapex"],
+  "panoramique":["Parodonte","Dents et éruption","Lésions","Périapex"],
   "CBCT":["Pulpe et canaux","Périapex","Parodonte","Dents et éruption","Os et structures anatomiques","Lésions"],
   "photographie":Object.keys(PHOTO_CAT)
 };
@@ -770,13 +806,17 @@ const IRRIG = {id:"irrigation", l:"Irrigation", t:"multi", o:["hypochlorite de s
 const CANAUX = {id:"acces", l:"Cavité d'accès et canaux repérés", t:"multi", o:["canal unique","MB","MB2","DB","P","M","D","ML","DL","MV","DV","B","L"], req:true, n:"Cavité d'accès réalisée ; canaux repérés : {v}."};
 const LT = {id:"lt", l:"Longueur de travail", t:"multi", o:["localisateur d'apex"], d:["localisateur d'apex"], req:true, n:"Longueur de travail déterminée par {v}."};
 const RXLT = {id:"rx_lt", l:"Radiographie de longueur de travail (interprétation)", t:"multi", o:["limes à 0,5-1 mm de l'apex radiographique","longueur ajustée après le cliché","canal additionnel suspecté"], req:true, n:"Radiographie de longueur de travail : {v}."};
+const LIMESM = {id:"limesm", l:"Limes manuelles", t:"multi", o:["K 06","K 08","K 10","K 15","K 20","K 25","H 15","H 20","H 25"], d:["K 10","K 15"], n:"Limes manuelles : {v}."};
+const LIMESR = {id:"limesr", l:"Limes mécanisées", t:"multi", rot:true, o:["015","020","025","030"], d:["015","020","025","030"], n:"Limes mécanisées : {v}."};
+const SECH = {id:"sechage", l:"Séchage", t:"multi", o:["pointes de papier"], d:["pointes de papier"], n:"Séchage aux {v}."};
+const CRAMPON = {id:"crampon", l:"Crampon", t:"one", o:["212","9","W2","W2A","W8A","W14A","W26","W56"], n:"Crampon {v}."};
 const FORME = {id:"miseforme", l:"Mise en forme", t:"multi", o:["limes mécanisées EdgeEndo Sapphire conicité 06","perméabilisation manuelle"], d:["limes mécanisées EdgeEndo Sapphire conicité 06"], req:true, n:"Mise en forme : {v}."};
 const RXCONE = {id:"rx_cone", l:"Radiographie d'essayage des cônes (interprétation)", t:"multi", o:["cônes à la longueur de travail","ajustement du cône requis et fait"], req:true, n:"Radiographie d'essayage des cônes avant cimentation : {v}."};
 const TECH = {id:"technique", l:"Technique d'obturation canalaire", t:"multi", o:["gutta-percha EdgeEndo","ciment biocéramique Septodont","condensation verticale à chaud","cône unique"], d:["gutta-percha EdgeEndo","ciment biocéramique Septodont","condensation verticale à chaud"], req:true, n:"Obturation canalaire : {v}."};
 const RXFIN = {id:"rx_fin", l:"Radiographie d'obturation finale (interprétation)", t:"multi", o:["obturation dense et homogène","à 0-2 mm de l'apex radiographique","extrusion de ciment","sous-obturation","vide visible"], req:true, n:"Radiographie d'obturation canalaire finale : {v}."};
 const FERMC = {id:"fermeture", l:"Fermeture coronaire", t:"multi", o:["barrière coronaire","restauration provisoire IRM","restauration composite (Filtek Supreme, OptiBond FL)","recouvrement cuspidien à prévoir"], req:true, n:"Fermeture coronaire : {v}."};
 const FERMP = {id:"fermeture", l:"Fermeture provisoire", t:"multi", o:["Téflon","éponge ou boulette de coton","Cavit","IRM","Fuji II LC"], d:["Téflon","Fuji II LC"], req:true, n:"Fermeture provisoire : {v}."};
-const OCCE = {id:"occlusion", l:"Occlusion", t:"multi", o:["occlusion vérifiée","soulagement occlusal fait"], d:["occlusion vérifiée"], n:"{v}."};
+const OCCE = {id:"occlusion", l:"Occlusion", t:"multi", o:["occlusion vérifiée","restauration mise en sous-occlusion","soulagement occlusal fait"], d:["occlusion vérifiée","restauration mise en sous-occlusion"], n:"{v}."};
 const DIGUE = {id:"isolation", l:"Isolation", t:"one", o:["digue"], d:["digue"], req:true, n:"Isolation par {v}."};
 const POINTS = {id:"points", l:"Nombre de points de suture", t:"num", min:0, max:30, step:1, n:"{v} point(s) de suture."};
 const SINUS = {id:"sinus", l:"Communication bucco-sinusale (dent maxillaire postérieure)", t:"one", cond:"maxpost", o:["manœuvre de Valsalva négative, aucune communication","communication bucco-sinusale constatée, fermeture et consignes données"], d:["manœuvre de Valsalva négative, aucune communication"], req:true, n:"{v}."};
@@ -830,28 +870,28 @@ const CANEVAS = [
    {id:"conseils", l:"Conseils", t:"multi", o:["dentifrice pour dents sensibles","brosse souple, brossage sans pression","réduire les aliments et boissons acides"], n:"Conseils : {v}."}
  ]},
  {id:"endo_urg", nom:"Pulpotomie / pulpectomie d'urgence", g:"Endodontie", dents:"dent", anesth:true, postop:"endo", urg:true, etapes:[
-   DXCONF, DIGUE,
+   DXCONF, DIGUE, CRAMPON,
    {id:"acces", l:"Cavité d'accès", t:"multi", o:["cavité d'accès réalisée","saignement pulpaire contrôlé","pulpe nécrotique constatée","exsudat purulent drainé"], req:true, n:"{v}."},
    {id:"geste", l:"Geste", t:"one", o:["pulpotomie (pulpe camérale retirée)","pulpectomie partielle","pulpectomie complète"], req:true, n:"{v}."},
-   {...IRRIG, d:["hypochlorite de sodium (Zonite) 6 %"]},
+   LIMESM, LIMESR,
+   {...IRRIG, d:["hypochlorite de sodium (Zonite) 6 %"]}, SECH,
    {id:"medication", l:"Médication intracanalaire", t:"one", o:["hydroxyde de calcium","aucune"], d:["hydroxyde de calcium"], n:"Médication intracanalaire : {v}."},
    FERMP, OCCE
  ]},
  {id:"endo_s1", nom:"Endodontie — séance 1 (mise en forme)", g:"Endodontie", dents:"dent", anesth:true, postop:"endo", etapes:[
-   DXCONF, DIGUE, CANAUX, LT, PERCANAL, RXLT, FORME, IRRIG,
+   DXCONF, DIGUE, CRAMPON, CANAUX, LT, PERCANAL, RXLT, LIMESM, LIMESR, IRRIG, SECH,
    {id:"medication", l:"Médication intracanalaire", t:"one", o:["hydroxyde de calcium","aucune"], d:["hydroxyde de calcium"], n:"Médication intracanalaire : {v}."},
    FERMP, OCCE
  ]},
  {id:"endo_obt", nom:"Endodontie — obturation canalaire", g:"Endodontie", dents:"dent", anesth:true, postop:"endo", etapes:[
-   DIGUE, CANAUX, PERCANAL,
+   DIGUE, CRAMPON, CANAUX, PERCANAL,
    {id:"retrait", l:"Retrait de la fermeture et de la médication", t:"multi", o:["fermeture provisoire retirée","médication intracanalaire retirée","dent asymptomatique depuis la dernière séance"], d:["fermeture provisoire retirée","médication intracanalaire retirée"], n:"{v}."},
    IRRIG,
    {id:"sechage", l:"Séchage", t:"multi", o:["pointes de papier"], d:["pointes de papier"], n:"Séchage aux {v}."},
    RXCONE, TECH, RXFIN, FERMC, OCCE
  ]},
  {id:"endo_1rdv", nom:"Endodontie — en un rendez-vous", g:"Endodontie", dents:"dent", anesth:true, postop:"endo", etapes:[
-   DXCONF, DIGUE, CANAUX, LT, PERCANAL, RXLT, FORME, IRRIG,
-   {id:"sechage", l:"Séchage", t:"multi", o:["pointes de papier"], d:["pointes de papier"], n:"Séchage aux {v}."},
+   DXCONF, DIGUE, CRAMPON, CANAUX, LT, PERCANAL, RXLT, LIMESM, LIMESR, IRRIG, SECH,
    RXCONE, TECH, RXFIN, FERMC, OCCE
  ]},
  {id:"exo_simple", nom:"Extraction simple", g:"Chirurgie", dents:"dent", anesth:true, urg:true, postop:"exo", etapes:[
@@ -1110,13 +1150,13 @@ const VARIANTS = {
              {id:"gluma", nom:"Gluma", set:{cause:["récession gingivale"], agent:["Gluma"], conseils:["dentifrice pour dents sensibles"]}} ],
   endo_urg:[
     {id:"pulpectomie", nom:"Pulpectomie d'urgence", set:{dxconf:["pulpite irréversible symptomatique","parodontite apicale symptomatique"], acces:["cavité d'accès réalisée","saignement pulpaire contrôlé"], geste:["pulpectomie complète"]}},
-    {id:"pulpotomie", nom:"Pulpotomie d'urgence", set:{dxconf:["pulpite irréversible symptomatique","tissus apicaux normaux"], acces:["cavité d'accès réalisée","saignement pulpaire contrôlé"], geste:["pulpotomie (pulpe camérale retirée)"]}},
+    {id:"pulpotomie", nom:"Pulpotomie d'urgence", set:{dxconf:["pulpite irréversible symptomatique","tissus apicaux normaux"], acces:["cavité d'accès réalisée","saignement pulpaire contrôlé"], geste:["pulpotomie (pulpe camérale retirée)"], limesm:[], limesr:[], sechage:[]}},
     {id:"drainage", nom:"Drainage par la chambre (nécrose)", set:{dxconf:["nécrose pulpaire","abcès apical aigu"], acces:["cavité d'accès réalisée","pulpe nécrotique constatée","exsudat purulent drainé"], geste:["pulpectomie complète"]}}
   ],
   endo_s1:[
     {id:"std", nom:"Mise en forme standard", set:{dxconf:["pulpite irréversible symptomatique","parodontite apicale symptomatique"], rx_lt:["limes à 0,5-1 mm de l'apex radiographique"]}},
     {id:"necrose", nom:"Nécrose pulpaire", set:{dxconf:["nécrose pulpaire","parodontite apicale asymptomatique"], rx_lt:["limes à 0,5-1 mm de l'apex radiographique"]}},
-    {id:"calcif", nom:"Canaux calcifiés", set:{dxconf:["pulpite irréversible asymptomatique","tissus apicaux normaux"], rx_lt:["limes à 0,5-1 mm de l'apex radiographique"], miseforme:["limes mécanisées EdgeEndo Sapphire conicité 06","perméabilisation manuelle"]}}
+    {id:"calcif", nom:"Canaux calcifiés", set:{dxconf:["pulpite irréversible asymptomatique","tissus apicaux normaux"], rx_lt:["limes à 0,5-1 mm de l'apex radiographique"], limesm:["K 06","K 08","K 10","K 15"]}}
   ],
   endo_obt:[
     {id:"std", nom:"Obturation et composite", set:{retrait:["fermeture provisoire retirée","médication intracanalaire retirée","dent asymptomatique depuis la dernière séance"], rx_cone:["cônes à la longueur de travail"], rx_fin:["obturation dense et homogène","à 0-2 mm de l'apex radiographique"], fermeture:["barrière coronaire","restauration composite (Filtek Supreme, OptiBond FL)","recouvrement cuspidien à prévoir"]}},
@@ -1218,6 +1258,35 @@ const RISQUES = {
   blanchiment:["sensibilité","irritation gingivale","résultat variable","les restaurations ne changent pas de couleur","retour partiel de la teinte"],
   gouttiere:["inconfort","salivation accrue","changement occlusal possible","fracture de la gouttière"]
 };
+/* Bénéfices et conséquences du non-traitement, énumérés au consentement (à valider) */
+const BENEFICES = {
+  resto:["élimination de la carie","restauration de la forme et de la fonction de la dent","prévention de la progression vers la pulpe"],
+  endo:["soulagement de la douleur","élimination de l'infection","conservation de la dent"],
+  exo:["élimination de la source de douleur ou d'infection","prévention des complications locales"],
+  alveolite:["soulagement de la douleur","favoriser la cicatrisation de l'alvéole"],
+  biopsie:["diagnostic précis de la lésion","orientation du traitement"],
+  greffe:["recouvrement ou épaississement de la gencive","protection contre la progression de la récession","diminution de la sensibilité"],
+  ppf:["protection de la dent contre la fracture","restauration de la forme, de la fonction et de l'esthétique"],
+  implant:["remplacement fixe de la dent manquante","restauration de la fonction masticatoire"],
+  pa:["remplacement des dents manquantes","amélioration de la mastication, de la parole et de l'esthétique"],
+  ortho:["alignement des dents","amélioration de l'occlusion et de la facilité d'hygiène"],
+  blanchiment:["éclaircissement de la teinte des dents"],
+  gouttiere:["protection des dents contre l'usure","diminution des tensions musculaires"]
+};
+const NONTX = {
+  resto:["progression de la carie","douleur","atteinte pulpaire nécessitant un traitement de canal","fracture de la dent","perte de la dent"],
+  endo:["persistance ou aggravation de la douleur","propagation de l'infection et enflure","perte osseuse autour de la racine","perte de la dent"],
+  exo:["persistance de la douleur ou de l'infection","propagation de l'infection","atteinte des dents voisines"],
+  alveolite:["persistance de la douleur","retard de cicatrisation"],
+  biopsie:["retard du diagnostic","progression possible d'une lésion"],
+  greffe:["progression de la récession","sensibilité","carie radiculaire"],
+  ppf:["fracture de la dent","infiltration et carie","perte de la dent"],
+  implant:["déplacement des dents voisines","perte osseuse au site édenté","mastication réduite"],
+  pa:["déplacement des dents restantes","mastication réduite","surcharge des dents restantes"],
+  ortho:["persistance de la malocclusion","usure et difficulté d'hygiène"],
+  blanchiment:["aucune conséquence sur la santé buccodentaire"],
+  gouttiere:["usure des dents","fractures","douleur musculaire ou articulaire"]
+};
 const CAN_RISK = {composite:"resto",amalgame:"resto",temporaire:"resto",endo_urg:"endo",endo_s1:"endo",endo_obt:"endo",endo_1rdv:"endo",exo_simple:"exo",exo_chir:"exo",alveolite:"alveolite",biopsie:"biopsie",gal:"greffe",gtc:"greffe",ppf_prep:"ppf",ppf_ins:"ppf",onlay_prep:"ppf",onlay_coll:"ppf",facette_prep:"ppf",facette_coll:"ppf",implant_emp:"implant",implant_pose:"implant",pa:"pa",pa_rep:"pa",spark_debut:"ortho",spark_suivi:"ortho",interceptif:"ortho",contention:"ortho",blanchiment:"blanchiment",gouttiere:"gouttiere"};
 </script>
 <script>/* ============================================================
@@ -1238,6 +1307,9 @@ let CFG = {dentiste:DENTISTE, style:"prag", fs:1, favMeds:[], lex:[], base:{}, v
 try{ Object.assign(CFG, JSON.parse(localStorage.getItem(CFG_KEY)||"{}")); }catch(e){}
 function saveCfg(){ try{ localStorage.setItem(CFG_KEY, JSON.stringify(CFG)); }catch(e){} }
 F_SIGN[0].o = [CFG.dentiste];
+function applyRot(){ const R=CFG.endoRot||{sys:"EndoSequence", sz:["015","020","025","030"]};
+  CANEVAS.forEach(c=>c.etapes.forEach(f=>{ if(f.rot){ f.o=[...R.sz]; f.d=[...R.sz]; f.l="Limes mécanisées ("+R.sys+")"; f.n="Limes mécanisées "+R.sys+" : {v}."; } })); }
+applyRot();
 function variantsOf(cid){
   const ov = CFG.vars[cid]||{};
   return [...(VARIANTS[cid]||[]).map(v=>({...v, set:{...v.set, ...(ov[v.id]||{})}})), ...(CFG.custom[cid]||[])];
@@ -1346,7 +1418,7 @@ const CONS_ECRIT_FIX = cid => CONS_ECRIT.test(cid) || /^(endo_|exo_|ppf_|onlay_|
 const WHY = ["choix du patient","coût","assurance","transition","urgence"];
 const CONS_EL = F_CONSENT.find(f=>f.id==="elements").o, CONS_FR = F_CONSENT.find(f=>f.id==="frais").o, CONS_RF = F_CONSENT.find(f=>f.id==="refus").o, CONS_RI = F_CONSENT.find(f=>f.id==="refusinfo").o;
 function consDefault(cid){ const w=CONS_ECRIT_FIX(cid);
-  return {rk:[...(RISQUES[CAN_RISK[cid]]||[])], mode: w?"écrit et signé":"obtenu verbalement", el:[...CONS_EL], fr: w?["estimé des honoraires remis","estimé des honoraires signé par le patient","avisé des frais non couverts par l'assurance"]:["avisé des frais non couverts par l'assurance"], q:"questions répondues", rf:[], ri:[]}; }
+  const k=CAN_RISK[cid]; return {rk:[...(RISQUES[k]||[])], bn:[...(BENEFICES[k]||[])], nt:[...(NONTX[k]||[])], mode: w?"écrit et signé":"obtenu verbalement", el:[...CONS_EL], fr:[...CONS_FR], q:"questions répondues", rf:[], ri:[]}; }
 const upper = d => [1,2,5,6].includes(Math.floor(+d/10));
 function canalsFor(d){ d=+d; const n=d%10; if(d>50) return ["canal unique"]; if(upper(d)) return n>=6?["MB","DB","P"]: n===4?["B","P"]:["canal unique"]; return n>=6?["MB","ML","D"]:["canal unique"]; }
 function techFor(d){ d=+d; const n=d%10; return (!upper(d) && n>=4) ? "bloc alvéolaire inférieur" : "infiltration vestibulaire"; }
@@ -1428,12 +1500,16 @@ function sSeance(){
   if(S.type!=="suivi" && S.type!=="manque") b += fieldsHTML("meta.f", F_SEANCE);
   return section("seance","Séance", b);
 }
-const sQMR = () => section("qmr","Mise à jour de l'histoire médicale", fieldsHTML("qmr",F_QMR), reqStatus(F_QMR,S.qmr));
+const qmrDefs = () => F_QMR.filter(f=>!(f.id==="changements" && (S.qmr.statut?.c||[]).includes("révisé, aucun changement")));
+const sQMR = () => section("qmr","Mise à jour de l'histoire médicale", fieldsHTML("qmr",qmrDefs()), reqStatus(F_QMR,S.qmr));
 function sPlainte(){
   let b = "";
   if(T().cible) b += fieldsHTML("cible.f",[F_CIBLE]);
   const qf = T().cible ? cibleKeys().flatMap(k=>CIBLE_MOTIF[k]||[]).map(x=>"« "+x+" »") : null;
   const defs = F_PLAINTE.map(f=>f.id==="motif"&&qf ? {...f, qf:qf.length?qf:undefined, ph:qf.length?f.ph:"Choisis d'abord l'aspect ciblé, puis le motif"} : f);
+  if(!T().cible){ const cat=S.ui.mcat||"";
+    b += `<div class="row2 motifs"><label class="lab sm">Type de motif<select data-act="mcat"><option value="">Choisir…</option>${Object.keys(MOTIFS).map(k=>`<option${k===cat?" selected":""}>${esc(k)}</option>`).join("")}</select></label>
+      <label class="lab sm">Motif fréquent<select data-act="mpick"${cat?"":" disabled"}><option value="">${cat?"Choisir un motif…":"Choisis d'abord le type"}</option>${(MOTIFS[cat]||[]).map(m=>`<option value="${esc(m)}">« ${esc(m)} »</option>`).join("")}</select></label></div>`; }
   b += fieldsHTML("plainte",defs);
   return section("plainte", T().cible?"Motif et aspect ciblé":"Plainte et histoire de la condition", b, reqStatus(F_PLAINTE,S.plainte));
 }
@@ -1447,7 +1523,8 @@ function examTable(key, list){
     const seg = [["N","Normal"],["A","Anormal"],["NE","Non examiné"]].map(([k,l])=>`<button type="button" class="seg${v.s===k?" on "+k+(pre&&k==="N"?" pre":""):""}" data-act="estate" data-k="${key}" data-s="${esc(s)}" data-v="${k}" aria-pressed="${v.s===k}">${l}</button>`).join("");
     const an = v.s==="A" ? `<div class="chips anom">${[...(ANOM[s]||[]),...ANOM_GEN.filter(x=>!(ANOM[s]||[]).includes(x))].map(a=>`<button type="button" class="chip${v.c.includes(a)?" on":""}" data-act="anom" data-k="${key}" data-s="${esc(s)}" data-v="${esc(a)}" aria-pressed="${v.c.includes(a)}">${esc(a)}</button>`).join("")}</div>` : "";
     const warn = v.s==="A" && !v.c.length ? `<div class="inwarn">Choisis l'anomalie observée, sinon la note écrira « anomalie à préciser ».</div>` : "";
-    return `<div class="erow"><span class="ename">${esc(s)}</span><span class="segs">${seg}</span>${an}${warn}</div>`;
+    const ang = key==="eio" && s==="Occlusion" ? (S.angle=S.angle||{}, `<div class="angle"><span class="mutelab">Classe d'Angle</span>${[["d","Droite"],["g","Gauche"]].map(([k,l])=>`<label class="lab sm">${l}<select data-set="angle.${k}"><option value="">—</option>${ANGLE.map(c=>`<option${S.angle[k]===c?" selected":""}>${c}</option>`).join("")}</select></label>`).join("")}</div>`) : "";
+    return `<div class="erow"><span class="ename">${esc(s)}</span><span class="segs">${seg}</span>${ang}${an}${warn}</div>`;
   }).join("")+`</div>`;
 }
 function sExamens(){
@@ -1499,12 +1576,26 @@ function sImagerie(){
       <button type="button" class="x" data-act="rm" data-k="rx" data-i="${i}" aria-label="Retirer">×</button></div>
       ${picker(`rx.${i}.teeth`, r.teeth, "rx"+i)}
       <div class="flab sm">Observations par dent ou pour l'ensemble du cliché (sinus, os, structures)</div><div class="qtabs show">${tabs}</div>
-      ${fieldHTML(`rx.${i}.obsBy.${k}`, {id:k, l:k==="cliché"?"Ensemble du cliché":"Dent "+k, t:"multi", og}, r.obsBy[k])}</div>`;
+      ${fieldHTML(`rx.${i}.obsBy.${k}`, {id:k, l:k==="cliché"?"Ensemble du cliché":"Dent "+k, t:"multi", og}, r.obsBy[k])}${rxQualHTML(r,i,k)}${r.type==="panoramique"?panoHTML(r,i):""}</div>`;
   }).join("");
   b += `<button type="button" class="mini" data-act="add" data-k="rx">+ Ajouter un cliché</button>`;
   const miss = S.rx.filter(r=>!rxHasObs(r)).length;
   return section("imagerie","Imagerie et analyse radiologique", b, !S.rx.length?{cls:"opt",t:"aucun cliché"}:miss?{cls:"todo",t:miss+" sans interprétation"}:{cls:"done",t:"interprété"});
 }
+function rxQualHTML(r,i,k){
+  const items=(r.obsBy[k]?.c||[]).filter(o=>RX_QUAL[o]); if(!items.length) return "";
+  r.q=r.q||{}; r.q[k]=r.q[k]||{};
+  return `<div class="locs">`+items.map(o=>{ const Q=RX_QUAL[o], cur=r.q[k][o]=r.q[k][o]||{s:[],v:[]};
+    const grp=(g,opts,lab)=>`<span class="grp"><span class="mutelab">${lab}</span>${opts.map(v=>{ const on=cur[g].includes(v); return `<button type="button" class="chip${g==="s"?" sq w":""}${on?" on":""}" data-act="rxq" data-i="${i}" data-k="${esc(k)}" data-o="${esc(o)}" data-g="${g}" data-v="${esc(v)}" aria-pressed="${on}">${esc(v)}</button>`; }).join("")}</span>`;
+    return `<div class="tline"><span class="locn">${esc(o)}</span>${Q.v?grp("v",Q.v,"Constat"):""}${Q.s?grp("s",Q.s,"Face"):""}</div>`; }).join("")+`</div>`;
+}
+function rxObsTxt(r,k,o){ const q=((r.q||{})[k]||{})[o]; if(!q) return o; return o+(q.v&&q.v.length?" : "+frList(q.v):"")+(q.s&&q.s.length?" ("+q.s.join(", ")+")":""); }
+function panoInit(r){ r.pano=r.pano||{}; PANO.forEach(p=>{ r.pano[p.id]=r.pano[p.id]||{o:p.o[0], s:[]}; }); }
+function panoHTML(r,i){ panoInit(r);
+  return `<div class="flab sm">Structures anatomiques</div><div class="etable pano">`+PANO.map(p=>{ const v=r.pano[p.id], nl=v.o===p.o[0];
+    return `<div class="erow"><span class="ename">${esc(p.l)}</span><select data-set="rx.${i}.pano.${p.id}.o" aria-label="${esc(p.l)}">${p.o.map(o=>`<option${v.o===o?" selected":""}>${esc(o)}</option>`).join("")}</select>${p.cote&&!nl?`<span class="grp">${PANO_COTE.map(c=>`<button type="button" class="chip sq w${v.s.includes(c)?" on":""}" data-act="panoc" data-i="${i}" data-k="${p.id}" data-v="${c}" aria-pressed="${v.s.includes(c)}">${c}</button>`).join("")}</span>`:""}</div>`; }).join("")+`</div>`; }
+function panoLines(r){ if(r.type!=="panoramique") return []; panoInit(r);
+  return ["Structures anatomiques :", ...PANO.map((p,j)=>{ const v=r.pano[p.id]; return p.l+" : "+v.o+(v.s.length&&v.o!==p.o[0]?" ("+v.s.join(", ")+")":"")+(j<PANO.length-1?" ;":"."); })]; }
 function locHTML(r,i){
   const items = r.o.c.filter(c=>LOC_KIND[c]); if(!items.length) return "";
   r.loc = r.loc || {};
@@ -1548,15 +1639,20 @@ function sDx(){
   return section("dx","Diagnostic et options de traitement", b, okDx&&okOpt?{cls:"done",t:"complet"}:{cls:"todo",t:!okDx?"diagnostic à inscrire":"options à compléter"});
 }
 function sPlan(){
-  const names = CANEVAS.map(c=>[c.id,c.nom]);
+  planSync(); const names = CANEVAS.map(c=>[c.id,c.nom]);
   let b = `<p class="hint">Actes prévus, par séance et par dent.</p>` + S.plan.map((r,i)=>`<div class="card"><div class="cardh"><span class="anum">Acte ${i+1}</span>
       <span class="grp"><span class="mutelab">Séance</span>${[1,2,3,4,5,6,7,8].map(n=>`<button type="button" class="chip sq${r.se===n?" on":""}" data-act="plse" data-i="${i}" data-v="${n}" aria-pressed="${r.se===n}">${n}</button>`).join("")}</span>
       <button type="button" class="x" data-act="rm" data-k="plan" data-i="${i}" aria-label="Retirer">×</button></div>
       <select data-set="plan.${i}.cid" aria-label="Acte prévu"><option value="">Choisir l'acte…</option>${names.map(([id,n])=>`<option value="${id}"${r.cid===id?" selected":""}>${esc(n)}</option>`).join("")}<option value="hygiene"${r.cid==="hygiene"?" selected":""}>Détartrage et surfaçage (hygiéniste)</option><option value="ref"${r.cid==="ref"?" selected":""}>Référence à un spécialiste</option></select>
+      <label class="lab sm">Pronostic<select data-set="plan.${i}.pro" aria-label="Pronostic"><option value="">Pronostic…</option>${PRONOSTIC.map(p=>`<option${r.pro===p?" selected":""}>${p}</option>`).join("")}</select></label>
+      ${r.of?`<p class="hint">Mise en bouche ajoutée d'office.</p>`:""}
       ${picker(`plan.${i}.teeth`, r.teeth, "plan"+i)}${CAN[r.cid]?.dents==="surf"?toothRows(`plan.${i}.teeth`, r.teeth, true, false):""}</div>`).join("");
   b += `<button type="button" class="mini" data-act="add" data-k="plan">+ Ajouter un acte au plan</button>`;
+  if(S.plan.some(r=>r.cid)){ S.planFr = S.planFr || [...CONS_FR];
+    b += `<details class="cat dd"><summary>Honoraires et protection <span class="cnt">${S.planFr.length}/${CONS_FR.length}</span></summary><div class="chips list">${CONS_FR.map(o=>`<button type="button" class="chip${S.planFr.includes(o)?" on":""}" data-act="planfr" data-v="${esc(o)}" aria-pressed="${S.planFr.includes(o)}">${esc(o)}</button>`).join("")}</div></details>`; }
   return section("plan","Plan de traitement", b, S.plan.length?{cls:"done",t:S.plan.length+" acte(s)"}:{cls:"opt",t:"aucun acte"});
 }
+function remisAuto(){ if(S.remisT || S.type==="suivi" || S.type==="manque") return; const f=F_FIN.find(x=>x.id==="remis"); S.fin.remis={c:f.o.filter(remisOk)}; }
 function remisOk(o){
   const hasMeds=(S.ord.meds?.c||[]).length>0 && !T().noOrd;
   return ({ "plan de traitement écrit": S.plan.some(r=>r.cid), "estimé des honoraires": S.plan.some(r=>r.cid)||AX().length>0,
@@ -1610,6 +1706,11 @@ function relevantOptions(){
 /* Plan créé à partir de l'option retenue */
 const OPT_PLAN = {"Traitement de canal puis recouvrement cuspidien":["endo_s1","endo_obt","onlay_prep","onlay_coll"],"Couronne":["ppf_prep","ppf_ins"],"Pont":["ppf_prep","ppf_ins"],"Prothèse partielle":["pa"],"Prothèse complète":["pa"],"Implant (référence)":["ref"],"Référence à un spécialiste":["ref"],"Détartrage et surfaçage (hygiène)":["hygiene"],"Orthodontie par aligneurs":["spark_debut"]};
 const PAIRS = {ppf_prep:"ppf_ins", onlay_prep:"onlay_coll", facette_prep:"facette_coll", endo_s1:"endo_obt", implant_emp:"implant_pose"};
+const MEB = {ppf_prep:"ppf_ins", onlay_prep:"onlay_coll", facette_prep:"facette_coll", implant_emp:"implant_pose"};
+function planPair(i){ const r=S.plan[i]; if(!r) return; const m=MEB[r.cid]; r.lk=r.lk||uid();
+  S.plan = S.plan.filter(x=>!(x.of===r.lk && x.cid!==m && !x.man));
+  if(m && !S.plan.some(x=>x.of===r.lk)){ const k=S.plan.indexOf(r); S.plan.splice(k+1,0,{se:Math.min(8,(r.se||1)+1), cid:m, teeth:JSON.parse(JSON.stringify(r.teeth)), of:r.lk, pro:r.pro||"", auto:r.auto}); } }
+function planSync(){ S.plan.forEach(x=>{ if(!x.of) return; const src=S.plan.find(y=>y.lk===x.of); if(!src){ delete x.of; return; } if(!x.tm) x.teeth=JSON.parse(JSON.stringify(src.teeth)); if(!x.pm) x.pro=src.pro||""; }); }
 function autoPlan(){
   if(S.plan.some(r=>!r.auto && r.cid)) return;
   const ret = S.opts.find(o=>o.ret); S.plan = S.plan.filter(r=>!r.auto); if(!ret) return;
@@ -1657,8 +1758,10 @@ function sAnesth(){
     b += `<button type="button" class="mini" data-act="add" data-k="anesth.rows">+ Ajouter une injection</button>`;
   }
   const ok = A.aucune || (A.rows.length && A.rows.every(r=>r.agent&&r.carp));
-  return section("anesth","Anesthésie", b, ok?{cls:"done",t:"complet"}:{cls:"todo",t:"quantité à choisir"});
+  return {b, ok};
 }
+function anesthBox(){ if(!needsAnesth()) return ""; const {b,ok}=sAnesth();
+  return `<div class="anbox"><h3>Anesthésie ${ok?"":`<span class="sstat todo">quantité à choisir</span>`}</h3>${b}${precHTML("anesth")}</div>`; }
 function needTeeth(a){ const c=CAN[a.cid]; return (c.dents==="surf"||c.dents==="dent") ? !a.teeth.length : (c.dents==="arcade" ? !a.arc : false); }
 function variantChips(a,i){
   const vs = variantsOf(a.cid); if(vs.length<2) return "";
@@ -1677,13 +1780,14 @@ function dxRows(a,i){
     const pro = selHTML(`data-act="tdx" data-f="pro" ${at} aria-label="Pronostic"`, PRONOSTIC, t.pro, "Pronostic…");
     return `<div class="dxrow"><span class="locn">${esc(lab)}</span><label class="lab sm">Diagnostic${dx}</label><label class="lab sm">Traitement idéal${rec}</label>${why}<label class="lab sm">Pronostic${pro}</label></div>`; }).join("")+`</div>`;
 }
+function consFill(a){ const C=a.cons, K=CAN_RISK[a.cid]; if(!C) return; if(!C.bn) C.bn=[...(BENEFICES[K]||[])]; if(!C.nt) C.nt=[...(NONTX[K]||[])]; if(!C.rk) C.rk=[...(RISQUES[K]||[])]; }
 function consHTML(a,i){
-  const C=a.cons, nEl=C.el.length;
+  const C=a.cons, K=CAN_RISK[a.cid]; C.el=[...CONS_EL]; consFill(a);
   const box=(key,opts,title)=>`<details class="cat dd"><summary>${esc(title)} <span class="cnt">${C[key].length}/${opts.length}</span></summary><div class="chips list">${opts.map(o=>`<button type="button" class="chip${C[key].includes(o)?" on":""}" data-act="cons" data-i="${i}" data-k="${key}" data-v="${esc(o)}" aria-pressed="${C[key].includes(o)}">${esc(o)}</button>`).join("")}</div></details>`;
   const ref = C.mode==="refus du patient";
-  return `<div class="consbox"><div class="flab"><span>Consentement</span>${nEl<CONS_EL.length&&!ref?`<span class="req">éléments incomplets</span>`:""}</div>
+  return `<div class="consbox"><div class="flab"><span>Consentement</span><span class="hint">tous les éléments expliqués sont inscrits d'office</span></div>
     <div class="row2">${selHTML(`data-act="consmode" data-i="${i}" aria-label="Consentement"`, ["obtenu verbalement","écrit et signé","refus du patient"], C.mode)}${selHTML(`data-act="consq" data-i="${i}" aria-label="Questions du patient"`, ["questions répondues","aucune question"], C.q)}</div>
-    ${box("el",CONS_EL,"Éléments expliqués")}${(RISQUES[CAN_RISK[a.cid]]||[]).length?(C.rk=C.rk||[], box("rk",RISQUES[CAN_RISK[a.cid]],"Risques et complications expliqués")):""}${box("fr",CONS_FR,"Honoraires et protection")}
+    ${(BENEFICES[K]||[]).length?box("bn",BENEFICES[K],"Bénéfices"):""}${(RISQUES[K]||[]).length?box("rk",RISQUES[K],"Risques et effets secondaires"):""}${(NONTX[K]||[]).length?box("nt",NONTX[K],"Conséquences du non-traitement"):""}${box("fr",CONS_FR,"Honoraires et protection")}
     ${ref?box("rf",CONS_RF,"Raison du refus")+box("ri",CONS_RI,"Après le refus")+`<button type="button" class="mini" data-act="refusform" data-i="${i}">${S.ui.refusI===i?"Masquer":"Générer"} le formulaire de refus à signer</button>${S.ui.refusI===i?`<textarea class="txt refusta" readonly rows="16" id="refusta">${esc(refusText(a))}</textarea><button type="button" class="mini" data-act="copyrefus" data-i="${i}">Copier le formulaire</button><span id="refusmsg" class="hint"></span>`:""}`:""}
   </div>`;
 }
@@ -1708,7 +1812,7 @@ function acteCard(a,i){
 function sActes(){
   const groups = T().urg ? [["Urgence", CANEVAS.filter(c=>c.urg)], ...GROUPES.map(g=>[g, CANEVAS.filter(c=>c.g===g)])] : GROUPES.map(g=>[g, CANEVAS.filter(c=>c.g===g)]);
   const q = (S.ui.actq||"").trim();
-  let b = `<input class="txt" type="search" id="actq" value="${esc(S.ui.actq||"")}" placeholder="Chercher un traitement (ex. compo, exo, canal, couronne)" autocomplete="off">`;
+  let b = anesthBox() + `${needsAnesth()?"<h3>Traitements</h3>":""}<input class="txt" type="search" id="actq" value="${esc(S.ui.actq||"")}" placeholder="Chercher un traitement (ex. compo, exo, canal, couronne)" autocomplete="off">`;
   if(q.length>=2){ const nq=norm(q); const hits=[]; CANEVAS.forEach(c=>variantsOf(c.id).forEach(v=>{ if(norm(c.nom+" "+v.nom+" "+c.g).includes(nq)) hits.push([c,v]); }));
     b += `<div class="chips list">${hits.slice(0,24).map(([c,v])=>`<button type="button" class="chip add" data-act="addacte" data-v="${c.id}" data-var="${v.id}">+ ${esc(c.nom)} · ${esc(v.nom)}</button>`).join("")||`<span class="hint">Aucun traitement trouvé.</span>`}</div>`; }
   b += `<div class="addpick">${groups.map(([g,items],gi)=>{ if(!items.length) return "";
@@ -1770,7 +1874,6 @@ function sectionsList(){
     if(S.type==="postop") P.push(sSuivi());
     if(allowActes()) P.push(sActes());
 
-    if(needsAnesth()) P.push(sAnesth());
     P.push(sFin());
   }
   return P.join("").split(/(?=<section class="sec")/).filter(x=>x.startsWith("<section"));
@@ -1787,7 +1890,7 @@ function renderHome(){
   return `<div class="home">${copied}${draft}${cur}<h2 class="hh">Nouvelle note</h2><div class="tiles">${tiles}</div>${tpl}</div>`;
 }
 function renderForm(){
-  document.body.dataset.screen = S.ui.view;
+  document.body.dataset.screen = S.ui.view; if(S.fin) remisAuto();
   if(S.ui.view==="home"){ $("#form").innerHTML = renderHome(); renderNote(); return; }
   if(S.ui.view==="settings"){ $("#form").innerHTML = renderSettings(); renderNote(); return; }
   const secs = sectionsList();
@@ -1811,11 +1914,14 @@ function renderForm(){
 /* ============================================================
    NOTE
    ============================================================ */
+const ANGLE = ["classe I","classe II division 1","classe II division 2","classe III"];
+function angleTxt(){ const A=S.angle||{}; if(!A.d&&!A.g) return ""; if(A.d===A.g) return A.d+" d'Angle bilatérale"; return [A.d?A.d+" d'Angle à droite":"", A.g?(A.d?A.g+" à gauche":A.g+" d'Angle à gauche"):""].filter(Boolean).join(", "); }
 function examLines(key, list, title, P){
   const o=S[key], L=[];
-  list.forEach(st=>{ const v=o[st]; if(!v||!v.s) return;
+  list.forEach(st=>{ const v=o[st]; const ang = key==="eio" && st==="Occlusion" ? angleTxt() : "";
+    if(!v||!v.s){ if(ang) L.push(st+" : "+ang+"."); return; }
     const txt = v.s==="N" ? (P?"DLN":"dans les limites de la normalité") : v.s==="A" ? (frList(v.c)||"anomalie à préciser") : "non examiné";
-    L.push((P?"  ":"")+st+" : "+txt+(P?"":".")); });
+    L.push((P?"  ":"")+st+" : "+txt+(ang?" ; "+ang:"")+(P?"":".")); });
   return L.length ? [title+" :", ...L, "§"] : [];
 }
 function buildNote(style){
@@ -1842,7 +1948,7 @@ function buildNote(style){
   if(S.type==="suivi"){ block("Suivi téléphonique", suiviLines(), "suivi"); }
   else if(S.type==="manque"){ block("Rendez-vous manqué", linesFor(F_MANQUE,S.manque,style), "manque"); }
   else {
-    block("Histoire médicale", linesFor(F_QMR,S.qmr,style), "qmr");
+    block("Histoire médicale", linesFor(qmrDefs(),S.qmr,style), "qmr");
     if(isConsult()){
       block(T().cible?"Motif et aspect ciblé":"Plainte et histoire", linesFor(F_PLAINTE,S.plainte,style), "plainte");
       if(T().cible) cibleKeys().forEach(k=>block("Examen ciblé : "+CIBLES[k].l, linesFor(CIBLES[k].f, S.cible.sub[k]||{}, style), "cible-"+k));
@@ -1863,15 +1969,18 @@ function buildNote(style){
       }
       block("Tests cliniques", S.tests.map(r=>{ const res=TESTS.filter(x=>r[x.id]).map(x=>lc(x.l)+" "+r[x.id]); return (P?"":"Dent ")+r.d+(r.tem?" (témoin)":"")+" : "+(res.join(P?" · ":", ")||"aucun résultat")+(P?"":"."); }), "tests");
       block("Analyse radiologique", S.rx.flatMap(r=>{ const w=r.teeth.map(t=>t.d).join(", "), ks=rxKeys(r).filter(k=>(r.obsBy[k]?.c||[]).length);
-        const head = P ? `Rx ${r.type}${w?" "+w:""}` : cap(`${r.type==="photographie"?"photographie":"radiographie "+r.type}${w?" ("+w+")":""}`);
-        if(!ks.length) return [head+" : interprétation manquante"+(P?"":".")];
-        if(ks.length===1) return [head+" : "+(ks[0]==="cliché"?"":ks[0]+" : ")+frList(r.obsBy[ks[0]].c)+(P?"":".")];
-        return [head+" :", ...ks.map(k=>(P?"  ":"")+(k==="cliché"?"Ensemble du cliché":k)+" : "+frList(r.obsBy[k].c)+(P?"":"."))]; }), "imagerie");
+        const head = cap(`${r.type==="photographie"?"photographie":"radiographie "+r.type}${w?" ("+w+")":""}`);
+        const ol = k => { const L=r.obsBy[k].c.map(o=>rxObsTxt(r,k,o)); return L.some(x=>x.includes(" : ")) ? L.join(" ; ") : frList(L); };
+        const pl = panoLines(r);
+        if(!ks.length) return pl.length ? [head+" :", ...pl] : [head+" : interprétation manquante."];
+        if(ks.length===1 && !pl.length) return [head+" : "+(ks[0]==="cliché"||r.teeth.length===1?"":ks[0]+" : ")+ol(ks[0])+"."];
+        return [head+" :", ...ks.map(k=>(k==="cliché"?"Ensemble du cliché":k)+" : "+ol(k)+"."), ...pl]; }), "imagerie");
       const dl = S.dx.filter(r=>r.p||r.a||r.o.c.length).flatMap(r=>{ const it=[r.p,r.a,...dxConstats(r)].filter(Boolean);
         return [(P?"Dx ":"Diagnostic ")+r.d+" :", ...it.map((x,i)=>(P?"  ":"")+x+(i<it.length-1?" ;":(P?"":".")))]; });
       const ol = S.opts.filter(r=>r.nom);
       const optL = ol.length ? [(P?"Options :":"Options présentées :"), ...ol.map((r,i)=>(P?"  ":"")+(i+1)+") "+r.nom+(r.pro?" — pronostic "+r.pro:"")+(r.ret?" (retenue)":"")+(i<ol.length-1?" ;":(P?"":"."))), "§"] : [];
-      const planL = S.plan.filter(r=>r.cid).sort((a,b)=>(a.se||1)-(b.se||1)).map(r=>(P?"S"+(r.se||1)+" : ":"Séance "+(r.se||1)+" : ")+planName(r.cid)+(r.teeth.length?" — "+r.teeth.map(t=>toothTxt(t,false)).join(", "):"")+(P?"":"."));
+      planSync(); const planL = S.plan.filter(r=>r.cid).sort((a,b)=>(a.se||1)-(b.se||1)).map(r=>(P?"S"+(r.se||1)+" : ":"Séance "+(r.se||1)+" : ")+planName(r.cid)+(r.teeth.length?" — "+r.teeth.map(t=>toothTxt(t,false)).join(", "):"")+(r.pro?" ; pronostic "+r.pro:"")+(P?"":"."));
+      if(planL.length){ const fr=S.planFr||CONS_FR; if(fr.length){ planL.push("§","Honoraires et protection :"); fr.forEach((x,j)=>planL.push(x+(j<fr.length-1?" ;":"."))); } }
       block("Diagnostic et options", [...dl, "§", ...(T().risque?linesFor([F_RISQUE],S.dxg,style):[]), ...linesFor(F_DXG.filter(f=>!["stade","grade","etendue"].includes(f.id)||(S.dxg.paro?.c||[]).includes("parodontite")),S.dxg,style), "§", ...optL, ...linesFor(F_JUSTIF,S.justif,style)], "dx");
       if(T().plan) block("Plan de traitement", planL, "plan");
     }
@@ -1885,18 +1994,22 @@ function buildNote(style){
           if(t.rec) D.push("Traitement idéal : "+t.rec.toLowerCase()+".");
           if(t.rec && t.rec!==c.nom) D.push("Traitement de compromis choisi par le patient : "+c.nom.toLowerCase()+(t.why?" (raison : "+t.why+")":"")+" ; risques du traitement de compromis expliqués.");
           if(t.pro) D.push("Pronostic : "+t.pro+"."); });
-        const C=a.cons; if(!C) return; const refused = C.mode==="refus du patient";
+        const C=a.cons; if(!C) return; consFill(a); const refused = C.mode==="refus du patient";
         D.push(refused ? "Traitement refusé par le patient après explications"+(C.q?" ; "+C.q:"")+"." : "Consentement "+C.mode+(C.q?" ; "+C.q:"")+".");
         const lst=(t,arr)=>{ if(!arr||!arr.length) return; D.push(t+" :"); arr.forEach((x,j)=>D.push(x+(j<arr.length-1?" ;":"."))); };
-        lst("Éléments expliqués", C.el); lst("Risques et complications expliqués", C.rk); lst("Honoraires et protection", C.fr);
+        const TT=(a.teeth.length?a.teeth:[a]), alts=[...new Set(TT.flatMap(t=>recOptions(a,t)))].filter(x=>x!==c.nom).map(x=>x.toLowerCase());
+        const pro=TT.filter(t=>t.pro).map(t=>(a.teeth.length&&TT.length>1?t.d+" : ":"")+t.pro);
+        const EL=[["diagnostic",""],["nature du traitement",c.nom.toLowerCase()],["bénéfices",frList(C.bn||[])],["risques et effets secondaires",frList(C.rk||[])],["solutions de rechange, y compris l'abstention",frList(alts)],["conséquences du non-traitement",frList(C.nt||[])],["pronostic",pro.join(", ")],["honoraires estimés",""]];
+        D.push("Éléments expliqués :"); EL.forEach(([k,v],j)=>D.push(cap(k)+(v?" : "+v:"")+(j<EL.length-1?" ;":".")));
+        lst("Honoraires et protection", C.fr);
         if(refused){ if(C.rf.length) D.push("Raison du refus : "+frList(C.rf)+"."); if(C.ri.length) D.push(cap(frList(C.ri))+"."); } });
       block("Diagnostic et consentement", D, "", "actes"); }
     const A=S.anesth;
-    if(A.aucune && AX().length) block("Anesthésie", ["Aucune anesthésie."], "anesth");
+    if(A.aucune && AX().length) block("Anesthésie", ["Aucune anesthésie."], "anesth", "actes");
     else if(A.rows.length && needsAnesth()) block("Anesthésie", [A.topique?(P?"Topique : benzocaïne 20 %":"Anesthésie topique à la benzocaïne 20 %."):"",
       ...A.rows.map(r=>{ const ag=ANESTH_AGENTS.find(a=>a.l===r.agent); const n=parseFloat(String(r.carp).replace(",",".")); const ml = ag&&n?" ("+fmtN(Math.round(ag.ml*n*10)/10)+" mL)":"";
         return P ? cap(`${r.agent} × ${r.carp||"?"} carpule(s)${ml} — ${r.tech}${r.site?" "+r.site:""}`) : cap(`${r.tech}${r.site?" ("+r.site+")":""} : ${r.agent}, ${r.carp||"?"} carpule${n>1?"s":""}${ml}.`); }),
-      A.aspiration?(P?"Aspiration négative":"Aspiration négative."):""], "anesth");
+      A.aspiration?(P?"Aspiration négative":"Aspiration négative."):""], "anesth", "actes");
     AX().forEach((a,i)=>{ const c=CAN[a.cid]; if(a.cons && a.cons.mode==="refus du patient") return;
       const where = c.dents==="arcade" ? a.arc : a.teeth.map(t=>toothTxt(t,!!c.black)).join(", ");
       const L=[]; let k=0; steps(a).forEach(f=>{ const v=valOf(f,a.v[f.id]); if(v){ k++; L.push(k+". "+narr(f,v)); } });
@@ -1928,7 +2041,7 @@ function dxConstats(r){
   return cs.map(c=>locTxt(r,c));
 }
 function rxKeys(r){ return [...r.teeth.map(t=>String(t.d)), "cliché"]; }
-function rxHasObs(r){ return Object.values(r.obsBy||{}).some(o=>(o.c||[]).length); }
+function rxHasObs(r){ return r.type==="panoramique" || Object.values(r.obsBy||{}).some(o=>(o.c||[]).length); }
 function feminise(t){
   return t.replace(/\bdu patient\b/g,"de la patiente").replace(/\bau patient\b/g,"à la patiente").replace(/\ble patient\b/g,"la patiente").replace(/\bLe patient\b/g,"La patiente")
     .replace(/\b([Pp])atient\b(?!e)/g,"$1atiente")
@@ -1963,8 +2076,9 @@ function checks(){
     }
     if(S.type==="postop") reqs([F_SUIVITX],S.suivi.f);
     S.rx.forEach((x,i)=>{ if(!rxHasObs(x)) r("interprétation du cliché "+(i+1)); });
+    if(isConsult() && T().plan) S.plan.forEach((x,i)=>{ if(x.cid && !x.pro) r("pronostic de l'acte "+(i+1)+" du plan"); });
     S.tests.forEach(x=>{ if(!TESTS.some(t=>x[t.id])) r("résultat des tests de la dent "+x.d); });
-    AX().forEach((a,i)=>{ const C=a.cons; if(!C) return; if(C.mode!=="refus du patient" && C.el.length<CONS_EL.length) r(`Tx ${i+1} : éléments du consentement incomplets`); if(C.mode==="refus du patient" && !C.rf.length) r(`Tx ${i+1} : raison du refus`);
+    AX().forEach((a,i)=>{ const C=a.cons; if(!C) return; if(C.mode==="refus du patient" && !C.rf.length) r(`Tx ${i+1} : raison du refus`);
       (a.teeth.length?a.teeth:[a]).forEach(t=>{ if(!t.dx) r(`Tx ${i+1} : diagnostic${a.teeth.length?" de la "+t.d:""}`); if(t.rec && t.rec!==CAN[a.cid].nom && !t.why) r(`Tx ${i+1} : raison du traitement de compromis`); if(!t.pro) r(`Tx ${i+1} : pronostic${a.teeth.length?" de la "+t.d:""}`); }); });
     if(needsAnesth() && !S.anesth.aucune){ if(!S.anesth.rows.length) r("anesthésie (agent, concentration, quantité)"); S.anesth.rows.forEach((x,i)=>{ if(!x.carp) r("quantité de l'injection "+(i+1)); }); }
     AX().forEach((a,i)=>{ const c=CAN[a.cid];
@@ -2029,8 +2143,10 @@ function newActe(cid, vid){ const a={uid:uid(), cid, teeth:[], arc:"", v:{}, ope
 const RX_ALT_EXO="ibuprofène 400 mg et acétaminophène 500 mg en alternance aux 3 heures au besoin";
 function davierFor(d, vid){ if(vid==="racine") return "davier à racines"; const n=+String(d).slice(-1), q=+String(d)[0];
   const molar = (q<=4 && n>=6) || (q>=5 && n>=4); if(!molar) return "davier 74"; return upper(d) ? "davier 150" : "davier 151"; }
+function clampFor(d){ const n=+String(d).slice(-1), q=+String(d)[0]; if(n<=3) return "212"; if(q>=5) return "W2A"; return n<=5 ? "W2" : "W8A"; }
 function autoByTooth(a){
   const d = a.teeth[0]?.d; if(!d) return;
+  if(a.v.crampon && !a.touched.crampon) a.v.crampon.c=[clampFor(d)];
   if(a.cid==="exo_simple" && !a.touched.avulsion) a.v.avulsion.c=[davierFor(d, a.vid)];
   if(a.v.acces && CAN[a.cid].etapes.find(f=>f.id==="acces" && f.o.includes("MB")) && !a.touched.acces) a.v.acces.c=canalsFor(d);
   if(CAN[a.cid].anesth){ const row=S.anesth.rows.find(r=>!r.site); if(row){ row.site=String(d); row.tech=techFor(d); } }
@@ -2062,6 +2178,7 @@ document.addEventListener("click", e=>{
       const map={"cicatrisation normale":["normale"],"alvéolite sèche (ostéite alvéolaire)":["alvéole vide, os exposé"],"alvéolite suppurée":["suppuration"],"infection postopératoire":["suppuration"]};
       ci.c = map[v] ? [...map[v]] : ci.c.filter(x=>x!=="normale");
       const co=fv(S.suivi.g,"conduite"); if(v!=="cicatrisation normale") co.c=co.c.filter(x=>x!=="évolution normale, aucune intervention"); }
+    if(b.dataset.chip==="fin.remis") S.remisT=true;
     if(b.dataset.chip==="fin.remis" || b.dataset.chip==="ord.meds"){ const r=fv(S.fin,"remis"); if((S.ord.meds?.c||[]).length && !r.c.includes("ordonnance")) r.c.push("ordonnance"); }
     renderForm(); return;
   }
@@ -2101,13 +2218,16 @@ document.addEventListener("click", e=>{
     case "bop": { const t=S.perio.c[b.dataset.d]; t.bop[b.dataset.k]=!t.bop[b.dataset.k]; break; }
     case "pabs": { const t=S.perio.c[b.dataset.d]; t.abs=!t.abs; break; }
     case "plse": S.plan[i].se=+b.dataset.v; S.plan[i].auto=false; break;
+    case "rxq": { const r=S.rx[i], q=r.q[b.dataset.k][b.dataset.o], g=b.dataset.g, v=b.dataset.v; q[g] = q[g].includes(v) ? q[g].filter(x=>x!==v) : (g==="v"&&v==="adéquate" ? ["adéquate"] : q[g].filter(x=>!(g==="v"&&x==="adéquate")).concat(v)); break; }
+    case "panoc": { const p=S.rx[i].pano[b.dataset.k], v=b.dataset.v; p.s = p.s.includes(v) ? p.s.filter(x=>x!==v) : (v==="bilatéral"?["bilatéral"]:p.s.filter(x=>x!=="bilatéral").concat(v)); break; }
+    case "planfr": { const v=b.dataset.v; S.planFr = S.planFr || [...CONS_FR]; S.planFr = S.planFr.includes(v) ? S.planFr.filter(x=>x!==v) : S.planFr.concat(v); break; }
     case "step": S.ui.step=+b.dataset.v; renderForm(); window.scrollTo(0,0); return;
     case "gonote": $("#viewN").click(); return;
     case "refusform": S.ui.refusI = S.ui.refusI===i ? -1 : i; break;
     case "cons": { const C=S.actes[i].cons, k=b.dataset.k, v=b.dataset.v; C[k] = C[k].includes(v)? C[k].filter(x=>x!==v) : C[k].concat(v); break; }
     case "copyrefus": { const t=refusText(S.actes[i]); const m=$("#refusmsg"); try{ navigator.clipboard.writeText(t).then(()=>m.textContent="Formulaire copié.",()=>{ $("#refusta").select(); m.textContent="Copie bloquée : fais Ctrl+C."; }); }catch(_){ $("#refusta").select(); } return; }
     case "quad": S.ui.q[b.dataset.k]=+b.dataset.v; break;
-    case "tooth": { const list=getP(b.dataset.p), d=b.dataset.d, j=list.findIndex(t=>String(t.d)===d);
+    case "tooth": { { const pm=b.dataset.p.match(/^plan\.(\d+)\.teeth$/); if(pm && S.plan[+pm[1]].of) S.plan[+pm[1]].tm=true; } const list=getP(b.dataset.p), d=b.dataset.d, j=list.findIndex(t=>String(t.d)===d);
       if(j>=0) list.splice(j,1); else { list.push(newToothItem(b.dataset.p, d)); list.sort((x,y)=>toothOrder(x.d)-toothOrder(y.d)); }
       const ma=b.dataset.p.match(/^actes\.(\d+)\.teeth$/); if(ma){ const ac=S.actes[+ma[1]]; ac.teeth.forEach(t=>initToothDx(ac,t)); autoByTooth(ac); }
       const mp=b.dataset.p.match(/^plan\.(\d+)\.teeth$/); if(mp) S.plan[+mp[1]].auto=false; break; }
@@ -2162,9 +2282,11 @@ document.addEventListener("change", e=>{
   const t=e.target;
   if(t.dataset.setb){ setPath(t.dataset.setb, t.checked); renderForm(); return; }
   if(t.dataset.act==="tdx"){ const a=S.actes[+t.dataset.i], k=+t.dataset.k, tt = k<0 ? a : a.teeth[k]; tt[t.dataset.f]=t.value; if(t.dataset.f==="dx" && /retraitement indiqué/.test(t.value) && !tt.recm) tt.rec="Référence à un spécialiste"; if(t.dataset.f==="rec") tt.recm=true; if(t.dataset.f==="dx"||t.dataset.f==="dx2"){ tt.dxm=true; if(k<0) a.dxm=true; } S.ui.dirty=true; renderForm(); return; }
+  if(t.dataset.act==="mcat"){ S.ui.mcat=t.value; renderForm(); return; }
+  if(t.dataset.act==="mpick"){ if(t.value){ S.plainte.motif={t:t.value}; S.ui.dirty=true; } renderForm(); return; }
   if(t.dataset.act==="consmode"){ S.actes[+t.dataset.i].cons.mode=t.value; S.ui.dirty=true; renderForm(); return; }
   if(t.dataset.act==="consq"){ S.actes[+t.dataset.i].cons.q=t.value; S.ui.dirty=true; renderForm(); return; }
-  if(t.dataset.set){ setPath(t.dataset.set, t.value); const pm=t.dataset.set.match(/^plan\.(\d+)\./); if(pm) S.plan[+pm[1]].auto=false; renderForm(); }
+  if(t.dataset.set){ setPath(t.dataset.set, t.value); const pm=t.dataset.set.match(/^plan\.(\d+)\.(\w+)/); if(pm){ const r=S.plan[+pm[1]]; r.auto=false; if(pm[2]==="cid") planPair(+pm[1]); if(pm[2]==="pro" && r.of) r.pm=true; } renderForm(); }
 });
 let rt; const renderSoon = () => { clearTimeout(rt); rt=setTimeout(renderNote,120); };
 
@@ -2337,6 +2459,8 @@ function renderSettings(){
   return `<div class="settings">
    <section class="sec"><header class="sh"><h2>Profil</h2></header><div class="sb">
      <label class="lab">Nom du dentiste pour la signature<input class="txt" type="text" data-cfg="dentiste" value="${esc(CFG.dentiste)}"></label>
+     <div class="row2"><label class="lab sm">Système de limes mécanisées<input class="txt" type="text" data-cfg="rotsys" value="${esc((CFG.endoRot||{}).sys||"EndoSequence")}"></label>
+       <label class="lab sm">Calibres par défaut (séparés par des virgules)<input class="txt" type="text" data-cfg="rotsz" value="${esc(((CFG.endoRot||{}).sz||["015","020","025","030"]).join(", "))}"></label></div>
      <div class="field"><div class="flab"><span>Style de note par défaut</span></div><div class="chips">${[["prag","Pragmatique"],["narr","Narratif"]].map(([k,l])=>`<button type="button" class="chip${CFG.style===k?" on":""}" data-act="cfgstyle" data-v="${k}">${l}</button>`).join("")}</div></div>
      <div class="field"><div class="flab"><span>Taille du texte</span></div><div class="chips"><button type="button" class="chip" data-act="cfgfs" data-v="-1">A−</button><span class="nv">${Math.round(CFG.fs*100)} %</span><button type="button" class="chip" data-act="cfgfs" data-v="1">A+</button></div></div>
    </div></section>
@@ -2382,6 +2506,8 @@ document.addEventListener("click", e=>{
 document.addEventListener("change", e=>{ const t=e.target; if(t.dataset.act==="cfgcid"){ S.ui.setCid=t.value; S.ui.setVid="__base"; saveCfg(); renderForm(); } });
 document.addEventListener("input", e=>{ const t=e.target; if(!t.dataset.cfg || t.dataset.cfg==="x") return;
   if(t.dataset.cfg==="dentiste"){ CFG.dentiste=t.value; F_SIGN[0].o=[t.value]; if(S.sign.verifie?.c?.length) S.sign.verifie.c=[t.value]; }
+  if(t.dataset.cfg==="rotsys"||t.dataset.cfg==="rotsz"){ CFG.endoRot = CFG.endoRot || {sys:"EndoSequence", sz:["015","020","025","030"]};
+    if(t.dataset.cfg==="rotsys") CFG.endoRot.sys=t.value.trim()||"EndoSequence"; else { const z=t.value.split(/[,;]/).map(x=>x.trim()).filter(Boolean); if(z.length) CFG.endoRot.sz=z; } applyRot(); }
   if(t.dataset.cfg==="lex"){ CFG.lex=t.value.split("\n").map(x=>x.trim()).filter(Boolean); LEXP.length=0; CFG.lex.forEach(x=>LEXP.push({e:[x,"","","","Lexique personnel","terme","","","",1], k:norm(x), a:"", s:""})); }
   saveCfg(); });
 </script>
