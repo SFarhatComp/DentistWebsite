@@ -7,16 +7,16 @@
 <title>Formulaire intelligent De Facto</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#291B2E">
+<meta name="theme-color" content="#E4E4E8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="De Facto">
 <link rel="apple-touch-icon" href="apple-touch-icon.png"><title>Formulaire intelligent De Facto</title>
 
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-</head>
-<body><style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"></head>
+<body>
+<style>
 /* Layout : formulaire chronologique à gauche, note vivante collée à droite (≥ 1100 px) ; sous 1100 px, bascule Formulaire / Note */
 :root{
   --bg:#F5F0E6; --surface:#FFFDF8; --sunk:#EDE6D9; --line:#DDD2C1; --fg:#291B2E; --muted:#6B5D6F;
@@ -345,17 +345,237 @@ body[data-screen="home"] .mobbar #mprev, body[data-screen="home"] .mobbar #mnext
 @media (max-width:760px){ .wfoot{display:none} }
 @media (prefers-reduced-motion:reduce){.nseg{transition:none}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* ================= THÈME « verre monochrome » (v4.6) ================= */
+:root{
+  --bg:#F2F2F3; --surface:#FFFFFF; --sunk:#F1F1F3; --line:#E6E6EA; --fg:#141416; --muted:#8B8B93;
+  --accent:#141416; --accent-ink:#141416; --accent-soft:#ECECEF; --on-accent:#FFFFFF;
+  --azur:#3B3B42; --azur-soft:#EEEEF1; --ok:#141416; --ok-soft:#EDEDF0; --warn:#C2382E; --warn-soft:#FBEAE8; --amber:#8A6A1C; --amber-soft:#F5F0E2;
+  --display:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --glass:rgba(255,255,255,.42); --glass-line:rgba(255,255,255,.75); --shadow:0 1px 2px rgba(20,20,22,.04),0 10px 30px rgba(20,20,22,.06);
+  --r-xl:28px; --r-lg:22px; --r-md:16px;
+  --page:radial-gradient(1200px 700px at 12% 8%,#FFFFFF 0%,transparent 60%),radial-gradient(900px 600px at 92% 30%,#D9D9DD 0%,transparent 65%),radial-gradient(1000px 800px at 40% 100%,#CFCFD4 0%,transparent 60%),#E4E4E8;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141416; --surface:#1C1C20; --sunk:#26262B; --line:#303036; --fg:#F4F4F6; --muted:#9E9EA7;
+  --accent:#F4F4F6; --accent-ink:#F4F4F6; --accent-soft:#2A2A30; --on-accent:#121214;
+  --azur:#C9C9D0; --azur-soft:#26262B; --ok:#F4F4F6; --ok-soft:#2A2A30; --warn:#FF8A80; --warn-soft:#3A1F1D; --amber:#E2BA62; --amber-soft:#332B17;
+  --glass:rgba(30,30,34,.55); --glass-line:rgba(255,255,255,.08); --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25);
+  --page:radial-gradient(1200px 700px at 12% 8%,#2A2A30 0%,transparent 60%),radial-gradient(900px 600px at 92% 30%,#1E1E23 0%,transparent 65%),#0C0C0E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141416; --surface:#1C1C20; --sunk:#26262B; --line:#303036; --fg:#F4F4F6; --muted:#9E9EA7;
+  --accent:#F4F4F6; --accent-ink:#F4F4F6; --accent-soft:#2A2A30; --on-accent:#121214;
+  --azur:#C9C9D0; --azur-soft:#26262B; --ok:#F4F4F6; --ok-soft:#2A2A30; --warn:#FF8A80; --warn-soft:#3A1F1D; --amber:#E2BA62; --amber-soft:#332B17;
+  --glass:rgba(30,30,34,.55); --glass-line:rgba(255,255,255,.08); --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.25);
+  --page:radial-gradient(1200px 700px at 12% 8%,#2A2A30 0%,transparent 60%),radial-gradient(900px 600px at 92% 30%,#1E1E23 0%,transparent 65%),#0C0C0E; color-scheme:dark}
+body{background:var(--page);background-attachment:fixed;font-family:var(--body);letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+body::before{background:transparent}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+
+/* coquille vitrée */
+.shell{max-width:1640px;margin:16px auto;margin-inline:max(16px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:232px minmax(0,1fr);gap:18px;
+  background:var(--glass);border:1px solid var(--glass-line);border-radius:36px;padding:16px;backdrop-filter:blur(28px) saturate(1.2);-webkit-backdrop-filter:blur(28px) saturate(1.2);box-shadow:0 30px 80px rgba(20,20,22,.10)}
+@media (min-width:1700px){.shell{margin-inline:auto}}
+.rail{position:sticky;top:16px;align-self:start;height:calc(100vh - 34px);display:flex;flex-direction:column;gap:6px;background:var(--surface);border-radius:var(--r-xl);padding:22px 14px;box-shadow:var(--shadow);overflow:hidden}
+.rbrand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.3rem;letter-spacing:-.02em;padding:0 8px 18px}
+.rmenu{display:flex;flex-direction:column;gap:2px}
+.ritem{display:flex;align-items:center;gap:12px;border:0;background:transparent;border-radius:14px;padding:10px 12px;font-size:.9rem;font-weight:500;text-align:left;color:var(--fg);transition:background .18s,color .18s}
+.ritem:hover{background:var(--sunk)}
+.ritem.on{background:var(--fg);color:var(--surface)}
+.rlab{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:18px 12px 6px}
+#stepnav{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:2px;margin:0 -4px;padding:0 4px;scrollbar-width:thin}
+#stepnav .wiz{flex-direction:column;overflow:visible;gap:2px;padding:0}
+#stepnav .wz{max-width:none;width:100%;border:0;background:transparent;border-radius:14px;padding:8px 10px;font-size:.86rem;gap:10px;transition:background .18s,color .18s}
+#stepnav .wz{box-shadow:none}
+#stepnav .wz:hover{background:var(--sunk)}
+#stepnav .wz .wt{white-space:normal;text-align:left;line-height:1.25}
+#stepnav .wz.cur{background:var(--fg);color:var(--surface)}
+#stepnav .wz.add{color:var(--muted);border:1px dashed var(--line);margin-top:4px}
+.rfoot{border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+body[data-screen="home"] #stepnavlab, body[data-screen="settings"] #stepnavlab{display:none}
+
+.mainc{min-width:0;display:flex;flex-direction:column}
+.top{position:static;background:transparent;color:var(--fg);padding:10px 10px 4px}
+.top .in{max-width:none}
+.brand{gap:10px}
+.mlogo{display:none;color:var(--fg)}
+.hello h1{font:700 1.85rem/1.1 var(--display);letter-spacing:-.03em;margin:0}
+.hello .tag{display:block;margin-top:4px;font-size:.82rem;letter-spacing:0;text-transform:none;opacity:1;color:var(--muted)}
+.tb{border:0;background:var(--surface);color:var(--fg);box-shadow:var(--shadow);border-radius:999px;padding:9px 16px;font-size:.86rem;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:transform .15s,background .15s}
+.tb:hover{background:var(--surface);transform:translateY(-1px)}
+.tb.ic{width:44px;height:44px;padding:0}
+.tb.ic.sq{width:38px;height:38px;font-size:.8rem}
+.tb.txtic{font-size:.78rem}
+.tb.pill{background:var(--fg);color:var(--surface);padding:12px 22px}
+.tb.pill:not([data-arm])::before{content:"+";font-size:1.15rem;line-height:0;margin-right:2px}
+.tb.pill[data-arm]{background:var(--warn);color:#fff}
+.fsg{display:inline-flex;gap:6px}
+#homebtn,#setbtn,#example{display:none}
+
+.wrap{max-width:none;margin:0;width:100%;padding:12px 10px 40px;grid-template-columns:minmax(0,1fr) clamp(330px,31vw,460px);gap:18px}
+.side{top:16px;max-height:calc(100vh - 34px)}
+
+/* cartes */
+.sec{border:0;border-radius:var(--r-xl);box-shadow:var(--shadow);overflow:hidden}
+.sh{border-bottom:0;padding:22px 26px 4px}
+.sh h2{font:700 1.35rem/1.2 var(--display);letter-spacing:-.02em}
+.sb{padding:12px 26px 26px;gap:14px}
+.sb h3{font-size:.72rem;letter-spacing:.12em}
+.sstat{padding:5px 11px;font-weight:600}
+.sstat.done{background:var(--fg);color:var(--surface)}
+.field{background:var(--sunk);border-radius:var(--r-md);padding:12px 14px}
+.field.ok{background:var(--sunk)}
+.field.miss{border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
+.field.ok .req{color:var(--muted)}
+.stepn{color:var(--muted)}
+.chip{border:1px solid transparent;background:var(--surface);border-radius:999px;padding:7px 14px;font-size:.86rem;transition:background .15s,color .15s,transform .1s}
+.field .chip{background:var(--surface)}
+.chip:hover{border-color:var(--line)}
+.chip:active{transform:scale(.97)}
+.chip.on{background:var(--fg);border-color:var(--fg);color:var(--surface)}
+.chip.on.pre{background:color-mix(in srgb,var(--fg) 82%,var(--surface));color:var(--surface);border-style:solid;border-color:transparent}
+.chip.add{border:1px dashed var(--line);color:var(--fg);background:transparent}
+.chip.add:hover{background:var(--surface)}
+.chip.sugg:not(.on){border-color:var(--fg);color:var(--fg)}
+.chip.sq{border-radius:10px}
+.chip.ret.on{background:var(--fg);border-color:var(--fg)}
+.chips.list .chip{border-radius:12px}
+.chips.vars{background:var(--sunk);border-radius:var(--r-md)}
+.mini{border:1px dashed var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;background:transparent}
+.mini:hover{background:var(--sunk)}
+.txt,select,input[type=date]{border-radius:12px;border-color:var(--line)}
+select{padding:8px 10px}
+.x{border-radius:50%;border-color:transparent;background:var(--sunk)}
+.card{border:0;background:var(--sunk);border-radius:var(--r-lg);padding:14px}
+.acte{border:0;border-radius:var(--r-lg);background:var(--sunk);padding:16px 18px}
+.acte .field{background:var(--surface)}
+.acte .field .chip{background:var(--sunk)}
+.acte .field .chip.on{background:var(--fg)}
+.etable{border:0;border-radius:var(--r-md);background:var(--sunk)}
+.erow{border-top:1px solid var(--line)}
+.segs{border:0;border-radius:999px;background:var(--surface);padding:3px}
+.seg{border:0!important;border-radius:999px;background:transparent;padding:5px 12px}
+.seg.on{background:var(--fg)!important;color:var(--surface)!important}
+.seg.on.A{background:var(--warn)!important;color:#fff!important}
+.nf{border-top:0;padding:14px}
+.qtab{border:0;background:var(--sunk);border-radius:999px;padding:7px 13px}
+.qtab.on{background:var(--fg);color:var(--surface)}
+.banner{border:0;border-radius:var(--r-md);background:var(--surface);box-shadow:var(--shadow)}
+.banner.ok{background:var(--fg);color:var(--surface)}
+.ftype{font:700 .95rem var(--display);padding:0 4px}
+.conf{background:var(--fg);color:var(--surface);border-radius:999px;padding:10px 18px;font-weight:600}
+.consbox{border-radius:var(--r-md)}
+.anbox{display:flex;flex-direction:column;gap:12px;background:var(--sunk);border-radius:var(--r-lg);padding:16px 18px}
+.anbox h3{margin:0}
+
+/* barre d'étapes horizontale (tablette et téléphone) */
+#form > .wiz{display:none}
+.wz{border:0;background:var(--surface);box-shadow:var(--shadow)}
+.wz .wn{background:var(--sunk)}
+.wz.done .wn{background:var(--fg);color:var(--surface)}
+.wz.cur{background:var(--fg);color:var(--surface)}
+.wz.cur .wn{background:var(--surface);color:var(--fg)}
+.wfoot{padding:6px 0}
+.wbtn{border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:999px;padding:13px 24px;font-weight:600}
+.wbtn.pri{background:var(--fg);color:var(--surface)}
+.wpos{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem}
+.wprog{height:4px;border-radius:999px;background:color-mix(in srgb,var(--fg) 10%,transparent);overflow:hidden}
+.wprog i{display:block;height:100%;background:var(--fg);border-radius:999px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+
+/* note et contrôle */
+.notebox{border:0;border-radius:var(--r-xl);box-shadow:var(--shadow)}
+.notebox .nh{border-bottom:0;padding:20px 22px 8px}
+.notebox .nh h2{font:700 1.25rem var(--display);letter-spacing:-.02em}
+.segsw{border:0;border-radius:999px;background:var(--sunk);padding:3px}
+.segsw button{border-radius:999px;background:transparent}
+.segsw button.on{background:var(--fg);color:var(--surface)}
+#note{border-radius:var(--r-md);background:var(--sunk);margin:0 14px}
+.primary{background:var(--fg);color:var(--surface);border-radius:999px;padding:13px 20px;font-weight:600}
+.primary:hover{background:var(--fg);opacity:.9}
+.kbd{background:color-mix(in srgb,var(--surface) 18%,transparent);border-color:transparent;color:inherit}
+.chk{border-radius:var(--r-lg);padding:16px 18px;border:0!important}
+.chk.warn{background:#18181B;color:#F4F4F6}
+.chk.warn strong::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#FF6B5E;margin-right:8px;vertical-align:1px}
+.chk.warn .lab{color:#B9B9C0}
+.chk.warn .txt{background:#26262B;color:#F4F4F6;border-color:#36363C}
+.chk.good{background:var(--surface);color:var(--fg);box-shadow:var(--shadow)}
+.chk.voc{background:var(--surface);box-shadow:var(--shadow)}
+details.js{border-radius:var(--r-md)}
+
+/* accueil */
+.home{gap:18px}
+.hh{font:700 1.35rem var(--display);letter-spacing:-.02em}
+.tiles{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.tile{border:0;border-radius:var(--r-xl);background:var(--surface);box-shadow:var(--shadow);padding:22px 20px;min-height:128px;transition:transform .18s,box-shadow .18s}
+.tile:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(20,20,22,.05),0 18px 40px rgba(20,20,22,.10)}
+.tile .tl{font:700 1.1rem var(--display);letter-spacing:-.01em}
+.tile:first-child,.tile.tpl{background:#18181B;color:#F4F4F6}
+.tile:first-child .td,.tile.tpl .td{color:#B9B9C0}
+.tile.tpl{border-style:solid}
+.tile.arm{background:var(--fg);color:var(--surface)}
+
+/* transitions de section */
+@keyframes inR{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes inL{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes inU{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sec.goR{animation:inR .26s cubic-bezier(.2,.8,.2,1)}
+.sec.goL{animation:inL .26s cubic-bezier(.2,.8,.2,1)}
+.home,.settings{animation:inU .25s ease-out}
+@media (prefers-reduced-motion:reduce){.sec.goR,.sec.goL,.home,.settings{animation:none}.tile,.tb,.chip{transition:none}}
+
+/* tablette */
+@media (max-width:1180px){
+  .shell{grid-template-columns:minmax(0,1fr);border-radius:0;margin:0;padding:10px;background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .rail{display:none}
+  .mlogo{display:block}
+  #homebtn,#setbtn,#example{display:inline-flex}
+  #form > .wiz{display:flex;position:sticky;top:0;z-index:4;padding:8px 2px;margin:-8px -2px 0;background:linear-gradient(var(--bg) 70%,transparent);scroll-behavior:smooth}
+}
+@media (max-width:760px){
+  .hello h1{font-size:1.25rem}
+  .hello .tag{display:none}
+  .tb.pill{padding:10px 14px;font-size:.8rem}
+  .tb.ic{width:38px;height:38px}
+  .fsg{display:none}
+  .sh{padding:18px 18px 2px}.sb{padding:10px 16px 20px}
+  .wrap{padding:8px 0 120px;grid-template-columns:minmax(0,1fr)}
+  .mobbar button{padding:10px 8px;font-size:.84rem}
+  .mobbar button{white-space:nowrap}
+  #mobcount{font-size:.72rem}
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .tile{min-height:92px;padding:16px 14px;border-radius:22px}
+  .tile .tl{font-size:.98rem}
+  .mobbar{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));border-radius:999px;border:0;background:#18181B;padding:6px;box-shadow:0 12px 40px rgba(0,0,0,.25);gap:4px}
+  .mobbar button{border:0;background:transparent;color:#F4F4F6;border-radius:999px}
+  .mobbar button.on{background:#F4F4F6;color:#18181B}
+  .mobbar #mnext{background:#F4F4F6;color:#18181B}
+  .mobbar button:disabled{opacity:.35}
+}
 </style>
 
+<div class="shell">
+<nav class="rail" aria-label="Navigation">
+  <div class="rbrand"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="9" fill="currentColor"/><path d="M10 9h6.5a7 7 0 0 1 0 14H10Z" fill="none" stroke="var(--surface)" stroke-width="2.6"/></svg><span>De Facto</span></div>
+  <div class="rmenu">
+    <button type="button" class="ritem" data-proxy="homebtn" id="r-home"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg><span>Accueil</span></button>
+    <button type="button" class="ritem" data-proxy="lexbtn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19V5"/></svg><span>Lexique</span></button>
+    <button type="button" class="ritem" data-proxy="example"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 9 5 3-5 3Z"/></svg><span>Exemple</span></button>
+  </div>
+  <div class="rlab" id="stepnavlab">Sections</div>
+  <div id="stepnav"></div>
+  <div class="rfoot"><button type="button" class="ritem" data-proxy="setbtn" id="r-set"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg><span>Réglages</span></button></div>
+</nav>
+<div class="mainc">
 <header class="top"><div class="in">
   <div class="brand">
-    <h1>De Facto · tenue de dossier</h1><span class="tag">v4</span><span class="sp"></span>
-    <button type="button" class="tb" id="homebtn">Accueil</button>
-    <button type="button" class="tb" id="new">Nouvelle note</button>
-    <button type="button" class="tb" id="lexbtn">Lexique</button>
-    <button type="button" class="tb" id="example">Exemple</button>
-    <button type="button" class="tb" id="setbtn">Réglages</button>
-    <span class="fsg"><button type="button" class="tb sq" id="fsm" aria-label="Réduire le texte">A−</button><button type="button" class="tb sq" id="fsp" aria-label="Agrandir le texte">A+</button></span>
+    <span class="mlogo"><svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="9" fill="currentColor"/><path d="M10 9h6.5a7 7 0 0 1 0 14H10Z" fill="none" stroke="var(--surface)" stroke-width="2.6"/></svg></span>
+    <div class="hello"><h1 id="hello">Bonjour</h1><span class="tag" id="subhello">Tenue de dossier</span></div><span class="sp"></span>
+    <button type="button" class="tb pill" id="new">Nouvelle note</button>
+    <button type="button" class="tb ic" id="lexbtn" aria-label="Lexique" title="Lexique"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <button type="button" class="tb ic" id="homebtn" aria-label="Accueil" title="Accueil"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg></button>
+    <button type="button" class="tb ic" id="setbtn" aria-label="Réglages" title="Réglages"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></button>
+    <button type="button" class="tb ic txtic" id="example" title="Exemple">Ex.</button>
+    <span class="fsg"><button type="button" class="tb ic sq" id="fsm" aria-label="Réduire le texte">A−</button><button type="button" class="tb ic sq" id="fsp" aria-label="Agrandir le texte">A+</button></span>
   </div>
 </div></header>
 
@@ -379,6 +599,8 @@ body[data-screen="home"] .mobbar #mprev, body[data-screen="home"] .mobbar #mnext
     <div id="checks"></div>
     <details class="js"><summary>Objet de séance (structure que la dictée remplira)</summary><pre id="json"></pre></details>
   </aside>
+</div>
+</div>
 </div>
 
 <div class="mobbar"><button type="button" id="mprev" aria-label="Section précédente">‹ Préc.</button><button type="button" id="viewF" class="on">Formulaire</button><button type="button" id="viewN">Note <span id="mobcount"></span></button><button type="button" id="mnext" class="pri" aria-label="Section suivante">Suiv. ›</button></div>
@@ -1889,8 +2111,12 @@ function renderHome(){
   const tpl = CFG.tpl.length ? `<h2 class="hh">Mes modèles</h2><div class="tiles">${CFG.tpl.map((m,i)=>`<button type="button" class="tile tpl" data-act="tpl" data-i="${i}"><span class="tl">${esc(m.name)}</span><span class="td">${esc(TYP[m.type]?.l||"")}</span></button>`).join("")}</div>` : "";
   return `<div class="home">${copied}${draft}${cur}<h2 class="hh">Nouvelle note</h2><div class="tiles">${tiles}</div>${tpl}</div>`;
 }
+function railSync(){ const v=S.ui.view; document.querySelectorAll(".ritem").forEach(b=>b.classList.toggle("on", (b.id==="r-home"&&v==="home")||(b.id==="r-set"&&v==="settings")));
+  const h=$("#hello"); if(h) h.textContent="Bonjour, "+(CFG.dentiste||"Docteur")+" !";
+  const sh=$("#subhello"); if(sh) sh.textContent = v==="home" ? "Quelle séance veux-tu consigner ?" : v==="settings" ? "Réglages" : (T().l+" · section "+((S.ui.step||0)+1));
+  if(v!=="form"){ const sn=$("#stepnav"); if(sn) sn.innerHTML=""; S.ui.prevRendered=null; } }
 function renderForm(){
-  document.body.dataset.screen = S.ui.view; if(S.fin) remisAuto();
+  document.body.dataset.screen = S.ui.view; railSync(); setTimeout(railSync,0); if(S.fin) remisAuto();
   if(S.ui.view==="home"){ $("#form").innerHTML = renderHome(); renderNote(); return; }
   if(S.ui.view==="settings"){ $("#form").innerHTML = renderSettings(); renderNote(); return; }
   const secs = sectionsList();
@@ -1905,7 +2131,14 @@ function renderForm(){
   let cur = secs[S.ui.step].replace("</h2>", "</h2>"+MIC);
   if(PREFILLED.includes(S.ui.curSec) && next) cur = cur.replace('<div class="sb">', `<div class="sb"><button type="button" class="conf" data-act="step" data-v="${S.ui.step+1}">✓ Conforme, suivant</button>`);
   const foot = `<div class="wfoot"><button type="button" class="wbtn" data-act="step" data-v="${S.ui.step-1}" ${prev?"":"disabled"}>‹ Précédent</button><span class="wpos">${S.ui.step+1} / ${secs.length}</span>${next?`<button type="button" class="wbtn pri" data-act="step" data-v="${S.ui.step+1}">Suivant ›</button>`:`<button type="button" class="wbtn pri" data-act="gonote">Voir la note</button>`}</div>`;
-  $("#form").innerHTML = (S.exemple?`<div class="banner">Exemple fictif chargé pour montrer le fonctionnement. « Nouvelle note » efface tout.</div>`:"") + `<div class="ftype"><span>${esc(T().l)}</span><button type="button" class="linkbtn" data-act="home">Changer de type</button></div>` + nav + cur + foot;
+  const dir = S.ui.prevRendered==null ? "" : (S.ui.step>S.ui.prevRendered ? "goR" : S.ui.step<S.ui.prevRendered ? "goL" : "");
+  if(dir) cur = cur.replace('<section class="sec"', `<section class="sec ${dir}"`);
+  S.ui.prevRendered = S.ui.step;
+  const prog = `<div class="wprog" aria-hidden="true"><i style="width:${Math.round((S.ui.step+1)/secs.length*100)}%"></i></div>`;
+  const sn=$("#stepnav"); if(sn) sn.innerHTML = nav;
+  $("#form").innerHTML = (S.exemple?`<div class="banner">Exemple fictif chargé pour montrer le fonctionnement. « Nouvelle note » efface tout.</div>`:"") + `<div class="ftype"><span>${esc(T().l)}</span><button type="button" class="linkbtn" data-act="home">Changer de type</button></div>` + nav + prog + cur + foot;
+  { const c=$("#form > .wiz .wz.cur"); if(c && c.parentElement.scrollWidth>c.parentElement.clientWidth) c.parentElement.scrollTo({left:c.offsetLeft-c.parentElement.clientWidth/2+c.offsetWidth/2, behavior:"smooth"}); }
+  { const c=$("#stepnav .wz.cur"); if(c){ const p=$("#stepnav"); if(c.offsetTop<p.scrollTop || c.offsetTop>p.scrollTop+p.clientHeight-40) p.scrollTo({top:c.offsetTop-p.clientHeight/3, behavior:"smooth"}); } }
   $("#mprev").disabled = !prev; $("#mnext").textContent = next ? "Suiv. ›" : "Note ›";
   renderNote();
   saveDraftSoon();
@@ -2221,7 +2454,7 @@ document.addEventListener("click", e=>{
     case "rxq": { const r=S.rx[i], q=r.q[b.dataset.k][b.dataset.o], g=b.dataset.g, v=b.dataset.v; q[g] = q[g].includes(v) ? q[g].filter(x=>x!==v) : (g==="v"&&v==="adéquate" ? ["adéquate"] : q[g].filter(x=>!(g==="v"&&x==="adéquate")).concat(v)); break; }
     case "panoc": { const p=S.rx[i].pano[b.dataset.k], v=b.dataset.v; p.s = p.s.includes(v) ? p.s.filter(x=>x!==v) : (v==="bilatéral"?["bilatéral"]:p.s.filter(x=>x!=="bilatéral").concat(v)); break; }
     case "planfr": { const v=b.dataset.v; S.planFr = S.planFr || [...CONS_FR]; S.planFr = S.planFr.includes(v) ? S.planFr.filter(x=>x!==v) : S.planFr.concat(v); break; }
-    case "step": S.ui.step=+b.dataset.v; renderForm(); window.scrollTo(0,0); return;
+    case "step": S.ui.step=+b.dataset.v; renderForm(); window.scrollTo({top:0, behavior:"smooth"}); return;
     case "gonote": $("#viewN").click(); return;
     case "refusform": S.ui.refusI = S.ui.refusI===i ? -1 : i; break;
     case "cons": { const C=S.actes[i].cons, k=b.dataset.k, v=b.dataset.v; C[k] = C[k].includes(v)? C[k].filter(x=>x!==v) : C[k].concat(v); break; }
@@ -2510,4 +2743,13 @@ document.addEventListener("input", e=>{ const t=e.target; if(!t.dataset.cfg || t
     if(t.dataset.cfg==="rotsys") CFG.endoRot.sys=t.value.trim()||"EndoSequence"; else { const z=t.value.split(/[,;]/).map(x=>x.trim()).filter(Boolean); if(z.length) CFG.endoRot.sz=z; } applyRot(); }
   if(t.dataset.cfg==="lex"){ CFG.lex=t.value.split("\n").map(x=>x.trim()).filter(Boolean); LEXP.length=0; CFG.lex.forEach(x=>LEXP.push({e:[x,"","","","Lexique personnel","terme","","","",1], k:norm(x), a:"", s:""})); }
   saveCfg(); });
+
+/* ---------- Navigation fluide : barre latérale, balayage, raccourcis ---------- */
+document.addEventListener("click", e=>{ const b=e.target.closest("[data-proxy]"); if(b){ const t=$("#"+b.dataset.proxy); if(t) t.click(); } });
+function goStep(d){ if(S.ui.view!=="form") return; const n=sectionsList().length, k=S.ui.step+d; if(k<0||k>=n) return; S.ui.step=k; renderForm(); window.scrollTo({top:0, behavior:"smooth"}); }
+(()=>{ let x0=null, y0=null, ok=false;
+  document.addEventListener("touchstart", e=>{ const t=e.target; ok = !!t.closest("#form") && !t.closest(".scroll,.wiz,input,textarea,select,.qtabs,#note"); if(!ok) return; x0=e.touches[0].clientX; y0=e.touches[0].clientY; }, {passive:true});
+  document.addEventListener("touchend", e=>{ if(!ok||x0==null) return; const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null; if(Math.abs(dx)>70 && Math.abs(dy)<45) goStep(dx<0?1:-1); }, {passive:true});
+})();
+document.addEventListener("keydown", e=>{ if(!e.altKey || e.ctrlKey || e.metaKey) return; if(e.key==="ArrowRight"||e.key==="ArrowDown"){ e.preventDefault(); goStep(1); } if(e.key==="ArrowLeft"||e.key==="ArrowUp"){ e.preventDefault(); goStep(-1); } });
 </script>
