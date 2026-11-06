@@ -2963,8 +2963,21 @@ function copyText(txt, miss=0){
     const last=S; clearDraft(); const st=CFG.style; S=blank(); boot(S); S.style=st; S.ui.lastCopied=last; S.ui.view="home"; $("#note").contentEditable="true";
     renderForm(); window.scrollTo(0,0); $("#copymsg").textContent = miss ? `Note copiée malgré ${miss} élément${miss>1?"s":""} manquant${miss>1?"s":""}. Colle-la dans le dossier.` : "Note copiée. Colle-la dans le dossier."; setTimeout(()=>$("#copymsg").textContent="",6000); };
   const fall=()=>{ const ta=$("#fallback"); ta.hidden=false; ta.value=txt; ta.focus(); ta.select(); $("#copymsg").textContent="Copie bloquée par le navigateur : le texte est sélectionné, fais Ctrl+C (ou Copier)."; };
-  try{ navigator.clipboard.writeText(txt).then(ok,fall); }catch(_){ fall(); }
+  clipWrite(txt).then(ok,fall);
 }
+/* La note part en deux versions : texte (fins de ligne Windows sur PC) et HTML (une ligne = un saut <br>),
+   pour que la mise en page tienne dans Dentitek, un courriel ou un traitement de texte */
+const IS_WIN = /Win/i.test(navigator.platform||"") || /Windows/i.test(navigator.userAgent||"");
+const clipPlain = t => { const u=String(t).replace(/\r\n?/g,"\n").replace(/\u00a0/g," "); return IS_WIN ? u.replace(/\n/g,"\r\n") : u; };
+const clipHtml = t => `<div style="font-family:Arial,Helvetica,sans-serif;font-size:11pt;white-space:normal">`+String(t).replace(/\r\n?/g,"\n").split("\n").map(l=>l.trim()?esc(l):"").join("<br>")+`</div>`;
+async function clipWrite(txt){
+  if(navigator.clipboard && window.ClipboardItem){ try{ await navigator.clipboard.write([new ClipboardItem({"text/plain":new Blob([clipPlain(txt)],{type:"text/plain"}), "text/html":new Blob([clipHtml(txt)],{type:"text/html"})})]); return; }catch(_){ } }
+  if(navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(clipPlain(txt)); return; }
+  throw new Error("presse-papiers indisponible");
+}
+/* Copie manuelle d'une partie de la note (sélection + Copier / Ctrl+C) : mêmes deux versions */
+document.addEventListener("copy", e=>{ const sel=window.getSelection(); if(!sel || sel.isCollapsed) return; const n=$("#note"); if(!n || !n.contains(sel.anchorNode)) return;
+  const t=sel.toString(); if(!t) return; e.clipboardData.setData("text/plain", clipPlain(t)); e.clipboardData.setData("text/html", clipHtml(t)); e.preventDefault(); });
 $("#copy").onclick=()=>{
   const R=checks().filter(c=>c.lvl==="req");
   if(S.ui.editing){ captureEdits(); S.ui.editing=false; }
